@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spectre Rose — La mariée sans visage : Hinako, Shiromuku et l'identité confisquée dans Silent Hill f</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:         #07040a;
+      --bg-card:    #0e0812;
+      --rose:       #d4909a;
+      --rose-light: #f0c4cc;
+      --rose-dark:  #7a3d4a;
+      --rose-deep:  #3d1520;
+      --cream:      #ede4e6;
+      --muted:      #6e5860;
+      --border:     rgba(212, 144, 154, 0.18);
+      --border-h:   rgba(212, 144, 154, 0.45);
+      --glow:       rgba(212, 144, 154, 0.08);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: 'Crimson Text', serif;
+      font-size: 19px;
+      line-height: 1.85;
+      overflow-x: hidden;
+    }
+
+    /* Grain */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9998; mix-blend-mode: overlay; opacity: 0.55;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.4rem 4rem;
+      background: linear-gradient(to bottom, rgba(7,4,10,0.96) 0%, transparent 100%);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 300; letter-spacing: .18em;
+      color: var(--rose-light); text-decoration: none;
+    }
+    .nav-logo span { color: var(--rose); font-style: italic; }
+    .nav-back {
+      font-family: 'DM Mono', monospace; font-size: .58rem;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      transition: color .3s;
+    }
+    .nav-back:hover { color: var(--rose); }
+
+    /* HERO ARTICLE */
+    .art-hero {
+      padding: 12rem 4rem 6rem;
+      max-width: 820px; margin: 0 auto;
+      text-align: center;
+    }
+
+    .a-eyebrow {
+      font-family: 'DM Mono', monospace; font-size: .58rem;
+      letter-spacing: .4em; text-transform: uppercase;
+      color: var(--rose); display: block; margin-bottom: 2rem;
+    }
+
+    .a-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 300; line-height: 1.08; letter-spacing: -.01em;
+      color: var(--cream);
+    }
+    .a-title em { color: var(--rose); font-style: italic; }
+
+    .a-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; font-style: italic; font-weight: 300;
+      color: var(--muted); margin-top: 1.4rem; line-height: 1.6;
+    }
+
+    .a-meta {
+      display: flex; justify-content: center; align-items: center;
+      gap: 1.2rem; margin-top: 2.8rem;
+      font-family: 'DM Mono', monospace; font-size: .52rem;
+      letter-spacing: .2em; text-transform: uppercase; color: var(--rose-dark);
+    }
+    .a-meta .sep { color: var(--border-h); }
+
+    .orn-line {
+      text-align: center; color: var(--rose-dark); font-size: .8rem;
+      letter-spacing: 1.4rem; margin: 3rem 0;
+    }
+
+    /* COVER IMAGE PLACEHOLDER */
+    .cover-img {
+      width: 100%; max-width: 820px; margin: 0 auto 5rem;
+      aspect-ratio: 16/7;
+      background: linear-gradient(135deg, #1a0810 0%, #0d0515 40%, #1a0d10 100%);
+      border: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: .6rem;
+      position: relative; overflow: hidden;
+    }
+    .cover-img::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(122,61,74,.18), transparent);
+    }
+    .cover-img-glyph {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem; color: rgba(212,144,154,.12);
+      font-style: italic; font-weight: 300; line-height: 1;
+    }
+    .cover-img-label {
+      font-family: 'DM Mono', monospace; font-size: .5rem;
+      letter-spacing: .25em; text-transform: uppercase;
+      color: var(--rose-dark); z-index: 1;
+    }
+    /* To add a real image: replace .cover-img content with <img src="your-image.jpg" style="width:100%;height:100%;object-fit:cover;"> */
+
+    /* ARTICLE BODY */
+    .art-body {
+      max-width: 680px; margin: 0 auto;
+      padding: 0 2rem 8rem;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.95rem; font-weight: 400; line-height: 1.15;
+      color: var(--cream); margin: 4rem 0 1.4rem;
+      position: relative; padding-left: 1.4rem;
+    }
+    h2::before {
+      content: '';
+      position: absolute; left: 0; top: .3em;
+      width: 3px; height: 1.1em;
+      background: linear-gradient(to bottom, var(--rose), var(--rose-dark));
+    }
+
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-style: italic; font-weight: 400;
+      color: var(--rose-light); margin: 2.4rem 0 .8rem;
+    }
+
+    p {
+      color: #c9b8bc;
+      margin-bottom: 1.4rem;
+    }
+
+    em { color: var(--rose-light); font-style: italic; }
+    strong { color: var(--cream); font-weight: 600; }
+
+    /* Inline note / aside */
+    .note {
+      border-left: 2px solid var(--rose-dark);
+      padding: 1rem 1.5rem;
+      background: rgba(122,61,74,.06);
+      margin: 2.4rem 0;
+      font-style: italic; font-size: .95rem; color: var(--muted);
+    }
+    .note strong { color: var(--rose); font-style: normal; }
+
+    /* Pull quote */
+    blockquote {
+      margin: 3rem 0;
+      padding: 2rem 2.5rem;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      position: relative;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem; font-style: italic; font-weight: 300;
+      color: var(--rose-light); line-height: 1.5; text-align: center;
+    }
+    blockquote::before {
+      content: '✦';
+      position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+      background: var(--bg); padding: 0 .8rem;
+      color: var(--rose-dark); font-style: normal; font-size: .8rem;
+    }
+
+    /* In-text illustration placeholder */
+    .img-inline {
+      width: 100%; margin: 2.8rem 0;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, #150810, #0e0515);
+      border: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: .5rem;
+    }
+    .img-inline-label {
+      font-family: 'DM Mono', monospace; font-size: .48rem;
+      letter-spacing: .22em; text-transform: uppercase; color: var(--rose-dark);
+    }
+    .img-inline-caption {
+      font-family: 'Crimson Text', serif; font-size: .8rem;
+      font-style: italic; color: var(--muted); text-align: center;
+      padding: .5rem 1rem;
+    }
+
+    /* Tags & footer */
+    .art-footer {
+      max-width: 680px; margin: 0 auto;
+      padding: 3rem 2rem 6rem;
+      border-top: 1px solid var(--border);
+      display: flex; flex-wrap: wrap; align-items: center; gap: 1rem;
+    }
+    .tag {
+      border: 1px solid var(--rose-dark);
+      padding: .25rem .8rem;
+      font-family: 'DM Mono', monospace; font-size: .5rem;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: var(--rose);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 4rem;
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .f-logo { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 300; letter-spacing: .15em; color: var(--rose-light); }
+    .f-copy { font-family: 'DM Mono', monospace; font-size: .52rem; letter-spacing: .18em; color: var(--muted); }
+
+    /* Scroll reveal */
+    .rv { opacity: 0; transform: translateY(22px); transition: opacity .8s ease, transform .8s ease; }
+    .rv.on { opacity: 1; transform: none; }
+
+    @media (max-width: 760px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .art-hero, .art-body, .art-footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .art-hero { padding-top: 9rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="spectre-rose.html" class="nav-logo">Spectre <span>Rose</span></a>
+    <a href="spectre-rose.html" class="nav-back">← Retour aux théories</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="art-hero">
+    <span class="a-eyebrow rv">✦ Silent Hill f &nbsp;·&nbsp; Horreur psychologique &nbsp;·&nbsp; Féminité &amp; contrainte</span>
+    <h1 class="a-title rv">La mariée <em>sans visage</em><br>— ce qu'Hinako ne peut pas regarder</h1>
+    <p class="a-subtitle rv">Identité confisquée, futur incarné et jeu de poupée dans <em>Silent Hill f</em></p>
+    <div class="a-meta rv">
+      <span>24 mars 2026</span>
+      <span class="sep">·</span>
+      <span>~16 min de lecture</span>
+      <span class="sep">·</span>
+      <span>Spoilers complets</span>
+    </div>
+  </div>
+
+  <!-- COVER IMAGE -->
+  <div class="cover-img rv" style="padding: 0 4rem; max-width: 820px; width: 100%; margin: 0 auto 4rem;">
+    <!-- Remplace ce bloc par : <img src="ton-image-silenthill-f.jpg" style="width:100%;height:100%;object-fit:cover;"> -->
+    <div class="cover-img-glyph">雛</div>
+    <span class="cover-img-label">[ Ajouter une image ici — Silent Hill f ]</span>
+  </div>
+
+  <!-- BODY -->
+  <article class="art-body">
+
+    <p class="rv">Il y a, dans l'ouverture de <em>Silent Hill f</em>, une image deceptivement simple : une adolescente parle à une poupée. Elle lui raconte que les autres filles refusaient de jouer avec elle, qu'elle préférait courir avec les garçons, inventer des jeux de guerre spatiale avec son ami d'enfance Shu. Puis sa sœur apparaît. Puis le brouillard descend. Puis la poupée disparaît. Cette séquence n'est pas un prologue : c'est le programme narratif entier du jeu, condensé en trois minutes. Tout ce que <em>Silent Hill f</em> va faire pendant les vingt heures suivantes, il l'a déjà dit là, dans ce dialogue entre une jeune fille et un jouet qu'elle aurait dû avoir oublié.</p>
+
+    <p class="rv">Ce qui suit est une tentative de lire cette œuvre à la manière dont elle mérite d'être lue — comme un palimpseste où chaque couche de sens en recouvre une autre sans l'effacer tout à fait. En suivant le fil de quatre figures centrales : <strong>Hinako</strong>, la protagoniste ; <strong>Shiromuku</strong>, le monstre du brouillard ; <strong>Junko</strong>, la sœur aînée ; et la <strong>poupée sans nom</strong> qui les relie toutes les trois.</p>
+
+    <div class="orn-line rv">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <h2 class="rv">I. Hinako, ou la poupée qui refuse de l'être</h2>
+
+    <p class="rv">Le nom d'Hinako s'écrit 雛子. Le kanji 雛 (<em>hina</em>) porte deux significations superposées, et le jeu ne choisit pas entre elles : il les exploite simultanément. <em>Hina</em> désigne à la fois le <strong>poussin</strong> — l'oisillon encore incapable de voler — et la <strong>poupée de festival</strong>, celle qu'on expose pendant Hinamatsuri, la fête des filles, avant de la ranger dans une boîte pour le reste de l'année. Hinako est littéralement, dans son nom même, une <em>poupée-oisillon</em> : quelque chose de fragile et d'ornemental, quelque chose qui n'a pas encore d'ailes, quelque chose qu'on sort pour les cérémonies.</p>
+
+    <p class="rv">Ce n'est pas anodin que Ryukishi07 — scénariste de l'œuvre, connu pour son goût des structures signifiantes dans <em>Higurashi</em> et <em>Umineko</em> — ait construit son personnage sur cette ambivalence étymologique. L'arc d'Hinako est celui d'un être qui refuse obstinément d'être ce que son nom promet. Enfant, elle rejetait les jeux de poupée. Adolescente, elle refuse le mariage arrangé que son père a contracté en échange de ses dettes. Elle n'est pas passive, elle n'est pas douce, elle n'est pas exposée sans résistance. Et pourtant le monde autour d'elle — son père, Fox Mask, même Shu qui la drogue à son insu — traite son existence comme une marchandise à disposition.</p>
+
+    <div class="note rv"><strong>Note de cadrage :</strong> Le jeu se déroule dans le Japon des années 1960. L'âge légal du mariage pour les femmes y était fixé à 16 ans, et les mariages arrangés par les familles pour rembourser des dettes constituaient une réalité sociale documentée. <em>Silent Hill f</em> ne s'en sert pas comme d'un simple décor historique : c'est la structure d'oppression elle-même qui génère le brouillard.</div>
+
+    <p class="rv">Ce que l'horreur de <em>Silent Hill f</em> révèle, c'est que le monde ordinaire d'Hinako était déjà monstrueux avant que le brouillard ne descende. La ville enveloppée de champignons parasites n'est pas une rupture avec la réalité — c'est sa vérité mise à nu. La moisissure qui envahit les corps est la métaphore visible de ce qui rongeait Hinako de l'intérieur : la conviction progressive, inculquée par tous ceux qu'elle aime, qu'elle n'est pas une personne mais une <em>fonction</em>.</p>
+
+    <blockquote class="rv">Silent Hill a toujours été moins une ville hantée qu'un espace où l'inconscient devient architecture. Dans le cas d'Hinako, cet inconscient dessine les contours d'un Japon patriarcal qui transforme les femmes en objets cérémoniels.</blockquote>
+
+    <h2 class="rv">II. Shiromuku — le futur comme monstre</h2>
+
+    <!-- Image inline -->
+    <div class="img-inline rv">
+      <span class="img-inline-label">[ Ajouter une image ici — Shiromuku / fog monster ]</span>
+    </div>
+    <p class="img-inline-caption rv" style="text-align:center; font-style:italic; font-size:.85rem; color:var(--muted); margin-top:-.5rem; margin-bottom:2rem;">Le monstre du brouillard tel qu'Hinako refuse de le voir — à remplacer par une capture ou illustration du jeu.</p>
+
+    <p class="rv">Le « monstre du brouillard » qui hante Ebisugaoka porte un nom précis : <em>Shiromuku</em>. C'est le nom du kimono blanc traditionnel porté par les mariées japonaises lors de la cérémonie shinto. Un vêtement qui signifie littéralement « pur blanc » — et symboliquement : effacement de soi, purification de l'identité passée, absorption dans la famille du mari. La mariée en <em>shiromuku</em> devient une surface blanche sur laquelle une nouvelle existence sera inscrite.</p>
+
+    <p class="rv">Que le monstre s'appelle Shiromuku n'est pas une métaphore secondaire. C'est la structure entière du jeu. <strong>Shiromuku est Hinako elle-même</strong> — sa version future, celle qui a accepté le mariage, celle qui a laissé son visage se faire remplacer par un masque. Le monstre est semi-invisible lors des premières confrontations : Hinako ne peut pas encore le voir parce qu'elle refuse encore d'admettre ce qu'elle risque de devenir. La cécité du joueur face à l'ennemi est la cécité psychologique de la protagoniste rendue mécanique.</p>
+
+    <p class="rv">C'est là une des décisions narratives les plus élégantes du jeu : <em>l'invisibilité du monstre n'est pas un effet de mise en scène — c'est du déni incarné.</em> Le jeu fait jouer au joueur l'acte même de ne pas regarder en face ce que l'on refuse d'admettre. Et plus Hinako avance, plus sa faculté à percevoir Shiromuku se développe. Elle commence à voir le monstre au moment précis où elle commence à voir sa propre situation.</p>
+
+    <h3 class="rv">La transformation comme perte de surface</h3>
+
+    <p class="rv">La trajectoire physique d'Hinako dans le jeu est celle d'un effacement progressif des frontières du moi. Elle se coud une patte de renard à la main. Elle remplace sa peau par un masque. À la fin, elle est devenue une mariée sans visage — une figure ornemental dont l'identité propre a été littéralement recouverte. Ce n'est pas une métamorphose horrifique au sens hollywoodien du terme. C'est une <strong>logique sociale poussée jusqu'à son terme visuel</strong>. Le système qui demande aux femmes d'effacer leur personnalité au moment du mariage, Ryukishi07 le rend littéral, le rend chair, le rend regardable.</p>
+
+    <p class="rv">Il est notable que cette transformation s'opère par <em>couture</em> et par <em>masque</em> — deux formes d'artisanat féminin traditionnel. Ce n'est pas la violence qui défigure Hinako : c'est l'accumulation patiente des gestes attendus d'elle.</p>
+
+    <h2 class="rv">III. Junko, ou la voie tracée</h2>
+
+    <p class="rv">La sœur d'Hinako, <strong>Kinuta Junko</strong>, est l'un des personnages les plus fascinants du jeu précisément parce qu'elle n'est jamais réductible à un rôle simple. Elle n'est ni la méchante, ni la victime passive, ni le modèle positif. Elle est quelque chose de plus troublant : la preuve que le chemin existe, que d'autres l'ont pris, qu'il n'est pas insupportable — ou du moins que l'on peut apprendre à le supporter.</p>
+
+    <p class="rv">Le nom Junko — 潤子 — contient le caractère 潤 (<em>jun</em>), qui signifie « humide », « lustré », « prospère ». C'est le nom d'une femme faite pour la fertilité et l'harmonie domestique. Et le kanji 子 (<em>ko</em>), présent dans presque tous les noms féminins du jeu, inscrit chaque personnage dans une tradition nominale qui signifie « enfant » — les femmes sont nommées comme des enfants, comme des êtres en devenir perpétuel sous tutelle.</p>
+
+    <!-- Image inline -->
+    <div class="img-inline rv">
+      <span class="img-inline-label">[ Ajouter une image ici — Junko ]</span>
+    </div>
+    <p class="img-inline-caption rv" style="text-align:center; font-style:italic; font-size:.85rem; color:var(--muted); margin-top:-.5rem; margin-bottom:2rem;">Junko et son masque d'oiseau — à remplacer par une capture ou illustration du jeu.</p>
+
+    <p class="rv">Dans le jeu, Junko porte un masque d'oiseau — non pas le tengu des légendes, mais quelque chose de plus ambigu, plus aviaire, peut-être un hibou. Si Hinako est la poussin (雛子) qui n'a pas encore volé, Junko est l'oiseau adulte qui a appris à voler dans la direction prescrite. Elle est belle, apaisante, et terriblement triste. Elle aime sa sœur. Et c'est précisément parce qu'elle l'aime qu'elle lui a transmis la conviction que le chemin le plus court vers le bonheur est la conformité — qu'il faut plier avant d'être brisée.</p>
+
+    <p class="rv">La cruauté du jeu est que Junko n'est pas fausse. Son affection pour Hinako est réelle. Mais l'amour ne protège pas ici — il transmet. La violence des normes sociales se perpétue précisément à travers les liens affectifs les plus sincères. C'est la sœur aimante qui enseigne à sa cadette comment disparaître en paix.</p>
+
+    <blockquote class="rv">Junko est à la fois le modèle et l'avertissement. Elle prouve qu'on survit. Elle ne dit pas à quel prix.</blockquote>
+
+    <p class="rv">L'apparition de Junko dans le jeu est toujours légèrement décalée, irréelle — on se demande si c'est la vraie Junko ou un fragment de l'esprit d'Hinako. Cette ambiguïté est fondamentale : Junko est autant un personnage qu'une instance psychique, la voix intériorisée de la conformité que toute femme sous pression finit par porter en elle.</p>
+
+    <h2 class="rv">IV. La poupée — ce qui a été joué, et ce qui a été refusé</h2>
+
+    <p class="rv">La poupée qui apparaît dans la scène d'ouverture — et qui réapparaît ensuite comme figure d'avertissement — est l'objet le plus chargé du jeu. Non pas parce qu'elle représente l'enfance perdue au sens sentimental, mais parce qu'elle cristallise une <strong>contradiction fondamentale dans l'identité d'Hinako</strong>.</p>
+
+    <p class="rv">Hinako n'a jamais voulu jouer à la poupée. Les autres filles jouaient avec des poupées ; elle préférait les jeux d'action, les batailles spatiales inventées avec Shu. Et pourtant le jeu lui impose une poupée — lui en impose le nom (雛子), lui en impose le destin (la mariée sans visage, l'objet de cérémonie). La poupée qu'Hinako a refusé de manipuler enfant, c'est elle-même qu'on essaie d'en faire une.</p>
+
+    <p class="rv">Le fait que la poupée <em>l'avertisse</em> dans le jeu — qu'elle lui signale le danger de Fox Mask, qu'elle soit du côté de la résistance plutôt que de la capitulation — est l'inversion la plus belle du jeu. L'objet symbole de la féminité normative devient le porte-parole de la rébellion. Comme si ce qu'Hinako avait rejeté dans son enfance se retournait pour la défendre contre ce que cette même enfance avait promis de faire d'elle.</p>
+
+    <div class="note rv"><strong>Lecture comparée :</strong> On retrouve une logique similaire dans <em>Umineko no Naku Koro ni</em>, où les figures féminines incarnent des rôles (la sorcière, la détective, la mère) qui finissent par se retourner contre les structures qui les ont créées. Ryukishi07 semble avoir une fascination constante pour les identités imposées qui se dérèglent et révèlent leur propre artifice.</div>
+
+    <h2 class="rv">V. Ce que Silent Hill f dit qu'il dit — et ce qu'il dit en plus</h2>
+
+    <p class="rv">À un premier niveau, <em>Silent Hill f</em> est un jeu sur le patriarcat japonais des années 1960, sur les mariages arrangés, sur les corps féminins traités comme monnaie d'échange. Ce niveau est réel, documenté, politiquement lisible et intentionnel — Ryukishi07 l'a dit lui-même en entretien.</p>
+
+    <p class="rv">Mais il y a un second niveau de lecture, plus vertigineux : celui de la <strong>construction même du joueur</strong>. Le jeu fait jouer une jeune fille qui refuse de voir son futur. Il place le joueur dans la position d'Hinako — incapable de voir Shiromuku au début, contraint de bâtir sa perception à mesure que la dénégation s'effrite. Le joueur n'observe pas le déni d'Hinako de l'extérieur ; il le <em>joue</em>. Il est Hinako refusant de regarder la mariée blanche.</p>
+
+    <p class="rv">C'est là que <em>Silent Hill f</em> rejoint la grande tradition du genre : l'horreur psychologique interactive n'est jamais seulement une histoire de peur. C'est une mécanique de mise en position, une façon de faire <em>vivre</em> une structure psychologique plutôt que de la décrire. Le brouillard n'est pas autour d'Hinako. Il est dans l'espace entre le joueur et l'écran.</p>
+
+    <div class="orn-line rv">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <p class="rv" style="font-style:italic; color:var(--muted); font-size:.95rem;">Une prochaine entrée explorera les tensions orientalistes dans la réception occidentale de <em>Silent Hill f</em> — entre fascination et réduction, entre appropriation du folklore japonais et regard extérieur qui en fabrique l'étrangeté.</p>
+
+  </article>
+
+  <!-- FOOTER ARTICLE -->
+  <div class="art-footer">
+    <span style="font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-right:.5rem;">Tags :</span>
+    <span class="tag">Silent Hill f</span>
+    <span class="tag">Horreur psychologique</span>
+    <span class="tag">Féminité & contrainte</span>
+    <span class="tag">Ryukishi07</span>
+    <span class="tag">Identité</span>
+    <span class="tag">Narratologie</span>
+    <span class="tag">Japon</span>
+  </div>
+
+  <footer>
+    <span class="f-logo">Spectre Rose ✦</span>
+    <span class="f-copy">© 2026 — Théories narratives &amp; fiction interactive</span>
+  </footer>
+
+  <script>
+    const items = document.querySelectorAll('.rv');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('on'), (i % 3) * 80);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.07 });
+    items.forEach((el, i) => { el.dataset.i = i; obs.observe(el); });
+  </script>
+</body>
+</html>
