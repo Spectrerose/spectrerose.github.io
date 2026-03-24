@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spectre Rose — Toutes les théories</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:          #07040a;
+      --bg-card:     #0e0812;
+      --bg-hover:    #130f1a;
+      --rose:        #d4909a;
+      --rose-light:  #f0c4cc;
+      --rose-dark:   #7a3d4a;
+      --rose-deep:   #3d1520;
+      --cream:       #ede4e6;
+      --muted:       #6e5860;
+      --border:      rgba(212, 144, 154, 0.18);
+      --border-h:    rgba(212, 144, 154, 0.5);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: 'Crimson Text', serif;
+      font-size: 17px;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9998; mix-blend-mode: overlay; opacity: 0.55;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.4rem 4rem;
+      background: linear-gradient(to bottom, rgba(7,4,10,0.97) 0%, transparent 100%);
+    }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 300; letter-spacing: .18em; color: var(--rose-light); text-decoration: none; }
+    .nav-logo span { color: var(--rose); font-style: italic; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-family: 'DM Mono', monospace; font-size: .62rem; letter-spacing: .22em; text-transform: uppercase; transition: color .3s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--rose-light); }
+
+    /* HEADER */
+    .page-header {
+      padding: 10rem 4rem 4rem;
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: flex-end;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 0;
+    }
+    .header-left .eyebrow { font-family: 'DM Mono', monospace; font-size: .58rem; letter-spacing: .4em; text-transform: uppercase; color: var(--rose); display: block; margin-bottom: .8rem; }
+    .header-left h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 300; line-height: 1; color: var(--cream); }
+    .header-left h1 em { color: var(--rose); font-style: italic; }
+    .header-right { font-family: 'DM Mono', monospace; font-size: .55rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); text-align: right; }
+    .header-right strong { color: var(--rose); font-weight: 400; }
+
+    /* FILTRES */
+    .filters {
+      max-width: 1200px; margin: 0 auto;
+      padding: 2rem 4rem;
+      display: flex; flex-wrap: wrap; gap: .6rem; align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .filter-label { font-family: 'DM Mono', monospace; font-size: .52rem; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin-right: .4rem; }
+    .filter-btn {
+      font-family: 'DM Mono', monospace; font-size: .5rem; letter-spacing: .16em; text-transform: uppercase;
+      padding: .3rem .9rem; border: 1px solid var(--border);
+      background: transparent; color: var(--muted); cursor: pointer;
+      transition: all .25s;
+    }
+    .filter-btn:hover, .filter-btn.active { border-color: var(--rose); color: var(--rose-light); background: rgba(212,144,154,.06); }
+    .filter-btn[data-filter="all"].active { border-color: var(--rose); color: var(--rose-light); }
+
+    /* CONTENU PRINCIPAL */
+    .catalogue {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 4rem 8rem;
+    }
+
+    /* SECTION PAR JEU */
+    .game-section {
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+    .game-section:first-child { border-top: none; margin-top: 3rem; }
+
+    .game-header {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-bottom: 1.6rem;
+    }
+    .game-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem; font-weight: 300; color: var(--cream);
+    }
+    .game-title em { color: var(--rose); font-style: italic; }
+    .game-count { font-family: 'DM Mono', monospace; font-size: .5rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+
+    /* LISTE D'ARTICLES */
+    .articles-list { display: flex; flex-direction: column; gap: .7rem; }
+
+    .article-row {
+      display: grid;
+      grid-template-columns: 2.8fr 1fr 80px;
+      align-items: center; gap: 1.5rem;
+      padding: 1.2rem 1.4rem;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      text-decoration: none; color: inherit;
+      transition: background .3s, border-color .3s, transform .3s;
+      position: relative; overflow: hidden;
+    }
+    .article-row::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+      background: var(--rose-dark);
+      transform: scaleY(0); transform-origin: bottom;
+      transition: transform .35s ease;
+    }
+    .article-row:hover { background: var(--bg-hover); border-color: var(--border-h); transform: translateX(4px); }
+    .article-row:hover::before { transform: scaleY(1); }
+
+    .ar-left { display: flex; flex-direction: column; gap: .4rem; }
+    .ar-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; font-weight: 400; line-height: 1.25;
+      color: var(--cream); transition: color .3s;
+    }
+    .article-row:hover .ar-title { color: var(--rose-light); }
+    .ar-excerpt { font-size: .82rem; color: var(--muted); line-height: 1.55; }
+
+    .ar-tags { display: flex; flex-wrap: wrap; gap: .4rem; justify-content: flex-end; }
+    .ar-tag {
+      font-family: 'DM Mono', monospace; font-size: .44rem;
+      letter-spacing: .14em; text-transform: uppercase;
+      padding: .18rem .6rem; border: 1px solid var(--rose-deep);
+      color: var(--rose-dark);
+    }
+
+    .ar-meta {
+      font-family: 'DM Mono', monospace; font-size: .48rem;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: var(--muted); text-align: right;
+    }
+    .ar-meta .ar-time { display: block; margin-top: .2rem; }
+
+    /* SECTION THÈMES */
+    .themes-section {
+      margin-top: 5rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+    .themes-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem; font-weight: 300; color: var(--cream); margin-bottom: 2rem;
+    }
+    .themes-title em { color: var(--rose); font-style: italic; }
+
+    .themes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .theme-card {
+      border: 1px solid var(--border); background: var(--bg-card);
+      padding: 1.4rem; cursor: pointer;
+      transition: background .3s, border-color .3s;
+    }
+    .theme-card:hover { background: var(--bg-hover); border-color: var(--border-h); }
+    .theme-card.active { border-color: var(--rose); background: rgba(212,144,154,.05); }
+    .tc-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--cream); margin-bottom: .5rem; }
+    .tc-count { font-family: 'DM Mono', monospace; font-size: .48rem; letter-spacing: .18em; text-transform: uppercase; color: var(--rose); margin-bottom: .6rem; }
+    .tc-desc { font-size: .82rem; color: var(--muted); line-height: 1.6; }
+
+    /* Visibility control */
+    .article-row.hidden { display: none; }
+    .game-section.all-hidden { display: none; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 4rem;
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .f-logo { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 300; letter-spacing: .15em; color: var(--rose-light); }
+    .f-copy { font-family: 'DM Mono', monospace; font-size: .52rem; letter-spacing: .18em; color: var(--muted); }
+
+    .rv { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .rv.on { opacity: 1; transform: none; }
+
+    @media (max-width: 960px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .page-header, .filters, .catalogue { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .page-header { flex-direction: column; gap: 1rem; align-items: flex-start; }
+      .article-row { grid-template-columns: 1fr; gap: .6rem; }
+      .ar-tags { justify-content: flex-start; }
+      .ar-meta { text-align: left; }
+      .themes-grid { grid-template-columns: 1fr 1fr; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Spectre <span>Rose</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#theories">Accueil</a></li>
+      <li><a href="theories.html" class="active">Toutes les théories</a></li>
+      <li><a href="index.html#about">À propos</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HEADER -->
+  <div class="page-header rv">
+    <div class="header-left">
+      <span class="eyebrow">✦ Catalogue complet</span>
+      <h1>Toutes les <em>théories</em></h1>
+    </div>
+    <div class="header-right">
+      <strong>9 articles</strong><br>
+      6 jeux couverts<br>
+      24 mars 2026
+    </div>
+  </div>
+
+  <!-- FILTRES -->
+  <div class="filters rv">
+    <span class="filter-label">Filtrer :</span>
+    <button class="filter-btn active" data-filter="all">Tout</button>
+    <button class="filter-btn" data-filter="feminisme">Féminisme</button>
+    <button class="filter-btn" data-filter="trauma">Trauma</button>
+    <button class="filter-btn" data-filter="identite">Identité</button>
+    <button class="filter-btn" data-filter="metatextualite">Métatextualité</button>
+    <button class="filter-btn" data-filter="intertextualite">Intertextualité</button>
+    <button class="filter-btn" data-filter="memoire">Mémoire</button>
+    <button class="filter-btn" data-filter="empathie">Empathie</button>
+    <button class="filter-btn" data-filter="horreur">Horreur psychologique</button>
+  </div>
+
+  <!-- CATALOGUE -->
+  <div class="catalogue">
+
+    <!-- SILENT HILL -->
+    <div class="game-section rv" id="section-sh">
+      <div class="game-header">
+        <h2 class="game-title"><em>Silent Hill</em></h2>
+        <span class="game-count">2 articles</span>
+      </div>
+      <div class="articles-list">
+
+        <a href="article-silenthill-f.html" class="article-row"
+           data-tags="feminisme identite horreur memoire">
+          <div class="ar-left">
+            <span class="ar-title">La mariée sans visage — ce qu'Hinako ne peut pas regarder</span>
+            <span class="ar-excerpt">Hinako, Shiromuku, Junko et la poupée : quatre figures pour lire Silent Hill f comme une cartographie de l'identité confisquée.</span>
+          </div>
+          <div class="ar-tags">
+            <span class="ar-tag">Féminisme</span>
+            <span class="ar-tag">Identité</span>
+            <span class="ar-tag">Horreur</span>
+            <span class="ar-tag">Ryukishi07</span>
+          </div>
+          <div class="ar-meta">
+            Silent Hill f
+            <span class="ar-time">16 min</span>
+          </div>
+        </a>
+
+        <a href="article-sh2-remake.html" class="article-row"
+           data-tags="metatextualite memoire horreur identite">
+          <div class="ar-left">
+            <span class="ar-title">Le brouillard a changé — ce que le remake de Silent Hill 2 dit de nouveau</span>
+            <span class="ar-excerpt">Stillness, Bliss, et la thèse de la suite secrète — ce que Bloober Team a osé ajouter à l'œuvre de Team Silent.</span>
+          </div>
+          <div class="ar-tags">
+            <span class="ar-tag">Adaptation</span>
+            <span class="ar-tag">Fins multiples</span>
+            <span class="ar-tag">Métatextualité</span>
+          </div>
+          <div class="ar-meta">
+            SH2 Remake
+            <span class="ar-time">13 min</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- UMINEKO -->
+    <div class="game-section rv" id="section-umineko">
+      <div class="game-header">
+        <h2 class="game-title"><em>Umineko no Naku Koro ni</em></h2>
+        <span class="game-count">3 articles</span>
+      </div>
+      <div class="articles-list">
+
+        <a href="article-umineko.html" class="article-row"
+           data-tags="feminisme identite metatextualite memoire">
+          <div class="ar-left">
+            <span class="ar-title">Le mobilier a un cœur — Sayo Yasuda et les masques du féminin</span>
+            <span class="ar-excerpt">Shannon, Kanon, Beatrice et les femmes Ushiromiya : une lecture féministe de l'archipel doré.</span>
+          </div>
+          <div class="ar-tags">
+            <span class="ar-tag">Féminisme</span>
+            <span class="ar-tag">Identité</span>
+            <span class="ar-tag">Sayo Yasuda</span>
+          </div>
+          <div class="ar-meta">
+            Umineko
+            <span class="ar-time">18 min</span>
+          </div>
+        </a>
+
+        <a href="article-umineko-magic.html" class="article-row"
+           data-tags="empathie metatextualite identite">
+          <div class="ar-left">
+            <span class="ar-title">Sans amour, cela ne peut être vu — la magie comme épistémologie de l'empathie</span>
+            <span class="ar-excerpt">Ce qu'Erika Furudo ne verra jamais, pourquoi la magie n'est pas surnaturelle, et ce que Ryukishi07 dit sur la façon de connaître les autres.</span>
+          </div>
+          <div class="ar-tags">
+            <span class="ar-tag">Empathie</span>
+            <span class="ar-tag">Magie</span>
+            <span class="ar-tag">Épistémologie</span>
+          </div>
+          <div class="ar-meta">
+            Umineko
+            <span class="ar-time">16 min</span>
+          </div>
+        </a>
+
+        <a href="article-umineko-dante.html" class="article-row"
+           data-tags="intertextualite metatextualite identite empathie">
+          <div class="ar-left">
+            <span class="ar-title">Umineko comme Comédie — Dante, Ryukishi07 et la cartographie de l'au-delà amoureux</span>
+            <span class="ar-excerpt">Le triple rôle de Dante, Beatrice Portinari, Virgilia, les sept péchés féminisés — la réécriture de sept siècles décryptée.</span>
+          </div>
+          <div class="ar-tags">
+            <span class="ar-tag">Intertextualité</span>
+            <span class="ar-tag">Divine Comédie</span>
+            <span class="ar-tag">Métatextualité</span>
+          </div>
+          <div class="ar-meta">
+            Umineko
+            <span class="ar-time">18 min</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- RULE OF ROSE -->
+    <div class="game-section rv" id="section-ror">
+      <div class="game-header">
+        <h2 class="game-title"><em>Rule of Rose</em></h2>
+        <span class="game-count">1 article</span>
+      </div>
+      <div class="articles-list">
+
+        <a href="article-rule-of-rose.html" class="article-row"
+           data-tags="trauma memoire horreur feminisme identite">
+          <div class="ar-left">
+            <span class="ar-title">La règle de la rose — ce que les enfants font aux enfants</span>
+            <span class="ar-excerpt">Hiérarchies, cruauté, amour impossible et mémoire brisée dans le jeu le plus mal compris de son époque.</span>
+          </div>
+          <div class="ar-tags">
+            <span class="ar-tag">Trauma</span>
+            <span class="ar-tag">Abus infantiles</span>
+            <span class="ar-tag">Mémoire</span>
+            <span class="ar-tag">Horreur</span>
+          </div>
+          <div class="ar-meta">
+            Rule of Rose
+            <span class="ar-time">15 min</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- ALICE MADNESS RETURNS -->
+    <div class="game-section rv" id="section-alice">
+      <div class="game-header">
+        <h2 class="game-title"><em>Alice : Madness Returns</em></h2>
+        <span class="game-count">1 article</span>
+      </div>
+      <div class="articles-list">
+
+        <a href="article-alice-madness-returns.html" class="article-row"
+           data-tags="trauma memoire horreur identite">
+          <div class="ar-left">
+            <span class="ar-title">Le pays des merveilles ne protège plus — mémoire, abus et résistance</span>
+            <span class="ar-excerpt">Wonderland comme carte du trauma, le Dollmaker comme figure de l'effacement, et la fin qui refuse le happy ending.</span>
+          </div>
+          <div class="ar-tags">
+            <span class="ar-tag">Trauma</span>
+            <span class="ar-tag">Mémoire</span>
+            <span class="ar-tag">Abus</span>
+            <span class="ar-tag">Résistance</span>
+          </div>
+          <div class="ar-meta">
+            Alice MR
+            <span class="ar-time">14 min</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- WHITE NIGHT -->
+    <div class="game-section rv" id="section-wn">
+      <div class="game-header">
+        <h2 class="game-title"><em>White Night</em></h2>
+        <span class="game-count">1 article</span>
+      </div>
+      <div class="articles-list">
+
+        <a href="article-white-night.html" class="article-row"
+           data-tags="identite metatextualite memoire horreur">
+          <div class="ar-left">
+            <span class="ar-title">L'allumette et le loup — lumière, mensonge et identité dans White Night</span>
+            <span class="ar-excerpt">Le protagoniste est le tueur. Le noir et blanc comme langage narratif dans ce jeu français injustement méconnu.</span>
+          </div>
+          <div class="ar-tags">
+            <span class="ar-tag">Identité</span>
+            <span class="ar-tag">Film noir</span>
+            <span class="ar-tag">Narrateur non-fiable</span>
+          </div>
+          <div class="ar-meta">
+            White Night
+            <span class="ar-time">12 min</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- MAD FATHER -->
+    <div class="game-section rv" id="section-mf">
+      <div class="game-header">
+        <h2 class="game-title"><em>Mad Father</em></h2>
+        <span class="game-count">1 article</span>
+      </div>
+      <div class="articles-list">
+
+        <a href="article-mad-father.html" class="article-row"
+           data-tags="trauma identite memoire horreur">
+          <div class="ar-left">
+            <span class="ar-title">La poupée qui dit je t'aime — héritage et corruption dans Mad Father</span>
+            <span class="ar-excerpt">Aya aimait son père. Elle ne savait pas encore ce qu'elle était. La malédiction des deux lignées et la vraie fin qui n'est pas heureuse.</span>
+          </div>
+          <div class="ar-tags">
+            <span class="ar-tag">Héritage</span>
+            <span class="ar-tag">Corruption</span>
+            <span class="ar-tag">RPG Horror</span>
+          </div>
+          <div class="ar-meta">
+            Mad Father
+            <span class="ar-time">8 min</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- INDEX PAR THÈME -->
+    <div class="themes-section rv">
+      <h2 class="themes-title">Parcourir par <em>thème</em></h2>
+      <div class="themes-grid">
+
+        <div class="theme-card" data-theme-filter="feminisme">
+          <div class="tc-name">Féminisme & genre</div>
+          <div class="tc-count">✦ 3 articles</div>
+          <div class="tc-desc">Corps, identité imposée, résistance — les jeux comme espaces où la féminité est mise à l'épreuve.</div>
+        </div>
+
+        <div class="theme-card" data-theme-filter="trauma">
+          <div class="tc-name">Trauma & mémoire</div>
+          <div class="tc-count">✦ 4 articles</div>
+          <div class="tc-desc">Comment le trauma se loge dans les structures narratives et fait du jeu un espace de reconstitution mémorielle.</div>
+        </div>
+
+        <div class="theme-card" data-theme-filter="metatextualite">
+          <div class="tc-name">Métatextualité</div>
+          <div class="tc-count">✦ 4 articles</div>
+          <div class="tc-desc">Le jeu qui parle de lui-même, le joueur comme personnage, la fiction qui déborde de ses cadres.</div>
+        </div>
+
+        <div class="theme-card" data-theme-filter="intertextualite">
+          <div class="tc-name">Intertextualité</div>
+          <div class="tc-count">✦ 1 article</div>
+          <div class="tc-desc">Quand les jeux vidéo héritent de la grande tradition littéraire — Dante, le roman gothique, le film noir.</div>
+        </div>
+
+        <div class="theme-card" data-theme-filter="identite">
+          <div class="tc-name">Identité & masques</div>
+          <div class="tc-count">✦ 5 articles</div>
+          <div class="tc-desc">Personnages qui se fragmentent, se déguisent, se cherchent — l'identité comme terrain de guerre.</div>
+        </div>
+
+        <div class="theme-card" data-theme-filter="empathie">
+          <div class="tc-name">Empathie & regard</div>
+          <div class="tc-count">✦ 2 articles</div>
+          <div class="tc-desc">Ce qu'il faut pour vraiment voir l'autre — et ce qu'on rate quand on s'y refuse.</div>
+        </div>
+
+        <div class="theme-card" data-theme-filter="horreur">
+          <div class="tc-name">Horreur psychologique</div>
+          <div class="tc-count">✦ 5 articles</div>
+          <div class="tc-desc">L'horreur comme révélation — ce que les monstres disent de l'inconscient de ceux qui les peuplent.</div>
+        </div>
+
+        <div class="theme-card" data-theme-filter="memoire">
+          <div class="tc-name">Mémoire & récit</div>
+          <div class="tc-count">✦ 4 articles</div>
+          <div class="tc-desc">La mémoire traumatique comme structure narrative — fragments, reconstitutions, palimpsestes.</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /catalogue -->
+
+  <footer>
+    <span class="f-logo">Spectre Rose ✦</span>
+    <span class="f-copy">© 2026 — Théories narratives &amp; fiction interactive</span>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const items = document.querySelectorAll('.rv');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('on'), (i % 4) * 80);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.05 });
+    items.forEach((el, i) => { el.dataset.i = i; obs.observe(el); });
+
+    // Filtres thématiques
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const articleRows = document.querySelectorAll('.article-row');
+    const gameSections = document.querySelectorAll('.game-section');
+    const themeCards = document.querySelectorAll('.theme-card');
+
+    function applyFilter(filter) {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      themeCards.forEach(c => c.classList.remove('active'));
+
+      const activeBtn = document.querySelector(`.filter-btn[data-filter="${filter}"]`);
+      if (activeBtn) activeBtn.classList.add('active');
+      const activeCard = document.querySelector(`.theme-card[data-theme-filter="${filter}"]`);
+      if (activeCard) activeCard.classList.add('active');
+
+      articleRows.forEach(row => {
+        if (filter === 'all') {
+          row.classList.remove('hidden');
+        } else {
+          const tags = row.dataset.tags || '';
+          row.classList.toggle('hidden', !tags.includes(filter));
+        }
+      });
+
+      // Cacher les sections où tous les articles sont cachés
+      gameSections.forEach(section => {
+        const visible = section.querySelectorAll('.article-row:not(.hidden)');
+        section.classList.toggle('all-hidden', visible.length === 0);
+      });
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
+    });
+
+    themeCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const f = card.dataset.themeFilter;
+        const isActive = card.classList.contains('active');
+        applyFilter(isActive ? 'all' : f);
+        if (!isActive) {
+          // Scroll vers les articles
+          document.querySelector('.catalogue').scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
