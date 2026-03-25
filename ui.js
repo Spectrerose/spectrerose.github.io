@@ -81,10 +81,10 @@
     const game    = block.dataset.game || 'ce jeu';
     const content = block.innerHTML;
 
-    // Styles du bloc
+    // Styles du bloc — placé dans le flux de l'article
     Object.assign(block.style, {
       maxWidth:     '680px',
-      margin:       '0 auto 0',
+      margin:       '0 auto 2.5rem',
       padding:      '0 2rem',
       position:     'relative',
       zIndex:       '10',
@@ -92,27 +92,26 @@
 
     block.innerHTML = `
       <div class="sr-syn-inner" style="
-        border: 1px solid rgba(212,144,154,0.2);
-        background: rgba(14,8,18,0.8);
+        border: 1px solid rgba(212,144,154,0.25);
+        background: rgba(14,8,18,0.95);
         overflow: hidden;
-        margin-bottom: 2rem;
       ">
         <button class="sr-syn-toggle" aria-expanded="false" style="
           width: 100%; display: flex; justify-content: space-between; align-items: center;
           padding: 1rem 1.4rem; background: none; border: none; cursor: pointer;
-          font-family: 'DM Mono', monospace; font-size: .55rem; letter-spacing: .28em;
+          font-family: 'DM Mono', monospace; font-size: .55rem; letter-spacing: .25em;
           text-transform: uppercase; color: #d4909a;
         ">
-          <span>✦ Vous ne connaissez pas <em style="font-style:italic;font-family:'Cormorant Garamond',serif;font-size:.85rem;letter-spacing:.05em;">${game}</em> ? Lire le synopsis</span>
-          <span class="sr-syn-arrow" style="transition: transform .35s; display:inline-block;">▾</span>
+          <span>✦ Vous ne connaissez pas <em style="font-style:italic;font-family:'Cormorant Garamond',serif;font-size:.9rem;letter-spacing:.05em;color:#f0c4cc;">${game}</em> ? Lire le synopsis</span>
+          <span class="sr-syn-arrow" style="transition: transform .35s; display:inline-block; color:#d4909a;">▾</span>
         </button>
         <div class="sr-syn-body" style="
           max-height: 0; overflow: hidden;
-          transition: max-height .5s ease, padding .4s ease;
+          transition: max-height .55s ease, padding .4s ease;
           padding: 0 1.4rem;
-          font-family: 'Crimson Text', serif; font-size: .95rem;
-          color: #9a8890; line-height: 1.85;
-          border-top: 0px solid rgba(212,144,154,0.15);
+          font-family: 'Crimson Text', serif; font-size: 1rem;
+          color: #c4b0b8; line-height: 1.85;
+          border-top: 0px solid rgba(212,144,154,0.2);
         ">
           ${content}
         </div>
