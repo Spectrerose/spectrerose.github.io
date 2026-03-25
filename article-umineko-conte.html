@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spectre Rose — Il était une fois une île dorée : l'histoire d'Umineko racontée comme un conte</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:         #07040a;
+      --bg-card:    #0e0812;
+      --rose:       #d4909a;
+      --rose-light: #f0c4cc;
+      --rose-dark:  #7a3d4a;
+      --cream:      #ede4e6;
+      --muted:      #6e5860;
+      --border:     rgba(212, 144, 154, 0.18);
+      --gold:       #c9a96e;
+      --gold-dark:  #6e4f20;
+      --gold-light: #f0d4a0;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: 'Crimson Text', serif;
+      font-size: 20px;
+      line-height: 1.92;
+      overflow-x: hidden;
+    }
+
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9998; mix-blend-mode: overlay; opacity: 0.55;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.4rem 4rem;
+      background: linear-gradient(to bottom, rgba(7,4,10,0.97) 0%, transparent 100%);
+    }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300; letter-spacing: .18em; color: var(--rose-light); text-decoration: none; }
+    .nav-logo span { color: var(--rose); font-style: italic; }
+    .nav-back { font-family: 'DM Mono', monospace; font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .3s; }
+    .nav-back:hover { color: var(--gold-light); }
+
+    /* HERO */
+    .art-hero {
+      padding: 11rem 4rem 4rem;
+      max-width: 760px; margin: 0 auto; text-align: center;
+    }
+    .a-eyebrow { font-family: 'DM Mono', monospace; font-size: .58rem; letter-spacing: .4em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 1.8rem; }
+    .a-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 300; line-height: 1.1; color: var(--cream); }
+    .a-title em { color: var(--gold-light); font-style: italic; }
+    .a-subtitle { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-style: italic; font-weight: 300; color: var(--muted); margin-top: 1.2rem; line-height: 1.65; }
+    .a-meta { display: flex; justify-content: center; align-items: center; gap: 1.2rem; margin-top: 2.4rem; font-family: 'DM Mono', monospace; font-size: .52rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-dark); }
+    .a-meta .sep { color: rgba(201,169,110,.25); }
+
+    /* NOTE D'INTRODUCTION */
+    .intro-note {
+      max-width: 680px; margin: 3rem auto 0;
+      padding: 0 2rem;
+    }
+    .note-box {
+      border: 1px solid rgba(201,169,110,.2);
+      background: rgba(201,169,110,.04);
+      padding: 1.4rem 1.8rem;
+      font-family: 'Crimson Text', serif;
+      font-size: .92rem; font-style: italic;
+      color: var(--muted); line-height: 1.75;
+      position: relative;
+    }
+    .note-box::before {
+      content: '✦';
+      position: absolute; top: -1px; left: 1.5rem;
+      background: var(--bg); padding: 0 .5rem;
+      color: var(--gold-dark); font-style: normal; font-size: .7rem;
+    }
+    .note-box strong { color: var(--gold-light); font-style: normal; }
+
+    /* COVER */
+    .cover-img {
+      width: 100%; max-width: 760px; margin: 3rem auto 0;
+      aspect-ratio: 16/7;
+      background: linear-gradient(135deg, #100a04 0%, #0a0510 50%, #120810 100%);
+      border: 1px solid rgba(201,169,110,.12);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; padding: 0 4rem;
+    }
+    .cover-img::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 55% 65% at 50% 50%, rgba(201,169,110,.08), transparent); }
+    .cover-img img { width: 100%; height: 100%; object-fit: cover; }
+    .cover-img-glyph { font-family: 'Cormorant Garamond', serif; font-size: 5rem; color: rgba(201,169,110,.09); font-style: italic; font-weight: 300; line-height: 1; }
+    .cover-img-label { font-family: 'DM Mono', monospace; font-size: .5rem; letter-spacing: .25em; text-transform: uppercase; color: rgba(201,169,110,.25); z-index: 1; }
+
+    /* CONTE */
+    .conte {
+      max-width: 680px; margin: 0 auto;
+      padding: 5rem 2rem 2rem;
+    }
+
+    /* Lettrine */
+    .conte > p:first-of-type::first-letter {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4.5rem; font-weight: 300;
+      float: left; line-height: .82;
+      margin-right: .12em; margin-top: .08em;
+      color: var(--gold-light);
+    }
+
+    p { color: #cfc0c4; margin-bottom: 1.6rem; }
+    em { color: var(--rose-light); font-style: italic; }
+    strong { color: var(--cream); font-weight: 600; }
+
+    /* Titres de chapitres du conte */
+    .conte-chapter {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem; font-weight: 300;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gold-dark); text-align: center;
+      margin: 4rem 0 2.5rem;
+      display: flex; align-items: center; gap: 1.2rem;
+    }
+    .conte-chapter::before,
+    .conte-chapter::after {
+      content: ''; flex: 1;
+      height: 1px; background: var(--gold-dark); opacity: .4;
+    }
+
+    /* Ornement entre paragraphes */
+    .orn { text-align: center; color: var(--gold-dark); letter-spacing: 1.2rem; font-size: .75rem; margin: 3rem 0; }
+
+    /* Citation en italique centrée */
+    .verse {
+      text-align: center; font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 300;
+      color: var(--gold-light); line-height: 1.6;
+      margin: 2.5rem 0; padding: 0 2rem;
+    }
+
+    /* Note de bas de conte */
+    .conte-note {
+      border-left: 2px solid var(--gold-dark);
+      padding: .8rem 1.4rem;
+      background: rgba(201,169,110,.04);
+      margin: 2rem 0;
+      font-style: italic; font-size: .88rem; color: var(--muted);
+    }
+    .conte-note strong { color: var(--gold-light); font-style: normal; }
+
+    /* SÉPARATION CONTE / ANALYSE */
+    .bridge {
+      max-width: 680px; margin: 0 auto;
+      padding: 0 2rem 3rem;
+    }
+    .bridge-box {
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      padding: 2rem 2.2rem;
+      position: relative;
+    }
+    .bridge-box::before {
+      content: '✦ Pour aller plus loin';
+      position: absolute; top: -1px; left: 2rem;
+      background: var(--bg); padding: 0 .8rem;
+      font-family: 'DM Mono', monospace; font-size: .52rem;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--rose);
+    }
+    .bridge-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--cream); margin-bottom: 1rem; }
+    .bridge-links { display: flex; flex-direction: column; gap: .5rem; }
+    .bridge-link {
+      display: flex; align-items: baseline; gap: .8rem;
+      text-decoration: none; color: var(--muted);
+      font-size: .9rem; transition: color .3s;
+    }
+    .bridge-link:hover { color: var(--rose-light); }
+    .bridge-link .bl-tag {
+      font-family: 'DM Mono', monospace; font-size: .46rem;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--rose-dark); flex-shrink: 0;
+    }
+
+    /* FOOTER */
+    .art-footer { max-width: 680px; margin: 0 auto; padding: 2rem 2rem 5rem; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+    .tag { border: 1px solid var(--gold-dark); padding: .25rem .8rem; font-family: 'DM Mono', monospace; font-size: .5rem; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); }
+    footer { border-top: 1px solid var(--border); padding: 2.5rem 4rem; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .f-logo { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 300; letter-spacing: .15em; color: var(--rose-light); }
+    .f-copy { font-family: 'DM Mono', monospace; font-size: .52rem; letter-spacing: .18em; color: var(--muted); }
+
+    .rv { opacity: 0; transform: translateY(20px); transition: opacity .8s ease, transform .8s ease; }
+    .rv.on { opacity: 1; transform: none; }
+
+    @media (max-width: 760px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .art-hero, .intro-note, .conte, .bridge, .art-footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .art-hero { padding-top: 8rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Spectre <span>Rose</span></a>
+    <a href="index.html" class="nav-back">← Retour aux théories</a>
+  </nav>
+
+  <div class="art-hero rv">
+    <span class="a-eyebrow">✦ Umineko no Naku Koro ni &nbsp;·&nbsp; Pour les nouveaux venus</span>
+    <h1 class="a-title">Il était une fois<br>une <em>île dorée</em></h1>
+    <p class="a-subtitle">L'histoire d'<em>Umineko no Naku Koro ni</em> racontée comme un conte — pour ceux qui n'ont pas encore lu, et pour ceux qui veulent y revenir autrement</p>
+    <div class="a-meta">
+      <span>Umineko no Naku Koro ni</span>
+      <span class="sep">·</span>
+      <span>Sans spoilers majeurs</span>
+      <span class="sep">·</span>
+      <span>10 min</span>
+    </div>
+  </div>
+
+  <!-- NOTE INTRO -->
+  <div class="intro-note rv">
+    <div class="note-box">
+      <em>Umineko no Naku Koro ni</em> est un visual novel japonais écrit par <strong>Ryukishi07</strong>, publié entre 2007 et 2010. Il se joue comme un roman illustré avec musique — on lit, on fait des choix, on découvre. Pas besoin d'avoir joué pour lire ce qui suit. Ce conte est une porte d'entrée, pas un résumé complet. Les secrets les plus profonds restent gardés.
+    </div>
+  </div>
+
+  <!-- COVER -->
+  <div class="cover-img rv" style="padding: 0 2rem; max-width: 760px; margin: 3rem auto 0;">
+    <!-- <img src="ton-image-umineko.jpg" alt="Umineko"> -->
+    <div class="cover-img-glyph">金</div>
+    <span class="cover-img-label">[ Ajouter une image ici — Umineko ]</span>
+  </div>
+
+  <!-- LE CONTE -->
+  <article class="conte">
+
+    <p class="rv">Il était une fois un vieil homme qui avait tout perdu, sauf l'or.</p>
+
+    <p class="rv">Kinzo Ushiromiya s'appelait cet homme. Il avait fait fortune après la guerre, reconstruit un empire, élevé une famille sur une île privée au large du Japon. Mais sa véritable richesse, celle dont il ne parlait jamais, n'était pas dans ses comptes en banque. Elle était enfouie quelque part sur l'île, dix tonnes d'or, un trésor dont personne ne connaissait l'origine exacte. Et elle portait le nom d'une femme morte.</p>
+
+    <p class="rv"><em>Beatrice.</em></p>
+
+    <p class="rv">Il l'avait aimée passionnément, dans sa jeunesse, une femme italienne aux cheveux d'or. Elle était morte. Il n'avait jamais guéri. Et depuis lors, il cherchait à la faire revenir — dans ses rêves, dans ses rituels, dans les portraits qu'il faisait peindre d'elle et accrochait partout dans sa demeure. Il avait appelé son île Rokkenjima. Il avait appelé sa sorcière Beatrice. Il avait passé le reste de sa vie à attendre qu'elle revienne.</p>
+
+    <div class="orn rv">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <div class="conte-chapter rv">Chapitre I — La réunion</div>
+
+    <p class="rv">Chaque année, en octobre, la famille Ushiromiya se réunissait sur l'île. Les quatre enfants de Kinzo arrivaient avec leurs époux, leurs épouses, leurs enfants. Dix-huit personnes en tout, entassées dans un grand manoir gris face à la mer, pendant que dehors la tempête se préparait.</p>
+
+    <p class="rv">Cette année-là, en 1986, la tempête était plus forte que d'habitude.</p>
+
+    <p class="rv">La famille venait pour l'argent — tout le monde le savait, personne ne le disait. Kinzo était mourant. L'héritage allait être partagé. Les enfants se regardaient en chiens de faïence : Krauss l'aîné et sa femme Natsuhi, si soucieuse des apparences. Eva, la cadette ambitieuse, et son mari Hideyoshi au grand cœur. Rudolf, le père absent, et sa nouvelle femme Kyrie au regard trop calme. Rosa, la plus jeune, et sa petite fille Maria — six ans, qui croyait à la magie comme d'autres croient à la gravité, c'est-à-dire sans se poser de questions.</p>
+
+    <p class="rv">Les petits-enfants, eux, étaient heureux. Battler, seize ans, grand et bruyant, avait passé six ans loin de sa famille et retrouvait ses cousins avec une joie sans arrière-pensée. George, le sérieux. Jessica, la rebelle. Et Maria, qui murmurait des incantations dans son coin et dessinait des pentacles dans les marges de ses cahiers.</p>
+
+    <p class="rv">Mais il y avait aussi les serviteurs. Des gens discrets, habillés de noir, qui portaient du café et essuyaient les tables. Parmi eux, une jeune fille maladroite qu'on appelait Shannon. Un jeune homme renfrogné qu'on appelait Kanon. Et la vieille cuisinière Kumasawa, qui adorait parler de maquereaux.</p>
+
+    <p class="rv">Personne ne faisait vraiment attention aux serviteurs.</p>
+
+    <p class="rv">C'est souvent une erreur.</p>
+
+    <div class="conte-chapter rv">Chapitre II — La sorcière et l'énigme</div>
+
+    <p class="rv">Le soir du premier jour, Kinzo fit une chose étrange. Il rassembla tout le monde dans le grand salon, et il leur lut une épitaphe.</p>
+
+    <p class="rv">Un poème gravé sous le portrait de Beatrice — sa Beatrice, la sorcière d'or. Le poème décrivait une énigme. Celui ou celle qui la résoudrait trouverait les dix tonnes d'or cachées sur l'île. Et avec l'or, l'héritage de Kinzo tout entier. La chefferie de la famille. Le droit de décider de tout.</p>
+
+    <p class="rv">La famille écouta. Réfléchit. Se méfia.</p>
+
+    <p class="rv">Et pendant la nuit, quelqu'un mourut.</p>
+
+    <div class="verse rv">
+      « Que celui qui résout l'énigme<br>
+      découvre le secret de la sorcière.<br>
+      Que celui qui échoue<br>
+      devienne son offrande. »
+    </div>
+
+    <p class="rv">Au matin, six corps gisaient dans le jardin. Leurs visages avaient été marqués d'un symbole doré.</p>
+
+    <p class="rv">La tempête avait coupé l'île du reste du monde. Il n'y avait nulle part où aller.</p>
+
+    <div class="conte-chapter rv">Chapitre III — Ce que l'on choisit de croire</div>
+
+    <p class="rv">C'est là qu'<em>Umineko</em> commence vraiment — non pas au moment des meurtres, mais au moment où chacun décide comment les expliquer.</p>
+
+    <p class="rv">Maria, la petite fille aux incantations, n'hésitait pas une seconde. C'était la sorcière. Beatrice avait accompli sa promesse. La magie existait, et ceux qui n'y croyaient pas en mouraient.</p>
+
+    <p class="rv">Battler, lui, refusait absolument. Pas de sorcières, pas de magie — il y avait forcément un coupable humain parmi eux, une main humaine derrière chaque mort. Il suffisait de chercher, de raisonner, de ne pas se laisser aveugler par la peur.</p>
+
+    <p class="rv">Et entre les deux, une question qui traversait l'île comme le vent : <em>et si les deux avaient tort ?</em></p>
+
+    <div class="conte-note rv"><strong>Une chose à savoir :</strong> Umineko raconte la même histoire plusieurs fois. Pas exactement pareille à chaque fois — les détails changent, les morts changent, les coupables changent. Chaque répétition est une version différente de la vérité, et c'est au lecteur de décider laquelle il choisit de croire. L'histoire n'a pas une seule réponse. Elle en a autant que de lecteurs prêts à écouter.</div>
+
+    <div class="conte-chapter rv">Chapitre IV — La sorcière qui jouait</div>
+
+    <p class="rv">Beatrice apparaissait dans les rêves, dans les interstices, dans les espaces entre les morts et les vivants.</p>
+
+    <p class="rv">Elle était blonde comme l'or, habillée de dentelle et de rires. Elle aimait le thé, les gâteaux, et regarder les humains souffrir — ou du moins, c'est ce qu'elle prétendait. Elle proposait un jeu à Battler : prouve que j'n'existe pas. Prouve que tout ceci a une explication humaine. Si tu y arrives, tu gagnes. Sinon, tu m'appartiens.</p>
+
+    <p class="rv">Battler accepta.</p>
+
+    <p class="rv">Il avait tort d'accepter — non pas parce que la sorcière était réelle, mais parce qu'il ne savait pas encore ce qu'il cherchait vraiment. Il cherchait la vérité. Mais <em>Umineko</em> lui dirait, beaucoup plus tard, que chercher la vérité sans amour pour ceux dont on cherche la vérité, c'est chercher à détruire plutôt qu'à comprendre.</p>
+
+    <div class="orn rv">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <div class="conte-chapter rv">Chapitre V — Ce qu'on ne dit qu'à voix basse</div>
+
+    <p class="rv">Il y avait, sur cette île, une jeune fille qui n'avait pas de nom véritable.</p>
+
+    <p class="rv">On l'appelait Shannon quand elle portait des plateaux. On l'appelait Kanon quand elle portait autre chose. Et parfois, la nuit, quand personne ne regardait, elle devenait quelqu'un d'autre encore — quelqu'un de puissant, de libre, de lumineux.</p>
+
+    <p class="rv">Elle avait grandi dans un orphelinat. Elle avait été envoyée dans cette maison parce qu'elle n'avait nulle part ailleurs où aller. On lui avait dit qu'elle était du mobilier — qu'elle n'avait pas de cœur, pas de désirs, pas de droit à l'amour. Elle avait failli le croire.</p>
+
+    <p class="rv">Mais quelque part dans son histoire, un garçon lui avait fait une promesse. Il était parti. Il avait oublié. Et elle, elle n'avait pas oublié.</p>
+
+    <p class="rv">Cette jeune fille — dont on ne dira pas encore le vrai nom — est la raison pour laquelle toute cette histoire existe. L'île, les meurtres, la sorcière, les jeux, les questions sans réponse. Tout cela est né d'une promesse non tenue. Tout cela est une lettre qu'elle a écrite à quelqu'un qui ne savait pas lire.</p>
+
+    <div class="verse rv">
+      « Le mobilier n'a pas de cœur. »<br><br>
+      <span style="font-size:.85em; color:var(--muted);">— Ce qu'on lui avait appris.<br>Ce qu'elle avait refusé de croire.</span>
+    </div>
+
+    <div class="conte-chapter rv">Épilogue — Ce que le conte ne dit pas</div>
+
+    <p class="rv"><em>Umineko</em> est une histoire sur ce qu'on voit quand on aime, et ce qu'on rate quand on n'aime pas.</p>
+
+    <p class="rv">C'est une histoire sur les mensonges qu'on se raconte pour survivre à des vies impossibles. Sur les familles qui se déchirent pour de l'argent et s'aiment quand même en dessous. Sur un vieil homme fou qui a cherché toute sa vie à faire revenir quelqu'un qui n'était plus là. Sur une jeune fille qui a construit un monde entier pour qu'un garçon la comprenne enfin.</p>
+
+    <p class="rv">Les morts de Rokkenjima ont eu lieu en 1986. Nul ne sait exactement ce qui s'est passé. Des bouteilles à la mer ont été retrouvées par la suite — des manuscrits, des histoires, des versions contradictoires. Quelqu'un avait voulu que la vérité soit connue. Quelqu'un d'autre avait voulu qu'elle reste cachée. Et entre les deux, une île disparue dans le brouillard.</p>
+
+    <p class="rv"><em>Umineko</em> vous demandera, à un moment ou à un autre, de choisir ce que vous croyez. Pas la bonne réponse — votre réponse. Celle que vous pouvez porter, celle qui dit quelque chose de la façon dont vous regardez les autres.</p>
+
+    <p class="rv">Et peut-être que c'est ça, la vraie énigme.</p>
+
+    <div class="orn rv">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <!-- NAV PRÉCÉDENT/SUIVANT -->
+    <div class="sr-prevnext"
+         data-next-href="article-umineko.html"
+         data-next-title="Le mobilier a un cœur — Sayo Yasuda et les masques du féminin"
+         data-next-tag="Umineko · Féminisme">
+    </div>
+
+  </article>
+
+  <!-- PONT VERS LES ARTICLES D'ANALYSE -->
+  <div class="bridge rv">
+    <div class="bridge-box">
+      <p class="bridge-title">Maintenant que vous connaissez l'île — les théories qui l'habitent</p>
+      <div class="bridge-links">
+        <a href="article-umineko.html" class="bridge-link">
+          <span class="bl-tag">Féminisme</span>
+          Le mobilier a un cœur — Sayo Yasuda et les masques du féminin
+        </a>
+        <a href="article-umineko-magic.html" class="bridge-link">
+          <span class="bl-tag">Empathie</span>
+          Sans amour, cela ne peut être vu — la magie comme épistémologie
+        </a>
+        <a href="article-umineko-dante.html" class="bridge-link">
+          <span class="bl-tag">Intertextualité</span>
+          Umineko comme Comédie — Dante, Ryukishi07 et l'au-delà amoureux
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="art-footer rv">
+    <span style="font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-right:.5rem;">Tags :</span>
+    <span class="tag">Umineko</span>
+    <span class="tag">Conte</span>
+    <span class="tag">Introduction</span>
+    <span class="tag">Pour les nouveaux</span>
+    <span class="tag">Ryukishi07</span>
+    <span class="tag">Rokkenjima</span>
+  </div>
+
+  <footer>
+    <span class="f-logo">Spectre Rose ✦</span>
+    <span class="f-copy">© 2026 — Théories narratives &amp; fiction interactive</span>
+  </footer>
+
+  <script src="ui.js"></script>
+</body>
+</html>

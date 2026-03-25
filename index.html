@@ -51,8 +51,7 @@
     .nav-logo span { color: var(--rose); font-style: italic; }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a { color: var(--muted); text-decoration: none; font-family: 'DM Mono', monospace; font-size: .62rem; letter-spacing: .22em; text-transform: uppercase; transition: color .3s; }
-    .nav-links a:hover { color: var(--rose-light); }
-    .nav-links a.active { color: var(--rose-light); }
+    .nav-links a:hover, .nav-links a.active { color: var(--rose-light); }
 
     /* HERO */
     .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 8rem 2rem 5rem; position: relative; overflow: hidden; }
@@ -319,7 +318,7 @@
 
       <a href="article-sh2-remake.html" class="card rv">
         <div class="c-img">
-         <img src="james.png" alt="Silent Hill f">
+         <img src="james.png" alt="Silent Hill 2 Remake">
         </div>
         <div class="c-body">
           <span class="c-tag">✦ Silent Hill 2 Remake &nbsp;·&nbsp; 2024</span>
@@ -330,15 +329,47 @@
         <div class="corner"></div>
       </a>
 
-      <a href="article-umineko-dante.html" class="card rv">
+      <a href="article-umineko-magic.html" class="card rv">
         <div class="c-img">
-        <img src="battlerbeatrice.jpg" alt="Silent Hill f">
+         <img src="goldenland.jpeg" alt="Umineko">
         </div>
         <div class="c-body">
-          <span class="c-tag">✦ Umineko &nbsp;·&nbsp; Divine Comédie &nbsp;·&nbsp; Intertextualité</span>
+          <span class="c-tag">✦ Umineko &nbsp;·&nbsp; Magie &amp; empathie</span>
+          <h3 class="c-title">Sans amour, cela ne peut être vu</h3>
+          <p class="c-exc">La magie comme épistémologie de l'empathie — ce qu'Erika Furudo ne verra jamais, et pourquoi.</p>
+          <div class="c-meta"><span>24 mars 2026</span><span>·</span><span>16 min</span></div>
+        </div>
+        <div class="corner"></div>
+      </a>
+
+      <a href="article-umineko-dante.html" class="card rv">
+        <div class="c-img">
+          <div class="c-img-placeholder">
+            <span class="c-img-glyph">∞</span>
+            <span class="c-img-label">Ajouter une image — Umineko / Dante</span>
+          </div>
+        </div>
+        <div class="c-body">
+          <span class="c-tag">✦ Umineko &nbsp;·&nbsp; Divine Comédie</span>
           <h3 class="c-title">Umineko comme Comédie — Dante, Ryukishi07 et l'au-delà amoureux</h3>
           <p class="c-exc">Le triple rôle de Dante, Beatrice Portinari, Virgilia, les sept péchés féminisés — la cartographie d'une réécriture de sept siècles.</p>
           <div class="c-meta"><span>24 mars 2026</span><span>·</span><span>18 min</span></div>
+        </div>
+        <div class="corner"></div>
+      </a>
+
+      <a href="article-umineko-conte.html" class="card rv">
+        <div class="c-img">
+          <div class="c-img-placeholder">
+            <span class="c-img-glyph">金</span>
+            <span class="c-img-label">Ajouter une image — Umineko conte</span>
+          </div>
+        </div>
+        <div class="c-body">
+          <span class="c-tag">✦ Umineko &nbsp;·&nbsp; Pour les nouveaux venus</span>
+          <h3 class="c-title">Il était une fois une île dorée</h3>
+          <p class="c-exc">L'histoire d'Umineko racontée comme un conte — une porte d'entrée pour ceux qui ne connaissent pas encore Rokkenjima.</p>
+          <div class="c-meta"><span>24 mars 2026</span><span>·</span><span>10 min</span></div>
         </div>
         <div class="corner"></div>
       </a>
@@ -420,5 +451,6 @@
       });
     });
   </script>
+  <script src="ui.js"></script>
 </body>
 </html>
