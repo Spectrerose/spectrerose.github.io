@@ -157,7 +157,11 @@
     <!-- Pour ajouter une image : remplace ce bloc par <img src="umineko.jpg" alt="Umineko" style="width:100%;height:100%;object-fit:cover;"> -->
  <img src="beatrice.jpg" alt="Silent hill f" style="width:100%;height:100%;object-fit:cover;">
   </div>
-
+  
+<div class="sr-synopsis" data-game="Umineko no Naku Koro ni">
+  <p><em>Umineko no Naku Koro ni</em> est un visual novel japonais (2007–2010) écrit par Ryukishi07. En octobre 1986, la famille Ushiromiya se réunit sur une île privée pour régler l'héritage de leur patriarche mourant. Pendant la nuit, des meurtres commencent. Une sorcière nommée Beatrice revendique les crimes. Le jeu pose une question centrale : ces morts ont-ils une explication humaine, ou la magie existe-t-elle ? C'est à la fois un roman policier, une histoire d'amour tragique, et une réflexion sur ce qu'on est capable de croire — et pourquoi. <em>Si vous ne connaissez pas l'histoire, commencez par notre conte d'introduction.</em></p>
+</div>
+  
   <!-- BODY -->
   <article class="art-body">
 
@@ -316,5 +320,6 @@
     }, { threshold: 0.07 });
     items.forEach((el, i) => { el.dataset.i = i; obs.observe(el); });
   </script>
+  <script src="ui.js"></script>
 </body>
 </html>
