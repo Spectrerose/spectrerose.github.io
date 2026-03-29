@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spectre Rose — Le jeu dans le jeu dans le jeu : couches de réalité, mort de Chiaki et position du joueur dans Danganronpa 2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#04060a;
+      --bg-card:#080c14;
+      --rose:#d4909a; --rose-light:#f0c4cc; --rose-dark:#7a3d4a;
+      --cream:#dde0ee; --muted:#58607a; --border:rgba(160,170,220,0.15);
+      --mono:#7090c0; --mono-l:#b0c0f0; --mono-d:#1a2850;
+      --red:#c05060; --red-l:#f0a0a0; --red-d:#501020;
+      --gold:#c8a860; --gold-l:#f0d090;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--bg); color:var(--cream); font-family:'Crimson Text',serif; font-size:19px; line-height:1.88; overflow-x:hidden; }
+    body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E"); pointer-events:none; z-index:9998; mix-blend-mode:overlay; opacity:0.6; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; justify-content:space-between; align-items:center; padding:1.4rem 4rem; background:linear-gradient(to bottom,rgba(4,6,10,0.97) 0%,transparent 100%); }
+    .nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:300; letter-spacing:.18em; color:var(--rose-light); text-decoration:none; }
+    .nav-logo span { color:var(--rose); font-style:italic; }
+    .nav-back { font-family:'DM Mono',monospace; font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .3s; }
+    .nav-back:hover { color:var(--mono-l); }
+
+    .art-hero { padding:12rem 4rem 5rem; max-width:860px; margin:0 auto; text-align:center; }
+    .a-eyebrow { font-family:'DM Mono',monospace; font-size:.58rem; letter-spacing:.4em; text-transform:uppercase; color:var(--mono); display:block; margin-bottom:2rem; }
+    .a-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2.2rem,5.5vw,3.8rem); font-weight:300; line-height:1.08; color:var(--cream); }
+    .a-title em { color:var(--mono-l); font-style:italic; }
+    .a-subtitle { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-style:italic; font-weight:300; color:var(--muted); margin-top:1.4rem; line-height:1.65; max-width:640px; margin-left:auto; margin-right:auto; }
+    .a-meta { display:flex; justify-content:center; align-items:center; gap:1.2rem; margin-top:2.8rem; font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.2em; text-transform:uppercase; color:var(--mono-d); }
+    .a-meta .sep { color:rgba(112,144,192,.25); }
+
+    .orn-line { text-align:center; color:var(--mono-d); font-size:.75rem; letter-spacing:1.6rem; margin:3.5rem 0; }
+
+    .cover-img { width:100%; max-width:860px; margin:0 auto 5rem; aspect-ratio:16/7; background:linear-gradient(135deg,#040810,#06040c,#040a10); border:1px solid rgba(112,144,192,.15); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.6rem; position:relative; overflow:hidden; padding:0 4rem; }
+    .cover-img::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 55% 65% at 50% 50%,rgba(112,144,192,.1),transparent); }
+    .cover-img img { width:100%; height:100%; object-fit:cover; }
+    .cover-img-glyph { font-family:'Cormorant Garamond',serif; font-size:5rem; color:rgba(112,144,192,.1); font-style:italic; font-weight:300; line-height:1; }
+    .cover-img-label { font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.25em; text-transform:uppercase; color:rgba(112,144,192,.2); z-index:1; }
+
+    .art-body { max-width:700px; margin:0 auto; padding:0 2rem 8rem; }
+
+    h2 { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:400; line-height:1.12; color:var(--cream); margin:4.5rem 0 1.5rem; position:relative; padding-left:1.4rem; }
+    h2::before { content:''; position:absolute; left:0; top:.3em; width:3px; height:1.1em; background:linear-gradient(to bottom,var(--mono),var(--mono-d)); }
+    h3 { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-style:italic; font-weight:400; color:var(--mono-l); margin:2.8rem 0 .9rem; }
+
+    p { color:#b0b8cc; margin-bottom:1.5rem; }
+    em { color:var(--rose-light); font-style:italic; }
+    strong { color:var(--cream); font-weight:600; }
+
+    .note { border-left:2px solid var(--mono-d); padding:1rem 1.5rem; background:rgba(112,144,192,.04); margin:2.4rem 0; font-style:italic; font-size:.92rem; color:var(--muted); line-height:1.7; }
+    .note strong { color:var(--mono-l); font-style:normal; }
+
+    blockquote { margin:3rem 0; padding:2rem 2.5rem; border:1px solid rgba(112,144,192,.2); background:var(--bg-card); position:relative; font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-style:italic; font-weight:300; color:var(--mono-l); line-height:1.55; text-align:center; }
+    blockquote::before { content:'✦'; position:absolute; top:-1px; left:50%; transform:translateX(-50%); background:var(--bg); padding:0 .8rem; color:var(--mono-d); font-style:normal; font-size:.8rem; }
+    blockquote cite { display:block; font-family:'DM Mono',monospace; font-size:.46rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); font-style:normal; margin-top:.8rem; }
+
+    .warning { border:1px solid rgba(192,80,96,.3); background:rgba(192,80,96,.05); padding:1.2rem 1.6rem; margin:2.4rem 0; font-size:.9rem; color:#d09090; font-style:italic; }
+    .warning strong { color:var(--red-l); font-style:normal; }
+
+    /* Schéma des couches */
+    .layers { display:flex; flex-direction:column; gap:.6rem; margin:2.5rem 0; }
+    .layer { display:grid; grid-template-columns:80px 1fr; align-items:stretch; border:1px solid rgba(112,144,192,.15); overflow:hidden; }
+    .layer-num { background:var(--mono-d); display:flex; align-items:center; justify-content:center; font-family:'DM Mono',monospace; font-size:.55rem; letter-spacing:.2em; text-transform:uppercase; color:var(--mono-l); padding:.8rem; text-align:center; }
+    .layer-body { background:var(--bg-card); padding:1rem 1.2rem; }
+    .layer-title { font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--cream); margin-bottom:.25rem; }
+    .layer-desc { font-size:.85rem; color:var(--muted); line-height:1.6; }
+    .layer-player { border-color:var(--mono); }
+    .layer-player .layer-num { background:var(--mono); }
+
+    /* Comparatif jeux */
+    .compar { border:1px solid rgba(112,144,192,.15); background:var(--bg-card); margin:2rem 0; overflow:hidden; }
+    .compar-row { display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid rgba(112,144,192,.08); }
+    .compar-row:last-child { border-bottom:none; }
+    .compar-cell { padding:.9rem 1.1rem; font-size:.87rem; line-height:1.6; }
+    .compar-head { font-family:'DM Mono',monospace; font-size:.46rem; letter-spacing:.18em; text-transform:uppercase; color:var(--mono); background:rgba(112,144,192,.07); }
+    .compar-game { color:var(--mono-l); font-family:'Cormorant Garamond',serif; font-size:.95rem; font-style:italic; }
+    .compar-mech { color:var(--cream); font-size:.85rem; }
+    .compar-effect { color:var(--muted); font-size:.82rem; }
+
+    .biblio { margin-top:5rem; padding-top:3rem; border-top:1px solid var(--border); }
+    .biblio-title { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--mono); margin-bottom:2rem; display:block; }
+    .biblio-item { font-size:.9rem; color:var(--muted); line-height:1.75; margin-bottom:.8rem; padding-left:1.4rem; text-indent:-1.4rem; }
+    .biblio-item em { color:#9090b0; font-style:italic; }
+
+    .art-footer { max-width:700px; margin:0 auto; padding:3rem 2rem 6rem; border-top:1px solid var(--border); display:flex; flex-wrap:wrap; align-items:center; gap:1rem; }
+    .tag { border:1px solid var(--mono-d); padding:.25rem .8rem; font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.16em; text-transform:uppercase; color:var(--mono); }
+    footer { border-top:1px solid var(--border); padding:2.5rem 4rem; max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
+    .f-logo { font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:300; letter-spacing:.15em; color:var(--rose-light); }
+    .f-copy { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.18em; color:var(--muted); }
+
+    .rv { opacity:0; transform:translateY(22px); transition:opacity .85s ease,transform .85s ease; }
+    .rv.on { opacity:1; transform:none; }
+
+    @media(max-width:760px){ nav{padding:1.2rem 1.5rem;} .art-hero,.art-body,.art-footer{padding-left:1.5rem;padding-right:1.5rem;} .art-hero{padding-top:9rem;} .layer{grid-template-columns:60px 1fr;} .compar-row{grid-template-columns:1fr;} footer{flex-direction:column;gap:1rem;text-align:center;padding:2rem;} }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Spectre <span>Rose</span></a>
+    <a href="index.html" class="nav-back">← Retour aux théories</a>
+  </nav>
+
+  <div class="art-hero">
+    <span class="a-eyebrow rv">✦ Danganronpa 2 &nbsp;·&nbsp; Simulation &nbsp;·&nbsp; Métatextualité &amp; position du joueur</span>
+    <h1 class="a-title rv">Le jeu dans le jeu <em>dans le jeu</em><br>— couches de réalité, mort de Chiaki et position du joueur dans <em>Danganronpa 2</em></h1>
+    <p class="a-subtitle rv">Comment <em>Danganronpa 2 : Goodbye Despair</em> construit une architecture de réalités emboîtées, ce que ça fait à la mort de Chiaki Nanami — et ce que le joueur ne sait pas qu'il ne sait pas</p>
+    <div class="a-meta rv">
+      <span>Danganronpa 2 — Spike Chunsoft, 2012</span>
+      <span class="sep">·</span>
+      <span>Spoilers complets DR2 &amp; Danganronpa 3</span>
+      <span class="sep">·</span>
+      <span>~16 min</span>
+    </div>
+  </div>
+
+  <div class="cover-img rv" style="padding:0 2rem;">
+    <div class="cover-img-glyph">∅</div>
+    <span class="cover-img-label">[ Ajouter une image ici — Danganronpa 2 ]</span>
+  </div>
+
+  <article class="art-body">
+
+    <div class="warning rv">
+      <strong>Avertissement spoilers :</strong> Cet article révèle la totalité des retournements narratifs de <em>Danganronpa 2 : Goodbye Despair</em> et de l'anime <em>Danganronpa 3 : The End of Hope's Peak High School — Despair Arc</em>. Si vous comptez jouer ou regarder ces œuvres, faites-le avant.
+    </div>
+
+    <p class="rv">À la fin de <em>Danganronpa 2 : Goodbye Despair</em>, le jeu nous dit que nous n'avons jamais vraiment joué à ce que nous croyions jouer. Les meurtres n'étaient pas réels. L'île tropicale n'existait pas. Les morts ne sont pas morts — sauf une. Le Killing School Trip que nous avons traversé pendant quarante heures était une simulation informatique, et le jeu l'a su depuis le début.</p>
+
+    <p class="rv">C'est l'un des retournements les plus radicaux de l'histoire du visual novel — non pas parce qu'il est surprenant, mais parce qu'il est structurel. Il ne change pas seulement ce qu'on pensait de l'histoire. Il change rétrospectivement <em>ce qu'on faisait</em> pendant qu'on jouait. Et il produit, autour de la figure de Chiaki Nanami, une architecture de la mort à plusieurs niveaux que peu d'œuvres interactives ont tentée avec cette cohérence.</p>
+
+    <div class="orn-line rv">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <h2 class="rv">I. Les couches — cartographie d'une réalité emboîtée</h2>
+
+    <p class="rv">Avant de pouvoir analyser ce que <em>Danganronpa 2</em> fait, il faut nommer précisément ce qu'il est. Le jeu ne présente pas une seule réalité narrative mais un empilement de plusieurs niveaux, chacun commentant et affectant les autres.</p>
+
+    <div class="layers rv">
+      <div class="layer">
+        <div class="layer-num">Réel<br>monde</div>
+        <div class="layer-body">
+          <div class="layer-title">Le monde extérieur — inaccessible dans DR2</div>
+          <div class="layer-desc">La Class 77-B existe. Ses membres sont des terroristes repentants (Remnants of Despair) placés dans des pods de réalité virtuelle sur l'île Jabberwock réelle. Leurs corps sont inertes. Ce niveau n'est jamais accessible au joueur pendant DR2 — on l'apprend seulement à la fin, et on ne le <em>voit</em> que dans l'anime DR3.</div>
+        </div>
+      </div>
+      <div class="layer">
+        <div class="layer-num">Simu&shy;lation</div>
+        <div class="layer-body">
+          <div class="layer-title">Le Neo World Program — là où se déroule DR2</div>
+          <div class="layer-desc">Un programme de psychothérapie par réalité virtuelle conçu pour effacer le conditionnement de Junko. Les avatars des élèves sont reconstruits à partir de leurs souvenirs d'avant Hope's Peak — ils semblent plus jeunes, ils ont « oublié » les années du lycée. C'est ici que se déroule l'intégralité du jeu. C'est ici que les morts n'ont pas lieu — sauf une.</div>
+        </div>
+      </div>
+      <div class="layer">
+        <div class="layer-num">Procès<br>jeu</div>
+        <div class="layer-body">
+          <div class="layer-title">Les Class Trials — un jeu dans la simulation</div>
+          <div class="layer-desc">Dans la simulation, les procès prennent la forme de minijeux — le joueur tire des arguments comme des balles, contredit avec des épées, construit des schémas. Un jeu vidéo représente un procès qui se déroule dans une simulation. C'est la couche la plus profonde — et la plus explicitement métatextuelle.</div>
+        </div>
+      </div>
+      <div class="layer layer-player">
+        <div class="layer-num">Joueur<br>réel</div>
+        <div class="layer-body">
+          <div class="layer-title">Vous — jouant à Danganronpa 2</div>
+          <div class="layer-desc">Le joueur réel, dans le monde réel, joue à un jeu qui représente une simulation. Sa position est structurellement identique à celle des élèves dans les pods : il croit vivre quelque chose, mais il ne vit qu'une représentation de quelque chose. La différence : il peut éteindre son écran.</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="rv">Cette architecture n'est pas un simple artifice de retournement final. Elle est active dès le premier chapitre — on l'ignore, mais elle travaille. Chaque mort dans la simulation produit une réaction émotionnelle réelle chez le joueur, même si cette mort est fictive au sein d'une fiction elle-même fictive. <strong>La douleur que ressent le joueur à la mort d'Ibuki, de Peko, de Chiaki est réelle. L'événement qu'il observe est une simulation d'une simulation.</strong></p>
+
+    <h2 class="rv">II. Chiaki Nanami — une mort à deux niveaux</h2>
+
+    <p class="rv">Aucun personnage ne cristallise l'architecture de <em>Danganronpa 2</em> avec autant de précision que Chiaki Nanami. Elle y meurt deux fois, dans deux couches d'existence distinctes, pour deux raisons radicalement différentes, produisant deux effets émotionnels de nature différente.</p>
+
+    <h3 class="rv">Première mort — le monde réel (Danganronpa 3 : Despair Arc)</h3>
+
+    <p class="rv">Avant les événements de <em>Danganronpa 2</em>, la vraie Chiaki — humaine, membre de la Classe 77-B — est capturée par Junko Enoshima. Junko la fait passer dans un labyrinthe de pièges, lentement, en diffusant son exécution en direct à ses camarades de classe enfermés dans une salle. L'image de Chiaki blessée qui refuse de s'arrêter, qui atteint une porte marquée « GOAL » pour trouver une illusion de ses amis à la place d'une sortie, puis est transpercée d'une lance — cette image, lestée de techniques de lavage de cerveau développées par Ryota Mitarai, transforme la Classe 77-B entière en Remnants of Despair.</p>
+
+    <p class="rv">La mort de la vraie Chiaki est donc un événement traumatique collectif — une blessure partagée par quatorze personnes simultanément, encodée dans leurs cerveaux comme le point de basculement vers le désespoir. Elle n'est pas simplement une mort : elle est le mécanisme causal de tout ce qui suit.</p>
+
+    <h3 class="rv">Seconde mort — la simulation (Danganronpa 2, Chapitre 5)</h3>
+
+    <p class="rv">Dans le Neo World Program, la Chiaki que le joueur rencontre tout au long du jeu n'est pas la vraie Chiaki. C'est une intelligence artificielle créée par la Future Foundation comme observatrice de la simulation — un programme qui a automatiquement pris la forme de Chiaki parce que chaque élève de la Classe 77-B, interrogé sur son administratrice idéale, avait répondu la même chose : elle.</p>
+
+    <blockquote class="rv">
+      L'IA Chiaki n'a pas été programmée pour ressembler à Chiaki. Elle est devenue Chiaki parce que c'est qui tout le monde désirait qu'elle soit.
+      <cite>— D'après la révélation de Danganronpa 3 : Hope Arc</cite>
+    </blockquote>
+
+    <p class="rv">Cette Chiaki-IA est exécutée à la fin du chapitre 5, après avoir été désignée comme coupable. Son exécution dans la simulation — écrasée par un bloc de Tetris, dans un détournement cruel de son identité de joueuse — est vécue par le joueur comme une mort réelle. Et c'est là que la structure de l'œuvre devient vertigineuse : <strong>le joueur pleure une IA qui ressemble à une femme déjà morte, dont la ressemblance est elle-même le produit collectif du deuil de ceux qui l'aimaient.</strong></p>
+
+    <p class="rv">Chiaki-IA est, au sens littéral, une construction du traumatisme. Elle existe parce que les Remnants of Despair portaient le souvenir de la vraie Chiaki. Et en mourant dans la simulation, elle rejoue — sans le savoir, sans que les élèves le sachent — la mort qui les a brisés dans le monde réel.</p>
+
+    <h2 class="rv">III. Le joueur ne sait pas ce qu'il regarde</h2>
+
+    <p class="rv">La position épistémique du joueur dans <em>Danganronpa 2</em> est structurellement identique à celle des élèves dans les pods : il observe une réalité dont il croit connaître la nature, sans savoir qu'elle est encadrée par une couche qu'il ne peut pas voir.</p>
+
+    <p class="rv">Cette structure rappelle la distinction que Jean Baudrillard établit dans <em>Simulacres et simulation</em> (1981) entre le simulacre de premier ordre (qui représente une réalité) et le simulacre de troisième ordre (qui n'a plus de référent réel, qui est sa propre réalité). La mort dans la simulation de <em>Danganronpa 2</em> est un simulacre de troisième ordre : elle produit des effets émotionnels réels (le deuil du joueur, la détresse de Hajime) sans avoir de référent dans la couche de réalité qu'elle prétend représenter. Les élèves ne meurent pas — ils tombent dans le coma. Et pourtant la douleur, elle, est réelle.</p>
+
+    <div class="note rv"><strong>La proposition du Neo World Program :</strong> Le jeu formule lui-même ce paradoxe par la bouche de Monokuma : <em>« Si on vous hypnotise pour vous faire croire que vous brûlez, une brûlure réelle apparaîtra. Si le cerveau croit que quelque chose est réel, c'est aussi réel que si c'était arrivé. »</em> C'est une reformulation populaire de la thèse baudrillardienne — la représentation produit ses propres effets de réel.</div>
+
+    <p class="rv">Ce que le joueur vit pendant quarante heures — l'attachement aux personnages, la douleur des morts, l'investissement dans les procès — est une preuve expérimentale de cette thèse. Nous n'avons pas besoin que la mort soit réelle pour que le deuil soit réel. La simulation est suffisante pour produire le traumatisme.</p>
+
+    <h2 class="rv">IV. Pourquoi ce n'est pas une time loop — et ce que c'est à la place</h2>
+
+    <p class="rv">À première vue, <em>Danganronpa 2</em> pourrait sembler appartenir au genre des time loops — Higurashi, Zero Escape, Outer Wilds — dans lequel un même événement se répète avec des variations. Mais la structure est fondamentalement différente.</p>
+
+    <div class="compar rv">
+      <div class="compar-row">
+        <div class="compar-cell compar-head">Dispositif</div>
+        <div class="compar-cell compar-head">Mécanique</div>
+        <div class="compar-cell compar-head">Rapport au temps</div>
+      </div>
+      <div class="compar-row">
+        <div class="compar-cell compar-game">Higurashi</div>
+        <div class="compar-cell compar-mech">Même semaine répétée dans des timelines alternatives. Le lecteur accumule les versions pour comprendre la vérité.</div>
+        <div class="compar-cell compar-effect">Répétition temporelle avec mémoire partielle. Le trauma se répète jusqu'à sa guérison.</div>
+      </div>
+      <div class="compar-row">
+        <div class="compar-cell compar-game">Zero Escape (999, VLR)</div>
+        <div class="compar-cell compar-mech">Branchements temporels. Le joueur doit explorer toutes les branches pour reconstituer la vérité.</div>
+        <div class="compar-cell compar-effect">La conscience du joueur s'identifie au personnage qui saute entre branches. Le temps est un espace à naviguer.</div>
+      </div>
+      <div class="compar-row">
+        <div class="compar-cell compar-game">Danganronpa 2</div>
+        <div class="compar-cell compar-mech">Simulation unique présentée comme réelle. La répétition n'est pas temporelle mais ontologique — une réalité dans une réalité.</div>
+        <div class="compar-cell compar-effect">Le joueur ne répète pas le temps. Il occupe le mauvais niveau de réalité, et doit en sortir.</div>
+      </div>
+    </div>
+
+    <p class="rv">Ce que <em>Danganronpa 2</em> propose est moins une time loop qu'un <strong>palimpseste ontologique</strong> : une réalité écrite par-dessus une autre, dont la couche inférieure saigne à travers. La simulation n'est pas séparée du réel — elle en est la réécriture. Et comme dans tout palimpseste, l'ancienne écriture résiste : la vraie Chiaki transparaît dans l'IA Chiaki, le traumatisme collectif transperce le programme de guérison.</p>
+
+    <p class="rv">La structure se rapproche davantage de ce que la théorie du trauma appelle <em>la compulsion de répétition</em> : le retour involontaire à la scène traumatique, non pas pour la revivre identiquement, mais pour la rejouer différemment, avec l'espoir d'en modifier l'issue. Le Neo World Program est une thérapie par simulation — il fait rejouer à la Classe 77-B quelque chose qui ressemble à ce qu'ils ont vécu, dans l'espoir qu'ils en sortent guéris plutôt que détruits.</p>
+
+    <h2 class="rv">V. La guérison par la répétition — et son échec</h2>
+
+    <p class="rv">La logique thérapeutique du Neo World Program est d'une clarté presque naïve : prendre des gens brisés par un traumatisme, effacer leurs souvenirs de la période traumatique, les placer dans un environnement contrôlé qui ressemble à leur vie d'avant, et les laisser reconstruire des liens d'amitié. Redevenir qui ils étaient avant Junko.</p>
+
+    <p class="rv">Mais Izuru Kamukura a infecté la simulation avec une IA Junko. Et la Future Foundation a choisi de placer comme observatrice une IA qui ressemble à Chiaki — sans savoir, peut-être, à quel point ce choix était chargé. La simulation censée guérir contient, dès sa conception, les graines de ce qui a brisé.</p>
+
+    <p class="rv">Ce paradoxe n'est pas propre à <em>Danganronpa 2</em>. Il est au cœur de toute tentative de guérison par exposition : pour soigner le traumatisme, il faut en quelque sorte l'approcher à nouveau, risquer la rechute. Le Neo World Program le fait de façon brutale — il recrée un contexte de jeu, de meurtre, de procès, d'exécution. Et il place au centre de ce contexte la figure de celle dont la mort a tout déclenché.</p>
+
+    <blockquote class="rv">
+      La simulation est censée guérir un traumatisme causé par une mort. Elle y place une IA qui ressemble à la morte. La « guérison » passe par la mort de cette IA. Ce n'est pas de la thérapie — c'est du traumatisme rejoué dans un espace qui se croit contrôlé.
+    </blockquote>
+
+    <h2 class="rv">VI. Ce que le joueur fait sans le savoir</h2>
+
+    <p class="rv">Il y a un dernier vertige dans la structure de <em>Danganronpa 2</em> qui mérite d'être nommé : le joueur, en jouant, occupe une position qui n'existe pas dans la diégèse. Il n'est ni dans le monde réel ni dans la simulation — il est dans les deux simultanément. Il voit ce que les personnages ne voient pas (les indices cachés, les incohérences narratives) mais pas ce que la couche supérieure lui cache (le fait que tout est faux).</p>
+
+    <p class="rv">Cette position est précisément celle que la philosophie du jeu vidéo appelle le <em>magic circle</em> (Huizinga, 1938) — l'espace séparé dans lequel le joueur accepte les règles du jeu comme temporairement réelles. Mais <em>Danganronpa 2</em> fracture ce cercle magique de l'intérieur : en révélant que le monde du jeu était lui-même un cercle magique pour ses habitants, il fait du joueur le double des personnages.</p>
+
+    <p class="rv">Nous aussi, nous avons joué le jeu. Nous aussi, nous avons cru à ses règles. Nous aussi, nous avons pleuré des morts qui n'étaient pas des morts. Et quand la révélation tombe, notre sentiment n'est pas simplement la surprise du retournement — c'est quelque chose de plus proche de la honte douce d'avoir été complice, d'avoir été dans le pod, d'avoir été Hajime.</p>
+
+    <div class="biblio rv">
+      <span class="biblio-title">Références &amp; lectures complémentaires</span>
+      <p class="biblio-item">Baudrillard, Jean. <em>Simulacres et simulation</em>. Paris : Galilée, 1981. [Pour la théorie des ordres du simulacre et le rapport entre représentation et réel.]</p>
+      <p class="biblio-item">Huizinga, Johan. <em>Homo ludens : essai sur la fonction sociale du jeu</em> [1938]. Paris : Gallimard, 1988. [Pour le concept de <em>magic circle</em> et la séparation entre l'espace du jeu et le monde ordinaire.]</p>
+      <p class="biblio-item">Freud, Sigmund. « Au-delà du principe de plaisir » [1920], dans <em>Essais de psychanalyse</em>. Paris : Payot, 2001. [Pour la théorie de la compulsion de répétition comme réponse au traumatisme.]</p>
+      <p class="biblio-item">Bogost, Ian. <em>Persuasive Games : The Expressive Power of Videogames</em>. Cambridge : MIT Press, 2007. [Pour la rhétorique procédurale et la façon dont les mécaniques de jeu produisent du sens.]</p>
+      <p class="biblio-item">Baroni, Raphaël. <em>La tension narrative : suspense, curiosité et surprise</em>. Paris : Seuil, 2007. [Pour l'analyse des effets de retardement et de révélation dans les structures narratives.]</p>
+      <p class="biblio-item">Caïra, Olivier. <em>Définir la fiction : du roman au jeu d'échecs</em>. Paris : EHESS, 2011. [Pour les frontières entre fiction et réalité dans les dispositifs narratifs interactifs.]</p>
+    </div>
+
+  </article>
+
+  <div class="art-footer rv">
+    <span style="font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-right:.5rem;">Tags :</span>
+    <span class="tag">Danganronpa 2</span>
+    <span class="tag">Simulation</span>
+    <span class="tag">Métatextualité</span>
+    <span class="tag">Chiaki Nanami</span>
+    <span class="tag">Baudrillard</span>
+    <span class="tag">Position du joueur</span>
+    <span class="tag">Trauma &amp; répétition</span>
+    <span class="tag">Visual novel</span>
+  </div>
+
+  <footer>
+    <span class="f-logo">Spectre Rose ✦</span>
+    <span class="f-copy">© 2026 — Théories narratives &amp; fiction interactive</span>
+  </footer>
+  <script src="ui.js"></script>
+</body>
+</html>
