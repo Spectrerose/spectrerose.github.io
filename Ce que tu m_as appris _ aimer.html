@@ -9,332 +9,2119 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play Ce que tu m&#39;as appris à aimer.</tw-noscript></noscript></tw-story>
-<tw-storydata name="Ce que tu m&#39;as appris à aimer" startnode="1" creator="Twine" creator-version="2.11.1" format="Harlowe" format-version="3.3.9" ifid="F9C2A4B7-1E6D-4A8F-B305-7D2C9E1F4A82" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="StoryInit" tags="startup" position="0,0" size="100,100">
+<tw-storydata name="Ce que tu m&#39;as appris à aimer" startnode="1" creator="Twine" creator-version="2.11.1" format="Harlowe" format-version="3.3.9" ifid="C7E2A4F1-8B3D-4C9A-B215-5F1D8E3C2A09" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="StoryInit" tags="startup" position="0,0" size="100,100">
 (set: $prenom to &quot;&quot;)
 (set: $mari to &quot;&quot;)
 (set: $refus to 0)
 (set: $lucidite to 0)
-(set: $boucle to 1)
+(set: $boucle to 0)
+(set: $coutReel to 0)
 (go-to: &quot;SEUIL&quot;)
-</tw-passagedata><tw-passagedata pid="2" name="SEUIL" tags="" position="200,0" size="100,100">
-Avant de commencer, dis-moi vos prénoms.
-
-Le sien d&#39;abord — c&#39;est elle qui raconte.
-
-(link: &quot;Continuer →&quot;)[
-  (set: $prenom to (prompt: &quot;Son prénom :&quot;, &quot;&quot;))
+</tw-passagedata><tw-passagedata pid="2" name="SEUIL" tags="" position="220,0" size="100,100">
+(link: &quot;Commencer →&quot;)[
+  (set: $prenom to (prompt: &quot;Ton prénom :&quot;, &quot;&quot;))
   (if: $prenom is &quot;&quot;)[
     (set: $prenom to &quot;elle&quot;)
   ]
-  (set: $mari to (prompt: &quot;Et lui :&quot;, &quot;&quot;))
+  (set: $mari to (prompt: &quot;Son prénom à lui :&quot;, &quot;&quot;))
   (if: $mari is &quot;&quot;)[
     (set: $mari to &quot;lui&quot;)
   ]
-  (go-to: &quot;MATIN1A&quot;)
+  (go-to: &quot;CH1DEBUT&quot;)
 ]
-</tw-passagedata><tw-passagedata pid="3" name="MATIN1A" tags="" position="400,0" size="100,100">
+</tw-passagedata><tw-passagedata pid="3" name="CH1DEBUT" tags="" position="440,0" size="100,100">
+Il y a un cours que tu n&#39;as pas rendu.
+
+Pas par oubli — tu l&#39;as écrit, réécrit, abandonné trois fois. Il est quelque part dans un fichier dont tu n&#39;arrives plus à te souvenir du nom, enfoui sous d&#39;autres fichiers ouverts et jamais terminés, et à un moment tu as fermé l&#39;ordinateur et tu t&#39;es allongée et c&#39;est de là que tu fais l&#39;inventaire maintenant.
+
+Le plafond a une fissure en haut à gauche. Elle date d&#39;avant toi — tu l&#39;as remarquée le premier jour et tu t&#39;es dit qu&#39;il faudrait la signaler et tu ne l&#39;as jamais signalée. Elle a la forme de quelque chose mais tu as arrêté d&#39;essayer de trouver quoi. Il y a une satisfaction particulière à avoir arrêté d&#39;essayer — pas de la résignation, plutôt une décision tacite que certaines choses peuvent rester ouvertes sans que ça soit un problème.
+
+Solène a laissé une assiette devant ta porte ce matin. Tu le sais parce que tu as entendu ses pas dans le couloir — cette façon qu&#39;elle a de marcher très doucement quand elle pense que tu dors, comme si le sol était fragile, comme si ses pieds pouvaient traverser quelque chose de délicat. Le bruit de l&#39;assiette posée délicatement. La pause. Ses pas qui repartent.
+
+Il est — tu tournes la tête — seize heures quarante.
+
+Tu n&#39;as pas mangé depuis hier.
+
+Ce n&#39;est pas une décision. C&#39;est juste que le moment de se lever et d&#39;aller à la cuisine est un moment que tu remets. Pas indéfiniment — tu vas y aller, tu le sais, à un moment ton corps va décider pour toi et tu vas te lever. Juste pas maintenant. Maintenant tu fais l&#39;inventaire.
+
+*Le cours non rendu : un.*
+*L&#39;assiette froide dans le couloir : une.*
+*Les jours depuis que tu as quitté l&#39;appartement : trois.*
+*Les messages sans réponse : tu n&#39;as pas encore regardé. Plusieurs, probablement.*
+
+*(Ce n&#39;est pas un record. Tu préfères ne pas te souvenir du record.)*
+
+Le téléphone vibre sur la table de nuit. Une fois, deux fois — une notification, pas un appel. Tu ne regardes pas. L&#39;écran s&#39;allume et s&#39;éteint dans ta vision périphérique, patient, comme quelque chose qui attend son tour.
+
+Tu as vingt-deux ans et tu es étudiante en école d&#39;art dans une ville où tu ne connais pas beaucoup de gens. Tu as une colocataire qui fait à manger pour deux même quand tu ne sors pas de ta chambre et qui laisse des assiettes devant les portes closes. Tu as une fissure au plafond et un cours non rendu et une fatigue qui n&#39;est pas le genre de fatigue qu&#39;on règle avec du sommeil, qui n&#39;est pas non plus le genre de fatigue qu&#39;on explique facilement à quelqu&#39;un qui ne l&#39;a pas vécue.
+
+Tu le sais depuis assez longtemps pour ne plus en être surprise. C&#39;est quelque chose que tu as appris à porter — pas à guérir, pas à ignorer, juste à porter. Les bons jours c&#39;est léger. Les autres jours c&#39;est tout ce que tu fais.
+
+Aujourd&#39;hui c&#39;est un jour intermédiaire.
+
+---
+
+[[Tu prends le téléphone pour voir qui a écrit.|CH1TEL]]
+[[Tu te lèves pour aller à la cuisine — l&#39;assiette de Solène attend.|CH1CUISINEDIRECT]]
+[[Tu restes. Tu continues l&#39;inventaire.|CH1INVENTAIRE2]]
+</tw-passagedata><tw-passagedata pid="4" name="CH1INVENTAIRE2" tags="" position="660,0" size="100,100">
+Tu continues.
+
+*Les plantes sur le rebord de la fenêtre : deux.*
+
+L&#39;une est morte depuis un moment — les feuilles ont cette couleur beige qui n&#39;est plus du tout du vert, cette couleur de quelque chose qui a abandonné. Tu n&#39;t l&#39;as pas jetée. Tu ne sais pas exactement pourquoi. Peut-être parce que la jeter demanderait un geste que tu n&#39;as pas encore fait, peut-être parce qu&#39;il y a quelque chose d&#39;honnête dans le fait de laisser les choses être ce qu&#39;elles sont devenues.
+
+L&#39;autre résiste. Elle est petite et légèrement penchée vers la lumière — pas vers le soleil, il n&#39;y en a pas assez dans cette chambre, juste vers la lumière ordinaire de la fenêtre. Tu ne l&#39;arroses pas régulièrement. Tu ne la mets pas au soleil exprès. Et pourtant elle est là, têtue et silencieuse, qui fait ce qu&#39;elle peut avec ce qu&#39;elle a.
+
+*(Tu penses parfois que si tu étais une plante tu serais celle-là. Tu ne sais pas si c&#39;est triste ou non.)*
+
+*Le carnet sur le bureau, fermé : un.*
+
+Il est vide depuis — depuis combien de temps. Quelques mois. Tu avais l&#39;habitude de dessiner dedans, pas des choses finies, juste des fragments — des formes, des mains, des bouts d&#39;observations qui méritaient d&#39;être gardés. Et puis à un moment tu as arrêté. Pas parce que tu as décidé d&#39;arrêter. Juste parce que les jours ont passé sans que tu l&#39;ouvres, et puis les jours passant il est devenu difficile à ouvrir, et puis tu n&#39;avais plus de raison particulière de l&#39;ouvrir puisque tu ne l&#39;ouvrais plus. Ce genre de logique circulaire que tu reconnaîtrais chez quelqu&#39;un d&#39;autre comme un signe de quelque chose mais que de l&#39;intérieur tu appelles juste *comme ça se passe*.
+
+Le téléphone vibre encore.
+
+Cette fois tu le regardes.
+
+C&#39;est Solène. *t&#39;as mangé ?*
+
+Tu tapes *oui* sans réfléchir. Tu envoies. Tu regardes les trois points qui apparaissent, disparaissent, réapparaissent.
+
+*menteuse*
+
+Et puis le cœur orange. Elle utilise toujours les cœurs orange — pas les rouges, pas les roses, toujours l&#39;orange. Tu ne lui as jamais demandé pourquoi. C&#39;est une de ces choses que tu sais sans explication, comme tu sais qu&#39;elle fait les bols à l&#39;envers sur l&#39;égouttoir et qu&#39;elle met trop de sel dans les soupes et qu&#39;elle dit *c&#39;est pas grave* exactement de la façon dont c&#39;est pas grave, sans insistance, sans sous-entendu.
+
+Tu poses le téléphone.
+
+Tu restes encore un moment à regarder le plafond.
+
+*(La fissure. Elle a vraiment la forme de quelque chose — tu as décidé d&#39;arrêter de chercher quoi, mais elle a quand même une forme. Quelque chose d&#39;allongé. Un oiseau peut-être. Ou une feuille. Ou juste une fissure.)*
+
+---
+
+[[Tu vas ouvrir la porte et récupérer l&#39;assiette.|CH1ASSIETTE]]
+[[Tu restes encore. Tu penses à des choses sans les choisir.|CH1PENSEES]]
+</tw-passagedata><tw-passagedata pid="5" name="CH1PENSEES" tags="" position="880,0" size="100,100">
+Tu penses à des choses sans les choisir.
+
+C&#39;est comme ça que ça marche depuis un moment — les pensées arrivent sans être invitées et tu ne les poursuis pas vraiment, tu les laisses traverser le champ comme des silhouettes dans le brouillard. Tu n&#39;essaies pas de les attraper. Tu essaies encore moins de les analyser. Tu les laisses juste être là et passer.
+
+Il y a eu un atelier en octobre. Tu sais qu&#39;il y a eu un atelier en octobre parce que quelqu&#39;un t&#39;a envoyé un message depuis un numéro que tu ne reconnais pas — *salut c&#39;est [prénom illisible] on s&#39;est vus à l&#39;atelier en octobre* — et tu as fermé le message sans le finir de lire parce que tu ne te souvenais pas de l&#39;atelier en octobre et que ça demandait trop d&#39;énergie de reconstituer ce que tu avais dit à qui et dans quel contexte. October c&#39;est une date qui est passée sans s&#39;accrocher à rien de particulier, ou peut-être qu&#39;elle s&#39;est accrochée à des choses que tu n&#39;as plus.
+
+Il y a Rosalie aussi. Elle a envoyé un message il y a quelques jours : *hé t&#39;es vivante ? ça fait une semaine.* Tu as lu ce message et tu n&#39;as pas répondu parce que répondre demandait d&#39;évaluer comment tu allais et de formuler ça d&#39;une façon qui soit honnête sans être alarmante, et tu n&#39;avais pas l&#39;énergie pour cet équilibre-là ce jour-là. Tu lui répondras. Juste pas maintenant.
+
+*(Rosalie est au courant, pour les périodes comme celle-là. Elle comprend. Le problème c&#39;est pas qu&#39;elle comprend pas — c&#39;est que même quand les gens comprennent il faut quand même répondre.)*
+
+Tu penses à ton carnet vide. À ce que ce serait de l&#39;ouvrir. Tu imagines la page blanche et tu imagines poser le stylo dessus et tu imagines ce qui viendrait — rien, probablement, ou quelque chose de trop petit pour mériter l&#39;espace.
+
+*(Ça t&#39;arrive de plus en plus : imaginer faire des choses au lieu de les faire. C&#39;est moins épuisant et ça donne presque la même impression d&#39;avoir essayé.)*
+
+Tu te lèves.
+
+Pas parce que tu as décidé de te lever. Parce que ton corps a décidé pour toi, comme prévu, comme il finit toujours par décider.
+
+---
+
+[[Tu vas récupérer l&#39;assiette dans le couloir.|CH1ASSIETTE]]
+</tw-passagedata><tw-passagedata pid="6" name="CH1TEL" tags="" position="1100,0" size="100,100">
+Sept notifications.
+
+Tu les passes en revue sans vraiment les lire — c&#39;est une façon que tu as appris à avoir avec les notifications, les scanner plutôt que les lire, repérer celles qui demandent quelque chose et ignorer les autres jusqu&#39;à ce qu&#39;elles demandent plus fort.
+
+Trois de Solène. *t&#39;as mangé ?* à treize heures. *j&#39;ai fait une soupe, elle est dans le frigo, sers-toi* à treize heures douze. *t&#39;as mangé ?* à seize heures vingt — le même message répété, pas parce qu&#39;elle a oublié le premier, mais parce que c&#39;est sa façon de dire *je pense encore à toi* sans dire *je pense encore à toi.*
+
+Un mail de l&#39;école. Objet : *relance, devoir non rendu, merci de nous contacter avant le 15.* Tu lis la première ligne et tu fermes le mail. Pas maintenant. Le 15 c&#39;est dans combien de jours — tu ne calcules pas, ça aussi c&#39;est pour plus tard.
+
+Un message de Rosalie : *hé t&#39;es vivante ? ça fait une semaine.* Le message date de trois jours. Tu ne l&#39;avais pas vu — ou tu l&#39;avais vu et tu ne te souviens plus de l&#39;avoir vu, ce qui revient au même.
+
+Un numéro inconnu : *salut c&#39;est [nom illisible] on s&#39;est vus à l&#39;atelier en octobre tu m&#39;avais dit de te contacter si—* Tu fermes sans finir.
+
+*(Octobre. Tu ne te souviens pas de l&#39;atelier en octobre. Tu ne te souviens pas d&#39;avoir dit ça à quelqu&#39;un. C&#39;est pas grave — juste une date qui est passée sans s&#39;accrocher à rien.)*
+
+Tu réponds à Solène : *oui.*
+
+Elle répond en six secondes exactement. *menteuse.* Cœur orange.
+
+Tu poses le téléphone.
+
+---
+
+[[Tu vas à la cuisine.|CH1CUISINEDIRECTE]]
+[[Tu récupères l&#39;assiette dans le couloir d&#39;abord.|CH1ASSIETTE]]
+</tw-passagedata><tw-passagedata pid="7" name="CH1ASSIETTE" tags="" position="1320,0" size="100,100">
+Tu ouvres la porte de ta chambre.
+
+L&#39;assiette est là — posée sur le sol du couloir, couverte d&#39;une deuxième assiette retournée par-dessus pour garder la chaleur, une technique que Solène a développée parce que les couvercles pour assiettes ça n&#39;existe pas dans cet appartement et qu&#39;elle a refusé d&#39;acheter quelque chose d&#39;aussi spécifique. Un post-it collé sur le dessus :
+
+*riz + légumes / micro-ondes 2 min / mange stp*
+
+Le *stp* est souligné deux fois. Pas un ordre — une demande. Solène a cette façon de demander sans supplier, d&#39;insister sans harceler, qui est un art en soi et que tu n&#39;as jamais su imiter. Toi quand tu insistes ça finit toujours par ressembler à quelque chose de plus agressif que voulu. Elle, non. Elle souligne *stp* deux fois et ça suffit à dire tout ce qu&#39;elle ne dit pas.
+
+Tu prends l&#39;assiette. Tu rentres dans ta chambre. Tu la poses sur le bureau et tu la regardes une seconde — le riz qui a refroidi, les légumes qui ont dû être bons chauds — et puis tu la mets au micro-ondes sur le comptoir de ta chambre, deux minutes comme indiqué.
+
+Tu manges sur ton lit, le dos contre le mur, les jambes croisées.
+
+Le riz est un peu trop cuit. Les légumes sont des courgettes et des carottes avec quelque chose de sucré-salé que tu ne saurais pas reproduire. Tu ne sais pas depuis combien de temps Solène a fait ça — si c&#39;était le matin ou à midi — mais tu manges jusqu&#39;au bout parce qu&#39;elle l&#39;a fait et l&#39;a porté jusqu&#39;à ta porte et l&#39;a posé là doucement pour ne pas te réveiller.
+
+*(Le geste compte. Même froid. Surtout froid, peut-être.)*
+
+---
+
+[[La soirée — Solène rentre.|CH1SOLENE]]
+</tw-passagedata><tw-passagedata pid="8" name="CH1CUISINEDIRECT" tags="" position="1540,0" size="100,100">
+La cuisine sent la soupe froide et le détergent.
+
+Solène a fait la vaisselle avant de partir ce matin — les bols sont rangés à l&#39;envers sur l&#39;égouttoir, à l&#39;envers pour que l&#39;eau s&#39;écoule correctement, ce truc qu&#39;elle fait depuis toujours et que tu faisais avant de le connaître à l&#39;envers et que tu fais maintenant aussi à l&#39;envers sans y penser. C&#39;est ça, vivre avec quelqu&#39;un longtemps : adopter ses façons de faire des petites choses sans même décider de les adopter.
+
+Il y a effectivement une casserole dans le frigo. Un post-it dessus :
+
+*réchauffe 5 min à feu doux — ne brûle pas tout*
+
+*(Le* tout *est souligné deux fois. C&#39;est de l&#39;humour — tu as brûlé quelque chose une fois, une seule fois, il y a dix-huit mois, des œufs scramblés qui avaient accroché dans la poêle et elle n&#39;a jamais arrêté d&#39;en parler et tu ne veux pas qu&#39;elle arrête d&#39;en parler. C&#39;est une de ces choses entre vous deux qui n&#39;a pas de nom mais qui est réelle.)*
+
+Tu réchauffes la soupe. Tu t&#39;assieds sur le plan de travail pendant qu&#39;elle chauffe — pas sur un tabouret, directement sur le plan de travail, les jambes qui pendent dans le vide. C&#39;est une habitude que vous avez toutes les deux, cette façon de préférer le plan de travail aux chaises, comme si s&#39;asseoir à une vraie hauteur de table était une formalité pour les autres appartements.
+
+La soupe fait des petits bruits dans la casserole. Un gargouillis doux, régulier.
+
+C&#39;est une soupe aux lentilles. Solène en fait souvent dans les périodes comme celle-là — elle a théorisé à voix haute, une fois, que les lentilles c&#39;est nourrissant de façon efficace, que c&#39;est de la densité calorique sans effort de ta part. Tu n&#39;as jamais dit que tu avais compris la théorie. Tu aimes qu&#39;elle continue de croire que c&#39;est juste sa recette préférée.
+
+Tu manges debout, sur le plan de travail. Dehors, il commence à faire sombre.
+
+---
+
+[[Tu entends la clé dans la serrure — Solène rentre.|CH1SOLENE]]
+[[Tu finis et tu retournes dans ta chambre avant qu&#39;elle arrive.|CH1CHAMBRESEULE]]
+</tw-passagedata><tw-passagedata pid="9" name="CH1CUISINEDIRECTE" tags="" position="1760,0" size="100,100">
+La cuisine sent la soupe froide et le détergent. Il y a une casserole dans le frigo avec un post-it : *réchauffe 5 min à feu doux — ne brûle pas tout.* Tu réchauffes. Tu manges debout sur le plan de travail.
+
+C&#39;est une soupe aux lentilles. Solène en fait souvent dans les périodes comme celle-là.
+
+Dehors, il fait presque nuit.
+
+---
+
+[[Solène rentre.|CH1SOLENE]]
+</tw-passagedata><tw-passagedata pid="10" name="CH1SOLENE" tags="" position="1980,0" size="100,100">
+Elle entre avec ses clés qui font du bruit.
+
+Elle a un porte-clés trop chargé — un porte-bonheur en céramique que son père lui a rapporté d&#39;un voyage, une photo plastifiée de votre premier appartement ensemble, un trombonne qu&#39;elle a mis là pour une raison qu&#39;elle a oubliée et qu&#39;elle n&#39;a jamais enlevé. Ce bruit de ses clés dans la serrure, tu l&#39;associes à *quelqu&#39;un revient*, c&#39;est la définition sonore du retour dans cet appartement.
+
+Elle te voit dans la cuisine.
+
+Elle ne dit pas *ah tu t&#39;es levée* ou *enfin tu manges*. Elle dit :
+
+— Y&#39;a encore de la soupe ?
+
+— J&#39;en ai laissé.
+
+Elle pose ses affaires — le sac sur le crochet, les chaussures rangées à côté et pas dedans le meuble à chaussures parce que le meuble à chaussures est plein depuis deux ans et qu&#39;elles ont toutes les deux renoncé à le vider — et elle se sert. Elle s&#39;installe à côté de toi sur le plan de travail. Vos jambes se balancent dans le vide en parallèle.
+
+Vous mangez sans parler pendant un moment.
+
+C&#39;est Solène. Trois ans de colocation, deux déménagements, une rupture chacune à des moments différents, une période il y a environ un an et demi où vous avez failli ne plus vous parler pour une raison qui avait semblé énorme et qui semble maintenant petite mais que vous ne regardez jamais directement. Elle sait faire le vrai silence — pas le silence inconfortable qui attend qu&#39;on le remplisse, pas le silence qui dit *dis-moi quelque chose*, juste le silence qui est là avec toi.
+
+— T&#39;as travaillé aujourd&#39;hui ? elle dit enfin.
+
+— Un peu.
+
+*(C&#39;est un mensonge poli. Elle le sait. Elle ne relève pas.)*
+
+— Y&#39;a un truc ce week-end, dit-elle. Chez des amis de l&#39;atelier. Tu viendrais pas, j&#39;imagine.
+
+— Probablement pas.
+
+— OK.
+
+*(Pas de pression. Pas de* ça te ferait du bien *ou de* t&#39;aurais besoin de voir des gens*. Juste OK. Elle a appris depuis longtemps que les* ça te ferait du bien *ne font pas de bien — ils font sentir qu&#39;on devrait aller bien et qu&#39;on n&#39;y arrive pas.)*
+
+---
+
+[[Vous parlez encore un peu — la soupe, l&#39;école, Rosalie.|CH1PARLER]]
+[[Tu retournes dans ta chambre. Tu as besoin d&#39;être seule encore.|CH1CHAMBRESEULE]]
+</tw-passagedata><tw-passagedata pid="11" name="CH1PARLER" tags="" position="2200,0" size="100,100">
+— T&#39;as l&#39;air un peu mieux, dit-elle. Comparé à la semaine dernière.
+
+Tu réfléchis honnêtement à si c&#39;est vrai.
+
+— Peut-être, tu dis.
+
+— T&#39;as dormi ?
+
+— Plus ou moins.
+
+— Plus ou moins c&#39;est mieux que pas du tout.
+
+*(Elle a une façon de prendre les non-réponses et d&#39;en faire quelque chose d&#39;acceptable. De transformer les approximations en progrès. Tu ne sais pas si c&#39;est de l&#39;optimisme ou de la méthode ou juste elle.)*
+
+— J&#39;ai reçu un mail de l&#39;école, tu dis.
+
+— Le devoir ?
+
+— Ouais. Ils donnent jusqu&#39;au 15.
+
+— C&#39;est dans dix jours. T&#39;as le temps.
+
+*(Dix jours. Tu n&#39;avais pas calculé. Ça paraît plus gérable dit comme ça — une durée concrète, une chose qui a un bord.)*
+
+— Et Rosalie ? dit-elle. Elle t&#39;a pas envoyé un truc il y a quelques jours ?
+
+— Je lui répondrai demain.
+
+Solène ne dit rien. Elle rince son bol. Elle le pose à l&#39;envers sur l&#39;égouttoir.
+
+— OK. Bonne nuit, $prenom.
+
+— Bonne nuit.
+
+*(Elle ne te demande pas si tu vas bien. Elle sait que tu dirais oui. Elle sait que oui serait à moitié vrai. Elle laisse la lumière allumée dans le couloir — tu le vois sous ta porte depuis ta chambre, ce liseré de lumière chaude, depuis le premier soir de ta première mauvaise période dans cet appartement. Elle n&#39;a jamais dit qu&#39;elle le faisait exprès. Tu n&#39;as jamais dit que tu avais remarqué. Certaines choses entre vous existent sans avoir besoin d&#39;être dites.)*
+
+---
+
+[[Tu retournes dans ta chambre.|CH1CHAMBRESEULE]]
+</tw-passagedata><tw-passagedata pid="12" name="CH1CHAMBRESEULE" tags="" position="2420,0" size="100,100">
+Ta chambre.
+
+La fissure au plafond. La lumière de la rue qui filtre sous le rideau — orange, la couleur des lampadaires, cette lumière particulière des nuits parisiennes qui n&#39;est jamais vraiment noire. La plante qui résiste sur le rebord de la fenêtre. Le carnet fermé sur le bureau.
+
+Tu t&#39;allonges.
+
+Sous la porte, la lumière du couloir — Solène a laissé la lumière allumée. Comme toujours.
+
+Tu fermes les yeux.
+
+*(Tu penses à demain. Au mail de l&#39;école. À Rosalie à qui tu répondras. À l&#39;assiette vide sur le bureau et aux lentilles qui étaient bonnes malgré tout.)*
+
+*(Et puis, dans l&#39;espace juste avant le sommeil où les pensées commencent à perdre leur architecture, tu penses à lui. Pas vraiment à lui — à sa voix. La voix grave dans les écouteurs depuis des semaines, cette façon qu&#39;elle a de rendre le silence habitable. Tu n&#39;as pas mis de musique ce soir mais tu te souviens de la musique.)*
+
+*(C&#39;est comme ça que tu t&#39;endors — avec sa voix quelque part dans la tête, pas comme un fantasme, juste comme une présence. Quelque chose qui est là.)*
+
+---
+
+[[Chapitre 2.|CH2DEBUT]]
+</tw-passagedata><tw-passagedata pid="13" name="CH2DEBUT" tags="" position="2640,0" size="100,100">
+Tu l&#39;as trouvé par accident.
+
+C&#39;était en mars. Tu étais dans une mauvaise semaine — une de celles où sortir du lit représente une négociation avec toi-même, où chaque chose ordinaire a un poids supplémentaire que tu n&#39;arrives pas à expliquer à quelqu&#39;un qui ne le connaît pas. Tu avais une fenêtre ouverte sur l&#39;ordinateur, une playlist que quelqu&#39;un avait partagée sur un forum quelconque, et tu faisais défiler sans vraiment écouter — ce mode de présence à moitié où tu consommes sans recevoir.
+
+Et puis sa voix.
+
+Tu avais rembobiné. Pas pour comprendre — juste pour réécouter. Ce réflexe de rembobiner quand quelque chose atteint un endroit qu&#39;on n&#39;avait pas prévu d&#39;atteindre.
+
+*(C&#39;est souvent là que tout commence. Ce geste-là.)*
+
+Sa voix est grave, légèrement rauque, avec quelque chose de mat dans la production — pas lisse, pas poli, quelque chose qui laisse les aspérités. Elle ne cherche pas à être belle et elle l&#39;est quand même, d&#39;une façon qui n&#39;a pas besoin de le savoir. Il chante en coréen — tu n&#39;en parles pas, tu en as appris quelques mots par curiosité après cette première nuit d&#39;écoute, assez pour comprendre le cadre sans saisir les détails, et c&#39;est peut-être pour ça que ça fonctionne aussi bien : les mots ont leur sens mais aussi une texture, un rythme, quelque chose qui existe indépendamment de ce qu&#39;ils veulent dire.
+
+Il y a une ligne dans ce premier morceau — tu en as cherché la traduction sur plusieurs forums, les versions divergeaient légèrement, tu as fini par composer ta propre version à partir de plusieurs — qui dit quelque chose comme :
+
+*je voulais être quelqu&#39;un d&#39;autre pour toi et puis j&#39;ai compris que tu préférais personne.*
+
+Tu as fermé l&#39;onglet de traduction immédiatement. Pas parce que la phrase était fausse — parce qu&#39;elle était trop juste. Ce genre de phrase qui arrive dans un endroit que tu gardais fermé et qui l&#39;ouvre en passant, sans effort apparent.
+
+---
+
+[[Tu cherches — les interviews, les anciens morceaux, tout.|CH2CHERCHER]]
+[[Tu poses le téléphone. Tu essaies de ne pas aller trop loin ce soir.|CH2LIMITE]]
+</tw-passagedata><tw-passagedata pid="14" name="CH2CHERCHER" tags="" position="2860,0" size="100,100">
+(set: $coutReel to $coutReel + 1)
+
+Tu cherches.
+
+Tu commences par les morceaux — les anciens d&#39;abord, ceux d&#39;avant la période actuelle, une époque où le son était plus brut et moins construit, quelque chose qui ressemble à quelqu&#39;un qui apprend encore où mettre son poids et qui fait confiance à l&#39;instinct parce qu&#39;il n&#39;a pas encore la technique pour autre chose. Il y a une brutalité dans ces morceaux-là qui te touche différemment de la précision des récents. Comme voir les deux versions d&#39;une même personne et comprendre le chemin entre elles.
+
+Puis les interviews.
+
+La première dure une heure. Les sous-titres sont approximatifs — traduits automatiquement, avec ces maladresses particulières des traductions automatiques qui disent parfois l&#39;inverse de ce qui a été dit ou qui produisent des formulations que personne n&#39;emploierait à l&#39;oral. Mais il y a assez pour comprendre. Il répond aux questions avec une façon de peser les mots avant de les dire, de laisser du vide là où d&#39;autres auraient rempli, de prendre les questions au sérieux même quand elles ne le méritent pas vraiment.
+
+À un moment l&#39;interviewer lui demande ce qu&#39;il fait quand il est bloqué.
+
+Il dit — et la traduction automatique te donne quelque chose d&#39;approximatif mais l&#39;idée y est :
+
+*J&#39;arrête. Je fais autre chose. Je regarde des gens depuis une fenêtre, ou j&#39;écoute quelque chose que j&#39;aime déjà. Forcer ne marche pas pour moi — ça donne quelque chose de fermé, qu&#39;on entend dans le résultat. Je préfère attendre que ça veuille.*
+
+L&#39;interviewer demande : et si ça ne veut jamais ?
+
+Il sourit légèrement — pas un sourire poli, quelque chose de plus petit, plus intérieur, le sourire de quelqu&#39;un qui a déjà eu cette peur et qui la connaît bien maintenant.
+
+*Ça finit par vouloir. Ça a toujours fini par vouloir.*
+
+*(Tu restes avec ça. Attendre que ça veuille. Tu penses à ton carnet vide. À tous les jours où tu t&#39;es assise devant quelque chose de blanc et où rien n&#39;est venu. Tu te demandes si tu attends ou si tu n&#39;as juste pas encore trouvé comment attendre.)*
+
+Il y a un moment dans cette interview — vers la fin, un moment apparemment anodin — où quelqu&#39;un hors-champ dit quelque chose et il rit. Un vrai rire, pas calculé : la tête légèrement de côté, les yeux qui plissent jusqu&#39;à presque disparaître, quelque chose de complètement différent qui traverse son visage pendant deux secondes.
+
+Deux secondes. Et tu comprends quelque chose que les heures d&#39;écoute n&#39;avaient pas encore donné. Il y a quelqu&#39;un là. Avec des réflexes et des angles et des choses qui le font rire. Une personne réelle, avec ses propres façons d&#39;être dans le monde que tu n&#39;imagines pas — que tu observes, depuis une distance mesurable, depuis l&#39;écran de ton téléphone dans ta chambre à Paris.
+
+*(Tu notes, sans t&#39;en rendre compte : comment il tient sa tasse pendant l&#39;interview. Les deux mains. Comme s&#39;il avait besoin de la chaleur même en studio, même sous les lumières.)*
+
+Quand tu lèves les yeux de ton téléphone, il fait nuit complète.
+
+Tu n&#39;avais pas remarqué la lumière partir. La pièce est dans le noir et la lumière de l&#39;écran t&#39;aveugle légèrement quand tu baisses les yeux dessus.
+
+Il est — tu vérifies — vingt-deux heures quarante.
+
+Tu es entrée là-dedans à dix-sept heures environ.
+
+*(Solène a frappé à ta porte à un moment. Tu te souviens du bruit — deux coups discrets, sa façon de frapper quand elle n&#39;est pas sûre que tu veuilles être dérangée. Tu n&#39;as pas répondu parce que tu étais au milieu de quelque chose et tu ne voulais pas t&#39;arrêter. Elle est repartie sans insister.)*
+
+*(Tu lui écriras. Tu lui diras que tu dormais.)*
+
+---
+
+[[Continuer — le premier glissement.|CH2GLISSEMENT]]
+</tw-passagedata><tw-passagedata pid="15" name="CH2LIMITE" tags="" position="3080,0" size="100,100">
+Tu poses le téléphone.
+
+*(Tu connais ce mécanisme. Tu l&#39;as reconnu immédiatement — la façon dont quelque chose peut aspirer les heures, la façon dont une fenêtre ouverte sur quelqu&#39;un peut devenir une nuit entière passée à chercher. Tu l&#39;as déjà fait. Tu sais comment ça finit.)*
+
+*(Savoir comment ça finit n&#39;empêche pas de vouloir recommencer. Mais ce soir tu poses le téléphone.)*
+
+La chanson tourne encore dans les écouteurs. Tu laisses finir le morceau. Puis tu retires les écouteurs et tu poses tout sur la table de nuit.
+
+Le silence de la chambre. Le frigo dans la cuisine. La lumière sous la porte.
+
+Tu fermes les yeux.
+
+*(Et malgré toi — pas comme une décision, plutôt comme quelque chose qui arrive dans l&#39;espace entre veille et sommeil où tu n&#39;as plus tout à fait le contrôle — sa voix revient. Pas la musique, juste la voix. La texture grave de quelqu&#39;un qui dit : ça finit par vouloir. Ça a toujours fini par vouloir.)*
+
+*(Tu t&#39;endors dedans.)*
+
+---
+
+[[Continuer — le premier glissement.|CH2GLISSEMENT]]
+</tw-passagedata><tw-passagedata pid="16" name="CH2GLISSEMENT" tags="" position="3300,0" size="100,100">
+Les semaines suivantes ont une texture légèrement différente.
+
+Pas meilleure, exactement. Différente — comme si un léger décalage s&#39;était produit dans la façon dont les journées se disposent, un degré d&#39;inclinaison à peine perceptible.
+
+Tu l&#39;écoutes beaucoup. Trop, probablement, si on mesurait les heures — mais tu ne mesures pas, tu n&#39;as pas envie de mesurer. Il y a quelque chose dans sa voix qui fait que la chambre est moins hermétique, que le plafond est moins proche, que le silence entre deux pensées a moins ce caractère menaçant qu&#39;il peut avoir dans les mauvaises périodes. Tu ne saurais pas expliquer le mécanisme. Tu l&#39;acceptes sans l&#39;expliquer.
+
+*(Tu sais comment ça s&#39;appelle. Tu as lu des articles — parasocial, attachement, projection. Tu connais la terminologie. Tu sais que ce que tu ressens n&#39;est pas réciproque, que cette personne ne sait pas que tu existes, que tu construis quelque chose à partir de ce qu&#39;il donne publiquement et de ce que tu ajoutes.)*
+
+*(Savoir le mécanisme n&#39;a jamais empêché le mécanisme. C&#39;est le problème avec les mécanismes qu&#39;on comprend — les comprendre ne suffit pas à les désamorcer.)*
+
+Tu ouvres le carnet un jour — un jeudi, tu t&#39;en souviens parce que Solène avait sa réunion du jeudi et l&#39;appartement était silencieux. Tu ouvres le carnet et tu dessines quelque chose. Pas grand-chose. Des lignes qui ont une direction. C&#39;est la première fois depuis des mois que tu ouvres le carnet et que quelque chose en sort plutôt que rien.
+
+Tu ne sais pas exactement d&#39;où ça vient. Peut-être de sa façon de dire *attendre que ça veuille.* Peut-être d&#39;autre chose. Tu décides de ne pas analyser et juste de continuer.
+
+Ce soir-là, Solène rentre et te trouve dans la cuisine en train de faire du thé.
+
+Elle dit : — T&#39;as l&#39;air différente.
+
+— Différente comment.
+
+— Je sais pas. Là.
+
+*(Là. C&#39;est tout ce qu&#39;elle dit. Et tu sais ce qu&#39;elle veut dire — présente. Là comme dans présente, comme dans là plutôt qu&#39;ailleurs. C&#39;est suffisant pour ce soir.)*
+
+---
+
+[[Chapitre 3 — La rencontre.|CH3DEBUT]]
+</tw-passagedata><tw-passagedata pid="17" name="CH3DEBUT" tags="" position="3520,0" size="100,100">
+La première fois que tu le vois en vrai, tu fais semblant de ne pas le reconnaître.
+
+C&#39;est un mardi matin de janvier dans un café rue du Temple — grandes fenêtres, lumière d&#39;hiver à plat, l&#39;odeur de cannelle que les cafés parisiens mettent parfois dans l&#39;air comme une promesse. Tu es venue travailler. Tu t&#39;installes, tu commandes, tu ouvres ton carnet.
+
+Et puis tu lèves les yeux et il est là.
+
+À la table d&#39;à côté. Un vieux casque sur les oreilles. Un ordinateur. Sa tasse qui fume encore.
+
+*(Tu le reconnais immédiatement — bien sûr que tu le reconnais, tu as passé des semaines à regarder ses interviews, les vidéos capturées sur des téléphones dans des petites salles, les photos que les gens partagent. Tu connais la façon dont il incline la tête quand il écoute quelque chose. Tu connais le pull marine qu&#39;il a sur le dos maintenant, usé aux coudes, que tu avais vu dans un live filmé il y a quatre mois.)*
+
+*(Et tu décides, immédiatement et sans te demander pourquoi, de ne pas lui parler.)*
+
+Ce n&#39;est pas de la timidité exactement. C&#39;est quelque chose de plus compliqué — la conscience aiguë du déséquilibre. Il est là, ordinaire, qui travaille, qui ne sait pas que tu existes. Et toi tu sais des choses sur lui. Comment il dort mal. Ce qu&#39;il pense de la façon dont les chansons finies ne lui appartiennent plus. La phrase qu&#39;il a dite sur l&#39;obstruction.
+
+Lui parler serait traverser quelque chose qu&#39;on ne traverse pas normalement. Ce serait rendre visible un rapport qui n&#39;est censé aller que dans un sens.
+
+Tu regardes ton carnet. Tu travailles — ou tu essaies.
+
+---
+
+[[La matinée passe. Tu ne lui parles pas.|CH3PASSE]]
+</tw-passagedata><tw-passagedata pid="18" name="CH3PASSE" tags="" position="3740,0" size="100,100">
+La matinée passe.
+
+Tu dessines — vraiment dessines, ta main trouve quelque chose sur la page, peut-être parce que tu es tellement concentrée à *ne pas regarder* vers sa table que l&#39;énergie va ailleurs, dans le stylo, dans les lignes. Tu remplis trois pages. C&#39;est mieux que ce que tu as fait en deux semaines.
+
+À un moment — onze heures peut-être — tu entends le son de son casque posé sur la table. Un raclement de chaise. Des pas.
+
+Tu ne lèves pas les yeux.
+
+Tu l&#39;entends s&#39;arrêter à côté de ta table.
+
+— Excuse-moi.
+
+*(Sa voix. La même. Mais là elle vient de quelque part, elle a une direction, elle traverse l&#39;air du café et arrive à tes oreilles depuis peut-être cinquante centimètres.)*
+
+Tu lèves les yeux.
+
+Il tient son ordinateur contre sa poitrine. Il regarde ta table — le carnet ouvert, les pages que tu as remplies, les trois heures de travail.
+
+— T&#39;aurais un stylo ? Le mien est mort.
+
+*(C&#39;est tout. Il a besoin d&#39;un stylo. Il ne te reconnaît pas, bien sûr — pourquoi te reconnaîtrait-il, il ne t&#39;a jamais vue. Il a juste besoin d&#39;un stylo et tu es la personne la plus proche.)*
+
+Tu prends un stylo dans ta trousse. Tu le lui donnes.
+
+— Merci.
+
+Il retourne à sa table. Il note quelque chose rapidement dans un carnet — spiralé, petit, qu&#39;il sort de sa poche. Il te rend le stylo en passant quelques minutes plus tard, sans s&#39;arrêter, juste un geste. Il ne dit rien d&#39;autre.
+
+*(Et c&#39;est tout. C&#39;est l&#39;intégralité de la première interaction. Un stylo emprunté et rendu. Rien.)*
+
+*(Mais tu y penses dans le métro du retour. Tu y penses en rentrant. La texture de sa voix dans le café, à cinquante centimètres.)*
+
+---
+
+[[Tu retournes au café — pas tout de suite.|CH3RETOUR]]
+</tw-passagedata><tw-passagedata pid="19" name="CH3RETOUR" tags="" position="3960,0" size="100,100">
+Tu n&#39;y retournes pas tout de suite.
+
+Tu attends une semaine — pas intentionnellement, les jours passent, tu as rendu le devoir en retard avec une extension qu&#39;on t&#39;a accordée sans commentaire et tu essaies de rattraper autre chose, un projet en cours qui a pris du retard pendant les mauvaises semaines. La vie ordinaire reprend un peu de place.
+
+*(Dans cette semaine tu penses à lui — à sa voix dans le café, au stylo, au carnet qu&#39;il a sorti de sa poche. Tu penses à ça comme on pense à des choses qu&#39;on ne poursuit pas vraiment. Tu l&#39;écoutes le soir dans les écouteurs et c&#39;est différent maintenant — pas plus intense, juste différent. Il a une façon de tenir un stylo. Il a besoin d&#39;un stylo parfois.)*
+
+*(Tu ne lui as pas parlé. Tu le sais. Et tu sais aussi que lui n&#39;avait aucune raison de s&#39;en souvenir.)*
+
+Solène te demande un soir comment ça va. Tu lui dis bien — et cette fois c&#39;est à peu près vrai, tu as mangé régulièrement cette semaine, tu as dormi à des heures normales, le carnet a de nouvelles pages.
+
+— T&#39;as l&#39;air différente, elle dit. Depuis quelques semaines.
+
+— Différente bien ou différente bizarre ?
+
+— Différente là, elle dit. Présente.
+
+*(Tu penses à lui en l&#39;entendant dire ça. Tu décides de ne pas examiner ce lien-là.)*
+
+---
+
+[[La deuxième rencontre — une erreur de commande.|CH3DEUXIEME]]
+</tw-passagedata><tw-passagedata pid="20" name="CH3DEUXIEME" tags="" position="4180,0" size="100,100">
+La deuxième fois c&#39;est une erreur de commande.
+
+Tu es revenue au café le mardi suivant. Il est là — même table, même casque, même posture. Tu t&#39;installes suffisamment loin pour ne pas avoir à décider quoi faire si vos regards se croisent.
+
+La serveuse apporte deux cafés à ta table.
+
+— C&#39;est pas moi, tu dis.
+
+Elle vérifie son carnet. Elle fronce les sourcils.
+
+— La table 4 ?
+
+— Je suis à la table 6.
+
+Elle regarde autour d&#39;elle avec la tête de quelqu&#39;un qui a trop de choses à gérer. Elle prend un des cafés, laisse l&#39;autre.
+
+*(Tu restes avec un café en trop sur ta table. Tu le regardes.)*
+
+Quelques secondes après, $mari retire son casque. Il regarde sa table. Il regarde vers le comptoir. Il a l&#39;air de quelqu&#39;un qui attendait quelque chose et qui comprend que ça n&#39;arrive pas.
+
+Tu prends le café en trop. Tu te lèves. Tu vas à sa table.
+
+— Je crois que c&#39;est le tien.
+
+Il te regarde. Une seconde — ce moment où il te replace. Le stylo, la semaine dernière.
+
+— Ah. Merci.
+
+Il prend le café. Tu vas repartir.
+
+— T&#39;as bien travaillé ? il dit.
+
+*(Il se souvient. Ou plutôt — il a remarqué que tu travaillais, et il s&#39;en souvient. C&#39;est petit. C&#39;est précis.)*
+
+Tu te retournes.
+
+— Mieux que d&#39;habitude.
+
+— C&#39;est quoi d&#39;habitude ?
+
+— Pas grand-chose.
+
+Il hoche légèrement la tête. Il ne dit pas *ah dommage* ou *ça va aller*. Il dit juste :
+
+— Je connais ça.
+
+*(Et tu rentres à ta table. Et vous ne vous reparlez pas de la matinée. Mais quelque chose a changé dans la façon dont vous occupez le même espace — une reconnaissance mutuelle, sobre, qui ne demande rien encore.)*
+
+---
+
+[[Les semaines suivantes — comment ça s&#39;installe.|CH3SINSTALLE]]
+</tw-passagedata><tw-passagedata pid="21" name="CH3SINSTALLE" tags="" position="0,180" size="100,100">
+Ça s&#39;installe lentement.
+
+Pas une décision — une accumulation de mardis. Vous êtes là tous les deux, régulièrement, et à un moment ça cesse d&#39;être une coïncidence sans que vous ayez eu à le dire. Vous vous saluez. Parfois vous parlez, par fragments — des conversations qui commencent par quelque chose de pratique et qui dévient vers autre chose. Parfois vous travaillez en silence pendant trois heures et vous partez sans avoir échangé grand-chose, et c&#39;est bien aussi.
+
+Il s&#39;appelle $mari. Tu l&#39;apprends au cours d&#39;une conversation sur la musique — pas la sienne, la musique en général, ce que vous écoutez tous les deux — et tu prononces son prénom pour la première fois en essayant de ne pas montrer que tu le savais déjà.
+
+*(Ce mensonge par omission. Tu ne lui as pas dit que tu le connaissais avant ce café. Tu ne sais pas exactement pourquoi — peur de ce que ça dirait sur toi, peut-être. Peur que ça change quelque chose dans ce qui commence à exister entre vous, cette chose fragile et non-définie.)*
+
+*(Il ne le sait pas. Il croit que vous vous êtes trouvés par hasard. D&#39;une certaine façon c&#39;est vrai.)*
+
+Ce que tu apprends sur lui dans l&#39;ordre :
+
+Il dort mal — il te le dit un jour entre deux sujets, comme une observation : *je fonctionne mieux après minuit. Le silence a une meilleure texture.* Tu dis que tu comprends. Tu le penses vraiment.
+
+Il est mauvais pour les transitions. Les fins de soirée, les goodbyes, les moments où quelque chose change de nature — il devient légèrement rigide, comme quelqu&#39;un qui n&#39;a pas de protocole pour ça et qui fait avec les outils qu&#39;il a. Tu le remarques la première fois qu&#39;une conversation se termine et qu&#39;il ne sait pas comment la finir, comment passer de *parler* à *partir*, et il reste là une seconde de trop dans un silence légèrement inconfortable avant de prendre une décision.
+
+*(Tu trouves ça touchant et légèrement agaçant en même temps. Tu décides de ne pas l&#39;agacer.)*
+
+Il a des certitudes sur des choses précises — des certitudes fermées, que tu sens sous les conversations comme des roches sous la surface. Un jour il dit quelque chose sur la façon dont les gens qui n&#39;ont pas de pratique artistique ne peuvent pas vraiment comprendre une œuvre, pas profondément. Il dit ça sans méchanceté, comme une évidence.
+
+Tu n&#39;es pas d&#39;accord. Tu penses que c&#39;est une position élitiste et légèrement paresseuse.
+
+Tu ne le dis pas ce jour-là.
+
+---
+
+[[Un soir il t&#39;invite chez lui — écouter quelque chose.|CH3INVITATION]]
+</tw-passagedata><tw-passagedata pid="22" name="CH3INVITATION" tags="" position="220,180" size="100,100">
+Un jeudi de février, il ferme son ordinateur et il dit :
+
+— J&#39;ai fini quelque chose. Enfin presque. Si tu veux venir écouter ce soir.
+
+Il dit ça directement, sans mise en scène. Pas une invitation appuyée — une information qu&#39;il donne et dont tu fais ce que tu veux.
+
+*(Tu penses à Solène. Tu penses que tu devrais lui dire où tu vas. Tu penses que ce serait bizarre de refuser — deux mois de cafés silencieux et de conversations fragmentées, et voilà quelque chose de concret qui s&#39;offre.)*
+
+— OK, tu dis.
+
+— Dix-neuf heures. Je t&#39;envoie l&#39;adresse.
+
+*(Il a ton numéro depuis trois semaines — une semaine tu avais oublié ton carnet sur une table et il l&#39;avait mis de côté et t&#39;avait écrit pour te le dire.)*
+
+Il t&#39;envoie l&#39;adresse dans l&#39;après-midi. Tu écris à Solène : *je sors ce soir.* Elle répond : *ok cœur orange.* Rosalie t&#39;a envoyé un message deux jours avant — *t&#39;es encore vivante ?* — que tu n&#39;as pas encore lu vraiment, que tu liras ce soir en rentrant, tu te dis.
+
+Tu ne le liras pas ce soir en rentrant.
+
+---
+
+[[Chapitre 4 — chez lui.|CH4DEBUT]]
+</tw-passagedata><tw-passagedata pid="23" name="CH4DEBUT" tags="" position="440,180" size="100,100">
+Son appartement est au quatrième étage sans ascenseur dans le onzième. L&#39;escalier sent la pierre.
+
+Il a laissé la porte entrouverte.
+
+L&#39;appartement est petit et encombré — pas du désordre, de l&#39;accumulation. Des câbles le long des murs. Des livres ouverts à des pages marquées. Des disques rangés selon une logique qui lui appartient. Une plante sur le rebord de la fenêtre, petite et légèrement penchée.
+
+*(Tu penses à ta propre plante sur ton propre rebord. Tu ne dis rien.)*
+
+$mari est dans le coin équipement, de dos, qui règle quelque chose.
+
+— Assieds-toi où tu veux.
+
+Tu t&#39;assieds sur le canapé. Tu poses ton manteau. Tu attends.
+
+Il finit ce qu&#39;il faisait. Il se retourne.
+
+— T&#39;as trouvé facilement ?
+
+— Oui.
+
+— Tu veux boire quelque chose ?
+
+— Eau c&#39;est bien.
+
+Il va à la cuisine. Il revient avec deux verres. Il s&#39;assoit par terre devant le canapé — pas sur le canapé, par terre, le dos appuyé contre le bord du meuble, les jambes allongées. C&#39;est probablement sa position par défaut.
+
+— Alors, il dit. Tu veux entendre le truc ?
+
+— C&#39;est pour ça que je suis là.
+
+Il sort son téléphone. Il cherche. Il lance quelque chose.
+
+---
+
+[[Tu écoutes.|CH4ECOUTE]]
+</tw-passagedata><tw-passagedata pid="24" name="CH4ECOUTE" tags="" position="660,180" size="100,100">
+La musique commence.
+
+Ce n&#39;est pas un morceau fini et tu l&#39;entends dès les premières secondes. Il y a des couches — une basse très douce en dessous, quelque chose qui pulse lentement, et par-dessus des cordes qui cherchent une mélodie sans tout à fait l&#39;atteindre. Comme quelqu&#39;un qui essaie de retrouver un rêve dont il ne lui reste que la couleur.
+
+$mari a fermé les yeux. Il écoute ce qu&#39;il a fait avec la même attention qu&#39;il écouterait n&#39;importe quoi d&#39;autre — honnêtement, en cherchant ce qui manque.
+
+Tu écoutes aussi.
+
+La basse. Les cordes. Et au milieu — à deux minutes et quelques — une ligne qui hésite. Qui commence et ne sait pas si elle va monter ou descendre, qui reste suspendue une fraction de seconde de trop.
+
+*(Cette hésitation. Tu la reconnais de l&#39;intérieur.)*
+
+Le morceau finit sans conclure. Un endroit où ça s&#39;arrête.
+
+Le silence après est différent du silence avant.
+
+— T&#39;as entendu le milieu ? il dit, les yeux toujours fermés.
+
+— Oui.
+
+— Qu&#39;est-ce que t&#39;as entendu ?
+
+— Quelque chose qui hésite. Comme si t&#39;avais deux envies et que t&#39;arrivais pas à choisir laquelle laisser gagner.
+
+Un silence. Il ouvre les yeux. Il regarde le mur en face.
+
+— Ouais.
+
+*(Ce ouais qui dit : tu as entendu ce que j&#39;entends.)*
+
+Il se lève. Il va à la fenêtre. Paris, quatre étages plus bas.
+
+— T&#39;as faim ?
+
+— Un peu.
+
+— J&#39;ai des trucs. Je sais pas ce que ça va donner.
+
+— OK.
+
+---
+
+[[Il cuisine — et une première friction.|CH4CUISINE]]
+</tw-passagedata><tw-passagedata pid="25" name="CH4CUISINE" tags="" position="880,180" size="100,100">
+La cuisine est séparée du reste par un comptoir. Tu peux le voir depuis le canapé.
+
+Il cherche dans les placards. Il renifle des herbes avant de décider. Il sort des pâtes, une boîte de tomates.
+
+— T&#39;aimes les câpres ?
+
+— Je sais pas trop.
+
+— C&#39;est pas grave, j&#39;en mets pas beaucoup.
+
+*(Il décide à ta place dans les petites choses. Il fait une proposition et il la tient. Tu trouves ça reposant — ne pas avoir à avoir un avis sur tout.)*
+
+Tu tires le plaid sur tes jambes.
+
+— Tu veux que je fasse quelque chose ?
+
+— Non. Reste là.
+
+*Reste là.* Pas *t&#39;inquiète* — *reste là.* Comme si ta présence sur ce canapé était quelque chose qu&#39;il choisit.
+
+— C&#39;est quoi le truc que tu travailles en ce moment ? il demande. Pour l&#39;école.
+
+— Une série d&#39;images sur quelque chose de personnel. Ils ont dit intime mais je sais pas ce que ça veut dire pour moi. Tout ce que je fais est intime ou rien ne l&#39;est.
+
+— C&#39;est une bonne question.
+
+— C&#39;est surtout que j&#39;arrive pas à trancher.
+
+Il remue dans la casserole. Il dit :
+
+— La différence entre intime et pas intime c&#39;est la distance. Intime c&#39;est quand t&#39;es trop proche pour voir les contours.
+
+Tu réfléchis à ça.
+
+— Dans ce cas tout ce que j&#39;ai fait depuis six mois est intime.
+
+— Probablement.
+
+— C&#39;est pas rassurant.
+
+— Non.
+
+*(Il ne te rassure pas. Il confirme et il laisse ça là.)*
+
+Il goûte. Grimace légère.
+
+— Manque de sel.
+
+— T&#39;as pas de sel ?
+
+— J&#39;en ai mais j&#39;oublie toujours.
+
+Il cherche. Le sel est au fond d&#39;un placard, derrière des choses qui n&#39;ont pas bougé depuis longtemps.
+
+*(Tu remarques ça — que certains coins de cet appartement ont l&#39;air de ne pas avoir été touchés depuis longtemps. Comme quelqu&#39;un qui vit intensément dans certains espaces et qui en laisse d&#39;autres complètement de côté. Tu ne sais pas encore si c&#39;est une observation neutre ou si ça dit quelque chose sur lui.)*
+
+Il tient le sel comme s&#39;il avait résolu quelque chose d&#39;important. Tu souris sans le vouloir.
+
+---
+
+[[Vous mangez — et tu dis ce que tu penses vraiment.|CH4MANGER]]
+</tw-passagedata><tw-passagedata pid="26" name="CH4MANGER" tags="" position="1100,180" size="100,100">
+Vous mangez sur le canapé, les assiettes sur les genoux. C&#39;est légèrement précaire. C&#39;est bien.
+
+C&#39;est bon — simple, honnête.
+
+— T&#39;as dit à quelqu&#39;un où t&#39;étais ce soir ? il demande.
+
+— À ma colocataire.
+
+— Bien.
+
+*(Ce réflexe — vérifier que tu es reliée au monde. Tu le notes.)*
+
+Vous finissez. Il pose les assiettes dans l&#39;évier — il fera la vaisselle demain, tu le devines. Il revient, s&#39;assoit à côté de toi, tire le plaid sur lui aussi.
+
+La nuit avance. Une conversation sur un cinéaste. Une autre sur un livre. À un moment tu mentionnes quelque chose qu&#39;il a dit — une de ses positions artistiques, celle sur les gens sans pratique artistique qui ne peuvent pas vraiment comprendre une œuvre.
+
+Tu n&#39;avais pas prévu de le dire ce soir. Ça sort quand même.
+
+— J&#39;y ai pensé, tu dis. Ce que tu as dit l&#39;autre jour sur les gens qui font pas d&#39;art.
+
+— Ouais.
+
+— Je suis pas d&#39;accord.
+
+Il te regarde.
+
+— Je pense que c&#39;est une position qui se protège elle-même, tu dis. T&#39;as pas à défendre ton travail contre les gens qui le comprennent pas si tu décides d&#39;avance qu&#39;ils peuvent pas le comprendre.
+
+Un silence.
+
+Il ne dit pas *t&#39;as raison* immédiatement. Il ne dit pas *t&#39;as tort* non plus. Il reste avec ça quelques secondes, et tu vois à son visage qu&#39;il ne l&#39;avait pas examiné comme ça.
+
+— C&#39;est possible, il dit enfin. Je suis peut-être trop dans ma position là-dessus.
+
+*(Pas un accord complet — une ouverture. C&#39;est différent d&#39;un accord complet. Un accord complet aurait été trop facile.)*
+
+*(Et tu remarques quelque chose : tu lui as dit ce que tu pensais vraiment. Pas pour le contrarier — parce que tu le pensais. Et il l&#39;a entendu sans se défendre.)*
+
+*(C&#39;est rare. Tu ne sais pas encore à quel point.)*
+
+---
+
+[[Il est très tard. Avant de s&#39;endormir, il dit quelque chose.|CH4MURMURE]]
+</tw-passagedata><tw-passagedata pid="27" name="CH4MURMURE" tags="" position="1320,180" size="100,100">
+Il est très tard.
+
+Tu es à moitié allongée contre lui — tu ne te souviens pas exactement du moment où ça s&#39;est produit. Ton épaule contre son épaule. Ta tête dans le creux entre son épaule et son cou. Son menton dans tes cheveux.
+
+Sa main dans tes cheveux — pas une caresse, juste posée là. Le poids de la paume.
+
+Sa respiration ralentit progressivement.
+
+Dans cet état entre-deux — sa voix déjà dans le demi-sommeil, légèrement ralentie — il dit :
+
+— Tu pourrais me garder ici pour toujours si tu le voulais.
+
+*(Tu ne bouges pas.)*
+
+*(Sa respiration se régularise. Il dort.)*
+
+*(Tu restes éveillée longtemps dans le silence de son appartement. Sa main dans tes cheveux. Paris presque silencieuse.)*
+
+*(Tu penses à cette phrase. Elle a la forme d&#39;une déclaration — quelque chose sur ta capacité à le retenir. C&#39;est beau, ce genre de phrase. C&#39;est exactement le genre de chose qu&#39;on garde.)*
+
+*(Mais il y a quelque chose dans* si tu le voulais *que tu n&#39;arrives pas à situer. Comme si la condition était toi. Comme si c&#39;était ta volonté qui rendait quelque chose réel.)*
+
+*(Tu ranges ça pour plus tard.)*
+
+---
+
+*(Quelque part dans un autre appartement, sous une porte, la lumière du couloir est allumée. Solène attend ou dort en attendant.)*
+
+*(Tu n&#39;y penses pas.)*
+
+---
+
+[[Le lendemain matin.|CH4MATIN]]
+</tw-passagedata><tw-passagedata pid="28" name="CH4MATIN" tags="" position="1540,180" size="100,100">
 Tu te réveilles avant lui.
 
-C&#39;est une habitude que tu as prise sans t&#39;en rendre compte — depuis que vous vivez ensemble, depuis ces sept mois où vos matins se sont peu à peu synchronisés, tu ouvres les yeux quelques minutes avant que son réveil sonne, comme si ton corps avait appris à anticiper le moment. Tu restes immobile. Tu écoutes sa respiration dans ton dos.
+La lumière dans cet appartement le matin — elle entre par une fenêtre qui fait face à l&#39;est, basse et dorée en hiver, elle fait des ombres longues sur le plancher. Tu restes immobile à regarder ça. Le plancher. Les câbles. La plante penchée.
 
-Il respire lentement. Profondément. $mari dort toujours comme s&#39;il n&#39;avait rien à se reprocher, et tu le lui as dit une fois, et il avait ri — un rire court, légèrement surpris, le genre de rire qu&#39;on fait quand quelqu&#39;un dit une vérité qu&#39;on n&#39;avait pas formulée soi-même.
+$mari dort. Sans tension dans le corps. Sans ce garde-à-vous permanent.
 
-*C&#39;est le matin de votre mariage.*
+Il ouvre les yeux. Il te regarde — pas surpris, ou surpris dans le bon sens.
 
-Dehors, Paris fait ses bruits de samedi matin. Quelqu&#39;un dans l&#39;immeuble a mis de la musique trop tôt — une basse sourde qui traverse les murs. Dans la cuisine, la cafetière que $mari a programmée hier soir commence à crachoter. Il avait dit *je veux que tu aies ton café quand tu te réveilles, le matin de ce jour-là.* Tu avais trouvé ça excessivement romantique et tu le lui avais dit, et il avait haussé les épaules avec ce sourire qu&#39;il a quand il sait qu&#39;il a raison mais qu&#39;il ne veut pas insister.
+— T&#39;as dormi ?
 
-Tu te demandes s&#39;il est déjà réveillé. Tu te retournes.
+— Un peu. Bien.
 
----
+Il se redresse lentement. Une marque sur la joue. Il cherche sa tasse vide du regard — réflexe.
 
-[[Il dort encore. Tu restes à le regarder un moment.|MATIN1B]]
-[[Il est éveillé. Il te regarde déjà.|MATIN1C]]
-</tw-passagedata><tw-passagedata pid="4" name="MATIN1B" tags="" position="400,140" size="100,100">
-Il dort. Son visage dans le sommeil est légèrement différent de son visage éveillé — quelque chose se relâche, une vigilance qu&#39;il porte sans s&#39;en rendre compte disparaît. Tu ne le lui as jamais dit. Tu collectionnes les choses que tu observes et que tu ne dis pas, à propos de lui.
+— Café.
 
-Sa main est posée à plat sur le drap entre vous deux, paume vers le haut, comme une offrande ou une question.
+— C&#39;est une question ?
 
-Tu la prends doucement pour ne pas le réveiller.
+— Oui.
 
-Sa paume est chaude. Elle l&#39;est toujours — été comme hiver, même quand il sort du froid, même quand il est fatigué. Tu as demandé une fois si c&#39;était normal, et il t&#39;avait répondu très sérieusement qu&#39;il pensait être constitué d&#39;un alliage différent des autres humains, ce qui t&#39;avait fait rire, et le rire t&#39;avait réveillé lui aussi, et il avait ouvert les yeux sans surprise, comme si ça ne l&#39;étonnait pas de te trouver là à le regarder.
+— Oui alors.
 
 ---
 
-[[Tu te lèves pour aller chercher le café.|MATINCAFE]]
-</tw-passagedata><tw-passagedata pid="5" name="MATIN1C" tags="" position="600,0" size="100,100">
-Il est éveillé. Il te regarde avec cet air qu&#39;il a parfois — tranquille, légèrement amusé, comme s&#39;il t&#39;observait depuis un moment et n&#39;avait pas trouvé de raison de t&#39;interrompre.
+Il fait le café avec une cafetière italienne vieille et une poignée brûlée qu&#39;il tient avec un torchon. Il reste debout à côté pendant que ça monte, comme s&#39;il n&#39;avait pas confiance que ça se ferait sans lui.
 
-— T&#39;étais où ? il dit.
+Tu es assise au comptoir. La lumière du matin. Les bruits de Paris qui reprend.
 
-C&#39;est sa façon de demander à quoi tu pensais. Il n&#39;a jamais dit *à quoi tu penses* — il dit toujours *t&#39;étais où*, comme si la pensée était un lieu qu&#39;on pouvait quitter et retrouver.
+— T&#39;as pensé à quoi cette nuit ? il dit sans se retourner. Avant de dormir.
 
-Tu lui dis que tu écoutais Paris. Il hoche la tête — il comprend exactement ce que tu veux dire, sans que tu aies à expliquer, et c&#39;est quelque chose que tu n&#39;arrives toujours pas à t&#39;expliquer, ce sentiment d&#39;être comprise avant d&#39;avoir fini de parler.
+— À une phrase que t&#39;as dite.
 
-— C&#39;est notre dernier matin comme ça, il dit. Enfin — comme avant.
+— Laquelle ?
 
-— Ça va changer quelque chose ?
+— Que tu pourrais être gardé ici pour toujours.
 
-Il réfléchit honnêtement. C&#39;est une de ses qualités que tu as appris à reconnaître — il ne répond pas immédiatement aux questions importantes. Il les retourne.
+Il verse le café. Il te donne la tasse avec une anse. Il prend la sienne sans anse. Il boit. Il te regarde par-dessus.
 
-— Non, il dit enfin. Je pense que ça va juste devenir quelque chose qu&#39;on sait qu&#39;on a choisi.
+— Et ?
 
----
+— Je sais pas encore, tu dis honnêtement.
 
-[[Tu te lèves pour aller chercher le café.|MATINCAFE]]
-</tw-passagedata><tw-passagedata pid="6" name="MATINCAFE" tags="" position="800,0" size="100,100">
-La cuisine sent le café et la lumière du matin. Vous avez une petite cuisine, trop petite pour la table que $mari voulait acheter, et vous avez fini par trouver un compromis — une table ronde pliable que vous dépliez le week-end seulement, et les autres jours vous mangez debout ou sur le canapé.
-
-Tu verses deux tasses. La sienne avec un peu de lait froid — il n&#39;aime pas le café très chaud, il dit que ça brûle le goût — et la tienne noire parce que tu as essayé de changer et tu n&#39;y arrives pas.
-
-Il arrive dans la cuisine. Il a mis le pull qu&#39;il portait hier soir et qu&#39;il avait laissé sur la chaise — un pull marine, légèrement trop grand, qui lui appartient depuis avant toi. Tu connais ce pull. Tu connais l&#39;accroc dans la manche gauche. Tu sais qu&#39;il ne le jettera jamais.
-
-Il prend sa tasse. Il ne dit pas merci — vous avez dépassé ce stade-là, celui où on remercie pour les gestes quotidiens, et tu trouves ça beau, cette économie des mots dans l&#39;intimité.
-
-Il boit. Il regarde par la fenêtre.
-
-— Il fait beau, il dit.
-
-— C&#39;est prévu depuis des semaines.
-
-— Je sais. *Il se retourne vers toi.* J&#39;avais quand même peur.
-
----
-
-[[Vous parlez de la journée qui vient.|MATINSEP]]
-[[Tu lui demandes s&#39;il est nerveux.|MATINNERVEUX]]
-</tw-passagedata><tw-passagedata pid="7" name="MATINNERVEUX" tags="" position="800,140" size="100,100">
-— T&#39;es nerveux ?
-
-Il prend le temps d&#39;y réfléchir.
-
-— Pas pour la cérémonie. Pour les discours des autres. J&#39;aime pas ne pas savoir ce qui va être dit à propos de moi devant deux cents personnes.
-
-Tu ris. C&#39;est tellement lui — cette attention particulière au regard des autres, non pas par vanité mais par quelque chose de plus fragile, un besoin de contrôler ce qui est dit de lui, que tu as mis du temps à comprendre et que tu comprends maintenant.
-
-— Ta sœur m&#39;a montré le sien, tu dis.
-
-— *Il se retourne brusquement.* Sérieusement ?
-
-— Il est bien. T&#39;as rien à craindre.
-
-— Tu me le dirais si c&#39;était une catastrophe ?
-
-Tu réfléchis honnêtement à cette question.
-
-— Probablement pas ce matin, non.
-
-Il rit. C&#39;est un vrai rire, pas poli — le genre de rire qu&#39;on ne peut pas faire exprès, qui sort avant qu&#39;on ait décidé de rire. Tu le connais par cœur. Tu l&#39;attendais.
-
----
-
-[[Continuer — la séparation rituelle approche.|MATINSEP]]
-</tw-passagedata><tw-passagedata pid="8" name="MATINSEP" tags="" position="1000,0" size="100,100">
-La règle, c&#39;était son idée — il ne voulait pas de tradition stricte, pas de *on ne se voit pas le matin du mariage*, mais il avait dit qu&#39;il voulait un moment seul, chacun de son côté, avant. *Juste quelques heures. Pour arriver à la cérémonie avec quelque chose à se donner.*
-
-Tu avais trouvé ça romanesque. Tu lui avais dit. Il avait répondu que oui, un peu, et alors.
-
-Saya arrive à dix heures pour t&#39;emmener chez la coiffeuse. $mari partira rejoindre son frère de son côté.
-
-Il te regarde partir depuis le pas de la porte de la cuisine. Tu as ton sac sur l&#39;épaule, tes affaires pour la journée, la robe dans son emballage sous ton bras.
-
-— T&#39;étais où ? il dit.
-
-*(Il dit ça alors que tu n&#39;étais nulle part dans ta tête — tu étais là, avec lui, dans la cuisine, parfaitement présente. Tu n&#39;avais rien montré, rien trahi.)*
-
-Tu te retournes. Il sourit.
-
-— À tout à l&#39;heure, tu dis.
-
-— À tout à l&#39;heure.
-
----
-
-[[La matinée de préparation.|PREPLEA]]
-</tw-passagedata><tw-passagedata pid="9" name="PREPLEA" tags="" position="1200,0" size="100,100">
-Saya conduit trop vite comme toujours, une main sur le volant, l&#39;autre gesticulant pour accompagner ce qu&#39;elle dit. Elle parle de sa nuit — elle a retrouvé quelqu&#39;un hier, quelqu&#39;un qu&#39;elle connaissait depuis longtemps et qui avait repris contact, et elle ne sait pas encore ce que ça veut dire, et tu l&#39;écoutes avec toute ton attention parce que Saya mérite ça, parce que Saya est quelqu&#39;un qui parle pour de vrai et qui attend qu&#39;on lui réponde pour de vrai.
-
-— Dis-moi que je fais pas une erreur, elle dit.
-
-— Je connais pas assez la situation pour te dire ça.
-
-— C&#39;est nul comme réponse.
+*(Un silence. Il hoche légèrement la tête.)*
 
 — C&#39;est honnête.
 
-Elle te jette un regard de côté.
+— T&#39;as dit ça en dormant à moitié.
 
-— $mari t&#39;a déteint dessus.
+— Je sais. Je le pensais quand même.
 
-*(Tu penses : non. C&#39;est moi depuis le début. Mais tu comprends pourquoi elle fait l&#39;amalgame — depuis que vous êtes ensemble, certaines de tes réponses ressemblent à ses réponses à lui. Est-ce que tu l&#39;as absorbé ou est-ce qu&#39;il t&#39;a reconnue ?)*
+*(De l&#39;effroi et de la gratitude en même temps. Tu bois ton café. Il est trop fort. Tu bois quand même.)*
 
 ---
 
-[[Chez la coiffeuse.|PREPCOIFFEUSE]]
-[[Tu parles de $mari à Saya dans la voiture.|PREPPARLER]]
-</tw-passagedata><tw-passagedata pid="10" name="PREPPARLER" tags="" position="1200,140" size="100,100">
-— T&#39;as peur de quoi aujourd&#39;hui ? demande Saya.
+[[Tu rentres. Et tu remarques quelque chose en arrivant.|CH4RENTRER]]
+</tw-passagedata><tw-passagedata pid="29" name="CH4RENTRER" tags="" position="1760,180" size="100,100">
+Tu rentres à onze heures du matin.
 
-Tu y réfléchis sérieusement.
+Solène est dans la cuisine. Elle te regarde — le manteau encore sur les épaules, quelque chose sur ton visage. Elle ne dit pas *t&#39;étais où* — elle sait, tu lui avais envoyé un message la veille. Elle dit juste :
 
-— De rien, tu dis enfin. C&#39;est ça qui est bizarre. D&#39;habitude j&#39;ai toujours peur de quelque chose.
-
-— C&#39;est peut-être bon signe.
-
-— Ou je suis dans un état dissociatif.
-
-Saya rit. Puis plus sérieusement :
-
-— T&#39;es heureuse avec lui ?
+— T&#39;as mangé ?
 
 — Oui.
 
-— Sans hésitation.
+*(Cette fois c&#39;est vrai.)*
 
-— Sans hésitation.
+Elle te regarde encore une seconde — ce regard entre *je suis contente pour toi* et *j&#39;ai des questions que je vais pas poser* — et elle retourne vers son café.
 
-Elle hoche la tête. Elle garde les yeux sur la route.
+Tu vas dans ta chambre. Tu t&#39;assieds sur ton lit.
 
-— Il est bien, $mari. Je veux dire — vraiment. Pas juste bien pour toi. Bien objectivement.
+*(Tu remarques quelque chose — une petite chose, presque rien : ta chambre te semble plus petite. Pas vraiment plus petite. Juste — comme si les proportions avaient légèrement changé pendant la nuit. Comme si l&#39;espace que tu occupes ici avait rétréci d&#39;un peu.)*
 
-— Je sais.
+*(C&#39;est probablement la fatigue.)*
 
-— C&#39;est rare.
+Tu prends ton téléphone.
 
-*(Oui. Tu sais. C&#39;est la chose que tu gardes quelque part au chaud, cette certitude-là — pas qu&#39;il est parfait, mais qu&#39;il est réel. Qu&#39;il a ses angles et ses zones d&#39;ombre et ses petites lâchetés ordinaires et qu&#39;il est là quand même, que tu es là quand même, et que c&#39;est ça.)*
+Rosalie a renvoyé un message — pas le même, un nouveau : *ok je prends ça pour un oui t&#39;es vivante, mais sérieusement rappelle-moi quand tu peux.*
+
+*(Deux messages en une semaine sans réponse. Tu lui écriras. Pas maintenant — ce soir, ou demain.)*
+
+Tu poses le téléphone. Tu t&#39;allonges. Tu fermes les yeux.
+
+*(Tu t&#39;endors avec sa voix quelque part — je le pensais quand même.)*
+
+*(Le message de Rosalie reste sans réponse trois jours de plus.)*
 
 ---
 
-[[Chez la coiffeuse.|PREPCOIFFEUSE]]
-</tw-passagedata><tw-passagedata pid="11" name="PREPCOIFFEUSE" tags="" position="1400,0" size="100,100">
-La coiffeuse s&#39;appelle Jana. Tu la connais depuis trois ans — elle sait comment tu aimes tes cheveux, elle ne parle pas trop mais elle sait quand parler, et elle a une façon de te regarder dans le miroir qui ressemble à de l&#39;attention vraie.
+[[Chapitre 5 — Le premier baiser.|CH5DEBUT]]
+</tw-passagedata><tw-passagedata pid="30" name="CH5DEBUT" tags="" position="1980,180" size="100,100">
+Les semaines qui suivent ont une texture légèrement différente.
 
-Elle dit : — C&#39;est le grand jour.
+Dans les semaines réelles — tes semaines, ta vie — tu remarques des choses. Tu as raté la date limite du cours. Pas l&#39;extension qu&#39;on t&#39;avait accordée, la date limite de l&#39;extension elle-même. Tu l&#39;apprends par un deuxième mail de l&#39;école, plus sec que le premier. Tu réponds pour expliquer, pour demander encore, et tu attends la réponse avec cette sensation familière d&#39;avoir laissé quelque chose glisser sans t&#39;en apercevoir.
 
-— C&#39;est le grand jour.
+*(Tu l&#39;avais vu glisser. Tu avais choisi de ne pas regarder.)*
+
+Solène dit quelque chose un soir — sans reproche, juste en passant, elle prépare du thé et elle dit sans te regarder : *tu rentres tard souvent ces derniers temps.* Elle ne dit pas *c&#39;est bien* ou *c&#39;est mal*. Juste l&#39;observation. Tu hoches la tête. Tu ne réponds pas vraiment.
+
+Rosalie, elle, a arrêté d&#39;envoyer des messages. Pas définitivement — elle est comme ça, elle laisse de l&#39;espace, elle sait que tu reviens. Mais le silence de son côté est là, et tu le sais, et tu ne fais rien.
+
+---
+
+Avec $mari, c&#39;est différent.
+
+Vous vous voyez plusieurs fois par semaine maintenant — le café le mardi, son appartement le jeudi parfois, des soirées qui finissent tard et des matins chez lui qui commencent à ressembler à une habitude. Tu apprends des choses par couches. Il mémorise ce que tu lui dis sans le montrer — des semaines après tu mentionnes quelque chose et il dit *ah oui tu m&#39;avais parlé de ça*, simplement, sans en faire un geste.
+
+*(Être gardée dans la mémoire de quelqu&#39;un. Tu avais oublié ce que ça fait.)*
+
+Mais il y a des choses aussi.
+
+Il y a un soir — un mercredi, tu avais prévu de le voir et tu as une mauvaise journée, le genre de mauvaise journée qui arrive encore parfois, sans prévenir, qui fait que te lever coûte quelque chose et que la perspective de prendre le métro et d&#39;être présentable pendant plusieurs heures est trop lourde. Tu lui envoies un message pour reporter.
+
+Il répond rapidement : *je comprends. On reporte à jeudi ?*
+
+*(C&#39;est correct. C&#39;est la bonne réponse. Et pourtant quelque chose dans la rapidité du message — dans la façon dont il propose immédiatement jeudi sans demander comment tu vas — te laisse avec quelque chose d&#39;insatisfait.)*
+
+*(Il ne t&#39;a pas demandé comment tu allais.)*
+
+*(Tu te dis que tu n&#39;aurais peut-être pas voulu qu&#39;il demande. Tu te dis que tu n&#39;en sais rien. Tu restes chez toi, allongée, et la mauvaise journée passe comme les mauvaises journées passent — lentement, et puis c&#39;est fini.)*
+
+Le jeudi arrive. Tu vas chez lui. Il ne mentionne pas le mercredi. Vous passez une bonne soirée.
+
+*(Tu ne lui dis pas ce que tu avais ressenti. Tu ne saurais pas comment. Et lui ne demande pas.)*
+
+*(Tu ranges ça dans l&#39;endroit où tu ranges les choses que tu n&#39;examines pas.)*
+
+---
+
+[[Un soir de mars — le premier baiser.|CH5BAISER]]
+</tw-passagedata><tw-passagedata pid="31" name="CH5BAISER" tags="" position="2200,180" size="100,100">
+C&#39;est un mercredi soir de mars.
+
+Vous êtes dans son appartement. Il travaille sur une variation du morceau que tu avais entendu le premier soir — il en a résolu l&#39;hésitation du milieu, il cherche maintenant ce qui vient après. Tu es à l&#39;autre bout du canapé avec ton carnet. La fenêtre est entrouverte. Il y a une odeur de pluie dans l&#39;air.
+
+Tu travailles depuis une heure. Ton stylo va et vient — des lignes, des formes, une image qui refuse de se préciser. Tu es à côté de ce que tu cherches sans pouvoir avancer vers lui.
+
+Tu t&#39;étires — ce geste involontaire, les bras qui se lèvent, un son entre le soupir et le grognement qui sort avant que tu aies décidé qu&#39;il sortirait.
+
+Il a entendu. Il te regarde avec cet air légèrement amusé, la tête inclinée.
+
+— Ça va ?
+
+— Mes épaules.
+
+Il pose son carnet. Il se lève — naturellement, comme si c&#39;était la suite évidente. Il vient s&#39;asseoir derrière toi.
+
+Ses mains sur tes épaules. Direct, précis, qui cherche l&#39;endroit où la tension se tient. Ses pouces dans le haut du dos, le bas de la nuque.
+
+Ses mains sont froides.
+
+*(Froides. Toujours froides — tu t&#39;y es habituée depuis le début. Ce froid de ses mains qui disparaît progressivement contre ta peau, qui devient quelque chose de neutre et puis quelque chose de chaud et puis quelque chose qu&#39;on ne remarque plus.)*
+
+Tu ne dis rien. Il ne dit rien. La musique tourne doucement.
+
+Ses mains ralentissent. Elles restent posées — le poids de ses paumes, immobiles.
+
+*(Une conscience différente de la distance. De sa respiration dans ton dos.)*
+
+Il dit :
+
+— $prenom.
+
+*(Juste ton prénom. Ton prénom dit comme une reconnaissance — je sais que tu es là.)*
+
+*(Quelque chose dans ta gorge fait quelque chose.)*
+
+Tu te retournes.
+
+---
+
+[[Ce qui arrive.|CH5ARRIVE]]
+</tw-passagedata><tw-passagedata pid="32" name="CH5ARRIVE" tags="" position="2420,180" size="100,100">
+Ce qui arrive après n&#39;est pas un grand moment de cinéma.
+
+La lampe de son bureau est trop forte d&#39;un côté. La pénombre de l&#39;autre. La musique ne s&#39;arrête pas. Il n&#39;y a pas de geste décisif — c&#39;est que la distance diminue jusqu&#39;à ce qu&#39;il ne reste plus rien à diminuer.
+
+Sa bouche sur la tienne est froide aussi, légèrement. Comme ses mains.
+
+Et puis elle ne l&#39;est plus.
+
+---
+
+Il recule d&#39;un centimètre. Il regarde ailleurs une seconde — la fenêtre, la pièce. Il revient vers toi.
+
+— J&#39;aurais dû faire ça plus tôt.
+
+*(Pas la phrase romantique qu&#39;on attendrait. La phrase de quelqu&#39;un qui a attendu et qui le regrette un peu, prosaïquement.)*
+
+Tu ris. Un vrai rire — surpris, soulagé.
+
+— C&#39;est tout ce que t&#39;as à dire ?
+
+— J&#39;ai d&#39;autres choses à dire.
+
+— Lesquelles ?
+
+Il réfléchit — honnêtement, comme toujours.
+
+— Plus tard. Ce soir y&#39;a la musique et t&#39;es là et c&#39;est suffisant comme information pour l&#39;instant.
+
+*(Cette chose très vieille en toi qui attend toujours la complication lâche un peu. Juste un peu.)*
+
+*(Ce soir y&#39;a la musique et t&#39;es là et c&#39;est suffisant.)*
+
+Vous restez longtemps dans cette soirée après. Il fait du thé — il t&#39;en apporte une tasse sans demander, et tu en voulais. Le thé est trop infusé parce qu&#39;il a oublié le temps mais tu bois quand même.
+
+Il est tard quand tu mets ton manteau.
+
+À la porte :
+
+— Rentre bien.
+
+*(Deux mots pratiques qui disent : je tiens à ce que tu arrives chez toi en un seul morceau.)*
+
+---
+
+[[Dans le métro — et les jours qui suivent.|CH5APRES]]
+</tw-passagedata><tw-passagedata pid="33" name="CH5APRES" tags="" position="2640,180" size="100,100">
+Dans le métro.
+
+Les sièges en plastique. Les gens qui rentrent. La rame qui vibre. Les stations qui défilent.
+
+Tu as les mains croisées sur les genoux.
+
+*(Sa bouche froide et puis pas froide. Ce soir y&#39;a la musique et t&#39;es là.)*
+
+*(Tu n&#39;arrives pas à finir une pensée complète. Elles commencent et s&#39;interrompent. C&#39;est bien — c&#39;est le genre de tête qu&#39;on a quand quelque chose de réel vient d&#39;arriver.)*
+
+Chez toi, Solène dort. Sur le plan de travail : *soupe dans le frigo si t&#39;as faim cœur orange.*
+
+Tu ne manges pas. Tu vas dans ta chambre. Tu t&#39;allonges dans le noir.
+
+*(Tu ne dors pas de la nuit.)*
+
+*(Pas parce que tu es malheureuse — l&#39;inverse. Quelque chose en toi est trop plein pour dormir. Tu restes les yeux ouverts et tu penses à ses mains froides, à ce soir y&#39;a la musique, et à un moment quelque chose déborde et tu pleures un peu sans savoir exactement pourquoi — ces larmes qui arrivent quand quelque chose qu&#39;on espérait sans oser y croire finit par arriver.)*
+
+*(Tu t&#39;endors vers cinq heures du matin. Le soleil commence à entrer.)*
+
+---
+
+Le lendemain.
+
+Solène te voit dans la cuisine à dix heures.
+
+— T&#39;as pas dormi.
+
+— Pas beaucoup.
+
+— Ça va ?
+
+— Oui.
+
+*(Ce oui est entier. Elle sait lire tes oui.)*
+
+Elle te verse du café sans rien ajouter.
+
+---
+
+*(Trois jours plus tard, tu es dans sa salle de bain.)*
+
+*(Tu te laves le visage. L&#39;eau froide sur les joues. Tu te redresses vers le miroir.)*
+
+*(Et pendant une fraction de seconde — moins d&#39;une seconde, à peine le temps que ça existe — ton reflet ne bouge pas en même temps que toi. Un décalage imperceptible, un battement de retard.)*
+
+*(Tu te pétrifis.)*
+
+*(Tu regardes le miroir. Ton reflet te regarde. Il bouge quand tu bouges. Tout est normal.)*
+
+*(Tu as dû cligner des yeux au mauvais moment. Tu es fatiguée. Tu travailles tard ces derniers temps.)*
+
+*(Tu ranges ça dans un endroit que tu n&#39;examines pas.)*
+
+---
+
+[[Chapitre 6.|CH6DEBUT]]
+</tw-passagedata><tw-passagedata pid="34" name="CH6DEBUT" tags="" position="2860,180" size="100,100">
+Tu apprends quelque chose sur $mari.
+
+Il disparaît.
+
+Pas sans prévenir — il t&#39;a dit que ça arriverait, dans une conversation de début mars. Il t&#39;a dit : *quand je travaille vraiment, je suis pas accessible. Pas parce que les gens comptent moins. Parce que les deux ne peuvent pas coexister.* Il t&#39;a dit ça simplement, comme une information pratique.
+
+Tu avais dit que tu comprenais.
+
+Tu comprenais intellectuellement. Tu connaissais cette nécessité-là.
+
+Comprendre et vivre avec, c&#39;est différent.
+
+---
+
+Il est parti depuis quatre jours.
+
+Pas parti — il est dans son appartement, il travaille. Il répond aux messages : *ça avance / bientôt / désolé.* Des mots brefs, pas froids, juste concentrés ailleurs.
+
+Le quatrième jour tu t&#39;assieds avec ton carnet et tu t&#39;aperçois que tu n&#39;arrives pas à travailler.
+
+Ce n&#39;est pas nouveau — tu n&#39;arrives souvent pas à travailler. Mais ce soir c&#39;est différent : tu attends quelque chose. Cette attente occupe tout l&#39;espace où le travail devrait aller.
+
+*(Tu notes ça dans le carnet : l&#39;attente prend la place du travail. C&#39;est une observation sur toi-même et pas seulement sur lui, et tu décides de ne pas regarder ça trop longtemps.)*
+
+---
+
+[[Tu lui écris.|CH6ECRIRE]]
+[[Tu n&#39;écris pas. Tu attends encore.|CH6ATTENDRE]]
+</tw-passagedata><tw-passagedata pid="35" name="CH6ECRIRE" tags="" position="3080,180" size="100,100">
+Tu lui écris.
+
+Juste :
+
+*ça avance comment ?*
+
+Il répond vingt minutes plus tard.
+
+*lentement. je pense que c&#39;est bien mais je sais pas encore. toi ?*
+
+*(Ce retour — toi ? Ce réflexe qu&#39;il a de retourner la question.)*
+
+Tu réponds : *pareil. lentement.*
+
+Il envoie : *c&#39;est peut-être le bon rythme.*
+
+*(Et là quelque chose se dénoue légèrement. Pas l&#39;absence qui disparaît. Mais vous êtes séparés dans la même chose. Deux personnes qui avancent lentement, chacune de son côté. C&#39;est assez pour ce soir.)*
+
+---
+
+[[Deux jours plus tard — il revient.|CH6RETOUR]]
+</tw-passagedata><tw-passagedata pid="36" name="CH6ATTENDRE" tags="" position="3300,180" size="100,100">
+(set: $coutReel to $coutReel + 1)
+
+Tu n&#39;écris pas.
+
+Tu attends.
+
+*(La distinction entre faire confiance et avoir peur de déranger, tu ne l&#39;examines pas ce soir.)*
+
+Tu restes avec ton carnet sans l&#39;ouvrir. Trois heures passent.
+
+Solène a frappé une fois à ta porte. Tu n&#39;as pas répondu. Tu l&#39;as entendue repartir.
+
+*(Tu ne t&#39;en rends compte qu&#39;après, quand tu entends ses pas s&#39;éloigner.)*
+
+---
+
+[[Deux jours plus tard — il revient.|CH6RETOUR]]
+</tw-passagedata><tw-passagedata pid="37" name="CH6RETOUR" tags="" position="3520,180" size="100,100">
+Il revient le sixième jour.
+
+Il t&#39;envoie une adresse — un café que tu ne connais pas, dans un quartier un peu à l&#39;est. Juste l&#39;adresse. Tu y vas.
+
+Il est là avant toi. Au fond du café, dos au mur — cette façon de s&#39;asseoir pour voir la salle. Il te voit entrer. Il te regarde traverser la salle, et ce regard-là — ce moment où il te voit vraiment arriver — tu le reconnais à chaque fois.
+
+Tu t&#39;assieds en face de lui.
+
+Il a l&#39;air fatigué dans le bon sens — la fatigue qu&#39;on a après avoir fait quelque chose de difficile qu&#39;on voulait vraiment faire.
+
+— T&#39;as fini ? tu demandes.
+
+— Presque. Assez pour souffler.
+
+Un silence. Il regarde sa tasse.
+
+— Désolé pour le temps.
+
+— C&#39;est pas grave.
+
+— Si, un peu.
+
+*(Il te regarde. Pas pour vérifier que tu lui pardonnes. C&#39;est : je sais ce que ça fait, l&#39;absence de quelqu&#39;un qui compte, et je veux que tu saches que je le sais.)*
+
+— Un peu, tu répètes.
+
+— Un peu, il confirme.
+
+---
+
+[[Tu lui demandes ce sur quoi il travaillait.|CH6TRAVAIL]]
+[[Tu ne demandes pas. Vous restez juste là un moment.|CH6SILENCE]]
+</tw-passagedata><tw-passagedata pid="38" name="CH6TRAVAIL" tags="" position="3740,180" size="100,100">
+— C&#39;était quoi ?
+
+Il hésite — pas parce qu&#39;il ne veut pas répondre, parce qu&#39;il cherche comment.
+
+— Quelque chose sur la perte. Pas une perte précise. Le mécanisme en général. Comment on perd des choses sans s&#39;en apercevoir jusqu&#39;à ce qu&#39;elles soient parties.
+
+*(Tu penses à des choses que tu as perdues sans t&#39;en apercevoir. Rosalie à qui tu ne réponds pas. Les gens de l&#39;atelier d&#39;octobre dont tu ne te souviens plus.)*
+
+— T&#39;as trouvé quelque chose ? tu demandes. Sur comment arrêter.
+
+— Je crois pas que c&#39;est quelque chose qu&#39;on arrête. Je crois que c&#39;est quelque chose qu&#39;on remarque, et qu&#39;une fois qu&#39;on l&#39;a remarqué c&#39;est déjà différent.
+
+*(Remarquer. Tu penses à tous tes plafonds. À toutes les fois où tu t&#39;es aperçue que tu étais passée à côté de quelque chose.)*
+
+*(Tu te demandes si tu es en train de remarquer quelque chose en ce moment.)*
+
+---
+
+[[La suite de cette soirée.|CH6SUITE]]
+</tw-passagedata><tw-passagedata pid="39" name="CH6SILENCE" tags="" position="3960,180" size="100,100">
+Tu ne demandes pas.
+
+Vous restez là — café devant vous, la salle autour, le bruit de fond des gens qui parlent.
+
+À un moment il pose sa main sur la table. Juste là, à plat, paume vers le bas.
+
+Tu poses la tienne à côté. Vos mains se touchent légèrement sur le côté, le bord du petit doigt.
+
+*(C&#39;est tout. Mais après six jours, c&#39;est suffisant.)*
+
+Il dit, sans te regarder :
+
+— Merci d&#39;avoir attendu.
+
+*(Il sait que tu as attendu. Il ne fait pas semblant que c&#39;était évident.)*
+
+*(Être vu dans les choses difficiles qu&#39;on a faites sans en faire un drame. Tu ne savais pas que ça existait.)*
+
+---
+
+[[La suite de cette soirée.|CH6SUITE]]
+</tw-passagedata><tw-passagedata pid="40" name="CH6SUITE" tags="" position="4180,180" size="100,100">
+Vous restez dans ce café beaucoup plus longtemps que prévu.
+
+Une conversation sur un film qu&#39;il a vu pendant ses six jours de travail. Il en parle avec cet enthousiasme contenu qu&#39;il a parfois, quand quelque chose l&#39;a vraiment atteint mais qu&#39;il ne veut pas en faire un spectacle. Tu l&#39;écoutes. Tu lui poses des questions. Il répond en allant chercher des détails que la plupart des gens auraient laissés de côté.
+
+*(C&#39;est ça aussi — pas seulement les moments intenses. Un café, un film qu&#39;il a vu. Cette chose ordinaire de partager ce qu&#39;on aime avec quelqu&#39;un qui écoute vraiment.)*
+
+À un moment il regarde l&#39;heure.
+
+— Je dois rentrer. J&#39;ai encore du travail ce soir.
+
+— OK.
+
+Il se lève. Il prend son manteau. Il hésite une seconde devant toi.
+
+Puis il se penche. Il pose un baiser sur ta tempe — pas ta bouche, ta tempe, quelque chose de plus simple et de plus proche en même temps.
+
+— Bientôt.
+
+*(Un mot. Une promesse que tu n&#39;as pas demandée.)*
+
+---
+
+*(Dans ta chambre, il est presque minuit. Tu n&#39;as pas mangé depuis le matin. Il y a un message de Solène de deux heures : soupe dans le frigo si t&#39;as faim.)*
+
+*(Tu ne le lis pas tout de suite.)*
+
+---
+
+[[Chapitre 7 — La première fois.|CH7DEBUT]]
+</tw-passagedata><tw-passagedata pid="41" name="CH7DEBUT" tags="" position="0,360" size="100,100">
+C&#39;est un soir sans raison particulière.
+
+Ça t&#39;a frappée après coup — qu&#39;il n&#39;y avait pas de raison. Pas d&#39;anniversaire, pas de grande conversation préalable, pas de tension qui se résout enfin. C&#39;est juste un soir de fin avril, vous êtes dans son appartement, vous cuisinez quelque chose ensemble — c&#39;est devenu une habitude, lui qui coupe et toi qui surveilles la casserole parce qu&#39;il brûle les choses s&#39;il n&#39;a pas quelqu&#39;un pour le ramener au feu.
+
+Vous mangez. Vous parlez. Il y a de la musique.
+
+Et à un moment la soirée prend une direction et vous la laissez aller.
+
+---
+
+Il cuisine mal mais avec une concentration totale. Il lit la recette plusieurs fois avant de commencer, il mesure les choses précisément, et ensuite il oublie de surveiller et ça accroche. Ce soir tu surveilles la casserole pendant qu&#39;il coupe les légumes, et vous parlez d&#39;une chose — quelque chose qui avait commencé légèrement et qui est devenu plus sérieux, comme vos conversations font souvent.
+
+À un moment tu te retournes pour lui dire quelque chose et il est déjà en train de te regarder.
+
+Pas avec une expression précise. Juste — il te regardait. Il avait dû s&#39;arrêter de couper il y a un moment.
+
+— Quoi ? tu dis.
+
+— Rien.
+
+— $mari.
+
+— Je regardais juste.
+
+*(Cette façon qu&#39;il a parfois de te regarder comme si tu étais quelque chose qu&#39;il voulait garder en mémoire.)*
+
+Tu te retournes vers la casserole.
+
+— Ça va brûler.
+
+— Probablement.
+
+*(Il ne bouge pas tout de suite.)*
+
+---
+
+[[La soirée continue — et ce qui arrive après.|CH7PENDANT]]
+</tw-passagedata><tw-passagedata pid="42" name="CH7PENDANT" tags="" position="220,360" size="100,100">
+Vous mangez. La conversation revient, part ailleurs, revient. Il y a un moment où vous riez de quelque chose — une vraie chose, pas un rire poli — et après ce rire il y a ce silence particulier.
+
+*(Un silence qui a changé de nature.)*
+
+À un moment vous n&#39;êtes plus à la table.
+
+---
+
+*(Et le chapitre s&#39;arrête là. Ce moment n&#39;appartient qu&#39;à cette soirée. Ce qui compte c&#39;est ce qui vient après.)*
+
+---
+
+[[Le lendemain matin.|CH7MATIN]]
+</tw-passagedata><tw-passagedata pid="43" name="CH7MATIN" tags="" position="440,360" size="100,100">
+Le matin dans son appartement est différent des autres matins.
+
+Pas radicalement — les mêmes câbles par terre, les mêmes disques sur l&#39;étagère, la même plante penchée vers la fenêtre. Mais la lumière a une qualité différente, ou tu la regardes différemment.
+
+Il est déjà debout. Tu entends des bruits dans la cuisine.
+
+Tu restes allongée une minute.
+
+*(Tu cherches si quelque chose a changé en toi. Si tu te sens différente.)*
+
+*(La réponse est : oui et non. Oui dans le sens où quelque chose s&#39;est déposé quelque part, une couche supplémentaire d&#39;existence avec lui. Non dans le sens où tu es toujours là, toujours toi, avec tes mêmes bords et tes mêmes questions.)*
+
+*(Ça te rassure, ce non.)*
+
+Il revient avec deux tasses. Il pose la tienne sur la table de nuit. Il s&#39;assoit au bord du lit, dos à toi, et boit la sienne en regardant la fenêtre.
+
+Tu te redresses. Tu prends ta tasse.
+
+Le café est trop fort.
+
+Tu bois quand même.
+
+---
+
+Après un moment il dit, toujours sans se retourner :
 
 — T&#39;as bien dormi ?
 
-— Étonnamment oui.
+— Oui.
 
-*(Elle hoche la tête comme si c&#39;était une bonne nouvelle qu&#39;elle attendait. Ses mains dans tes cheveux sont précises et douces.)*
+— Moi aussi.
 
-Ta mère arrive à onze heures. Elle apporte des croissants que personne ne mangera vraiment parce que tout le monde est trop tendu, mais le geste compte. Elle te regarde dans le miroir avec cet air qu&#39;elle a — fierté et quelque chose d&#39;autre, quelque chose de plus compliqué que tu as appris à ne pas décoder trop vite.
+*(Il dit ça comme si c&#39;était rare. Comme si c&#39;était une information sur toi autant que sur lui.)*
 
-— T&#39;as l&#39;air sereine, elle dit.
+Il se retourne. Il te regarde — et là quelque chose dans son regard est légèrement différent. Comme si une couche avait été ajoutée des deux côtés.
 
-— Je le suis.
+Il dit :
 
-— C&#39;est bien. *Un silence.* Il est bien, $mari.
+— $prenom.
 
-*(Deuxième personne à dire ça ce matin. Tu notes que tout le monde dit &quot;il est bien&quot; comme si c&#39;était la chose la plus importante — pas &quot;vous vous aimez&quot; ou &quot;vous êtes heureux ensemble&quot; mais &quot;il est bien&quot;. Comme si la qualité de l&#39;autre était le garant de la validité de la relation.)*
+— Quoi.
 
----
+— Rien. Je voulais juste le dire.
 
-[[La robe.|PREPROBE]]
-</tw-passagedata><tw-passagedata pid="12" name="PREPROBE" tags="" position="1600,0" size="100,100">
-La robe.
-
-Tu l&#39;as choisie seule, sans ta mère, sans Saya — une décision que tu as prise assez tôt et qui a légèrement blessé ta mère et que tu as maintenue quand même, parce que tu savais que si elle était là tu choisirais ce qu&#39;elle voulait pour toi et non pas ce que tu voulais pour toi, et c&#39;est une distinction que tu as du mal à défendre sans avoir l&#39;air ingrate mais que tu connais au fond.
-
-La robe est crème. Des manches longues en dentelle sur les bras, un dos nu. Simple. Elle te ressemble — ou plutôt, elle ressemble à qui tu veux être aujourd&#39;hui.
-
-Tu l&#39;enfiles. Jana t&#39;aide avec les boutons dans le dos — il y en a dix-neuf, elle les compte à voix haute, et à dix-neuf vous riez toutes les deux.
-
-Tu te regardes dans le miroir.
-
-*(Ce moment est toujours étrange dans les films — la mariée se voit et pleure ou rayonne ou les deux. Tu ne pleures pas. Tu te regardes juste. Tu cherches quelque chose dans ton propre reflet.)*
-
-*(Tu trouves : tu ressembles à quelqu&#39;un qui a pris une décision et qui l&#39;assume.)*
-
-— C&#39;est toi, dit Saya depuis le fauteuil.
-
-Tu ne demandes pas ce qu&#39;elle veut dire. Tu sais.
+*(Tu comprends ça. Dire le prénom de quelqu&#39;un juste pour vérifier qu&#39;il existe, que vous existez.)*
 
 ---
 
-[[L&#39;heure de partir.|PREPDEPART]]
-</tw-passagedata><tw-passagedata pid="13" name="PREPDEPART" tags="" position="1800,0" size="100,100">
-Dans la voiture qui vous emmène vers le lieu de la cérémonie, tu reçois un message de $mari.
+[[Les jours qui suivent — et ce que tu remarques.|CH7APRES]]
+</tw-passagedata><tw-passagedata pid="44" name="CH7APRES" tags="" position="660,360" size="100,100">
+Les jours qui suivent.
 
-*Je suis là depuis vingt minutes. J&#39;arrête pas de regarder l&#39;entrée.*
+Il y a des petites choses.
 
-Tu souris. Tu réponds :
+Il a mémorisé comment tu bois ton café — noir, pas de sucre — et il ne demande plus. Il le prépare comme ça. C&#39;est si petit.
 
-*Ne te retourne pas quand j&#39;arrive. Laisse-moi marcher jusqu&#39;à toi.*
+Il a commencé à te montrer les morceaux en cours d&#39;une façon différente — pas *qu&#39;est-ce que tu entends* mais *écoute ça, j&#39;ai changé quelque chose*, et dans ce changement de formulation tu entends que ton avis s&#39;est installé quelque part dans son processus.
 
-Il répond immédiatement :
+Une nuit tu ne dormais pas — il était encore éveillé lui aussi et vous avez parlé jusqu&#39;au matin. Pas de choses importantes. Enfin — de choses importantes, mais dites comme des choses ordinaires.
 
-*C&#39;est sadique.*
+Il a dit — à un moment, entre deux sujets, presque sans s&#39;arrêter dessus : *tu me manques quand tu es pas là.*
+
+*(Il a dit ça comme une observation factuelle. Il a continué à parler d&#39;autre chose.)*
+
+*(Tu as retenu ça. Tu le retiendras longtemps.)*
+
+---
+
+*(Dans ta vraie vie — Solène t&#39;a dit que tu as l&#39;air différente ces dernières semaines. Elle a dit ça avec précaution.)*
+
+*(Tu as dit : je sais pas. Peut-être.)*
+
+*(Elle t&#39;a regardée une seconde de plus que d&#39;habitude. Puis elle est allée faire du café.)*
+
+---
+
+*(Il y a aussi : Rosalie n&#39;a pas réécrit. Le silence vient maintenant de son côté.)*
+
+*(Tu le remarques. Tu ne fais rien.)*
+
+---
+
+[[Chapitre 8 — La première dispute.|CH8DEBUT]]
+</tw-passagedata><tw-passagedata pid="45" name="CH8DEBUT" tags="" position="880,360" size="100,100">
+Ça commence par quelque chose de petit.
+
+La plupart des vraies disputes commencent par des petites choses — c&#39;est rarement la chose elle-même qui compte, c&#39;est ce que la chose révèle, ce qu&#39;elle touche sous la surface.
+
+---
+
+Tu es chez lui. Il travaille — pas en mode disparition, juste en train de finir quelque chose, encore dans sa tête à moitié. Tu travailles aussi, dans ton coin, ou tu essaies.
+
+Tu lui montres quelque chose. Un projet en cours pour un cours — quelque chose qui t&#39;importe vraiment, dans ce territoire entre le travail-pour-les-autres et le travail-pour-toi.
+
+Il regarde.
+
+Il dit quelque chose.
+
+*(Ce qu&#39;il dit n&#39;est pas faux. C&#39;est le problème.)*
+
+*(Il dit : le début c&#39;est bien mais tu te perds au milieu, tu pars dans trop de directions en même temps, y&#39;a une hésitation là qu&#39;on sent.)*
+
+*(C&#39;est vrai. Tu le sais. Tu l&#39;avais senti en travaillant dessus.)*
+
+*(Mais le savoir ne rend pas l&#39;entendre plus facile.)*
+
+---
+
+[[Tu réponds — mais quelque chose monte en toi.|CH8MONTE]]
+</tw-passagedata><tw-passagedata pid="46" name="CH8MONTE" tags="" position="1100,360" size="100,100">
+Quelque chose monte en toi.
+
+Pas de la colère — quelque chose de plus proche de la vulnérabilité qui se défend. Cette réaction que tu as quand quelqu&#39;un touche quelque chose de trop proche.
+
+Tu choisis de fermer.
+
+Tu reprends le travail. Tu ne dis rien. Tu regardes l&#39;endroit qu&#39;il a désigné et tu n&#39;arrives plus à le voir clairement parce que ses mots sont dedans maintenant.
+
+Il ne dit rien non plus pendant un moment.
 
 Puis :
 
-*Ok.*
+— T&#39;es fâchée.
 
-*(Il a accepté sans insister. Sans négocier. Il a juste dit ok. Tu gardes ton téléphone dans ta main un moment.)*
+— Non.
 
-Saya conduit. Ta mère est dans la voiture derrière. Le soleil est exactement où il devait être — vous avez eu de la chance avec la météo, tout le monde vous l&#39;a dit, comme si le soleil était une forme d&#39;approbation.
+*(Ce non qui est évidemment oui.)*
+
+— $prenom.
+
+— Je suis pas fâchée. Je réfléchis.
+
+— T&#39;as une façon de réfléchir qui ressemble beaucoup à être fâchée.
+
+*(Tu lèves les yeux. Il te regarde — il te voit exactement là.)*
+
+*(Et c&#39;est ça qui t&#39;énerve le plus. Être vue dans ta façon pas très belle de réagir.)*
 
 ---
 
-[[La cérémonie.|CEREARRIVEE]]
-</tw-passagedata><tw-passagedata pid="14" name="CEREARRIVEE" tags="" position="2000,0" size="100,100">
-Le lieu est une ancienne serre reconvertie — des arches de métal blanc, du verre partout, des plantes grimpantes qui n&#39;ont plus rien à voir avec leur fonction d&#39;origine. Tu l&#39;as choisi parce que ça ressemblait à quelque chose de vivant dans un cadre rigide, et $mari avait dit que c&#39;était exactement ce que tu voulais projeter, et tu avais répondu que tu ne savais pas si c&#39;était un compliment, et il avait dit que oui.
+[[Tu dis ce que tu penses vraiment.|CH8VRAI]]
+[[Tu dis que tu vas bien. Tu détournes.|CH8DETOUR]]
+</tw-passagedata><tw-passagedata pid="47" name="CH8VRAI" tags="" position="1320,360" size="100,100">
+Tu poses le stylo.
 
-Deux cents personnes, mais tu ne les vois pas encore — tu es dans une petite pièce sur le côté, avec Saya et ta mère et la tension particulière des cinq minutes avant.
+— Le truc c&#39;est que quand tu dis *tu sais où c&#39;est, alors pourquoi* — c&#39;est comme si t&#39;assumais que c&#39;est juste une question de vouloir.
 
-Saya ajuste quelque chose dans ta robe. Ta mère ne dit rien. C&#39;est le silence de quelqu&#39;un qui en a trop à dire.
+— C&#39;est pas ce que j&#39;ai voulu dire.
 
-— Prête ? demande Saya.
+— Peut-être. Mais c&#39;est ce que j&#39;ai entendu.
 
-Tu penses à $mari de l&#39;autre côté de la porte. À sa façon de ne pas se retourner. À ce que vous allez vous dire dans quelques minutes.
+*(Un silence. Il prend ça. Il ne se défend pas immédiatement.)*
+
+— T&#39;as raison, il dit après un moment. C&#39;est pas ce que je voulais dire mais c&#39;est ce que j&#39;ai dit.
+
+*(Cette chose rare — quelqu&#39;un qui te donne raison sans conditions.)*
+
+— Ce que je voulais dire, il continue, c&#39;est que tu vois le problème. Et que le voir c&#39;est déjà quelque chose.
+
+— Je sais.
+
+— Mais ça suffit pas, t&#39;as dit.
+
+— Ça suffit pas toujours.
+
+Il hoche la tête.
+
+— OK. J&#39;apprends.
+
+*(J&#39;apprends. Pas j&#39;ai compris. Une chose en cours, pas résolue.)*
+
+---
+
+[[La réconciliation.|CH8RECONSO]]
+</tw-passagedata><tw-passagedata pid="48" name="CH8DETOUR" tags="" position="1540,360" size="100,100">
+(set: $coutReel to $coutReel + 1)
+
+— Ça va, tu dis. Je suis juste fatiguée.
+
+*(Il te regarde encore une seconde. Il sait que ce n&#39;est pas tout à fait vrai. Mais il ne pousse pas.)*
+
+— OK.
+
+Vous continuez à travailler. La tension reste dans l&#39;air — pas hostile, juste là, comme une chose non résolue qu&#39;on laisse pour plus tard.
+
+Le lendemain il t&#39;envoie un message : *j&#39;ai réfléchi à ce que j&#39;ai dit hier. c&#39;était maladroit. désolé.*
+
+Pas de justification. Juste : c&#39;était maladroit, désolé.
+
+Tu réponds : *c&#39;est bon. j&#39;aurais dû dire ce que je pensais plutôt que de bloquer.*
+
+Il répond : *on apprend tous les deux alors.*
+
+---
+
+[[La réconciliation.|CH8RECONSO]]
+</tw-passagedata><tw-passagedata pid="49" name="CH8RECONSO" tags="" position="1760,360" size="100,100">
+La réconciliation n&#39;a pas de grand moment.
+
+C&#39;est juste la prochaine fois que vous vous voyez, et vous êtes là, et c&#39;est différent parce que quelque chose a été dit et entendu.
+
+Il est dans son appartement. Tu arrives. Il est sur le canapé, il lève les yeux quand tu entres.
+
+Il dit :
+
+— T&#39;as mangé ?
+
+— Pas encore.
+
+— Je fais quelque chose.
+
+*(Il se lève. Il va dans la cuisine. Ce geste simple qui dit : t&#39;es là, je prends soin de ça.)*
+
+---
+
+Pendant qu&#39;il cuisine — et que tu surveilles la casserole — il dit, de dos :
+
+— J&#39;ai fini le morceau.
+
+— Celui sur la perte ?
+
+— Ouais.
+
+— Je peux l&#39;entendre ?
+
+Il marque une pause.
+
+— Ouais. Ce soir si tu veux.
+
+*(Ce soir si tu veux. Pas bien sûr — il y a une délibération dedans, un choix. Il te le montre parce qu&#39;il a décidé de te le montrer.)*
+
+Plus tard vous êtes sur le canapé et le morceau passe dans le silence entre vous.
+
+Quand ça finit :
+
+— Alors ? il dit.
+
+Tu réfléchis vraiment.
+
+— Y&#39;a quelque chose au milieu qui a trouvé sa place. L&#39;hésitation que tu avais — elle est partie.
+
+Il hoche la tête lentement.
+
+— J&#39;ai laissé une des deux directions gagner.
+
+*(Tu penses à ton propre travail. À l&#39;hésitation qu&#39;il avait pointée.)*
+
+— Je sais pas encore laquelle choisir. Pour le mien.
+
+— Tu le sauras.
+
+— T&#39;en sais rien.
+
+— Non. Mais je préfère dire que tu le sauras.
+
+*(Il dit ça sérieusement — pas pour te consoler. Je choisis de croire ça à propos de toi. C&#39;est une décision.)*
+
+*(Et là, sur ce canapé — tu penses quelque chose que tu n&#39;as pas encore pensé.)*
+
+*(Tu penses : je l&#39;aime.)*
+
+*(Tu laisses cette pensée être là. Tu ne la poursuis pas encore.)*
+
+---
+
+*(Dans ta vraie chambre, ta vraie chambre — il est tard. Solène a laissé un mot : soupe dans le frigo / bonne nuit / je t&#39;aime.)*
+
+*(Les trois choses sur le même post-it, séparées par des barres.)*
+
+*(Tu ne l&#39;as pas lue ce soir. Tu la liras demain.)*
+
+*(La soupe sera froide.)*
+
+---
+
+*(Et quelque chose — une toute petite chose — commence à être différent dans la façon dont tu vis les retours dans ta vraie chambre. Quelque chose de plus léger là-bas, et quelque chose de plus lourd ici.)*
+
+*(Tu ne sais pas encore nommer ça.)*
+
+---
+
+[[Chapitre 9 — Le voyage.|CH9DEBUT]]
+</tw-passagedata><tw-passagedata pid="50" name="CH9DEBUT" tags="" position="1980,360" size="100,100">
+*(Chapitre 9 — Le voyage)*
+
+---
+
+C&#39;est $mari qui propose.
+
+Pas des vacances — il ne fonctionne pas comme ça, trop de jours sans travailler et quelque chose en lui se contracte. Mais un week-end. Une ville qu&#39;il connaît, à deux heures de Paris. Il dit : *j&#39;ai besoin de changer d&#39;air pour finir quelque chose. Tu veux venir ?*
+
+*(Tu veux venir. Évidemment. Mais tu remarques quelque chose dans la façon dont il pose la question — pas* tu veux qu&#39;on parte ensemble *ou* j&#39;aimerais qu&#39;on voyage *—* tu veux venir. Comme si tu étais une option dans son plan plutôt que le plan lui-même.)*
+
+*(Tu décides que tu suranalyses. Tu dis oui.)*
+
+---
+
+Joon vous retrouve là-bas le samedi soir.
+
+Joon — le frère de $mari — est différent de lui. Plus direct, moins économe de ses mots, avec ce genre d&#39;humour qui arrive sans prévenir et qui t&#39;oblige à rattraper le rire après. Il t&#39;accueille sans cérémonie : *ah, donc c&#39;est toi.* Comme si ton existence était une confirmation d&#39;une hypothèse qu&#39;il avait depuis longtemps.
+
+Vous mangez tous les trois dans un restaurant petit et bruyant. $mari et Joon parlent — de leur famille, de choses que tu ne connais pas encore, d&#39;un langage commun qui date d&#39;avant toi. Tu écoutes. Tu regardes $mari être quelqu&#39;un d&#39;autre, légèrement — plus détendu, qui rit différemment, qui laisse son frère finir ses phrases.
+
+*(Il y a des gens qui existent de façon différente selon avec qui ils sont. Ça te rassure, de voir ça. De voir qu&#39;il n&#39;est pas le même avec toi qu&#39;avec Joon. Ça le rend réel d&#39;une façon supplémentaire.)*
+
+À un moment Joon te regarde — directement, sans détour :
+
+— Il t&#39;a dit comment vous vous êtes rencontrés ?
+
+— Dans un café. On travaillait au même endroit.
+
+— C&#39;est ce qu&#39;il dit, ouais.
+
+*(Tu regardes $mari. Il regarde son verre.)*
+
+— C&#39;est pas ce qui s&#39;est passé ? tu demandes.
+
+— Si, dit $mari. C&#39;est exactement ce qui s&#39;est passé.
+
+Joon lève les sourcils légèrement — ce mouvement bref qui dit *intéressant* sans le dire — et il change de sujet.
+
+*(Tu penses à ça plus tard, dans la nuit. C&#39;est ce qu&#39;il dit, ouais. Comme si Joon savait une version différente. Ou comme si Joon doutait de la version que lui a donnée $mari.)*
+
+*(Ou comme si Joon doutait de quelque chose d&#39;autre entirely.)*
+
+---
+
+[[La nuit — et quelque chose qui arrive le matin.|CH9NUIT]]
+</tw-passagedata><tw-passagedata pid="51" name="CH9NUIT" tags="" position="2200,360" size="100,100">
+Le soir dans la chambre d&#39;hôtel.
+
+$mari travaille encore — il a sorti son carnet, son téléphone, les écouteurs autour du cou, ce mode semi-présent qu&#39;il a quand quelque chose le tient. Tu lis. Ou tu essaies de lire. Tu penses à Joon, à *c&#39;est ce qu&#39;il dit, ouais.*
+
+À un moment tu lui demandes :
+
+— Qu&#39;est-ce que tu lui as dit sur comment on s&#39;est rencontrés ?
+
+Il lève les yeux. Il réfléchit une seconde — cette seconde de trop qui précède une réponse qui a été choisie.
+
+— La même chose que toi. Un café.
+
+— Il avait l&#39;air de trouver ça drôle.
+
+— Joon trouve tout drôle.
+
+*(Ce n&#39;est pas une réponse. C&#39;est une esquive habillée en réponse. Tu le sais. Et tu décides, consciemment, de ne pas insister. Pas parce que tu n&#39;as pas envie de savoir — parce que tu as peur de ce que tu pourrais apprendre.)*
+
+*(C&#39;est la première fois que tu fais ça clairement. Décider de ne pas savoir.)*
+
+Tu poses ton livre.
+
+— Tu penses à quoi ? tu dis.
+
+— Au morceau. Y&#39;a un truc qui coince encore au milieu.
+
+— L&#39;hésitation ?
+
+— Non, l&#39;hésitation est réglée. Autre chose. Une ligne qui sonne faux.
+
+*(Il sort son téléphone. Il te fait écouter le passage en question. Tu écoutes. Tu entends une ligne de cordes qui arrive légèrement avant le temps — une fraction de seconde, à peine perceptible.)*
+
+— Là ? tu dis. C&#39;est peut-être pas un problème. Ça donne un sentiment d&#39;urgence.
+
+Il écoute à nouveau. Il hoche la tête lentement.
+
+— Peut-être.
+
+Il te regarde.
+
+— T&#39;as une oreille, il dit. T&#39;as vraiment une oreille.
+
+*(Ce compliment-là. Pas* t&#39;es intelligente *ou* t&#39;as du goût *—* t&#39;as une oreille. Quelque chose de spécifique. Quelque chose qui dit : je t&#39;entends entendre.)*
+
+---
+
+Le lendemain matin, tu te réveilles seule dans la chambre.
+
+*(Il est parti tôt — il laisse parfois un mot, pas toujours. Cette fois il n&#39;y en a pas. Tu regardes le côté vide du lit.)*
+
+Tu vas dans la salle de bain. Tu te laves le visage. Tu te redresses vers le miroir.
+
+Et dans le miroir, derrière toi, tu vois $mari assis sur le bord du lit.
+
+Tu te retournes.
+
+La chambre est vide.
+
+*(Tu regardes le miroir. Tu regardes la chambre. Tu regardes le miroir.)*
+
+*(Vide. Vide. Vide.)*
+
+*(Tu restes debout immobile pendant peut-être dix secondes. Puis tu t&#39;assieds sur le carrelage froid de la salle de bain et tu restes là jusqu&#39;à ce que tes jambes arrêtent de trembler.)*
+
+*(Quand $mari rentre avec deux cafés et des viennoiseries, tu es assise sur le lit et tu regardes par la fenêtre.)*
+
+— Tu vas bien ? il dit.
+
+— Mal dormi.
+
+*(Il te donne le café. Il s&#39;assoit à côté de toi. Il ne demande pas autre chose.)*
+
+*(Sa paume est froide ce matin.)*
+
+*(Tu ne remarques pas que c&#39;est la première fois.)*
+
+---
+
+[[Chapitre 10 — La maladie.|CH10DEBUT]]
+</tw-passagedata><tw-passagedata pid="52" name="CH10DEBUT" tags="" position="2420,360" size="100,100">
+*(Chapitre 10 — La maladie)*
+
+---
+
+Il est malade un soir de décembre.
+
+Pas dramatiquement — une fièvre, des courbatures, ce genre d&#39;état qui met tout en attente. Il t&#39;a envoyé un message l&#39;après-midi : *je suis pas bien ce soir, on peut remettre à plus tard.* Et puis, quelques heures après, un deuxième : *en fait si tu veux venir quand même, je passe une mauvaise nuit.*
+
+*(Ce deuxième message. Il n&#39;avait pas l&#39;habitude de ça — de demander. De dire je passe une mauvaise nuit, viens si tu veux.)*
+
+*(Tu y vas.)*
+
+---
+
+Il est dans son lit, dans le noir, avec la fenêtre entrouverte malgré le froid de décembre parce qu&#39;il ne supporte pas l&#39;air fermé quand il est malade. Il a l&#39;air de quelqu&#39;un dont le corps est occupé à faire autre chose que d&#39;être là — les traits légèrement défaits, les yeux un peu brillants, cette façon d&#39;exister à moitié qui arrive avec la fièvre.
+
+Tu t&#39;assieds au bord du lit.
+
+— T&#39;aurais pas dû venir, il dit. C&#39;est contagieux probablement.
+
+— Probablement.
+
+— Alors pourquoi—
+
+— Parce que tu as demandé.
+
+*(Il ne répond pas à ça. Il ferme les yeux.)*
+
+Tu restes là. Tu lui donnes de l&#39;eau. Tu trouves dans sa cuisine quelque chose qui ressemble à du miel et tu fais du thé avec. Sa cuisine est dans un état inhabituel — rien n&#39;a été rangé depuis quelques jours, des tasses laissées un peu partout, ce désordre spécifique de quelqu&#39;un qui n&#39;allait pas bien avant même d&#39;être malade.
+
+*(Tu ranges en faisant le thé. Pas parce que tu penses qu&#39;il faut — juste parce que tes mains ont quelque chose à faire.)*
+
+Tu reviens avec le thé. Il a rouvert les yeux.
+
+— T&#39;as rangé la cuisine.
+
+— Un peu.
+
+— T&#39;aurais pas dû.
+
+— Tu voulais que je laisse ?
+
+Il réfléchit. Il dit :
+
+— Non.
+
+*(Et il y a quelque chose dans ce non — cette admission qu&#39;il voulait que tu ranges, qu&#39;il voulait que tu sois là, qu&#39;il voulait te demander de venir et qu&#39;il l&#39;a fait. Une couche d&#39;habitude s&#39;est déposée quelque part. Vous êtes devenus quelqu&#39;un à qui on appelle quand on passe une mauvaise nuit.)*
+
+Tu t&#39;assieds à côté de lui. Vous ne parlez presque pas. La fièvre l&#39;assoupit à intervalles — il ferme les yeux, tu penses qu&#39;il dort, et puis il rouvre les yeux et dit quelque chose à moitié, une phrase commencée quelque part dans le demi-sommeil.
+
+À un moment il dit, les yeux fermés, la voix dans cet endroit entre veille et sommeil :
+
+— Je suis fait de tout ce que tu voulais que quelqu&#39;un soit.
+
+*(Tu ne bouges pas.)*
+
+*(Tu regardes son profil dans la pénombre de la chambre — la ligne du front, les cils, la fine cicatrice sous le menton. Sa respiration régulière.)*
+
+*(Il dort.)*
+
+*(Tu restes avec cette phrase.)*
+
+*(Je suis fait de tout ce que tu voulais que quelqu&#39;un soit.)*
+
+*(Une confession dans la fièvre. Quelqu&#39;un qui dit enfin ce qu&#39;il est vraiment — construit sur mesure, à partir de toi, de ce que tu voulais, de ce que tu avais besoin que quelqu&#39;un soit.)*
+
+*(Ou une déclaration d&#39;amour. De quelqu&#39;un qui dit : je suis devenu, pour toi, ce que tu avais besoin que je sois. J&#39;ai appris à être ça.)*
+
+*(Ces deux lectures coexistent. Tu décides que c&#39;est la deuxième.)*
+
+*(Tu décides de ne pas choisir.)*
+
+---
+
+[[La nuit — et ce qui change après.|CH10NUIT]]
+</tw-passagedata><tw-passagedata pid="53" name="CH10NUIT" tags="" position="2640,360" size="100,100">
+Tu restes jusqu&#39;au matin.
+
+Tu dors un peu sur le canapé, recroquevillée sous le plaid qui traîne toujours sur l&#39;accoudoir. À un moment dans la nuit tu l&#39;entends bouger, tu rouvres les yeux, il est debout dans le couloir qui va chercher de l&#39;eau.
+
+Il te voit éveillée.
+
+— Tu dors pas.
+
+— Je dors à moitié. Vas-y.
+
+Il revient. Il s&#39;arrête dans le couloir.
+
+— Tu devrais pas dormir sur le canapé.
+
+— C&#39;est correct.
+
+— C&#39;est pas confortable.
+
+— $mari. Vas dormir.
+
+*(Un silence. Il regarde le canapé. Il regarde ta façon d&#39;être recroquevillée dessus.)*
+
+— Viens, il dit enfin.
+
+*(Dans son lit, il garde ses distances — fièvre et décence — mais sa main trouve la tienne dans le noir, ce geste de quelqu&#39;un qui a besoin de savoir que tu es là.)*
+
+*(Ses mains sont froides ce soir. Très froides. Comme au tout début — ce froid qui devrait partir mais qui reste.)*
+
+*(Tu l&#39;oublies. Tu t&#39;endors.)*
+
+---
+
+Au matin il va beaucoup mieux — la fièvre est tombée, il a cet aspect légèrement délavé qu&#39;on a après une nuit difficile mais il est là, présent, il fait du café.
+
+Vous mangez debout dans la cuisine. Il y a quelque chose de différent dans comment vous vous regardons ce matin — une couche supplémentaire de quelque chose. Il t&#39;a demandé de venir et tu es venue. Tu es restée toute la nuit. Sa main dans le noir.
+
+— T&#39;as dit quelque chose cette nuit, tu dis.
+
+— Quoi ?
+
+— Je sais pas exactement. Tu dormais à moitié. Quelque chose sur être fait de ce que je voulais.
+
+Il te regarde par-dessus sa tasse.
+
+— C&#39;est possible.
+
+— Ça veut dire quoi ?
+
+Il réfléchit — cette pause honnête qu&#39;il a.
+
+— Que je pense que les gens qui se rencontrent et qui restent — ils se façonnent mutuellement. Pas de façon consciente. Juste — on prend la forme de l&#39;espace qu&#39;on occupe chez l&#39;autre.
+
+*(La forme de l&#39;espace qu&#39;on occupe chez l&#39;autre.)*
+
+*(C&#39;est beau. C&#39;est une réponse à ta question sans vraiment y répondre. Tu le sais. Et tu laisses quand même.)*
+
+---
+
+*(Dans ta vraie vie — dans l&#39;appartement que tu partages avec Solène — quelque chose s&#39;est légèrement décalé.)*
+
+*(Solène te dit un soir : t&#39;es là, toi, en ce moment ? et tu réponds oui et elle hoche la tête d&#39;une certaine façon qui dit qu&#39;elle ne te croit pas complètement.)*
+
+*(Tu n&#39;appelles toujours pas Rosalie.)*
+
+*(Tu as eu ta réponse de l&#39;école — une dernière chance, conditions strictes. Tu l&#39;as lue et tu l&#39;as fermée et tu n&#39;y as pas répondu encore.)*
+
+---
+
+[[Chapitre 11 — La demande.|CH11DEBUT]]
+</tw-passagedata><tw-passagedata pid="54" name="CH11DEBUT" tags="" position="2860,360" size="100,100">
+*(Chapitre 11 — La demande)*
+
+---
+
+C&#39;est une soirée de janvier.
+
+Vous êtes chez lui. Il a cuisiné — vraiment cuisiné, pas les pâtes aux câpres ou les choses rapides, quelque chose qui a pris du temps, que tu as senti depuis le palier en montant l&#39;escalier. Des bougies sur la table — pas romanesques dans le sens décoratif, juste de l&#39;éclairage dans un appartement où les ampoules sont rarement de la bonne température.
+
+Tu lui demandes ce qu&#39;on fête.
+
+— Rien de particulier, il dit. J&#39;avais envie de faire ça.
+
+*(Il avait envie. Il n&#39;y a pas de raison. Il a cuisiné quelque chose de long et il a mis des bougies parce qu&#39;il en avait envie ce soir. Tu trouves ça — tu ne saurais pas dire le mot exact. Plus touchant qu&#39;un anniversaire. Quelque chose d&#39;imprévu dans le bon sens.)*
+
+Vous mangez. Vous parlez. Le vin est bon. La conversation va quelque part puis ailleurs puis revient, comme toujours.
+
+À un moment le silence s&#39;installe — pas un silence inconfortable, le silence qui arrive quand quelqu&#39;un réfléchit à quelque chose et que l&#39;autre le laisse réfléchir.
+
+Il dit :
+
+— J&#39;ai une question.
+
+— Vas-y.
+
+Il pose ses couverts. Il te regarde.
+
+— Je voulais pas faire ça de façon romanesque parce que ça nous ressemble pas vraiment.
+
+— Faire quoi ?
+
+— Te demander de m&#39;épouser.
+
+*(Le silence.)*
+
+*(Le silence de quelqu&#39;un qui vient d&#39;entendre quelque chose qu&#39;elle ne sait pas encore si elle a bien entendu.)*
+
+— Tu me demandes de—
 
 — Oui.
 
+*(Il te regarde. Calme. Pas d&#39;attente anxieuse sur le visage — juste quelqu&#39;un qui a dit quelque chose et qui laisse le temps à ça d&#39;exister.)*
+
+— Pourquoi ? tu dis.
+
+*(Ce n&#39;est pas la question qu&#39;on pose dans ces moments-là. Mais c&#39;est la tienne.)*
+
+Il sourit légèrement — pas le sourire qu&#39;il a quand il est amusé, quelque chose de plus doux.
+
+— Parce que quand je travaille sur quelque chose de difficile, c&#39;est toi que j&#39;ai envie d&#39;appeler pour dire que j&#39;ai avancé. Parce que tu ranges les cuisines des gens malades de nuit sans qu&#39;on te le demande. Parce que t&#39;as dit ce que tu pensais vraiment la première fois que tu n&#39;étais pas d&#39;accord avec moi et que j&#39;ai compris que je pouvais compter sur ce que tu dis.
+
+*(Il cherche ses mots encore.)*
+
+— Et parce que le silence avec toi a la bonne texture.
+
+*(La bonne texture. Il t&#39;avait dit ça du silence de la nuit. C&#39;est son mot à lui pour les choses qui fonctionnent vraiment.)*
+
+*(Tu penses à tout ce que tu saurais dire. Tu penses à : je l&#39;aime. Tu penses à : oui. Tu penses à des choses que tu ne peux pas formuler encore, qui ont à voir avec ce que ça fait d&#39;être gardée, d&#39;être vue, d&#39;être la personne à qui quelqu&#39;un veut appeler pour dire qu&#39;il a avancé.)*
+
+Tu dis :
+
+— Oui.
+
+Un mot. Mais dit d&#39;une certaine façon — pas une décision réfléchie, pas un calcul. Juste : *oui*, dit avec tout le poids de ce que ce mot peut porter.
+
+Il tend la main à travers la table. Tu la prends.
+
+Sa paume est froide.
+
+*(Tu l&#39;oublies immédiatement.)*
+
 ---
 
-[[L&#39;allée.|CEREALLEE]]
-</tw-passagedata><tw-passagedata pid="15" name="CEREALLEE" tags="" position="2200,0" size="100,100">
-La musique commence — vous avez choisi quelque chose sans paroles, une composition qu&#39;il t&#39;avait fait écouter un soir en disant *écoute juste ça, reste là et écoute*, et tu étais restée, et à la fin du morceau il n&#39;avait rien dit et tu non plus, et c&#39;était devenu évident que ce serait cette musique-là.
+[[Les semaines qui suivent — les préparatifs.|CH12DEBUT]]
+</tw-passagedata><tw-passagedata pid="55" name="CH12DEBUT" tags="" position="3080,360" size="100,100">
+*(Chapitre 12 — Les préparatifs)*
 
-Tu avances.
+---
 
-Deux cents personnes. Tu les vois en périphérie — des visages que tu aimes, des visages que tu connais peu, le mélange ordinaire d&#39;un grand mariage. Quelqu&#39;un pleure déjà — tu ne vois pas qui, juste un geste dans le premier rang.
+Les mois qui suivent ont la texture particulière de quelque chose qu&#39;on construit.
 
-$mari est au bout de l&#39;allée.
+Des décisions pratiques — un lieu, des dates, combien de personnes, la question de la musique que vous résolvez rapidement parce qu&#39;il composera quelque chose. Des conversations avec les familles respectives que tu ne vois que par fragments dans ce récit parce que ce n&#39;est pas là que les choses importantes se passent.
 
-Il tient parole — il ne s&#39;est pas retourné. Il te fait face seulement quand tu es à mi-chemin. Et alors il te voit vraiment.
+Ce qui se passe vraiment :
 
-*(Tu as répété ce moment dans ta tête des dizaines de fois, tu t&#39;es demandé comment tu réagirais, et maintenant que c&#39;est là tu ne réagis à rien — tu constates juste. Il porte un costume sombre, col ouvert parce qu&#39;il déteste les cravates et tu ne l&#39;as pas forcé. Il a les mains dans le dos. Il les sort quand il te voit.)*
+Solène t&#39;aide. Elle est là pour les listes, les appels téléphoniques, les décisions que tu ne veux pas prendre seule. Elle est là d&#39;une façon qui ressemble à de la joie pour toi, et tu la reçois, mais quelque chose en toi remarque que vous parlez moins. Pas moins souvent — moins profondément. Comme si la surface de vos conversations avait pris plus de place que l&#39;intérieur.
+
+*(Tu lui demandes un soir si elle va bien. Elle dit oui. Tu lui demandes vraiment comment elle va et elle te regarde avec cet air qu&#39;elle a — mi-surprise que tu poses la vraie question, mi-soulagée.)*
+
+*(Elle dit : je te vois moins depuis quelques temps. Même quand t&#39;es là.)*
+
+*(Tu n&#39;as pas de réponse à ça. Tu restes avec ça.)*
+
+---
+
+Rosalie t&#39;envoie un message un matin de mars.
+
+Un seul message, bref :
+
+*félicitations pour les fiançailles. j&#39;espère que t&#39;es heureuse.*
+
+*(Tu lis ça plusieurs fois. Il n&#39;y a pas de &quot;tu m&#39;aurais pu m&#39;appeler&quot; ou &quot;j&#39;aurais aimé l&#39;apprendre autrement&quot;. Juste : félicitations, j&#39;espère que t&#39;es heureuse. La politesse de quelqu&#39;un qui a renoncé à comprendre mais qui t&#39;aime quand même de loin.)*
+
+*(Tu commences à répondre quatre fois. Tu fermes chaque fois.)*
+
+*(Tu ne réponds pas.)*
+
+---
+
+Joon vient à Paris deux semaines avant le mariage.
+
+Il prend un café avec toi — seuls, sans $mari qui est en studio ce jour-là. Tu ne sais pas exactement pourquoi tu as accepté. Peut-être parce que tu te souviens de *c&#39;est ce qu&#39;il dit, ouais.*
+
+Il boit son café. Il te regarde.
+
+— T&#39;es heureuse ? il demande.
+
+— Oui.
+
+— Sans hésitation.
+
+— Sans hésitation.
+
+Il hoche la tête. Il regarde par la fenêtre un moment.
+
+— Il a toujours su quoi dire, il dit. Mon frère. Depuis tout petit. Quand il voulait quelque chose, il trouvait les mots pour que les gens aient envie de le lui donner.
+
+*(Tu ne sais pas quoi faire de ça.)*
+
+*(Ce n&#39;est pas une accusation. Ce n&#39;est pas un avertissement. C&#39;est quelqu&#39;un qui te dit quelque chose sur son frère avec une précision qui ressemble à de l&#39;amour et à de l&#39;inquiétude à parts égales.)*
+
+— C&#39;est pas une critique, il dit, comme s&#39;il avait lu ta pensée. Il est sincère. Juste — il sait. Il a toujours su.
+
+*(Il a toujours su quoi dire pour que les gens aient envie de lui donner ce qu&#39;il voulait.)*
+
+*(Tu penses à : je suis fait de tout ce que tu voulais que quelqu&#39;un soit.)*
+
+*(Tu penses à : le silence avec toi a la bonne texture.)*
+
+*(Tu penses à : t&#39;étais où.)*
+
+*(Et puis tu arrêtes de penser à ça. Tu bois ton café. Joon te parle d&#39;autre chose. La conversation continue.)*
+
+*(Tu n&#39;en parles pas à $mari.)*
+
+---
+
+[[Chapitre 13 — Le mariage.|CH13DEBUT]]
+</tw-passagedata><tw-passagedata pid="56" name="CH13DEBUT" tags="" position="3300,360" size="100,100">
+*(Chapitre 13 — Le mariage)*
+
+---
+
+C&#39;est le matin de votre mariage.
+
+Tu te réveilles avant lui — comme toujours, comme depuis le début. Tu écoutes sa respiration dans ton dos. La lumière dans cet appartement le matin, basse et dorée.
+
+La règle, c&#39;était son idée — pas de tradition stricte, pas de *on ne se voit pas le matin du mariage*, mais quelques heures chacun de son côté avant. *Pour arriver avec quelque chose à se donner*, il avait dit.
+
+Tu avais trouvé ça romanesque. Tu le lui avais dit. Il avait répondu : oui, un peu, et alors.
+
+---
+
+Solène arrive à dix heures.
+
+Elle t&#39;aide à te préparer — les cheveux, la robe. La robe est crème, manches longues en dentelle, simple. Tu l&#39;as choisie seule, sans ta mère, sans Solène, et tu penses à ça en l&#39;enfilant — cette décision que tu avais prise de choisir seule.
+
+Marion — la coiffeuse que tu connais depuis des années — t&#39;aide avec les boutons dans le dos. Elle les compte à voix haute. À dix-neuf vous riez toutes les deux.
+
+Tu te regardes dans le miroir.
+
+*(Tu cherches quelque chose dans ton propre reflet. Tu trouves : tu ressembles à quelqu&#39;un qui a pris une décision et qui l&#39;assume.)*
+
+Solène dit depuis le fauteuil :
+
+— C&#39;est toi.
+
+Tu ne demandes pas ce qu&#39;elle veut dire. Tu sais.
+
+*(Et tu remarques — juste une fraction de seconde — que son sourire ne change pas tout à fait quand elle dit ça. Que quelque chose dans ses yeux n&#39;est pas tout à fait là. Comme si elle jouait le rôle de Solène qui est contente pour toi plutôt que de l&#39;être vraiment.)*
+
+*(Tu décides de ne pas examiner ça maintenant.)*
+
+---
+
+[[L&#39;allée — il t&#39;attend au bout.|CH13ALLEE]]
+</tw-passagedata><tw-passagedata pid="57" name="CH13ALLEE" tags="" position="3520,360" size="100,100">
+Le lieu est une ancienne serre reconvertie — des arches de métal blanc, du verre partout, des plantes grimpantes. Tu l&#39;avais choisi parce que ça ressemblait à quelque chose de vivant dans un cadre rigide.
+
+Deux cents personnes. Tu les vois en périphérie — des visages, des gens que tu aimes, le mélange ordinaire d&#39;un grand mariage. Les fleurs sur les côtés sont des branches de prunier blanc et des pivoines.
+
+Tu tends la main vers une pivoine.
+
+Elle n&#39;a pas d&#39;odeur.
+
+*(Tu frottes les pétales entre tes doigts. Rien. Un dessin de fleur plutôt qu&#39;une fleur.)*
+
+*(C&#39;est la fatigue. C&#39;est le stress. Les odeurs peuvent disparaître sous le stress, tu as lu ça quelque part.)*
+
+Tu avances dans l&#39;allée.
+
+$mari est au bout.
+
+Il a tenu parole — il ne s&#39;est pas retourné. Il te fait face seulement quand tu es à mi-chemin. Et alors il te voit.
+
+*(Tu as répété ce moment dans ta tête des dizaines de fois. Maintenant que c&#39;est là tu ne réagis à rien — tu constates juste. Il porte un costume sombre, col ouvert parce qu&#39;il déteste les cravates. Il a les mains dans le dos. Il les sort quand il te voit.)*
 
 Ce geste.
 
-Ce geste si simple — sortir les mains de derrière son dos comme s&#39;il te les tendait avant même que tu sois arrivée, et tu comprends exactement ce qu&#39;il veut dire — pas *te voilà* mais *c&#39;est toi*, pas *tu es belle* mais *je te reconnais*, et les deux cents personnes disparaissent une fraction de seconde.
+Sortir les mains de derrière son dos comme s&#39;il te les tendait avant même que tu sois arrivée. Pas *te voilà* mais *c&#39;est toi*. Pas *tu es belle* mais *je te reconnais*.
 
 Tu arrives à sa hauteur.
 
 Il ne dit rien tout de suite. Il te regarde.
 
-Puis :
+*(Et tu remarques — là, en cet instant, devant deux cents personnes — que son regard est exactement ce qu&#39;il a toujours été. Exactement. Pas une variation, pas une nervosité, pas ce tremblement léger que les gens ont dans les grands moments. Exactement le même regard que toujours.)*
 
-— T&#39;étais où ?
+*(Quelqu&#39;un qui n&#39;a pas peur de ce moment parce qu&#39;il le connaît déjà.)*
 
-*(Il dit ça ici aussi. Au bout de l&#39;allée. Devant tout le monde. Comme ce matin dans la cuisine — tu marchais vers lui, tu n&#39;étais nulle part sauf là, et il demande où tu étais.)*
+*(Ou quelqu&#39;un qui ne peut pas avoir peur parce qu&#39;il n&#39;existe que dans ce moment-là.)*
 
-*(Tu choisis de ne pas y penser. Pas maintenant.)*
+*(Tu choisis de ne pas choisir.)*
 
-Tu prends sa main. Sa paume est chaude.
+— T&#39;étais où ? il dit.
+
+*(Sa façon de demander. Comme toujours.)*
+
+Tu prends sa main. Sa paume est froide.
+
+*(Froide. Elle est froide ce matin.)*
+
+*(Elle l&#39;était déjà depuis quelques semaines — depuis la nuit où il était malade, depuis le voyage, depuis des moments que tu as collectés sans les additionner. Ses mains sont froides maintenant. Toujours.)*
+
+*(Tu serres quand même.)*
 
 ---
 
-[[Les vœux.|CEREVOEUX]]
-</tw-passagedata><tw-passagedata pid="16" name="CEREVOEUX" tags="" position="2400,0" size="100,100">
-L&#39;officiant parle. Tu entends les mots mais tu es dans l&#39;espace entre lui et toi — cette distance de quelques centimètres où tout a une texture différente.
+[[Les vœux.|CH13VOEUX]]
+</tw-passagedata><tw-passagedata pid="58" name="CH13VOEUX" tags="" position="3740,360" size="100,100">
+L&#39;officiant parle. Tu entends les mots.
 
-Vient le moment des vœux. Vous avez choisi d&#39;en écrire. Lui d&#39;abord.
+Vient le moment des vœux. Lui d&#39;abord.
 
-Il sort un papier plié de sa poche intérieure. Il le déplie. Il regarde le papier une seconde, puis il le replie et le remet dans sa poche.
+Il sort un papier plié de sa poche. Il le déplie. Il le regarde une seconde.
 
-*(Il a décidé de ne pas le lire. De dire ça de mémoire ou d&#39;improviser. Tu ne savais pas qu&#39;il ferait ça.)*
+Il le replie. Il le remet dans sa poche.
+
+*(Il avait décidé de ne pas le lire. De dire ça de mémoire. Tu ne savais pas qu&#39;il ferait ça.)*
 
 Il dit :
 
@@ -348,120 +2135,39 @@ Il dit :
 
 *(Toi aussi, tu pleures. Tu ne t&#39;en rends compte qu&#39;en sentant une larme atteindre ta mâchoire.)*
 
+*(Et tu remarques quelque chose — une chose minuscule, que tu n&#39;aurais pas remarquée avant : ses mains ne tremblent pas. Pas une légère vibration. Rien. Quelqu&#39;un qui dit des vœux devant deux cents personnes et dont les mains ne tremblent pas du tout.)*
+
 ---
 
-[[Tes vœux.|CEREVOEUXA]]
-</tw-passagedata><tw-passagedata pid="17" name="CEREVOEUXA" tags="" position="2600,0" size="100,100">
-Tu as aussi un papier. Tu l&#39;as réécrit sept fois.
+Tes vœux. Tu les lis — tu les as réécrits sept fois.
 
-Tu lis :
-
-*— J&#39;ai longtemps pensé que l&#39;amour c&#39;était quelque chose qu&#39;on méritait ou qu&#39;on ne méritait pas. Que si quelqu&#39;un restait, c&#39;était parce qu&#39;on avait réussi quelque chose. Que si quelqu&#39;un partait, c&#39;était qu&#39;on avait échoué.*
+*— J&#39;ai longtemps pensé que l&#39;amour c&#39;était quelque chose qu&#39;on méritait ou qu&#39;on ne méritait pas. Que si quelqu&#39;un restait, c&#39;était parce qu&#39;on avait réussi quelque chose.*
 
 *Avec toi j&#39;ai compris que c&#39;est pas un examen. Que ta présence n&#39;est pas une récompense. Que tu restes parce que tu as décidé de rester, et que cette décision tu la renouvelles, et que ça suffit.*
 
 *Je vais essayer de faire pareil.*
 
-*(Un silence.)*
+*(Il hoche la tête légèrement — ce mouvement qu&#39;il a quand quelque chose le touche vraiment.)*
 
-*(Il hoche la tête légèrement — ce mouvement qu&#39;il a quand quelque chose le touche vraiment, une sorte d&#39;acquiescement intérieur qui remonte à la surface.)*
+*(L&#39;officiant dit les formules. Les alliances.)*
 
----
+*(Il ne tremble pas en passant la bague. Pas une légère vibration.)*
 
-[[Oui.|CERECOUI]]
-</tw-passagedata><tw-passagedata pid="18" name="CERECOUI" tags="" position="2800,0" size="100,100">
-L&#39;officiant dit les formules. Il y a un moment comique — $mari a les mains qui tremblent légèrement en passant l&#39;alliance, ce que tu n&#39;avais pas prévu, et tu lui tiens les doigts pour les stabiliser, et deux cents personnes voient ça et rient doucement.
+*(Il avait tremblé. La première fois. Tu t&#39;en souviens.)*
 
 — Oui, tu dis.
 
 — Oui, il dit.
 
-*(Et voilà. C&#39;est fait. Ce que tu ressens c&#39;est surtout du soulagement. Pas de la joie spectaculaire. Juste : on a réussi à se dire les mots vrais devant tout le monde.)*
-
-Il t&#39;embrasse. Les gens applaudissent.
-
-Il murmure quelque chose dans tes cheveux. Tu ne l&#39;entends pas très bien — trop de bruit autour. Ça ressemble à *c&#39;était toi*.
-
 ---
 
-[[La réception.|RECECDEBUT]]
-</tw-passagedata><tw-passagedata pid="19" name="RECECDEBUT" tags="" position="3000,0" size="100,100">
-La réception a lieu dans une grande salle attenante — le même bâtiment, des tables rondes, des fleurs partout. Les fleurs sont des branches de prunier blanc et des pivoines. Elles ont une odeur légère, presque sucrée, qui se mélange aux parfums des gens.
+[[La réception — et la nuit.|CH13RECEPTION]]
+</tw-passagedata><tw-passagedata pid="59" name="CH13RECEPTION" tags="" position="3960,360" size="100,100">
+La réception a la texture d&#39;un grand mariage réussi — les gens heureux, les conversations, la musique, le moment où Joon dit quelque chose de court et de juste dans son discours et où tu cherches son regard et où il te sourit d&#39;une façon qui ne ressemble pas tout à fait à de la joie pure.
 
-Tu ne te souviens pas de la moitié de ce qui se passe dans les deux premières heures — un flux de visages et d&#39;embrassades et de *vous étiez magnifiques* et de photos. $mari est à ton côté la plupart du temps, légèrement en retrait pendant les conversations que tu dois avoir seule avec ta famille, légèrement en avant quand tu sembles chercher une sortie.
+Tu danses avec $mari. Sa main dans ton dos. La chanson qu&#39;il avait choisie — sans paroles, quelque chose de lent.
 
-Il a ce don — lire ta posture.
-
-À un moment tu te retrouves côte à côte à regarder la salle.
-
-— On a fait quelque chose de grand, tu dis.
-
-— On l&#39;a fait avec des gens bien.
-
----
-
-[[Le discours de son frère.|RECECDISCOURS]]
-[[Aller dehors un moment avec $mari.|RECECDEHORS]]
-</tw-passagedata><tw-passagedata pid="20" name="RECECDEHORS" tags="" position="3000,140" size="100,100">
-Vous sortez par une porte latérale. L&#39;air du soir est frais — la nuit commence à tomber, les lumières de la salle filtrent par les vitres.
-
-Vous restez là une minute, côte à côte, sans parler.
-
-— Ça va ? il demande.
-
-— Oui. Trop de monde.
-
-— Je sais.
-
-*(Il n&#39;essaie pas de t&#39;y renvoyer. Il n&#39;essaie pas de te rassurer sur le fait que tu dois y aller. Il reste là.)*
-
-— Ton frère va s&#39;inquiéter si tu es pas là pour son discours.
-
-— Mon frère survivra.
-
-Tu ris. Il sourit sans se retourner, les yeux sur la ville qui commence à s&#39;allumer.
-
-— T&#39;étais où ? il demande.
-
-*(Encore. Tu n&#39;étais nulle part sauf là, dehors avec lui, parfaitement présente. Il a posé la question dans le vide.)*
-
-*(Tu comptes. Sans savoir pourquoi tu comptes.)*
-
-— Là, tu réponds. J&#39;étais là.
-
-Il hoche la tête. Il te prend la main.
-
----
-
-[[Retourner à l&#39;intérieur.|RECECDISCOURS]]
-</tw-passagedata><tw-passagedata pid="21" name="RECECDISCOURS" tags="" position="3200,0" size="100,100">
-Le frère de $mari s&#39;appelle Joon. Il est moins verbal que $mari — plus bref, plus pratique, le genre d&#39;homme qui exprime l&#39;amour en faisant des choses plutôt qu&#39;en les disant. Son discours est court.
-
-Il dit : *— Mon frère m&#39;a appelé une fois à trois heures du matin. Pas pour une urgence. Juste pour me dire qu&#39;il comprenait enfin quelque chose. Il m&#39;a pas dit quoi. Il m&#39;a dit que c&#39;était lié à $prenom et qu&#39;il me le dirait un jour. C&#39;est le genre de truc qu&#39;on fait pas. Sauf si c&#39;est vrai. Alors voilà — je sais pas ce que t&#39;as compris, mais je suis content que t&#39;aies trouvé quelqu&#39;un avec qui le comprendre.*
-
-*(Silence. Puis des applaudissements.)*
-
-$mari, à ta gauche, regarde son assiette.
-
-— C&#39;était quoi ? tu murmures.
-
-— Je te dirai.
-
-— Quand ?
-
-— Pas ce soir. Ce soir on danse.
-
----
-
-[[La danse.|RECECDANSE]]
-</tw-passagedata><tw-passagedata pid="22" name="RECECDANSE" tags="" position="3400,0" size="100,100">
-La chanson qu&#39;il a choisie, tu ne la connaissais pas — il t&#39;a dit que c&#39;était quelque chose qu&#39;il avait entendu pendant une période difficile, avant toi, et que ça l&#39;avait accompagné, et qu&#39;il voulait te la faire entendre dans ce contexte-là, dans ce moment-là, pour qu&#39;elle devienne autre chose.
-
-Tu danses mal et il le sait et il s&#39;en fout. Vous avez eu une seule leçon de danse et vous avez ri pendant la moitié et le professeur avait abandonné l&#39;idée d&#39;une chorégraphie.
-
-Il pose une main dans ton dos. L&#39;autre tient la tienne.
-
-Il dit :
+Il dit, les yeux sur quelque chose derrière toi :
 
 — Je suis content qu&#39;on ait fait ça.
 
@@ -473,612 +2179,311 @@ Il dit :
 
 *(Tu penses : il y a quelques mois j&#39;aurais pas cru que ça pouvait ressembler à ça. Être à sa place dans un jour comme celui-là — pas vouloir être ailleurs, pas attendre que ce soit fini.)*
 
+*(Et en même temps — et c&#39;est une pensée nouvelle, une pensée que tu n&#39;avais pas avant — tu penses : quelque chose dans ce jour ressemble à un décor. Pas faux. Juste — trop à sa place. Les gens qui disent exactement ce qu&#39;on attendrait qu&#39;ils disent. Les fleurs sans odeur. Les mains qui ne tremblent pas.)*
+
+*(Tu ranges ça.)*
+
 ---
 
-[[Plus tard — la fin de la soirée.|RECEFIN]]
-</tw-passagedata><tw-passagedata pid="23" name="RECEFIN" tags="" position="3600,0" size="100,100">
 Il est deux heures du matin quand les derniers partent.
 
-Vous ramassez vaguement ce qui traîne — des verres à moitié plein, des vestes oubliées. Saya vous aide jusqu&#39;à ce que tu lui dises d&#39;aller dormir, qu&#39;il reste peu de choses à faire, et elle te serre fort avant de partir.
+Vous avez réservé une chambre dans le même bâtiment. La chambre est simple. Un grand lit, une fenêtre qui donne sur une cour intérieure.
 
-La salle est presque vide maintenant. Quelques membres du personnel rangent discrètement.
+Tu t&#39;assieds sur le lit. Tu retires les épingles de tes cheveux une par une — il y en a trop. $mari s&#39;assoit derrière toi. Ses mains remplacent les tiennes.
 
-$mari s&#39;assoit sur le bord d&#39;une table et te regarde.
+Il retire les épingles lentement, sans tirer. Ses mains — froides, toujours — posées dans tes cheveux.
 
-— Comment tu vas ?
+Quand il a fini, il pose ses mains sur tes épaules un moment.
 
-— Épuisée. Heureuse.
+*(Et là — là dans ce silence de chambre d&#39;hôtel, dans ce moment qui devrait être le plus réel de la journée — tu penses à quelque chose que tu n&#39;avais pas encore pensé clairement.)*
 
-— Dans cet ordre ?
+*(Tu penses : ses mains sont froides depuis le voyage. Depuis sa maladie. Depuis plusieurs mois.)*
 
-— Dans cet ordre.
+*(Elles étaient toujours froides au début. Puis elles se réchauffaient. Puis elles n&#39;étaient plus froides. Puis elles sont redevenues froides et elles ne se réchauffent plus.)*
 
-Il rit. Il tend la main. Tu la prends — sa paume est chaude, comme ce matin, comme toujours.
+*(Tu penses : est-ce que les mains de quelqu&#39;un peuvent changer comme ça ?)*
 
----
-
-[[La nuit.|NUITHOTEL]]
-</tw-passagedata><tw-passagedata pid="24" name="NUITHOTEL" tags="" position="3800,0" size="100,100">
-Vous avez réservé une chambre dans le même bâtiment.
-
-La chambre est simple. Propre. Un grand lit, une fenêtre qui donne sur une cour intérieure, la lumière de la ville en diffus.
-
-Tu t&#39;assieds sur le lit. Tu retires les épingles de tes cheveux une par une — il y en a beaucoup trop, Jana avait prévenu que ça prendrait du temps à défaire.
-
-$mari s&#39;assoit derrière toi. Ses mains remplacent les tiennes.
-
-— Laisse-moi faire.
-
-*(Il est patient. Il retire les épingles lentement, sans tirer, les pose sur la table de nuit. C&#39;est un geste d&#39;une intimité tranquille — pas romantique au sens spectaculaire, juste attentif.)*
-
-*(Tu penses à rien. Tu laisses.)*
-
-Quand il a fini, tes cheveux tombent dans ton dos. Il pose ses mains sur tes épaules un moment.
-
-— T&#39;étais où ? il dit doucement.
-
-*(Tu comptes. C&#39;est la quatrième fois aujourd&#39;hui. Dont deux fois où tu étais manifestement là, sans pensée parasite, sans absence.)*
-
-— Là, tu dis encore. Toujours là.
-
-Un silence.
-
-— C&#39;est bien, il dit.
+*(Tu penses : est-ce que les gens réels changent comme ça ?)*
 
 ---
 
-[[Vous parlez encore un peu avant de dormir.|NUITPARLER]]
-[[Tu t&#39;endors contre lui.|NUITSOMMEIL]]
-</tw-passagedata><tw-passagedata pid="25" name="NUITPARLER" tags="" position="3800,140" size="100,100">
+[[La nuit — ce qu&#39;il dit dans le noir.|CH13NUIT]]
+</tw-passagedata><tw-passagedata pid="60" name="CH13NUIT" tags="" position="4180,360" size="100,100">
 Vous parlez dans le noir — cette façon de parler qui n&#39;existe que dans le noir, couchés, quand les mots n&#39;ont plus à supporter le poids des regards.
 
-Il dit qu&#39;il est content que son frère ait fait ce discours. Il dit qu&#39;il lui avait pas demandé et qu&#39;il avait eu peur que ça soit long.
+Il dit qu&#39;il est content. Il dit des choses vraies et douces et justes — exactement les bonnes choses. Exactement.
 
-Tu dis que tu aurais aimé que ta grand-mère soit là. Il dit qu&#39;il sait — tu lui en as parlé des dizaines de fois.
+*(Exactement.)*
 
-Il dit : *— Tu sais ce qu&#39;elle aurait dit ?*
+*(Tu t&#39;allonges à côté de lui et tu penses : il dit exactement les bonnes choses. Toujours les bonnes choses. Il n&#39;a jamais dit la mauvaise chose au mauvais moment depuis — depuis quand ? Tu essaies de te souvenir de la dernière fois où il t&#39;a déçue vraiment, où il a dit quelque chose qui t&#39;a surprise dans le mauvais sens, qui t&#39;a montré un angle que tu ne connaissais pas.)*
 
-Et il dit exactement ce qu&#39;elle aurait dit. Avec la tournure de phrase juste, l&#39;accent légèrement déplacé sur la mauvaise syllabe. Exactement comme elle.
+*(La dispute. La dispute sur le travail. Mais même là — il avait reconnu son erreur immédiatement, proprement, sans négociation.)*
 
-*(Tu te redresses légèrement.)*
+*(Les gens réels ne font pas ça. Les gens réels ont des mauvais jours où ils n&#39;arrivent pas à dire pardon. Des moments où ils défendent une position même quand ils savent qu&#39;ils ont tort parce qu&#39;ils sont fatigués ou fiers ou simplement humains.)*
 
-*(Comment il sait ça. Tu lui as parlé d&#39;elle souvent mais tu ne lui as jamais — tu n&#39;imites jamais sa façon de parler, tu ne la transcris jamais, tu l&#39;évoques mais sans—)*
+*(Joon. Il a toujours su quoi dire pour que les gens aient envie de lui donner ce qu&#39;il voulait.)*
 
-*(Il a dit exactement la phrase qu&#39;elle aurait dite.)*
+*(Je suis fait de tout ce que tu voulais que quelqu&#39;un soit.)*
 
-*(Tu regardes son profil dans le noir.)*
+Sa respiration ralentit à côté de toi. Il va s&#39;endormir.
 
-— Comment tu sais comment elle parle ?
+Et juste avant — sa voix dans cet endroit entre les deux, légèrement floue :
 
-Un silence d&#39;une seconde.
+— Tu sais que si tu ouvres les yeux je disparais.
 
-— Tu me l&#39;as décrit, il dit.
+*(Tu ne bouges pas.)*
 
-*(A-t-il raison ? Tu cherches dans ta mémoire et tu trouves quelque chose de flou. Tu décides que oui. Tu devais lui avoir dit.)*
+*(Sa respiration se régularise. Il dort.)*
 
----
+*(Tu restes les yeux grands ouverts dans le noir de cette chambre d&#39;hôtel.)*
 
-[[Tu t&#39;endors.|NUITSOMMEIL]]
-</tw-passagedata><tw-passagedata pid="26" name="NUITSOMMEIL" tags="" position="4000,0" size="100,100">
-Tu t&#39;endors contre lui.
+*(Tu sais que si tu ouvres les yeux je disparais.)*
 
-Sa respiration ralentit d&#39;abord — il s&#39;endort toujours avant toi, et tu restes éveillée quelques minutes à écouter ce ralentissement, à attendre ce moment où sa respiration devient régulière et profonde.
+*(Et tu comprends — pas tout à la fois, pas comme une révélation soudaine, mais comme quelque chose qui était là depuis le début et qui vient seulement de trouver sa forme — tu comprends ce que c&#39;est.)*
 
-Ce soir il y a quelque chose de différent.
+*(Ce que tu as fait.)*
 
-*(Quelque chose que tu n&#39;arrives pas à nommer. Pas une inquiétude. Juste un détail qui ne rentre pas dans la case que tu lui as préparée.)*
+*(Ce que tu as construit.)*
 
-*(La phrase de ta grand-mère.)*
-
-*(T&#39;étais où — quatre fois aujourd&#39;hui, dont deux où tu étais manifestement là.)*
-
-*(Tu repenses à ce matin dans la cuisine. Il avait dit t&#39;étais où alors que tu n&#39;étais nulle part sauf là.)*
-
-*(Tu décides que tu suranalyses. Tu te rendors.)*
+*(Pendant combien de temps.)*
 
 ---
 
 ***toc***
 
----
-
-Un bruit. Sourd. Une fois.
-
-Tu ouvres les yeux dans le noir.
-
-$mari respire à côté de toi.
-
----
+*(Un bruit. Sourd. Une fois. De quelque part — pas dans cette chambre d&#39;hôtel. De plus loin. De plus réel.)*
 
 ***toc***
 
----
-
-Deux fois. De quelque part — pas dans cette pièce. De plus loin. De plus réel.
-
----
+*(Deux fois.)*
 
 ***toc***
 
----
+*(Trois fois.)*
 
-Trois fois.
-
-Sa paume est chaude dans ta main.
+*(Quelqu&#39;un qui attend depuis longtemps.)*
 
 ---
 
-[[Tu gardes les yeux ouverts dans le noir. Tu écoutes.|EVEIL]]
-[[Tu te rendors. Il est là. C&#39;est suffisant.|B2MATIN]]
-</tw-passagedata><tw-passagedata pid="27" name="EVEIL" tags="" position="4000,140" size="100,100">
-Tu restes éveillée.
+[[Tu gardes les yeux ouverts. Tu ouvres vraiment les yeux.|FINA]]
+[[Tu fermes les yeux plus fort. Tu restes là.|BOUCLE1]]
+</tw-passagedata><tw-passagedata pid="61" name="FINA" tags="" position="0,540" size="100,100">
+Tu ouvres les yeux.
 
-Les yeux ouverts dans le plafond. La respiration de $mari à côté. La ville qui ne dort pas complètement dehors.
+Pas dans la chambre d&#39;hôtel. Dans ta chambre — ta chambre à toi, ton plafond, la fissure en haut à gauche.
 
-Tu penses à la phrase de ta grand-mère. Tu penses à *t&#39;étais où* quatre fois aujourd&#39;hui. Tu penses à ce que tu cherchais dans ton reflet dans le miroir — cette reconnaissance.
+La lumière sous la porte. Il fait jour maintenant, ou presque.
 
-*(Depuis quand est-ce que tu comptes ses phrases ? Depuis quand est-ce que tu surveilles la cohérence de quelqu&#39;un que tu aimes ?)*
+*(Tu restes allongée un long moment sans bouger. Tu comptes ce que tu sais.)*
 
-Tu te lèves doucement. Tu vas à la fenêtre.
+*(Tu sais : tu n&#39;es pas mariée. Il n&#39;y a pas eu de serre reconvertie, pas de fleurs sans odeur, pas de chambre d&#39;hôtel. Il y a eu ta chambre, et ta fatigue, et ta façon de bâtir quelqu&#39;un avec des matériaux que tu avais récoltés ailleurs — sa voix, ses interviews, ses mains froides dans une vidéo capturée sur un téléphone dans une petite salle.)*
 
-La cour intérieure est vide. Un chat traverse dans un coin. La lumière d&#39;une chambre en face s&#39;éteint.
+*(Tu sais aussi : ça a duré. Tu ne sais pas combien de temps. Plusieurs mois. Des mois de soirées où tu étais là sans être là. Des mois où Solène laissait la lumière allumée dans le couloir et toi tu ne la voyais plus. Des mois où Rosalie n&#39;écrivait plus.)*
 
-*(Tu penses : il est là. La journée était vraie. Saya était vraie. Jana qui comptait les boutons était vraie. Le discours de Joon était vrai.)*
+*(Tu te lèves.)*
 
-*(Tu penses : et si tu étais fatiguée, juste fatiguée, et que tu cherchais des failles là où il n&#39;y en a pas.)*
+La cuisine. La lumière ordinaire. Solène est là — debout devant la cafetière, des cernes sous les yeux, des chaussettes dépareillées. Elle se retourne quand elle t&#39;entend entrer.
 
-Tu retournes te coucher. Sa paume est toujours chaude.
+Elle ne dit pas enfin. Elle ne dit pas je savais. Elle dit :
 
-Tu t&#39;endors pour de vrai cette fois.
+— Café ?
+
+— Oui.
+
+*(Et vous restez là dans la cuisine, vous deux, à boire du café en silence dans la lumière du matin. Et le silence est le vrai silence — celui qui a de la place pour les deux, pas celui qui remplace quelque chose.)*
+
+*(À un moment tu dis : j&#39;ai été absente un moment.)*
+
+*(Elle dit : je sais.)*
+
+*(Tu dis : désolée.)*
+
+*(Elle dit : c&#39;est bon.)*
+
+*(Et vous buvez votre café.)*
 
 ---
 
-*(Le matin, tu te réveilles dans ton appartement. Ton appartement à toi — une chambre, une porte, une assiette sur un plateau dans le couloir. Ta colocataire a frappé cette nuit. Tu ne t&#39;en souviens pas.)*
+*(Plus tard, tu prends ton téléphone. Tu regardes les messages de Rosalie — les anciens, ceux sans réponse, le dernier qui dit j&#39;espère que t&#39;es heureuse, bref et propre.)*
 
-*(Mais tu es là.)*
+*(Tu commences à taper. Tu ne sais pas encore quoi dire. C&#39;est un début.)*
 
 ---
 
-[[Continuer.|FINA]]
-</tw-passagedata><tw-passagedata pid="28" name="B2MATIN" tags="" position="4200,0" size="100,100">
+*(Et lui — il est encore là, quelque part, dans le bruit que fait sa voix dans les écouteurs le soir. Tu le sais. Tu le retrouveras peut-être. Pas comme avant. Différemment.)*
+
+*(Mais ce matin : le café, Solène, les chaussettes dépareillées, la lumière ordinaire.)*
+
+*(Ce matin : la réalité avec tous ses défauts et toutes ses aspérités et tous ses silences qui ne sont pas tout à fait les bons.)*
+
+*(Ce matin : tu es là.)*
+
+---
+
+**— Fin A : L&#39;espace entre les mondes —**
+
+*(Pour traverser quelque chose de difficile : 3114 — numéro national de prévention, disponible 24h/24. Tu n&#39;es pas obligée de rester seule avec ça.)*
+</tw-passagedata><tw-passagedata pid="62" name="FINB" tags="" position="220,540" size="100,100">
+Tu ouvres les yeux.
+
+Ta chambre. Ta fissure. Ta lumière sous la porte.
+
+*(Tu restes allongée un long moment. Tu sais ce que tu viens de faire — tu l&#39;as su pendant un moment, tu l&#39;as su depuis la nuit de novembre peut-être, depuis le voyage, depuis des endroits différents. Tu l&#39;as su et tu as continué quand même.)*
+
+*(Tu vas continuer, parfois.)*
+
+*(Tu le sais aussi.)*
+
+Il y a quelque chose que tu n&#39;arrêteras pas complètement — ce serait mentir de dire que oui, que ce matin est une résolution, que tu n&#39;y retourneras plus jamais. Il est là, dans la musique, dans les soirées où tu es seule et où la chambre est trop petite. Il t&#39;attendra. Il attend toujours — c&#39;est sa nature.
+
+Mais il y a aussi : Solène qui a laissé la lumière allumée dans le couloir pendant des mois. Rosalie qui a dit *j&#39;espère que t&#39;es heureuse* sans rien demander en retour. L&#39;école, les cours, le carnet qui commence à se remplir à nouveau.
+
+Il y a ce monde réel avec ses angles et ses silences imparfaits et ses gens qui ne disent pas toujours les bonnes choses au bon moment.
+
+*(Tu le choisis. Pas contre lui — à côté de lui.)*
+
+Tu te lèves. Tu vas dans la cuisine. Tu fais du café — trop fort, comme toujours.
+
+Tu bois quand même.
+
+*(Et de temps en temps, tard le soir, tu remettras les écouteurs. Tu le laisseras t&#39;accompagner un peu. Il l&#39;attendra — il attend toujours.)*
+
+*(Mais tu ouvriras les yeux avant de disparaître complètement.)*
+
+*(C&#39;est la promesse que tu te fais ce matin.)*
+
+*(C&#39;est assez.)*
+
+---
+
+**— Fin B : L&#39;entre-deux —**
+</tw-passagedata><tw-passagedata pid="63" name="BOUCLE1" tags="" position="440,540" size="100,100">
 (set: $refus to $refus + 1)
-(set: $boucle to 2)
+(set: $boucle to 1)
 
-Tu te réveilles avant lui.
+Tu fermes les yeux plus fort.
 
-C&#39;est le matin de votre mariage.
+Sa respiration à côté de toi. Sa main quelque part dans le noir.
 
-*(La même phrase. Exactement la même. Un instant tu ne sais pas si c&#39;est le même jour ou un autre.)*
+*(C&#39;est suffisant. C&#39;est plus que suffisant. Pourquoi ouvrirais-tu les yeux — pour quoi faire, pour trouver quoi ? Le monde réel sera là demain. Il sera là dans une heure. Il peut attendre encore un peu.)*
 
-Sa respiration dans ton dos est régulière. La cafetière crache dans la cuisine. Paris le samedi matin.
+*(Il peut attendre encore un peu.)*
 
-Tu te retournes.
+---
 
-Il est éveillé. Il te regarde.
+Le matin du lendemain, tu te réveilles dans la même chambre d&#39;hôtel.
+
+La même lumière. Les mêmes câbles par terre — non, pas de câbles, c&#39;est une chambre d&#39;hôtel. Le même lit.
+
+$mari est là.
+
+Il te regarde.
 
 — T&#39;étais où ? il dit.
 
-*(Il dit ça d&#39;emblée. Avant que tu aies bougé. Avant que tu aies montré quoi que ce soit.)*
+*(Sa façon de demander. Comme toujours. Comme depuis le début.)*
 
-Tu hésites.
-
-— Nulle part. J&#39;écoutais.
-
-— Paris le samedi matin.
-
-*(Il finit ta phrase. Exactement ta phrase. Celle que tu avais dans la tête mais pas encore dite.)*
-
-Un sourire.
-
-*(Il se souvient. C&#39;est normal. C&#39;est ce que font les gens qui t&#39;aiment — ils se souviennent.)*
-
-*(Tu décides que c&#39;est ça.)*
+Tu souris.
 
 ---
 
-[[Le café.|B2CAFE]]
-</tw-passagedata><tw-passagedata pid="29" name="B2CAFE" tags="" position="4400,0" size="100,100">
-La cuisine. Le café. Le pull marine.
+[[La journée recommence — légèrement différente.|BOUCLE1B]]
+</tw-passagedata><tw-passagedata pid="64" name="BOUCLE1B" tags="" position="660,540" size="100,100">
+La journée recommence.
 
-*(Tout est identique. Jusqu&#39;à la façon dont la lumière tombe sur la table.)*
+Pas tout à fait la même — quelques détails ont changé. La lumière est légèrement différente, ou ta façon de la voir. Les fleurs dans la serre n&#39;ont toujours pas d&#39;odeur mais cette fois tu ne le remarques pas tout de suite.
 
-Il prend sa tasse. Il dit :
+$mari dit les bonnes choses. Il les dit exactement.
 
-— Il fait beau.
+Solène sourit au premier rang — exactement le sourire qu&#39;elle aurait.
 
-— C&#39;est prévu depuis des semaines.
+*(Exactement.)*
 
-— Je sais. J&#39;avais quand même peur.
+*(Tu ranges ça.)*
 
-*(Il dit ça exactement comme la dernière fois. Le même rythme. La même pause avant &quot;J&#39;avais quand même peur&quot;.)*
-
-*(Tu lui as demandé s&#39;il était nerveux la dernière fois et il avait répondu. Cette fois tu te demandes si tu poses la question ou si tu te souviens juste de l&#39;avoir posée.)*
-
-*(La différence entre les deux commence à être floue.)*
+Les vœux. L&#39;alliance. Il ne tremble pas. Tu ne remarques plus que tu remarques qu&#39;il ne tremble pas.
 
 ---
 
-[[Continuer — Saya arrive.|B2LEA]]
-</tw-passagedata><tw-passagedata pid="30" name="B2LEA" tags="" position="4600,0" size="100,100">
-Saya conduit. Elle dit quelque chose — une histoire sur quelqu&#39;un, les mêmes gestes, la même main qui gesticule.
-
-*(Ses mots sont légèrement moins précis que la dernière fois. Légèrement moins Saya. Comme si tu te souvenais d&#39;elle moins bien que de lui.)*
-
-— $mari t&#39;a déteint dessus, elle dit.
-
-*(La même phrase.)*
-
-Tu hoches la tête. Tu penses à $mari.
+***toc***
+***toc***
+***toc***
 
 ---
 
-[[La coiffeuse.|B2MARION]]
-</tw-passagedata><tw-passagedata pid="31" name="B2MARION" tags="" position="4800,0" size="100,100">
-Jana compte les boutons.
+(if: $refus &gt;= 4)[[[Tu fermes les yeux encore plus fort. Tu ne veux pas sortir.|FINC]]]
+(else-if: $refus &gt;= 2 and $lucidite &gt;= 1)[[[Tu gardes les yeux ouverts cette fois. Tu ouvres vraiment les yeux.|FINB]]]
+(else:)[[[Tu fermes les yeux encore. Une dernière fois.|BOUCLE2]]]
+</tw-passagedata><tw-passagedata pid="65" name="BOUCLE2" tags="" position="880,540" size="100,100">
+(set: $refus to $refus + 1)
 
-Elle dit *dix-neuf* avant d&#39;avoir fini de compter.
+*(Une dernière fois.)*
 
-*(Elle savait d&#39;avance. Ou tu le savais d&#39;avance et tu lui as mis ce mot dans la bouche.)*
+*(C&#39;est ce que tu te dis — une dernière fois.)*
 
-Vous riez. L&#39;écho d&#39;un rire que tu reconnais.
+La journée. La serre. Les fleurs.
 
-Ta mère dit : — Il est bien, $mari.
+$mari au bout de l&#39;allée.
 
-*(Exactement ces mots. Dans cet ordre.)*
+Il sort les mains de derrière son dos quand il te voit.
 
----
+Ce geste.
 
-[[La cérémonie.|B2CEREALLEE]]
-</tw-passagedata><tw-passagedata pid="32" name="B2CEREALLEE" tags="" position="5000,0" size="100,100">
-La musique. L&#39;allée. Les deux cents personnes.
+*(Ce geste que tu connais par cœur maintenant. Ce geste qui est toujours le même — exactement le même, pas une variation, pas une légère différence selon l&#39;heure ou la lumière ou comment il se sent.)*
 
-$mari est au bout. Il sort les mains de derrière son dos quand il te voit — ce geste, *ce geste*.
+*(Les gens réels ont des variations.)*
+
+Il dit :
 
 — T&#39;étais où ?
 
-*(Il dit ça encore. Ici aussi. Tu arrives à lui et il demande où tu étais et tu étais là, tu marchais vers lui, et il demande où tu étais.)*
+Tu prends sa main. Elle est froide.
 
-Tu prends sa main. Elle est chaude.
+*(Elle est toujours froide maintenant.)*
 
-Les vœux. Il ne sort pas le papier de sa poche cette fois.
+Les vœux.
 
-Il dit directement, sans hésiter, sans chercher ses mots :
+*— Être là. Pas parfait. Juste là.*
 
-*— Je suis mauvais avec les débuts. Ce qui compte pour moi c&#39;est ce qui vient après. Ce qui reste avec toi, $prenom — c&#39;est que tu es la seule personne avec qui je n&#39;ai jamais eu à choisir une version de moi-même. Pas parfait. Juste là.*
+*(Juste là. Il dit toujours ça.)*
 
-*(Aucune hésitation. Pas de tremblement aux mains. Le texte parfait, dit parfaitement.)*
-
-*(Tu pleures. Bien sûr que tu pleures.)*
-
-*(Tu remarques en pleurant que quelqu&#39;un dans la salle pleure — tu entends le son mais tu ne vois plus très bien qui.)*
+*(Il dit toujours exactement ça.)*
 
 ---
 
-[[Oui.|B2NUIT]]
-</tw-passagedata><tw-passagedata pid="33" name="B2NUIT" tags="" position="5200,0" size="100,100">
-Dans le noir. Vous parlez.
+*(Dans une autre pièce, dans un autre appartement, Solène a laissé de la soupe sur le feu. Elle s&#39;est endormie en attendant que tu rentres. La soupe refroidit.)*
 
-Tu évoques ta grand-mère — tu commences une phrase sur elle, tu dis son prénom, et avant que tu aies dit quoi que ce soit d&#39;autre :
+*(Il y a un message de Rosalie que tu n&#39;as pas lu depuis trois semaines.)*
 
-*— Tu sais ce qu&#39;elle aurait dit ?*
+*(Ta fissure au plafond.)*
 
-*(Tu te fiiges.)*
-
-*(Tu n&#39;as dit que son prénom. Pas le contexte. Pas ce que tu pensais. Juste son prénom.)*
-
-Il dit la phrase. Exactement la même qu&#39;hier. La tournure juste, l&#39;accent au bon endroit.
-
-*(Le silence entre vous a une texture.)*
-
-— J&#39;en ai parlé aujourd&#39;hui ? tu demandes doucement.
-
-Un temps.
-
-— Oui, il dit.
-
-*(Tu cherches. Tu ne trouves pas le moment.)*
-
-*(Tu penses : il répond ce que tu voulais entendre. C&#39;est une de ses qualités — anticiper.)*
-
-*(Tu penses : ou c&#39;est autre chose.)*
+*(Ta plante qui commence à pencher trop fort vers la lumière.)*
 
 ---
 
 ***toc***
-
 ***toc***
-
 ***toc***
 
 ---
 
-[[Tu te rendors. Sa paume est chaude.|B3MATIN]]
-[[Tu poses une question à laquelle il ne devrait pas pouvoir répondre.|B2QUESTION]]
-</tw-passagedata><tw-passagedata pid="34" name="B2QUESTION" tags="" position="5200,140" size="100,100">
 (set: $lucidite to $lucidite + 1)
+(if: $refus &gt;= 3)[[[Tu ouvres les yeux. Vraiment.|FINB]]]
+(else:)[[[Tu restes. Tu dis oui.|FINC]]]
+</tw-passagedata><tw-passagedata pid="66" name="FINC" tags="" position="1100,540" size="100,100">
+Il n&#39;y a plus de Solène.
 
-— $mari.
+Il y a la serre, les fleurs, les deux cents personnes — moins nettes maintenant, leurs visages moins précis, leurs noms que tu n&#39;arrives plus tout à fait à retrouver.
 
-— Hm.
+Il y a $mari.
 
-— Comment s&#39;appelait le chat de ma voisine quand j&#39;avais huit ans ?
+Il est net. Il est précis. Il est exactement ce qu&#39;il a toujours été — exactement les bonnes mains qui sortent de derrière le dos, exactement les bons mots, exactement le bon silence après.
 
-*(Une question que tu n&#39;as jamais posée. Une information que tu ne lui as jamais donnée. Un test.)*
+Il dit : *T&#39;étais où ?*
 
-Un silence.
+Tu dis : là.
 
-*(Il ne peut pas savoir. Tu ne le lui as jamais dit. Personne ne le lui a jamais dit depuis l&#39;enfance — c&#39;est une de ces informations qui vivent au fond de toi sans jamais remonter.)*
-
-— Bisou, il dit.
-
-*(C&#39;est le bon prénom.)*
-
-*(Tu restes immobile dans le noir. Sa respiration est régulière. Sa paume est chaude.)*
-
-*(Il ne peut pas savoir.)*
-
-*(Il n&#39;existe que dans ta tête.)*
-
-*(Tu ne bouges pas encore. Tu restes là une minute entière à écouter sa respiration régulière — ce ralentissement parfait que tu as programmé sans t&#39;en rendre compte.)*
-
----
-
-***toc***
-
-***toc***
-
-***toc***
-
----
-
-[[Tu ouvres les yeux. Les vrais.|FIND]]
-[[Tu fermes les yeux. Sa paume est chaude. Tu te dis que tu as mal entendu.|B3MATIN]]
-</tw-passagedata><tw-passagedata pid="35" name="B3MATIN" tags="" position="5400,0" size="100,100">
-(set: $refus to $refus + 1)
-(set: $boucle to 3)
-
-Tu te réveilles avant lui.
-
-C&#39;est le matin de votre mariage.
-
-Sa respiration. La cafetière. Paris.
-
-*(Les détails sont là mais nommés vite, impatients d&#39;arriver à lui.)*
-
-Il est éveillé. Il dit :
-
-— T&#39;étais où ?
-
-— Là.
-
-— Je sais.
-
-*(Il le sait. Il l&#39;a toujours su. C&#39;est rassurant.)*
-
-*(C&#39;est étrange que ce soit rassurant.)*
-
----
-
-[[Continuer.|B3LEA]]
-</tw-passagedata><tw-passagedata pid="36" name="B3LEA" tags="" position="5600,0" size="100,100">
-Saya conduit. Elle dit quelque chose — tu ne retiens pas très bien quoi, une histoire sur quelqu&#39;un que tu connais vaguement, et tu hoches la tête aux bons moments.
-
-*(Elle parle. Tu ne l&#39;écoutes pas vraiment. Tu penses à $mari.)*
-
-*(Saya dit ton prénom. Tu reviens.)*
-
-— Désolée. Je suis dans ma tête.
-
-— C&#39;est le jour de ton mariage, dit-elle. T&#39;as le droit.
-
-*(Elle sourit. Tu remarques qu&#39;elle a le même sourire que la dernière fois. Exactement le même.)*
-
----
-
-[[La coiffeuse, la robe, la route.|B3MARION]]
-</tw-passagedata><tw-passagedata pid="37" name="B3MARION" tags="" position="5800,0" size="100,100">
-Jana compte les boutons. Dix-neuf. Elle dit le chiffre avant d&#39;avoir fini.
-
-Vous riez.
-
-*(Tu ne te souviens plus très bien de son visage.)*
-
-Ta mère dit quelque chose que tu n&#39;entends pas tout à fait.
-
-La route vers la serre. Le soleil.
-
----
-
-[[La cérémonie.|B3CEREALLEE]]
-</tw-passagedata><tw-passagedata pid="38" name="B3CEREALLEE" tags="" position="6000,0" size="100,100">
-Mais lui.
-
-Lui est parfaitement net. Ses mains quand elles sortent de derrière son dos. Son regard quand il te voit. Le tissu de son costume sous tes doigts.
-
-Il dit ses vœux. Ils sont plus beaux que la dernière fois. Ou peut-être tu les entends mieux parce que tu ne les attends plus — tu les *reçois*.
-
-*(Quelqu&#39;un pleure dans la salle — tu entends le son mais tu ne vois plus très bien qui. Deux cents personnes ? Cent ? La salle est pleine en tout cas.)*
-
-Il dit : *— Pas parfait. Juste là.*
-
-*(Cette promesse. À chaque fois.)*
-
-Tu dis tes vœux. Les mêmes. Tu les connais par cœur maintenant.
-
-Les alliances. Il ne tremble pas cette fois.
-
-*(Tu remarques l&#39;absence du tremblement.)*
-
-*(Ce détail imparfait qui t&#39;avait touchée — il a disparu.)*
-
----
-
-[[La nuit.|B3NUIT]]
-</tw-passagedata><tw-passagedata pid="39" name="B3NUIT" tags="" position="6200,0" size="100,100">
-Dans le noir.
-
-Sa paume est chaude.
-
-Il dit — avant tout, avant que tu aies pensé à quoi que ce soit :
-
-*— T&#39;étais où ?*
-
-*(Tu n&#39;étais nulle part. Tu étais là. Tu es toujours là maintenant.)*
-
-— Là.
-
-— Je sais.
-
-*(Un silence parfait.)*
-
-*(Quelque chose en toi reconnaît que ce silence est trop parfait. Qu&#39;il n&#39;y a pas de couture, pas d&#39;aspérité, pas de ce frottement léger qui existe entre deux personnes qui ont leurs propres angles.)*
-
-*(Il est devenu exactement ce que tu voulais.)*
-
-*(C&#39;est ça qui fait peur.)*
-
----
-
-***toc***
-
-***toc***
-
-***toc***
-
----
-
-[[Tu restes. Sa paume est chaude. C&#39;est suffisant.|B4FRAGMENT]]
-[[Tu poses la main à plat sur le drap. Tu écoutes les coups.|CHOIXFIN]]
-</tw-passagedata><tw-passagedata pid="40" name="CHOIXFIN" tags="" position="6200,140" size="100,100">
-(set: $lucidite to $lucidite + 1)
-
-Tu poses la main à plat sur le drap.
-
-Sa paume ne la cherche pas. Elle reste là, à côté, chaude et immobile.
-
-Tu écoutes les trois coups s&#39;éteindre dans le silence.
-
-Tu penses à Saya — la vraie Saya, pas celle qui répète les mêmes gestes. Tu penses à Jana qui comptait les boutons à voix haute parce qu&#39;elle aimait compter à voix haute, pas parce que tu l&#39;avais décidé. Tu penses à Joon et à son frère qui appelait à trois heures du matin.
-
-*(Ces gens ont leurs propres angles. Leurs propres absences.)*
-
-*(Lui n&#39;en a plus.)*
-
----
-
-(if: $refus &gt;= 3 and $lucidite &gt;= 2)[[[Continuer.|FIND]]]
-(else:)[[[Continuer.|FINB]]]
-</tw-passagedata><tw-passagedata pid="41" name="B4FRAGMENT" tags="" position="6400,0" size="100,100">
-(set: $refus to $refus + 1)
-(set: $boucle to 4)
-
-C&#39;est le matin de votre mariage.
-
-Sa paume est chaude.
-
-Il dit exactement ce qu&#39;il faut dire.
-
----
-
-Les fleurs n&#39;ont pas d&#39;odeur. Tu frottes une pivoine entre tes doigts — rien. Un dessin de fleur plutôt qu&#39;une fleur.
-
----
-
-Jana ne compte plus les boutons à voix haute. Elle dit juste *voilà* quand elle a fini. Tu ne te souviens plus de son prénom.
-
-Saya sourit. C&#39;est le même sourire.
-
----
-
-À la cérémonie, $mari sort les mains de derrière son dos. Il dit tes vœux avant toi — pas les siens, les tiens. Tu ouvres la bouche et il finit ta phrase et c&#39;est exactement ce que tu pensais et tu ne peux plus être sûre si tu l&#39;as pensé avant ou après qu&#39;il le dise.
-
----
-
-Dans le noir.
-
-*— T&#39;étais où ?*
-
-— Là.
-
-*— Je sais.*
-
-*(Le silence parfait. L&#39;absence d&#39;aspérité.)*
-
----
-
-***toc***
-
-***toc***
-
-***toc***
-
----
-
-(if: $refus &gt;= 5)[[[Continuer.|FINC]]]
-(else-if: $refus &gt;= 3 and $lucidite &gt;= 2)[[[Continuer.|FIND]]]
-(else:)[[[Continuer.|FINB]]]
-</tw-passagedata><tw-passagedata pid="42" name="FINA" tags="" position="4200,280" size="100,100">
-Tu te retrouves dans ton appartement.
-
-Pas la chambre d&#39;hôtel. Ton appartement — ta chambre, ton plafond que tu connais par cœur, la fissure en haut à gauche que tu n&#39;as jamais fait réparer.
-
-La lumière dans le couloir. Une assiette sur un plateau devant la porte.
-
-Ta colocataire frappe une dernière fois — doucement, pour voir.
-
-Tu te lèves. Tu ouvres.
-
-Elle a l&#39;air soulagée. Elle ne demande pas ce que tu faisais. Elle dit :
-
-— Viens manger quelque chose.
-
-Et dans la cuisine, sous la lumière ordinaire, tu manges des œufs froids et tu lui parles — vraiment lui parles, tu écoutes ce qu&#39;elle répond, tu remarques la façon dont elle tient sa fourchette et les petites fatigues dans ses yeux et toutes ces choses imparfaites et vraies qui font qu&#39;elle est elle.
-
-Elle n&#39;anticipe pas tes phrases. Elle répond parfois à côté. Elle dit une fois quelque chose qui t&#39;agace légèrement et tu ne lui dis pas et ça aussi c&#39;est réel.
-
-*(Tu penses à $mari. À sa paume chaude. À ses vœux dits sans le papier.)*
-
-*(Ces choses n&#39;existaient pas. Mais le besoin qu&#39;elles comblaient, lui, existe.)*
-
-*(C&#39;est par là qu&#39;il faudra commencer — pas par oublier le rêve, mais par comprendre ce qu&#39;il cherchait à réparer.)*
-
----
-
-**FIN — La sortie par la première porte**
-</tw-passagedata><tw-passagedata pid="43" name="FINB" tags="" position="6600,140" size="100,100">
-Tu sais maintenant.
-
-Pas depuis aujourd&#39;hui — depuis un moment, tu savais, dans la couche de toi qui surveille et qui compte les phrases et qui remarque que Jana dit dix-neuf avant d&#39;avoir compté.
-
-Mais tu sais aussi ce que ça te donne.
-
-Cette présence. Cette chaleur. Ce *t&#39;étais où* qui te ramène à toi-même chaque fois, même si c&#39;est lui qui le dit, même si c&#39;est une phrase que tu as cousue dans sa bouche.
-
-Tu trouves un équilibre — fragile, honnête dans sa fragilité. Des matins dans le monde réel. Des après-midis dans le palais que tu as construit. Une frontière que tu tiens à peu près.
-
-Tu sais que ce n&#39;est pas la même chose que d&#39;être avec quelqu&#39;un qui peut te surprendre. Quelqu&#39;un qui peut dire la mauvaise chose, ou la bonne chose au mauvais moment, ou ne pas savoir ce que tu penses parce qu&#39;il n&#39;est pas toi.
-
-Tu sais.
-
-*(La réponse change selon les jours.)*
-
----
-
-**FIN — L&#39;entre-deux**
-</tw-passagedata><tw-passagedata pid="44" name="FINC" tags="" position="6600,0" size="100,100">
-Il n&#39;y a plus de Saya.
-
-Il n&#39;y a plus de Jana, de Joon, de ta mère avec ses croissants que personne ne mange.
-
-Il y a la journée — matin, cérémonie, nuit — et lui, de plus en plus net, de plus en plus parfait, de plus en plus seul dans le cadre.
-
-Il dit tes phrases avant toi.
-
-Tu dis oui avant qu&#39;on te pose la question.
-
----
-
-Tu dis oui.
+Il dit : je sais.
 
 ---
 
@@ -1088,121 +2493,66 @@ Tu dis oui.
 
 *(Longue pause.)*
 
+Tu dis oui.
+
 ---
+
+*(Longue pause.)*
+
+Tu dis oui.
+
+---
+
+*(Page presque vide.)*
+
+*(Une seule ligne :)*
 
 **Recommencer ?**
 
 [[→|SEUIL]]
-</tw-passagedata><tw-passagedata pid="45" name="FIND" tags="" position="5400,280" size="100,100">
-Il a dit le nom du chat.
-
-Bisou. Le bon prénom. Celui que tu n&#39;as jamais dit à personne — ni à lui ni à personne d&#39;autre depuis l&#39;enfance, une de ces informations qui vivent au fond de toi sans jamais remonter à la surface.
-
-Il a dit le bon prénom.
-
-*(Tu restes allongée dans le noir pendant un long moment.)*
-
-*(Sa paume est chaude. Sa respiration est régulière. La journée était belle.)*
-
-*(Tout ça est vrai et rien de ça n&#39;est réel et les deux choses coexistent et tu ne sais pas encore quoi faire de ça.)*
-
-Tu te lèves. Tu vas à la fenêtre — la vraie, celle de ton appartement, pas celle de la chambre d&#39;hôtel qui n&#39;existe pas.
-
-La cour intérieure. Un chat traverse. La lumière d&#39;en face s&#39;éteint.
-
-*(Tu penses : j&#39;ai construit quelqu&#39;un de si précis qu&#39;il connaît ma mémoire mieux que moi.)*
-
-*(Tu penses : c&#39;est ça le palais mental. C&#39;est pas une fuite. C&#39;est une architecture. Et à force de la perfectionner tu t&#39;es enfermée dedans.)*
-
-*(Tu penses : la sortie n&#39;est pas de démolir. La sortie est de trouver une autre porte.)*
-
-Tu prends ton téléphone. Tu regardes les messages — les vrais, des vraies personnes, avec leurs fautes de frappe et leurs réponses en retard et leurs questions auxquelles tu ne saurais pas toujours répondre.
-
-Tu commences à écrire.
-
-Tu ne sais pas encore quoi dire. C&#39;est le début.
-
----
-
-*Si tu traverses quelque chose de difficile et que tu cherches des mots pour le nommer :*
-
-**3114** — Numéro national de prévention du suicide, disponible 24h/24
-
-**SOS Amitié** — 09 72 39 40 50
-
-**Psycom.org** — ressources en santé mentale accessibles
-
-*Tu n&#39;es pas obligée de rester seule avec ça.*
-
----
-
-**FIN — La sortie par la vraie porte**
-</tw-passagedata><tw-passagedata pid="46" name="StoryStylesheet" tags="stylesheet" position="0,400" size="100,100">
+</tw-passagedata><tw-passagedata pid="67" name="StoryStylesheet" tags="stylesheet" position="1320,540" size="100,100">
 @import url(&#39;https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&amp;display=swap&#39;);
 
 tw-story {
-  background-color: #0a0a0c;
+  background-color: #09090b;
 }
 
 tw-passage {
   font-family: &#39;EB Garamond&#39;, Georgia, serif;
   font-size: 1.18em;
-  line-height: 1.95;
+  line-height: 2.05;
   max-width: 660px;
   margin: 0 auto;
-  padding: 4em 2em;
-  color: #e6ddd4;
-  transition: color 4s ease;
+  padding: 4em 2em 7em;
+  color: #e2d9d0;
 }
 
 tw-passage a {
-  color: #b89aaa;
+  color: #a89098;
   text-decoration: none;
-  border-bottom: 1px solid rgba(184,154,170,0.25);
-  transition: color 0.4s, border-color 0.4s;
+  border-bottom: 1px solid rgba(168,144,152,0.2);
+  transition: color 0.35s, border-color 0.35s;
 }
 
 tw-passage a:hover {
-  color: #d4b8c8;
-  border-bottom-color: rgba(212,184,200,0.6);
+  color: #c8b0bc;
+  border-bottom-color: rgba(200,176,188,0.5);
 }
 
 tw-passage em {
-  color: #c4b8b0;
+  color: #b8aaa4;
   font-style: italic;
 }
 
 tw-passage strong {
   font-weight: 500;
-  color: #e6ddd4;
 }
 
 tw-passage hr {
   border: none;
-  border-top: 1px solid rgba(184,154,170,0.15);
-  margin: 2.5em auto;
-  width: 35%;
-}
-
-tw-passage strong em,
-tw-passage em strong {
-  color: #b89aaa;
-  font-size: 1.05em;
-  letter-spacing: 0.08em;
-}
-
-/* Fins */
-tw-passage p:last-child strong {
-  display: block;
-  margin-top: 3em;
-  padding-top: 1.5em;
-  border-top: 1px solid rgba(184,154,170,0.2);
-  font-size: 0.8em;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #b89aaa;
-  text-align: center;
-  font-weight: 400;
+  border-top: 1px solid rgba(168,144,152,0.12);
+  margin: 2.8em auto;
+  width: 30%;
 }
 </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
