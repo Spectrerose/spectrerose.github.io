@@ -137,6 +137,56 @@
     .corner { position: absolute; bottom: 1.2rem; right: 1.2rem; width: 22px; height: 22px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); transition: all .4s; }
     .card:hover .corner { width: 32px; height: 32px; border-color: var(--rose); }
 
+    /* FICTION INTERACTIVE */
+    .fiction { padding: 9rem 4rem; background: linear-gradient(to bottom, transparent, rgba(61,21,32,.08), transparent); }
+    .fiction-inner { max-width: 1200px; margin: 0 auto; }
+    .fiction-card {
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 0;
+      border: 1px solid var(--border); background: var(--bg-card);
+      overflow: hidden; text-decoration: none; color: inherit;
+      transition: border-color .4s, box-shadow .4s;
+      position: relative;
+    }
+    .fiction-card:hover { border-color: var(--border-h); box-shadow: 0 24px 80px rgba(122,61,74,.2); }
+    .fiction-card::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(to right, transparent, var(--rose), transparent); opacity:0; transition:opacity .4s; z-index:1; }
+    .fiction-card:hover::before { opacity:1; }
+
+    .fc-visual {
+      position: relative; overflow: hidden; min-height: 340px;
+      background: linear-gradient(135deg, #0a0408, #080212, #040a0a);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .fc-visual::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 70% 70% at 40% 50%, rgba(212,144,154,.1), rgba(122,61,74,.05), transparent); }
+    .fc-glyph {
+      font-family:'Cormorant Garamond',serif; font-size:11rem; font-weight:300; font-style:italic;
+      color:rgba(212,144,154,.06); line-height:1; user-select:none;
+      animation: floatGlyph 9s ease-in-out infinite;
+    }
+    .fc-badge {
+      position:absolute; top:1.4rem; left:1.4rem;
+      font-family:'DM Mono',monospace; font-size:.48rem; letter-spacing:.2em; text-transform:uppercase;
+      border:1px solid var(--rose-dark); color:var(--rose); padding:.25rem .7rem;
+      background:rgba(7,4,10,.8); backdrop-filter:blur(4px);
+    }
+
+    .fc-body { padding: 3.5rem; display:flex; flex-direction:column; justify-content:center; }
+    .fc-eyebrow { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--rose); margin-bottom:1.2rem; display:block; }
+    .fc-title { font-family:'Cormorant Garamond',serif; font-size:clamp(1.8rem,3vw,2.6rem); font-weight:300; line-height:1.12; color:var(--cream); margin-bottom:1.4rem; transition:color .3s; }
+    .fiction-card:hover .fc-title { color:var(--rose-light); }
+    .fc-title em { color:var(--rose-light); font-style:italic; }
+    .fc-desc { font-family:'Crimson Text',serif; font-size:1rem; color:#a89095; line-height:1.85; margin-bottom:2rem; }
+    .fc-meta { display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:2rem; }
+    .fc-tag { font-family:'DM Mono',monospace; font-size:.46rem; letter-spacing:.15em; text-transform:uppercase; padding:.2rem .65rem; border:1px solid rgba(212,144,154,.2); color:var(--rose-dark); }
+    .fc-cta { display:inline-flex; align-items:center; gap:.6rem; font-family:'DM Mono',monospace; font-size:.55rem; letter-spacing:.22em; text-transform:uppercase; color:var(--rose-light); transition:gap .3s; }
+    .fiction-card:hover .fc-cta { gap:1rem; }
+
+    @media(max-width:960px){
+      .fiction { padding:5rem 2rem; }
+      .fiction-card { grid-template-columns:1fr; }
+      .fc-visual { min-height:200px; }
+      .fc-body { padding:2rem; }
+    }
+
     /* ABOUT */
     .about { padding: 9rem 4rem; background: linear-gradient(to bottom, transparent, rgba(122,61,74,.05), transparent); }
     .about-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.6fr; gap: 6rem; align-items: center; }
@@ -199,6 +249,7 @@
     <ul class="nav-links">
       <li><a href="#theories">Théories</a></li>
       <li><a href="theories.html">Index complet</a></li>
+      <li><a href="#fiction">Fiction</a></li>
       <li><a href="#about">À propos</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -396,7 +447,7 @@
 
       <a href="article-ryukishi07.html" class="card rv">
         <div class="c-img">
-         <img src="higurashi.jpg" alt="Umineko">
+         <img src="higurashi.jpg" alt="Ryukishi07">
         </div>
         <div class="c-body">
           <span class="c-tag">✦ Portrait d'auteur &nbsp;·&nbsp; Transversal</span>
@@ -409,10 +460,7 @@
 
       <a href="article-pentiment.html" class="card rv">
         <div class="c-img">
-          <div class="c-img-placeholder">
-            <span class="c-img-glyph">P</span>
-            <span class="c-img-label">Ajouter une image — Pentiment</span>
-          </div>
+          <img src="pentiment.jpg" alt="Pentiment">
         </div>
         <div class="c-body">
           <span class="c-tag">✦ Pentiment &nbsp;·&nbsp; Histoire &amp; mémoire</span>
@@ -432,27 +480,43 @@
         </div>
         <div class="c-body">
           <span class="c-tag">✦ Danganronpa 2 &nbsp;·&nbsp; Simulation &amp; métatextualité</span>
-          <h3 class="c-title">Le jeu dans le jeu dans le jeu — couches de réalité et mort de Chiaki dans Danganronpa 2</h3>
+          <h3 class="c-title">Le jeu dans le jeu dans le jeu — couches de réalité et mort de Chiaki</h3>
           <p class="c-exc">Une architecture de réalités emboîtées, une mort à deux niveaux, et un joueur qui ne sait pas ce qu'il regarde — Baudrillard, Freud et le Neo World Program.</p>
           <div class="c-meta"><span>24 mars 2026</span><span>·</span><span>16 min</span></div>
         </div>
         <div class="corner"></div>
       </a>
 
-         <a href="Ce que tu m_as appris _ aimer.html" class="card rv">
-        <div class="c-img">
-          <div class="c-img-placeholder">
-            <span class="c-img-glyph">P</span>
-            <span class="c-img-label">Ajouter une image — OSEF</span>
+    </div>
+  </section>
+
+  <!-- FICTION INTERACTIVE -->
+  <section class="fiction" id="fiction">
+    <div class="fiction-inner">
+      <div class="hd rv" style="text-align:center; margin-bottom:4rem;">
+        <span class="sec-tag">✦ Création</span>
+        <h2 class="sec-title">Fiction <em>interactive</em></h2>
+        <span class="orn">— ✦ —</span>
+      </div>
+
+      <a href="Ce que tu m_as appris _ aimer.html" class="fiction-card rv">
+        <div class="fc-visual">
+          <span class="fc-glyph">↩</span>
+          <span class="fc-badge">✦ Fiction Twine — multichoix</span>
+        </div>
+        <div class="fc-body">
+          <span class="fc-eyebrow">Fiction interactive &nbsp;·&nbsp; 2026</span>
+          <h3 class="fc-title">Ce que tu m'as appris <em>à aimer</em></h3>
+          <p class="fc-desc">Tu as vingt-deux ans, tu es étudiante en école d'art, et tu fais l'inventaire depuis ton lit. Il y a une fissure au plafond, une assiette froide dans le couloir, et quelque chose qui ne ressemble pas encore à une décision mais qui l'est quand même.<br><br>Une fiction à la deuxième personne — 13 chapitres, 3 fins, des boucles. Sur la fatigue, l'amour, et ce qu'on apprend sans le choisir.</p>
+          <div class="fc-meta">
+            <span class="fc-tag">Dépression &amp; quotidien</span>
+            <span class="fc-tag">Relation amoureuse</span>
+            <span class="fc-tag">2ème personne</span>
+            <span class="fc-tag">Boucles narratives</span>
+            <span class="fc-tag">Twine / Harlowe</span>
           </div>
+          <span class="fc-cta">Jouer &nbsp;→</span>
         </div>
-        <div class="c-body">
-          <span class="c-tag">✦ Pentiment &nbsp;·&nbsp; Histoire &amp; mémoire</span>
-          <h3 class="c-title">Ce que tu m'as appris à aimer</h3>
-          <p class="c-exc">ESSAI</p>
-          <div class="c-meta"><span>24 mars 2026</span><span>·</span><span>16 min</span></div>
-        </div>
-        <div class="corner"></div>
       </a>
 
     </div>
