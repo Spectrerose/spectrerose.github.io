@@ -3,234 +3,323 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spectre Rose — Le monde de Ryukishi07 : empathie, systèmes et corps brisés à travers une œuvre</title>
+  <title>Spectre Rose — Le monde de Ryukishi07 : empathie, systèmes et corps brisés</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg:#06040a; --bg-card:#0d0b14;
+      --bg:#06050a; --bg-card:#0d0b12;
       --rose:#d4909a; --rose-light:#f0c4cc; --rose-dark:#7a3d4a;
-      --cream:#ede8f0; --muted:#6a6070; --border:rgba(200,180,230,0.14);
-      --gold:#c9a96e; --gold-dark:#6e4f20; --gold-light:#f0d4a0;
-      --violet:#9070c0; --violet-l:#c0a0f0; --violet-d:#3a2860;
-      --red-l:#e8a0a0; --red-d:#5a2020;
+      --cream:#ede8e0; --muted:#6e6458; --border:rgba(210,190,150,0.18);
+      --ink:#c8a86e; --ink-dark:#6a4e1a; --ink-light:#f0d8a0;
     }
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
-    body { background:var(--bg); color:var(--cream); font-family:'Crimson Text',serif; font-size:19px; line-height:1.85; overflow-x:hidden; }
-    body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E"); pointer-events:none; z-index:9998; mix-blend-mode:overlay; opacity:0.55; }
-    nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; justify-content:space-between; align-items:center; padding:1.4rem 4rem; background:linear-gradient(to bottom,rgba(6,4,10,0.97) 0%,transparent 100%); }
+    body { background:var(--bg); color:var(--cream); font-family:'Crimson Text',serif; font-size:19px; line-height:1.88; overflow-x:hidden; }
+    body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E"); pointer-events:none; z-index:9998; mix-blend-mode:overlay; opacity:0.6; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; justify-content:space-between; align-items:center; padding:1.4rem 4rem; background:linear-gradient(to bottom,rgba(6,5,10,0.97) 0%,transparent 100%); }
     .nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:300; letter-spacing:.18em; color:var(--rose-light); text-decoration:none; }
     .nav-logo span { color:var(--rose); font-style:italic; }
     .nav-back { font-family:'DM Mono',monospace; font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .3s; }
-    .nav-back:hover { color:var(--violet-l); }
+    .nav-back:hover { color:var(--ink-light); }
+
     .art-hero { padding:12rem 4rem 5rem; max-width:860px; margin:0 auto; text-align:center; }
-    .a-eyebrow { font-family:'DM Mono',monospace; font-size:.58rem; letter-spacing:.4em; text-transform:uppercase; color:var(--violet); display:block; margin-bottom:2rem; }
-    .a-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2.2rem,5.5vw,3.8rem); font-weight:300; line-height:1.08; color:var(--cream); }
-    .a-title em { color:var(--gold-light); font-style:italic; }
-    .a-subtitle { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-style:italic; font-weight:300; color:var(--muted); margin-top:1.4rem; line-height:1.65; max-width:640px; margin-left:auto; margin-right:auto; }
-    .a-meta { display:flex; justify-content:center; align-items:center; gap:1.2rem; margin-top:2.8rem; font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.2em; text-transform:uppercase; color:var(--violet-d); }
-    .a-meta .sep { color:rgba(144,112,192,.25); }
-    .orn-line { text-align:center; color:var(--violet-d); font-size:.75rem; letter-spacing:1.6rem; margin:3.5rem 0; }
-    .cover-img { width:100%; max-width:860px; margin:0 auto 5rem; aspect-ratio:16/7; background:linear-gradient(135deg,#080510,#0a0618,#06041a); border:1px solid rgba(144,112,192,.12); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.6rem; position:relative; overflow:hidden; padding:0 4rem; }
-    .cover-img::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 70% at 50% 50%,rgba(144,112,192,.08),rgba(201,169,110,.05),transparent); }
-    .cover-img img { width:100%; height:100%; object-fit:cover; }
-    .cover-img-glyph { font-family:'Cormorant Garamond',serif; font-size:5rem; color:rgba(201,169,110,.09); font-style:italic; font-weight:300; line-height:1; }
-    .cover-img-label { font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.25em; text-transform:uppercase; color:rgba(144,112,192,.22); z-index:1; }
+    .a-eyebrow { font-family:'DM Mono',monospace; font-size:.58rem; letter-spacing:.4em; text-transform:uppercase; color:var(--ink); display:block; margin-bottom:2rem; }
+    .a-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2.2rem,5.5vw,3.6rem); font-weight:300; line-height:1.08; color:var(--cream); }
+    .a-title em { color:var(--ink-light); font-style:italic; }
+    .a-subtitle { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-style:italic; font-weight:300; color:var(--muted); margin-top:1.4rem; line-height:1.65; max-width:660px; margin-left:auto; margin-right:auto; }
+    .a-meta { display:flex; justify-content:center; align-items:center; gap:1.2rem; margin-top:2.8rem; font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-dark); }
+    .a-meta .sep { color:rgba(200,168,110,.25); }
+    .orn-line { text-align:center; color:var(--ink-dark); font-size:.8rem; letter-spacing:1.4rem; margin:3rem 0; }
+
     .art-body { max-width:700px; margin:0 auto; padding:0 2rem 8rem; }
-    h2 { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:400; line-height:1.12; color:var(--cream); margin:4.5rem 0 1.5rem; position:relative; padding-left:1.4rem; }
-    h2::before { content:''; position:absolute; left:0; top:.3em; width:3px; height:1.1em; background:linear-gradient(to bottom,var(--violet),var(--violet-d)); }
-    h3 { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-style:italic; font-weight:400; color:var(--gold-light); margin:2.8rem 0 .9rem; }
-    p { color:#c0b8cc; margin-bottom:1.5rem; }
+    h2 { font-family:'Cormorant Garamond',serif; font-size:1.95rem; font-weight:400; line-height:1.15; color:var(--cream); margin:4rem 0 1.4rem; position:relative; padding-left:1.4rem; }
+    h2::before { content:''; position:absolute; left:0; top:.3em; width:3px; height:1.1em; background:linear-gradient(to bottom,var(--ink),var(--ink-dark)); }
+    h3 { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-style:italic; font-weight:400; color:var(--ink-light); margin:2.4rem 0 .8rem; }
+    p { color:#ccc4b0; margin-bottom:1.4rem; }
     em { color:var(--rose-light); font-style:italic; }
     strong { color:var(--cream); font-weight:600; }
-    .note { border-left:2px solid var(--violet-d); padding:1rem 1.5rem; background:rgba(144,112,192,.04); margin:2.4rem 0; font-style:italic; font-size:.95rem; color:var(--muted); }
-    .note strong { color:var(--violet-l); font-style:normal; }
-    blockquote { margin:3rem 0; padding:2rem 2.5rem; border:1px solid rgba(144,112,192,.18); background:var(--bg-card); position:relative; font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-style:italic; font-weight:300; color:var(--violet-l); line-height:1.55; text-align:center; }
-    blockquote::before { content:'✦'; position:absolute; top:-1px; left:50%; transform:translateX(-50%); background:var(--bg); padding:0 .8rem; color:var(--violet-d); font-style:normal; font-size:.8rem; }
-    /* Tableau des œuvres */
-    .works-table { border:1px solid rgba(144,112,192,.15); background:var(--bg-card); margin:2rem 0; overflow:hidden; }
-    .wt-row { display:grid; grid-template-columns:1fr 1fr 1.4fr; border-bottom:1px solid rgba(144,112,192,.08); }
-    .wt-row:last-child { border-bottom:none; }
-    .wt-cell { padding:1rem 1.2rem; font-size:.9rem; }
-    .wt-head { font-family:'DM Mono',monospace; font-size:.48rem; letter-spacing:.18em; text-transform:uppercase; color:var(--violet); background:rgba(144,112,192,.06); }
-    .wt-title { color:var(--gold-light); font-family:'Cormorant Garamond',serif; font-size:1rem; font-style:italic; }
-    .wt-year { color:var(--muted); font-size:.85rem; }
-    .wt-theme { color:#b0a8c0; font-size:.88rem; line-height:1.6; }
-    /* Motifs récurrents */
-    .motifs { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:2rem 0; }
-    .motif-card { border:1px solid rgba(144,112,192,.15); background:var(--bg-card); padding:1.4rem; }
-    .mc-title { font-family:'Cormorant Garamond',serif; font-size:1.05rem; color:var(--violet-l); margin-bottom:.3rem; }
-    .mc-text { font-size:.88rem; color:var(--muted); line-height:1.7; }
-    .art-footer { max-width:700px; margin:0 auto; padding:3rem 2rem 6rem; border-top:1px solid var(--border); display:flex; flex-wrap:wrap; align-items:center; gap:1rem; }
-    .tag { border:1px solid var(--violet-d); padding:.25rem .8rem; font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.16em; text-transform:uppercase; color:var(--violet); }
-    footer { border-top:1px solid var(--border); padding:2.5rem 4rem; max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
-    .f-logo { font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:300; letter-spacing:.15em; color:var(--rose-light); }
-    .f-copy { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.18em; color:var(--muted); }
-    .rv { opacity:0; transform:translateY(22px); transition:opacity .85s ease,transform .85s ease; }
-    .rv.on { opacity:1; transform:none; }
-    @media(max-width:760px){ nav{padding:1.2rem 1.5rem;} .art-hero,.art-body,.art-footer{padding-left:1.5rem;padding-right:1.5rem;} .art-hero{padding-top:9rem;} .wt-row{grid-template-columns:1fr;} .motifs{grid-template-columns:1fr;} footer{flex-direction:column;gap:1rem;text-align:center;padding:2rem;} }
+
+    blockquote { margin:3rem 0; padding:2rem 2.5rem; border:1px solid rgba(200,168,110,.2); background:var(--bg-card); position:relative; font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-style:italic; font-weight:300; color:var(--ink-light); line-height:1.55; text-align:center; }
+    blockquote::before { content:'✦'; position:absolute; top:-1px; left:50%; transform:translateX(-50%); background:var(--bg); padding:0 .8rem; color:var(--ink-dark); font-style:normal; font-size:.8rem; }
+    blockquote cite { display:block; font-family:'DM Mono',monospace; font-size:.46rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); font-style:normal; margin-top:.8rem; }
+
+    .corpus-table { width:100%; border-collapse:collapse; margin:2rem 0; font-size:.88rem; }
+    .corpus-table th { font-family:'DM Mono',monospace; font-size:.46rem; letter-spacing:.16em; text-transform:uppercase; color:var(--ink); border-bottom:1px solid rgba(200,168,110,.2); padding:.7rem .5rem; text-align:left; }
+    .corpus-table td { border-bottom:1px solid rgba(200,168,110,.08); padding:.8rem .5rem; color:#b8b09c; vertical-align:top; line-height:1.5; }
+    .corpus-table tr:hover td { background:rgba(200,168,110,.03); }
+
+    .note { border-left:2px solid var(--ink-dark); padding:1rem 1.5rem; background:rgba(200,168,110,.04); margin:2.4rem 0; font-style:italic; font-size:.92rem; color:var(--muted); line-height:1.7; }
+    .note strong { color:var(--ink-light); font-style:normal; }
+
+    .fn { font-size:.78rem; color:var(--muted); line-height:1.6; font-style:italic; margin-top:.5rem; padding-left:1rem; border-left:1px solid rgba(200,168,110,.15); }
+    sup { font-size:.65rem; color:var(--ink); vertical-align:super; }
+
+    .motif-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:2rem 0; }
+    .motif-card { border:1px solid rgba(200,168,110,.15); background:var(--bg-card); padding:1.4rem; }
+    .motif-title { font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:500; color:var(--ink-light); margin-bottom:.6rem; }
+    .motif-text { font-size:.88rem; color:var(--muted); line-height:1.65; }
+
+    .biblio { margin-top:5rem; padding-top:3rem; border-top:1px solid var(--border); }
+    .biblio-title { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--ink); margin-bottom:2rem; display:block; }
+    .biblio-item { font-size:.9rem; color:var(--muted); line-height:1.75; margin-bottom:.8rem; padding-left:1.4rem; text-indent:-1.4rem; }
+
+    .art-footer { max-width:700px; margin:3rem auto 0; padding:2rem 2rem 1rem; border-top:1px solid rgba(200,168,110,.1); display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; }
+    .tag { font-family:'DM Mono',monospace; font-size:.46rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-dark); border:1px solid rgba(200,168,110,.15); padding:.3rem .7rem; }
+    footer { text-align:center; padding:3rem; font-family:'DM Mono',monospace; font-size:.46rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+    .f-logo { color:var(--rose-light); margin-right:1rem; }
+
+    @media (max-width: 640px) {
+      .motif-grid { grid-template-columns: 1fr; }
+      nav { padding: 1rem 1.5rem; }
+      .art-hero { padding: 8rem 1.5rem 3rem; }
+      .art-body { padding: 0 1.5rem 5rem; }
+    }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html" class="nav-logo">Spectre <span>Rose</span></a>
-    <a href="index.html" class="nav-back">← Retour aux théories</a>
-  </nav>
 
-  <div class="art-hero">
-    <span class="a-eyebrow rv">✦ Article transversal &nbsp;·&nbsp; Ryukishi07 &nbsp;·&nbsp; Portrait d'auteur</span>
-    <h1 class="a-title rv">Le monde de <em>Ryukishi07</em><br>— empathie, systèmes et corps brisés à travers une œuvre</h1>
-    <p class="a-subtitle rv">De <em>Higurashi</em> à <em>Umineko</em> en passant par <em>Silent Hill f</em> — les motifs obsessionnels d'un auteur qui refuse de laisser ses personnages être des victimes</p>
-    <div class="a-meta rv">
-      <span>Article transversal</span>
-      <span class="sep">·</span>
-      <span>Spoilers Higurashi, Umineko, SHf</span>
-      <span class="sep">·</span>
-      <span>~16 min</span>
+<nav>
+  <a href="https://spectrerose.github.io/index.html" class="nav-logo">Spectre <span>Rose</span></a>
+  <a href="https://spectrerose.github.io/index.html" class="nav-back">← Retour aux théories</a>
+</nav>
+
+<div class="art-hero">
+  <span class="a-eyebrow">Article transversal · Ryukishi07 · Portrait d'auteur</span>
+  <h1 class="a-title">Le monde de <em>Ryukishi07</em><br>— empathie, systèmes<br>et corps brisés</h1>
+  <p class="a-subtitle">De <em>Higurashi</em> à <em>Umineko</em> en passant par <em>Silent Hill f</em> et <em>Rose Guns Days</em> — les motifs obsessionnels d'un auteur qui refuse de laisser ses personnages être de simples victimes</p>
+  <div class="a-meta">
+    <span>Article transversal</span><span class="sep">·</span>
+    <span>Spoilers Higurashi, Umineko, SHf</span><span class="sep">·</span>
+    <span>~25 min</span>
+  </div>
+</div>
+
+<div class="orn-line">竜 &nbsp; ✦ &nbsp; 竜</div>
+
+<article class="art-body">
+
+  <p>Il y a un moment dans <em>Higurashi no Naku Koro ni</em> — la série qui a précédé <em>Umineko</em> — où une petite fille nommée Rena attrape une hache et charge. Ce moment est horrifiant. Et quelques arcs plus tard, il est aussi le moment le plus compréhensible de toute la série, parce qu'on a enfin accès à ce que Rena a vécu, à ce qui l'a amenée là, à ce que la violence qu'elle exerce dit de la violence qu'elle a reçue.</p>
+
+  <p>C'est le projet de Ryukishi07 dans toute son œuvre. Montrer l'acte. Puis montrer ce qui l'a produit. Puis demander au lecteur si sa lecture de l'acte a changé — et si non, pourquoi. Ce projet est cohérent sur plus de vingt ans et à travers des supports très différents. Il est aussi étroitement lié à la position singulière qu'occupe Ryukishi07 dans l'industrie de la fiction interactive japonaise.</p>
+
+  <div class="orn-line">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <h2>I. Un auteur qui vient du dehors — la culture <em>dōjin</em> comme condition de possibilité</h2>
+
+  <p>Pour comprendre ce que Ryukishi07 fait, il faut savoir d'où il vient. 07th Expansion, le cercle qu'il a fondé vers 2000 avec son frère Yatazakura, est une structure <em>dōjin</em> — un collectif d'amateurs qui produit et distribue ses œuvres principalement au Comiket, le grand marché des créations indépendantes japonaises, deux fois par an à Tokyo. <em>Higurashi</em> a débuté à l'été 2002 dans ce circuit : à sa première présentation au Summer Comiket, il s'en est vendu cinq exemplaires.<sup>1</sup></p>
+
+  <p>Cette origine n'est pas anecdotique — elle est constitutive de la forme que prennent ses œuvres. La culture <em>dōjin</em> est fondamentalement une culture de la transmission directe entre auteur et lecteur, sans intermédiaire éditorial. Dans ce cadre, Ryukishi07 a pu recevoir des retours de ses lecteurs arc par arc et intégrer leurs réactions dans l'écriture suivante. Il l'a lui-même formulé dans un entretien accordé à Anime Diet : « In the case of <em>Higurashi</em>, it took four years to make, and the readers had a lot of opinions and feedback, and I would take that and incorporate it into the next work. It's like catching and passing a ball back and forth, an ongoing process. »<sup>2</sup> Cette co-construction est un élément structural de la série : le lecteur n'est pas un récepteur passif mais un interlocuteur actif.</p>
+
+  <p>Ryukishi07 a par ailleurs insisté sur la distinction entre le <em>sound novel</em> — terme qu'il a revendiqué pour ses propres œuvres — et le <em>visual novel</em>. Comme il l'a expliqué à l'occasion d'Epitanime en 2012 : « Between manga, anime, and an actual novel, and between an action game and a novel — because [the visual novel] has this central position, depending on which elements are stressed it could become closer to action games, or get closer to an actual novel. This central position gives you a lot of freedom. »<sup>3</sup> C'est depuis cette liberté formelle, rendue possible par l'indépendance économique du circuit dōjin, que Ryukishi07 a pu prendre des risques narratifs que les studios commerciaux n'auraient probablement pas autorisés. <em>Higurashi</em> commence par montrer un massacre perpétré par une petite fille de douze ans, sans justification narrative immédiate. <em>Umineko</em> consacre ses huit épisodes à refuser toute résolution rassurante. Ces choix n'auraient pas survécu à un comité de validation.</p>
+
+  <h2>II. L'œuvre — cartographie d'une cohérence</h2>
+
+  <table class="corpus-table">
+    <thead>
+      <tr>
+        <th>Œuvre</th>
+        <th>Période</th>
+        <th>Thème central</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><em>Higurashi no Naku Koro ni</em></td>
+        <td>2002–2006</td>
+        <td>Trauma collectif, boucles temporelles, comment une communauté peut se retourner contre elle-même sous la pression.</td>
+      </tr>
+      <tr>
+        <td><em>Umineko no Naku Koro ni</em></td>
+        <td>2007–2010</td>
+        <td>Identité fragmentée, empathie comme épistémologie, violence familiale et systémique, métatextualité narrative.</td>
+      </tr>
+      <tr>
+        <td><em>Higanbana no Saku Yoru ni</em></td>
+        <td>2010–2011</td>
+        <td>Harcèlement scolaire comme violence institutionnelle ; le yokai comme figure du mécanisme systémique.</td>
+      </tr>
+      <tr>
+        <td><em>Rose Guns Days</em></td>
+        <td>2012–2013</td>
+        <td>Occupation, souveraineté nationale, solidarité communautaire comme réponse à la désintégration sociale.</td>
+      </tr>
+      <tr>
+        <td><em>Ciconia no Naku Koro ni</em></td>
+        <td>2019–</td>
+        <td>Science-fiction militaire, manipulation de masse, identité à l'ère des technologies cognitives.</td>
+      </tr>
+      <tr>
+        <td><em>Silent Hill f</em> (scénario)</td>
+        <td>2025</td>
+        <td>Corps féminin comme enjeu social, Japon des années 1960, identité imposée et résistance.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Ce qui frappe à la lecture transversale de ces œuvres, c'est moins leur diversité formelle que leur cohérence thématique profonde. Ryukishi07 revient toujours aux mêmes questions, avec des outils différents. Qu'est-ce qui produit la violence ? Comment comprendre quelqu'un qui fait quelque chose d'horrible ? Et quel est le prix — et la valeur — de l'empathie ?</p>
+
+  <h2>III. Les motifs obsessionnels</h2>
+
+  <div class="motif-grid">
+    <div class="motif-card">
+      <div class="motif-title">Les boucles</div>
+      <div class="motif-text"><em>Higurashi</em> répète la même semaine de juin des dizaines de fois. <em>Umineko</em> répète le même week-end d'octobre dans des versions contradictoires. <em>Silent Hill f</em> fait boucler Hinako dans ses versions futures. La boucle chez Ryukishi07 n'est jamais un simple gimmick narratif — c'est la structure du trauma lui-même. Ce qui n'a pas été compris se répète.</div>
+    </div>
+    <div class="motif-card">
+      <div class="motif-title">Les femmes enfermées</div>
+      <div class="motif-text">Rena dans <em>Higurashi</em> est prisonnière d'une ville qui la surveille. Sayo dans <em>Umineko</em> est prisonnière d'une identité qu'on lui a imposée. Hinako dans <em>Silent Hill f</em> est prisonnière d'un destin matrimonial. Rose dans <em>Rose Guns Days</em> est prisonnière d'une économie d'occupation. Les protagonistes féminines de Ryukishi07 sont toujours, au départ, dans une cage.</div>
+    </div>
+    <div class="motif-card">
+      <div class="motif-title">Le système comme ennemi</div>
+      <div class="motif-text">Pas de méchants individuels chez Ryukishi07 — ou presque. Ce qui détruit ses personnages, c'est presque toujours un système : la hiérarchie sociale de Hinamizawa, la structure patriarcale de la famille Ushiromiya, la logique du mariage forcé au Japon des années 1960, l'occupation américano-chinoise dans <em>Rose Guns Days</em>. La violence est institutionnelle avant d'être personnelle.</div>
+    </div>
+    <div class="motif-card">
+      <div class="motif-title">La fiction comme refuge</div>
+      <div class="motif-text">Maria dans <em>Umineko</em> invente une sorcière pour survivre à sa mère. Sayo invente Beatrice pour exister. Hinako joue à la guerre spatiale pour rester enfant. Chez Ryukishi07, la fiction n'est jamais une fuite — c'est un outil de survie psychique, la seule réponse disponible quand la réalité est inhabitable.</div>
+    </div>
+    <div class="motif-card">
+      <div class="motif-title">La culpabilité collective</div>
+      <div class="motif-text">Dans <em>Higurashi</em>, tout le village est coupable — et tout le village est victime. Dans <em>Umineko</em>, la famille Ushiromiya est à la fois bourreau et victime de ses propres structures. La culpabilité chez Ryukishi07 ne se concentre jamais sur un seul individu : elle se distribue dans les structures qui ont produit les individus.</div>
+    </div>
+    <div class="motif-card">
+      <div class="motif-title">L'empathie comme solution</div>
+      <div class="motif-text">Dans toutes ses œuvres, la résolution — quand elle existe — passe par la compréhension de l'autre. Keiichi dans <em>Higurashi</em> brise les boucles quand il comprend enfin Rena. Battler dans <em>Umineko</em> peut s'approcher de la vérité quand il comprend Sayo. Ryukishi07 croit fondamentalement que voir l'intériorité de l'autre est l'acte le plus révolutionnaire possible.</div>
     </div>
   </div>
 
-  <div class="cover-img rv" style="padding:0 2rem;">
-    <div class="cover-img-glyph">竜</div>
-    <span class="cover-img-label">[ Ajouter une image ici — Ryukishi07 ]</span>
+  <h2>IV. <em>Higurashi</em> — là où tout commence, et ce qu'on y apprend</h2>
+
+  <p>Pour comprendre ce que Ryukishi07 fait dans <em>Umineko</em> et <em>Silent Hill f</em>, il faut revenir à <em>Higurashi</em>. C'est là qu'il a développé ses outils fondamentaux — et c'est là que la dimension procédurale de son projet est la plus lisible.</p>
+
+  <p><em>Higurashi no Naku Koro ni</em> se déroule dans le village fictif de Hinamizawa en juin 1983. Un garçon nommé Keiichi arrive en ville, se lie d'amitié avec un groupe de filles, et découvre peu à peu qu'il se passe quelque chose d'horrible dans ce village. Des gens meurent. Des gens disparaissent. Des gens deviennent fous. La structure de base est celle d'un roman policier — mais répété. Chaque arc présente une version différente du même mois de juin, avec des morts différentes et des coupables différents.</p>
+
+  <p>Ce qu'on comprend progressivement — et c'est ici que la logique de la boucle dépasse la seule ingéniosité formelle — c'est que le village entier est traumatisé par un événement passé, et que ce trauma se réactive en boucle, faisant des victimes les unes des autres. Le schéma, que la narratologie cognitive de David Herman permettrait de lire comme une instabilité du <em>storyworld</em> — le monde mental construit par le lecteur à partir des données du texte, et sans cesse reconfiguré par chaque nouvel arc —, dit quelque chose de précis sur la nature du trauma collectif : il ne se résout pas par la punition d'un coupable, mais par la compréhension de ce qui l'a produit.<sup>4</sup></p>
+
+  <p>La résolution de <em>Higurashi</em> est radicale : elle ne passe pas par la punition des coupables, mais par la guérison du trauma collectif. Keiichi doit comprendre ce que chaque fille a vécu — pas seulement les faits, mais l'expérience intérieure — pour que les boucles s'arrêtent. C'est la première formulation de ce qui deviendra le cœur d'<em>Umineko</em> : <em>sans amour, cela ne peut être vu</em>.</p>
+
+  <h2>V. Le tournant <em>Umineko</em> — quand la structure devient le sujet</h2>
+
+  <p>Si <em>Higurashi</em> utilise les boucles pour explorer le trauma collectif, <em>Umineko</em> les utilise pour quelque chose de plus métatextuel : explorer la nature même de la narration et du lecteur. Comme l'a formulé Ryukishi07 dans ses échanges avec le critique Keiya, il voulait créer un rapport de jeu entre l'auteur et son lecteur, non une simple narration à sens unique : « I don't want to be like authors who just writes something, then the readers reads and that's it. I want the readers to work on the book too, that way a link is created between the author and the readers. »<sup>5</sup></p>
+
+  <p>Dans <em>Umineko</em>, les boucles ne sont pas des phénomènes surnaturels — ce sont des récits. Des manuscrits écrits depuis des perspectives différentes, publiés dans des bouteilles à la mer, trouvés des années plus tard. La question « qu'est-ce qui s'est vraiment passé à Rokkenjima ? » est inséparable de « qui raconte, depuis quelle position, avec quelle intention ? ». La narratologie génétique dirait que <em>Umineko</em> met en scène sa propre genèse — il est un texte sur la production du texte.</p>
+
+  <p>Ryukishi07 devient ici un auteur profondément conscient de son propre dispositif. Il construit une fiction sur la façon dont les fictions sont construites. Il fait jouer au lecteur le rôle du détective — et lui dit ensuite que la détection pure est insuffisante, que la vérité nécessite autre chose. <strong>C'est la critique la plus élaborée du genre <em>mystery novel</em> que le genre <em>mystery novel</em> ait produite de l'intérieur.</strong></p>
+
+  <h3>L'identité fragmentée de Sayo Yasuda</h3>
+
+  <p><em>Umineko</em> contient l'une des représentations les plus complexes et les plus débattues de l'identité de genre dans la fiction interactive japonaise. Sayo Yasuda — le personnage qui se cache derrière les figures de Shannon, Kanon et Beatrice — est une figure dont le statut identitaire est fondamentalement indécidable, et cette indécidabilité est constitutive du projet littéraire de l'œuvre.</p>
+
+  <p>Née biologiquement male mais élevée comme fille après un accident de nourrisson qui a mutilé son corps, Sayo ne se reconnaît dans aucun des rôles que le monde lui assigne. Elle construit des personas — Shannon, femme docile ; Kanon, homme serviteur ; Beatrice, sorcière toute-puissante — comme autant de réponses à l'impossibilité d'exister sans masque dans une société qui ne lui laisse pas de place pour ce qu'elle est. Comme le souligne l'arc manga « Confession of the Golden Witch », seule source officielle à représenter directement Sayo, ces figures ne sont pas de la dissimulation — elles sont une tentative de trouver un espace habitable dans une identité que le monde entier lui refuse.<sup>6</sup></p>
+
+  <p>La version alternative de Lion Ushiromiya, dans les timelines où l'accident n'a pas eu lieu, est présentée comme androgyne et revendiquant l'égalité de genre — ce qui laisse entendre que c'est la violence de l'accident, et non une identité préexistante, qui a produit le morcellement de Sayo. Interrogé sur une éventuelle dimension transgenre du personnage, Ryukishi07 a répondu que c'était « une question difficile à laquelle répondre, mais une bonne question », ajoutant qu'il souhaitait laisser les lecteurs tirer leurs propres conclusions.<sup>7</sup> Cette réponse est elle-même une déclaration de poétique : comme la vérité de Rokkenjima, l'identité de Sayo reste dans la catbox — indéterminée, multiple, appartenant au lecteur autant qu'à l'auteur.</p>
+
+  <p>Ce qui est certain, en revanche, c'est que la fragmentation identitaire de Sayo n'est jamais traitée comme une pathologie ou une bizarrerie — elle est la réponse rationnelle d'un être humain à des conditions d'existence invivables. Les personas ne sont pas des symptômes : ce sont des outils de survie. C'est en cela que Sayo est peut-être le personnage le plus cohérent avec la vision éthique de toute l'œuvre de Ryukishi07 — elle fait ce qu'elle peut, avec ce qu'elle a, dans un monde qui ne lui a jamais demandé son avis sur ce qu'elle était.</p>
+
+  <h2>VI. <em>Higanbana no Saku Yoru ni</em> — le laboratoire méconnu</h2>
+
+  <p><em>Higanbana no Saku Yoru ni</em> (2010–2011) est l'une des œuvres de Ryukishi07 les moins lues hors du Japon, et l'une des plus importantes pour comprendre sa vision. Recueil de sept histoires courtes se déroulant dans une école hantée par des yokai, il radicalise les motifs des grandes œuvres en les appliquant à un contexte socialement précis : le harcèlement scolaire au Japon.</p>
+
+  <p>La décision d'introduire des yokai comme figures centrales n'est pas purement ornementale. Comme Ryukishi07 l'a expliqué dans un entretien traduit par Rena-Rena Toshokan : « If you can blame [bullying] on a yokai, maybe that offers at least a little hope for the reader. [...] The ones doing the bullying might not even want to, but feel compelled by something. »<sup>8</sup> Le yokai personnifie le mécanisme systémique — la pression sociale, la hiérarchie, l'atmosphère — plutôt qu'une volonté individuelle malveillante. C'est une solution narrative qui permet d'analyser sans individualiser, de condamner sans déshumaniser.</p>
+
+  <p>Dans chacune des sept histoires, une fille est victime d'une violence institutionnelle — harcèlement par un professeur, exclusion sociale, humiliation publique — et c'est de cette violence que naît le monstre. Le féminin monstrueux de <em>Higanbana</em> n'est pas une menace à conjurer : c'est une archive, la trace visible de ce qu'on a fait à un corps vivant. C'est aussi le texte dans lequel Ryukishi07 théorise le plus directement son projet éthique : refuser de réduire les bourreaux à leur acte, refuser de réduire les victimes à leur souffrance.</p>
+
+  <h2>VII. <em>Rose Guns Days</em> — le politique caché</h2>
+
+  <p><em>Rose Guns Days</em> (2012–2013) est peut-être l'œuvre la moins lue de Ryukishi07 en dehors du Japon, et l'une des plus politiquement ambitieuses. Se déroulant dans un Japon alternatif de l'après-guerre où la défaite de 1945 a entraîné une double occupation américaine et chinoise, elle suit Rose Haibara, gérante d'un club nocturne de Yokohama devenu, sans qu'elle l'ait voulu, un point de résistance pour la communauté japonaise appauvrie.</p>
+
+  <p>Ce qui distingue <em>Rose Guns Days</em> des autres œuvres de Ryukishi07, c'est qu'elle aborde directement la question de la souveraineté nationale et de l'occupation — des thèmes que le Japon d'après-guerre a traités avec une complexité et une ambivalence particulières dans sa culture populaire. Ryukishi07 y déploie son motif habituel (la violence systémique produit des individus fracturés), mais dans un contexte où la « structure » est littéralement une puissance d'occupation étrangère. La solidarité communautaire comme réponse à la désintégration, et non l'héroïsme individuel — c'est un récit que le genre du visual novel ne produit presque jamais.</p>
+
+  <p>Rose elle-même est une protagoniste qui résiste au schéma habituel des personnages féminins de Ryukishi07 : elle n'est pas d'abord une victime enfermée qui cherche à comprendre son passé. Elle est une organisatrice, une femme qui construit des alliances horizontales dans un contexte d'oppression verticale. Sa force n'est pas dans le combat individuel mais dans la compréhension des structures de pouvoir qui l'entourent — et dans sa capacité à les utiliser sans se laisser entièrement corrompre par elles. C'est un personnage qui incarne l'empathie non comme réception passive mais comme praxis politique.</p>
+
+  <h2>VIII. <em>Silent Hill f</em> — l'héritage dans un autre medium</h2>
+
+  <p>Le fait que Konami ait choisi Ryukishi07 pour écrire <em>Silent Hill f</em> n'est pas un hasard. La franchise <em>Silent Hill</em> a toujours été construite sur les mêmes fondations : l'horreur comme métaphore psychologique, la ville comme projection de l'inconscient, les monstres comme symboles de ce que le protagoniste refuse de voir. Ce programme correspond exactement à ce que Ryukishi07 pratique depuis <em>Higurashi</em>.</p>
+
+  <p>Ce que Ryukishi07 apporte à cette tradition, c'est une précision sociologique et historique que les précédents <em>Silent Hill</em> n'avaient pas toujours. Le Japon des années 1960, la structure des mariages arrangés, la condition des femmes dans une société de transition entre les réformes de l'après-guerre et la restauration conservatrice des années 1955–1960 — ces éléments ne sont pas du décor. Ils sont la cause de l'horreur. <em>Le brouillard ne descend pas parce qu'il y a une malédiction ancienne. Il descend parce qu'une fille est traitée comme une marchandise dans une économie matrimoniale précise.</em></p>
+
+  <p>On retrouve dans <em>Silent Hill f</em> tous les motifs qu'on a nommés : la femme enfermée (Hinako dans son destin matrimonial), le système comme ennemi (le Japon patriarcal des années 1960), la fiction comme refuge (la poupée qui avertit, le jeu de guerre spatiale avec Shu), la boucle (Shiromuku comme futur possible qu'Hinako refuse de voir). Ce n'est pas Ryukishi07 qui s'adapte à la franchise <em>Silent Hill</em>. C'est <em>Silent Hill</em> qui lui offre un nouveau langage pour dire ce qu'il dit depuis vingt ans.</p>
+
+  <div class="orn-line">竜 &nbsp; ✦ &nbsp; 竜</div>
+
+  <h2>IX. Ce que Ryukishi07 dit — en résumé</h2>
+
+  <p>Si l'on devait résumer en quelques propositions ce que l'œuvre entière de Ryukishi07 dit, ce serait peut-être ceci.</p>
+
+  <p><strong>La violence n'est jamais individuelle.</strong> Elle est toujours le produit d'un système — familial, social, économique, historique — qui a brisé quelqu'un avant que quelqu'un brise quelqu'un d'autre. Comprendre la violence, c'est remonter la chaîne jusqu'aux structures qui la produisent.</p>
+
+  <p><strong>Les femmes subissent ces structures de façon disproportionnée.</strong> Ses protagonistes féminines — Rena, Sayo, Hinako, Rose — sont toutes des êtres que le monde essaie de réduire à une fonction. Leur histoire est celle de la résistance à cette réduction, et parfois de son échec.</p>
+
+  <p><strong>L'empathie est révolutionnaire.</strong> Pas sentimentale — cognitive, exigeante, douloureuse. Se mettre à la place de l'autre au point de comprendre pourquoi il a fait ce qu'il a fait, sans nécessairement l'excuser. C'est difficile. C'est aussi la seule façon de briser les boucles.</p>
+
+  <blockquote>
+    Ryukishi07 est peut-être l'auteur de fiction interactive qui a le plus réfléchi à ce que ça veut dire d'écrire des personnages qui souffrent — et à la responsabilité qui accompagne ce choix.
+  </blockquote>
+
+  <p>Son œuvre est imparfaite — certains arcs de <em>Higurashi</em> traînent, certaines constructions d'<em>Umineko</em> sont laborieuses, certains choix de <em>Silent Hill f</em> ont suscité des débats légitimes sur la représentation. Mais la cohérence de la vision, sur plus de vingt ans et à travers des supports différents, est remarquable. C'est l'œuvre d'un auteur qui sait exactement pourquoi il écrit, et qui ne s'en est jamais vraiment écarté — même quand ses lecteurs auraient voulu autre chose.</p>
+
+  <div class="note">
+    <strong>Note sur les sources :</strong> les citations directes de Ryukishi07 proviennent d'entretiens accessibles en ligne, dont certains sont traduits depuis le japonais. Les références à l'entretien Anime Diet sont tirées de la page archivée sur animediet.net. Les références à Epitanime 2012 proviennent de la transcription publiée sur la base de données 07th Expansion Wiki. Les sources fan (Rena-Rena Toshokan) sont utilisées pour les entretiens non traduits officiellement — leur fiabilité est bonne mais leurs dates exactes sont parfois incertaines.
   </div>
 
-  <article class="art-body">
-
-    <p class="rv">Il y a un moment dans <em>Higurashi no Naku Koro ni</em> — la série qui a précédé Umineko — où une petite fille nommée Rena attrape une hache et charge. Ce moment est horrifiant. Et quelques arcs plus tard, il est aussi le moment le plus compréhensible de toute la série, parce qu'on a enfin accès à ce que Rena a vécu, à ce qui l'a amenée là, à ce que la violence qu'elle exerce dit de la violence qu'elle a reçue.</p>
-
-    <p class="rv">C'est le projet de Ryukishi07 dans toute son œuvre. Montrer l'acte. Puis montrer ce qui l'a produit. Puis demander au lecteur si sa lecture de l'acte a changé — et si non, pourquoi.</p>
-
-    <div class="orn-line rv">✦ &nbsp; ✦ &nbsp; ✦</div>
-
-    <h2 class="rv">I. L'œuvre — une cartographie rapide</h2>
-
-    <div class="works-table rv">
-      <div class="wt-row">
-        <div class="wt-cell wt-head">Œuvre</div>
-        <div class="wt-cell wt-head">Période</div>
-        <div class="wt-cell wt-head">Thème central</div>
-      </div>
-      <div class="wt-row">
-        <div class="wt-cell wt-title">Higurashi no Naku Koro ni</div>
-        <div class="wt-cell wt-year">2002–2006</div>
-        <div class="wt-cell wt-theme">Trauma collectif, boucles temporelles, comment une communauté peut se retourner contre elle-même sous la pression.</div>
-      </div>
-      <div class="wt-row">
-        <div class="wt-cell wt-title">Umineko no Naku Koro ni</div>
-        <div class="wt-cell wt-year">2007–2010</div>
-        <div class="wt-cell wt-theme">Identité fragmentée, empathie comme épistémologie, violence familiale et systémique, Divine Comédie.</div>
-      </div>
-      <div class="wt-row">
-        <div class="wt-cell wt-title">Trianthology</div>
-        <div class="wt-cell wt-year">2016</div>
-        <div class="wt-cell wt-theme">Anthologie de courtes histoires d'horreur — laboratoire de motifs récurrents.</div>
-      </div>
-      <div class="wt-row">
-        <div class="wt-cell wt-title">Ciconia no Naku Koro ni</div>
-        <div class="wt-cell wt-year">2019–</div>
-        <div class="wt-cell wt-theme">Science-fiction militaire, manipulation de masse, identité à l'ère des technologies cognitives.</div>
-      </div>
-      <div class="wt-row">
-        <div class="wt-cell wt-title">Silent Hill f (scénario)</div>
-        <div class="wt-cell wt-year">2025</div>
-        <div class="wt-cell wt-theme">Corps féminin comme enjeu social, Japon des années 1960, identité imposée et résistance.</div>
-      </div>
-    </div>
-
-    <p class="rv">Ce qui frappe à la lecture transversale de ces œuvres, c'est moins leur diversité formelle que leur cohérence thématique profonde. Ryukishi07 revient toujours aux mêmes questions, avec des outils différents. Qu'est-ce qui produit la violence ? Comment comprendre quelqu'un qui fait quelque chose d'horrible ? Et quel est le prix — et la valeur — de l'empathie ?</p>
-
-    <h2 class="rv">II. Les motifs obsessionnels</h2>
-
-    <div class="motifs rv">
-      <div class="motif-card">
-        <div class="mc-title">Les boucles</div>
-        <div class="mc-text">Higurashi répète la même semaine de juin des dizaines de fois. Umineko répète le même week-end d'octobre dans des versions contradictoires. Silent Hill f fait boucler Hinako dans ses versions futures. La boucle chez Ryukishi07 n'est jamais un simple gimmick narratif — c'est la structure du trauma lui-même. Ce qui n'a pas été compris se répète.</div>
-      </div>
-      <div class="motif-card">
-        <div class="mc-title">Les femmes enfermées</div>
-        <div class="mc-text">Rena dans Higurashi est prisonnière d'une ville qui la surveille. Sayo dans Umineko est prisonnière d'une identité qu'on lui a imposée. Hinako dans Silent Hill f est prisonnière d'un destin matrimonial. Les protagonistes féminines de Ryukishi07 sont toujours, au départ, dans une cage — visible ou invisible.</div>
-      </div>
-      <div class="motif-card">
-        <div class="mc-title">Le système comme ennemi</div>
-        <div class="mc-text">Pas de méchants individuels chez Ryukishi07 — ou presque. Ce qui détruit ses personnages, c'est presque toujours un système : la hiérarchie sociale de Hinamizawa, la structure patriarcale de la famille Ushiromiya, la logique du mariage forcé au Japon des années 1960. La violence est institutionnelle avant d'être personnelle.</div>
-      </div>
-      <div class="motif-card">
-        <div class="mc-title">La fiction comme refuge</div>
-        <div class="mc-text">Maria dans Umineko invente une sorcière pour survivre à sa mère. Sayo invente Beatrice pour exister. Hinako joue à la guerre spatiale pour rester enfant. Chez Ryukishi07, la fiction n'est jamais une fuite — c'est un outil de survie psychique, la seule réponse disponible quand la réalité est inhabitable.</div>
-      </div>
-      <div class="motif-card">
-        <div class="mc-title">La culpabilité collective</div>
-        <div class="mc-text">Dans Higurashi, tout le village est coupable — et tout le village est victime. Dans Umineko, la famille Ushiromiya est à la fois bourreau et victime de ses propres structures. Dans Silent Hill f, les adultes qui ont laissé faire sont aussi responsables que le père d'Hinako. La culpabilité chez Ryukishi07 ne se concentre jamais sur un seul individu.</div>
-      </div>
-      <div class="motif-card">
-        <div class="mc-title">L'empathie comme solution</div>
-        <div class="mc-text">Dans toutes ses œuvres, la résolution — quand elle existe — passe par la compréhension de l'autre. Keiichi dans Higurashi brise les boucles quand il comprend enfin Rena. Battler dans Umineko peut peut-être s'approcher de la vérité quand il comprend Sayo. Ryukishi07 croit fondamentalement que voir l'intériorité de l'autre est l'acte le plus révolutionnaire possible.</div>
-      </div>
-    </div>
-
-    <h2 class="rv">III. Higurashi — là où tout commence</h2>
-
-    <p class="rv">Pour comprendre ce que Ryukishi07 fait dans Umineko et Silent Hill f, il faut revenir à Higurashi. C'est là qu'il a développé ses outils fondamentaux.</p>
-
-    <p class="rv"><em>Higurashi no Naku Koro ni</em> se déroule dans le village fictif de Hinamizawa en juin 1983. Un garçon nommé Keiichi arrive en ville, se lie d'amitié avec un groupe de filles, et découvre peu à peu qu'il se passe quelque chose d'horrible dans ce village. Des gens meurent. Des gens disparaissent. Des gens deviennent fous.</p>
-
-    <p class="rv">La structure de base est celle d'un roman policier — mais répété. Chaque arc présente une version différente du même mois de juin, avec des morts différentes et des coupables différents. Ce n'est qu'en lisant tous les arcs qu'on comprend la logique globale : <strong>le village entier est traumatisé par un événement passé, et ce trauma se réactive en boucle, faisant des victimes les unes des autres</strong>.</p>
-
-    <p class="rv">La résolution de Higurashi est radicale : elle ne passe pas par la punition des coupables, mais par la guérison du trauma collectif. Keiichi doit comprendre ce que chaque fille a vécu — pas seulement les faits, mais l'expérience intérieure — pour que les boucles s'arrêtent. C'est la première formulation de ce qui deviendra le cœur d'Umineko : <em>sans amour, cela ne peut être vu</em>.</p>
-
-    <h2 class="rv">IV. Le tournant Umineko — quand la structure devient le sujet</h2>
-
-    <p class="rv">Si Higurashi utilise les boucles pour explorer le trauma collectif, Umineko les utilise pour quelque chose de plus métatextuel : explorer la nature même de la narration et du lecteur.</p>
-
-    <p class="rv">Dans Umineko, les boucles ne sont pas des phénomènes surnaturels — ce sont des récits. Des manuscrits écrits depuis des perspectives différentes, publiés dans des bouteilles à la mer, trouvés des années plus tard. La question « qu'est-ce qui s'est vraiment passé à Rokkenjima ? » est inséparable de « qui raconte, depuis quelle position, avec quelle intention ? ».</p>
-
-    <p class="rv">Ryukishi07 devient ici un auteur profondément conscient de son propre dispositif. Il construit une fiction sur la façon dont les fictions sont construites. Il fait jouer au lecteur le rôle du détective — et lui dit ensuite que la détection pure est insuffisante, que la vérité nécessite autre chose. <strong>C'est la critique la plus élaborée du genre mystery novel que le genre mystery novel ait produite de l'intérieur.</strong></p>
-
-    <h2 class="rv">V. Silent Hill f — l'héritage dans un autre medium</h2>
-
-    <p class="rv">Le fait que Konami ait choisi Ryukishi07 pour écrire <em>Silent Hill f</em> n'est pas un hasard. La franchise Silent Hill a toujours été construite sur les mêmes fondations : l'horreur comme métaphore psychologique, la ville comme projection de l'inconscient, les monstres comme symboles de ce que le protagoniste refuse de voir.</p>
-
-    <p class="rv">Ce que Ryukishi07 apporte à cette tradition, c'est une précision sociologique que les précédents Silent Hill n'avaient pas toujours. Le Japon des années 1960, la structure des mariages arrangés, la condition des femmes dans une société de transition — ces éléments ne sont pas du décor. Ils sont la cause de l'horreur. <em>Le brouillard ne descend pas parce qu'il y a une malédiction ancienne. Il descend parce qu'une fille est traitée comme une marchandise.</em></p>
-
-    <p class="rv">On retrouve dans Silent Hill f tous les motifs qu'on a nommés : la femme enfermée (Hinako dans son destin matrimonial), le système comme ennemi (le Japon patriarcal des années 1960), la fiction comme refuge (la poupée qui avertit, le jeu de guerre spatiale avec Shu), la boucle (Shiromuku comme futur possible qu'Hinako refuse de voir).</p>
-
-    <p class="rv">Ce n'est pas Ryukishi07 qui s'adapte à la franchise Silent Hill. C'est Silent Hill qui lui offre un nouveau langage pour dire ce qu'il dit depuis vingt ans.</p>
-
-    <div class="orn-line rv">✦ &nbsp; ✦ &nbsp; ✦</div>
-
-    <h2 class="rv">VI. Ce que Ryukishi07 dit — en résumé</h2>
-
-    <p class="rv">Si l'on devait résumer en quelques propositions ce que l'œuvre entière de Ryukishi07 dit, ce serait peut-être ceci :</p>
-
-    <p class="rv"><strong>La violence n'est jamais individuelle.</strong> Elle est toujours le produit d'un système — familial, social, économique, historique — qui a brisé quelqu'un avant que quelqu'un brise quelqu'un d'autre. Comprendre la violence, c'est remonter la chaîne jusqu'aux structures qui la produisent.</p>
-
-    <p class="rv"><strong>Les femmes subissent ces structures de façon disproportionnée.</strong> Ses protagonistes féminines — Rena, Sayo, Hinako — sont toutes des êtres que le monde essaie de réduire à une fonction. Leur histoire est celle de la résistance à cette réduction, et parfois de son échec.</p>
-
-    <p class="rv"><strong>L'empathie est révolutionnaire.</strong> Pas sentimentale — cognitive, exigeante, douloureuse. Se mettre à la place de l'autre au point de comprendre pourquoi il a fait ce qu'il a fait, sans nécessairement l'excuser. C'est difficile. C'est aussi la seule façon de briser les boucles.</p>
-
-    <blockquote class="rv">Ryukishi07 est peut-être l'auteur de fiction interactive qui a le plus réfléchi à ce que ça veut dire d'écrire des personnages qui souffrent — et à la responsabilité qui accompagne ce choix.</blockquote>
-
-    <p class="rv">Son œuvre est imparfaite — certains arcs de Higurashi traînent, certaines constructions d'Umineko sont laborieuses, certains choix de Silent Hill f ont suscité des débats légitimes sur l'orientalisme. Mais la cohérence de la vision, sur plus de vingt ans et à travers des supports différents, est remarquable. C'est l'œuvre d'un auteur qui sait exactement pourquoi il écrit, et qui ne s'en est jamais vraiment écarté.</p>
-
-  </article>
-
-  <div class="art-footer rv">
-    <span style="font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-right:.5rem;">Tags :</span>
-    <span class="tag">Ryukishi07</span>
-    <span class="tag">Higurashi</span>
-    <span class="tag">Umineko</span>
-    <span class="tag">Silent Hill f</span>
-    <span class="tag">Portrait d'auteur</span>
-    <span class="tag">Empathie</span>
-    <span class="tag">Article transversal</span>
+  <!-- NOTES DE BAS DE PAGE -->
+  <div class="biblio" style="margin-top:3rem;">
+    <span class="biblio-title">Notes</span>
+    <p class="fn"><sup>1</sup> Cet épisode est devenu une donnée biographique centrale dans les entretiens de Ryukishi07. Il est mentionné dans plusieurs sources, dont The Vault Publication (2021) : « Higurashi no naku koro ni: Onikakushi-hen sold only 5 copies at the summer Comiket of 2002. »</p>
+    <p class="fn"><sup>2</sup> Ryukishi07. Entretien accordé à Anime Diet, non daté, archivé sur animediet.net. Transcription consultée en avril 2026.</p>
+    <p class="fn"><sup>3</sup> Ryukishi07. Entretien accordé lors d'Epitanime (Paris), mai 2012. Transcription traduite archivée sur le 07th Expansion Wiki, consulté en avril 2026.</p>
+    <p class="fn"><sup>4</sup> Herman, David. <em>Storytelling and the Sciences of Mind</em>. Cambridge : MIT Press, 2013. La notion de storyworld désigne le monde mental dynamique que le lecteur construit et met à jour au fil de la lecture — dans le cas d'<em>Higurashi</em>, ce monde est structurellement instable, chaque arc le reconfigurant rétroactivement.</p>
+    <p class="fn"><sup>5</sup> Ryukishi07. Entretien conduit à Epitanime, mai 2012, op. cit.</p>
+    <p class="fn"><sup>6</sup> Ryukishi07. Entretien avec APGNation (« Say It In Red! »), archivé sur le 07th Expansion Wiki : « With the manga version of Umineko, however, we considered the work to be a 'period' to the 'sentence' that is the world of Umineko. [...] I asked [Natsumi-sensei] to show all the secrets in a way that can easily be understood by anyone. Thus, all of the episode of Sayo that appeared in the EP8 manga is the official answer to the world of Umineko. »</p>
+    <p class="fn"><sup>7</sup> Réponse de Ryukishi07 à une question posée lors d'une convention américaine sur l'éventuelle dimension transgenre de Sayo, citée dans la base de données du 07th Expansion Wiki. La formulation exacte : « it was a difficult question to answer, but a good one », suivi du souhait de laisser les lecteurs tirer leurs propres conclusions.</p>
+    <p class="fn"><sup>8</sup> Ryukishi07. Entretien traduit sur Rena-Rena Toshokan (0707toshokan.wordpress.com), daté approximativement 2012–2013. Traduction en anglais par les administrateurs du site depuis le japonais original.</p>
   </div>
 
-  <footer>
-    <span class="f-logo">Spectre Rose ✦</span>
-    <span class="f-copy">© 2026 — Théories narratives &amp; fiction interactive</span>
-  </footer>
-  <script src="ui.js"></script>
+  <!-- BIBLIOGRAPHIE -->
+  <div class="biblio">
+    <span class="biblio-title">Références</span>
+
+    <p class="biblio-item" style="color:var(--ink-dark); font-style:italic;">Travaux académiques</p>
+    <p class="biblio-item">Herman, David. <em>Storytelling and the Sciences of Mind</em>. Cambridge (MA) : MIT Press, 2013.</p>
+    <p class="biblio-item">Barnabé, Fanny. <em>Narration et jeu vidéo : pour une exploration des univers fictionnels</em>. Liège : Presses Universitaires de Liège, 2014.</p>
+    <p class="biblio-item">Genvo, Sébastien. « Penser les phénomènes de ludicisation du numérique à partir de Jacques Henriot ». <em>Sciences du jeu</em>, n° 1, 2013.</p>
+    <p class="biblio-item">Bogost, Ian. <em>Persuasive Games : The Expressive Power of Videogames</em>. Cambridge (MA) : MIT Press, 2007.</p>
+
+    <p class="biblio-item" style="margin-top:1.5rem; color:var(--ink-dark); font-style:italic;">Entretiens avec Ryukishi07 (sources primaires)</p>
+    <p class="biblio-item">Ryukishi07. Entretien avec Anime Diet. Archivé sur animediet.net (consulté avril 2026).</p>
+    <p class="biblio-item">Ryukishi07. Entretiens accordés lors d'Epitanime, Paris, mai 2012. Transcrits et traduits sur le 07th Expansion Wiki.</p>
+    <p class="biblio-item">Ryukishi07. « Say It In Red! » — entretien avec APGNation. Archivé sur le 07th Expansion Wiki.</p>
+    <p class="biblio-item">Ryukishi07. Entretiens traduits sur Rena-Rena Toshokan (0707toshokan.wordpress.com).</p>
+    <p class="biblio-item">Ryukishi07. ACen 2015 Panel #2 : « His Way of Writing a Story ». Retranscription sur seaoffragments.wordpress.com.</p>
+    <p class="biblio-item">Ryukishi07. « Answer to the Golden Witch » — discussion avec KEIYA, février 2011. Traduit et archivé sur le 07th Expansion Wiki.</p>
+
+    <p class="biblio-item" style="margin-top:1.5rem; color:var(--ink-dark); font-style:italic;">Sources primaires — corpus</p>
+    <p class="biblio-item">07th Expansion / Ryukishi07. <em>Higurashi no Naku Koro ni</em>. 2002–2006.</p>
+    <p class="biblio-item">07th Expansion / Ryukishi07. <em>Umineko no Naku Koro ni</em>. 2007–2010. [Version traduite par Witch Hunt]</p>
+    <p class="biblio-item">07th Expansion / Ryukishi07. <em>Higanbana no Saku Yoru ni</em>. 2010–2011.</p>
+    <p class="biblio-item">07th Expansion / Ryukishi07. <em>Rose Guns Days</em>. 2012–2013.</p>
+    <p class="biblio-item">Konami / NeoBards Entertainment / Ryukishi07 (scénario). <em>Silent Hill f</em>. 2025.</p>
+  </div>
+
+</article>
+
+<div class="art-footer">
+  <span style="font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-right:.5rem;">Tags :</span>
+  <span class="tag">Ryukishi07</span>
+  <span class="tag">Higurashi</span>
+  <span class="tag">Umineko</span>
+  <span class="tag">Silent Hill f</span>
+  <span class="tag">Rose Guns Days</span>
+  <span class="tag">Portrait d'auteur</span>
+  <span class="tag">Dōjin</span>
+  <span class="tag">Empathie</span>
+  <span class="tag">Sayo Yasuda</span>
+</div>
+
+<footer>
+  <span class="f-logo">Spectre Rose ✦</span>
+  <span class="f-copy">© 2026 — Théories narratives &amp; fiction interactive</span>
+</footer>
+
 </body>
 </html>
