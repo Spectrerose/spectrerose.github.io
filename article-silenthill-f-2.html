@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spectre Rose — Kitsune no Hinako : la poupée de substitution, ou comment on crée un fantôme</title>
+  <title>Spectre Rose — Le village qui a réécrit sa propre histoire : katashiro, dieu torturé et conquête coloniale dans Silent Hill f</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg:#06040c; --bg-card:#0c0814;
-      --rose:#d4909a; --rose-light:#f0c4cc; --rose-dark:#7a3d4a; --rose-deep:#3d1520;
-      --cream:#ede4ee; --muted:#6a5870; --border:rgba(180,140,200,0.18);
-      --violet:#9070b0; --violet-l:#c8a8e0; --violet-d:#2a1840;
+      --bg:#06040c; --bg-card:#0c0a14;
+      --rose:#d4909a; --rose-light:#f0c4cc; --rose-dark:#7a3d4a;
+      --cream:#e8e4f0; --muted:#665878; --border:rgba(180,150,220,0.16);
+      --violet:#9878c8; --violet-l:#c8aef0; --violet-d:#2a1850;
+      --gold:#c8a860; --gold-l:#f0d898;
     }
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
@@ -22,62 +23,65 @@
     .nav-logo span { color:var(--rose); font-style:italic; }
     .nav-back { font-family:'DM Mono',monospace; font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .3s; }
     .nav-back:hover { color:var(--violet-l); }
+
     .art-hero { padding:12rem 4rem 5rem; max-width:820px; margin:0 auto; text-align:center; }
     .a-eyebrow { font-family:'DM Mono',monospace; font-size:.58rem; letter-spacing:.4em; text-transform:uppercase; color:var(--violet); display:block; margin-bottom:2rem; }
     .a-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2.4rem,6vw,4rem); font-weight:300; line-height:1.06; color:var(--cream); }
     .a-title em { color:var(--violet-l); font-style:italic; }
-    .a-subtitle { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-style:italic; font-weight:300; color:var(--muted); margin-top:1.4rem; line-height:1.65; }
+    .a-subtitle { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-style:italic; font-weight:300; color:var(--muted); margin-top:1.4rem; line-height:1.65; max-width:620px; margin-left:auto; margin-right:auto; }
     .a-meta { display:flex; justify-content:center; align-items:center; gap:1.2rem; margin-top:2.8rem; font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.2em; text-transform:uppercase; color:var(--violet-d); }
-    .a-meta .sep { color:rgba(144,112,176,.25); }
+    .a-meta .sep { color:rgba(152,120,200,.25); }
     .orn-line { text-align:center; color:var(--violet-d); font-size:.8rem; letter-spacing:1.4rem; margin:3.5rem 0; }
-    .cover-img { width:100%; max-width:820px; margin:0 auto 4rem; aspect-ratio:16/7; overflow:hidden; border:1px solid rgba(144,112,176,.15); background:linear-gradient(135deg,#080412,#06040c); display:flex; align-items:center; justify-content:center; }
-    .cover-img img { width:100%; height:100%; object-fit:cover; filter:brightness(.8) saturate(.8) hue-rotate(20deg); }
-    .cover-placeholder { font-family:'Cormorant Garamond',serif; font-size:6rem; color:rgba(144,112,176,.07); font-style:italic; }
+
+    .cover-img { width:100%; max-width:820px; margin:0 auto 4rem; aspect-ratio:16/7; overflow:hidden; border:1px solid rgba(152,120,200,.15); background:linear-gradient(135deg,#080412,#060410,#04080e); display:flex; align-items:center; justify-content:center; }
+    .cover-img img { width:100%; height:100%; object-fit:cover; filter:brightness(.78) saturate(.7) hue-rotate(30deg); }
+    .cover-glyph { font-family:'Cormorant Garamond',serif; font-size:8rem; font-weight:300; font-style:italic; color:rgba(152,120,200,.08); user-select:none; }
+
     .art-body { max-width:680px; margin:0 auto; padding:0 2rem 4rem; }
     .art-body > p:first-of-type::first-letter { font-family:'Cormorant Garamond',serif; font-size:4.5rem; font-weight:300; float:left; line-height:.82; margin-right:.12em; margin-top:.08em; color:var(--violet-l); }
-    h2 { font-family:'Cormorant Garamond',serif; font-size:1.95rem; font-weight:400; line-height:1.15; color:var(--cream); margin:4rem 0 1.4rem; position:relative; padding-left:1.4rem; }
+
+    h2 { font-family:'Cormorant Garamond',serif; font-size:1.9rem; font-weight:400; line-height:1.15; color:var(--cream); margin:4.5rem 0 1.4rem; position:relative; padding-left:1.4rem; }
     h2::before { content:''; position:absolute; left:0; top:.3em; width:3px; height:1.1em; background:linear-gradient(to bottom,var(--violet),var(--violet-d)); }
-    h3 { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-style:italic; font-weight:400; color:var(--violet-l); margin:2.4rem 0 .8rem; }
-    p { color:#c4b8cc; margin-bottom:1.5rem; }
+
+    p { color:#c0b4cc; margin-bottom:1.5rem; }
     em { color:var(--rose-light); font-style:italic; }
     strong { color:var(--cream); font-weight:600; }
-    blockquote { margin:3rem 0; padding:1.8rem 2.2rem; border:1px solid rgba(144,112,176,.22); background:var(--bg-card); position:relative; font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-style:italic; font-weight:300; color:var(--violet-l); line-height:1.6; }
+
+    blockquote { margin:3.5rem 0; padding:2rem 2.5rem; border:1px solid rgba(152,120,200,.22); background:var(--bg-card); position:relative; font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-style:italic; font-weight:300; color:var(--violet-l); line-height:1.62; }
     blockquote::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--violet),var(--violet-d)); }
     blockquote cite { display:block; font-family:'DM Mono',monospace; font-size:.46rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); font-style:normal; margin-top:.9rem; }
-    .source-box { margin:2.8rem 0; padding:1.6rem 2rem; border:1px solid rgba(144,112,176,.28); background:rgba(144,112,176,.04); font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; color:#c4a8d8; line-height:1.75; position:relative; }
-    .source-box::before { content:'Source primaire'; position:absolute; top:-1px; left:1.5rem; background:var(--bg); padding:0 .7rem; font-family:'DM Mono',monospace; font-size:.46rem; letter-spacing:.18em; text-transform:uppercase; color:var(--violet); font-style:normal; }
-    .source-box cite { display:block; font-family:'DM Mono',monospace; font-size:.46rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); font-style:normal; margin-top:.9rem; }
-    .fn { font-family:'DM Mono',monospace; font-size:.52rem; vertical-align:super; line-height:0; color:var(--violet); border-bottom:1px dotted var(--violet-d); cursor:default; }
-    .cadrage { border-left:2px solid var(--violet-d); padding:1rem 1.5rem; background:rgba(144,112,176,.04); margin:2.4rem 0; }
-    .cadrage-title { font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.2em; text-transform:uppercase; color:var(--violet); margin-bottom:.6rem; display:block; }
+
+    .source-box { margin:2.8rem 0; padding:1.6rem 2rem; border:1px solid rgba(152,120,200,.26); background:rgba(152,120,200,.04); font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; color:#c0a8d8; line-height:1.78; position:relative; }
+    .source-box::before { content:'Source primaire'; position:absolute; top:-1px; left:1.5rem; background:var(--bg); padding:0 .7rem; font-family:'DM Mono',monospace; font-size:.44rem; letter-spacing:.18em; text-transform:uppercase; color:var(--violet); font-style:normal; }
+    .source-box cite { display:block; font-family:'DM Mono',monospace; font-size:.44rem; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); font-style:normal; margin-top:.8rem; }
+
+    .fn { font-family:'DM Mono',monospace; font-size:.52rem; vertical-align:super; line-height:0; color:var(--violet); border-bottom:1px dotted var(--violet-d); }
+
+    .cadrage { border-left:2px solid var(--violet-d); padding:1rem 1.5rem; background:rgba(152,120,200,.04); margin:2.4rem 0; }
+    .cadrage-title { font-family:'DM Mono',monospace; font-size:.48rem; letter-spacing:.2em; text-transform:uppercase; color:var(--violet); margin-bottom:.6rem; display:block; }
     .cadrage p { font-size:.9rem; color:var(--muted); font-style:italic; margin:0; line-height:1.75; }
     .cadrage p + p { margin-top:.8rem; }
-    /* Tableau bilingue comparatif */
-    .compare { margin:2.5rem 0; border:1px solid rgba(144,112,176,.15); overflow:hidden; background:var(--bg-card); }
-    .compare-row { display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid rgba(144,112,176,.08); }
-    .compare-row:last-child { border-bottom:none; }
-    .compare-cell { padding:.9rem 1.1rem; font-size:.87rem; line-height:1.6; }
-    .compare-head { font-family:'DM Mono',monospace; font-size:.46rem; letter-spacing:.18em; text-transform:uppercase; color:var(--violet); background:rgba(144,112,176,.07); }
-    .compare-end { color:var(--violet-l); font-family:'Cormorant Garamond',serif; font-size:.95rem; font-style:italic; }
-    .compare-label { color:var(--cream); font-size:.85rem; font-weight:600; }
-    .compare-note { color:var(--muted); font-size:.82rem; font-style:italic; }
-    .footnotes { margin-top:4rem; padding-top:3rem; border-top:1px solid var(--border); }
+
+    .footnotes { margin-top:4.5rem; padding-top:3rem; border-top:1px solid var(--border); }
     .footnotes-title { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--violet); margin-bottom:2rem; display:block; }
-    .footnote-item { display:grid; grid-template-columns:2rem 1fr; gap:.6rem; margin-bottom:1.1rem; font-size:.87rem; color:var(--muted); line-height:1.7; }
-    .fn-num { font-family:'DM Mono',monospace; font-size:.5rem; color:var(--violet-d); padding-top:.15rem; }
-    .footnote-item em { color:#b0a0c0; }
-    .biblio { margin-top:2.5rem; padding-top:2rem; border-top:1px solid rgba(144,112,176,.1); }
-    .biblio-title { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--violet); margin-bottom:1.5rem; display:block; }
-    .biblio-item { font-size:.87rem; color:var(--muted); line-height:1.75; margin-bottom:.7rem; padding-left:1.4rem; text-indent:-1.4rem; }
-    .biblio-item em { color:#b0a0c0; }
+    .footnote-item { display:grid; grid-template-columns:2.2rem 1fr; gap:.5rem; margin-bottom:1.1rem; font-size:.86rem; color:var(--muted); line-height:1.72; }
+    .fn-num { font-family:'DM Mono',monospace; font-size:.48rem; color:var(--violet-d); padding-top:.18rem; }
+    .footnote-item em { color:#a090c0; }
+
+    .biblio { margin-top:2.5rem; padding-top:2rem; border-top:1px solid rgba(152,120,200,.1); }
+    .biblio-title { font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.28em; text-transform:uppercase; color:var(--violet); margin-bottom:1.4rem; display:block; }
+    .biblio-item { font-size:.86rem; color:var(--muted); line-height:1.75; margin-bottom:.7rem; padding-left:1.4rem; text-indent:-1.4rem; }
+    .biblio-item em { color:#a090c0; }
+
     .art-footer { max-width:680px; margin:0 auto; padding:3rem 2rem 6rem; border-top:1px solid var(--border); display:flex; flex-wrap:wrap; align-items:center; gap:1rem; }
     .tag { border:1px solid var(--violet-d); padding:.25rem .8rem; font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.16em; text-transform:uppercase; color:var(--violet); }
     footer { border-top:1px solid var(--border); padding:2.5rem 4rem; max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
     .f-logo { font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:300; letter-spacing:.15em; color:var(--rose-light); }
     .f-copy { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.18em; color:var(--muted); }
+
     .rv { opacity:0; transform:translateY(22px); transition:opacity .8s ease,transform .8s ease; }
     .rv.on { opacity:1; transform:none; }
-    @media(max-width:760px){ nav{padding:1.2rem 1.5rem;} .art-hero,.art-body,.art-footer{padding-left:1.5rem;padding-right:1.5rem;} .art-hero{padding-top:9rem;} footer{flex-direction:column;gap:1rem;text-align:center;padding:2rem;} .compare-row{grid-template-columns:1fr;} .footnote-item{grid-template-columns:1.5rem 1fr;} }
+    @media(max-width:760px){ nav{padding:1.2rem 1.5rem;} .art-hero,.art-body,.art-footer{padding-left:1.5rem;padding-right:1.5rem;} .art-hero{padding-top:9rem;} footer{flex-direction:column;gap:1rem;text-align:center;padding:2rem;} .footnote-item{grid-template-columns:1.6rem 1fr;} }
   </style>
 </head>
 <body>
@@ -87,173 +91,120 @@
   </nav>
 
   <div class="art-hero">
-    <span class="a-eyebrow rv">✦ Silent Hill f — II &nbsp;·&nbsp; Kitsune no Hinako &nbsp;·&nbsp; Katashiro &amp; identité volée</span>
-    <h1 class="a-title rv"><em>Kitsune no Hinako</em> —<br>la poupée de substitution,<br>ou comment on crée un fantôme</h1>
-    <p class="a-subtitle rv">Les deux Hinako ne sont pas deux moitiés d'une même psyché. L'une est une création rituelle, fabriquée délibérément pour absorber le sort à la place de l'autre. Ce que le jeu appelle dédoublement, le folklore shinto appelle <em>katashiro</em>.</p>
+    <span class="a-eyebrow rv">✦ Silent Hill f — II &nbsp;·&nbsp; Katashiro &nbsp;·&nbsp; Conquête du sacré</span>
+    <h1 class="a-title rv">Le village qui a <em>réécrit</em><br>sa propre histoire</h1>
+    <p class="a-subtitle rv">Kitsune no Hinako n'est pas un double psychologique. C'est une poupée rituelle de substitution — créée délibérément pour absorber un sort à la place de quelqu'un d'autre. Et derrière elle, il y a un village dont le dieu tutélaire est un usurpateur, et dont la divinité d'origine a été torturée en monstre pour avoir refusé de se soumettre.</p>
     <div class="a-meta rv">
       <span>Silent Hill f — article II</span>
       <span class="sep">·</span>
-      <span>Spoilers complets DR2 + NG++</span>
+      <span>Spoilers complets, parties avancées</span>
       <span class="sep">·</span>
       <span>~20 min</span>
     </div>
   </div>
 
   <div class="cover-img rv">
-    <div class="cover-placeholder">形代</div>
+    <div class="cover-glyph">形代</div>
   </div>
 
   <article class="art-body">
 
-    <p class="rv">Il y a un moment dans <em>Silent Hill f</em>, disponible seulement en nouvelle partie plus, où Kitsune no Hinako — la mariée aux bras de renard — a un instant de lucidité. Un seul. Elle parle à Shimizu Hinako, son autre, et lui dit : <em>« Si je suis dans l'erreur… tue-moi. Libère-moi. Sinon… c'est moi qui te tuerai. »</em><span class="fn">1</span> Puis elle redevient ce qu'elle était — ce regard vague, cet attachement rêveur à un homme dont elle récite le nom comme une prière. Ce moment dure quelques secondes. Ce moment est tout le jeu.</p>
+    <p class="rv">Il y a dans <em>Silent Hill f</em>, accessible seulement lors de parties avancées du jeu,<span class="fn">1</span> une scène entre les deux Hinako que presque personne ne commente — peut-être parce qu'elle dit quelque chose de trop difficile à tenir. Kitsune no Hinako, la mariée aux bras de renard, a un moment de lucidité. Un seul. Elle parle à Shimizu Hinako et lui dit : <em>« Si c'est moi qui suis dans l'erreur... tue-moi. Libère-moi. »</em> Puis elle ajoute : <em>« Sinon, c'est moi qui te tuerai. »</em> Et elle redevient ce qu'elle était — ce regard vague, cette prose de journal qui récite les promesses de Fox Mask comme une formule apprise par cœur. Ce moment de clarté dure quelques secondes. Et dans ce fragment, elle dit une chose que le texte japonais formule avec précision : quelqu'un m'a attrapé les pieds et m'a traîné dans les profondeurs d'un marécage.<span class="fn">2</span></p>
 
-    <p class="rv">La lecture dominante du dédoublement dans <em>Silent Hill f</em> est psychologique : deux moitiés d'une même psyché, deux désirs contradictoires incarnés, la résistance et la capitulation qui se font face. C'est une lecture confortable, familière — elle range le jeu dans la tradition des doubles littéraires de Stevenson à Dostoïevski. Mais elle ne tient pas face à ce que le jeu dit réellement, en japonais, en chinois traditionnel, dans ses documents cachés et ses données de nouvelle partie. Ce que Kitsune no Hinako nomme elle-même dans son unique moment de clarté — <em>quelqu'un m'a attrapé les pieds et m'a traîné dans les profondeurs</em><span class="fn">2</span> — n'est pas une métaphore de conflit intérieur. C'est la description d'une action exercée de l'extérieur.</p>
+    <p class="rv">Cette image n'est pas une métaphore de conflit intérieur. Ce n'est pas la description d'un désir contradictoire, d'une ambivalence, d'une psyché fracturée. C'est la description d'une action exercée sur elle, de l'extérieur, par quelqu'un. La différence est fondamentale — et c'est tout l'article.</p>
 
     <div class="orn-line rv">✦ &nbsp; ✦ &nbsp; ✦</div>
 
-    <h2 class="rv">I. Le <em>katashiro</em> — la substitution comme procédure rituelle</h2>
+    <h2 class="rv">La poupée de substitution</h2>
 
     <div class="cadrage rv">
-      <span class="cadrage-title">Folklore shinto</span>
-      <p>Le <em>katashiro</em> (形代) est un objet rituel shinto — généralement une poupée de papier ou de bois — utilisé comme substitut humain lors de purifications, d'exorcismes, ou de transferts de malédictions. Le terme est un composé de 形 (<em>katachi</em>, « forme, modèle ») et 代 (<em>shiro</em>, « substitution, remplacement »). Lors d'un rituel de purification, les péchés ou les impuretés d'une personne sont transférés dans le <em>katashiro</em>, qui est ensuite jeté dans une rivière ou brûlé — emportant le mal avec lui. Un <em>katashiro</em> peut également être utilisé pour recevoir à la place de son modèle les effets d'une malédiction. Dans ce cas, c'est la poupée qui souffre, et la personne réelle qui est protégée.</p>
-      <p>Le <em>katashiro</em> est une sous-catégorie du <em>yorishiro</em> : tout objet servant de substitut cérémoniel à une personne ou à une entité. Il peut aussi être utilisé offensivement : inscrit du nom, de la date de naissance et des informations personnelles de la cible, il permet d'exercer un sort sur la personne réelle à distance.</p>
+      <span class="cadrage-title">Folklore shinto — katashiro</span>
+      <p>Le <em>katashiro</em> (形代) est un objet rituel shinto — généralement une poupée de papier ou de bois légère — utilisé comme substitut humain lors de purifications ou de transferts de malédictions. Le terme compose 形 (<em>katachi</em>, forme) et 代 (<em>shiro</em>, substitution) : littéralement, « ce qui a la forme de quelqu'un à sa place ». Lors d'un rituel de purification, les impuretés d'une personne sont transférées dans la poupée, qui est ensuite jetée dans une rivière — emportant le mal. Un <em>katashiro</em> peut également recevoir à la place de son modèle les effets d'une malédiction, protégeant la personne réelle en absorbant ce qui lui était destiné. Dans une utilisation offensive, il peut aussi être inscrit du nom et des données personnelles de la cible pour lui faire subir un sort à distance.</p>
     </div>
 
-    <p class="rv">Le premier monstre récurrent de Kitsune no Hinako s'appelle <em>harai katashiro</em>. <em>Harai</em> est un rituel de purification shinto général. <em>Katashiro</em> est la poupée de substitution. La créature est une imitation métallique et ligneuse du <em>kashimashi</em> — le monstre principal de Shimizu Hinako — avec le même visage en dessous de son masque soudé par des racines, mais fabriqué dans des matériaux inorganiques, artificiels.<span class="fn">3</span> Ce n'est pas une coïncidence onomastique. C'est une déclaration d'architecture narrative : <strong>Kitsune no Hinako est elle-même un <em>katashiro</em>.</strong> Elle a été créée pour absorber quelque chose à la place de Shimizu Hinako.</p>
+    <p class="rv">Le premier monstre récurrent de Kitsune no Hinako s'appelle <em>harai katashiro</em>. <em>Harai</em> est un rituel général de purification shinto. <em>Katashiro</em> est la poupée de substitution. La créature est une imitation métallique et ligneuse d'un autre monstre du jeu — le <em>kashimashi</em>, monstre de Shimizu Hinako — avec le même visage en dessous, mais fabriqué dans des matériaux inorganiques, artificiels, avec un masque soudé par des racines.<span class="fn">3</span> Ce n'est pas un choix onomastique arbitraire. C'est l'architecture du jeu qui se nomme : Kitsune no Hinako est elle-même un <em>katashiro</em>. Elle a été créée pour absorber quelque chose à la place de Shimizu Hinako.</p>
 
-    <p class="rv">Ce que le jeu appelle dédoublement, le folklore shinto appelle substitution. La distinction est fondamentale. Un dédoublement psychologique est une fracture interne — quelque chose qui se produit dans le sujet. Une substitution rituelle est une procédure externe — quelque chose qu'on fait à un sujet, sans son consentement, souvent à son insu. Kitsune no Hinako n'est pas née du désir d'Hinako d'être mariée. Elle a été convoquée par les rituels des Tsuneki pour rendre ce mariage possible sans détruire le sujet dont ils ont besoin.</p>
+    <p class="rv">La lecture dominante du dédoublement dans le jeu est psychologique : deux désirs contradictoires incarnés, la résistance et la capitulation qui se font face, deux moitiés d'une même psyché en guerre. C'est une lecture confortable parce qu'elle place la source du conflit à l'intérieur d'Hinako — elle est divisée, elle hésite, une partie d'elle veut le mariage et l'autre refuse. Mais la version japonaise de la scène citée au début dit le contraire. Les émotions que Kitsune no Hinako décrit pour Fox Mask sont qualifiées de 異形 — <em>igyo</em> : grotesque, alien, monstrueux, non-naturel.<span class="fn">4</span> Elle ne dit pas : je veux quelque chose que je ne devrais pas vouloir. Elle dit : ce que je ressens appartient à une autre catégorie que le désir humain. Elle dit : quelque chose s'est installé en moi et ce n'est pas moi.</p>
 
-    <h2 class="rv">II. La création du fantôme — comment on fabrique une Hinako</h2>
+    <p class="rv">Son unique moment de lucidité le confirme. Pendant quelques secondes, elle voit clairement. Et ce qu'elle demande — sa seule demande, dans tout le jeu — c'est d'être libérée de ce qu'on lui a fait. Pas réconciliée. Libérée. Puis le brouillard reprend, et elle retourne écrire des pages de journal sur un homme qui lui a dit qu'il l'aime.</p>
 
-    <p class="rv">Les modifications de la langue parlée par Kitsune no Hinako — documents, journal, dialogues — sont parmi les indices les plus troublants du jeu, et parmi les moins commentés. En japonais et en chinois traditionnel, les émotions qu'elle décrit ressentir pour Fox Mask sont qualifiées de 異形 (<em>igyo</em>) : grotesque, alien, monstrueux, non-naturel.<span class="fn">4</span> Elle appelle ces sentiments en utilisant des termes réservés aux choses qui n'appartiennent pas à l'ordre humain. Elle sait, au niveau le plus profond, que ce qu'elle ressent n'est pas ce qu'elle est.</p>
+    <h2 class="rv">Ce que le tambour couvre</h2>
 
-    <p class="rv">La scène de dialogue de nouvelle partie entre les deux Hinako le formule explicitement :</p>
+    <p class="rv">Il y a un monstre dans l'espace de Kitsune no Hinako — le <em>Taiko Tank</em> — dont la description dans le journal dit plus qu'elle ne semble vouloir dire. Une créature qui a avalé un énorme tambour, dont les baguettes poussent de ses bras comme des membres, et qui contrôle les monstres environnants par le son. Le journal d'Hinako ajoute, après la description fonctionnelle : <em>« Il essaie de faire taire par des cris forts et des sons puissants. C'est toujours comme ça. »</em><span class="fn">5</span> Cette dernière phrase n'est pas une observation naturaliste. C'est une reconnaissance personnelle — quelque chose qu'elle a déjà vécu, quelque chose qu'elle reconnaît.</p>
 
-    <div class="source-box rv">
-      Kitsune no Hinako : « Cette sensation… comme si quelqu'un me tenait les pieds… et me traînait de force dans les profondeurs d'un marécage… C'est comme ça que je me sens. »<br>
-      Kitsune no Hinako : « Toi et moi… nous sommes toutes les deux Hinako. Mais l'une de nous deux est forcément dans l'erreur. Alors s'il te plaît… si c'est moi qui suis dans l'erreur… tue-moi. Libère-moi… ! Sinon… c'est moi qui te tuerai… ! »
-      <cite>— <em>Silent Hill f</em>, scène NG+ (trad. du chinois traditionnel, version source)</cite>
-    </div>
+    <p class="rv">La description officielle du parfum Kotoyuki, sortie en parallèle du jeu,<span class="fn">6</span> formule explicitement ce que le jeu laisse implicite : ses arts secrets ont pour fonction de <em>« faire taire jusqu'aux propres pensées d'Hinako »</em>. Et le roman de Shirō Kuro, adapté de l'œuvre, précise les méthodes : l'encens, le vin, le souffle, la voix, le regard.<span class="fn">7</span> Le Taiko Tank n'est pas un design arbitraire. C'est un portrait — de quelqu'un qui remplit l'espace de bruit pour qu'il n'y ait plus de place pour d'autres voix. Les baguettes qui poussent du bras font écho au bras de renard que Kitsune no Hinako a reçu lors du premier rituel. Ce qu'il lui a donné comme arme est fabriqué sur le même modèle que ce dont il use pour la contrôler.</p>
 
-    <p class="rv">Ce que cette scène dit est précis jusqu'à l'inconfort : Kitsune no Hinako <em>sait</em> que quelque chose ne va pas. Elle est lucide sur la nature grotesque de ses propres sentiments. Elle n'est pas une demi-sœur psychologique réconciliable — elle est une entité qui comprend qu'elle a été fabriquée pour quelque chose qu'elle ne veut pas, et qui n'a qu'une demande : être libérée de ce qu'on lui a fait.</p>
+    <h2 class="rv">Satsuko — l'exorciste qui a choisi le mauvais camp</h2>
 
-    <p class="rv">Ce moment de clarté est le seul de tout le jeu. Après, il ne revient pas. Kitsune no Hinako retourne à son journal de mariée, à ses lettres rêveuses, à cette prose au présent monotone dans laquelle elle récite les promesses de Fox Mask comme une formule apprise par cœur. La question que le jeu laisse sans réponse explicite est celle-ci : ce retour à l'état antérieur est-il une capitulation ? Un effet du rituel qui reprend le dessus ? Ou le moment de clarté était-il lui-même une exception impossible à tenir ?</p>
+    <p class="rv">Le journal d'Hinako présente Satsuko comme hostile, intrusive, dangereuse. Ses attaques dans le Sanctuaire sont décrites comme des agressions. Fox Mask la chasse en la qualifiant d'impureté et la bannit avec une incantation.<span class="fn">8</span> C'est le récit d'Hinako. Ce n'est pas ce qui se passe.</p>
 
-    <h2 class="rv">III. Ce que les fins disent sur l'irréversibilité</h2>
-
-    <p class="rv">Les salutations de Junko à Shimizu Hinako lors des différentes fins constituent l'un des tableaux comparatifs les plus révélateurs du jeu. Junko, qui sépare systématiquement les deux entités dans ses dialogues, traite Shimizu Hinako avec hostilité et Kitsune no Hinako comme « Hinako ». Mais ses formulations varient de fin en fin d'une façon qui mérite d'être lue attentivement :</p>
-
-    <div class="compare rv">
-      <div class="compare-row">
-        <div class="compare-cell compare-head">Fin</div>
-        <div class="compare-cell compare-head">Salutation de Junko à Shimizu Hinako</div>
-        <div class="compare-cell compare-head">Ce que ça dit</div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell compare-end">Comme les poussins rentrent au nid</div>
-        <div class="compare-cell compare-label">« Impossible… Tu t'accroches encore à la vie… »</div>
-        <div class="compare-cell compare-note">Shimizu Hinako est encore présente, encore distincte — Junko est surprise.</div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell compare-end">Le mariage du renard</div>
-        <div class="compare-cell compare-label">« Incroyable. Il est temps que tu acceptes ton destin. »</div>
-        <div class="compare-cell compare-note">La surprise a diminué. Le discours s'est durci en injonction.</div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell compare-end">Le renard trempe sa queue</div>
-        <div class="compare-cell compare-label">« Même maintenant, tu ne peux pas accepter l'inévitable ? »</div>
-        <div class="compare-cell compare-note">Lassitude. Shimizu Hinako résiste encore, mais Junko ne s'en étonne plus.</div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell compare-end">Ebisugaoka dans le silence</div>
-        <div class="compare-cell compare-label">« Hinako… ? Tu es… Hinako ? »</div>
-        <div class="compare-cell compare-note">Junko la reconnaît à peine. Ce n'est plus de l'hostilité — c'est de la stupeur.</div>
-      </div>
-    </div>
-
-    <p class="rv">La dernière formulation est la plus étrange et la plus significative. Junko, qui a passé le jeu à nier l'existence de Shimizu Hinako comme entité distincte, la voit soudain — et ne la reconnaît plus. Ce n'est pas un retournement narratif gratuit. C'est le signal que dans la fin « Ebisugaoka dans le silence », quelque chose a changé dans la nature même de qui est présent. La réconciliation des deux Hinako dans cette fin n'est pas une simple synthèse psychologique. Elle produit quelqu'un que Junko n'attendait pas.</p>
-
-    <h2 class="rv">IV. Junko — la lettre à la maison, et la question de la mort</h2>
-
-    <p class="rv">Un document trouvé dans les rizières d'Amida-shirakawa porte le titre de fichier <em>natal letter</em> dans les données du jeu. C'est une lettre d'une femme à ses parents. Elle y raconte que son mari, qui semblait si doux lors du <em>miai</em>, se révèle violent une fois ivre. Elle a un enfant de trois ans. Elle est enceinte. Elle demande pardon pour ce qu'elle s'apprête à faire.<span class="fn">5</span></p>
-
-    <p class="rv">La localisation du document — dans les champs autour de la maison d'une famille dont le nom (<em>Kinuta</em>, 絹田) contient le kanji du champ, ce qui correspond aux conventions de nommage de l'ère shōwa liées à la géographie familiale — fait de cette lettre un document plausiblement attribuable à Junko après son mariage. Le fait qu'Hinako réagisse à cette lettre de façon inhabituelle — elle est l'une des seules qu'elle commente à voix haute, et ses mots (<em>« je ne peux pas le pardonner »</em>) sonnent personnels plutôt qu'analytiques<span class="fn">6</span> — renforce cette lecture.</p>
-
-    <p class="rv">Si Junko est morte, le jeu s'écrit différemment. La sœur aimante qui semblait être une figure de sage résignation devient une revenante — quelqu'un qui <em>ne peut pas mourir</em>, comme la lettre le suggère, et qui erre dans les espaces du jeu en poussant sa cadette vers le même destin qu'elle a subi. Ce n'est plus de la complicité consciente. C'est la compulsion de répétition que Freud a théorisée comme réponse au traumatisme non résolu : rejouer la scène, encore et encore, dans l'espoir que cette fois-ci elle se terminera autrement.<span class="fn">7</span></p>
-
-    <blockquote class="rv">
-      Si Junko est morte dans sa situation, alors chaque fois qu'elle pousse Hinako vers le mariage, elle ne la condamne pas. Elle essaie de revivre — à travers elle — un choix qu'elle-même n'a jamais pu faire.
-    </blockquote>
-
-    <p class="rv">Le monstre <em>kashimashi</em> — nom qui désigne dans l'usage traditionnel les femmes mariées ayant souffert<span class="fn">8</span> — fait irruption après que cette lettre est lue. Sa description dans le journal d'Hinako : <em>« Un monstre rapiécé de chair. […] Ses blessures horribles couvrent tout son corps. Il veut me les infliger aussi ? »</em> L'accumulation n'est pas accidentelle. Le jeu dit : voilà ce qui reste des femmes qui ont souffert ici avant toi.</p>
-
-    <h2 class="rv">V. Satsuko — la prêtresse tuée pour avoir choisi le mauvais côté</h2>
-
-    <p class="rv">Satsuko est l'une des personnages les plus systématiquement mal lus du jeu — et la raison en est simple : on la lit à travers les yeux d'Hinako, qui la déteste. Dans le journal, Hinako présente Satsuko comme hostile, intrusive, dangereuse. Ses attaques dans le Sanctuaire sont décrites comme une agression. Fox Mask la chasse en la traitant d'impureté et la bannit avec une incantation d'<em>onmyōdō</em>.<span class="fn">9</span></p>
-
-    <p class="rv">Mais les données de nouvelle partie racontent une histoire différente. On y voit Satsuko s'entraîner seule dans le sanctuaire, répétant une danse de <em>kagura</em>. La <em>kagura</em> est une danse rituelle shinto dont l'une des fonctions est d'exorciser les mauvais esprits et de purifier les corps possédés. Les attaques de Satsuko contre Kitsune no Hinako — dont les effets de purification lui font réellement du mal — ne sont pas des agressions. Ce sont des tentatives d'exorcisme.<span class="fn">10</span></p>
-
-    <p class="rv">Son dialogue lors des confrontations dit la même chose, que la traduction peine parfois à rendre :</p>
+    <p class="rv">Dans les parties avancées du jeu, on voit Satsuko s'entraîner seule dans le sanctuaire, répétant une danse de <em>kagura</em>. La <em>kagura</em> est une danse rituelle shinto dont l'une des fonctions est d'exorciser les mauvais esprits et de purifier les corps possédés. Les attaques de Satsuko contre Kitsune no Hinako — dont les effets lui font réellement du mal, là où elles n'affectent pas Fox Mask — ne sont pas des agressions. Ce sont des tentatives d'exorcisme.<span class="fn">9</span> Ce qu'elle dit, dans ses confrontations, est cohérent :</p>
 
     <div class="source-box rv">
       Satsuko : « Si tu n'es pas sage et ne m'écoutes pas, tu continueras à souffrir… Hinako n'est pas venue ici de son plein gré… Je suis venue sauver Hinako… Ce n'est pas encore le moment pour Hinako de venir ici… »
       <cite>— <em>Silent Hill f</em>, confrontation avec Satsuko (traduction officielle française)</cite>
     </div>
 
-    <p class="rv">Satsuko sait que Shimizu Hinako et Kitsune no Hinako sont distinctes. Elle s'adresse à la seconde tout en cherchant à atteindre la première. Elle est l'une des rares figures du jeu qui comprend ce qui se passe réellement — et cette compréhension lui vient de son alliance avec Tsukumogami, la divinité indigène dépossédée dont l'article suivant tracera l'histoire.</p>
+    <p class="rv">Elle sait que les deux Hinako sont distinctes. Elle s'adresse à la seconde tout en cherchant à atteindre la première. C'est l'une des rares figures du jeu qui comprend ce qui se passe réellement — et cette compréhension lui vient d'une alliance avec Tsukumogami, la divinité dont l'histoire est au cœur du second niveau de lecture du jeu. Pour avoir choisi ce camp, Satsuko a été tuée par Inari — la divinité des Tsuneki. Fox Mask la chasse non pas parce qu'elle est une menace abstraite, mais parce qu'elle est précisément ce qui pourrait interrompre le rituel. Il la présente comme une impureté. Elle est une alliée.</p>
 
-    <p class="rv">Pour avoir choisi ce camp, Satsuko a été tuée par Inari — la divinité des Tsuneki. La chronologie du jeu le confirme : elle pratiquait la kagura pour tenter d'exorciser Kitsune no Hinako, elle s'est alliée à la puissance opposée, elle en est morte. Le jeu ne le dit pas explicitement. Il le fait lire.</p>
+    <h2 class="rv">Le village et son histoire volée</h2>
 
-    <h2 class="rv">VI. Le <em>taiko</em> — le tambour qui fait taire</h2>
+    <p class="rv">Il y a dans les parties avancées du jeu un document accessible dans le journal d'une prêtresse : <em>« Le dieu qui m'a parlé hier a dit qu'une divinité malveillante leur a volé leur sanctuaire. »</em><span class="fn">10</span> La divinité dont il est question est Tsukumogami — la divinité originelle d'Ebisugaoka, celle qui y était avant les Tsuneki et leur Inari. Ce que cette phrase dit, c'est que tout ce qu'Hinako sait sur la mythologie de son village vient des Tsuneki. Et que les Tsuneki ont une raison précise de raconter l'histoire qu'ils racontent.</p>
 
-    <p class="rv">L'un des boss de Kitsune no Hinako est le <em>Taiko Tank</em> : une créature qui a avalé un tambour, dont les baguettes poussent de ses bras comme des membres, et qui contrôle les monstres environnants par le son. Son entrée dans le journal d'Hinako :</p>
+    <p class="rv">Ebisugaoka existe depuis au moins l'époque de Nara — le VIIIe siècle. La divinité des Tsuneki n'y arrive qu'aux alentours de 1880.<span class="fn">11</span> Entre les deux, douze siècles de pratiques religieuses que le journal d'Hinako attribue systématiquement à Inari — alors qu'un autre document, moins visible, indique que des pratiques comme le <em>kishu</em> sont antérieures à l'ère Edo, donc à des siècles avant l'arrivée des renards.<span class="fn">12</span> Ces incohérences ne sont pas des erreurs de continuité. Ce sont les coutures visibles d'une réécriture.</p>
 
-    <div class="source-box rv">
-      « Un monstre qui a avalé un énorme tambour. Il agite ses gigantesques baguettes — qui poussent de ses bras comme des membres — et frappe le tambour pour intimider. Il utilise le son du tambour pour contrôler les monstres alentour et les pousser à attaquer. Il essaie de faire taire par des cris forts et des sons puissants. C'est toujours comme ça. »
-      <cite>— Journal d'Hinako, entrée « Taiko Tank », <em>Silent Hill f</em></cite>
-    </div>
+    <p class="rv">Ce que Ryukishi07 a confirmé lors de son stream du jeu<span class="fn">13</span> — que le Kamugara, dieu indigène rencontré dans le Sanctuaire, est une divinité qui a refusé de se soumettre lors de l'arrivée d'Inari et qui a été torturée en monstre en conséquence — donne à cette réécriture son sens exact. Les Tsuneki n'ont pas seulement pris le contrôle d'un territoire. Ils ont transformé sa divinité résistante en figure de menace, pour que les habitants du village aient besoin d'eux pour être protégés de ce qu'ils ont eux-mêmes produit.</p>
 
-    <p class="rv">La dernière phrase — <em>« c'est toujours comme ça »</em> — est la signature d'une reconnaissance personnelle, pas d'une observation naturaliste. La description officielle du parfum Kotoyuki confirme par ailleurs que les arts secrets utilisés sur Hinako avaient pour fonction de <em>« faire taire ses propres pensées »</em>.<span class="fn">11</span> La baguette qui pousse du bras en écho au bras de renard de Kitsune no Hinako — obtenu lors du premier rituel, au même moment narratif que la première confrontation avec ce monstre — n'est pas une coïncidence de design. C'est un portrait.</p>
+    <p class="rv">La naginata rituelle des Tsuneki est associée à la foudre. Les renards du clan ont des pouvoirs de foudre. L'arbre divin d'Ebisugaoka — récipient de Tsukumogami — a été détruit par la foudre, et les Tsuneki arrivent immédiatement après, sachant déjà qu'il y a un problème de dragon d'eau à régler. La structure est transparente : ils ont créé le problème qu'ils vont se proposer de résoudre. La gestion de crise fabriquée comme mode d'ascension au pouvoir — Ryukishi07 n'a pas besoin de Frantz Fanon pour le savoir, mais la coïncidence de structure avec ce que Fanon a théorisé dans <em>Les Damnés de la terre</em> (1961) — soit, précisément, les années du jeu — n'est pas sans résonance.<span class="fn">14</span></p>
 
-    <p class="rv">Kotoyuki, dans sa fonction de possesseur, fonctionne exactement comme le Taiko Tank : il produit du bruit pour couvrir d'autres bruits. Il sature l'espace mental d'Hinako — par l'encens, la voix, le regard, les lettres parfumées au bois de santal<span class="fn">12</span> — de façon à ce qu'il n'y ait plus de place pour autre chose. Ce que le bruit couvre, c'est la voix propre de Kitsune no Hinako — celle qui, pendant quelques secondes dans une scène de nouvelle partie, dit : <em>je suis dans l'erreur, libère-moi.</em></p>
+    <blockquote class="rv">
+      Ce que Hinako appelle « l'histoire d'Ebisugaoka » est l'histoire des Tsuneki racontée par les Tsuneki. L'autre histoire — celle de Tsukumogami, de l'arbre, du dragon — n'existe que dans des fragments que le jeu cache derrière plusieurs parties et que le journal corrompu d'Hinako ne peut pas voir.
+    </blockquote>
 
-    <div class="orn-line rv">✦ &nbsp; ✦ &nbsp; ✦</div>
+    <h2 class="rv">Le temps qui presse</h2>
 
-    <h2 class="rv">VII. Ce que ça change — et pourquoi ça compte</h2>
+    <p class="rv">Il y a une question que le jeu ne pose jamais directement mais dont la chronologie suggère la réponse : pourquoi les Tsuneki ont-ils besoin du sang d'Hinako précisément dans les années 1960 ? Une hypothèse que la communauté anglophone a développée à partir des textes du jeu mérite d'être formulée : selon certains textes du folklore japonais, les renards deviennent <em>tsukumogami</em> — objets animés par une présence divine — quand ils atteignent cent ans d'existence. Les statues tutélaires que les Tsuneki ont ancrées dans le village datent de 1880 environ. En 1960, elles approchent de leur centième année.<span class="fn">15</span></p>
 
-    <p class="rv">Lire Kitsune no Hinako comme un <em>katashiro</em> plutôt que comme un double psychologique change plusieurs choses.</p>
+    <p class="rv">Si cette lecture est juste, les Tsuneki ne gèrent pas seulement un problème de dragon d'eau. Ils gèrent une crise de légitimité : leurs propres ancrages divins pourraient changer de nature à l'approche de ce seuil. Et Tsukumogami — la divinité qu'ils ont dépossédée et torturée — accumule depuis quatre-vingts ans le ressentiment suffisant pour devenir quelque chose qu'on ne peut plus contenir. Le sacrifice d'Hinako n'est pas une cérémonie de routine. C'est une tentative désespérée de stabiliser un système qui se fissure de l'intérieur.</p>
 
-    <p class="rv">D'abord, ça change la nature de la réconciliation. Dans la lecture psychologique, la fin canonique — où les deux Hinako se retrouvent — est une intégration : les deux désirs contradictoires fusionnent en quelque chose de complet. Dans la lecture rituelle, cette réconciliation est autre chose : Shimizu Hinako choisit de ne pas abandonner l'entité qui a absorbé le sort à sa place, de ne pas la traiter comme jetable. C'est un acte de résistance à la logique même du <em>katashiro</em> — qui dit que la poupée doit être jetée après usage.</p>
+    <p class="rv">Ce que Jizō fait dans cette histoire est la dernière pièce. Le bodhisattva bouddhiste protecteur des femmes et des enfants — celui qui sauve les âmes prises au piège entre les mondes — est associé dans le jeu à la garde de l'épée sacrée qu'Hinako peut utiliser pour se défendre.<span class="fn">16</span> Jizō ne garde pas des choses pour les rendre inutilisables. Son rôle entier est de protéger les plus vulnérables. Sa présence dit : il y a dans l'espace sacré d'Ebisugaoka quelque chose qui n'appartient pas aux Tsuneki et qui ne leur a jamais appartenu. Une couche plus ancienne, couverte mais pas détruite, qui saigne à travers là où la réécriture est la moins solide.</p>
 
-    <p class="rv">Ensuite, ça change la culpabilité. Dans la lecture psychologique, Kitsune no Hinako est une projection — elle vient d'Hinako, elle est responsable d'une partie d'elle-même. Dans la lecture rituelle, elle est une victime distincte. Quelqu'un l'a créée. Quelqu'un a décidé qu'une entité consciente serait produite pour servir de tampon entre une femme et son destin imposé. Que cette entité souffre, perde la mémoire, soit incapable de tenir sa propre lucidité plus de quelques secondes — c'est un dommage collatéral que les Tsuneki ont accepté.</p>
+    <h2 class="rv">Ce que ça fait à l'histoire d'Hinako</h2>
 
-    <p class="rv">Enfin, ça change la question finale que le jeu pose. Pas : <em>quelle partie d'Hinako va l'emporter ?</em> Mais : <em>est-ce qu'un système qui produit des poupées de substitution pour que les femmes réelles puissent survivre à leur propre mariage est un système qu'on peut appeler autre chose que ce qu'il est ?</em></p>
+    <p class="rv">Lire Kitsune no Hinako comme une poupée rituelle de substitution plutôt que comme un double psychologique change ce que sa réconciliation avec Shimizu Hinako signifie dans la fin canonique. Dans la lecture psychologique, c'est une intégration — les deux désirs contradictoires fusionnent en quelque chose de complet. Dans la lecture rituelle, c'est autre chose : Shimizu Hinako choisit de ne pas abandonner l'entité qui a absorbé le sort à sa place, de ne pas la traiter comme jetable une fois son usage terminé. La logique du <em>katashiro</em> dit que la poupée doit être jetée dans la rivière après la cérémonie. Shimizu Hinako refuse. Ce refus est peut-être l'acte le plus politique du jeu.</p>
+
+    <p class="rv">Et lire Ebisugaoka comme un territoire dont l'histoire religieuse a été réécritechange ce que le brouillard signifie à l'échelle du village tout entier. Le brouillard de <em>Silent Hill</em> est toujours la matérialisation d'une vérité refoulée — ce qu'on refuse de voir, rendu visible et mortel. À Ebisugaoka, ce qui a été refoulé n'est pas seulement la souffrance d'Hinako. C'est l'histoire entière d'un lieu dont le dieu tutélaire a été volé, et dont la divinité d'origine erre depuis quatre-vingts ans dans un corps torturé, attendant que quelqu'un lise assez attentivement le journal de la jeune femme pour voir où les coutures cèdent.</p>
 
     <!-- NOTES -->
     <div class="footnotes rv">
       <span class="footnotes-title">Notes</span>
-      <div class="footnote-item"><span class="fn-num">1.</span><span>Scène de dialogue entre Shimizu Hinako et Kitsune no Hinako, disponible en NG+ dans <em>Silent Hill f</em>. Traduit du chinois traditionnel (version source). Le texte japonais utilise l'expression 「解放して」 (<em>kaihō shite</em>) — libère-moi — terme qui renvoie littéralement à une délivrance physique autant qu'à un affranchissement.</span></div>
-      <div class="footnote-item"><span class="fn-num">2.</span><span>Même scène. En japonais : 「まるで誰かに足を掴まれて……沼の底に無理やり引き摛り込まれるような……そんな感じなの……」 L'image du marécage et des pieds tenus renvoie à une sensation d'attraction externe, pas d'impulsion interne.</span></div>
-      <div class="footnote-item"><span class="fn-num">3.</span><span>Description du <em>harai katashiro</em> issue du journal d'Hinako, <em>Silent Hill f</em> (versions japonaise, anglaise et chinoise traditionnelle comparées par la communauté sur le forum Steam et le subreddit r/silenthill). L'analyse du nom comme référence explicite au rituel de purification-substitution shinto a été développée par Asha Bardon, <em>ashabardongaminglorist.substack.com</em>, 2025.</span></div>
-      <div class="footnote-item"><span class="fn-num">4.</span><span>Le terme 異形 (<em>igyo</em>) est utilisé dans le texte japonais de la scène NG+ pour qualifier les sentiments de Kitsune no Hinako envers Fox Mask. <em>Igyo</em> ne signifie pas « fort » ou « intense » — il signifie « monstrueux, hors de la forme normale, non-humain ».</span></div>
-      <div class="footnote-item"><span class="fn-num">5.</span><span>Document « Lettre natale » (titre de fichier dans les données du jeu : <em>natal letter</em>). Trouvé dans les rizières d'Amida-shirakawa. Traduit du japonais. L'association avec Junko repose sur : la localisation géographique, les conventions de nommage shōwa (kanji du champ dans 絹田 / <em>Kinuta</em>), la mention d'un mari initialement doux au <em>miai</em> (correspondant à ce qu'on sait du mariage de Junko), et la réaction émotionnelle disproportionnée d'Hinako à la lecture.</span></div>
-      <div class="footnote-item"><span class="fn-num">6.</span><span>Texte japonais de la réaction d'Hinako : 「夫に虐げられている妻が書いた手紙。こんなの許せない……」 et 「酷過ぎる……こんなの　あんまりだ……！」 Le niveau d'affect est inhabituellement élevé par rapport aux autres documents du jeu.</span></div>
-      <div class="footnote-item"><span class="fn-num">7.</span><span>Sigmund Freud, « Au-delà du principe de plaisir » [1920], dans <em>Essais de psychanalyse</em>, Paris : Payot, 2001. La compulsion de répétition comme réponse au traumatisme non résolu — le retour à la scène blessante non pour la revivre identiquement, mais pour tenter de la modifier — est l'une des théories freudiennes les plus fréquemment mobilisées dans l'analyse de l'horreur survie japonaise.</span></div>
-      <div class="footnote-item"><span class="fn-num">8.</span><span>Le terme <em>kashimashi</em> est expliqué par Asha Bardon comme désignant dans l'usage traditionnel les femmes mariées qui ont souffert — terme associé aux <em>onryō</em> féminins dans certains contextes folkloriques. Voir <em>ashabardongaminglorist.substack.com</em>, « In-game Shinto for Beginners », 2025.</span></div>
-      <div class="footnote-item"><span class="fn-num">9.</span><span>L'<em>onmyōdō</em> (陰陽道) est un système ésotérique japonais combinant éléments de taoïsme, de bouddhisme et de cosmologie chinoise. Un praticien maîtrise la manipulation des forces yin et yang pour conjurer des esprits. L'usage d'une incantation d'<em>onmyōdō</em> par Fox Mask pour bannir Satsuko révèle son niveau d'accès aux pratiques rituelles du clan Tsuneki.</span></div>
-      <div class="footnote-item"><span class="fn-num">10.</span><span>Sur la <em>kagura</em> comme danse rituelle d'exorcisme et de purification, voir Averbuch, Irit. <em>The Gods Come Dancing : A Study of the Japanese Ritual Dance of Yamabushi Kagura</em>. Ithaca : Cornell East Asia Series, 1995. Les attaques de Satsuko causant des dommages à Kitsune no Hinako et non à Fox Mask (qu'elles irritent sans blesser) confirment leur nature purificatrice plutôt qu'offensive.</span></div>
-      <div class="footnote-item"><span class="fn-num">11.</span><span>Description officielle du parfum Kotoyuki, Konami, 2025. Texte original japonais : 「雛子の想いすらも黙らせてしまう、有無を言わさぬオーラが感じられます」 — « un aura impérieuse capable de faire taire jusqu'aux propres pensées d'Hinako ».</span></div>
-      <div class="footnote-item"><span class="fn-num">12.</span><span>Shirō Kuro, roman de <em>Silent Hill f</em>. Les lettres de Kotoyuki sont décrites comme portant une odeur de bois de santal — même parfum que celui des encens des cérémonies. La saturation sensorielle est un vecteur de conditionnement documenté : associer un état (calme, soumission, sécurité) à un stimulus olfactif répété est une technique de conditionnement classique. Voir Herz, Rachel S. <em>The Scent of Desire</em>. New York : William Morrow, 2007.</span></div>
+      <div class="footnote-item"><span class="fn-num">1.</span><span>Les parties avancées du jeu (<em>New Game+</em> et au-delà) sont des rejouages depuis le début avec des éléments débloqués — pratique courante dans les survival horror et visual novels japonais qui structurent leur narration sur plusieurs couches de lecture. Chaque partie supplémentaire d'<em>Silent Hill f</em> débloque des contenus narratifs significatifs : documents, scènes, dialogues.</span></div>
+      <div class="footnote-item"><span class="fn-num">2.</span><span>Version japonaise : 「まるで誰かに足を掴まれて……沼の底に無理やり引き摛り込まれるような……そんな感じなの……」 L'image des pieds tenus par quelqu'un — et non d'une attraction interne — est explicite dans toutes les versions linguistiques du jeu.</span></div>
+      <div class="footnote-item"><span class="fn-num">3.</span><span>Description du <em>harai katashiro</em> dans le journal d'Hinako, comparée et analysée par Asha Bardon dans ses articles sur <em>ashabardongaminglorist.substack.com</em>, 2025. La présence d'un visage identique à celui du <em>kashimashi</em> sous le masque soudé, et la fabrication inorganique en imitation de l'organique, sont les deux indices principaux de la relation de substitution entre les deux créatures.</span></div>
+      <div class="footnote-item"><span class="fn-num">4.</span><span>Le terme 異形 (<em>igyo</em>) désigne ce qui dévie de la forme normale ou naturelle — monstre, être difforme, chose qui n'appartient pas à l'ordre des humains. Son utilisation pour qualifier des émotions, plutôt que des êtres, est inhabituelle et souligne le caractère imposé, non-organique de ce que ressent Kitsune no Hinako.</span></div>
+      <div class="footnote-item"><span class="fn-num">5.</span><span>Journal d'Hinako, entrée « Taiko Tank », <em>Silent Hill f</em>. Traduction de la version officielle française. La version japonaise original se conclut par : 「いつもそう」 — une formulation au présent de vérité générale, non descriptive d'un comportement particulier du monstre.</span></div>
+      <div class="footnote-item"><span class="fn-num">6.</span><span>Description officielle du parfum Kotoyuki, Konami, 2025. Texte japonais : 「雛子の想いすらも黙らせてしまう、有無を言わさぬオーラが感じられます」 et 「狐の薬・秘法により言いなりにされている時の、重苦しく忘我の境地にいるような様子」.</span></div>
+      <div class="footnote-item"><span class="fn-num">7.</span><span>Shirō Kuro, roman de <em>Silent Hill f</em>. La liste des méthodes de Kotoyuki dans le roman — encens, vin, souffle, voix, regard — correspond à des techniques documentées de conditionnement et de manipulation cognitive. Le bois de santal des lettres qu'il lui envoie, décrit dans le roman, crée une association olfactive entre sa présence et un état de calme induit.</span></div>
+      <div class="footnote-item"><span class="fn-num">8.</span><span>L'incantation d'<em>onmyōdō</em> (陰陽道) utilisée par Fox Mask pour bannir Satsuko révèle son niveau d'accès aux pratiques rituelles avancées du clan Tsuneki. L'<em>onmyōdō</em> est un système ésotérique japonais combinant cosmologie chinoise et pratiques de divination et d'exorcisme, maîtrisé historiquement par des praticiens liés aux cours impériales.</span></div>
+      <div class="footnote-item"><span class="fn-num">9.</span><span>Sur la <em>kagura</em> comme danse rituelle d'exorcisme et de purification shinto, voir Averbuch, Irit, <em>The Gods Come Dancing</em>, Ithaca : Cornell East Asia Series, 1995. La principale arme de Satsuko dans le jeu est identifiée par la communauté comme des <em>kagura suzu</em> — clochettes rituelles utilisées précisément dans ces danses d'exorcisme.</span></div>
+      <div class="footnote-item"><span class="fn-num">10.</span><span>Document de prêtresse accessible dans les parties avancées de <em>Silent Hill f</em>. Version japonaise : 「昨日、神様が話しかけてくれた。悪い神に自分たちの社を奪われたと言っていた」. La formulation « leur sanctuaire » implique que la divinité qui parle se considère comme dépossédée — un vol, pas une succession légitime.</span></div>
+      <div class="footnote-item"><span class="fn-num">11.</span><span>La datation de l'arrivée des Tsuneki (~1880) est inférée de la chronologie des statues tutélaires et des références documentaires dans le jeu. La fondation du village à l'époque de Nara (710–794) est suggérée par plusieurs textes historiques in-game.</span></div>
+      <div class="footnote-item"><span class="fn-num">12.</span><span>Un document archivistique dans le Sanctuaire précise que la pratique du <em>kishu</em> date de la période Muromachi (XIVe–XVIe siècle) au minimum. Le journal d'Hinako, lui, attribue cette pratique à Inari — arrivé quatre à six siècles plus tard.</span></div>
+      <div class="footnote-item"><span class="fn-num">13.</span><span>Ryukishi07, stream YouTube de <em>Silent Hill f</em>, 2025. La nature de la source (stream vidéo, donc non-texte) la rend difficile à citer formellement, mais sa réception communautaire — traduite, transcrite et discutée sur Reddit, Twitter et les forums de fans — est suffisamment large pour constituer un corpus de réception fiable.</span></div>
+      <div class="footnote-item"><span class="fn-num">14.</span><span>Frantz Fanon, <em>Les Damnés de la terre</em>, Paris : François Maspero, 1961. La thèse centrale du premier chapitre — que les puissances coloniales créent les conditions qui justifient leur domination, tout en transformant les résistants en figures de menace — s'applique structurellement à la relation des Tsuneki à Tsukumogami et à Ebisugaoka.</span></div>
+      <div class="footnote-item"><span class="fn-num">15.</span><span>L'hypothèse du centenaire des statues tutélaires a été développée par Asha Bardon sur son Substack, 2025. La coïncidence entre 1880 (installation présumée des statues) et les années 1960 (cadre du jeu) représente environ quatre-vingt ans — et si les statues sont légèrement antérieures à 1880, on approche du siècle.</span></div>
+      <div class="footnote-item"><span class="fn-num">16.</span><span>Sur Jizō (地蔵菩薩) comme bodhisattva protecteur des femmes, des enfants et des voyageurs dans le bouddhisme japonais, voir Jan Chozen Bays, <em>Jizo Bodhisattva</em>, Boston : Shambhala, 2003. Sa présence dans ce récit dominé par les kami shinto est une anomalie significative — il appartient à une tradition distincte, et son rôle de gardien de l'épée le place explicitement du côté de ceux qu'on veut protéger plutôt que de ceux qui gouvernent.</span></div>
     </div>
 
     <div class="biblio rv">
-      <span class="biblio-title">Références citées</span>
+      <span class="biblio-title">Références</span>
       <p class="biblio-item">Averbuch, Irit. <em>The Gods Come Dancing : A Study of the Japanese Ritual Dance of Yamabushi Kagura</em>. Ithaca : Cornell East Asia Series, 1995.</p>
-      <p class="biblio-item">Bardon, Asha. « In-game Shinto for Beginners » (Parts I–IV) ; « The Fox Wets Its Tail Ending ». <em>ashabardongaminglorist.substack.com</em>, 2025.</p>
-      <p class="biblio-item">Freud, Sigmund. « Au-delà du principe de plaisir » [1920]. Dans <em>Essais de psychanalyse</em>. Paris : Payot, 2001.</p>
-      <p class="biblio-item">Herz, Rachel S. <em>The Scent of Desire</em>. New York : William Morrow, 2007.</p>
+      <p class="biblio-item">Bardon, Asha. Analyses de <em>Silent Hill f</em> (séries complètes). <em>ashabardongaminglorist.substack.com</em>, 2025.</p>
+      <p class="biblio-item">Bays, Jan Chozen. <em>Jizo Bodhisattva</em>. Boston : Shambhala, 2003.</p>
+      <p class="biblio-item">Fanon, Frantz. <em>Les Damnés de la terre</em>. Paris : François Maspero, 1961.</p>
       <p class="biblio-item">Kuro, Shirō. Roman de <em>Silent Hill f</em>. Konami, 2025.</p>
       <p class="biblio-item">Konami. Description officielle du parfum Kotoyuki, 2025.</p>
+      <p class="biblio-item">Ryukishi07. Stream YouTube de <em>Silent Hill f</em>, 2025.</p>
     </div>
 
   </article>
@@ -263,10 +214,9 @@
     <span class="tag">Silent Hill f — II</span>
     <span class="tag">Katashiro</span>
     <span class="tag">Kitsune no Hinako</span>
+    <span class="tag">Tsukumogami</span>
+    <span class="tag">Conquête du sacré</span>
     <span class="tag">Satsuko</span>
-    <span class="tag">Kagura</span>
-    <span class="tag">Junko</span>
-    <span class="tag">Dédoublement rituel</span>
     <span class="tag">Narratrice non-fiable</span>
   </div>
 
