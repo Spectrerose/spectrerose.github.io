@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spectre Rose — La conquête invisible : les Tsuneki, le dragon d'eau et la réécriture coloniale du sacré dans Silent Hill f</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#04080a; --bg-card:#08100c;
+      --rose:#d4909a; --rose-light:#f0c4cc; --rose-dark:#7a3d4a;
+      --cream:#e0eae4; --muted:#507060; --border:rgba(100,180,140,0.18);
+      --green:#70b090; --green-l:#a0d8b8; --green-d:#1a3828;
+      --gold:#c8a860; --gold-l:#f0d090; --gold-d:#5a4010;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--bg); color:var(--cream); font-family:'Crimson Text',serif; font-size:19.5px; line-height:1.92; overflow-x:hidden; }
+    body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E"); pointer-events:none; z-index:9998; mix-blend-mode:overlay; opacity:0.6; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; justify-content:space-between; align-items:center; padding:1.4rem 4rem; background:linear-gradient(to bottom,rgba(4,8,10,0.97) 0%,transparent 100%); }
+    .nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:300; letter-spacing:.18em; color:var(--rose-light); text-decoration:none; }
+    .nav-logo span { color:var(--rose); font-style:italic; }
+    .nav-back { font-family:'DM Mono',monospace; font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .3s; }
+    .nav-back:hover { color:var(--green-l); }
+    .art-hero { padding:12rem 4rem 5rem; max-width:820px; margin:0 auto; text-align:center; }
+    .a-eyebrow { font-family:'DM Mono',monospace; font-size:.58rem; letter-spacing:.4em; text-transform:uppercase; color:var(--green); display:block; margin-bottom:2rem; }
+    .a-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2.4rem,6vw,4rem); font-weight:300; line-height:1.06; color:var(--cream); }
+    .a-title em { color:var(--green-l); font-style:italic; }
+    .a-subtitle { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-style:italic; font-weight:300; color:var(--muted); margin-top:1.4rem; line-height:1.65; }
+    .a-meta { display:flex; justify-content:center; align-items:center; gap:1.2rem; margin-top:2.8rem; font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.2em; text-transform:uppercase; color:var(--green-d); }
+    .a-meta .sep { color:rgba(112,176,144,.25); }
+    .orn-line { text-align:center; color:var(--green-d); font-size:.8rem; letter-spacing:1.4rem; margin:3.5rem 0; }
+    .cover-img { width:100%; max-width:820px; margin:0 auto 4rem; aspect-ratio:16/7; overflow:hidden; border:1px solid rgba(112,176,144,.15); background:linear-gradient(135deg,#040a06,#04080a); display:flex; align-items:center; justify-content:center; }
+    .cover-placeholder { font-family:'Cormorant Garamond',serif; font-size:6rem; color:rgba(112,176,144,.07); font-style:italic; }
+    .art-body { max-width:680px; margin:0 auto; padding:0 2rem 4rem; }
+    .art-body > p:first-of-type::first-letter { font-family:'Cormorant Garamond',serif; font-size:4.5rem; font-weight:300; float:left; line-height:.82; margin-right:.12em; margin-top:.08em; color:var(--green-l); }
+    h2 { font-family:'Cormorant Garamond',serif; font-size:1.95rem; font-weight:400; line-height:1.15; color:var(--cream); margin:4rem 0 1.4rem; position:relative; padding-left:1.4rem; }
+    h2::before { content:''; position:absolute; left:0; top:.3em; width:3px; height:1.1em; background:linear-gradient(to bottom,var(--green),var(--green-d)); }
+    h3 { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-style:italic; font-weight:400; color:var(--green-l); margin:2.4rem 0 .8rem; }
+    p { color:#b8ccc0; margin-bottom:1.5rem; }
+    em { color:var(--rose-light); font-style:italic; }
+    strong { color:var(--cream); font-weight:600; }
+    blockquote { margin:3rem 0; padding:1.8rem 2.2rem; border:1px solid rgba(112,176,144,.22); background:var(--bg-card); position:relative; font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-style:italic; font-weight:300; color:var(--green-l); line-height:1.6; }
+    blockquote::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--green),var(--green-d)); }
+    blockquote cite { display:block; font-family:'DM Mono',monospace; font-size:.46rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); font-style:normal; margin-top:.9rem; }
+    .source-box { margin:2.8rem 0; padding:1.6rem 2rem; border:1px solid rgba(112,176,144,.28); background:rgba(112,176,144,.04); font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; color:#a8c8b8; line-height:1.75; position:relative; }
+    .source-box::before { content:'Source primaire'; position:absolute; top:-1px; left:1.5rem; background:var(--bg); padding:0 .7rem; font-family:'DM Mono',monospace; font-size:.46rem; letter-spacing:.18em; text-transform:uppercase; color:var(--green); font-style:normal; }
+    .source-box cite { display:block; font-family:'DM Mono',monospace; font-size:.46rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); font-style:normal; margin-top:.9rem; }
+    .fn { font-family:'DM Mono',monospace; font-size:.52rem; vertical-align:super; line-height:0; color:var(--green); border-bottom:1px dotted var(--green-d); cursor:default; }
+    .cadrage { border-left:2px solid var(--green-d); padding:1rem 1.5rem; background:rgba(112,176,144,.04); margin:2.4rem 0; }
+    .cadrage-title { font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.2em; text-transform:uppercase; color:var(--green); margin-bottom:.6rem; display:block; }
+    .cadrage p { font-size:.9rem; color:var(--muted); font-style:italic; margin:0; line-height:1.75; }
+    .cadrage p + p { margin-top:.8rem; }
+    /* Chronologie */
+    .timeline { margin:2.5rem 0; }
+    .tl-item { display:grid; grid-template-columns:120px 1fr; gap:1.2rem; padding:1.2rem 0; border-bottom:1px solid rgba(112,176,144,.08); }
+    .tl-item:last-child { border-bottom:none; }
+    .tl-date { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.12em; color:var(--green); padding-top:.2rem; text-align:right; }
+    .tl-content { font-size:.9rem; color:#b0c0b8; line-height:1.7; }
+    .tl-content strong { color:var(--cream); font-size:1rem; display:block; margin-bottom:.2rem; }
+    .footnotes { margin-top:4rem; padding-top:3rem; border-top:1px solid var(--border); }
+    .footnotes-title { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--green); margin-bottom:2rem; display:block; }
+    .footnote-item { display:grid; grid-template-columns:2rem 1fr; gap:.6rem; margin-bottom:1.1rem; font-size:.87rem; color:var(--muted); line-height:1.7; }
+    .fn-num { font-family:'DM Mono',monospace; font-size:.5rem; color:var(--green-d); padding-top:.15rem; }
+    .footnote-item em { color:#90b0a0; }
+    .biblio { margin-top:2.5rem; padding-top:2rem; border-top:1px solid rgba(112,176,144,.1); }
+    .biblio-title { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--green); margin-bottom:1.5rem; display:block; }
+    .biblio-item { font-size:.87rem; color:var(--muted); line-height:1.75; margin-bottom:.7rem; padding-left:1.4rem; text-indent:-1.4rem; }
+    .biblio-item em { color:#90b0a0; }
+    .art-footer { max-width:680px; margin:0 auto; padding:3rem 2rem 6rem; border-top:1px solid var(--border); display:flex; flex-wrap:wrap; align-items:center; gap:1rem; }
+    .tag { border:1px solid var(--green-d); padding:.25rem .8rem; font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.16em; text-transform:uppercase; color:var(--green); }
+    footer { border-top:1px solid var(--border); padding:2.5rem 4rem; max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
+    .f-logo { font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:300; letter-spacing:.15em; color:var(--rose-light); }
+    .f-copy { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.18em; color:var(--muted); }
+    .rv { opacity:0; transform:translateY(22px); transition:opacity .8s ease,transform .8s ease; }
+    .rv.on { opacity:1; transform:none; }
+    @media(max-width:760px){ nav{padding:1.2rem 1.5rem;} .art-hero,.art-body,.art-footer{padding-left:1.5rem;padding-right:1.5rem;} .art-hero{padding-top:9rem;} footer{flex-direction:column;gap:1rem;text-align:center;padding:2rem;} .tl-item{grid-template-columns:1fr;} .tl-date{text-align:left;} .footnote-item{grid-template-columns:1.5rem 1fr;} }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">Spectre <span>Rose</span></a>
+    <a href="index.html" class="nav-back">← Retour aux théories</a>
+  </nav>
+
+  <div class="art-hero">
+    <span class="a-eyebrow rv">✦ Silent Hill f — III &nbsp;·&nbsp; Colonisation du sacré &nbsp;·&nbsp; Tsukumogami &amp; dragon d'eau</span>
+    <h1 class="a-title rv">La conquête <em>invisible</em> —<br>les Tsuneki, le dragon d'eau<br>et la réécriture coloniale du sacré</h1>
+    <p class="a-subtitle rv">Les Tsuneki ont détruit l'arbre divin d'Ebisugaoka par la foudre, résolu le problème qu'ils avaient eux-mêmes créé, et sont devenus les dieux du lieu. Une lecture postcoloniale de l'horreur religieuse dans <em>Silent Hill f</em>.</p>
+    <div class="a-meta rv">
+      <span>Silent Hill f — article III</span>
+      <span class="sep">·</span>
+      <span>Spoilers complets NG++</span>
+      <span class="sep">·</span>
+      <span>~18 min</span>
+    </div>
+  </div>
+
+  <div class="cover-img rv">
+    <div class="cover-placeholder">龍</div>
+  </div>
+
+  <article class="art-body">
+
+    <p class="rv">Il y a une phrase dans le journal d'une prêtresse d'Ebisugaoka — accessible seulement en deuxième partie plus — qui résume tout ce que le jeu dit de son histoire religieuse : <em>« Le dieu qui m'a parlé hier a dit qu'une divinité malveillante leur a volé leur sanctuaire. »</em><span class="fn">1</span> La divinité dont il est question est Tsukumogami. Le sanctuaire qui lui a été volé est celui d'Ebisugaoka. Et les voleurs, bien qu'elle ne les nomme pas explicitement, sont les Tsuneki — le clan des renards-dieux dont les rituels constituent l'ossature du jeu.</p>
+
+    <p class="rv">Ce niveau de lecture de <em>Silent Hill f</em> est le moins visible, le plus patiemment construit, et le plus rarement commenté. Il exige quatre parties du jeu, un accès aux notes de recherche sur le folklore local, et la disposition à lire contre les documents officiels — notamment le journal d'Hinako, dont les incohérences sur l'histoire religieuse d'Ebisugaoka sont des indices délibérément semés. Ce que Ryukishi07 construit en souterrain, sous l'histoire d'un mariage forcé et d'un dédoublement identitaire, c'est une fable sur la colonisation — sur comment une puissance extérieure prend le contrôle d'un territoire sacré, réécrit son histoire, et transforme sa divinité autochtone en monstre.</p>
+
+    <div class="orn-line rv">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <h2 class="rv">I. La chronologie cachée — ce qui existait avant les Tsuneki</h2>
+
+    <p class="rv">Le point de départ est un simple fait chronologique que le jeu révèle progressivement : les Tsuneki et leur dieu Inari n'arrivent à Ebisugaoka qu'aux alentours de 1880. Or le village existe depuis au moins l'époque de Nara — le VIIIe siècle. Ce sont donc douze siècles de pratiques religieuses qui préexistent à l'arrivée des renards.<span class="fn">2</span></p>
+
+    <div class="timeline rv">
+      <div class="tl-item">
+        <div class="tl-date">~VIIIe s.</div>
+        <div class="tl-content"><strong>Fondation d'Ebisugaoka</strong>Présence de l'arbre divin — siège de Tsukumogami. Pratiques rituelles locales incluant le <em>kishu</em> et des formes de <em>tsukumogami</em>-culte. Aucune trace des Tsuneki ou d'Inari.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Ère Muromachi<br>(XIVe–XVIe s.)</div>
+        <div class="tl-content"><strong>Pratiques documentées</strong>Les notes de recherche sur les outils rituels confirment que la pratique du <em>kishu</em> (récupération respectueuse des outils abîmés) est antérieure à l'ère Edo. Aucune association avec Inari à cette période.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">~1880</div>
+        <div class="tl-content"><strong>Arrivée des Tsuneki et destruction de l'arbre divin</strong>L'arbre est détruit par la foudre — arme rituelle des Tsuneki, qui maîtrisent les éclairs. Le dragon d'eau, libéré par la destruction du récipient, menace le territoire. Les Tsuneki se proposent de le contenir.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">1880 → 1960</div>
+        <div class="tl-content"><strong>Réécriture de l'histoire</strong>Inari remplace les divinités précédentes dans les pratiques locales. Tsukumogami, torturé et transformé en monstre, est présenté aux habitants comme la menace que les Tsuneki protègent. Le journal d'Hinako reflète cette histoire officielle.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">1960s</div>
+        <div class="tl-content"><strong>Événements du jeu</strong>Les Tsuneki ont besoin d'une cérémonie de sang pour maintenir la contention du dragon. Hinako, enfant de sang divin rare, est désignée. Le délai depuis 1880 donne une urgence : les statues tutélaires qui ancrent le culte datent de la même période — et le délai de cent ans approche.</div>
+      </div>
+    </div>
+
+    <p class="rv">Ce tableau ne sort pas de nulle part. Il s'assemble à partir de trois types de sources : les documents in-game accessibles progressivement, les déclarations de Ryukishi07 lors de son stream du jeu,<span class="fn">3</span> et les analyses de la communauté anglophone qui a systématiquement comparé les versions japonaises, chinoises et anglaises des textes.</p>
+
+    <h2 class="rv">II. La foudre comme arme — le problème que les Tsuneki ont eux-mêmes créé</h2>
+
+    <p class="rv">La naginata rituelle des Tsuneki est associée à la foudre. Les renards-dieux du clan ont des pouvoirs de foudre. L'arbre divin d'Ebisugaoka a été détruit par la foudre, et les Tsuneki arrivent immédiatement après — sachant déjà, d'une façon que le jeu ne justifie pas autrement que par l'implication, que le dragon d'eau pose un problème.</p>
+
+    <p class="rv">L'implication est transparente : <strong>les Tsuneki ont détruit l'arbre divin et créé le problème qu'ils vont ensuite se proposer de résoudre.</strong> Ce n'est pas une inférence spéculative. C'est la structure classique de la prise de pouvoir coloniale par la gestion de crise fabriquée — créer une menace, se positionner comme seule entité capable d'y répondre, obtenir en échange l'autorité sur le territoire.<span class="fn">4</span></p>
+
+    <p class="rv">Le journal d'une prêtresse, accessible en NG++, en fournit la confirmation indirecte :</p>
+
+    <div class="source-box rv">
+      « Sakuko dit que les renards ont volé le titre de dieu de l'agriculture, et que la déesse et les renards se livrent une bataille de pouvoirs surnaturels sur les statues d'Inari… »
+      <cite>— Journal d'Hinako, note sur les propos de Satsuko, <em>Silent Hill f</em></cite>
+    </div>
+
+    <p class="rv">Ce que Satsuko sait — et ce que le jeu ne dit jamais directement — c'est qu'Inari n'est pas la divinité d'Ebisugaoka. Il y a été importé. Les pratiques religieuses locales lui préexistent. Et Tsukumogami — la divinité que le village honorait — a été torturé et transformé en monstre non pas parce qu'il est malveillant par nature, mais parce que quelqu'un avait besoin qu'il le semble.</p>
+
+    <h2 class="rv">III. Tsukumogami — le dieu indigène torturé</h2>
+
+    <div class="cadrage rv">
+      <span class="cadrage-title">Folklore shinto</span>
+      <p>Les <em>tsukumogami</em> (付喪神) sont des esprits qui naissent dans des objets anciens — outils, instruments, ustensiles — lorsque ceux-ci atteignent cent ans d'existence. L'idée sous-jacente est que tout objet, s'il est utilisé et soigné suffisamment longtemps, développe une conscience. Cette croyance est à l'origine de pratiques rituelles de révérence envers les outils usagés. Dans <em>Silent Hill f</em>, Tsukumogami désigne une divinité spécifique — parfois appelée « les Quatre-vingt-dix-neuf Dieux » dans le jeu — qui semble être liée à l'histoire longue du village plutôt qu'à un objet particulier.</p>
+      <p>Ryukishi07 a confirmé lors de son stream que le Kamugara — dieu indigène apparu dans le jeu — est une divinité qui a refusé de se soumettre lors de l'arrivée d'Inari et des Tsuneki, et qui a été torturée et transformée en monstre en conséquence. Le terme <em>kamugara</em> (神柄) désigne en japonais classique la nature ou la volonté propre d'un dieu.</p>
+    </div>
+
+    <p class="rv">Le Kamugara est présenté dans le jeu comme un ennemi — une créature hostile que Shimizu Hinako doit affronter. Mais sa description dans le journal, couplée à la confirmation de Ryukishi07, dit autre chose : c'est une divinité qui a refusé de se soumettre et qui porte dans son corps la transformation que ce refus lui a valu.<span class="fn">5</span></p>
+
+    <p class="rv">Cette figure a un précédent direct dans la pensée postcoloniale. Frantz Fanon a théorisé comment les puissances coloniales transforment les résistants en monstres — non pas métaphoriquement, mais dans la représentation officielle, dans l'histoire enseignée, dans la désignation même des acteurs.<span class="fn">6</span> Ce que les Tsuneki ont fait à Tsukumogami est précisément cela : la divinité qui refusait a été nommée « malveillante », rendue incompréhensible, utilisée comme justification du système de protection qu'ils prétendent offrir. Et le journal d'Hinako — source principale d'information pour le joueur — reproduit fidèlement cette histoire officielle, parce qu'Hinako ne connaît que ce qu'on lui a enseigné.</p>
+
+    <blockquote class="rv">
+      Ce que Hinako appelle « l'histoire d'Ebisugaoka » est l'histoire des Tsuneki racontée par les Tsuneki. L'autre histoire — celle de Tsukumogami, de l'arbre, du dragon — n'existe que dans des fragments que le jeu cache derrière quatre parties et un accès NG++.
+    </blockquote>
+
+    <h2 class="rv">IV. L'urgence des quatre-vingts ans — pourquoi maintenant</h2>
+
+    <p class="rv">Il y a une question que le jeu ne pose jamais explicitement mais dont la réponse est enfouie dans sa chronologie : pourquoi les Tsuneki ont-ils besoin de la cérémonie du sang en 1960 précisément ? Pourquoi cette urgence — ce sacrifice d'Hinako, cette pression temporelle qui informe toute la structure du jeu ?</p>
+
+    <p class="rv">Une hypothèse que certains analystes de la communauté anglophone ont développée mérite d'être examinée sérieusement : selon certains textes du folklore japonais, les renards deviennent <em>tsukumogami</em> quand ils atteignent cent ans. Les statues tutélaires ancrées par les Tsuneki dans le village datent d'environ 1880. En 1960, ces statues approchent de leur centième année d'existence — et avec elles, potentiellement, un changement dans la nature des entités qui les habitent.<span class="fn">7</span></p>
+
+    <p class="rv">Si cette lecture est juste, les Tsuneki ne sont pas seulement en train de gérer un problème de dragon d'eau. Ils sont en train de gérer une crise de légitimité : leurs propres ancrages divins pourraient changer de nature à l'approche de ce seuil. Le sacrifice d'Hinako n'est pas seulement une cérémonie de sang. C'est une tentative de stabiliser un système de pouvoir qui se fissure de l'intérieur, au moment précis où la divinité dépossédée dont ils ont détruit le récipient — l'arbre — accumule peut-être assez de ressentiment et de temps pour devenir quelque chose qu'on ne peut plus contrôler.</p>
+
+    <h2 class="rv">V. Le <em>kitsunebi</em> — les feux trompeurs qui mènent les curieux là où ils ne devraient pas aller</h2>
+
+    <p class="rv">Dans le folklore japonais, les <em>kitsunebi</em> (きつねび) — les feux de renard — sont des lumières utilisées pour attirer les humains vers des groupes de yōkai affamés. Suivre un <em>kitsunebi</em> est toujours une mauvaise idée. Il ne mène que dans des lieux qu'on n'aurait pas dû rejoindre.<span class="fn">8</span></p>
+
+    <p class="rv">Le masque de renard de Junko — identifié comme un <em>karasu tengu</em>, espèce de tengu connue dans le folklore pour sa propension à induire les humains en erreur<span class="fn">9</span> — et la façon dont elle guide Hinako en lui transmettant une vision de sa propre situation sont des variations de ce motif. Les renards du clan Tsuneki, qu'ils se manifestent comme Fox Mask, comme le masque de Junko ou comme les statues d'Inari du village, opèrent tous selon la même logique : ils montrent quelque chose qui ressemble à une lumière, et ils mènent vers un endroit qu'on n'aurait pas dû rejoindre.</p>
+
+    <p class="rv">Ce que le jeu dit de façon cohérente à travers ces variations, c'est que <strong>le mensonge qui structure Ebisugaoka n'est pas ponctuel — il est architectural.</strong> Il est dans les noms des divinités, dans les pratiques qu'on attribue au mauvais dieu, dans le journal d'une jeune femme qui reproduit l'histoire officielle parce qu'elle ne sait pas qu'il y en a une autre. La tromperie des Tsuneki n'est pas un secret qu'on garde. C'est un récit qu'on a rendu tellement hégémonique qu'il n'a plus besoin d'être gardé — parce que personne ne pense à en chercher un autre.</p>
+
+    <h2 class="rv">VI. Ce que Jizō fait là</h2>
+
+    <p class="rv">Jizō — la divinité bouddhiste protectrice des femmes et des enfants, celui qui sauve les âmes coincées dans les limbes — est impliqué dans la garde de l'épée sacrée qui joue un rôle dans la résolution du jeu. Cette présence mérite qu'on la prenne au sérieux.</p>
+
+    <p class="rv">Jizō ne garde pas des choses pour les rendre impraticables. Il garde des choses pour protéger les vivants de ce qui pourrait leur nuire. Son association avec l'épée — que Shimizu Hinako peut utiliser pour se défendre et, dans certains parcours, pour purifier ce qui doit l'être — est une déclaration implicite sur la nature de cet objet. Une divinité dont la fonction entière est de protéger les plus vulnérables ne tiendrait pas une arme de manipulation.<span class="fn">10</span></p>
+
+    <p class="rv">Ce point a une conséquence importante pour la lecture de l'ensemble du dispositif religieux du jeu. Il y a, dans l'espace sacré d'Ebisugaoka, deux couches de religieux superposées : celle des Tsuneki et leur Inari importé, et une couche plus ancienne — celle de Tsukumogami, de l'arbre, du dragon d'eau, et maintenant de Jizō — qui n'a pas disparu. Elle a été recouverte. Et elle saigne à travers, là où la réécriture est la moins solide.</p>
+
+    <h2 class="rv">VII. Pourquoi cette lecture importe — au-delà du jeu</h2>
+
+    <p class="rv">La grille de lecture postcoloniale appliquée à un jeu d'horreur japonais pourrait sembler déplacée. Elle ne l'est pas, pour une raison précise : <em>Silent Hill f</em> se déroule pendant les années 1960 — la période de la décolonisation mondiale, les guerres d'indépendance, les premières formulations théoriques de ce que Frantz Fanon, Aimé Césaire et Albert Memmi ont appelé la condition coloniale.<span class="fn">11</span> Ces textes circulent en 1960. Ils ne circulent pas à Ebisugaoka — village fermé, rural, coupé des grandes villes — mais le jeu les convoque implicitement par la structure même de son monde.</p>
+
+    <p class="rv">Ce que Ryukishi07 dit à travers l'histoire des Tsuneki, c'est quelque chose que l'horreur japonaise sait dire depuis longtemps : que les monstres ne viennent pas du dehors. Ils viennent de la structure. Ils viennent de ce qu'un système de pouvoir fait aux corps et aux histoires qu'il cherche à contrôler. L'<em>onryō</em> est la femme morte par la violence d'un homme. Le Kamugara est le dieu tué par la violence d'un clan. Le Shiromuku est la femme qui a cessé d'être elle-même par la violence d'une institution.</p>
+
+    <p class="rv">Ces trois violences ont la même forme. Elles s'exercent sur des entités qui résistaient à être définies par quelqu'un d'autre — et qui, une fois détruites, sont revenues sous une forme que personne ne pouvait plus nier. C'est peut-être cela, au fond, ce que le jeu appelle brouillard : la présence accumulée de tout ce qu'on a voulu rendre invisible, et qui refuse de l'être.</p>
+
+    <!-- NOTES -->
+    <div class="footnotes rv">
+      <span class="footnotes-title">Notes</span>
+      <div class="footnote-item"><span class="fn-num">1.</span><span>Document de prêtresse, accessible en NG++ dans <em>Silent Hill f</em>. En japonais : 「昨日、神様が話しかけてくれた。悪い神に自分たちの社を奪われたと言っていた」. La formulation désigne explicitement un vol de sanctuaire par une entité antagoniste.</span></div>
+      <div class="footnote-item"><span class="fn-num">2.</span><span>La datation de la fondation du village est inférée de plusieurs documents in-game, dont les notes de recherche sur les pratiques rituelles locales. La datation de l'arrivée des Tsuneki (~1880) est confirmée par la chronologie des statues tutélaires et les références aux pratiques existantes « avant l'ère Edo » dans certains documents.</span></div>
+      <div class="footnote-item"><span class="fn-num">3.</span><span>Ryukishi07 a confirmé lors de son stream YouTube du jeu que le Kamugara est une divinité indigène qui a refusé de se soumettre lors de l'arrivée d'Inari. Il a également indiqué vouloir laisser certains éléments de ce sous-récit comme mystère résolvable par les joueurs qui cherchent les indices.</span></div>
+      <div class="footnote-item"><span class="fn-num">4.</span><span>Sur la structure de la gestion de crise fabriquée comme technique de prise de pouvoir coloniale, voir Naomi Klein, <em>La stratégie du choc : la montée d'un capitalisme du désastre</em>, Arles : Actes Sud, 2008. Bien que le contexte de Klein soit économique et contemporain, la structure — créer ou laisser advenir une catastrophe, se positionner comme seul remède — est transposable.</span></div>
+      <div class="footnote-item"><span class="fn-num">5.</span><span>Déclaration de Ryukishi07 lors du stream, confirmée et traduite par la communauté anglophone sur Reddit et Twitter. La nature de la confirmation (stream, donc non-texte) la rend plus difficile à citer formellement, mais sa réception communautaire est suffisamment large pour être utilisable comme source secondaire.</span></div>
+      <div class="footnote-item"><span class="fn-num">6.</span><span>Frantz Fanon, <em>Les Damnés de la terre</em>, Paris : François Maspero, 1961. Le chapitre « Sur la violence » développe précisément le mécanisme par lequel les puissances coloniales transforment en monstres les figures de résistance pour légitimer la répression.</span></div>
+      <div class="footnote-item"><span class="fn-num">7.</span><span>L'hypothèse du centenaire des statues tutélaires et de son rapport à la transformation des <em>tsukumogami</em> a été développée par Asha Bardon sur son Substack, dans une série de posts sur la chronologie du jeu, 2025. La coïncidence entre 1880 (installation des statues) et 1960 (date du jeu) — soit exactement 80 ans, approchant le siècle — est trop précise pour être fortuite.</span></div>
+      <div class="footnote-item"><span class="fn-num">8.</span><span>Sur les <em>kitsunebi</em> dans le folklore japonais, voir Michael Dylan Foster, <em>The Book of Yokai : Mysterious Creatures of Japanese Folklore</em>, Berkeley : University of California Press, 2015.</span></div>
+      <div class="footnote-item"><span class="fn-num">9.</span><span>Le <em>karasu tengu</em> est une variété de tengu à tête de corbeau, réputée dans le folklore japonais pour être moins noble que le grand tengu humanoïde et plus encline à tromper les humains. L'identification du masque de Junko comme <em>karasu tengu</em> a été faite par plusieurs analystes visuels de la communauté de fans.</span></div>
+      <div class="footnote-item"><span class="fn-num">10.</span><span>Sur Jizō comme protecteur des femmes et des enfants dans le bouddhisme japonais, voir Jan Chozen Bays, <em>Jizo Bodhisattva : Guardian of Children, Travelers, and Other Beings</em>, Boston : Shambhala, 2003.</span></div>
+      <div class="footnote-item"><span class="fn-num">11.</span><span>Les textes fondateurs de la pensée postcoloniale publiés autour de 1960 incluent Fanon (1961), Aimé Césaire, <em>Discours sur le colonialisme</em> (1955, réédition 1962), et Albert Memmi, <em>Portrait du colonisé</em> (1957). La coïncidence temporelle entre le cadre du jeu et l'émergence de ces théories n'est pas nécessairement intentionnelle de la part de Ryukishi07, mais elle produit une résonance analytique réelle.</span></div>
+    </div>
+
+    <div class="biblio rv">
+      <span class="biblio-title">Références citées</span>
+      <p class="biblio-item">Bardon, Asha. Analyses chronologiques de <em>Silent Hill f</em>. <em>ashabardongaminglorist.substack.com</em>, 2025.</p>
+      <p class="biblio-item">Bays, Jan Chozen. <em>Jizo Bodhisattva : Guardian of Children, Travelers, and Other Beings</em>. Boston : Shambhala, 2003.</p>
+      <p class="biblio-item">Césaire, Aimé. <em>Discours sur le colonialisme</em>. Paris : Présence Africaine, 1955 (réédition 1962).</p>
+      <p class="biblio-item">Fanon, Frantz. <em>Les Damnés de la terre</em>. Paris : François Maspero, 1961.</p>
+      <p class="biblio-item">Foster, Michael Dylan. <em>The Book of Yokai : Mysterious Creatures of Japanese Folklore</em>. Berkeley : University of California Press, 2015.</p>
+      <p class="biblio-item">Klein, Naomi. <em>La stratégie du choc</em>. Arles : Actes Sud, 2008.</p>
+      <p class="biblio-item">Memmi, Albert. <em>Portrait du colonisé</em>. Paris : Buchet-Chastel, 1957.</p>
+      <p class="biblio-item">Ryukishi07. Stream YouTube de <em>Silent Hill f</em>, 2025.</p>
+    </div>
+
+  </article>
+
+  <div class="art-footer rv">
+    <span style="font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-right:.5rem;">Tags :</span>
+    <span class="tag">Silent Hill f — III</span>
+    <span class="tag">Tsukumogami</span>
+    <span class="tag">Dragon d'eau</span>
+    <span class="tag">Tsuneki</span>
+    <span class="tag">Colonisation du sacré</span>
+    <span class="tag">Kamugara</span>
+    <span class="tag">Postcolonial</span>
+    <span class="tag">Horreur religieuse</span>
+  </div>
+
+  <footer>
+    <span class="f-logo">Spectre Rose ✦</span>
+    <span class="f-copy">© 2026 — Théories narratives &amp; fiction interactive</span>
+  </footer>
+  <script src="ui.js"></script>
+</body>
+</html>
