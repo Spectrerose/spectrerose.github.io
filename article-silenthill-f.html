@@ -3,391 +3,262 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spectre Rose — La mariée sans visage : Hinako, Shiromuku et l'identité confisquée dans Silent Hill f</title>
+  <title>Spectre Rose — La mariée sans visage : corps ritualisé, identité confisquée et kitsunetsuki dans Silent Hill f</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg:         #07040a;
-      --bg-card:    #0e0812;
-      --rose:       #d4909a;
-      --rose-light: #f0c4cc;
-      --rose-dark:  #7a3d4a;
-      --rose-deep:  #3d1520;
-      --cream:      #ede4e6;
-      --muted:      #6e5860;
-      --border:     rgba(212, 144, 154, 0.18);
-      --border-h:   rgba(212, 144, 154, 0.45);
-      --glow:       rgba(212, 144, 154, 0.08);
+      --bg:#07040a; --bg-card:#0e0812;
+      --rose:#d4909a; --rose-light:#f0c4cc; --rose-dark:#7a3d4a; --rose-deep:#3d1520;
+      --cream:#ede4e6; --muted:#6e5860; --border:rgba(212,144,154,0.18);
     }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--bg); color:var(--cream); font-family:'Crimson Text',serif; font-size:19.5px; line-height:1.92; overflow-x:hidden; }
+    body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E"); pointer-events:none; z-index:9998; mix-blend-mode:overlay; opacity:0.6; }
 
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; justify-content:space-between; align-items:center; padding:1.4rem 4rem; background:linear-gradient(to bottom,rgba(7,4,10,0.97) 0%,transparent 100%); }
+    .nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:300; letter-spacing:.18em; color:var(--rose-light); text-decoration:none; }
+    .nav-logo span { color:var(--rose); font-style:italic; }
+    .nav-back { font-family:'DM Mono',monospace; font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .3s; }
+    .nav-back:hover { color:var(--rose-light); }
 
-    body {
-      background: var(--bg);
-      color: var(--cream);
-      font-family: 'Crimson Text', serif;
-      font-size: 19px;
-      line-height: 1.85;
-      overflow-x: hidden;
-    }
+    .art-hero { padding:12rem 4rem 5rem; max-width:820px; margin:0 auto; text-align:center; }
+    .a-eyebrow { font-family:'DM Mono',monospace; font-size:.58rem; letter-spacing:.4em; text-transform:uppercase; color:var(--rose); display:block; margin-bottom:2rem; }
+    .a-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2.4rem,6vw,4rem); font-weight:300; line-height:1.06; color:var(--cream); }
+    .a-title em { color:var(--rose-light); font-style:italic; }
+    .a-subtitle { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-style:italic; font-weight:300; color:var(--muted); margin-top:1.4rem; line-height:1.65; }
+    .a-meta { display:flex; justify-content:center; align-items:center; gap:1.2rem; margin-top:2.8rem; font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.2em; text-transform:uppercase; color:var(--rose-dark); }
+    .a-meta .sep { color:rgba(212,144,154,.25); }
+    .orn-line { text-align:center; color:var(--rose-dark); font-size:.8rem; letter-spacing:1.4rem; margin:3.5rem 0; }
 
-    /* Grain */
-    body::after {
-      content: '';
-      position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 9998; mix-blend-mode: overlay; opacity: 0.55;
-    }
+    .cover-img { width:100%; max-width:820px; margin:0 auto 4rem; aspect-ratio:16/7; overflow:hidden; border:1px solid rgba(212,144,154,.12); }
+    .cover-img img { width:100%; height:100%; object-fit:cover; filter:brightness(.85) saturate(.9); }
 
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.4rem 4rem;
-      background: linear-gradient(to bottom, rgba(7,4,10,0.96) 0%, transparent 100%);
-    }
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem; font-weight: 300; letter-spacing: .18em;
-      color: var(--rose-light); text-decoration: none;
-    }
-    .nav-logo span { color: var(--rose); font-style: italic; }
-    .nav-back {
-      font-family: 'DM Mono', monospace; font-size: .58rem;
-      letter-spacing: .22em; text-transform: uppercase;
-      color: var(--muted); text-decoration: none;
-      transition: color .3s;
-    }
-    .nav-back:hover { color: var(--rose); }
+    .art-body { max-width:680px; margin:0 auto; padding:0 2rem 4rem; }
+    .art-body > p:first-of-type::first-letter { font-family:'Cormorant Garamond',serif; font-size:4.5rem; font-weight:300; float:left; line-height:.82; margin-right:.12em; margin-top:.08em; color:var(--rose-light); }
 
-    /* HERO ARTICLE */
-    .art-hero {
-      padding: 12rem 4rem 6rem;
-      max-width: 820px; margin: 0 auto;
-      text-align: center;
-    }
+    h2 { font-family:'Cormorant Garamond',serif; font-size:1.95rem; font-weight:400; line-height:1.15; color:var(--cream); margin:4rem 0 1.4rem; position:relative; padding-left:1.4rem; }
+    h2::before { content:''; position:absolute; left:0; top:.3em; width:3px; height:1.1em; background:linear-gradient(to bottom,var(--rose),var(--rose-dark)); }
+    h3 { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-style:italic; font-weight:400; color:var(--rose-light); margin:2.4rem 0 .8rem; }
 
-    .a-eyebrow {
-      font-family: 'DM Mono', monospace; font-size: .58rem;
-      letter-spacing: .4em; text-transform: uppercase;
-      color: var(--rose); display: block; margin-bottom: 2rem;
-    }
+    p { color:#c9b8bc; margin-bottom:1.5rem; }
+    em { color:var(--rose-light); font-style:italic; }
+    strong { color:var(--cream); font-weight:600; }
 
-    .a-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.4rem, 6vw, 4rem);
-      font-weight: 300; line-height: 1.08; letter-spacing: -.01em;
-      color: var(--cream);
-    }
-    .a-title em { color: var(--rose); font-style: italic; }
+    .img-inline { width:100%; margin:2.8rem 0 .6rem; overflow:hidden; border:1px solid rgba(212,144,154,.1); }
+    .img-inline img { width:100%; display:block; filter:brightness(.85) saturate(.85); }
+    .img-caption { font-family:'DM Mono',monospace; font-size:.47rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); text-align:right; margin-bottom:2.4rem; }
 
-    .a-subtitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem; font-style: italic; font-weight: 300;
-      color: var(--muted); margin-top: 1.4rem; line-height: 1.6;
-    }
+    blockquote { margin:3rem 0; padding:1.8rem 2.2rem; border:1px solid rgba(212,144,154,.2); background:var(--bg-card); position:relative; font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-style:italic; font-weight:300; color:var(--rose-light); line-height:1.55; }
+    blockquote::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--rose),var(--rose-dark)); }
+    blockquote cite { display:block; font-family:'DM Mono',monospace; font-size:.46rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); font-style:normal; margin-top:.9rem; }
 
-    .a-meta {
-      display: flex; justify-content: center; align-items: center;
-      gap: 1.2rem; margin-top: 2.8rem;
-      font-family: 'DM Mono', monospace; font-size: .52rem;
-      letter-spacing: .2em; text-transform: uppercase; color: var(--rose-dark);
-    }
-    .a-meta .sep { color: var(--border-h); }
+    .fn { font-family:'DM Mono',monospace; font-size:.52rem; vertical-align:super; line-height:0; color:var(--rose); border-bottom:1px dotted var(--rose-dark); cursor:default; }
 
-    .orn-line {
-      text-align: center; color: var(--rose-dark); font-size: .8rem;
-      letter-spacing: 1.4rem; margin: 3rem 0;
-    }
+    .cadrage { border-left:2px solid var(--rose-dark); padding:1rem 1.5rem; background:rgba(212,144,154,.04); margin:2.4rem 0; }
+    .cadrage-title { font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.2em; text-transform:uppercase; color:var(--rose); margin-bottom:.6rem; display:block; }
+    .cadrage p { font-size:.9rem; color:var(--muted); font-style:italic; margin:0; line-height:1.75; }
+    .cadrage p + p { margin-top:.8rem; }
 
-    /* COVER IMAGE PLACEHOLDER */
-    .cover-img {
-      width: 100%; max-width: 820px; margin: 0 auto 5rem;
-      aspect-ratio: 16/7;
-      background: linear-gradient(135deg, #1a0810 0%, #0d0515 40%, #1a0d10 100%);
-      border: 1px solid var(--border);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: .6rem;
-      position: relative; overflow: hidden;
-    }
-    .cover-img::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(122,61,74,.18), transparent);
-    }
-    .cover-img-glyph {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 5rem; color: rgba(212,144,154,.12);
-      font-style: italic; font-weight: 300; line-height: 1;
-    }
-    .cover-img-label {
-      font-family: 'DM Mono', monospace; font-size: .5rem;
-      letter-spacing: .25em; text-transform: uppercase;
-      color: var(--rose-dark); z-index: 1;
-    }
-    /* To add a real image: replace .cover-img content with <img src="your-image.jpg" style="width:100%;height:100%;object-fit:cover;"> */
+    .footnotes { margin-top:4rem; padding-top:3rem; border-top:1px solid var(--border); }
+    .footnotes-title { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--rose); margin-bottom:2rem; display:block; }
+    .footnote-item { display:grid; grid-template-columns:2rem 1fr; gap:.6rem; margin-bottom:1.1rem; font-size:.87rem; color:var(--muted); line-height:1.7; }
+    .fn-num { font-family:'DM Mono',monospace; font-size:.5rem; color:var(--rose-dark); padding-top:.15rem; }
+    .footnote-item em { color:#b0a0b0; }
 
-    /* ARTICLE BODY */
-    .art-body {
-      max-width: 680px; margin: 0 auto;
-      padding: 0 2rem 8rem;
-    }
+    .biblio { margin-top:2.5rem; padding-top:2rem; border-top:1px solid rgba(212,144,154,.1); }
+    .biblio-title { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--rose); margin-bottom:1.5rem; display:block; }
+    .biblio-item { font-size:.87rem; color:var(--muted); line-height:1.75; margin-bottom:.7rem; padding-left:1.4rem; text-indent:-1.4rem; }
+    .biblio-item em { color:#b0a0b0; }
 
-    h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.95rem; font-weight: 400; line-height: 1.15;
-      color: var(--cream); margin: 4rem 0 1.4rem;
-      position: relative; padding-left: 1.4rem;
-    }
-    h2::before {
-      content: '';
-      position: absolute; left: 0; top: .3em;
-      width: 3px; height: 1.1em;
-      background: linear-gradient(to bottom, var(--rose), var(--rose-dark));
-    }
+    .art-footer { max-width:680px; margin:0 auto; padding:3rem 2rem 6rem; border-top:1px solid var(--border); display:flex; flex-wrap:wrap; align-items:center; gap:1rem; }
+    .tag { border:1px solid var(--rose-dark); padding:.25rem .8rem; font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.16em; text-transform:uppercase; color:var(--rose); }
+    footer { border-top:1px solid var(--border); padding:2.5rem 4rem; max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
+    .f-logo { font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:300; letter-spacing:.15em; color:var(--rose-light); }
+    .f-copy { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.18em; color:var(--muted); }
 
-    h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem; font-style: italic; font-weight: 400;
-      color: var(--rose-light); margin: 2.4rem 0 .8rem;
-    }
-
-    p {
-      color: #c9b8bc;
-      margin-bottom: 1.4rem;
-    }
-
-    em { color: var(--rose-light); font-style: italic; }
-    strong { color: var(--cream); font-weight: 600; }
-
-    /* Inline note / aside */
-    .note {
-      border-left: 2px solid var(--rose-dark);
-      padding: 1rem 1.5rem;
-      background: rgba(122,61,74,.06);
-      margin: 2.4rem 0;
-      font-style: italic; font-size: .95rem; color: var(--muted);
-    }
-    .note strong { color: var(--rose); font-style: normal; }
-
-    /* Pull quote */
-    blockquote {
-      margin: 3rem 0;
-      padding: 2rem 2.5rem;
-      border: 1px solid var(--border);
-      background: var(--bg-card);
-      position: relative;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.45rem; font-style: italic; font-weight: 300;
-      color: var(--rose-light); line-height: 1.5; text-align: center;
-    }
-    blockquote::before {
-      content: '✦';
-      position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
-      background: var(--bg); padding: 0 .8rem;
-      color: var(--rose-dark); font-style: normal; font-size: .8rem;
-    }
-
-    /* In-text illustration placeholder */
-    .img-inline {
-      width: 100%; margin: 2.8rem 0;
-      aspect-ratio: 16/9;
-      background: linear-gradient(135deg, #150810, #0e0515);
-      border: 1px solid var(--border);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: .5rem;
-    }
-    .img-inline-label {
-      font-family: 'DM Mono', monospace; font-size: .48rem;
-      letter-spacing: .22em; text-transform: uppercase; color: var(--rose-dark);
-    }
-    .img-inline-caption {
-      font-family: 'Crimson Text', serif; font-size: .8rem;
-      font-style: italic; color: var(--muted); text-align: center;
-      padding: .5rem 1rem;
-    }
-
-    /* Tags & footer */
-    .art-footer {
-      max-width: 680px; margin: 0 auto;
-      padding: 3rem 2rem 6rem;
-      border-top: 1px solid var(--border);
-      display: flex; flex-wrap: wrap; align-items: center; gap: 1rem;
-    }
-    .tag {
-      border: 1px solid var(--rose-dark);
-      padding: .25rem .8rem;
-      font-family: 'DM Mono', monospace; font-size: .5rem;
-      letter-spacing: .16em; text-transform: uppercase;
-      color: var(--rose);
-    }
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2.5rem 4rem;
-      max-width: 1200px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .f-logo { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 300; letter-spacing: .15em; color: var(--rose-light); }
-    .f-copy { font-family: 'DM Mono', monospace; font-size: .52rem; letter-spacing: .18em; color: var(--muted); }
-
-    /* Scroll reveal */
-    .rv { opacity: 0; transform: translateY(22px); transition: opacity .8s ease, transform .8s ease; }
-    .rv.on { opacity: 1; transform: none; }
-
-    @media (max-width: 760px) {
-      nav { padding: 1.2rem 1.5rem; }
-      .art-hero, .art-body, .art-footer { padding-left: 1.5rem; padding-right: 1.5rem; }
-      .art-hero { padding-top: 9rem; }
-      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
-    }
+    .rv { opacity:0; transform:translateY(22px); transition:opacity .8s ease,transform .8s ease; }
+    .rv.on { opacity:1; transform:none; }
+    @media(max-width:760px){ nav{padding:1.2rem 1.5rem;} .art-hero,.art-body,.art-footer{padding-left:1.5rem;padding-right:1.5rem;} .art-hero{padding-top:9rem;} footer{flex-direction:column;gap:1rem;text-align:center;padding:2rem;} .footnote-item{grid-template-columns:1.5rem 1fr;} }
   </style>
 </head>
 <body>
-
   <nav>
     <a href="index.html" class="nav-logo">Spectre <span>Rose</span></a>
     <a href="index.html" class="nav-back">← Retour aux théories</a>
   </nav>
 
-  <!-- HERO -->
   <div class="art-hero">
-    <span class="a-eyebrow rv">✦ Silent Hill f &nbsp;·&nbsp; Horreur psychologique &nbsp;·&nbsp; Féminité &amp; contrainte</span>
-    <h1 class="a-title rv">La mariée <em>sans visage</em><br>— ce qu'Hinako ne peut pas regarder</h1>
-    <p class="a-subtitle rv">Identité confisquée, futur incarné et jeu de poupée dans <em>Silent Hill f</em></p>
+    <span class="a-eyebrow rv">✦ Silent Hill f &nbsp;·&nbsp; Identité &amp; corps ritualisé &nbsp;·&nbsp; Féminin monstrueux</span>
+    <h1 class="a-title rv">La mariée <em>sans visage</em><br>— corps ritualisé, identité confisquée<br>et <em>kitsunetsuki</em> dans <em>Silent Hill f</em></h1>
+    <p class="a-subtitle rv">De la tradition de l'<em>onryō</em> au diagnostic de possession de renard, en passant par Simone de Beauvoir et Victor Turner — une lecture du patriarcat shōwa rendu chair</p>
     <div class="a-meta rv">
-      <span>24 mars 2026</span>
-      <span class="sep">·</span>
-      <span>~16 min de lecture</span>
+      <span>Silent Hill f — Ryukishi07 / NeoBards, 2025</span>
       <span class="sep">·</span>
       <span>Spoilers complets</span>
+      <span class="sep">·</span>
+      <span>~22 min</span>
     </div>
   </div>
 
-  <!-- COVER IMAGE -->
-  <div class="cover-img rv" style="padding: 0 4rem; max-width: 820px; width: 100%; margin: 0 auto 4rem;">
-    <img src="silenthill-f.jpg" alt="Silent Hill f" style="width:100%;height:100%;object-fit:cover;">
+  <div class="cover-img rv">
+    <img src="silenthill-f.jpg" alt="Silent Hill f — Hinako Shimizu">
   </div>
 
-  <div class="sr-synopsis" data-game="Silent Hill f">
-  <p><em>Silent Hill f</em> (2025) est un jeu d'horreur survie se déroulant dans le Japon des années 1960. On y joue Hinako, une adolescente qui vit dans un petit village enveloppé de brouillard et de champignons parasites. Son père l'a promise en mariage pour rembourser ses dettes. En cherchant à s'échapper, elle se retrouve piégée dans une version cauchemardesque de son village, peuplée de monstres qui ressemblent étrangement à des poupées de mariage. Le jeu est une horreur psychologique sur la pression sociale exercée sur les femmes, la perte d'identité, et ce qu'on devient quand on refuse de disparaître.</p>
-</div>
-
-  <!-- BODY -->
   <article class="art-body">
 
-    <p class="rv">Il y a, dans l'ouverture de <em>Silent Hill f</em>, une image deceptivement simple : une adolescente parle à une poupée. Elle lui raconte que les autres filles refusaient de jouer avec elle, qu'elle préférait courir avec les garçons, inventer des jeux de guerre spatiale avec son ami d'enfance Shu. Puis sa sœur apparaît. Puis le brouillard descend. Puis la poupée disparaît. Cette séquence n'est pas un prologue : c'est le programme narratif entier du jeu, condensé en trois minutes. Tout ce que <em>Silent Hill f</em> va faire pendant les vingt heures suivantes, il l'a déjà dit là, dans ce dialogue entre une jeune fille et un jouet qu'elle aurait dû avoir oublié.</p>
+    <p class="rv">En 1825, le dramaturge Tsuruya Nanboku IV crée à Edo la pièce <em>Tōkaidō Yotsuya Kaidan</em>. Une femme y est assassinée par son mari après avoir été défigurée par un poison. Elle revient sous forme d'<em>onryō</em> — esprit de la colère féminine — pour hanter les vivants.<span class="fn">1</span> Deux cents ans plus tard, <em>Silent Hill f</em> propose une variation sur ce schéma fondateur de l'horreur japonaise : une femme se voit refuser l'existence comme sujet, et le monde se transforme en conséquence de ce refus. La différence est que Ryukishi07 renverse la causation. Dans <em>Yotsuya Kaidan</em>, la hantise vient de la femme tuée. Dans <em>Silent Hill f</em>, l'horreur vient du monde qui essaie de la tuer — et elle, elle résiste.</p>
 
-    <p class="rv">Ce qui suit est une tentative de lire cette œuvre à la manière dont elle mérite d'être lue — comme un palimpseste où chaque couche de sens en recouvre une autre sans l'effacer tout à fait. En suivant le fil de quatre figures centrales : <strong>Hinako</strong>, la protagoniste ; <strong>Shiromuku</strong>, le monstre du brouillard ; <strong>Junko</strong>, la sœur aînée ; et la <strong>poupée sans nom</strong> qui les relie toutes les trois.</p>
-
-    <div class="orn-line rv">✦ &nbsp; ✦ &nbsp; ✦</div>
-
-    <h2 class="rv">I. Hinako, ou la poupée qui refuse de l'être</h2>
-
-    <p class="rv">Le nom d'Hinako s'écrit 雛子. Le kanji 雛 (<em>hina</em>) porte deux significations superposées, et le jeu ne choisit pas entre elles : il les exploite simultanément. <em>Hina</em> désigne à la fois le <strong>poussin</strong> — l'oisillon encore incapable de voler — et la <strong>poupée de festival</strong>, celle qu'on expose pendant Hinamatsuri, la fête des filles, avant de la ranger dans une boîte pour le reste de l'année. Hinako est littéralement, dans son nom même, une <em>poupée-oisillon</em> : quelque chose de fragile et d'ornemental, quelque chose qui n'a pas encore d'ailes, quelque chose qu'on sort pour les cérémonies.</p>
-
-    <p class="rv">Ce n'est pas anodin que Ryukishi07 — scénariste de l'œuvre, connu pour son goût des structures signifiantes dans <em>Higurashi</em> et <em>Umineko</em> — ait construit son personnage sur cette ambivalence étymologique. L'arc d'Hinako est celui d'un être qui refuse obstinément d'être ce que son nom promet. Enfant, elle rejetait les jeux de poupée. Adolescente, elle refuse le mariage arrangé que son père a contracté en échange de ses dettes. Elle n'est pas passive, elle n'est pas douce, elle n'est pas exposée sans résistance. Et pourtant le monde autour d'elle — son père, Fox Mask, même Shu qui la drogue à son insu — traite son existence comme une marchandise à disposition.</p>
-
-    <div class="note rv"><strong>Note de cadrage :</strong> Le jeu se déroule dans le Japon des années 1960. L'âge légal du mariage pour les femmes y était fixé à 16 ans, et les mariages arrangés par les familles pour rembourser des dettes constituaient une réalité sociale documentée. <em>Silent Hill f</em> ne s'en sert pas comme d'un simple décor historique : c'est la structure d'oppression elle-même qui génère le brouillard.</div>
-
-    <p class="rv">Ce que l'horreur de <em>Silent Hill f</em> révèle, c'est que le monde ordinaire d'Hinako était déjà monstrueux avant que le brouillard ne descende. La ville enveloppée de champignons parasites n'est pas une rupture avec la réalité — c'est sa vérité mise à nu. La moisissure qui envahit les corps est la métaphore visible de ce qui rongeait Hinako de l'intérieur : la conviction progressive, inculquée par tous ceux qu'elle aime, qu'elle n'est pas une personne mais une <em>fonction</em>.</p>
-
-    <blockquote class="rv">Silent Hill a toujours été moins une ville hantée qu'un espace où l'inconscient devient architecture. Dans le cas d'Hinako, cet inconscient dessine les contours d'un Japon patriarcal qui transforme les femmes en objets cérémoniels.</blockquote>
-
-    <h2 class="rv">II. Shiromuku — le futur comme monstre</h2>
-
-    <!-- Image inline -->
-    <img src="shiromuku.jpg" alt="Silent Hill f" style="width:100%;height:100%;object-fit:cover;">
-    </div>
-    <p class="img-inline-caption rv" style="text-align:center; font-style:italic; font-size:.85rem; color:var(--muted); margin-top:-.5rem; margin-bottom:2rem;">Le monstre du brouillard tel qu'Hinako refuse de le voir</p>
-
-    <p class="rv">Le « monstre du brouillard » qui hante Ebisugaoka porte un nom précis : <em>Shiromuku</em>. C'est le nom du kimono blanc traditionnel porté par les mariées japonaises lors de la cérémonie shinto. Un vêtement qui signifie littéralement « pur blanc » — et symboliquement : effacement de soi, purification de l'identité passée, absorption dans la famille du mari. La mariée en <em>shiromuku</em> devient une surface blanche sur laquelle une nouvelle existence sera inscrite.</p>
-
-    <p class="rv">Que le monstre s'appelle Shiromuku n'est pas une métaphore secondaire. C'est la structure entière du jeu. <strong>Shiromuku est Hinako elle-même</strong> — sa version future, celle qui a accepté le mariage, celle qui a laissé son visage se faire remplacer par un masque. Le monstre est semi-invisible lors des premières confrontations : Hinako ne peut pas encore le voir parce qu'elle refuse encore d'admettre ce qu'elle risque de devenir. La cécité du joueur face à l'ennemi est la cécité psychologique de la protagoniste rendue mécanique.</p>
-
-    <p class="rv">C'est là une des décisions narratives les plus élégantes du jeu : <em>l'invisibilité du monstre n'est pas un effet de mise en scène — c'est du déni incarné.</em> Le jeu fait jouer au joueur l'acte même de ne pas regarder en face ce que l'on refuse d'admettre. Et plus Hinako avance, plus sa faculté à percevoir Shiromuku se développe. Elle commence à voir le monstre au moment précis où elle commence à voir sa propre situation.</p>
-
-    <h3 class="rv">La transformation comme perte de surface</h3>
-
-    <p class="rv">La trajectoire physique d'Hinako dans le jeu est celle d'un effacement progressif des frontières du moi. Elle se coud une patte de renard à la main. Elle remplace sa peau par un masque. À la fin, elle est devenue une mariée sans visage — une figure ornemental dont l'identité propre a été littéralement recouverte. Ce n'est pas une métamorphose horrifique au sens hollywoodien du terme. C'est une <strong>logique sociale poussée jusqu'à son terme visuel</strong>. Le système qui demande aux femmes d'effacer leur personnalité au moment du mariage, Ryukishi07 le rend littéral, le rend chair, le rend regardable.</p>
-
-    <p class="rv">Il est notable que cette transformation s'opère par <em>couture</em> et par <em>masque</em> — deux formes d'artisanat féminin traditionnel. Ce n'est pas la violence qui défigure Hinako : c'est l'accumulation patiente des gestes attendus d'elle.</p>
-
-    <h2 class="rv">III. Junko, ou la voie tracée</h2>
-
-    <p class="rv">La sœur d'Hinako, <strong>Kinuta Junko</strong>, est l'un des personnages les plus fascinants du jeu précisément parce qu'elle n'est jamais réductible à un rôle simple. Elle n'est ni la méchante, ni la victime passive, ni le modèle positif. Elle est quelque chose de plus troublant : la preuve que le chemin existe, que d'autres l'ont pris, qu'il n'est pas insupportable — ou du moins que l'on peut apprendre à le supporter.</p>
-
-    <p class="rv">Le nom Junko — 潤子 — contient le caractère 潤 (<em>jun</em>), qui signifie « humide », « lustré », « prospère ». C'est le nom d'une femme faite pour la fertilité et l'harmonie domestique. Et le kanji 子 (<em>ko</em>), présent dans presque tous les noms féminins du jeu, inscrit chaque personnage dans une tradition nominale qui signifie « enfant » — les femmes sont nommées comme des enfants, comme des êtres en devenir perpétuel sous tutelle.</p>
-
-    <!-- Image inline -->
-   <img src="junko.jpg" alt="Silent Hill f" style="width:100%;height:100%;object-fit:cover;">
-    </div>
-    <p class="img-inline-caption rv" style="text-align:center; font-style:italic; font-size:.85rem; color:var(--muted); margin-top:-.5rem; margin-bottom:2rem;">Junko et son masque d'oiseau</p>
-
-    <p class="rv">Dans le jeu, Junko porte un masque d'oiseau — non pas le tengu des légendes, mais quelque chose de plus ambigu, plus aviaire, peut-être un hibou. Si Hinako est la poussin (雛子) qui n'a pas encore volé, Junko est l'oiseau adulte qui a appris à voler dans la direction prescrite. Elle est belle, apaisante, et terriblement triste. Elle aime sa sœur. Et c'est précisément parce qu'elle l'aime qu'elle lui a transmis la conviction que le chemin le plus court vers le bonheur est la conformité — qu'il faut plier avant d'être brisée.</p>
-
-    <p class="rv">La cruauté du jeu est que Junko n'est pas fausse. Son affection pour Hinako est réelle. Mais l'amour ne protège pas ici — il transmet. La violence des normes sociales se perpétue précisément à travers les liens affectifs les plus sincères. C'est la sœur aimante qui enseigne à sa cadette comment disparaître en paix.</p>
-
-    <blockquote class="rv">Junko est à la fois le modèle et l'avertissement. Elle prouve qu'on survit. Elle ne dit pas à quel prix.</blockquote>
-
-    <p class="rv">L'apparition de Junko dans le jeu est toujours légèrement décalée, irréelle — on se demande si c'est la vraie Junko ou un fragment de l'esprit d'Hinako. Cette ambiguïté est fondamentale : Junko est autant un personnage qu'une instance psychique, la voix intériorisée de la conformité que toute femme sous pression finit par porter en elle.</p>
-
-    <h2 class="rv">IV. La poupée — ce qui a été joué, et ce qui a été refusé</h2>
-
-    <p class="rv">La poupée qui apparaît dans la scène d'ouverture — et qui réapparaît ensuite comme figure d'avertissement — est l'objet le plus chargé du jeu. Non pas parce qu'elle représente l'enfance perdue au sens sentimental, mais parce qu'elle cristallise une <strong>contradiction fondamentale dans l'identité d'Hinako</strong>.</p>
-
-    <p class="rv">Hinako n'a jamais voulu jouer à la poupée. Les autres filles jouaient avec des poupées ; elle préférait les jeux d'action, les batailles spatiales inventées avec Shu. Et pourtant le jeu lui impose une poupée — lui en impose le nom (雛子), lui en impose le destin (la mariée sans visage, l'objet de cérémonie). La poupée qu'Hinako a refusé de manipuler enfant, c'est elle-même qu'on essaie d'en faire une.</p>
-
-    <p class="rv">Le fait que la poupée <em>l'avertisse</em> dans le jeu — qu'elle lui signale le danger de Fox Mask, qu'elle soit du côté de la résistance plutôt que de la capitulation — est l'inversion la plus belle du jeu. L'objet symbole de la féminité normative devient le porte-parole de la rébellion. Comme si ce qu'Hinako avait rejeté dans son enfance se retournait pour la défendre contre ce que cette même enfance avait promis de faire d'elle.</p>
-
-    <div class="note rv"><strong>Lecture comparée :</strong> On retrouve une logique similaire dans <em>Umineko no Naku Koro ni</em>, où les figures féminines incarnent des rôles (la sorcière, la détective, la mère) qui finissent par se retourner contre les structures qui les ont créées. Ryukishi07 semble avoir une fascination constante pour les identités imposées qui se dérèglent et révèlent leur propre artifice.</div>
-
-    <h2 class="rv">V. Ce que Silent Hill f dit qu'il dit — et ce qu'il dit en plus</h2>
-
-    <p class="rv">À un premier niveau, <em>Silent Hill f</em> est un jeu sur le patriarcat japonais des années 1960, sur les mariages arrangés, sur les corps féminins traités comme monnaie d'échange. Ce niveau est réel, documenté, politiquement lisible et intentionnel — Ryukishi07 l'a dit lui-même en entretien.</p>
-
-    <p class="rv">Mais il y a un second niveau de lecture, plus vertigineux : celui de la <strong>construction même du joueur</strong>. Le jeu fait jouer une jeune fille qui refuse de voir son futur. Il place le joueur dans la position d'Hinako — incapable de voir Shiromuku au début, contraint de bâtir sa perception à mesure que la dénégation s'effrite. Le joueur n'observe pas le déni d'Hinako de l'extérieur ; il le <em>joue</em>. Il est Hinako refusant de regarder la mariée blanche.</p>
-
-    <p class="rv">C'est là que <em>Silent Hill f</em> rejoint la grande tradition du genre : l'horreur psychologique interactive n'est jamais seulement une histoire de peur. C'est une mécanique de mise en position, une façon de faire <em>vivre</em> une structure psychologique plutôt que de la décrire. Le brouillard n'est pas autour d'Hinako. Il est dans l'espace entre le joueur et l'écran.</p>
+    <p class="rv">Ce renversement n'est pas simplement thématique. Il est structurel. Il détermine l'architecture du jeu, sa mécanique, sa géographie, jusqu'à l'invisibilité de son monstre central. Cet article tente de lire <em>Silent Hill f</em> comme une cartographie du patriarcat shōwa rendu chair — en mobilisant l'étymologie japonaise des noms, la tradition du <em>kitsunetsuki</em> (possession de renard) comme diagnostic social, le folklore du <em>yōkai</em> de mariée sans visage, et les outils théoriques que l'analyse féministe du féminin monstrueux a développés depuis les années 1990.</p>
 
     <div class="orn-line rv">✦ &nbsp; ✦ &nbsp; ✦</div>
 
-    <p class="rv" style="font-style:italic; color:var(--muted); font-size:.95rem;">Une prochaine entrée explorera les tensions orientalistes dans la réception occidentale de <em>Silent Hill f</em> — entre fascination et réduction, entre appropriation du folklore japonais et regard extérieur qui en fabrique l'étrangeté.</p>
+    <h2 class="rv">I. Ebisugaoka, 1960 — le monde avant le brouillard</h2>
+
+    <div class="cadrage rv">
+      <span class="cadrage-title">Cadrage historique</span>
+      <p>Le jeu se déroule dans le Japon de l'ère Shōwa (昭和), pendant la période de haute croissance économique. L'âge légal du mariage pour les femmes y était fixé à 16 ans jusqu'en 2022. Les <em>miai</em> — mariages arrangés avec présentation formelle — représentaient encore près de 40 % des unions dans les années 1960. Le système <em>ie</em> (家制度), formellement aboli en 1947 mais profondément enraciné dans les pratiques sociales, organisait la famille autour de la succession patrilinéaire et assignait aux femmes le rôle de reproductrices de la lignée. Une épouse entrait dans la famille de son mari et perdait de facto son rattachement à sa propre famille.</p>
+      <p>Ce n'est pas un décor historique pittoresque : c'est la structure d'oppression elle-même qui génère le brouillard.</p>
+    </div>
+
+    <p class="rv">Le choix du cadre shōwa est présenté par le directeur Motoi Okamoto comme un équilibre calculé : <em>« suffisamment loin pour qu'on puisse dire que la société a changé, suffisamment proche pour qu'on voie bien qu'elle n'a pas assez changé. »</em><span class="fn">2</span> Ce commentaire dit quelque chose d'essentiel sur la fonction du décor historique dans ce genre d'œuvre : il s'agit non pas de costumer une réalité universelle, mais de montrer que ce qui semble d'un autre temps a des racines qui tiennent encore.</p>
+
+    <p class="rv">Dans ce contexte, le personnage d'Hinako Shimizu est immédiatement lisible comme une anomalie systémique. Elle refuse les jeux de filles, préfère la compagnie des garçons, résiste au mariage que son père a négocié pour rembourser ses dettes. Les premières séquences du jeu ne relèvent pas encore de l'horreur — elles relèvent de la sociologie. Un père alcoolique et autoritaire. Une mère absente dans sa soumission. Une sœur aînée mariée et partie. Et Hinako, seule, à qui on dit en termes transparents : <em>tu es la prochaine.</em></p>
+
+    <h2 class="rv">II. 雛子 — le nom comme programme narratif</h2>
+
+    <p class="rv">Le nom d'Hinako s'écrit 雛子. Le kanji 雛 (<em>hina</em>) porte deux significations superposées que Ryukishi07 exploite sans jamais choisir entre elles.<span class="fn">3</span> <em>Hina</em> désigne à la fois le <strong>poussin</strong> — l'oisillon incapable de voler — et la <strong>poupée de festival</strong>, celle qu'on expose pendant <em>Hinamatsuri</em> (la fête des filles, le 3 mars), avant de la ranger dans une boîte pour le reste de l'année. Hinako est littéralement, dans son nom même, une poupée-oisillon : quelque chose de fragile et d'ornemental, quelque chose qu'on sort pour les cérémonies.</p>
+
+    <p class="rv">L'onomastique du jeu est systématique. La sœur aînée s'appelle Junko — 潤子, « enfant de la prospérité humide » — nom de femme fait pour l'harmonie domestique. L'amie Rinko — 凛子, « enfant de la rigueur » — suggère une conformité froide. Le suffixe 子 (<em>ko</em>), présent dans presque tous les noms féminins du jeu, signifie « enfant » : une convention nominale qui inscrit chaque personnage dans un état de minorité permanente, de devenir perpétuel sous tutelle.<span class="fn">4</span> Jusqu'au prénom masculin Shu, qui ne porte pas ce suffixe — et qui sera révélé avoir administré des drogues à Hinako à son insu pour la contrôler.</p>
+
+    <p class="rv">Ce dernier point mérite qu'on s'y arrête. L'un des retournements les plus douloureux du jeu est la révélation que les capsules rouges que Shu donne à Hinako pour ses « maux de tête » sont des substances hallucinogènes. La traversée du Sanctuaire des Ténèbres — les monstres, les rituels, la transformation corporelle — est peut-être entièrement une psychose induite.<span class="fn">5</span> Le jeu superpose deux lectures : dans l'une, Hinako est piégée dans un espace surnaturel. Dans l'autre, elle est une jeune femme de vingt ans — le jeu révèle dans sa première fin qu'elle ne s'imagine pas adolescente par accident, mais par régression dissociative — qui s'effondre sous la pression du mariage forcé.<span class="fn">6</span> Ces deux lectures ne s'excluent pas : elles disent que la pression sociale produit les mêmes effets que la malédiction surnaturelle.</p>
+
+    <blockquote class="rv">
+      L'horreur de <em>Silent Hill f</em> n'est pas de savoir si les événements sont réels ou hallucinés. C'est de comprendre que dans les deux cas, l'origine est identique : un monde qui a décidé qu'Hinako n'avait pas le droit d'exister comme sujet.
+    </blockquote>
+
+    <h2 class="rv">III. Le <em>kitsunetsuki</em> — la possession de renard comme diagnostic social</h2>
+
+    <p class="rv">La figure centrale du jeu — Fox Mask, héritier d'une lignée de renards-dieux possesseurs — n'est pas un choix fantaisiste. Elle s'inscrit dans une tradition psychiatrique japonaise singulière : le <em>kitsunetsuki</em> (狐憑き), ou possession par le renard.<span class="fn">7</span></p>
+
+    <p class="rv">Dans la médecine traditionnelle japonaise jusqu'au début du XXe siècle, le <em>kitsunetsuki</em> était un diagnostic attribué principalement aux femmes qui manifestaient des comportements déviants : refus de se marier, colère incontrôlée, comportement « inhabituellement masculin », refus des rôles domestiques. La possession par un renard expliquait ces anomalies sans remettre en question l'ordre social qui les produisait — ce n'était pas la société qui rendait ces femmes malades, c'était un agent externe. L'anthropologue Emiko Ohnuki-Tierney a documenté comment ce diagnostic fonctionnait comme mécanisme de pathologisation du refus de conformité, particulièrement dans les milieux ruraux.<span class="fn">8</span></p>
+
+    <p class="rv">Dans <em>Silent Hill f</em>, ce retournement est opéré explicitement. Fox Mask prétend guider Hinako vers sa « vraie nature ». Il dit avoir appris les rituels du mariage humain <em>par amour pour elle</em>. Il se présente comme protecteur et guide. Ce que le jeu décrit avec une précision troublante, c'est une structure de manipulation en trois phases classiques : séduction par la compréhension simulée, ingénierie de dépendance, puis victimisation inversée quand Hinako résiste — Fox Mask « joue le blessé »,<span class="fn">9</span> rappelant ses sacrifices sans jamais écouter ce qu'elle veut.</p>
+
+    <p class="rv">Fox Mask est un dieu qui rejoue la structure du <em>kitsunetsuki</em>, mais dans le sens inverse de ce que suggère le mythe. Ce n'est pas Hinako qui est possédée par un démon la rendant anormale. C'est Fox Mask qui <em>utilise</em> la structure de la possession pour s'approprier une femme dont la résistance est précisément ce qui l'attire. Le jeu dit, à travers ce renversement : la déviance n'est pas dans le corps de la femme qui refuse. Elle est dans le système qui produit le renard.</p>
+
+    <h2 class="rv">IV. Shiromuku — le futur incarné comme monstre abject</h2>
+
+    <div class="img-inline rv">
+      <img src="silenthill-f.jpg" alt="Shiromuku — Silent Hill f">
+    </div>
+    <div class="img-caption rv">Hinako face à ce qu'elle refuse de devenir</div>
+
+    <p class="rv">Le monstre du brouillard s'appelle <em>Shiromuku</em> (白無垢) — le nom du kimono blanc traditionnel porté par les mariées japonaises lors de la cérémonie shinto. La mariée en <em>shiromuku</em> se présente comme une surface vierge, prête à « absorber les couleurs » du mari et de sa famille, effaçant son identité passée pour en recevoir une nouvelle.<span class="fn">10</span></p>
+
+    <p class="rv">Ce monstre est, on le comprend progressivement, Hinako elle-même — sa version future, celle qui a accepté. Il est sans visage, trait que l'on retrouve dans le yōkai japonais <em>ohaguro-bettari</em> (お歯黒べったり) : une créature en kimono de mariée, sans visage mais avec une bouche pleine de dents noircies à la manière traditionnelle, que les textes folkloriques associent aux femmes mortes dans l'amertume d'un mariage non consenti.<span class="fn">11</span> La filiation entre ce yōkai et le design de Shiromuku n'est pas une coïncidence éditoriale — c'est une connexion culturelle précise, qui ancre le monstre dans une tradition de représentation de la violence maritale comme corps féminin déformé.</p>
+
+    <p class="rv">Cette connexion permet de mobiliser le concept d'abjection tel que Julia Kristeva l'a théorisé dans <em>Pouvoirs de l'horreur</em> (1980) : l'abject comme ce qui <em>« perturbe l'identité, le système, l'ordre »</em>, ce qui ne respecte pas les frontières, les positions, les règles.<span class="fn">12</span> Le Shiromuku est abject précisément parce qu'il est à la fois femme et monstre, mariée et prédateur, figure de conformité et de terreur — il rend visible ce que la structure demande tout en le rendant horrifique. Barbara Creed a identifié ce mécanisme au cœur de l'horreur qui met en scène des femmes monstrueuses : le féminin monstrueux est la projection des peurs masculines face à un corps qui déborde des frontières assignées.<span class="fn">13</span></p>
+
+    <p class="rv">La mécanique de jeu renforce cette lecture. Dans les premiers chapitres, le joueur ne peut pas regarder le Shiromuku en face — il faut détourner les yeux, l'éviter dans sa vision périphérique. Cette contrainte représente avec une précision remarquable le déni psychologique d'Hinako : elle refuse de voir ce qu'elle risque de devenir. Mesure par mesure, au fur et à mesure qu'elle avance dans la compréhension de sa situation, sa faculté à percevoir le monstre se développe.<span class="fn">14</span></p>
+
+    <h2 class="rv">V. Les trois rituels — la colonisation corporelle comme logique</h2>
+
+    <p class="rv">La progression dans le Sanctuaire des Ténèbres s'organise autour de trois rituels d'appropriation corporelle successifs, chacun correspondant à une strate de l'identité féminine telle que la société shōwa la définit.</p>
+
+    <h3 class="rv">Premier rituel — la main</h3>
+
+    <p class="rv">Hinako se scie le bras droit, remplacé par une patte de renard. Ce n'est pas un hasard : la main droite est, dans les traditions rituelles japonaises, la main de l'action cérémonielle — écriture, tir à l'arc (<em>kyūdo</em>), offrandes. Perdre la main droite, c'est perdre la capacité d'agir rituellement dans le monde social.<span class="fn">15</span> Ce qui la remplace — une patte animale, sauvage, efficace au combat — est une main qui n'appartient pas à l'ordre humain. Le jeu formule : on peut te donner des outils de survie, mais ces outils ne t'appartiennent pas.</p>
+
+    <h3 class="rv">Deuxième rituel — le visage</h3>
+
+    <p class="rv">Le visage est retiré et remplacé par un masque de renard. Victor Turner, dans ses travaux sur les rites de passage, a théorisé comment la période <em>liminale</em> — le seuil entre deux états d'existence — est marquée par la dépossession des signes identitaires ordinaires.<span class="fn">16</span> Dans le système <em>ie</em> japonais, le mariage était précisément un tel rite liminaire : la femme n'était plus de la famille de son père, pas encore de celle de son mari. Ce moment d'entre-deux impliquait une annulation provisoire du soi ancien. Le masque de renard matérialise cette annulation — Hinako n'a plus de visage propre, elle a le visage de ce à quoi elle est destinée. Mais là où le rite de passage traditionnel promettait un nouveau soi de l'autre côté, <em>Silent Hill f</em> laisse entendre que cet autre côté n'existe pas — il n'y a que le masque.</p>
+
+    <h3 class="rv">Troisième rituel — le dos</h3>
+
+    <p class="rv">Hinako est enfin marquée dans le dos — scarifiée, désignée. Le dos est la partie du corps qu'on ne peut pas voir soi-même. On ne peut se le voir qu'à travers le regard de l'autre, ou dans un miroir. Ce que cette marque dit est précis : Hinako est désormais définie par ce que les autres voient d'elle, non par ce qu'elle perçoit d'elle-même. C'est la formulation exacte de ce que Simone de Beauvoir a théorisé comme la condition de l'Autre : être constitué comme objet du regard de l'Autre plutôt que comme sujet de son propre regard.<span class="fn">17</span> La marque dans le dos rend littéral ce que la société shōwa demande métaphoriquement aux femmes : exister pour être vues, non pour voir.</p>
+
+    <div class="orn-line rv">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <h2 class="rv">VI. Junko — la transmission de la conformité par l'amour</h2>
+
+    <p class="rv">La sœur aînée d'Hinako est l'un des personnages les plus complexes du jeu précisément parce qu'elle résiste à une lecture simple. Junko n'est ni la méchante, ni la victime passive, ni le modèle positif. Elle est quelque chose de plus troublant : la preuve que la conformité est viable, qu'on peut y survivre.</p>
+
+    <p class="rv">Elle porte un masque d'oiseau — non pas le tengu des légendes, mais quelque chose de plus ambigu, plus aviaire. Si Hinako est la poussin (雛子) qui n'a pas encore volé, Junko est l'oiseau adulte qui a appris à voler dans la direction prescrite. La cruauté du jeu est que Junko n'est pas fausse. Son affection pour Hinako est réelle. <strong>Mais l'amour ne protège pas ici — il transmet.</strong> La violence des normes sociales se perpétue précisément à travers les liens affectifs les plus sincères. C'est la sœur aimante qui enseigne à sa cadette comment disparaître en paix.</p>
+
+    <p class="rv">Ryukishi07 formule cela de façon presque clinique : <em>« Shu, Sakuko, Rinko, les parents d'Hinako, Fox Mask — chacun d'eux avait peut-être son propre enfer. Ne l'oubliez pas, et n'oubliez pas qu'Hinako ne percevait pas ces enfers, trop absorbée par le sien. »</em><span class="fn">18</span> Cette mise en garde vaut aussi pour Junko : elle aussi avait son enfer, elle aussi a survécu, elle aussi a transmis en transmettant sa propre survie. La figure de Junko dit que la reproduction de l'oppression ne nécessite pas la complicité consciente — elle ne nécessite que l'amour.</p>
+
+    <h2 class="rv">VII. Ce que le jeu dit — et ne dit pas — sur l'agentivité</h2>
+
+    <p class="rv">La principale tension critique autour de <em>Silent Hill f</em> concerne la question de l'agentivité féminine. D'un côté, des commentateurs saluent la décision de Ryukishi07 de faire d'Hinako une protagoniste qui choisit plutôt qu'une figure purement subie.<span class="fn">19</span> De l'autre, certaines lectures féministes ont pointé les limites de l'entreprise : une écriture qui traite la souffrance féminine comme matière horrifique risque de la ré-instrumentaliser même en voulant la nommer.<span class="fn">20</span></p>
+
+    <p class="rv">Ces deux lectures ne s'excluent pas. <em>Silent Hill f</em> est simultanément une œuvre qui donne à Hinako une agentivité narrative réelle — ses choix déterminent cinq fins radicalement différentes, dont la qualité se mesure à l'autonomie qu'elle y préserve — et une œuvre dont l'efficacité horrifique repose sur la spectacularisation de la violence faite au corps féminin. Que cette violence soit critique ne la neutralise pas comme spectacle. C'est le paradoxe que Creed avait identifié au cœur de toute horreur impliquant des femmes monstrueuses : <em>« l'idéologie patriarcale construit la femme comme monstrueuse dans sa relation à sa sexualité et à son corps reproductif pour justifier sa sujétion »</em> — et même une œuvre qui cherche à déconstruire ce mécanisme en passe par lui.<span class="fn">21</span></p>
+
+    <p class="rv">Ce qui demeure, dans les cinq fins possibles, c'est une intuition qui traverse toute l'œuvre de Ryukishi07 : la sortie du trauma n'est pas la guérison, pas la victoire, pas l'effacement de ce qui a été vécu. C'est la compréhension — de soi, des autres, du système qui a produit la douleur — et peut-être, si l'on a de la chance, quelque chose comme un choix. Hinako peut choisir de partir. Elle peut choisir de rester. Elle peut sombrer. Elle peut se réconcilier avec elle-même. Ce que le jeu refuse, dans toutes ses fins, c'est de lui promettre que ça sera simple.</p>
+
+    <!-- NOTES -->
+    <div class="footnotes rv">
+      <span class="footnotes-title">Notes</span>
+      <div class="footnote-item"><span class="fn-num">1.</span><span>Sur la tradition de l'<em>onryō</em> dans l'horreur japonaise et sa relation aux structures patriarcales, voir Tom Mes et Jasper Sharp, <em>The Midnight Eye Guide to New Japanese Film</em>, Berkeley : Stone Bridge Press, 2005. La pièce de Tsuruya Nanboku IV (1825) est considérée comme la matrice de la représentation de la femme vengeure dans la culture japonaise moderne.</span></div>
+      <div class="footnote-item"><span class="fn-num">2.</span><span>Entretien avec Motoi Okamoto, directeur du jeu, Silent Hill Transmission, mars 2025 (traduction officielle anglaise disponible sur la chaîne YouTube Konami).</span></div>
+      <div class="footnote-item"><span class="fn-num">3.</span><span>L'analyse des kanjis des noms dans les œuvres de Ryukishi07 est un exercice courant dans les communautés de fans, mais rarement mené avec rigueur philologique. Le travail le plus sérieux à ce sujet concernant <em>Silent Hill f</em> est celui d'Asha Bardon, publiée sur son Substack <em>ashabardongaminglorist</em> dans la série « In-game Shinto for Beginners » (2025).</span></div>
+      <div class="footnote-item"><span class="fn-num">4.</span><span>Sur la convention du suffixe <em>-ko</em> dans les noms féminins japonais, voir Sei Nishiyama, « Japanese women's names as social mirrors », <em>Names</em>, vol. 54, n° 3, 2006, pp. 207-228.</span></div>
+      <div class="footnote-item"><span class="fn-num">5.</span><span>La révélation des capsules rouges comme hallucinogènes est confirmée par plusieurs éléments textuels : les excuses de Shu lors de la fuite finale, l'interprétation de plusieurs fins comme psychose induite, et la chronologie des meurtres réels (1961-1962) documentée dans les discussions Steam (thread « Standard ending theories », 2025).</span></div>
+      <div class="footnote-item"><span class="fn-num">6.</span><span>La révélation de l'âge réel d'Hinako (20 ans, se percevant comme adolescente) active une lecture de l'ensemble du jeu comme régression dissociative. Ce mécanisme — la fuite dans une identité plus jeune face à une pression sociale intolérable — est documenté dans Bessel van der Kolk, <em>Le corps n'oublie rien</em>, Paris : Albin Michel, 2018.</span></div>
+      <div class="footnote-item"><span class="fn-num">7.</span><span><em>Kitsunetsuki</em> (狐憑き) : diagnostic psychiatrique traditionnel japonais documenté notamment par Władysław Piotr Kowalski au début du XXe siècle. Voir Emiko Ohnuki-Tierney, <em>Illness and Culture in Contemporary Japan</em>, Cambridge : Cambridge University Press, 1984.</span></div>
+      <div class="footnote-item"><span class="fn-num">8.</span><span>Ohnuki-Tierney, op. cit., pp. 90-101. L'autrice montre comment le diagnostic de <em>kitsunetsuki</em> était attribué de façon disproportionnée aux femmes en milieu rural, dont les comportements déviants menaçaient l'ordre patriarcal local.</span></div>
+      <div class="footnote-item"><span class="fn-num">9.</span><span>Citation de la traduction officielle anglaise de <em>Silent Hill f</em> lors de la confrontation finale dans l'arc « The Fox Wets Its Tail ». La formulation anglaise « playing the victim » correspond précisément à ce que les études sur la manipulation émotionnelle désignent comme DARVO (Deny, Attack, Reverse Victim and Offender).</span></div>
+      <div class="footnote-item"><span class="fn-num">10.</span><span>Sur le <em>shiromuku</em> et sa symbolique, voir Asha Bardon, « Shinto References in Silent Hill f », <em>ashabardongaminglorist.substack.com</em>, 2025, et l'article de <em>Tokyo Weekender</em> du même nom, novembre 2025.</span></div>
+      <div class="footnote-item"><span class="fn-num">11.</span><span>L'<em>ohaguro-bettari</em> est un yōkai classique documenté par Toriyama Sekien (XVIIIe siècle). Son nom dérive de l'<em>ohaguro</em> — la pratique de noircissement des dents portée par les femmes mariées au Japon jusqu'au XIXe siècle. Sur la connexion avec le design de Shiromuku, voir GosuGamers, « Silent Hill f's monsters and their connections to Japanese folklore », 2025.</span></div>
+      <div class="footnote-item"><span class="fn-num">12.</span><span>Julia Kristeva, <em>Pouvoirs de l'horreur : essai sur l'abjection</em>, Paris : Seuil, 1980, p. 4.</span></div>
+      <div class="footnote-item"><span class="fn-num">13.</span><span>Barbara Creed, <em>The Monstrous-Feminine : Film, Feminism, Psychoanalysis</em>, Londres : Routledge, 1993, p. 7. Creed identifie sept « visages » du féminin monstrueux dans le cinéma d'horreur occidental, dont la figure de la mariée monstrueuse (« monstrous womb ») et la sorcière — deux figures directement mobilisées dans <em>Silent Hill f</em>.</span></div>
+      <div class="footnote-item"><span class="fn-num">14.</span><span>Cette lecture du dispositif mécanique comme représentation du déni psychologique est développée dans plusieurs analyses communautaires anglophones, notamment sur le forum Reddit r/silenthill, et constitue un exemple de ce que Ian Bogost nomme « rhétorique procédurale » — la capacité des mécaniques de jeu à produire du sens argumentatif. Voir Ian Bogost, <em>Persuasive Games</em>, Cambridge : MIT Press, 2007.</span></div>
+      <div class="footnote-item"><span class="fn-num">15.</span><span>Sur la symbolique de la main droite dans les traditions rituelles japonaises, voir Asha Bardon, « In-game Shinto for Beginners (Part II) », <em>ashabardongaminglorist.substack.com</em>, novembre 2025.</span></div>
+      <div class="footnote-item"><span class="fn-num">16.</span><span>Victor Turner, <em>The Ritual Process : Structure and Anti-Structure</em>, Chicago : Aldine, 1969. La notion de liminalité désigne l'état « entre » deux positions sociales, caractérisé par la dépossession provisoire des marqueurs identitaires ordinaires.</span></div>
+      <div class="footnote-item"><span class="fn-num">17.</span><span>Simone de Beauvoir, <em>Le Deuxième Sexe</em>, Paris : Gallimard, 1949, vol. I. La formulation de la femme comme « l'Autre absolu », constitué comme objet du regard masculin, est la référence fondatrice pour l'analyse du corps féminin comme territoire colonisé par le regard de l'Autre.</span></div>
+      <div class="footnote-item"><span class="fn-num">18.</span><span>Déclaration de Ryukishi07 publiée accompagnant la sortie du jeu, diffusée notamment par <em>inkl.com</em> (décembre 2025) et le compte Twitter officiel Silent Hill Japon.</span></div>
+      <div class="footnote-item"><span class="fn-num">19.</span><span>Voir notamment la critique de <em>Digitally Downloaded</em> (septembre 2025) qui développe la comparaison avec Heather de <em>Silent Hill 3</em> et l'articulation entre féminisme et horreur japonaise dans l'œuvre de Ryukishi07.</span></div>
+      <div class="footnote-item"><span class="fn-num">20.</span><span>Ces critiques, formulées principalement dans des espaces communautaires en ligne, reprennent des arguments développés autour d'autres œuvres de Ryukishi07 sur la frontière entre représentation critique et exploitation de la souffrance féminine. Voir le thread Steam « Ryukishi07 SUCKS AND SO DOES THIS GAME » (2025), qui malgré son titre formule des objections analytiques sérieuses.</span></div>
+      <div class="footnote-item"><span class="fn-num">21.</span><span>Creed, op. cit., p. 7.</span></div>
+    </div>
+
+    <!-- BIBLIO -->
+    <div class="biblio rv">
+      <span class="biblio-title">Références citées</span>
+      <p class="biblio-item">Bardon, Asha. « In-game Shinto for Beginners » (Parts I–IV), <em>ashabardongaminglorist.substack.com</em>, 2025.</p>
+      <p class="biblio-item">Bardon, Asha. « 'Silent Hill f' Explained : The Fox Wets Its Tail Ending », <em>ashabardongaminglorist.substack.com</em>, 2025.</p>
+      <p class="biblio-item">Beauvoir, Simone de. <em>Le Deuxième Sexe</em>. Paris : Gallimard, 1949.</p>
+      <p class="biblio-item">Bogost, Ian. <em>Persuasive Games : The Expressive Power of Videogames</em>. Cambridge : MIT Press, 2007.</p>
+      <p class="biblio-item">Creed, Barbara. <em>The Monstrous-Feminine : Film, Feminism, Psychoanalysis</em>. Londres : Routledge, 1993.</p>
+      <p class="biblio-item">Kristeva, Julia. <em>Pouvoirs de l'horreur : essai sur l'abjection</em>. Paris : Seuil, 1980.</p>
+      <p class="biblio-item">Mes, Tom ; Sharp, Jasper. <em>The Midnight Eye Guide to New Japanese Film</em>. Berkeley : Stone Bridge Press, 2005.</p>
+      <p class="biblio-item">Nae, Andrei. <em>Immersion, Narrative, and Gender Crisis in Survival Horror Video Games</em>. New York : Routledge, 2022.</p>
+      <p class="biblio-item">Ohnuki-Tierney, Emiko. <em>Illness and Culture in Contemporary Japan</em>. Cambridge : Cambridge University Press, 1984.</p>
+      <p class="biblio-item">Turner, Victor. <em>The Ritual Process : Structure and Anti-Structure</em>. Chicago : Aldine, 1969.</p>
+      <p class="biblio-item">Van der Kolk, Bessel. <em>Le corps n'oublie rien</em>. Paris : Albin Michel, 2018.</p>
+      <p class="biblio-item">Ryukishi07 (Entretien). <em>GamesRadar+</em>, décembre 2025.</p>
+      <p class="biblio-item">Okamoto, Motoi (Entretien). Silent Hill Transmission, mars 2025.</p>
+    </div>
 
   </article>
 
-  <!-- FOOTER ARTICLE -->
-  <div class="art-footer">
+  <div class="art-footer rv">
     <span style="font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-right:.5rem;">Tags :</span>
     <span class="tag">Silent Hill f</span>
-    <span class="tag">Horreur psychologique</span>
-    <span class="tag">Féminité & contrainte</span>
     <span class="tag">Ryukishi07</span>
+    <span class="tag">Kitsunetsuki</span>
+    <span class="tag">Féminisme</span>
+    <span class="tag">Corps ritualisé</span>
     <span class="tag">Identité</span>
-    <span class="tag">Narratologie</span>
-    <span class="tag">Japon</span>
+    <span class="tag">Japon shōwa</span>
+    <span class="tag">Féminin monstrueux</span>
   </div>
 
   <footer>
     <span class="f-logo">Spectre Rose ✦</span>
     <span class="f-copy">© 2026 — Théories narratives &amp; fiction interactive</span>
   </footer>
-
-  <script>
-    const items = document.querySelectorAll('.rv');
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('on'), (i % 3) * 80);
-          obs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.07 });
-    items.forEach((el, i) => { el.dataset.i = i; obs.observe(el); });
-    <div class="sr-prevnext" data-prev-href="..." data-prev-title="..." data-next-href="..." data-next-title="..."></div>
-  </script>
   <script src="ui.js"></script>
 </body>
 </html>
