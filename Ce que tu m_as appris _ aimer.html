@@ -2831,7 +2831,7 @@ Et juste avant — sa voix dans cet endroit entre les deux, légèrement floue :
 </tw-passagedata><tw-passagedata pid="73" name="BOUCLE1" tags="" position="1920,800" size="100,100">
 (set: $refus to $refus + 1)
 (set: $boucle to 1)
-(change: &quot;html&quot;, (css: &quot;className += &#39; boucle-1&#39;&quot;))
+(enchant: ?page, (css: &quot;background: #08090d; color: #d8cfd0;&quot;))
 
 Tu fermes les yeux plus fort.
 
@@ -2853,6 +2853,8 @@ Sa respiration à côté de toi. Sa main quelque part dans le noir.
 
 [[La journée recommence.|B2MATIN]]
 </tw-passagedata><tw-passagedata pid="74" name="BOUCLE1B" tags="" position="2160,800" size="100,100">
+(enchant: ?page, (css: &quot;background: #070810; color: #c0b8bc; font-size: 1.16em;&quot;))
+
 La journée recommence.
 
 Pas tout à fait la même — quelques détails ont changé. La lumière est légèrement différente, ou ta façon de la voir.
@@ -2890,8 +2892,9 @@ Les vœux. L&#39;alliance. Il ne tremble pas.
 [[Tu ouvres les yeux. Tu sors.|FINB]]
 [[Tu restes. Juste encore une fois.|B3MATIN]]
 ]
+
 </tw-passagedata><tw-passagedata pid="75" name="B2MATIN" tags="" position="2400,800" size="100,100">
-(change: &quot;html&quot;, (css: &quot;className = className.replace(&#39;boucle-1&#39;,&#39;boucle-2&#39;)&quot;))
+(enchant: ?page, (css: &quot;background: #070810; color: #c0b8bc; font-size: 1.16em;&quot;))
 
 Tu te réveilles avant lui.
 
@@ -2907,7 +2910,7 @@ Il est éveillé. Il te regarde.
 
 — T&#39;étais où ?
 
-*(Il dit toujours ça. Mais cette fois tu n&#39;étais nulle part — tu étais là, à regarder le plafond, et il pose la question quand même. Comme si la question précédait toujours ta réponse. Comme si elle savait déjà ce qu&#39;elle allait trouver.)*
+*(Il dit toujours ça. Mais cette fois tu n&#39;étais nulle part — tu étais là, à regarder le plafond, et il pose la question quand même. Comme si la question précédait toujours ta réponse.)*
 
 Tu ne réponds pas tout de suite.
 
@@ -2917,7 +2920,7 @@ Tu ne réponds pas tout de suite.
 
 *(Il dit ça aussi. Il dit toujours je sais.)*
 
-*(Tu remarques que depuis que tu es réveillée tu n&#39;as pas bougé. Que tu as regardé le plafond et pensé à cette phrase — c&#39;est le matin de votre mariage — et qu&#39;elle est arrivée exactement comme la dernière fois. Exactement dans le même ordre. La cafetière. Paris. Tu te retournes.)*
+*(Tu remarques que depuis que tu es réveillée tu n&#39;as pas bougé. Que tu as regardé le plafond et pensé à cette phrase — c&#39;est le matin de votre mariage — et qu&#39;elle est arrivée exactement comme la dernière fois. Exactement dans le même ordre.)*
 
 *(Tu décides que c&#39;est normal. Que les grands jours reviennent à eux-mêmes.)*
 
@@ -2925,6 +2928,8 @@ Tu ne réponds pas tout de suite.
 
 [[Continuer — la préparation.|B2PREP]]
 </tw-passagedata><tw-passagedata pid="76" name="B2PREP" tags="" position="2640,800" size="100,100">
+(enchant: ?page, (css: &quot;background: #070810; color: #c0b8bc; font-size: 1.16em;&quot;))
+
 Solène arrive à dix heures.
 
 Elle t&#39;aide à te préparer. Elle dit quelque chose en voyant la robe — tu l&#39;entends dire quelque chose mais les mots arrivent avec un léger décalage, comme regarder quelqu&#39;un parler à travers une vitre. Tu rattrapes le sens après le son.
@@ -2962,6 +2967,7 @@ La voiture vers la serre. Solène conduit. Elle dit quelque chose sur la circula
 ---
 
 [[La cérémonie — il t&#39;attend au bout.|B2CEREMONIE]]
+
 </tw-passagedata><tw-passagedata pid="77" name="B2CEREMONIE" tags="" position="2880,800" size="100,100">
 La serre. Les deux cents personnes.
 
@@ -3041,7 +3047,7 @@ Dans le silence, juste avant de s&#39;endormir :
 ]
 </tw-passagedata><tw-passagedata pid="79" name="B3MATIN" tags="" position="3360,800" size="100,100">
 (set: $refus to $refus + 1)
-(change: &quot;html&quot;, (css: &quot;className = className.replace(&#39;boucle-2&#39;,&#39;boucle-3&#39;)&quot;))
+(enchant: ?page, (css: &quot;background: #060809; color: #a09890; font-size: 1.12em;&quot;))
 
 C&#39;est le matin de votre mariage.
 
@@ -3059,7 +3065,7 @@ Sa respiration. Il est éveillé.
 
 *(Marion compte les boutons. Dix-neuf.)*
 
-*(La serre. Les deux cents personnes — tu ne comptes plus les visages, tu sais juste qu&#39;il y en a deux cents parce que c&#39;est ce que tu avais prévu.)*
+*(La serre. Les deux cents personnes.)*
 
 *(Les fleurs n&#39;ont pas d&#39;odeur. Elles n&#39;ont jamais eu d&#39;odeur.)*
 
@@ -3071,7 +3077,7 @@ Il est au bout de l&#39;allée. Il sort les mains de derrière son dos.
 
 Ce geste.
 
-*(Tu connais ce geste. Tu l&#39;as vu. Tu l&#39;attends avant qu&#39;il arrive. Il arrive quand tu l&#39;attends.)*
+*(Tu connais ce geste. Tu l&#39;attends avant qu&#39;il arrive. Il arrive quand tu l&#39;attends.)*
 
 *(Est-ce que c&#39;est lui qui fait ce geste ou est-ce que c&#39;est toi qui le fais arriver ?)*
 
@@ -3083,13 +3089,13 @@ Ta main dans la sienne. Froide.
 
 *— Pas parfait. Juste là.*
 
-*(Ces mots dans cet ordre. Ces mots dans cet ordre exact.)*
+*(Ces mots dans cet ordre exact.)*
 
 *(Tu pleures. C&#39;est la bonne réaction.)*
 
 ---
 
-*(Quelque part — très loin, de l&#39;autre côté de quelque chose — une lumière est allumée sous une porte. Une assiette sur un plateau dans un couloir. Un prénom dit d&#39;une façon qui voulait dire : je suis là si tu as besoin.)*
+*(Quelque part — très loin — une lumière est allumée sous une porte. Un prénom dit d&#39;une façon qui voulait dire : je suis là si tu as besoin.)*
 
 *(Ces choses semblent appartenir à quelqu&#39;un d&#39;autre.)*
 
@@ -3097,6 +3103,8 @@ Ta main dans la sienne. Froide.
 
 [[La nuit. Les coups. La fin.|B3NUIT]]
 </tw-passagedata><tw-passagedata pid="80" name="B3CEREMONIE" tags="" position="3600,800" size="100,100">
+(enchant: ?page, (css: &quot;background: #060809; color: #a09890; font-size: 1.12em;&quot;))
+
 $mari est au bout de l&#39;allée.
 
 Il sort les mains de derrière son dos quand il te voit.
@@ -3122,6 +3130,7 @@ Tu prends sa main. Elle est froide.
 ---
 
 [[La nuit. Les coups. La fin.|B3NUIT]]
+
 </tw-passagedata><tw-passagedata pid="81" name="B3NUIT" tags="" position="0,1000" size="100,100">
 (set: $refus to $refus + 1)
 
@@ -3449,7 +3458,7 @@ Et elle te fait de la place dans la cuisine.
 
 **— Fin D : Savoir et rester quand même, puis partir —**
 </tw-passagedata><tw-passagedata pid="86" name="DOCUMENTMARI" tags="" position="1200,1000" size="100,100">
-(change: &quot;html&quot;, (css: &quot;className += &#39; boucle-3&#39;&quot;))
+(enchant: ?page, (css: &quot;background:#040507; color:#9a9088;&quot;))
 
 
 
@@ -3515,6 +3524,7 @@ Va chercher ça dehors.
 ---
 
 [[Fermer ce document.|RETOURAFIN]]
+
 </tw-passagedata><tw-passagedata pid="87" name="RETOURAFIN" tags="" position="1440,1000" size="100,100">
 *(tu as fermé le document.)*
 
@@ -3524,18 +3534,10 @@ Va chercher ça dehors.
 </tw-passagedata><tw-passagedata pid="88" name="StoryStylesheet" tags="stylesheet" position="1680,1000" size="100,100">
 @import url(&#39;https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&amp;family=Share+Tech+Mono&amp;display=swap&#39;);
 
-/* ── Reset &amp; base ─────────────────────────────────────────── */
-
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
 tw-story {
   background-color: #09090b;
   min-height: 100vh;
 }
-
-/* ── Passage principal ─────────────────────────────────────── */
 
 tw-passage {
   font-family: &#39;EB Garamond&#39;, Georgia, serif;
@@ -3546,6 +3548,7 @@ tw-passage {
   padding: 5em 2em 8em;
   color: #e2d9d0;
   animation: fadein 0.5s ease both;
+  transition: background 2s ease, color 2s ease;
 }
 
 @keyframes fadein {
@@ -3553,9 +3556,8 @@ tw-passage {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Liens de navigation ───────────────────────────────────── */
-
-tw-passage a {
+/* Liens de choix */
+tw-passage tw-link, tw-passage .link-internal {
   display: block;
   color: #c8b8b0;
   text-decoration: none;
@@ -3563,18 +3565,18 @@ tw-passage a {
   margin: 0.3em 0;
   border-left: 2px solid rgba(180,140,130,0.15);
   font-style: italic;
+  cursor: pointer;
   transition: color 0.3s ease, border-color 0.3s ease, padding-left 0.3s ease;
-  position: relative;
 }
 
-tw-passage a:hover {
+tw-passage tw-link:hover, tw-passage .link-internal:hover {
   color: #f0e0d8;
   border-left-color: rgba(180,140,130,0.7);
   padding-left: 2em;
 }
 
-/* Liens inline (non-choix) — style différent */
-tw-passage p a {
+/* Liens inline */
+tw-passage p tw-link {
   display: inline;
   padding: 0;
   border-left: none;
@@ -3583,27 +3585,20 @@ tw-passage p a {
   margin: 0;
 }
 
-tw-passage p a:hover {
+tw-passage p tw-link:hover {
   border-bottom-color: rgba(180,140,130,0.8);
   padding-left: 0;
 }
 
-/* ── Typographie ───────────────────────────────────────────── */
-
+/* Typographie */
 tw-passage em {
-  color: #b8a8a2;
+  color: #9a8a84;
   font-style: italic;
 }
 
 tw-passage strong {
   font-weight: 500;
   color: #e8d8d0;
-}
-
-/* Parenthèses intérieures — pensées de la MC */
-tw-passage em:first-child,
-tw-passage p &gt; em {
-  color: #9a8a84;
 }
 
 tw-passage hr {
@@ -3613,143 +3608,21 @@ tw-passage hr {
   width: 25%;
 }
 
-/* ── Texte en italique seul sur une ligne = note de section ── */
-tw-passage p:has(&gt; em:only-child) {
-  font-size: 0.88em;
-  color: #7a6a64;
-  letter-spacing: 0.05em;
-  margin-bottom: 2em;
-}
-
-/* ── Monospace — bugs et document $mari ───────────────────── */
-
-.glitch, .document, code, pre {
+/* Monospace pour les passages de bug */
+.mono {
   font-family: &#39;Share Tech Mono&#39;, &#39;Courier New&#39;, monospace;
   font-size: 0.9em;
-  line-height: 1.8;
-  color: #c0b0aa;
 }
 
-/* ── Page de titre ─────────────────────────────────────────── */
-
-.titre-principal {
-  text-align: center;
-  font-size: 1.6em;
-  letter-spacing: 0.04em;
-  color: #e2d9d0;
-  margin-bottom: 0.3em;
+/* Animation glitch subtile */
+@keyframes glitch {
+  0%, 90%, 100% { text-shadow: none; }
+  92% { text-shadow: -1px 0 rgba(180,100,100,0.5), 1px 0 rgba(100,100,200,0.5); letter-spacing: 0.01em; }
+  94% { text-shadow: none; }
+  97% { text-shadow: 1px 0 rgba(180,100,100,0.3); }
 }
 
-/* ── États selon la boucle ─────────────────────────────────── */
-
-/* Boucle 1 — légère dérive */
-.boucle-1 tw-story {
-  background-color: #08090d;
-}
-
-.boucle-1 tw-passage {
-  color: #d8cfc8;
-  animation: fadein-lent 0.7s ease both;
-}
-
-.boucle-1 tw-passage a {
-  color: #b0a09a;
-}
-
-/* Boucle 2 — dérive marquée, ton bleu-gris */
-.boucle-2 tw-story {
-  background-color: #070810;
-}
-
-.boucle-2 tw-passage {
-  color: #c8c0bc;
-  line-height: 2.0;
-  animation: fadein-lent 0.9s ease both;
-}
-
-.boucle-2 tw-passage em {
-  color: #7a7870;
-}
-
-.boucle-2 tw-passage a {
-  color: #9890a0;
-  border-left-color: rgba(140,130,160,0.15);
-}
-
-.boucle-2 tw-passage a:hover {
-  color: #c8c0d8;
-  border-left-color: rgba(140,130,160,0.6);
-}
-
-/* Boucle 3 — presque lisible, presque perdu */
-.boucle-3 tw-story {
-  background-color: #060809;
-}
-
-.boucle-3 tw-passage {
-  color: #a09890;
-  line-height: 1.95;
-  animation: fadein-lent 1.2s ease both;
-}
-
-/* Les pensées entre parenthèses deviennent presque invisibles */
-.boucle-3 tw-passage em {
-  color: #504840;
-}
-
-.boucle-3 tw-passage a {
-  color: #7a7270;
-  border-left-color: rgba(120,110,110,0.1);
-}
-
-.boucle-3 tw-passage a:hover {
-  color: #a09890;
-  border-left-color: rgba(120,110,110,0.4);
-}
-
-/* ── Animations ─────────────────────────────────────────────── */
-
-@keyframes fadein-lent {
-  from { opacity: 0; transform: translateY(4px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* Glitch subtil sur les passages de bug */
-@keyframes glitch-shift {
-  0%   { text-shadow: none; }
-  92%  { text-shadow: none; }
-  93%  { text-shadow: -1px 0 rgba(180,100,100,0.4), 1px 0 rgba(100,100,180,0.4); }
-  94%  { text-shadow: none; }
-  97%  { text-shadow: 1px 0 rgba(180,100,100,0.3); }
-  98%  { text-shadow: none; }
-  100% { text-shadow: none; }
-}
-
-.boucle-2 tw-passage,
-.boucle-3 tw-passage {
-  animation-name: fadein-lent, glitch-shift;
-  animation-duration: 0.9s, 8s;
-  animation-timing-function: ease, ease;
-  animation-fill-mode: both, none;
-  animation-iteration-count: 1, infinite;
-  animation-delay: 0s, 3s;
-}
-
-/* ── Document $mari — style terminal ───────────────────────── */
-
-.boucle-3 tw-story,
-[style*=&quot;terminal&quot;] tw-story {
-  background-color: #040507;
-}
-
-/* Fin C — texte qui pâlit */
-.effacement tw-passage {
-  color: #302820;
-  transition: color 20s ease;
-}
-
-/* ── Responsive ─────────────────────────────────────────────── */
-
+/* Responsive */
 @media (max-width: 600px) {
   tw-passage {
     font-size: 1.05em;
