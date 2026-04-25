@@ -19,12 +19,12 @@
 (go-to: &quot;SEUIL&quot;)
 </tw-passagedata><tw-passagedata pid="2" name="TITRE" tags="" position="240,0" size="100,100">
 
-  une fiction interactive
-  Ce que tu m&#39;as appris
-  à aimer
-  
-  « Il faut du temps pour construire un palais mental.Le problème c&#39;est qu&#39;on finit par ne plus savoirqu&#39;on est à l&#39;intérieur. »
-  Cette fiction aborde la dépression, l&#39;isolementet l&#39;attachement parasocial.Certains chemins ne mènent pas où tu crois.
+une fiction interactive
+Ce que tu m&#39;as appris
+à aimer
+
+« Il faut du temps pour construire un palais mental.Le problème c&#39;est qu&#39;on finit par ne plus savoirqu&#39;on est à l&#39;intérieur. »
+Cette fiction aborde la dépression, l&#39;isolementet l&#39;attachement parasocial.Certains chemins ne mènent pas où tu crois.
 
 
 [[Entrer.|SEUIL]]
@@ -944,13 +944,13 @@ Dans cet état entre-deux — sa voix déjà dans le demi-sommeil, légèrement 
 
 *(Si tu veux l&#39;entendre pendant que tu lis :)*
 
-*[[Ouvrir la musique dans un autre onglet.|https://youtu.be/VvuWMBCBIjA]]*
+↗ Écouter pendant que tu lis
 
 *(Le lien s&#39;ouvre ailleurs. Tu peux continuer à lire ici.)*
 
 ---
 
-[[Le lendemain matin.|CH4MATIN]]
+[[Continuer.|CH4MURMURE]]
 </tw-passagedata><tw-passagedata pid="33" name="CH4MATIN" tags="" position="0,400" size="100,100">
 Tu te réveilles avant lui.
 
@@ -3311,7 +3311,7 @@ Tu envoies.
 
 ---
 
-[[Lire le document $mari.|DOCUMENTMARI]]
+[[Voir ce que tu as fait.|RECAP]]
 
 **— Fin A : L&#39;espace entre les mondes —**
 </tw-passagedata><tw-passagedata pid="84" name="FINB" tags="" position="720,1000" size="100,100">
@@ -3343,7 +3343,7 @@ Tu bois quand même.
 
 ---
 
-[[Lire le document $mari.|DOCUMENTMARI]]
+[[Voir ce que tu as fait.|RECAP]]
 
 **— Fin B : L&#39;entre-deux —**
 </tw-passagedata><tw-passagedata pid="85" name="FINC" tags="" position="960,1000" size="100,100">
@@ -3427,7 +3427,7 @@ tu dis oui
 
 *(Et si tu veux savoir ce que tu as perdu :)*
 
-[[Lire le document $mari.|DOCUMENTMARI]]
+[[Voir ce que tu as fait.|RECAP]]
 </tw-passagedata><tw-passagedata pid="86" name="FIND" tags="" position="1200,1000" size="100,100">
 Tu ouvres les yeux.
 
@@ -3487,10 +3487,66 @@ Et elle te fait de la place dans la cuisine.
 
 ---
 
-[[Lire le document $mari.|DOCUMENTMARI]]
+[[Voir ce que tu as fait.|RECAP]]
 
 **— Fin D : Savoir et rester quand même, puis partir —**
-</tw-passagedata><tw-passagedata pid="87" name="DOCUMENTMARI" tags="" position="1440,1000" size="100,100">
+</tw-passagedata><tw-passagedata pid="87" name="RECAP" tags="" position="4000,400" size="100,100">
+(enchant: ?page, (bg: &quot;#05060a&quot;)+(text-colour: &quot;#ccc2bc&quot;))
+
+
+ce que tu as fait
+
+
+
+(if: $prenom is not &quot;&quot;)[prénom choisi ............... (print: $prenom)]
+figure construite ........... (print: $mari)
+boucles traversées .......... (print: $refus)
+moments de lucidité ......... (print: $lucidite)
+fois où tu as choisi le réel . (print: $coutReel)
+
+
+
+
+(if: $coutReel &gt;= 3)[
+Tu as choisi le réel à plusieurs reprises.Il y a quelque chose d&#39;obstinément réel en toi.
+]
+(else-if: $coutReel &gt;= 1)[
+Tu as choisi le réel, parfois.Même en sachant ce que ça coûtait.
+]
+(else:)[
+Tu n&#39;as jamais choisi le réel quand tu pouvais ne pas le faire.C&#39;est une façon d&#39;être dans le monde.
+]
+
+(if: $lucidite &gt;= 2)[
+Tu as remarqué. Plusieurs fois.Savoir le mécanisme n&#39;a pas toujours empêché le mécanisme.
+]
+(else-if: $lucidite is 1)[
+Tu as remarqué une fois.Tu l&#39;as rangé dans un endroit que tu n&#39;examines pas.
+]
+(else:)[
+Tu n&#39;as rien remarqué — ou tu as choisi de ne pas regarder.Ce n&#39;est pas un jugement.
+]
+
+(if: $refus &gt;= 4)[
+Tu es revenue (print: $refus) fois.Chaque fois tu disais : juste encore une fois.
+]
+(else-if: $refus &gt;= 2)[
+Tu es revenue (print: $refus) fois.C&#39;est moins que certains.
+]
+(else-if: $refus is 1)[
+Tu es revenue une fois.C&#39;est plus que zéro.
+]
+(else:)[
+Tu n&#39;es pas revenue.Tu as entendu les coups la première fois.Peu de gens les entendent la première fois.
+]
+
+
+
+[[Lire le document (print: $mari).|DOCUMENTMARI]]
+
+[[Recommencer depuis le début.|SEUIL]]
+
+</tw-passagedata><tw-passagedata pid="88" name="DOCUMENTMARI" tags="" position="1440,1000" size="100,100">
 (enchant: ?page, (bg: &quot;#040507&quot;)+(text-colour: &quot;#9a9088&quot;))
 
 
@@ -3558,222 +3614,128 @@ Va chercher ça dehors.
 
 [[Fermer ce document.|RETOURAFIN]]
 
-</tw-passagedata><tw-passagedata pid="88" name="RETOURAFIN" tags="" position="1680,1000" size="100,100">
+</tw-passagedata><tw-passagedata pid="89" name="RETOURAFIN" tags="" position="1680,1000" size="100,100">
 *(tu as fermé le document.)*
 
 ---
 
 [[Recommencer depuis le début.|SEUIL]]
-</tw-passagedata><tw-passagedata pid="89" name="StoryStylesheet" tags="stylesheet" position="1920,1000" size="100,100">
-@import url(&quot;https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&amp;family=Share+Tech+Mono&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&amp;display=swap&quot;);
+</tw-passagedata><tw-passagedata pid="90" name="StoryStylesheet" tags="stylesheet" position="1920,1000" size="100,100">
+@import url(&quot;https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&amp;family=Share+Tech+Mono&amp;display=swap&quot;);
 
-/* ══════════════════════════════════════════
-   VARIABLES &amp; BASE
-══════════════════════════════════════════ */
-
-tw-story {
-  background-color: #07080c;
-  min-height: 100vh;
-}
+tw-story { background-color: #07080c; min-height: 100vh; }
+tw-sidebar { display: none; }
 
 tw-passage {
   font-family: &quot;EB Garamond&quot;, Georgia, serif;
   font-size: 1.18em;
   line-height: 2.05;
-  max-width: 620px;
+  max-width: 610px;
   margin: 0 auto;
   padding: 5em 2em 10em;
   color: #ddd3c8;
-  animation: fadein 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: fadein 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @keyframes fadein {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ══════════════════════════════════════════
-   TYPOGRAPHIE — Voix narrative
-══════════════════════════════════════════ */
-
-/* Texte courant */
-tw-passage p {
-  margin: 0 0 0.2em;
-}
-
-/* Pensées intérieures — en italique, ton rosé-gris */
 tw-passage em {
-  color: #b8a8a2;
-  font-style: italic;
   font-family: &quot;Cormorant Garamond&quot;, Georgia, serif;
-  font-size: 1.04em;
-  letter-spacing: 0.01em;
-}
-
-/* Emphases narratives */
-tw-passage strong {
-  font-weight: 500;
-  color: #e8d8ce;
-  letter-spacing: 0.02em;
-}
-
-/* Dialogues en italique + strong — voix de $mari très légèrement plus chaude */
-tw-passage strong em,
-tw-passage em strong {
-  color: #c8b0a4;
-  font-family: &quot;Cormorant Garamond&quot;, Georgia, serif;
-  font-size: 1.06em;
   font-style: italic;
-  font-weight: 400;
+  font-size: 1.05em;
+  color: #b0a09a;
 }
 
-/* Séparateur */
+tw-passage strong { font-weight: 500; color: #e8d8ce; }
+
 tw-passage hr {
   border: none;
   border-top: 1px solid rgba(180,140,120,0.12);
   margin: 2.8em auto;
-  width: 20%;
+  width: 18%;
 }
 
-/* ══════════════════════════════════════════
-   LIENS DE NAVIGATION — Choix narratifs
-══════════════════════════════════════════ */
-
-/* Liens de choix = blocs distincts */
+/* Liens de choix narratifs */
 tw-link {
   display: block;
   font-family: &quot;Cormorant Garamond&quot;, Georgia, serif;
   font-style: italic;
-  font-size: 1.05em;
-  color: #a89890;
+  font-size: 1.08em;
+  color: #9a8a84;
   text-decoration: none;
-  padding: 0.6em 0 0.6em 1.8em;
-  margin: 0.5em 0;
-  border-left: 1px solid rgba(180,140,120,0.18);
+  padding: 0.7em 1em 0.7em 2.2em;
+  margin: 0.6em 0;
+  border-left: 1px solid rgba(180,140,120,0.15);
+  border-top: 1px solid rgba(180,140,120,0.05);
+  border-bottom: 1px solid rgba(180,140,120,0.05);
   cursor: pointer;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
+  background: rgba(255,255,255,0.01);
 }
 
 tw-link::before {
-  content: &quot;—&quot;;
+  content: &quot;\2014&quot;;
   position: absolute;
-  left: 0.5em;
-  color: rgba(180,140,120,0.3);
-  transition: color 0.35s ease, left 0.35s ease;
+  left: 0.7em;
+  color: rgba(180,140,120,0.22);
+  font-style: normal;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 tw-link:hover {
   color: #e8d0c4;
-  border-left-color: rgba(180,140,120,0.5);
-  padding-left: 2.4em;
+  border-left-color: rgba(200,160,140,0.45);
+  padding-left: 3em;
+  background: rgba(180,140,120,0.03);
 }
 
-tw-link:hover::before {
-  color: rgba(200,160,140,0.7);
-  left: 0.8em;
-}
+tw-link:hover::before { color: rgba(200,160,140,0.6); left: 1em; }
 
-/* Liens inline (dans une phrase) */
-tw-passage p tw-link {
+/* Liens inline dans paragraphe */
+p tw-link {
   display: inline;
+  font-family: inherit;
   font-style: normal;
-  font-family: inherit;
-  padding: 0;
-  border-left: none;
-  border-bottom: 1px solid rgba(180,140,120,0.25);
-  margin: 0;
   font-size: 1em;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid rgba(180,140,120,0.3);
+  background: none;
+  margin: 0;
 }
+p tw-link::before { display: none; }
+p tw-link:hover { color: #e8d0c4; border-bottom-color: rgba(200,160,140,0.6); padding-left: 0; background: none; }
 
-tw-passage p tw-link::before {
-  display: none;
+/* Liens HTML externes */
+tw-passage a {
+  color: #9a8a84;
+  text-decoration: none;
+  font-family: &quot;Cormorant Garamond&quot;, Georgia, serif;
+  font-style: italic;
+  border-bottom: 1px solid rgba(180,140,120,0.3);
+  transition: color 0.3s, border-color 0.3s;
 }
+tw-passage a:hover { color: #e8d0c4; border-bottom-color: rgba(200,160,140,0.6); }
 
-tw-passage p tw-link:hover {
-  color: #e8d0c4;
-  border-bottom-color: rgba(200,160,140,0.6);
-  padding-left: 0;
-}
-
-/* ══════════════════════════════════════════
-   PASSAGES MÉTA / BUG — Police système
-   (BOUCLE, DOCUMENTMARI, FINC, etc.)
-══════════════════════════════════════════ */
-
-/* La fiction qui se dégrade utilise Share Tech Mono */
-tw-passage[tags~=&quot;meta&quot;],
-tw-story[tags~=&quot;boucle&quot;] tw-passage,
-.passage-bug tw-passage {
-  font-family: &quot;Share Tech Mono&quot;, &quot;Courier New&quot;, monospace;
-}
-
-/* Classe appliquée via (enchant:) dans les passages de boucle */
-tw-hook {
-  font-family: inherit;
-}
-
-/* Quand le texte s&#39;effrite — cible les tw-passage en fond très sombre */
-tw-story[style*=&quot;070810&quot;] tw-passage,
-tw-story[style*=&quot;08090d&quot;] tw-passage,
-tw-story[style*=&quot;040507&quot;] tw-passage {
+/* PASSAGES MÉTA / BOUCLE */
+tw-story[style*=&quot;#070810&quot;] tw-passage,
+tw-story[style*=&quot;#08090d&quot;] tw-passage,
+tw-story[style*=&quot;#040507&quot;] tw-passage {
   font-family: &quot;Share Tech Mono&quot;, monospace;
-  font-size: 0.95em;
-  line-height: 2.2;
-  letter-spacing: 0.03em;
-  color: #9a9088;
-}
-
-/* DOCUMENTMARI — style terminal */
-tw-story[style*=&quot;040507&quot;] tw-passage p {
   font-size: 0.9em;
-  color: #7a7068;
+  line-height: 2.1;
+  letter-spacing: 0.02em;
+  color: #8a8078;
 }
 
-tw-story[style*=&quot;040507&quot;] tw-passage strong {
-  color: #b0a098;
-  font-weight: 400;
-  font-family: &quot;Share Tech Mono&quot;, monospace;
-  letter-spacing: 0.08em;
-}
-
-/* ══════════════════════════════════════════
-   PAGE DE TITRE — SEUIL &amp; TITRE
-══════════════════════════════════════════ */
-
-/* Classe spéciale pour le titre — appliquée via CSS sur le premier passage */
-tw-passage:has(&gt; p:first-child:empty) {
-  text-align: center;
-}
-
-/* ══════════════════════════════════════════
-   TRANSITIONS ENTRE PASSAGES
-══════════════════════════════════════════ */
-
-[data-t8n=&quot;dissolve&quot;].transition-in {
-  animation: fadein 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-/* ══════════════════════════════════════════
-   BARRE LATÉRALE — Masquée proprement
-══════════════════════════════════════════ */
-
-tw-sidebar {
-  display: none;
-}
-
-/* ══════════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════════ */
-
+/* RESPONSIVE */
 @media (max-width: 600px) {
-  tw-passage {
-    font-size: 1.05em;
-    padding: 3em 1.2em 7em;
-    line-height: 1.95;
-  }
+  tw-passage { font-size: 1.05em; padding: 3em 1.2em 7em; line-height: 1.95; }
 }
-
 
 </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
