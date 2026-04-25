@@ -2831,7 +2831,7 @@ Et juste avant — sa voix dans cet endroit entre les deux, légèrement floue :
 </tw-passagedata><tw-passagedata pid="73" name="BOUCLE1" tags="" position="1920,800" size="100,100">
 (set: $refus to $refus + 1)
 (set: $boucle to 1)
-(enchant: ?page, (css: &quot;background: #08090d; color: #d8cfd0;&quot;))
+(enchant: ?page, (bg: &quot;#08090d&quot;)+(text-colour: &quot;#d8cfd0&quot;))
 
 Tu fermes les yeux plus fort.
 
@@ -2853,7 +2853,7 @@ Sa respiration à côté de toi. Sa main quelque part dans le noir.
 
 [[La journée recommence.|B2MATIN]]
 </tw-passagedata><tw-passagedata pid="74" name="BOUCLE1B" tags="" position="2160,800" size="100,100">
-(enchant: ?page, (css: &quot;background: #070810; color: #c0b8bc; font-size: 1.16em;&quot;))
+(enchant: ?page, (bg: &quot;#070810&quot;)+(text-colour: &quot;#c0b8bc&quot;))
 
 La journée recommence.
 
@@ -2894,7 +2894,7 @@ Les vœux. L&#39;alliance. Il ne tremble pas.
 ]
 
 </tw-passagedata><tw-passagedata pid="75" name="B2MATIN" tags="" position="2400,800" size="100,100">
-(enchant: ?page, (css: &quot;background: #070810; color: #c0b8bc; font-size: 1.16em;&quot;))
+(enchant: ?page, (bg: &quot;#070810&quot;)+(text-colour: &quot;#c0b8bc&quot;))
 
 Tu te réveilles avant lui.
 
@@ -2928,7 +2928,7 @@ Tu ne réponds pas tout de suite.
 
 [[Continuer — la préparation.|B2PREP]]
 </tw-passagedata><tw-passagedata pid="76" name="B2PREP" tags="" position="2640,800" size="100,100">
-(enchant: ?page, (css: &quot;background: #070810; color: #c0b8bc; font-size: 1.16em;&quot;))
+(enchant: ?page, (bg: &quot;#070810&quot;)+(text-colour: &quot;#c0b8bc&quot;))
 
 Solène arrive à dix heures.
 
@@ -3047,7 +3047,7 @@ Dans le silence, juste avant de s&#39;endormir :
 ]
 </tw-passagedata><tw-passagedata pid="79" name="B3MATIN" tags="" position="3360,800" size="100,100">
 (set: $refus to $refus + 1)
-(enchant: ?page, (css: &quot;background: #060809; color: #a09890; font-size: 1.12em;&quot;))
+(enchant: ?page, (bg: &quot;#060809&quot;)+(text-colour: &quot;#a09890&quot;))
 
 C&#39;est le matin de votre mariage.
 
@@ -3103,7 +3103,7 @@ Ta main dans la sienne. Froide.
 
 [[La nuit. Les coups. La fin.|B3NUIT]]
 </tw-passagedata><tw-passagedata pid="80" name="B3CEREMONIE" tags="" position="3600,800" size="100,100">
-(enchant: ?page, (css: &quot;background: #060809; color: #a09890; font-size: 1.12em;&quot;))
+(enchant: ?page, (bg: &quot;#060809&quot;)+(text-colour: &quot;#a09890&quot;))
 
 $mari est au bout de l&#39;allée.
 
@@ -3458,7 +3458,7 @@ Et elle te fait de la place dans la cuisine.
 
 **— Fin D : Savoir et rester quand même, puis partir —**
 </tw-passagedata><tw-passagedata pid="86" name="DOCUMENTMARI" tags="" position="1200,1000" size="100,100">
-(enchant: ?page, (css: &quot;background:#040507; color:#9a9088;&quot;))
+(enchant: ?page, (bg: &quot;#040507&quot;)+(text-colour: &quot;#9a9088&quot;))
 
 
 
@@ -3532,7 +3532,7 @@ Va chercher ça dehors.
 
 [[Recommencer depuis le début.|SEUIL]]
 </tw-passagedata><tw-passagedata pid="88" name="StoryStylesheet" tags="stylesheet" position="1680,1000" size="100,100">
-@import url(&#39;https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&amp;family=Share+Tech+Mono&amp;display=swap&#39;);
+@import url(&quot;https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&amp;family=Share+Tech+Mono&amp;display=swap&quot;);
 
 tw-story {
   background-color: #09090b;
@@ -3540,7 +3540,7 @@ tw-story {
 }
 
 tw-passage {
-  font-family: &#39;EB Garamond&#39;, Georgia, serif;
+  font-family: &quot;EB Garamond&quot;, Georgia, serif;
   font-size: 1.2em;
   line-height: 2.1;
   max-width: 640px;
@@ -3610,7 +3610,7 @@ tw-passage hr {
 
 /* Monospace pour les passages de bug */
 .mono {
-  font-family: &#39;Share Tech Mono&#39;, &#39;Courier New&#39;, monospace;
+  font-family: &quot;Share Tech Mono&quot;, &quot;Courier New&quot;, monospace;
   font-size: 0.9em;
 }
 
