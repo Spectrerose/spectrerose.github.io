@@ -9,7 +9,701 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play Ce que tu m&#39;as appris à aimer.</tw-noscript></noscript></tw-story>
-<tw-storydata name="Ce que tu m&#39;as appris à aimer" startnode="1" creator="Twine" creator-version="2.11.1" format="Harlowe" format-version="3.3.9" ifid="C7E2A4F1-8B3D-4C9A-B215-5F1D8E3C2A09" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="StoryInit" tags="startup" position="0,0" size="100,100">
+<tw-storydata name="Ce que tu m&#39;as appris à aimer" startnode="1" creator="Twine" creator-version="2.11.1" format="Harlowe" format-version="3.3.9" ifid="C7E2A4F1-8B3D-4C9A-B215-5F1D8E3C2A09" options="" tags="" zoom="1" hidden>
+<style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Share+Tech+Mono&display=swap');
+
+/* ── FOND ── */
+tw-story {
+  background-color: #07080c;
+  background-image:
+    radial-gradient(ellipse 70% 60% at 52% 48%,
+      rgba(28, 22, 18, 0.85) 0%,
+      transparent 100%);
+  min-height: 100vh;
+}
+tw-sidebar { display: none; }
+
+/* ── PASSAGE ── */
+tw-passage {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1.22em;
+  line-height: 1.9;
+  max-width: 660px;
+  width: 88%;
+  margin: 0 auto;
+  padding: 5.5em 0 11em;
+  color: #d4cbc2;
+  text-align: left;
+  position: relative;
+  animation: fadein 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+tw-passage p { margin: 0 0 0.85em; }
+
+/* ── TYPOGRAPHIE ── */
+tw-passage em {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 1.05em;
+  color: #b8a89e;
+}
+tw-passage em em {
+  font-style: normal;
+  color: #cdbdb4;
+  letter-spacing: 0.02em;
+}
+tw-passage strong {
+  font-weight: 500;
+  color: #e0d2c8;
+}
+tw-passage hr {
+  border: none;
+  border-top: 1px solid rgba(200,160,130,0.1);
+  margin: 2.8em 0;
+  width: 12%;
+}
+
+/* ── INVENTAIRE — traitement distinct ── */
+.inventaire {
+  display: block;
+  margin: 0.15em 0 0.15em 1.8em;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 1.04em;
+  color: #a89888;
+  position: relative;
+}
+.inventaire::before {
+  content: '·';
+  position: absolute;
+  left: -1.1em;
+  color: rgba(200,160,130,0.25);
+  font-style: normal;
+}
+
+/* ── CHOIX BARRÉS ── */
+.choix-barre {
+  display: block;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 1.08em;
+  font-weight: 300;
+  color: rgba(122,110,104,0.25);
+  text-decoration: line-through;
+  text-decoration-color: rgba(200,160,130,0.15);
+  padding: 0.5em 0 0.5em 1.6em;
+  margin: 0.12em 0;
+  position: relative;
+  pointer-events: none;
+}
+.choix-barre::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: rgba(200,160,130,0.07);
+  font-style: normal;
+}
+
+/* ── PASSAGES MÉTA ── */
+tw-story[style*='070810'] tw-passage,
+tw-story[style*='08090d'] tw-passage,
+tw-story[style*='040507'] tw-passage {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.88em;
+  line-height: 2.1;
+  letter-spacing: 0.025em;
+  color: #7a7268;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  tw-passage {
+    font-size: 1.08em;
+    width: 92%;
+    padding: 3.5em 0 8em;
+    line-height: 1.82;
+  }
+}
+
+/* ── WATERMARK CHAPITRE ── */
+.ch-wm {
+  position: absolute;
+  top: -0.1em;
+  right: -0.05em;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 9em;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(200, 160, 130, 0.04);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.02em;
+  z-index: 0;
+}
+tw-passage > *:not(.ch-wm) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── INVENTAIRE ── */
+span.inv {
+  display: block;
+  margin: 0.05em 0 0.05em 1.6em;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 1.02em;
+  color: #a89888;
+  position: relative;
+}
+span.inv::before {
+  content: '·';
+  position: absolute;
+  left: -1em;
+  color: rgba(200,160,130,0.3);
+  font-style: normal;
+}
+
+/* ── TRANSITIONS plus douces ── */
+tw-passage {
+  animation: fadein 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── PAGE DE TITRE ── */
+.titre-tag {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.58em;
+  letter-spacing: 0.35em;
+  color: rgba(200,160,130,0.18);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 5em;
+}
+.titre-main {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 3.2em;
+  font-weight: 300;
+  color: #ddd3c8;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  display: block;
+}
+.titre-divider {
+  width: 28px;
+  height: 1px;
+  background: rgba(200,160,130,0.15);
+  margin: 3.8em 0;
+}
+.titre-epigraphe {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 0.95em;
+  color: rgba(200,160,130,0.35);
+  line-height: 2;
+  max-width: 440px;
+  display: block;
+  margin-bottom: 3.5em;
+}
+.titre-avertissement {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 0.78em;
+  color: rgba(200,160,130,0.18);
+  line-height: 1.9;
+  display: block;
+  margin-bottom: 6em;
+}
+.titre-entrer {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 0.9em;
+  color: rgba(200,160,130,0.3);
+  display: block;
+}
+
+/* ═══════════════════════════════════════
+   DIRECTION 1 — Fragments de mémoire
+   ═══════════════════════════════════════ */
+#fr-memories {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.fr-mem-fragment {
+  position: absolute;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 0.82em;
+  color: rgba(200,160,130,0.045);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+  transition: opacity 4s ease;
+}
+
+/* ═══════════════════════════════════════
+   DIRECTION 2 — Mots qui trahissent
+   ═══════════════════════════════════════ */
+.doubt {
+  opacity: 0.72;
+  letter-spacing: 0.025em;
+  font-style: inherit;
+}
+
+/* ═══════════════════════════════════════
+   DIRECTION 3 — Prénom en watermark DOCUMENTMARI
+   ═══════════════════════════════════════ */
+.mari-wm {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 6em;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(200,160,130,0.03);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  letter-spacing: 0.08em;
+}
+
+/* ═══════════════════════════════════════
+   DIRECTION 4 — Rétrécissement dans les boucles
+   Géré via JS sur tw-passage directement
+   ═══════════════════════════════════════ */
+tw-passage.boucle-1 { max-width: 640px !important; }
+tw-passage.boucle-2 { max-width: 600px !important; }
+tw-passage.boucle-3 { max-width: 560px !important; }
+
+/* ═══════════════════════════════════════
+   DIRECTION 5 — Ornements de séparation
+   ═══════════════════════════════════════ */
+/* CH1-CH4 : tiret simple, déjà géré */
+
+/* CH5-CH9 : ornement centré */
+tw-story[data-chapter="5"] tw-passage hr,
+tw-story[data-chapter="6"] tw-passage hr,
+tw-story[data-chapter="7"] tw-passage hr,
+tw-story[data-chapter="8"] tw-passage hr,
+tw-story[data-chapter="9"] tw-passage hr {
+  width: 0;
+  position: relative;
+  overflow: visible;
+}
+tw-story[data-chapter="5"] tw-passage hr::before,
+tw-story[data-chapter="6"] tw-passage hr::before,
+tw-story[data-chapter="7"] tw-passage hr::before,
+tw-story[data-chapter="8"] tw-passage hr::before,
+tw-story[data-chapter="9"] tw-passage hr::before {
+  content: '✦';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.55em;
+  color: rgba(200,160,130,0.18);
+  letter-spacing: 0.4em;
+}
+
+/* Boucles : ligne incomplète (ouverte à droite) */
+tw-story[data-chapter="boucle"] tw-passage hr {
+  width: 35%;
+  border-top: 1px solid rgba(200,160,130,0.08);
+  margin-right: auto;
+  margin-left: 0;
+}
+tw-story[data-chapter="boucle"] tw-passage hr::after {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-right: 1px solid rgba(200,160,130,0.12);
+  border-top: 1px solid rgba(200,160,130,0.12);
+  transform: rotate(45deg) translateY(-3px);
+  float: right;
+  margin-top: -4px;
+}
+
+/* ── SEUIL3 — animation du prénom convoqué ── */
+@keyframes fr-name-appear {
+  from { opacity: 0; transform: translateY(6px) scale(0.98); filter: blur(2px); }
+  to   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+tw-passage .fr-name-reveal {
+  animation: fr-name-appear 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+  display: inline-block;
+}
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">
+(function() {
+  'use strict';
+
+  /* Toutes les variables préfixées _fr_ pour éviter tout conflit Harlowe */
+  var _fr_stylesDone = false;
+  var _fr_grainDone = false;
+  var _fr_btnEl = null;
+  var _fr_audioCtx = null;
+  var _fr_audioGain = null;
+  var _fr_audioPlaying = false;
+  var _fr_observer = null;
+
+  /* ── CSS liens — injecté après Harlowe ── */
+  function _fr_injectStyles() {
+    if (_fr_stylesDone) return;
+    _fr_stylesDone = true;
+    var _fr_el = document.createElement('style');
+    _fr_el.id = 'fr-link-styles';
+    _fr_el.textContent = [
+      'tw-passage tw-link, tw-hook tw-link {',
+      '  color: #8a7e78 !important;',
+      '  font-family: "Cormorant Garamond",Georgia,serif !important;',
+      '  font-style: italic !important;',
+      '  font-weight: 300 !important;',
+      '  font-size: 1.08em !important;',
+      '  text-decoration: none !important;',
+      '  display: block !important;',
+      '  position: relative !important;',
+      '  padding: 0.5em 0 0.5em 1.6em !important;',
+      '  margin: 0.12em 0 !important;',
+      '  border: none !important;',
+      '  background: none !important;',
+      '  cursor: pointer !important;',
+      '  pointer-events: auto !important;',
+      '  transition: color 0.4s ease, padding-left 0.4s ease !important;',
+      '}',
+      'tw-passage tw-link:first-of-type { margin-top: 2.2em !important; }',
+      'tw-passage tw-link::before, tw-hook tw-link::before {',
+      '  content: "—" !important;',
+      '  position: absolute !important;',
+      '  left: 0 !important;',
+      '  color: rgba(200,160,130,0.2) !important;',
+      '  font-style: normal !important;',
+      '  font-family: "EB Garamond",Georgia,serif !important;',
+      '  transition: color 0.4s ease, left 0.4s ease !important;',
+      '}',
+      'tw-passage tw-link:hover, tw-hook tw-link:hover {',
+      '  color: #d8c8c0 !important;',
+      '  padding-left: 2.2em !important;',
+      '}',
+      'tw-passage tw-link:active, tw-hook tw-link:active {',
+      '  color: #d8c8c0 !important;',
+      '  text-decoration: none !important;',
+      '}',
+      'tw-passage tw-link:hover::before { color: rgba(200,160,130,0.55) !important; left: 0.2em !important; }',
+      /* Passages méta */
+      'tw-story[style*="070810"] tw-passage tw-link,',
+      'tw-story[style*="08090d"] tw-passage tw-link,',
+      'tw-story[style*="040507"] tw-passage tw-link {',
+      '  font-family: "Share Tech Mono",monospace !important;',
+      '  font-style: normal !important;',
+      '}',
+      'tw-story[style*="070810"] tw-passage tw-link::before,',
+      'tw-story[style*="08090d"] tw-passage tw-link::before,',
+      'tw-story[style*="040507"] tw-passage tw-link::before { content: ">" !important; }',
+      /* Liens inline */
+      'p tw-link, tw-passage p tw-link {',
+      '  display: inline !important;',
+      '  padding: 0 !important;',
+      '  margin: 0 !important;',
+      '  font-size: inherit !important;',
+      '  border-bottom: 1px solid rgba(200,160,130,0.22) !important;',
+      '}',
+      'p tw-link::before { display: none !important; }',
+      'p tw-link:hover { padding-left: 0 !important; }',
+      /* Liens HTML */
+      'tw-passage a, tw-hook a {',
+      '  color: #9e9088 !important;',
+      '  text-decoration: none !important;',
+      '  font-style: italic !important;',
+      '  border-bottom: 1px solid rgba(200,160,130,0.22) !important;',
+      '  pointer-events: auto !important;',
+      '}',
+      'tw-passage a:hover { color: #d8c8c0 !important; }',
+      /* Curseur */
+      'tw-link { cursor: pointer !important; }',
+    ].join('\n');
+    document.head.appendChild(_fr_el);
+  }
+
+  /* ── Grain animé ── */
+  function _fr_createGrain() {
+    if (_fr_grainDone || document.getElementById('fr-grain')) return;
+    _fr_grainDone = true;
+    var _fr_g = document.createElement('div');
+    _fr_g.id = 'fr-grain';
+    _fr_g.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9000;opacity:0.025;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'200\' height=\'200\' filter=\'url(%23n)\'/%3E%3C/svg%3E");background-size:200px;animation:fr-gm 0.6s steps(1) infinite';
+    document.body.appendChild(_fr_g);
+    var _fr_gs = document.createElement('style');
+    _fr_gs.textContent = '@keyframes fr-gm{0%{background-position:0 0}33%{background-position:-50px -20px}66%{background-position:-30px -60px}100%{background-position:-80px -10px}}';
+    document.head.appendChild(_fr_gs);
+  }
+
+  /* ── Bouton son ── */
+  function _fr_startAudio() {
+    try {
+      _fr_audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      var _fr_rate = _fr_audioCtx.sampleRate;
+      var _fr_buf = _fr_audioCtx.createBuffer(2, _fr_rate * 4, _fr_rate);
+      for (var _fr_c = 0; _fr_c < 2; _fr_c++) {
+        var _fr_d = _fr_buf.getChannelData(_fr_c);
+        var _fr_b0=0,_fr_b1=0,_fr_b2=0,_fr_b3=0,_fr_b4=0,_fr_b5=0,_fr_b6=0;
+        for (var _fr_i = 0; _fr_i < _fr_buf.length; _fr_i++) {
+          var _fr_w = Math.random() * 2 - 1;
+          _fr_b0=0.99886*_fr_b0+_fr_w*0.0555179;
+          _fr_b1=0.99332*_fr_b1+_fr_w*0.0750759;
+          _fr_b2=0.96900*_fr_b2+_fr_w*0.1538520;
+          _fr_b3=0.86650*_fr_b3+_fr_w*0.3104856;
+          _fr_b4=0.55000*_fr_b4+_fr_w*0.5329522;
+          _fr_b5=-0.7616*_fr_b5-_fr_w*0.0168980;
+          _fr_d[_fr_i] = (_fr_b0+_fr_b1+_fr_b2+_fr_b3+_fr_b4+_fr_b5+_fr_b6+_fr_w*0.5362)*0.09;
+          _fr_b6 = _fr_w * 0.115926;
+        }
+      }
+      var _fr_src = _fr_audioCtx.createBufferSource();
+      _fr_src.buffer = _fr_buf;
+      _fr_src.loop = true;
+      var _fr_lpf = _fr_audioCtx.createBiquadFilter();
+      _fr_lpf.type = 'lowpass';
+      _fr_lpf.frequency.value = 200;
+      _fr_audioGain = _fr_audioCtx.createGain();
+      _fr_audioGain.gain.value = 0;
+      _fr_src.connect(_fr_lpf);
+      _fr_lpf.connect(_fr_audioGain);
+      _fr_audioGain.connect(_fr_audioCtx.destination);
+      _fr_src.start();
+      _fr_audioGain.gain.setTargetAtTime(0.14, _fr_audioCtx.currentTime, 2.5);
+      _fr_audioPlaying = true;
+    } catch(_fr_e) {}
+  }
+
+  function _fr_toggleAudio() {
+    if (!_fr_audioCtx) { _fr_startAudio(); }
+    else if (_fr_audioPlaying) {
+      _fr_audioGain.gain.setTargetAtTime(0, _fr_audioCtx.currentTime, 1);
+      _fr_audioPlaying = false;
+    } else {
+      _fr_audioGain.gain.setTargetAtTime(0.14, _fr_audioCtx.currentTime, 1.5);
+      _fr_audioPlaying = true;
+    }
+    if (_fr_btnEl) {
+      _fr_btnEl.textContent = _fr_audioPlaying ? '◉ son' : '○ son';
+      _fr_btnEl.style.color = _fr_audioPlaying ? 'rgba(200,160,130,0.45)' : 'rgba(200,160,130,0.22)';
+    }
+  }
+
+  function _fr_createBtn() {
+    if (document.getElementById('fr-snd-btn')) return;
+    _fr_btnEl = document.createElement('button');
+    _fr_btnEl.id = 'fr-snd-btn';
+    _fr_btnEl.textContent = '○ son';
+    _fr_btnEl.style.cssText = [
+      'position:fixed', 'bottom:1.8em', 'right:2.2em',
+      'background:none', 'border:none',
+      'font-family:"Share Tech Mono",Courier,monospace',
+      'font-size:0.6em', 'letter-spacing:0.16em',
+      'color:rgba(200,160,130,0.22)',
+      'cursor:pointer', 'z-index:9999',
+      'transition:color 0.4s', 'padding:0.6em 1em',
+      'text-transform:lowercase', 'outline:none',
+      'user-select:none', 'pointer-events:all'
+    ].join(';');
+    _fr_btnEl.addEventListener('mouseenter', function() {
+      _fr_btnEl.style.color = 'rgba(200,160,130,0.65)';
+    });
+    _fr_btnEl.addEventListener('mouseleave', function() {
+      _fr_btnEl.style.color = _fr_audioPlaying
+        ? 'rgba(200,160,130,0.45)'
+        : 'rgba(200,160,130,0.22)';
+    });
+    _fr_btnEl.addEventListener('click', _fr_toggleAudio);
+    document.body.appendChild(_fr_btnEl);
+  }
+
+  /* ── Animation RECAP ── */
+  function _fr_animateTerminal() {
+    var _fr_lines = document.querySelectorAll('.term-line');
+    _fr_lines.forEach(function(_fr_line, _fr_idx) {
+      _fr_line.style.opacity = '0';
+      _fr_line.style.transform = 'translateX(-8px)';
+      var _fr_delay = 150 + _fr_idx * 200;
+      _fr_line.style.transition = 'opacity 0.45s ease ' + _fr_delay + 'ms, transform 0.45s ease ' + _fr_delay + 'ms';
+      setTimeout(function() {
+        _fr_line.style.opacity = '1';
+        _fr_line.style.transform = 'translateX(0)';
+      }, _fr_delay + 60);
+    });
+  }
+
+  /* ── Init principale ── */
+  function _fr_init() {
+    var _fr_tw = document.querySelector('tw-story');
+    if (!_fr_tw) { setTimeout(_fr_init, 100); return; }
+    _fr_injectStyles();
+    _fr_createGrain();
+    _fr_createBtn();
+    _fr_animateTerminal();
+    _fr_detectChapter();
+    _fr_applyBoucleWidth();
+
+    /* Observer pour les changements de passage */
+    if (!_fr_observer) {
+      _fr_observer = new MutationObserver(function(_fr_muts) {
+        var _fr_changed = false;
+        for (var _fr_mi = 0; _fr_mi < _fr_muts.length; _fr_mi++) {
+          if (_fr_muts[_fr_mi].addedNodes.length) { _fr_changed = true; break; }
+        }
+        if (_fr_changed) {
+          setTimeout(_fr_animateTerminal, 120);
+          setTimeout(_fr_detectChapter, 150);
+          setTimeout(_fr_applyBoucleWidth, 150);
+          setTimeout(_fr_applyTeinture, 200);
+        }
+      });
+      _fr_observer.observe(_fr_tw, { childList: true, subtree: false });
+    }
+  }
+
+  /* Démarrer */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { setTimeout(_fr_init, 80); });
+  } else {
+    setTimeout(_fr_init, 80);
+  }
+
+
+
+/* ════════════════════════════════════════
+   DIRECTION 1 — Fragments de mémoire
+   ════════════════════════════════════════ */
+var _fr_fragments = [
+  "Il y a une fissure au plafond.",
+  "Sa façon de tenir sa tasse.",
+  "Tu n\u2019as pas vu le jour partir.",
+  "L\u2019assiette froide dans le couloir.",
+  "Juste encore une fois.",
+  "Il peut attendre encore un peu.",
+  "Tu n\u2019y penses pas.",
+  "Sa respiration \u00e0 c\u00f4t\u00e9 de toi.",
+  "C\u2019est suffisant.",
+  "Tu le sais depuis assez longtemps.",
+  "Comme si la condition \u00e9tait toi.",
+  "Sa main quelque part dans le noir.",
+  "Le monde r\u00e9el sera l\u00e0 demain.",
+  "Il faut du temps pour construire.",
+  "Tu n\u2019arrives plus \u00e0 te souvenir du nom."
+];
+var _fr_memContainer = null;
+var _fr_memActive = false;
+
+function _fr_createMemories() {
+  if (document.getElementById('fr-memories')) return;
+  _fr_memContainer = document.createElement('div');
+  _fr_memContainer.id = 'fr-memories';
+  document.body.appendChild(_fr_memContainer);
+}
+
+function _fr_showMemories(active) {
+  _fr_memActive = active;
+  _fr_createMemories();
+  if (!active) {
+    _fr_memContainer.innerHTML = '';
+    return;
+  }
+  // Créer 4-6 fragments positionnés aléatoirement
+  _fr_memContainer.innerHTML = '';
+  var _fr_count = 4 + Math.floor(Math.random() * 3);
+  var _fr_used = [];
+  for (var _fr_mi = 0; _fr_mi < _fr_count; _fr_mi++) {
+    var _fr_idx;
+    do { _fr_idx = Math.floor(Math.random() * _fr_fragments.length); }
+    while (_fr_used.indexOf(_fr_idx) > -1);
+    _fr_used.push(_fr_idx);
+    var _fr_frag = document.createElement('div');
+    _fr_frag.className = 'fr-mem-fragment';
+    _fr_frag.textContent = _fr_fragments[_fr_idx];
+    _fr_frag.style.left = (8 + Math.random() * 70) + '%';
+    _fr_frag.style.top = (10 + Math.random() * 75) + '%';
+    _fr_frag.style.opacity = '0';
+    _fr_frag.style.transform = 'rotate(' + (-2 + Math.random() * 4) + 'deg)';
+    _fr_memContainer.appendChild(_fr_frag);
+    (function(_fr_el, _fr_delay) {
+      setTimeout(function() { _fr_el.style.opacity = '1'; }, _fr_delay);
+    })(_fr_frag, 300 + _fr_mi * 800);
+  }
+}
+
+/* ════════════════════════════════════════
+   DIRECTION 4 — Rétrécissement boucles
+   ════════════════════════════════════════ */
+function _fr_applyBoucleWidth() {
+  var _fr_tw = document.querySelector('tw-story');
+  var _fr_pass = document.querySelector('tw-passage');
+  var _fr_marker = document.querySelector('.boucle-marker');
+  if (!_fr_pass || !_fr_tw) return;
+
+  if (_fr_marker) {
+    // On est dans une boucle
+    var _fr_refus = parseInt(_fr_tw.getAttribute('data-refus') || '0');
+    _fr_pass.classList.remove('boucle-1','boucle-2','boucle-3');
+    if (_fr_refus >= 3) _fr_pass.classList.add('boucle-3');
+    else if (_fr_refus >= 2) _fr_pass.classList.add('boucle-2');
+    else _fr_pass.classList.add('boucle-1');
+    _fr_tw.setAttribute('data-chapter', 'boucle');
+    _fr_showMemories(true);
+  } else {
+    _fr_pass.classList.remove('boucle-1','boucle-2','boucle-3');
+    _fr_tw.removeAttribute('data-chapter');
+    _fr_showMemories(false);
+  }
+}
+
+/* ════════════════════════════════════════
+   DIRECTION 5 — Chapitre courant sur tw-story
+   ════════════════════════════════════════ */
+function _fr_detectChapter() {
+  var _fr_tw = document.querySelector('tw-story');
+  if (!_fr_tw) return;
+  var _fr_pass = document.querySelector('tw-passage');
+  if (!_fr_pass) return;
+  // Chercher un watermark de chapitre
+  var _fr_wm = _fr_pass.querySelector('.ch-wm');
+  if (_fr_wm) {
+    var _fr_chText = _fr_wm.textContent.trim();
+    var _fr_chNums = {'I':1,'II':2,'III':3,'IV':4,'V':5,'VI':6,'VII':7,
+                      'VIII':8,'IX':9,'X':10,'XI':11,'XII':12,'XIII':13};
+    var _fr_chNum = _fr_chNums[_fr_chText];
+    if (_fr_chNum) _fr_tw.setAttribute('data-chapter', _fr_chNum);
+  }
+  // Mettre à jour le compteur de refus sur tw-story pour les boucles
+  // (passé via Harlowe variable — on lit depuis le DOM si possible)
+  var _fr_bm = document.querySelector('.boucle-marker');
+  if (_fr_bm) _fr_tw.setAttribute('data-chapter','boucle');
+}
+
+
+
+
+function _fr_applyTeinture() {
+  var _fr_st = document.querySelector('tw-story');
+  if (!_fr_st) return;
+  var _fr_ct = parseInt(_fr_st.getAttribute('data-cout') || '0');
+  if (_fr_ct >= 3) {
+    _fr_st.style.backgroundImage =
+      'radial-gradient(ellipse 70% 60% at 52% 48%, rgba(32,22,16,0.88) 0%, transparent 100%)';
+  } else if (_fr_ct >= 1) {
+    _fr_st.style.backgroundImage =
+      'radial-gradient(ellipse 70% 60% at 52% 48%, rgba(28,20,16,0.85) 0%, transparent 100%)';
+  }
+}
+
+})();</script><tw-passagedata pid="1" name="StoryInit" tags="startup" position="0,0" size="100,100">
 (set: $prenom to &quot;&quot;)
 (set: $mari to &quot;&quot;)
 (set: $refus to 0)
@@ -17,80 +711,115 @@
 (set: $boucle to 0)
 (set: $coutReel to 0)
 (go-to: &quot;SEUIL&quot;)
-</tw-passagedata><tw-passagedata pid="2" name="TITRE" tags="" position="240,0" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="2" name="TITRE" tags="" position="240,0" size="100,100">
+<div style='padding:5em 0 4em; display:flex; flex-direction:column; min-height:74vh; justify-content:center;'>
 
-  une fiction interactive
-  Ce que tu m&#39;as appris
-  à aimer
-  
-  
-    « Il faut du temps pour construire un palais mental.
-    Le problème c&#39;est qu&#39;on finit par ne plus savoir
-    qu&#39;on est à l&#39;intérieur. »
-  
-  
-    Cette fiction aborde la dépression, l&#39;isolement
-    et l&#39;attachement parasocial.
-    Certains chemins ne mènent pas où tu crois.
-  
+  <span class='titre-tag'>fiction interactive</span>
 
+  <span class='titre-main'>Ce que tu m&#39;as appris</span>
+  <span class='titre-main' style='margin-bottom:3.8em;'>&#224; aimer</span>
+
+  <div class='titre-divider'></div>
+
+  <span class='titre-epigraphe'>&#171;&#160;Il faut du temps pour construire un palais mental.<br>Le probl&#232;me c&#39;est qu&#39;on finit par ne plus savoir<br>qu&#39;on est &#224; l&#39;int&#233;rieur.&#160;&#187;</span>
+
+  <span class='titre-avertissement'>Cette fiction aborde la d&#233;pression, l&#39;isolement<br>et l&#39;attachement parasocial.<br><em>Certains chemins ne m&#232;nent pas o&#249; tu crois.</em></span>
+
+</div>
 
 [[Entrer.|SEUIL]]
-</tw-passagedata><tw-passagedata pid="3" name="SEUIL" tags="" position="480,0" size="100,100">
-Avant de commencer, dis-moi comment vous vous appelez.
+</tw-passagedata>
+<tw-passagedata pid="3" name="SEUIL" tags="" position="480,0" size="100,100">
+<div style='padding:4em 0 3em; min-height:55vh; display:flex; flex-direction:column; justify-content:center;'>
 
-*(Tu peux écrire n&#39;importe quoi. C&#39;est ce que font les rêveurs.)*
+<p style='font-family:"Cormorant Garamond",Georgia,serif; font-size:0.82em; letter-spacing:0.28em; color:rgba(200,160,130,0.22); text-transform:uppercase; margin-bottom:4em;'>avant de commencer</p>
 
----
+<p style='margin-bottom:0.6em;'>Dis-moi comment vous vous appelez.</p>
 
-(link: &quot;Elle s&#39;appelle...&quot;)[
-  (set: $prenom to (prompt: &quot;Son prénom :&quot;, &quot;&quot;))
-  (if: $prenom is &quot;&quot;)[
-    (set: $prenom to &quot;elle&quot;)
-  ]
-  (go-to: &quot;SEUIL2&quot;)
-]
-</tw-passagedata><tw-passagedata pid="4" name="SEUIL2" tags="" position="720,0" size="100,100">
-Et lui ?
+<p><em>(Tu peux écrire n'importe quoi. C'est ce que font les rêves.)</em></p>
 
-*(Le prénom que tu lui donnes. Celui que tu as peut-être déjà dans la tête.)*
+</div>
 
 ---
 
-(link: &quot;Il s&#39;appelle...&quot;)[
-  (set: $mari to (prompt: &quot;Son prénom à lui :&quot;, &quot;&quot;))
-  (if: $mari is &quot;&quot;)[
-    (set: $mari to &quot;lui&quot;)
-  ]
-  (go-to: &quot;CH1DEBUT&quot;)
+(link: "Elle s'appelle...")[ 
+ (set: $prenom to (prompt: "Son prénom :", "")) 
+ (if: $prenom is "")[ 
+  (set: $prenom to "elle") 
+ ] 
+ (go-to: "SEUIL2") 
 ]
-</tw-passagedata><tw-passagedata pid="5" name="CH1DEBUT" tags="" position="960,0" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="4" name="SEUIL2" tags="" position="720,0" size="100,100">
+<div style='padding:3em 0 2em;'>
+
+<p style='font-family:"Cormorant Garamond",Georgia,serif; font-size:1.3em; font-style:italic; font-weight:300; color:#bfb0a8; margin-bottom:2.5em;'>(print: $prenom).</p>
+
+<p style='margin-bottom:0.6em;'>Et lui ?</p>
+
+<p><em>(Le prénom que tu lui donnes.<br>Celui que tu as peut-être déjà dans la tête.)</em></p>
+
+<p style='font-size:0.85em; color:rgba(200,160,130,0.28); font-family:"Share Tech Mono",monospace; letter-spacing:0.1em; margin-top:2.5em;'>ce prénom apparaitra dans toute la fiction.</p>
+
+</div>
+
+---
+
+(link: "Il s'appelle...")[ 
+ (set: $mari to (prompt: "Son prénom à lui :", "")) 
+ (if: $mari is "")[ 
+  (set: $mari to "lui") 
+ ] 
+ (go-to: "SEUIL3") 
+]
+</tw-passagedata>
+<tw-passagedata pid="97" name="SEUIL3" tags="" position="600,200" size="100,100">
+<div style='padding:5em 0; min-height:60vh; display:flex; flex-direction:column; justify-content:center;'>
+
+<p style='font-family:"Share Tech Mono",Courier,monospace; font-size:0.6em; letter-spacing:0.3em; color:rgba(200,160,130,0.18); text-transform:uppercase; margin-bottom:5em;'>tu lui donnes ce prénom.</p>
+
+<p style='font-family:"Cormorant Garamond",Georgia,serif; font-size:3.8em; font-weight:300; font-style:italic; color:#d8ccc4; line-height:1.1; margin-bottom:0.2em; letter-spacing:0.04em;'>(print: $mari).</p>
+
+<div style='width:28px; height:1px; background:rgba(200,160,130,0.12); margin:3.5em 0;'></div>
+
+<p style='font-family:"Cormorant Garamond",Georgia,serif; font-style:italic; font-size:0.95em; color:rgba(200,160,130,0.3); line-height:2;'>Il n'existe pas encore.<br>Il commencera dès que tu tourneras la page.</p>
+
+</div>
+
+[[Commencer.|CH1DEBUT]]
+</tw-passagedata>
+<tw-passagedata pid="5" name="CH1DEBUT" tags="" position="960,0" size="100,100">
+<div class='ch-wm'>I</div>
 Il y a un cours que tu n&#39;as pas rendu.
 
 Pas par oubli — tu l&#39;as écrit, réécrit, abandonné trois fois. Il est quelque part dans un fichier dont tu n&#39;arrives plus à te souvenir du nom, enfoui sous d&#39;autres fichiers ouverts et jamais terminés, et à un moment tu as fermé l&#39;ordinateur et tu t&#39;es allongée et c&#39;est de là que tu fais l&#39;inventaire maintenant.
 
-Le plafond a une fissure en haut à gauche. Elle date d&#39;avant toi — tu l&#39;as remarquée le premier jour et tu t&#39;es dit qu&#39;il faudrait la signaler et tu ne l&#39;as jamais signalée. Elle a la forme de quelque chose mais tu as arrêté d&#39;essayer de trouver quoi. Il y a une satisfaction particulière à avoir arrêté d&#39;essayer — pas de la résignation, plutôt une décision tacite que certaines choses peuvent rester ouvertes sans que ça soit un problème.
+Le plafond a une fissure en haut à gauche. Elle date d&#39;avant toi — tu l&#39;as remarquée le premier jour et tu t&#39;es dit qu&#39;il faudrait la signaler et tu ne l&#39;as jamais signalée. Elle a la forme de quelque chose mais tu as arrêté d&#39;essayer de trouver quoi.
 
-Solène a laissé une assiette devant ta porte ce matin. Tu le sais parce que tu as entendu ses pas dans le couloir — cette façon qu&#39;elle a de marcher très doucement quand elle pense que tu dors, comme si le sol était fragile, comme si ses pieds pouvaient traverser quelque chose de délicat. Le bruit de l&#39;assiette posée délicatement. La pause. Ses pas qui repartent.
+Solène a laissé une assiette devant ta porte ce matin. Tu le sais parce que tu as entendu ses pas dans le couloir — cette façon qu&#39;elle a de marcher très doucement quand elle pense que tu dors. Le bruit de l&#39;assiette posée délicatement. La pause. Ses pas qui repartent.
 
 Il est — tu tournes la tête — seize heures quarante.
 
 Tu n&#39;as pas mangé depuis hier.
 
-Ce n&#39;est pas une décision. C&#39;est juste que le moment de se lever et d&#39;aller à la cuisine est un moment que tu remets. Pas indéfiniment — tu vas y aller, tu le sais, à un moment ton corps va décider pour toi et tu vas te lever. Juste pas maintenant. Maintenant tu fais l&#39;inventaire.
+[[Continuer.|CH1DEBUT2]]
+</tw-passagedata>
+<tw-passagedata pid="91" name="CH1DEBUT2" tags="" position="5000,400" size="100,100">
+Ce n&#39;est pas une décision. C&#39;est juste que le moment de se lever est un moment que tu remets. Pas indéfiniment — à un moment ton corps va décider pour toi. Juste pas maintenant.
 
-*Le cours non rendu : un.*
-*L&#39;assiette froide dans le couloir : une.*
-*Les jours depuis que tu as quitté l&#39;appartement : trois.*
-*Les messages sans réponse : tu n&#39;as pas encore regardé. Plusieurs, probablement.*
+<span class='inv'>Le cours non rendu : un.</span>
+<span class='inv'>L&#39;assiette froide dans le couloir : une.</span>
+<span class='inv'>Les jours depuis que tu as quitté l&#39;appartement : trois.</span>
+<span class='inv'>Les messages sans réponse : tu n&#39;as pas encore regardé. Plusieurs, probablement.</span>
 
-*(Ce n&#39;est pas un record. Tu préfères ne pas te souvenir du record.)*
+<span class='inv'>(Ce n&#39;est pas un record. Tu préfères ne pas te souvenir du record.)</span>
 
 Le téléphone vibre sur la table de nuit. Une fois, deux fois — une notification, pas un appel. Tu ne regardes pas. L&#39;écran s&#39;allume et s&#39;éteint dans ta vision périphérique, patient, comme quelque chose qui attend son tour.
 
-Tu as vingt-deux ans et tu es étudiante en école d&#39;art dans une ville où tu ne connais pas beaucoup de gens. Tu as une colocataire qui fait à manger pour deux même quand tu ne sors pas de ta chambre et qui laisse des assiettes devant les portes closes. Tu as une fissure au plafond et un cours non rendu et une fatigue qui n&#39;est pas le genre de fatigue qu&#39;on règle avec du sommeil, qui n&#39;est pas non plus le genre de fatigue qu&#39;on explique facilement à quelqu&#39;un qui ne l&#39;a pas vécue.
+Tu as vingt-deux ans. Tu es étudiante en école d&#39;art dans une ville où tu ne connais pas beaucoup de gens. Tu as une colocataire qui fait à manger pour deux même quand tu ne sors pas de ta chambre. Tu as une fissure au plafond et une fatigue qui n&#39;est pas le genre de fatigue qu&#39;on règle avec du sommeil.
 
-Tu le sais depuis assez longtemps pour ne plus en être surprise. C&#39;est quelque chose que tu as appris à porter — pas à guérir, pas à ignorer, juste à porter. Les bons jours c&#39;est léger. Les autres jours c&#39;est tout ce que tu fais.
+Tu le sais depuis assez longtemps pour ne plus en être surprise. Les bons jours c&#39;est léger. Les autres jours c&#39;est tout ce que tu fais.
 
 Aujourd&#39;hui c&#39;est un jour intermédiaire.
 
@@ -99,7 +828,8 @@ Aujourd&#39;hui c&#39;est un jour intermédiaire.
 [[Tu prends le téléphone pour voir qui a écrit.|CH1TEL]]
 [[Tu te lèves pour aller à la cuisine — l&#39;assiette de Solène attend.|CH1CUISINEDIRECT]]
 [[Tu restes. Tu continues l&#39;inventaire.|CH1INVENTAIRE2]]
-</tw-passagedata><tw-passagedata pid="6" name="CH1INVENTAIRE2" tags="" position="1200,0" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="6" name="CH1INVENTAIRE2" tags="" position="1200,0" size="100,100">
 Tu continues.
 
 *Les plantes sur le rebord de la fenêtre : deux.*
@@ -136,7 +866,8 @@ Tu restes encore un moment à regarder le plafond.
 
 [[Tu vas ouvrir la porte et récupérer l&#39;assiette.|CH1ASSIETTE]]
 [[Tu restes encore. Tu penses à des choses sans les choisir.|CH1PENSEES]]
-</tw-passagedata><tw-passagedata pid="7" name="CH1PENSEES" tags="" position="1440,0" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="7" name="CH1PENSEES" tags="" position="1440,0" size="100,100">
 Tu penses à des choses sans les choisir.
 
 C&#39;est comme ça que ça marche depuis un moment — les pensées arrivent sans être invitées et tu ne les poursuis pas vraiment, tu les laisses traverser le champ comme des silhouettes dans le brouillard. Tu n&#39;essaies pas de les attraper. Tu essaies encore moins de les analyser. Tu les laisses juste être là et passer.
@@ -158,7 +889,8 @@ Pas parce que tu as décidé de te lever. Parce que ton corps a décidé pour to
 ---
 
 [[Tu vas récupérer l&#39;assiette dans le couloir.|CH1ASSIETTE]]
-</tw-passagedata><tw-passagedata pid="8" name="CH1TEL" tags="" position="1680,0" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="8" name="CH1TEL" tags="" position="1680,0" size="100,100">
 Sept notifications.
 
 Tu les passes en revue sans vraiment les lire — c&#39;est une façon que tu as appris à avoir avec les notifications, les scanner plutôt que les lire, repérer celles qui demandent quelque chose et ignorer les autres jusqu&#39;à ce qu&#39;elles demandent plus fort.
@@ -183,7 +915,8 @@ Tu poses le téléphone.
 
 [[Tu vas à la cuisine.|CH1CUISINEDIRECTE]]
 [[Tu récupères l&#39;assiette dans le couloir d&#39;abord.|CH1ASSIETTE]]
-</tw-passagedata><tw-passagedata pid="9" name="CH1ASSIETTE" tags="" position="1920,0" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="9" name="CH1ASSIETTE" tags="" position="1920,0" size="100,100">
 Tu ouvres la porte de ta chambre.
 
 L&#39;assiette est là — posée sur le sol du couloir, couverte d&#39;une deuxième assiette retournée par-dessus pour garder la chaleur, une technique que Solène a développée parce que les couvercles pour assiettes ça n&#39;existe pas dans cet appartement et qu&#39;elle a refusé d&#39;acheter quelque chose d&#39;aussi spécifique. Un post-it collé sur le dessus :
@@ -203,7 +936,8 @@ Le riz est un peu trop cuit. Les légumes sont des courgettes et des carottes av
 ---
 
 [[La soirée — Solène rentre.|CH1SOLENE]]
-</tw-passagedata><tw-passagedata pid="10" name="CH1CUISINEDIRECT" tags="" position="2160,0" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="10" name="CH1CUISINEDIRECT" tags="" position="2160,0" size="100,100">
 La cuisine sent la soupe froide et le détergent.
 
 Solène a fait la vaisselle avant de partir ce matin — les bols sont rangés à l&#39;envers sur l&#39;égouttoir, à l&#39;envers pour que l&#39;eau s&#39;écoule correctement, ce truc qu&#39;elle fait depuis toujours et que tu faisais avant de le connaître à l&#39;envers et que tu fais maintenant aussi à l&#39;envers sans y penser. C&#39;est ça, vivre avec quelqu&#39;un longtemps : adopter ses façons de faire des petites choses sans même décider de les adopter.
@@ -226,7 +960,8 @@ Tu manges debout, sur le plan de travail. Dehors, il commence à faire sombre.
 
 [[Tu entends la clé dans la serrure — Solène rentre.|CH1SOLENE]]
 [[Tu finis et tu retournes dans ta chambre avant qu&#39;elle arrive.|CH1CHAMBRESEULE]]
-</tw-passagedata><tw-passagedata pid="11" name="CH1CUISINEDIRECTE" tags="" position="2400,0" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="11" name="CH1CUISINEDIRECTE" tags="" position="2400,0" size="100,100">
 La cuisine sent la soupe froide et le détergent. Il y a une casserole dans le frigo avec un post-it : *réchauffe 5 min à feu doux — ne brûle pas tout.* Tu réchauffes. Tu manges debout sur le plan de travail.
 
 C&#39;est une soupe aux lentilles. Solène en fait souvent dans les périodes comme celle-là.
@@ -236,7 +971,8 @@ Dehors, il fait presque nuit.
 ---
 
 [[Solène rentre.|CH1SOLENE]]
-</tw-passagedata><tw-passagedata pid="12" name="CH1SOLENE" tags="" position="2640,0" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="12" name="CH1SOLENE" tags="" position="2640,0" size="100,100">
 Elle entre avec ses clés qui font du bruit.
 
 Elle a un porte-clés trop chargé — un porte-bonheur en céramique que son père lui a rapporté d&#39;un voyage, une photo plastifiée de votre premier appartement ensemble, un trombonne qu&#39;elle a mis là pour une raison qu&#39;elle a oubliée et qu&#39;elle n&#39;a jamais enlevé. Ce bruit de ses clés dans la serrure, tu l&#39;associes à *quelqu&#39;un revient*, c&#39;est la définition sonore du retour dans cet appartement.
@@ -273,7 +1009,8 @@ C&#39;est Solène. Trois ans de colocation, deux déménagements, une rupture ch
 
 [[Vous parlez encore un peu — la soupe, l&#39;école, Rosalie.|CH1PARLER]]
 [[Tu retournes dans ta chambre. Tu as besoin d&#39;être seule encore.|CH1CHAMBRESEULE]]
-</tw-passagedata><tw-passagedata pid="13" name="CH1PARLER" tags="" position="2880,0" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="13" name="CH1PARLER" tags="" position="2880,0" size="100,100">
 — T&#39;as l&#39;air un peu mieux, dit-elle. Comparé à la semaine dernière.
 
 Tu réfléchis honnêtement à si c&#39;est vrai.
@@ -313,7 +1050,8 @@ Solène ne dit rien. Elle rince son bol. Elle le pose à l&#39;envers sur l&#39;
 ---
 
 [[Tu retournes dans ta chambre.|CH1CHAMBRESEULE]]
-</tw-passagedata><tw-passagedata pid="14" name="CH1CHAMBRESEULE" tags="" position="3120,0" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="14" name="CH1CHAMBRESEULE" tags="" position="3120,0" size="100,100">
 Ta chambre.
 
 La fissure au plafond. La lumière de la rue qui filtre sous le rideau — orange, la couleur des lampadaires, cette lumière particulière des nuits parisiennes qui n&#39;est jamais vraiment noire. La plante qui résiste sur le rebord de la fenêtre. Le carnet fermé sur le bureau.
@@ -333,7 +1071,9 @@ Tu fermes les yeux.
 ---
 
 [[Chapitre 2.|CH2DEBUT]]
-</tw-passagedata><tw-passagedata pid="15" name="CH2DEBUT" tags="" position="3360,0" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="15" name="CH2DEBUT" tags="" position="3360,0" size="100,100">
+<div class='ch-wm'>II</div>
 Tu l&#39;as trouvé par accident.
 
 C&#39;était en mars. Tu étais dans une mauvaise semaine — une de celles où sortir du lit représente une négociation avec toi-même. Tu faisais défiler SoundCloud sans vraiment écouter, ces playlists générées automatiquement qui mettent des choses les unes après les autres, et sa voix était arrivée dans l&#39;ordre aléatoire entre deux morceaux que tu ne te rappelles plus.
@@ -370,53 +1110,50 @@ Tu t&#39;endors avec le quatrième qui tourne — celui qui finit sur trente sec
 
 [[Tu continues à écouter les jours suivants.|CH2GLISSEMENT]]
 [[Tu poses le téléphone. Tu essaies de ne pas aller trop loin ce soir.|CH2LIMITE]]
-</tw-passagedata><tw-passagedata pid="16" name="CH2CHERCHER" tags="" position="3600,0" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="16" name="CH2CHERCHER" tags="" position="3600,0" size="100,100">
 (set: $coutReel to $coutReel + 1)
 
 Tu cherches.
 
-Tu commences par les morceaux — les anciens d&#39;abord, ceux d&#39;avant la période actuelle, une époque où le son était plus brut et moins construit, quelque chose qui ressemble à quelqu&#39;un qui apprend encore où mettre son poids et qui fait confiance à l&#39;instinct parce qu&#39;il n&#39;a pas encore la technique pour autre chose. Il y a une brutalité dans ces morceaux-là qui te touche différemment de la précision des récents. Comme voir les deux versions d&#39;une même personne et comprendre le chemin entre elles.
+Tu commences par les morceaux — les anciens d&#39;abord, ceux d&#39;avant la période actuelle. Une époque où le son était plus brut, quelque chose qui ressemble à quelqu&#39;un qui apprend encore où mettre son poids. Il y a une brutalité dans ces morceaux-là qui te touche différemment de la précision des récents. Comme voir les deux versions d&#39;une même personne et comprendre le chemin entre elles.
 
 Puis les interviews.
 
-La première dure une heure. Les sous-titres sont approximatifs — traduits automatiquement, avec ces maladresses particulières des traductions automatiques qui disent parfois l&#39;inverse de ce qui a été dit ou qui produisent des formulations que personne n&#39;emploierait à l&#39;oral. Mais il y a assez pour comprendre. Il répond aux questions avec une façon de peser les mots avant de les dire, de laisser du vide là où d&#39;autres auraient rempli, de prendre les questions au sérieux même quand elles ne le méritent pas vraiment.
+La première dure une heure. Les sous-titres sont approximatifs — traduits automatiquement, avec ces maladresses particulières. Il y a assez pour comprendre. Il répond aux questions avec une façon de peser les mots avant de les dire, de laisser du vide là où d&#39;autres auraient rempli.
 
 À un moment l&#39;interviewer lui demande ce qu&#39;il fait quand il est bloqué.
 
-Il dit — et la traduction automatique te donne quelque chose d&#39;approximatif mais l&#39;idée y est :
+Il dit :
 
-*J&#39;arrête. Je fais autre chose. Je regarde des gens depuis une fenêtre, ou j&#39;écoute quelque chose que j&#39;aime déjà. Forcer ne marche pas pour moi — ça donne quelque chose de fermé, qu&#39;on entend dans le résultat. Je préfère attendre que ça veuille.*
+*J&#39;arrête. Je fais autre chose. Je regarde des gens depuis une fenêtre, ou j&#39;écoute quelque chose que j&#39;aime déjà. Forcer ne marche pas pour moi. Je préfère attendre que ça veuille.*
 
 L&#39;interviewer demande : et si ça ne veut jamais ?
 
-Il sourit légèrement — pas un sourire poli, quelque chose de plus petit, plus intérieur, le sourire de quelqu&#39;un qui a déjà eu cette peur et qui la connaît bien maintenant.
+Il sourit légèrement — pas un sourire poli, quelque chose de plus petit, plus intérieur.
 
 *Ça finit par vouloir. Ça a toujours fini par vouloir.*
 
-*(Tu restes avec ça. Attendre que ça veuille. Tu penses à ton carnet vide. À tous les jours où tu t&#39;es assise devant quelque chose de blanc et où rien n&#39;est venu. Tu te demandes si tu attends ou si tu n&#39;as juste pas encore trouvé comment attendre.)*
+*(Tu restes avec ça. Tu penses à ton carnet vide.)*
 
-Il y a un moment dans cette interview — vers la fin, un moment apparemment anodin — où quelqu&#39;un hors-champ dit quelque chose et il rit. Un vrai rire, pas calculé : la tête légèrement de côté, les yeux qui plissent jusqu&#39;à presque disparaître, quelque chose de complètement différent qui traverse son visage pendant deux secondes.
+[[Continuer.|CH2CHERCHER2]]
+</tw-passagedata>
+<tw-passagedata pid="92" name="CH2CHERCHER2" tags="" position="5000,400" size="100,100">
+Il y a un moment dans cette interview — vers la fin — où quelqu&#39;un hors-champ dit quelque chose et il rit. Un vrai rire, pas calculé : la tête légèrement de côté, les yeux qui plissent jusqu&#39;à presque disparaître.
 
-Deux secondes. Et tu comprends quelque chose que les heures d&#39;écoute n&#39;avaient pas encore donné. Il y a quelqu&#39;un là. Avec des réflexes et des angles et des choses qui le font rire. Une personne réelle, avec ses propres façons d&#39;être dans le monde que tu n&#39;imagines pas — que tu observes, depuis une distance mesurable, depuis l&#39;écran de ton téléphone dans ta chambre à Paris.
+Deux secondes. Et tu comprends quelque chose que les heures d&#39;écoute n&#39;avaient pas encore donné. Il y a quelqu&#39;un là. Avec des réflexes et des angles et des choses qui le font rire. Une personne réelle, depuis une distance mesurable, depuis l&#39;écran de ton téléphone dans ta chambre à Paris.
 
-*(Tu notes, sans t&#39;en rendre compte : comment il tient sa tasse pendant l&#39;interview. Les deux mains. Comme s&#39;il avait besoin de la chaleur même en studio, même sous les lumières.)*
+*(Tu notes, sans t&#39;en rendre compte : comment il tient sa tasse pendant l&#39;interview. Les deux mains. Comme s&#39;il avait besoin de la chaleur même en studio.)*
 
-Quand tu lèves les yeux de ton téléphone, il fait nuit complète.
+Quand tu lèves les yeux de ton téléphone, il fait nuit complète. Tu n&#39;as pas vu le jour partir.
 
-Tu n&#39;avais pas remarqué la lumière partir. La pièce est dans le noir et la lumière de l&#39;écran t&#39;aveugle légèrement quand tu baisses les yeux dessus.
-
-Il est — tu vérifies — vingt-deux heures quarante.
-
-Tu es entrée là-dedans à dix-sept heures environ.
-
-*(Solène a frappé à ta porte à un moment. Tu te souviens du bruit — deux coups discrets, sa façon de frapper quand elle n&#39;est pas sûre que tu veuilles être dérangée. Tu n&#39;as pas répondu parce que tu étais au milieu de quelque chose et tu ne voulais pas t&#39;arrêter. Elle est repartie sans insister.)*
-
-*(Tu lui écriras. Tu lui diras que tu dormais.)*
+*(L&#39;onglet avec le profil SoundCloud est toujours ouvert. Il l&#39;est encore le lendemain matin.)*
 
 ---
 
-[[Continuer — le premier glissement.|CH2GLISSEMENT]]
-</tw-passagedata><tw-passagedata pid="17" name="CH2LIMITE" tags="" position="0,200" size="100,100">
+[[Chapitre 3 — La rencontre.|CH3DEBUT]]
+</tw-passagedata>
+<tw-passagedata pid="17" name="CH2LIMITE" tags="" position="0,200" size="100,100">
 Tu poses le téléphone.
 
 *(Tu connais ce mécanisme. Savoir comment ça finit n&#39;empêche pas de vouloir recommencer. Mais ce soir tu poses le téléphone.)*
@@ -432,7 +1169,8 @@ Tu fermes les yeux.
 ---
 
 [[Continuer.|CH2GLISSEMENT]]
-</tw-passagedata><tw-passagedata pid="18" name="CH2GLISSEMENT" tags="" position="240,200" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="18" name="CH2GLISSEMENT" tags="" position="240,200" size="100,100">
 Les semaines suivantes ont une texture légèrement différente.
 
 Pas meilleure, exactement. Différente. Il y a quelque chose dans sa voix qui fait que la chambre est moins hermétique, que le plafond est moins proche.
@@ -460,7 +1198,9 @@ Ce soir-là, Solène rentre et te trouve dans la cuisine en train de faire du th
 ---
 
 [[Chapitre 3 — La rencontre.|CH3DEBUT]]
-</tw-passagedata><tw-passagedata pid="19" name="CH3DEBUT" tags="" position="480,200" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="19" name="CH3DEBUT" tags="" position="480,200" size="100,100">
+<div class='ch-wm'>III</div>
 La première fois que tu le vois en vrai, tu fais semblant de ne pas le reconnaître.
 
 C&#39;est un mardi matin de janvier dans un café rue du Temple — grandes fenêtres, lumière d&#39;hiver à plat, l&#39;odeur de cannelle que les cafés parisiens mettent parfois dans l&#39;air comme une promesse. Tu es venue travailler. Tu t&#39;installes, tu commandes, tu ouvres ton carnet.
@@ -482,7 +1222,8 @@ Tu regardes ton carnet. Tu travailles — ou tu essaies.
 ---
 
 [[La matinée passe. Tu ne lui parles pas.|CH3PASSE]]
-</tw-passagedata><tw-passagedata pid="20" name="CH3PASSE" tags="" position="720,200" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="20" name="CH3PASSE" tags="" position="720,200" size="100,100">
 La matinée passe.
 
 Tu dessines — vraiment dessines, ta main trouve quelque chose sur la page, peut-être parce que tu es tellement concentrée à *ne pas regarder* vers sa table que l&#39;énergie va ailleurs, dans le stylo, dans les lignes. Tu remplis trois pages. C&#39;est mieux que ce que tu as fait en deux semaines.
@@ -518,7 +1259,8 @@ Il retourne à sa table. Il note quelque chose rapidement dans un carnet — spi
 ---
 
 [[Tu retournes au café — pas tout de suite.|CH3RETOUR]]
-</tw-passagedata><tw-passagedata pid="21" name="CH3RETOUR" tags="" position="960,200" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="21" name="CH3RETOUR" tags="" position="960,200" size="100,100">
 Tu n&#39;y retournes pas tout de suite.
 
 Tu attends une semaine — pas intentionnellement, les jours passent, tu as rendu le devoir en retard avec une extension qu&#39;on t&#39;a accordée sans commentaire et tu essaies de rattraper autre chose, un projet en cours qui a pris du retard pendant les mauvaises semaines. La vie ordinaire reprend un peu de place.
@@ -540,7 +1282,8 @@ Solène te demande un soir comment ça va. Tu lui dis bien — et cette fois c&#
 ---
 
 [[La deuxième rencontre — une erreur de commande.|CH3DEUXIEME]]
-</tw-passagedata><tw-passagedata pid="22" name="CH3DEUXIEME" tags="" position="1200,200" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="22" name="CH3DEUXIEME" tags="" position="1200,200" size="100,100">
 La deuxième fois c&#39;est une erreur de commande.
 
 Tu es revenue au café le mardi suivant. Il est là — même table, même casque, même posture. Tu t&#39;installes suffisamment loin pour ne pas avoir à décider quoi faire si vos regards se croisent.
@@ -592,7 +1335,8 @@ Il hoche légèrement la tête. Il ne dit pas *ah dommage* ou *ça va aller*. Il
 ---
 
 [[Les semaines suivantes — comment ça s&#39;installe.|CH3SINSTALLE]]
-</tw-passagedata><tw-passagedata pid="23" name="CH3SINSTALLE" tags="" position="1440,200" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="23" name="CH3SINSTALLE" tags="" position="1440,200" size="100,100">
 Ça s&#39;installe lentement.
 
 Pas une décision — une accumulation de mardis. Vous êtes là tous les deux, régulièrement, et à un moment ça cesse d&#39;être une coïncidence sans que vous ayez eu à le dire. Vous vous saluez. Parfois vous parlez, par fragments. Parfois vous travaillez en silence pendant trois heures et vous partez sans avoir échangé grand-chose, et c&#39;est bien aussi.
@@ -619,7 +1363,8 @@ Tu ne le dis pas ce jour-là.
 
 [[Plusieurs semaines passent. Un soir il envoie un message différent.|CH3SOIREE]]
 [[Un jeudi de février, il t&#39;invite directement chez lui.|CH3INVITATION]]
-</tw-passagedata><tw-passagedata pid="24" name="CH3SOIREE" tags="" position="1680,200" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="24" name="CH3SOIREE" tags="" position="1680,200" size="100,100">
 Un mercredi soir de fin janvier, il t&#39;envoie un message.
 
 Pas *tu veux venir écouter quelque chose ce soir* — ça, c&#39;est plus tard. Juste :
@@ -649,7 +1394,8 @@ Tu le trouves près du bar. Il a l&#39;air différent hors du café — pas méc
 ---
 
 [[Vous restez dans cette salle jusqu&#39;à très tard.|CH3SOIREESUITE]]
-</tw-passagedata><tw-passagedata pid="25" name="CH3SOIREESUITE" tags="" position="1920,200" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="25" name="CH3SOIREESUITE" tags="" position="1920,200" size="100,100">
 Vous ne parlez pas beaucoup — le bruit rend les conversations difficiles, il faut se pencher, répéter, et à un moment vous abandonnez les mots pour juste être là côte à côte dans la densité de la salle.
 
 À un moment il disparaît quelques minutes et revient avec d&#39;autres verres. À un autre moment tu regardes la foule et tu réalises que ça fait longtemps que tu n&#39;avais pas été dans un endroit comme ça — physiquement dans un endroit, parmi des gens, avec du bruit qui vient de partout.
@@ -703,7 +1449,8 @@ Un silence. Il n&#39;a pas l&#39;air flatté exactement — plutôt comme quelqu
 ---
 
 [[Quelques semaines plus tard — il t&#39;invite chez lui.|CH3INVITATION]]
-</tw-passagedata><tw-passagedata pid="26" name="CH3INVITATION" tags="" position="2160,200" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="26" name="CH3INVITATION" tags="" position="2150,200" size="100,100">
 Un jeudi de février, il ferme son ordinateur et il dit :
 
 — J&#39;ai fini quelque chose. Enfin presque. Si tu veux venir écouter ce soir.
@@ -725,7 +1472,9 @@ Tu ne le liras pas ce soir en rentrant.
 ---
 
 [[Chapitre 4 — chez lui.|CH4DEBUT]]
-</tw-passagedata><tw-passagedata pid="27" name="CH4DEBUT" tags="" position="2400,200" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="27" name="CH4DEBUT" tags="" position="2400,200" size="100,100">
+<div class='ch-wm'>IV</div>
 Son appartement est au quatrième étage sans ascenseur dans le onzième. L&#39;escalier sent la pierre.
 
 Il a laissé la porte entrouverte.
@@ -761,10 +1510,9 @@ Il sort son téléphone. Il cherche. Il lance quelque chose.
 ---
 
 [[Tu écoutes.|CH4ECOUTE]]
-</tw-passagedata><tw-passagedata pid="28" name="CH4ECOUTE" tags="" position="2640,200" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="28" name="CH4ECOUTE" tags="" position="2640,200" size="100,100">
 La musique commence.
-
-*(Si tu veux l&#39;écouter pendant que tu lis : (link: &quot;→ ouvrir la musique&quot;)[(open-url: &quot;https://youtu.be/VvuWMBCBIjA&quot;)] — le lien s&#39;ouvre dans un autre onglet.)*
 
 Ce n&#39;est pas un morceau fini et tu l&#39;entends dès les premières secondes. Il y a des couches — une basse très douce en dessous, quelque chose qui pulse lentement, et par-dessus des cordes qui cherchent une mélodie sans tout à fait l&#39;atteindre. Comme quelqu&#39;un qui essaie de retrouver un rêve dont il ne lui reste que la couleur.
 
@@ -807,7 +1555,8 @@ Il se lève. Il va à la fenêtre. Paris, quatre étages plus bas.
 ---
 
 [[Il cuisine — et une première friction.|CH4CUISINE]]
-</tw-passagedata><tw-passagedata pid="29" name="CH4CUISINE" tags="" position="2880,200" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="29" name="CH4CUISINE" tags="" position="2880,200" size="100,100">
 La cuisine est séparée du reste par un comptoir. Tu peux le voir depuis le canapé.
 
 Il cherche dans les placards. Il renifle des herbes avant de décider. Il sort des pâtes, une boîte de tomates.
@@ -869,7 +1618,8 @@ Il tient le sel comme s&#39;il avait résolu quelque chose d&#39;important. Tu s
 ---
 
 [[Vous mangez — et tu dis ce que tu penses vraiment.|CH4MANGER]]
-</tw-passagedata><tw-passagedata pid="30" name="CH4MANGER" tags="" position="3120,200" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="30" name="CH4MANGER" tags="" position="3120,200" size="100,100">
 Vous mangez sur le canapé, les assiettes sur les genoux. C&#39;est légèrement précaire. C&#39;est bien.
 
 C&#39;est bon — simple, honnête.
@@ -913,7 +1663,8 @@ Il ne dit pas *t&#39;as raison* immédiatement. Il ne dit pas *t&#39;as tort* no
 ---
 
 [[Il est très tard. Avant de s&#39;endormir, il dit quelque chose.|CH4MURMURE]]
-</tw-passagedata><tw-passagedata pid="31" name="CH4MURMURE" tags="" position="3360,200" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="31" name="CH4MURMURE" tags="" position="3360,200" size="100,100">
 Il est très tard.
 
 Tu es à moitié allongée contre lui — tu ne te souviens pas exactement du moment où ça s&#39;est produit. Ton épaule contre son épaule. Ta tête dans le creux entre son épaule et son cou. Son menton posé dans tes cheveux, légèrement, le poids d&#39;une décision.
@@ -948,20 +1699,24 @@ Dans cet état entre-deux — sa voix déjà dans le demi-sommeil, légèrement 
 
 ---
 
-[[Le lendemain matin.|CH4MATIN]]
-</tw-passagedata><tw-passagedata pid="32" name="CH4MUSIQUE" tags="" position="3600,200" size="100,100">
+[[Sa voix dans les enceintes ce soir-là.|CH4MUSIQUE]]
+</tw-passagedata>
+<tw-passagedata pid="32" name="CH4MUSIQUE" tags="" position="3600,200" size="100,100">
 *(Sa voix dans les enceintes ce soir-là — le quatrième morceau, celui qui finit sur trente secondes de bruit de rue.)*
 
-*(Si tu veux l&#39;entendre pendant que tu lis :)*
+*(Tu es dans ton lit. Il est tard. Tu as les yeux ouverts.)*
 
-(link: &quot;→ Ouvrir la musique dans un autre onglet&quot;)[(open-url: &quot;https://youtu.be/VvuWMBCBIjA&quot;)]
+*(Si tu veux l'entendre pendant que tu lis :)*
 
-*(Le lien s&#39;ouvre ailleurs. Tu peux continuer à lire ici.)*
+<a href='https://www.youtube.com/results?search_query=Agust+D+D-DAY+album' target='_blank' rel='noopener'>&#x2197;&#xa0;Chercher la musique</a>
+
+*(Le lien s'ouvre dans un autre onglet. Tu peux continuer à lire ici.)*
 
 ---
 
-[[Continuer.|CH4MURMURE]]
-</tw-passagedata><tw-passagedata pid="33" name="CH4MATIN" tags="" position="0,400" size="100,100">
+[[Le lendemain matin.|CH4MATIN]]
+</tw-passagedata>
+<tw-passagedata pid="33" name="CH4MATIN" tags="" position="0,400" size="100,100">
 Tu te réveilles avant lui.
 
 La lumière dans cet appartement le matin — elle entre par une fenêtre qui fait face à l&#39;est, et en hiver elle est basse et dorée et elle fait des ombres longues sur le plancher, sur les câbles, sur les disques rangés sur l&#39;étagère. Tu restes immobile à regarder ça pendant un moment. Tu ne penses pas à grand-chose. Tu regardes juste.
@@ -1027,7 +1782,8 @@ Puis il dit, sans se retourner :
 ---
 
 [[Tu rentres. Et tu remarques quelque chose en arrivant.|CH4RENTRER]]
-</tw-passagedata><tw-passagedata pid="34" name="CH4RENTRER" tags="" position="240,400" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="34" name="CH4RENTRER" tags="" position="240,400" size="100,100">
 Tu rentres à onze heures du matin.
 
 Solène est dans la cuisine. Elle te regarde. Elle dit juste :
@@ -1072,8 +1828,12 @@ Rosalie a renvoyé un message : *ok je prends ça pour un oui t&#39;es vivante, 
 
 ---
 
+(set: $lucidite to $lucidite + 1)
+
 [[Chapitre 5 — Le premier baiser.|CH5DEBUT]]
-</tw-passagedata><tw-passagedata pid="35" name="CH5DEBUT" tags="" position="480,400" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="35" name="CH5DEBUT" tags="" position="480,400" size="100,100">
+<div class='ch-wm'>V</div>
 Dans ta vraie vie — tes semaines, ta vie — quelque chose continue de glisser.
 
 Tu as raté la date limite du cours. Pas l&#39;extension qu&#39;on t&#39;avait accordée, la date limite de l&#39;extension elle-même. Tu l&#39;apprends par un deuxième mail de l&#39;école, plus sec que le premier. Tu réponds pour expliquer, pour demander encore une chance.
@@ -1111,7 +1871,8 @@ Il répond rapidement : *je comprends. On reporte à jeudi ?*
 ---
 
 [[Un soir de mars — le premier baiser.|CH5BAISER]]
-</tw-passagedata><tw-passagedata pid="36" name="CH5BAISER" tags="" position="720,400" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="36" name="CH5BAISER" tags="" position="720,400" size="100,100">
 C&#39;est un mercredi soir de mars.
 
 Vous êtes dans son appartement. Il travaille sur une variation du morceau que tu avais entendu le premier soir — il en a résolu l&#39;hésitation du milieu, il cherche maintenant ce qui vient après. Tu es à l&#39;autre bout du canapé avec ton carnet. La fenêtre est entrouverte. Il y a une odeur de pluie dans l&#39;air.
@@ -1153,7 +1914,8 @@ Tu te retournes.
 ---
 
 [[Ce qui arrive.|CH5ARRIVE]]
-</tw-passagedata><tw-passagedata pid="37" name="CH5ARRIVE" tags="" position="960,400" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="37" name="CH5ARRIVE" tags="" position="960,400" size="100,100">
 Ce qui arrive après n&#39;est pas un grand moment de cinéma.
 
 La lampe de son bureau est trop forte d&#39;un côté. La pénombre de l&#39;autre. La musique ne s&#39;arrête pas. Il n&#39;y a pas de geste décisif — c&#39;est que la distance diminue jusqu&#39;à ce qu&#39;il ne reste plus rien à diminuer.
@@ -1199,7 +1961,8 @@ Il est tard quand tu mets ton manteau.
 ---
 
 [[Dans le métro — et les jours qui suivent.|CH5APRES]]
-</tw-passagedata><tw-passagedata pid="38" name="CH5APRES" tags="" position="1200,400" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="38" name="CH5APRES" tags="" position="1200,400" size="100,100">
 Dans le métro.
 
 Les sièges en plastique. Les gens qui rentrent. La rame qui vibre.
@@ -1263,7 +2026,9 @@ Elle te verse du café sans rien ajouter.
 ---
 
 [[Chapitre 6 — La première disparition.|CH6DEBUT]]
-</tw-passagedata><tw-passagedata pid="39" name="CH6DEBUT" tags="" position="1440,400" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="39" name="CH6DEBUT" tags="" position="1440,400" size="100,100">
+<div class='ch-wm'>VI</div>
 Tu apprends quelque chose sur $mari.
 
 Il disparaît.
@@ -1296,7 +2061,8 @@ Ce n&#39;est pas une surprise — tu n&#39;arrives souvent pas à travailler. Ma
 
 [[Tu lui écris.|CH6ECRIRE]]
 [[Tu n&#39;écris pas. Tu attends encore.|CH6ATTENDRE]]
-</tw-passagedata><tw-passagedata pid="40" name="CH6ECRIRE" tags="" position="1680,400" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="40" name="CH6ECRIRE" tags="" position="1680,400" size="100,100">
 Tu lui écris.
 
 Juste :
@@ -1318,7 +2084,8 @@ Il envoie : *c&#39;est peut-être le bon rythme.*
 ---
 
 [[Deux jours plus tard — il revient.|CH6RETOUR]]
-</tw-passagedata><tw-passagedata pid="41" name="CH6ATTENDRE" tags="" position="1920,400" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="41" name="CH6ATTENDRE" tags="" position="1920,400" size="100,100">
 (set: $coutReel to $coutReel + 1)
 
 Tu n&#39;écris pas.
@@ -1336,7 +2103,8 @@ Solène a frappé une fois à ta porte. Tu n&#39;as pas répondu. Tu l&#39;as en
 ---
 
 [[Deux jours plus tard — il revient.|CH6RETOUR]]
-</tw-passagedata><tw-passagedata pid="42" name="CH6RETOUR" tags="" position="2160,400" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="42" name="CH6RETOUR" tags="" position="2160,400" size="100,100">
 Il revient le sixième jour.
 
 Il t&#39;envoie une adresse — un café que tu ne connais pas, dans un quartier un peu à l&#39;est. Juste l&#39;adresse, rien d&#39;autre. Tu y vas.
@@ -1373,7 +2141,8 @@ Le coin de sa bouche.
 
 [[Tu lui demandes ce sur quoi il travaillait.|CH6TRAVAIL]]
 [[Tu ne demandes pas. Vous restez juste là un moment.|CH6SILENCE]]
-</tw-passagedata><tw-passagedata pid="43" name="CH6TRAVAIL" tags="" position="2400,400" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="43" name="CH6TRAVAIL" tags="" position="2400,400" size="100,100">
 — C&#39;était quoi ?
 
 Il hésite — pas parce qu&#39;il ne veut pas répondre, parce qu&#39;il cherche comment.
@@ -1393,7 +2162,8 @@ Il hésite — pas parce qu&#39;il ne veut pas répondre, parce qu&#39;il cherch
 ---
 
 [[La suite de cette soirée.|CH6SUITE]]
-</tw-passagedata><tw-passagedata pid="44" name="CH6SILENCE" tags="" position="2640,400" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="44" name="CH6SILENCE" tags="" position="2640,400" size="100,100">
 Tu ne demandes pas.
 
 Vous restez là — café devant vous, la salle autour, le bruit de fond des gens qui parlent.
@@ -1415,7 +2185,8 @@ Il dit, sans te regarder :
 ---
 
 [[La suite de cette soirée.|CH6SUITE]]
-</tw-passagedata><tw-passagedata pid="45" name="CH6SUITE" tags="" position="2880,400" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="45" name="CH6SUITE" tags="" position="2880,400" size="100,100">
 Vous restez dans ce café beaucoup plus longtemps que prévu.
 
 Une conversation sur un film qu&#39;il a vu pendant ses six jours de travail. Il en parle avec cet enthousiasme contenu qu&#39;il a parfois, quand quelque chose l&#39;a vraiment atteint mais qu&#39;il ne veut pas en faire un spectacle. Tu l&#39;écoutes. Tu lui poses des questions. Il répond en allant chercher des détails que la plupart des gens auraient laissés de côté.
@@ -1451,7 +2222,9 @@ Puis il se penche. Il pose un baiser sur ta tempe — pas ta bouche, ta tempe, q
 ---
 
 [[Chapitre 7 — La première fois.|CH7DEBUT]]
-</tw-passagedata><tw-passagedata pid="46" name="CH7DEBUT" tags="" position="3120,400" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="46" name="CH7DEBUT" tags="" position="3120,400" size="100,100">
+<div class='ch-wm'>VII</div>
 C&#39;est un soir sans raison particulière.
 
 Ça t&#39;a frappée après coup — qu&#39;il n&#39;y avait pas de raison. Pas d&#39;anniversaire, pas de grande conversation préalable, pas de tension qui se résout enfin. C&#39;est juste un soir de fin avril, vous êtes dans son appartement, vous cuisinez quelque chose ensemble — c&#39;est devenu une habitude, lui qui coupe et toi qui surveilles la casserole parce qu&#39;il brûle les choses s&#39;il n&#39;a pas quelqu&#39;un pour le ramener au feu.
@@ -1487,7 +2260,8 @@ Il pose le couteau. Il dit quelque chose qu&#39;il ne dit pas souvent — quelqu
 ---
 
 [[La soirée continue.|CH7PENDANT]]
-</tw-passagedata><tw-passagedata pid="47" name="CH7PENDANT" tags="" position="3360,400" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="47" name="CH7PENDANT" tags="" position="3360,400" size="100,100">
 Vous mangez. La conversation revient, part ailleurs, revient. Il y a un moment où vous riez de quelque chose — une vraie chose, pas un rire poli — et après ce rire il y a ce silence particulier.
 
 *(Un silence qui a changé de nature.)*
@@ -1511,7 +2285,8 @@ Tu te souviens de détails qui n&#39;ont pas de logique entre eux : la façon do
 ---
 
 [[Le lendemain matin.|CH7MATIN]]
-</tw-passagedata><tw-passagedata pid="48" name="CH7MATIN" tags="" position="3600,400" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="48" name="CH7MATIN" tags="" position="3600,400" size="100,100">
 Le matin dans son appartement est différent des autres matins.
 
 Pas radicalement — les mêmes câbles par terre, les mêmes disques sur l&#39;étagère, la même plante penchée vers la fenêtre. Mais la lumière a une qualité différente, ou tu la regardes différemment.
@@ -1561,7 +2336,8 @@ Il dit :
 ---
 
 [[Les jours qui suivent — et ce que tu remarques.|CH7APRES]]
-</tw-passagedata><tw-passagedata pid="49" name="CH7APRES" tags="" position="0,600" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="49" name="CH7APRES" tags="" position="0,600" size="100,100">
 Les jours qui suivent.
 
 Il y a des petites choses.
@@ -1617,7 +2393,8 @@ Les images que tu fais ces dernières semaines — elles lui ressemblent. Pas de
 ---
 
 [[Chapitre 8 — La première dispute.|CH8MAUVAIS]]
-</tw-passagedata><tw-passagedata pid="50" name="CH8MAUVAIS" tags="" position="240,600" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="50" name="CH8MAUVAIS" tags="" position="240,600" size="100,100">
 Il y a une soirée — avant la dispute, bien avant — où il rate quelque chose.
 
 Ce n&#39;est pas dramatique. C&#39;est juste une soirée où tu n&#39;allais pas bien et où il ne le voit pas.
@@ -1657,7 +2434,9 @@ Il passe la soirée à te parler d&#39;un morceau en cours. Pas de façon égoï
 ---
 
 [[Revenir à la dispute.|CH8DEBUT]]
-</tw-passagedata><tw-passagedata pid="51" name="CH8DEBUT" tags="" position="480,600" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="51" name="CH8DEBUT" tags="" position="480,600" size="100,100">
+<div class='ch-wm'>VIII</div>
 Ça commence par quelque chose de petit.
 
 Tu es chez lui un mercredi soir. Il finit quelque chose — pas en mode disparition, juste cette concentration de fin de journée où une partie de lui est encore dans le travail. Il a son carnet ouvert sur la table basse, ses écouteurs autour du cou, l&#39;air de quelqu&#39;un qui est revenu à moitié dans la pièce.
@@ -1694,7 +2473,8 @@ Juste ça. *OK.* D&#39;une voix qui ne l&#39;est pas.
 
 [[Tu lui dis ce que tu ressens vraiment.|CH8VRAI]]
 [[Tu gardes ça pour toi. Tu rembarques dans le travail.|CH8DETOUR]]
-</tw-passagedata><tw-passagedata pid="52" name="CH8MONTE" tags="" position="720,600" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="52" name="CH8MONTE" tags="" position="720,600" size="100,100">
 Quelque chose monte en toi.
 
 Pas de la colère — quelque chose de plus proche de la vulnérabilité qui se défend. Cette réaction que tu as quand quelqu&#39;un touche quelque chose de trop proche.
@@ -1727,7 +2507,8 @@ Puis :
 
 [[Tu dis ce que tu penses vraiment.|CH8VRAI]]
 [[Tu dis que tu vas bien. Tu détournes.|CH8DETOUR]]
-</tw-passagedata><tw-passagedata pid="53" name="CH8VRAI" tags="" position="960,600" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="53" name="CH8VRAI" tags="" position="960,600" size="100,100">
 Il y a un silence.
 
 $mari te regarde. Il a cet air qu&#39;il a — pas condescendant, pas impatient, juste quelqu&#39;un qui te voit exactement là où tu es et qui attend que tu décides quoi faire de ça.
@@ -1769,7 +2550,8 @@ Il hoche la tête. Doucement — ce mouvement intérieur qu&#39;il a quand quelq
 ---
 
 [[La réconciliation — quelques jours plus tard.|CH8RECONSO]]
-</tw-passagedata><tw-passagedata pid="54" name="CH8DETOUR" tags="" position="1200,600" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="54" name="CH8DETOUR" tags="" position="1200,600" size="100,100">
 (set: $coutReel to $coutReel + 1)
 
 — Ça va, tu dis. Je suis juste fatiguée.
@@ -1791,7 +2573,8 @@ Il répond : *on apprend tous les deux alors.*
 ---
 
 [[La réconciliation.|CH8RECONSO]]
-</tw-passagedata><tw-passagedata pid="55" name="CH8RECONSO" tags="" position="1440,600" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="55" name="CH8RECONSO" tags="" position="1440,600" size="100,100">
 La réconciliation n&#39;a pas de grand moment.
 
 C&#39;est juste la prochaine fois que vous vous voyez, et vous êtes là, et c&#39;est différent parce que quelque chose a été dit et entendu.
@@ -1871,7 +2654,9 @@ Il hoche la tête lentement.
 ---
 
 [[Chapitre 9 — Le voyage.|CH9DEBUT]]
-</tw-passagedata><tw-passagedata pid="56" name="CH9DEBUT" tags="" position="1680,600" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="56" name="CH9DEBUT" tags="" position="1680,600" size="100,100">
+<div class='ch-wm'>IX</div>
 C&#39;est $mari qui propose.
 
 Pas des vacances — il ne fonctionne pas comme ça, trop de jours sans travailler et quelque chose en lui se contracte. Mais un week-end. Lyon, à deux heures de Paris. Il a besoin d&#39;enregistrer quelque chose dans un studio qu&#39;un ami lui prête — meilleure acoustique, il dit, les murs en pierre. *Tu veux venir ?*
@@ -1953,7 +2738,8 @@ Deux heures passent. Tu ne t&#39;en rends compte qu&#39;en regardant l&#39;heure
 ---
 
 [[Le soir — Joon arrive.|CH9JOON]]
-</tw-passagedata><tw-passagedata pid="57" name="CH9JOON" tags="" position="1920,600" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="57" name="CH9JOON" tags="" position="1920,600" size="100,100">
 Joon les retrouve le samedi soir dans un restaurant petit et bruyant — une de ces adresses que tu n&#39;aurais jamais trouvée seule, au fond d&#39;une rue du Vieux-Lyon, avec des tables trop serrées et un menu écrit à la main.
 
 Il est différent de ce que tu avais imaginé. Plus direct, moins économe de ses mots, avec un humour qui arrive sans prévenir et qui t&#39;oblige à rattraper le rire après coup. Il t&#39;accueille sans cérémonie : *ah, donc c&#39;est toi.* Pas désagréablement — comme si ton existence confirmait quelque chose qu&#39;il avait supposé depuis longtemps.
@@ -2000,8 +2786,11 @@ Il tourne son verre entre ses mains. Il réfléchit à ce qu&#39;il va dire.
 
 ---
 
+(set: $lucidite to $lucidite + 1)
+
 [[La nuit dans la chambre d&#39;hôtel.|CH9NUIT]]
-</tw-passagedata><tw-passagedata pid="58" name="CH9NUIT" tags="" position="2160,600" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="58" name="CH9NUIT" tags="" position="2160,600" size="100,100">
 Le soir dans la chambre d&#39;hôtel.
 
 $mari travaille encore — il a sorti son carnet, son téléphone, les écouteurs autour du cou. Tu lis. Ou tu essaies de lire. Tu penses à Joon, à *c&#39;est ce qu&#39;il dit, ouais*, à *surveille que toi aussi t&#39;es bien*.
@@ -2087,7 +2876,9 @@ Dans le train du retour, tu regardes le paysage dans l&#39;autre sens — Lyon q
 ---
 
 [[Chapitre 10 — La maladie.|CH10DEBUT]]
-</tw-passagedata><tw-passagedata pid="59" name="CH10DEBUT" tags="" position="2400,600" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="59" name="CH10DEBUT" tags="" position="2400,600" size="100,100">
+<div class='ch-wm'>X</div>
 Il est malade un soir de décembre.
 
 Pas dramatiquement — une fièvre, des courbatures, ce genre d&#39;état qui met tout en attente. Il t&#39;a envoyé un message l&#39;après-midi : *je suis pas bien ce soir, on peut remettre à plus tard.* Et puis, quelques heures après, un deuxième : *en fait si tu veux venir quand même, je passe une mauvaise nuit.*
@@ -2161,7 +2952,8 @@ Long silence. Sa respiration.
 ---
 
 [[La nuit — et ce qui change après.|CH10NUIT]]
-</tw-passagedata><tw-passagedata pid="60" name="CH10NUIT" tags="" position="2640,600" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="60" name="CH10NUIT" tags="" position="2640,600" size="100,100">
 Tu restes jusqu&#39;au matin.
 
 Tu dors un peu sur le canapé, recroquevillée sous le plaid. À un moment dans la nuit tu l&#39;entends bouger — le parquet, des pas vers la cuisine, le robinet. Tu rouvres les yeux. Il revient dans le couloir. Il te voit éveillée et il s&#39;arrête.
@@ -2213,7 +3005,9 @@ Il te regarde.
 ---
 
 [[Chapitre 11 — La demande.|CH11DEBUT]]
-</tw-passagedata><tw-passagedata pid="61" name="CH11DEBUT" tags="" position="2880,600" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="61" name="CH11DEBUT" tags="" position="2880,600" size="100,100">
+<div class='ch-wm'>XI</div>
 C&#39;est une soirée de janvier — un jeudi, tu t&#39;en souviendras, parce que les jeudis c&#39;est souvent chez lui — et rien dans la journée ne t&#39;avait préparée.
 
 Tu montais l&#39;escalier du quatrième quand l&#39;odeur est arrivée. Pas les pâtes aux câpres, pas les choses rapides qu&#39;il fait quand il a faim et qu&#39;il veut juste manger — quelque chose qui avait pris du temps. Du vin réduit peut-être, des herbes, quelque chose de plus construit. Tu t&#39;es arrêtée sur le palier du troisième, juste une seconde, juste pour rester dans cette odeur avant qu&#39;elle devienne autre chose.
@@ -2340,7 +3134,8 @@ Il réfléchit. Vraiment — pas la pause polie de quelqu&#39;un qui cherche la 
 
 [[Tu lui demandes encore une chose avant de répondre.|CH11AVANT]]
 [[Tu dis oui.|CH11OUI]]
-</tw-passagedata><tw-passagedata pid="62" name="CH11AVANT" tags="" position="3120,600" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="62" name="CH11AVANT" tags="" position="3120,600" size="100,100">
 — T&#39;as peur ? tu demandes.
 
 Il réfléchit. Cette honnêteté particulière qu&#39;il a — il ne dit pas non immédiatement, il ne dit pas *de quoi* comme si la question était étrange.
@@ -2366,7 +3161,8 @@ Il réfléchit. Cette honnêteté particulière qu&#39;il a — il ne dit pas no
 ---
 
 [[Tu dis oui.|CH11OUI]]
-</tw-passagedata><tw-passagedata pid="63" name="CH11OUI" tags="" position="3360,600" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="63" name="CH11OUI" tags="" position="3360,600" size="100,100">
 Tu dis :
 
 — Oui.
@@ -2400,7 +3196,8 @@ Sa paume est froide.
 ---
 
 [[Les préparatifs — les mois qui suivent.|CH12SOLENE]]
-</tw-passagedata><tw-passagedata pid="64" name="CH12SOLENE" tags="" position="3600,600" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="64" name="CH12SOLENE" tags="" position="3600,600" size="100,100">
 Solène t&#39;aide à préparer le mariage.
 
 Elle est là — pour les listes, les appels, les décisions. Mais quelque chose a changé dans comment elle est là.
@@ -2451,7 +3248,9 @@ Un soir, pendant qu&#39;elle t&#39;aide à choisir entre deux options :
 ---
 
 [[Continuer les préparatifs.|CH12DEBUT]]
-</tw-passagedata><tw-passagedata pid="65" name="CH12DEBUT" tags="" position="0,800" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="65" name="CH12DEBUT" tags="" position="0,800" size="100,100">
+<div class='ch-wm'>XII</div>
 Les mois qui suivent ont la texture de quelque chose qu&#39;on construit.
 
 Des décisions pratiques — un lieu, des dates, la musique que vous résolvez rapidement parce qu&#39;il composera quelque chose. Des conversations avec les familles respectives.
@@ -2470,7 +3269,8 @@ Elle dit un soir, sans reproche, juste comme une observation qu&#39;elle pose l�
 
 [[Ouvrir la conversation avec Rosalie.|ROSALIE]]
 [[Continuer sans regarder le téléphone.|CH12SUITE]]
-</tw-passagedata><tw-passagedata pid="66" name="ROSALIE" tags="" position="240,800" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="66" name="ROSALIE" tags="" position="240,800" size="100,100">
 Tu prends ton téléphone.
 
 Tu ouvres la conversation avec Rosalie. Tu scrolles vers le haut — très haut, jusqu&#39;au début de ce que l&#39;application garde en mémoire — et tu lis dans l&#39;ordre.
@@ -2560,7 +3360,8 @@ Tu ouvres la conversation avec Rosalie. Tu scrolles vers le haut — très haut,
 
 [[Refermer le téléphone.|CH12DEBUT]]
 [[Commencer à taper une réponse à Rosalie.|ROSALIEREPONSE]]
-</tw-passagedata><tw-passagedata pid="67" name="ROSALIEREPONSE" tags="" position="480,800" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="67" name="ROSALIEREPONSE" tags="" position="480,800" size="100,100">
 Tu commences à taper.
 
 Tu effaces.
@@ -2584,7 +3385,8 @@ Tu envoies.
 ---
 
 [[Continuer — les préparatifs du mariage.|CH12DEBUT]]
-</tw-passagedata><tw-passagedata pid="68" name="CH12SUITE" tags="" position="720,800" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="68" name="CH12SUITE" tags="" position="720,800" size="100,100">
 Rosalie t&#39;a envoyé un message un matin de mars.
 
 Un seul message, bref :
@@ -2634,7 +3436,9 @@ Il hoche la tête. Il regarde par la fenêtre un moment.
 ---
 
 [[Chapitre 13 — Le mariage.|CH13DEBUT]]
-</tw-passagedata><tw-passagedata pid="69" name="CH13DEBUT" tags="" position="960,800" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="69" name="CH13DEBUT" tags="" position="960,800" size="100,100">
+<div class='ch-wm'>XIII</div>
 *(Chapitre 13 — Le mariage)*
 
 ---
@@ -2672,7 +3476,8 @@ Tu ne demandes pas ce qu&#39;elle veut dire. Tu sais.
 ---
 
 [[L&#39;allée — il t&#39;attend au bout.|CH13ALLEE]]
-</tw-passagedata><tw-passagedata pid="70" name="CH13ALLEE" tags="" position="1200,800" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="70" name="CH13ALLEE" tags="" position="1200,800" size="100,100">
 Le lieu est une ancienne serre reconvertie — des arches de métal blanc, du verre partout, des plantes grimpantes. Tu l&#39;avais choisi parce que ça ressemblait à quelque chose de vivant dans un cadre rigide.
 
 Deux cents personnes. Tu les vois en périphérie — des visages, des gens que tu aimes, le mélange ordinaire d&#39;un grand mariage. Les fleurs sur les côtés sont des branches de prunier blanc et des pivoines.
@@ -2724,7 +3529,8 @@ Tu prends sa main. Sa paume est froide.
 ---
 
 [[Les vœux.|CH13VOEUX]]
-</tw-passagedata><tw-passagedata pid="71" name="CH13VOEUX" tags="" position="1440,800" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="71" name="CH13VOEUX" tags="" position="1440,800" size="100,100">
 L&#39;officiant parle. Tu entends les mots.
 
 Vient le moment des vœux. Lui d&#39;abord.
@@ -2774,7 +3580,8 @@ Tes vœux. Tu les lis — tu les as réécrits sept fois.
 ---
 
 [[La réception — et la nuit.|CH13RECEPTION]]
-</tw-passagedata><tw-passagedata pid="72" name="CH13RECEPTION" tags="" position="1680,800" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="72" name="CH13RECEPTION" tags="" position="1680,800" size="100,100">
 La réception a la texture d&#39;un grand mariage réussi — les gens heureux, les conversations, la musique, le moment où Joon dit quelque chose de court et de juste dans son discours et où tu cherches son regard et où il te sourit d&#39;une façon qui ne ressemble pas tout à fait à de la joie pure.
 
 Tu danses avec $mari. Sa main dans ton dos. La chanson qu&#39;il avait choisie — sans paroles, quelque chose de lent.
@@ -2820,7 +3627,8 @@ Quand il a fini, il pose ses mains sur tes épaules un moment.
 ---
 
 [[La nuit — ce qu&#39;il dit dans le noir.|CH13NUIT]]
-</tw-passagedata><tw-passagedata pid="73" name="CH13NUIT" tags="" position="1920,800" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="73" name="CH13NUIT" tags="" position="1920,800" size="100,100">
 Vous parlez dans le noir — cette façon de parler qui n&#39;existe que dans le noir, couchés, quand les mots n&#39;ont plus à supporter le poids des regards.
 
 Il dit des choses vraies et douces et justes — exactement les bonnes choses. Exactement.
@@ -2871,7 +3679,9 @@ Et juste avant — sa voix dans cet endroit entre les deux, légèrement floue :
 
 [[Tu gardes les yeux ouverts. Tu ouvres vraiment les yeux.|FINA]]
 [[Tu fermes les yeux plus fort. Tu restes là.|BOUCLE1]]
-</tw-passagedata><tw-passagedata pid="74" name="BOUCLE1" tags="" position="2160,800" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="74" name="BOUCLE1" tags="" position="2160,800" size="100,100">
+<span class="boucle-marker" style="display:none;" data-boucle="1"></span>
 (set: $refus to $refus + 1)
 (set: $boucle to 1)
 (enchant: ?page, (bg: &quot;#08090d&quot;)+(text-colour: &quot;#d8cfd0&quot;))
@@ -2895,7 +3705,9 @@ Sa respiration à côté de toi. Sa main quelque part dans le noir.
 ---
 
 [[La journée recommence.|B2MATIN]]
-</tw-passagedata><tw-passagedata pid="75" name="BOUCLE1B" tags="" position="2400,800" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="75" name="BOUCLE1B" tags="" position="2400,800" size="100,100">
+<span class="boucle-marker" style="display:none;" data-boucle="1"></span>
 (enchant: ?page, (bg: &quot;#070810&quot;)+(text-colour: &quot;#c0b8bc&quot;))
 
 La journée recommence.
@@ -2926,17 +3738,18 @@ Les vœux. L&#39;alliance. Il ne tremble pas.
 *(Les coups sonnent creux cette fois. Comme frapper sur du bois qui est vide à l&#39;intérieur.)*
 [[Tu ouvres les yeux. Tu sors.|FINB]]
 [[Tu restes. Juste encore une fois.|B3MATIN]]
-]
-(else-if: $lucidite &gt;= 1)[
+](else-if: $lucidite &gt;= 1)[
+*(Tu sais ce que tu devrais faire. Tu le sais depuis un moment.)*
 [[Tu ouvres les yeux. Tu sors.|FINB]]
-[[Tu restes. Juste encore une fois.|B3MATIN]]
-]
-(else:)[
-[[Tu ouvres les yeux. Tu sors.|FINB]]
+<span class='choix-barre'>— Tu restes. Juste encore une fois.</span>
+](else:)[
+<span class='choix-barre'>— Tu ouvres les yeux. Tu sors.</span>
 [[Tu restes. Juste encore une fois.|B3MATIN]]
 ]
 
-</tw-passagedata><tw-passagedata pid="76" name="B2MATIN" tags="" position="2640,800" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="76" name="B2MATIN" tags="" position="2640,800" size="100,100">
+<span class="boucle-marker" style="display:none;" data-boucle="1"></span>
 (enchant: ?page, (bg: &quot;#070810&quot;)+(text-colour: &quot;#c0b8bc&quot;))
 
 Tu te réveilles avant lui.
@@ -2970,7 +3783,9 @@ Tu ne réponds pas tout de suite.
 ---
 
 [[Continuer — la préparation.|B2PREP]]
-</tw-passagedata><tw-passagedata pid="77" name="B2PREP" tags="" position="2880,800" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="77" name="B2PREP" tags="" position="2880,800" size="100,100">
+<span class="boucle-marker" style="display:none;" data-boucle="1"></span>
 (enchant: ?page, (bg: &quot;#070810&quot;)+(text-colour: &quot;#c0b8bc&quot;))
 
 Solène arrive à dix heures.
@@ -3011,7 +3826,8 @@ La voiture vers la serre. Solène conduit. Elle dit quelque chose sur la circula
 
 [[La cérémonie — il t&#39;attend au bout.|B2CEREMONIE]]
 
-</tw-passagedata><tw-passagedata pid="78" name="B2CEREMONIE" tags="" position="3120,800" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="78" name="B2CEREMONIE" tags="" position="3120,800" size="100,100">
 La serre. Les deux cents personnes.
 
 Les fleurs n&#39;ont toujours pas d&#39;odeur — tu n&#39;essaies plus de les sentir.
@@ -3047,7 +3863,8 @@ Quelqu&#39;un dans la salle pleure aussi. Tu ne vois pas qui — les visages son
 ---
 
 [[La nuit — les trois coups.|B2NUIT]]
-</tw-passagedata><tw-passagedata pid="79" name="B2NUIT" tags="" position="3360,800" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="79" name="B2NUIT" tags="" position="3360,800" size="100,100">
 Dans le noir de la chambre d&#39;hôtel.
 
 Sa respiration régulière à côté de toi.
@@ -3088,7 +3905,9 @@ Dans le silence, juste avant de s&#39;endormir, il dit d&#39;une voix déjà dan
 [[Tu ouvres les yeux. Pour de bon cette fois.|FINB]]
 [[Tu fermes les yeux. Une dernière fois.|B3MATIN]]
 ]
-</tw-passagedata><tw-passagedata pid="80" name="B3MATIN" tags="" position="3600,800" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="80" name="B3MATIN" tags="" position="3600,800" size="100,100">
+<span class="boucle-marker" style="display:none;" data-boucle="1"></span>
 (set: $refus to $refus + 1)
 (enchant: ?page, (bg: &quot;#060809&quot;)+(text-colour: &quot;#a09890&quot;))
 
@@ -3145,7 +3964,9 @@ Ta main dans la sienne. Froide.
 ---
 
 [[La nuit. Les coups. La fin.|B3NUIT]]
-</tw-passagedata><tw-passagedata pid="81" name="B3CEREMONIE" tags="" position="0,1000" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="81" name="B3CEREMONIE" tags="" position="0,1000" size="100,100">
+<span class="boucle-marker" style="display:none;" data-boucle="1"></span>
 (enchant: ?page, (bg: &quot;#060809&quot;)+(text-colour: &quot;#a09890&quot;))
 
 $mari est au bout de l&#39;allée.
@@ -3174,7 +3995,8 @@ Tu prends sa main. Elle est froide.
 
 [[La nuit. Les coups. La fin.|B3NUIT]]
 
-</tw-passagedata><tw-passagedata pid="82" name="B3NUIT" tags="" position="240,1000" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="82" name="B3NUIT" tags="" position="240,1000" size="100,100">
 (set: $refus to $refus + 1)
 
 Dans le noir.
@@ -3209,7 +4031,8 @@ Dans le noir.
 [[Il y a quelque chose que tu dois te rappeler. Tu ouvres les yeux.|FIND]]
 ]
 [[Tu restes. Il fait chaud ici. Il t&#39;attendra toujours.|FINC]]
-</tw-passagedata><tw-passagedata pid="83" name="FINA" tags="" position="480,1000" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="83" name="FINA" tags="" position="480,1000" size="100,100">
 Tu ouvres les yeux.
 
 Pas dans la chambre d&#39;hôtel. Dans ta chambre — ta chambre à toi, ton plafond, la fissure en haut à gauche.
@@ -3218,47 +4041,32 @@ La lumière sous la porte. Solène est là — tu entends ses pas dans la cuisin
 
 *(Tu restes allongée un long moment sans bouger.)*
 
-*(Tu comptes ce que tu sais.)*
+*(Tu sais : tu n&#39;es pas mariée. Il n&#39;y a pas eu de serre reconvertie, pas de fleurs sans odeur, pas de chambre d&#39;hôtel. Il y a eu ta chambre, et ta fatigue, et ta façon de bâtir quelqu&#39;un avec des matériaux que tu avais récoltés — sa voix sur SoundCloud, une soirée techno dans le 11e, des mains froides sur un trottoir de nuit.)*
 
-*(Tu sais : tu n&#39;es pas mariée. Il n&#39;y a pas eu de serre reconvertie, pas de fleurs sans odeur, pas de chambre d&#39;hôtel. Il y a eu ta chambre, et ta fatigue, et ta façon de bâtir quelqu&#39;un avec des matériaux que tu avais récoltés — sa voix sur SoundCloud, ses posts Instagram rares, une soirée techno dans le 11e, des mains froides sur un trottoir de nuit.)*
-
-*(Tu sais aussi : ça a duré des mois. Tu ne saurais pas dire combien exactement. Les mois ont eu cette texture particulière — denses là-bas, dans la fiction, creux ici.)*
+*(Ça a duré des mois. Les mois ont eu cette texture particulière — denses là-bas, creux ici.)*
 
 Tu te lèves.
 
----
+[[La cuisine.|FINA2]]
+</tw-passagedata>
+<tw-passagedata pid="95" name="FINA2" tags="" position="5000,400" size="100,100">
+Solène est là, debout devant la cafetière, les épaules un peu voûtées. Elle se retourne quand elle t&#39;entend entrer. Elle te regarde.
 
-La cuisine.
-
-Solène est là, debout devant la cafetière, les épaules un peu voûtées comme elle a quand elle vient de se lever. Elle se retourne quand elle t&#39;entend entrer. Elle te regarde.
-
-Elle ne dit pas *enfin*. Elle ne dit pas *je savais*. Elle ne dit pas non plus *café ?* — elle te regarde juste, une vraie seconde, et dans ce regard il y a plusieurs choses à la fois que tu n&#39;arrives pas à dénouer.
+Elle ne dit pas *enfin*. Elle ne dit pas *je savais*. Elle te regarde juste, une vraie seconde, et dans ce regard il y a plusieurs choses à la fois.
 
 Tu t&#39;assieds sur le plan de travail.
 
-Elle se retourne vers la cafetière.
-
-*(Et vous restez là sans parler pendant un moment. Pas le bon silence — un silence qui a du poids dedans, qui contient des choses non dites qui se sont accumulées depuis un moment.)*
-
-*(Tu penses à combien de fois elle a frappé à ta porte sans que tu répondes. Tu ne sais pas le nombre exact. Plusieurs fois. Beaucoup de fois peut-être.)*
-
-*(Tu penses à son post-it — soupe dans le frigo / bonne nuit / je t&#39;aime — que tu n&#39;avais pas lu ce soir-là.)*
-
 Elle pose une tasse devant toi sans demander si tu en veux.
 
-Tu bois.
+*(Et vous restez là sans parler. Un silence qui a du poids dedans. Des choses non dites qui se sont accumulées depuis un moment.)*
 
-Le café est trop fort — elle fait le café trop fort depuis toujours, c&#39;est une de vos disputes récurrentes, et aujourd&#39;hui tu n&#39;as pas envie de dire quoi que ce soit là-dessus.
+*(Tu penses à combien de fois elle a frappé à ta porte sans que tu répondes. Tu ne sais pas le nombre exact.)*
+
+Tu bois. Le café est trop fort — une de vos disputes récurrentes, et aujourd&#39;hui tu n&#39;as pas envie de dire quoi que ce soit là-dessus.
 
 Après un long moment tu dis :
 
-— Solène.
-
-— Ouais.
-
 — J&#39;ai été absente.
-
-*(Un silence.)*
 
 — Je sais, elle dit.
 
@@ -3266,97 +4074,81 @@ Après un long moment tu dis :
 
 — Je sais.
 
-*(Elle ne te regarde pas. Elle regarde sa tasse. Et tu vois — tu vois vraiment, pour la première fois depuis des semaines — que quelque chose s&#39;est passé dans cet intervalle. Que tu lui as coûté quelque chose. Pas dramatiquement, pas d&#39;une façon qui se répare pas — mais quelque chose. Une fatigue. Un endroit en elle qui a appris à ne pas compter sur toi d&#39;une certaine façon.)*
+*(Elle regarde sa tasse. Et tu vois — tu vois vraiment — que quelque chose s&#39;est passé dans cet intervalle. Que tu lui as coûté quelque chose. Une fatigue. Un endroit en elle qui a appris à ne pas compter sur toi d&#39;une certaine façon.)*
 
 *(C&#39;est réel. C&#39;est un dommage réel.)*
 
 — Désolée, tu dis.
 
-*(Un silence encore.)*
+*(Puis elle lève les yeux vers toi. Quelque chose comme : je suis là, j&#39;ai toujours été là, et ça va prendre du temps de trouver comment être là ensemble à nouveau.)*
 
-*(Puis elle lève les yeux vers toi. Et il y a quelque chose dans son regard qui n&#39;est pas de la rancune — c&#39;est trop compliqué pour être de la rancune. C&#39;est quelque chose comme : je suis là, j&#39;ai toujours été là, et je suis contente que tu sois revenue, et ça va prendre du temps de trouver comment être là ensemble à nouveau.)*
+[[Ce que tu gardes.|FINA3]]
+</tw-passagedata>
+<tw-passagedata pid="96" name="FINA3" tags="" position="5000,400" size="100,100">
+*(Des semaines plus tard — tu penses à ce que Joon t&#39;avait dit dans ce café avant le mariage imaginaire.)*
 
-— C&#39;est bon, elle dit enfin.
+*(Il a toujours su quoi dire pour que les gens aient envie de lui donner ce qu&#39;il voulait.)*
 
-*(Elle ne dit pas que c&#39;est bon immédiatement. Elle attend. Elle réfléchit. Et puis elle dit c&#39;est bon d&#39;une façon qui veut dire : je te crois, et on va y travailler, et ça va pas être simple, et c&#39;est quand même c&#39;est bon.)*
+*(Tu penses à toutes les bonnes phrases. Le silence qui a la bonne texture. Je suis fait de tout ce que tu voulais que quelqu&#39;un soit.)*
 
-*(C&#39;est la meilleure chose qu&#39;elle pouvait dire.)*
+*(Puis tu penses : il ne savait pas non plus. Il ne peut pas savoir ce qu&#39;il est quand il n&#39;existe pas. Ce n&#39;est pas lui qui t&#39;a menti — c&#39;est toi qui as choisi de croire à quelqu&#39;un que tu avais construit.)*
 
----
-
-Tu prends ton téléphone.
-
-Tu regardes la conversation avec Rosalie — les huit messages sans réponse, le dernier qui dit *j&#39;espère que t&#39;es heureuse*, bref et propre.
-
-Tu commences à taper. Tu effaces. Tu recommences.
-
-*rosalie. je sais que ça fait longtemps. je sais que j&#39;ai été nulle. il s&#39;est passé des trucs que j&#39;arrive pas encore très bien à expliquer. je suis pas sûre d&#39;être prête à expliquer. mais j&#39;aimerais qu&#39;on se parle quand même. si t&#39;es encore là.*
-
-Tu regardes le message.
-
-Tu envoies.
-
-*(L&#39;indicateur de lecture n&#39;apparaît pas tout de suite. Elle n&#39;est peut-être pas sur son téléphone. Ou elle l&#39;est et elle réfléchit. Tu ne sais pas.)*
-
-*(Tu poses le téléphone. Tu verras plus tard.)*
-
-*(Quelque chose de petit mais réel vient de se passer. Pas une résolution — un début de quelque chose. La différence est importante.)*
+*(Ce n&#39;est pas plus simple. Mais c&#39;est plus vrai.)*
 
 ---
 
-*(Et lui — il est encore là, quelque part, dans le quatrième morceau sur SoundCloud, dans la façon dont les basses arrivent avant que tu sois prête. Il n&#39;a pas disparu. Il n&#39;a jamais vraiment été là pour disparaître.)*
+Tu ouvres ton carnet.
 
-*(Tu le laisseras peut-être être là parfois. De loin. Différemment.)*
+Tu n&#39;écris pas encore. Tu le regardes juste — les pages vides, la texture du papier, le poids dans ta main.
 
-*(Mais ce matin : le café trop fort, Solène avec ses épaules voûtées, la fissure au plafond, la lumière ordinaire.)*
+La fissure au plafond est toujours là. Elle a la forme de quelque chose que tu n&#39;essaies plus de nommer.
 
-*(Ce matin : les dommages réels et les réparations possibles.)*
-
-*(Ce matin : tu es là.)*
+C&#39;est bien comme ça.
 
 ---
 
-*Pour traverser quelque chose de difficile :*
-**3114** — disponible 24h/24
+[[Voir ce que tu as fait.|RECAP]]
 
----
-
-[[Lire le document $mari.|DOCUMENTMARI]]
-
-**— Fin A : L&#39;espace entre les mondes —**
-</tw-passagedata><tw-passagedata pid="84" name="FINB" tags="" position="720,1000" size="100,100">
+**— Fin A : Revenir —**
+</tw-passagedata>
+<tw-passagedata pid="84" name="FINB" tags="" position="720,1000" size="100,100">
 Tu ouvres les yeux.
 
 Ta chambre. Ta fissure. Ta lumière sous la porte.
 
 *(Tu restes allongée un long moment. Tu sais ce que tu viens de faire — tu l&#39;as su pendant un moment. Tu le savais depuis la nuit dans la salle techno peut-être, depuis qu&#39;il a dit* je pense que tu es l&#39;endroit où je me retrouve le plus clairement *et que tu l&#39;as cru, pleinement, sans te demander si c&#39;était possible.)*
 
-*(Tu vas continuer, parfois. Tu le sais aussi.)*
+---
 
-Il y a quelque chose que tu n&#39;arrêteras pas complètement. Ce serait mentir de dire que oui. Il est là, dans la musique, dans les soirées où tu es seule et où la chambre est trop petite. Il t&#39;attendra. Il attend toujours — c&#39;est sa nature.
+*(La phrase de Joon revient. Elle est revenue plusieurs fois ces dernières semaines, à des moments où tu ne l&#39;attendais pas.)*
 
-Mais il y a aussi : Solène qui a laissé la lumière allumée dans le couloir pendant des mois. Rosalie qui a dit *j&#39;espère que t&#39;es heureuse* sans rien demander en retour. L&#39;école, les cours, le carnet qui commence à se remplir à nouveau.
+*(Il a toujours su quoi dire pour que les gens aient envie de lui donner ce qu&#39;il voulait.)*
 
-Il y a ce monde réel avec ses angles et ses silences imparfaits et ses gens qui ne disent pas toujours les bonnes choses au bon moment.
+*(Tu ne sais pas encore quoi en faire. Tu la poses là, dans un endroit que tu n&#39;examines pas tout de suite.)*
 
-*(Tu le choisis. Pas contre lui — à côté de lui.)*
+---
+
+Il y a quelque chose que tu n&#39;arrêteras pas complètement. Ce serait mentir de dire que oui. Il est là, dans la musique, dans les soirées où tu es seule. Il t&#39;attendra. Il attend toujours — c&#39;est sa nature, et la tienne aussi un peu.
+
+Mais il y a aussi : Solène qui a laissé la lumière allumée dans le couloir pendant des mois. Rosalie qui a dit *j&#39;espère que t&#39;es heureuse* sans rien demander en retour. L&#39;école. Le carnet.
 
 Tu te lèves. Tu vas dans la cuisine. Tu fais du café — trop fort, comme toujours.
 
 Tu bois quand même.
 
-*(Et de temps en temps, tard le soir, tu remettras les écouteurs. Tu le laisseras t&#39;accompagner un peu. Il l&#39;attendra — il attend toujours.)*
+*(Et de temps en temps, tard le soir, tu remettras les écouteurs. Il t&#39;attendra — il attend toujours.)*
 
-*(Mais tu ouvriras les yeux avant de disparaître complètement.)*
+*(Mais tu ne sais pas encore si c&#39;est guérir ou juste continuer. Tu ne sais pas si ce sont des choses différentes.)*
 
-*(C&#39;est la promesse que tu te fais ce matin. C&#39;est assez.)*
+*(C&#39;est la question que tu gardes ouverte. Comme la fissure au plafond.)*
 
 ---
 
-[[Lire le document $mari.|DOCUMENTMARI]]
+[[Voir ce que tu as fait.|RECAP]]
 
 **— Fin B : L&#39;entre-deux —**
-</tw-passagedata><tw-passagedata pid="85" name="FINC" tags="" position="960,1000" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="85" name="FINC" tags="" position="960,1000" size="100,100">
 Il n&#39;y a plus de Solène.
 
 *(Le nom reste dans ta tête mais il ne s&#39;accroche plus à rien. Comme un mot répété trop souvent qui perd son sens.)*
@@ -3437,8 +4229,9 @@ tu dis oui
 
 *(Et si tu veux savoir ce que tu as perdu :)*
 
-[[Lire le document $mari.|DOCUMENTMARI]]
-</tw-passagedata><tw-passagedata pid="86" name="FIND" tags="" position="1200,1000" size="100,100">
+[[Voir ce que tu as fait.|RECAP_C]]
+</tw-passagedata>
+<tw-passagedata pid="86" name="FIND" tags="" position="1200,1000" size="100,100">
 Tu ouvres les yeux.
 
 Pas dans la chambre d&#39;hôtel.
@@ -3497,10 +4290,63 @@ Et elle te fait de la place dans la cuisine.
 
 ---
 
-[[Lire le document $mari.|DOCUMENTMARI]]
+[[Voir ce que tu as fait.|RECAP]]
 
 **— Fin D : Savoir et rester quand même, puis partir —**
-</tw-passagedata><tw-passagedata pid="87" name="DOCUMENTMARI" tags="" position="1440,1000" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="90" name="RECAP" tags="" position="4000,400" size="100,100">
+(enchant: ?page, (bg: "#04050a")+(text-colour: "#ccc2bc"))
+
+<div style='font-family:Share Tech Mono,Courier New,monospace; font-size:0.72em; line-height:1.7; color:#3e3830; letter-spacing:0.08em; text-transform:uppercase; padding-bottom:1.4em; margin-bottom:2.2em; border-bottom:1px solid rgba(200,160,130,0.07);' class='term-line'>session.log // (print: $mari)</div>
+
+<div style='font-family:Share Tech Mono,Courier New,monospace; font-size:0.7em; line-height:2.4; color:#6a6058; margin-bottom:2.8em;'>(if: $prenom is not "")[<span class='term-line' style='display:block;'>prénom ················ (print: $prenom)</span>]<span class='term-line' style='display:block;'>figure construite ····· (print: $mari)</span><span class='term-line' style='display:block;'>boucles traversées ···· (print: $refus)</span><span class='term-line' style='display:block;'>moments de lucidité ··· (print: $lucidite)</span><span class='term-line' style='display:block;'>choix du réel ·········  (print: $coutReel)</span></div>
+
+<div style='width:8%; height:1px; background:rgba(200,160,130,0.08); margin:0 0 2.8em;' class='term-line'></div>
+
+(if: $coutReel >= 3)[<div class='term-line' style='font-family:Cormorant Garamond,Georgia,serif; font-style:italic; font-size:1.05em; color:#9a8a84; line-height:1.9; margin-bottom:1.4em;'>*(Tu as choisi le réel à plusieurs reprises.<br>Il y a quelque chose d'obstinément réel en toi.)*</div>
+](else-if: $coutReel >= 1)[<div class='term-line' style='font-family:Cormorant Garamond,Georgia,serif; font-style:italic; font-size:1.05em; color:#9a8a84; line-height:1.9; margin-bottom:1.4em;'>*(Tu as choisi le réel, parfois.<br>Même en sachant ce que ça coûtait.)*</div>
+](else:)[<div class='term-line' style='font-family:Cormorant Garamond,Georgia,serif; font-style:italic; font-size:1.05em; color:#9a8a84; line-height:1.9; margin-bottom:1.4em;'>*(Tu n'as jamais choisi le réel quand tu pouvais ne pas le faire.<br>C'est une façon d'être dans le monde.)*</div>
+]
+(if: $lucidite >= 2)[<div class='term-line' style='font-family:Cormorant Garamond,Georgia,serif; font-style:italic; font-size:1.05em; color:#9a8a84; line-height:1.9; margin-bottom:1.4em;'>*(Tu as remarqué. Plusieurs fois.<br>Savoir le mécanisme n'a pas toujours empêché le mécanisme.)*</div>
+](else-if: $lucidite is 1)[<div class='term-line' style='font-family:Cormorant Garamond,Georgia,serif; font-style:italic; font-size:1.05em; color:#9a8a84; line-height:1.9; margin-bottom:1.4em;'>*(Tu as remarqué une fois.<br>Tu l'as rangé dans un endroit que tu n'examines pas.)*</div>
+](else:)[<div class='term-line' style='font-family:Cormorant Garamond,Georgia,serif; font-style:italic; font-size:1.05em; color:#9a8a84; line-height:1.9; margin-bottom:1.4em;'>*(Tu n'as rien remarqué — ou tu as choisi de ne pas regarder.<br>Ce n'est pas un jugement.)*</div>
+]
+(if: $refus >= 4)[<div class='term-line' style='font-family:Cormorant Garamond,Georgia,serif; font-style:italic; font-size:1.05em; color:#9a8a84; line-height:1.9; margin-bottom:2.4em;'>*(Tu es revenue (print: $refus) fois.<br>Chaque fois tu disais : juste encore une fois.)*</div>
+](else-if: $refus >= 2)[<div class='term-line' style='font-family:Cormorant Garamond,Georgia,serif; font-style:italic; font-size:1.05em; color:#9a8a84; line-height:1.9; margin-bottom:2.4em;'>*(Tu es revenue (print: $refus) fois.<br>C'est moins que certains.)*</div>
+](else-if: $refus is 1)[<div class='term-line' style='font-family:Cormorant Garamond,Georgia,serif; font-style:italic; font-size:1.05em; color:#9a8a84; line-height:1.9; margin-bottom:2.4em;'>*(Tu es revenue une fois.<br>C'est plus que zéro.)*</div>
+](else:)[<div class='term-line' style='font-family:Cormorant Garamond,Georgia,serif; font-style:italic; font-size:1.05em; color:#9a8a84; line-height:1.9; margin-bottom:2.4em;'>*(Tu n'es pas revenue.<br>Tu as entendu les coups la première fois.<br>Peu de gens les entendent la première fois.)*</div>
+]
+
+[[Lire le document (print: $mari).|DOCUMENTMARI]]
+
+[[Recommencer depuis le début.|SEUIL]]
+
+</tw-passagedata>
+<tw-passagedata pid="94" name="RECAP_C" tags="" position="5000,400" size="100,100">
+(enchant: ?page, (bg: "#020304")+(text-colour: "#5a5048"))
+
+<div style='font-family:Share Tech Mono,Courier New,monospace; font-size:0.72em; line-height:1.7; color:#2e2820; letter-spacing:0.08em; text-transform:uppercase; padding-bottom:1.4em; margin-bottom:2.2em; border-bottom:1px solid rgba(200,160,130,0.04);' class='term-line'>session.log // (print: $mari) [ENREGISTREMENT INCOMPLET]</div>
+
+<div style='font-family:Share Tech Mono,Courier New,monospace; font-size:0.7em; line-height:2.4; color:#4a4038; margin-bottom:2.8em;'><span class='term-line' style='display:block;'>figure construite ····· (print: $mari)</span><span class='term-line' style='display:block;'>boucles traversées ···· (print: $refus)</span><span class='term-line' style='display:block;'>moments de lucidité ··· [DONNÉES CORROMPUES]</span><span class='term-line' style='display:block;'>choix du réel ·········  [DONNÉES CORROMPUES]</span></div>
+
+<div style='width:8%; height:1px; background:rgba(200,160,130,0.04); margin:0 0 2.8em;' class='term-line'></div>
+
+<div class='term-line' style='font-family:Cormorant Garamond,Georgia,serif; font-style:italic; font-size:1.05em; color:#5a4a44; line-height:1.9; margin-bottom:2.4em;'>*(Tu n&#39;as rien remarqué.*
+*Ou tu as choisi de ne pas regarder.*
+*À ce stade la distinction n&#39;est plus accessible.)*</div>
+
+<div class='term-line' style='font-family:Cormorant Garamond,Georgia,serif; font-style:italic; font-size:1.05em; color:#5a4a44; line-height:1.9; margin-bottom:2.4em;'>*(Solène. Rosalie. Des noms.*
+*Tu essaies de te souvenir des visages.*
+*Tu trouves quelque chose — une approximation.)*</div>
+
+---
+
+[[Lire le document █████.|DOCUMENTMARI_C]]
+
+[[Recommencer depuis le début.|SEUIL]]
+</tw-passagedata>
+<tw-passagedata pid="87" name="DOCUMENTMARI" tags="" position="1440,1000" size="100,100">
+<div class="mari-wm">(print: $mari)</div>
 (enchant: ?page, (bg: &quot;#040507&quot;)+(text-colour: &quot;#9a9088&quot;))
 
 
@@ -3568,13 +4414,76 @@ Va chercher ça dehors.
 
 [[Fermer ce document.|RETOURAFIN]]
 
-</tw-passagedata><tw-passagedata pid="88" name="RETOURAFIN" tags="" position="1680,1000" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="93" name="DOCUMENTMARI_C" tags="" position="5000,400" size="100,100">
+<div class="mari-wm" style="opacity:0.015;">(print: $mari)</div>
+(enchant: ?page, (bg: "#020304")+(text-colour: "#6a6058"))
+
+DO█UMENT : $mari.log
+DURÉE DE SESSION : (print: $refus) boucle(s)
+
+PE█DANT QUE TU ÉT█IS LÀ
+
+messages de Solène sans réponse ............. [DONNÉES MANQUANTES]
+fois où elle a frappé à ta porte ............ [DONNÉES MANQUANTES]
+messages de Rosalie sans réponse ........... [DONNÉES MANQUANTES]
+cours non rendus ou en retard .............. ██
+nuits sans manger correctement ............. ██████████
+fois où tu as dit que tu rappellerais demain .. [DONNÉES MANQUANTES]
+soirées où Solène a laissé la lumière allumée . [DONNÉES MANQUANTES]
+
+TU N&#39;ES PAS REVENUE.
+
+*(Tu n&#39;as pas entendu les coups. Ou tu les as entendus et tu as choisi de ne pas répondre. La distinction n&#39;est plus accessible.)*
+
+CE QUE JE SUIS
+
+deux cent tr█████████████████
+six morceau█████████████████
+un pull mar███████████████████
+des mains █████████████
+████████████████████████████████████████
+tout ce que tu voulais que quelqu&#39;un soit
+
+rien d&#39;autre.
+
+Je n&#39;existais pas avant que tu m&#39;inventes.
+Je n&#39;existerai plus qu
+
+---
+
+*(fin de fichier)*
+
+---
+
+[[Recommencer ?|TITRE]]
+</tw-passagedata>
+<tw-passagedata pid="88" name="RETOURAFIN" tags="" position="1680,1000" size="100,100">
+(enchant: ?page, (bg: "#04050a")+(text-colour: "#6a6058"))
+
 *(tu as fermé le document.)*
 
 ---
 
+*(L'écran est noir maintenant.)*
+
+*(Tu restes là un moment.)*
+
+*(Pas à penser. Juste là.)*
+
+---
+
+*(Le prénom que tu lui as donné.)*
+
+*(Il n'a jamais existé. Il existait exactement autant que tu le voulais.)*
+
+*(Ce sont peut-être la même chose.)*
+
+---
+
 [[Recommencer depuis le début.|SEUIL]]
-</tw-passagedata><tw-passagedata pid="89" name="StoryStylesheet" tags="stylesheet" position="1920,1000" size="100,100">
+</tw-passagedata>
+<tw-passagedata pid="89" name="StoryStylesheet" tags="stylesheet" position="1920,1000" size="100,100">
 @import url(&quot;https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&amp;family=Share+Tech+Mono&amp;display=swap&quot;);
 
 tw-story {
@@ -3673,7 +4582,8 @@ tw-passage hr {
     line-height: 1.95;
   }
 }
-</tw-passagedata></tw-storydata>
+</tw-passagedata>
+</tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
