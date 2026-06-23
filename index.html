@@ -40,18 +40,33 @@
       pointer-events: none; z-index: 9998; mix-blend-mode: overlay; opacity: 0.55;
     }
 
-    /* NAV */
+    /* HEADER (nav + subnav) */
+    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 200; }
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       display: flex; justify-content: space-between; align-items: center;
       padding: 1.4rem 4rem;
-      background: linear-gradient(to bottom, rgba(7,4,10,0.96) 0%, transparent 100%);
+      background: linear-gradient(to bottom, rgba(7,4,10,0.96) 0%, rgba(7,4,10,0.8) 80%, transparent 100%);
     }
     .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 300; letter-spacing: .18em; color: var(--rose-light); text-decoration: none; }
     .nav-logo span { color: var(--rose); font-style: italic; }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a { color: var(--muted); text-decoration: none; font-family: 'DM Mono', monospace; font-size: .62rem; letter-spacing: .22em; text-transform: uppercase; transition: color .3s; }
     .nav-links a:hover, .nav-links a.active { color: var(--rose-light); }
+
+    .subnav {
+      display: flex; justify-content: center; gap: 2.4rem;
+      padding: .85rem 2rem;
+      background: rgba(7,4,10,0.92); backdrop-filter: blur(8px);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      opacity: 0; max-height: 0; overflow: hidden;
+      transition: opacity .4s ease, max-height .4s ease, padding .4s ease;
+      pointer-events: none;
+    }
+    .subnav.show { opacity: 1; max-height: 4rem; padding: .85rem 2rem; pointer-events: auto; }
+    .subnav a { font-family: 'DM Mono', monospace; font-size: .54rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); text-decoration: none; white-space: nowrap; transition: color .3s ease; position: relative; }
+    .subnav a::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0%; height: 1px; background: var(--rose); transition: width .3s ease; }
+    .subnav a:hover, .subnav a.active { color: var(--rose-light); }
+    .subnav a:hover::after, .subnav a.active::after { width: 100%; }
 
     /* HERO */
     .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 8rem 2rem 5rem; position: relative; overflow: hidden; }
@@ -136,6 +151,68 @@
 
     .corner { position: absolute; bottom: 1.2rem; right: 1.2rem; width: 22px; height: 22px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); transition: all .4s; }
     .card:hover .corner { width: 32px; height: 32px; border-color: var(--rose); }
+
+    /* SPOTLIGHT — feature unique, aéré */
+    .spotlight {
+      display: grid; grid-template-columns: 1fr 1.25fr; gap: 0;
+      border: 1px solid var(--border); background: var(--bg-card);
+      overflow: hidden;
+      transition: border-color .4s ease, box-shadow .4s ease;
+      margin-bottom: 8rem;
+    }
+    .spotlight:hover { border-color: var(--border-h); box-shadow: 0 28px 90px rgba(122,61,74,.2); }
+    .spotlight-img-link { display: block; height: 100%; }
+    .spotlight-img { position: relative; min-height: 380px; height: 100%; overflow: hidden; background: linear-gradient(135deg,#150a0f,#0a0510); }
+    .spotlight-img img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.82) saturate(.9); transition: transform .7s ease; }
+    .spotlight-img-link:hover img { transform: scale(1.045); }
+    .spotlight-body { padding: 3.2rem 3.6rem; display: flex; flex-direction: column; justify-content: center; }
+    .spotlight-tag { font-family:'DM Mono',monospace; font-size:.55rem; letter-spacing:.32em; text-transform:uppercase; color:var(--rose); margin-bottom:1.2rem; display:block; }
+    .spotlight-title { font-family:'Cormorant Garamond',serif; font-size:clamp(1.8rem,3.4vw,2.5rem); font-weight:300; color:var(--cream); line-height:1.14; margin-bottom:1.1rem; }
+    .spotlight-exc { font-size:.98rem; color:var(--muted); line-height:1.8; margin-bottom:1.8rem; max-width: 480px; }
+
+    .spotlight-episodes { display: flex; flex-direction: column; gap: .55rem; }
+    .spotlight-ep { display: flex; align-items: baseline; gap: .9rem; padding: .8rem 1rem; border: 1px solid var(--border); text-decoration: none; color: inherit; transition: border-color .3s ease, background .3s ease, padding-left .3s ease; }
+    .spotlight-ep:hover { border-color: var(--border-h); background: rgba(212,144,154,.05); padding-left: 1.3rem; }
+    .spotlight-ep-num { font-family:'DM Mono',monospace; font-size:.62rem; letter-spacing:.05em; color: var(--rose); flex-shrink: 0; }
+    .spotlight-ep-title { font-family:'Cormorant Garamond',serif; font-style: italic; font-size:.98rem; color: var(--cream); transition: color .3s ease; }
+    .spotlight-ep:hover .spotlight-ep-title { color: var(--rose-light); }
+
+    /* CONSTELLATIONS — groupes thématiques, séparés par respiration */
+    .constellation { margin-bottom: 7rem; }
+    .constellation:last-of-type { margin-bottom: 0; }
+    .constellation-head { display:flex; align-items:baseline; justify-content:space-between; gap:2rem; margin-bottom: 2.3rem; padding-bottom: 1.3rem; border-bottom: 1px solid var(--border); }
+    .constellation-name { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:400; font-style:italic; color: var(--cream); }
+    .constellation-name span { color: var(--rose); }
+    .constellation-count { font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.2em; text-transform:uppercase; color: var(--muted); white-space:nowrap; }
+
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+
+    .card-sm { display:block; text-decoration:none; color:inherit; background:var(--bg-card); border:1px solid var(--border); position:relative; overflow:hidden; transition: transform .4s ease, border-color .4s ease, box-shadow .4s ease; }
+    .card-sm:hover { transform: translateY(-4px); border-color: var(--border-h); box-shadow: 0 16px 50px rgba(122,61,74,.16); }
+    .cs-img { width:100%; aspect-ratio:16/11; overflow:hidden; background:linear-gradient(135deg,#150a0f,#0a0510); position:relative; }
+    .cs-img img { width:100%; height:100%; object-fit:cover; filter:brightness(.8) saturate(.85); transition: transform .5s ease; }
+    .card-sm:hover .cs-img img { transform: scale(1.06); }
+    .cs-img-placeholder { width:100%; height:100%; position:absolute; display:flex; align-items:center; justify-content:center; }
+    .cs-img-glyph { font-family:'Cormorant Garamond',serif; font-size:2.4rem; color:rgba(212,144,154,.12); font-style:italic; }
+    .cs-body { padding: 1.3rem 1.4rem 1.5rem; }
+    .cs-tag { font-family:'DM Mono',monospace; font-size:.44rem; letter-spacing:.18em; text-transform:uppercase; color:var(--rose); display:block; margin-bottom:.55rem; }
+    .cs-title { font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:400; color:var(--cream); line-height:1.32; margin-bottom: .6rem; transition: color .3s; min-height: 2.7rem; }
+    .card-sm:hover .cs-title { color: var(--rose-light); }
+    .cs-meta { font-family:'DM Mono',monospace; font-size:.44rem; letter-spacing:.14em; color:var(--rose-dark); }
+
+    /* COMPACT LIST — lectures singulières, poids visuel léger */
+    .compact-list { border-top: 1px solid var(--border); }
+    .compact-row { display:flex; align-items:baseline; justify-content:space-between; gap:2.5rem; padding: 1.6rem .4rem; border-bottom:1px solid var(--border); text-decoration:none; color:inherit; transition: padding-left .3s ease, border-color .3s ease; }
+    .compact-row:hover { padding-left: 1rem; border-color: var(--border-h); }
+    .compact-left { display:flex; flex-direction: column; gap:.4rem; min-width:0; }
+    .compact-tag { font-family:'DM Mono',monospace; font-size:.44rem; letter-spacing:.2em; text-transform:uppercase; color:var(--rose-dark); }
+    .compact-title { font-family:'Cormorant Garamond',serif; font-size:1.18rem; font-weight:400; font-style: italic; color:var(--cream); transition: color .3s ease; }
+    .compact-row:hover .compact-title { color: var(--rose-light); }
+    .compact-exc { font-size:.86rem; color:var(--muted); max-width: 460px; line-height:1.6; }
+    .compact-meta { font-family:'DM Mono',monospace; font-size:.48rem; letter-spacing:.15em; color:var(--muted); white-space:nowrap; flex-shrink:0; padding-top:.3rem; }
+
+    .see-all { display:inline-flex; align-items:center; gap:.6rem; margin-top: 2.6rem; font-family:'DM Mono',monospace; font-size:.58rem; letter-spacing:.24em; text-transform:uppercase; color:var(--rose-light); text-decoration:none; border-bottom:1px solid var(--rose-dark); padding-bottom:.35rem; transition: gap .3s ease, color .3s ease; }
+    .see-all:hover { gap:1rem; color: var(--rose); }
 
     /* FICTION INTERACTIVE */
     .fiction { padding: 9rem 4rem; background: linear-gradient(to bottom, transparent, rgba(61,21,32,.08), transparent); }
@@ -233,27 +310,75 @@
 
     @media (max-width: 960px) {
       nav { padding: 1.4rem 2rem; }
+      .subnav { gap: 1.2rem; padding: .7rem 1rem; overflow-x: auto; justify-content: flex-start; -webkit-overflow-scrolling: touch; }
+      .subnav::-webkit-scrollbar { display: none; }
       .articles, .about, .contact { padding: 5rem 2rem; }
       .grid { grid-template-columns: 1fr; }
       .card.feat { grid-column: span 1; }
+      .spotlight { grid-template-columns: 1fr; margin-bottom: 5rem; }
+      .spotlight-img { min-height: 220px; }
+      .spotlight-body { padding: 2.2rem 1.8rem; }
+      .constellation { margin-bottom: 4.5rem; }
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .compact-row { flex-direction: column; gap: .5rem; }
+      .compact-meta { padding-top: 0; }
       .about-inner { grid-template-columns: 1fr; gap: 3rem; }
       .about-panel { display: none; }
       footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
+    }
+    /* ACCESSIBILITÉ — focus clavier visible */
+    a:focus-visible, button:focus-visible, input:focus-visible {
+      outline: 1px solid var(--rose-light);
+      outline-offset: 4px;
+    }
+
+    /* CURSEUR PERSONNALISÉ — desktop uniquement, voir ui.js */
+    html.sr-cursor-on, html.sr-cursor-on * { cursor: none !important; }
+    .sr-cursor-ring {
+      position: fixed; top: 0; left: 0; width: 26px; height: 26px;
+      border: 1px solid var(--rose); border-radius: 50%;
+      pointer-events: none; z-index: 10000; opacity: 0;
+      transition: width .28s ease, height .28s ease, border-color .28s ease, background-color .28s ease, opacity .3s ease;
+      will-change: transform;
+    }
+    .sr-cursor-ring.show { opacity: .8; }
+    .sr-cursor-ring.hover { width: 56px; height: 56px; border-color: var(--rose-light); background: rgba(212,144,154,.07); }
+    .sr-cursor-ring.active { width: 18px; height: 18px; background: rgba(212,144,154,.2); }
+    .sr-cursor-dot {
+      position: fixed; top: 0; left: 0; width: 4px; height: 4px; border-radius: 50%;
+      background: var(--rose-light); pointer-events: none; z-index: 10001; opacity: 0;
+      transition: opacity .3s ease;
+      will-change: transform;
+    }
+    .sr-cursor-dot.show { opacity: .9; }
+    .sr-cursor-ring.hover ~ .sr-cursor-dot, .sr-cursor-dot.hover { opacity: 0; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ring, .panel-glyph, .petal { animation: none !important; }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="#" class="nav-logo">Spectre <span>Rose</span></a>
-    <ul class="nav-links">
-      <li><a href="#theories">Théories</a></li>
-      <li><a href="theories.html">Index complet</a></li>
-      <li><a href="#fiction">Fiction</a></li>
-      <li><a href="#about">À propos</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <header class="site-header">
+    <nav>
+      <a href="#" class="nav-logo">Spectre <span>Rose</span></a>
+      <ul class="nav-links">
+        <li><a href="#theories">Théories</a></li>
+        <li><a href="theories.html">Index complet</a></li>
+        <li><a href="#fiction">Fiction</a></li>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="subnav" id="subnav">
+      <a href="#c-umineko">Umineko</a>
+      <a href="#c-transversales">Transversales</a>
+      <a href="#c-memoire">Mémoire &amp; identité</a>
+      <a href="#c-regard">Regard et corruption</a>
+      <a href="#fiction">Fiction</a>
+    </div>
+  </header>
 
   <!-- HERO -->
   <section class="hero">
@@ -273,257 +398,227 @@
       <span class="orn">— ✦ —</span>
     </div>
 
-    <div class="grid">
-
-      <!-- Featured — Silent Hill f -->
-<a href="spectre-rose-silent-hill-f-article-I.html" class="card feat rv">
-  <div class="c-img">
-    <img src="silenthill-f.jpg" alt="Silent Hill f — Hinako et le Shiromuku">
-  </div>
-  <div class="c-body">
-    <span class="c-tag">✦ Silent Hill f · I &nbsp;·&nbsp; Identité confisquée</span>
-    <h3 class="c-title">Ce qu'Hinako ne peut pas regarder</h3>
-    <p class="c-exc">Le journal qui se réécrit, le nom, le corps, la sœur, les fins : lire l'effacement d'une femme dans le Japon des années 1960 — et pourquoi sa beauté même est l'horreur.</p>
-    <div class="c-meta"><span>24 mars 2026</span><span>·</span><span>24 min de lecture</span></div>
-  </div>
-  <div class="corner"></div>
-</a>
-
-<a href="spectre-rose-silent-hill-f-article-II.html" class="card">
-  <div class="c-img">
-    <img src="combatfinal.jpg" alt="Silent Hill f — Kitsune no Hinako, la mariée aux bras de renard">
-  </div>
-  <div class="c-body">
-    <span class="c-tag">✦ Silent Hill f · II &nbsp;·&nbsp; Katashiro &amp; le double</span>
-    <h3 class="c-title">La poupée qu'on jette à la rivière</h3>
-    <p class="c-exc">Kitsune no Hinako n'est pas un double psychologique mais une poupée de substitution — une victime émissaire fabriquée pour absorber un sort à la place d'une autre.</p>
-    <div class="c-meta"><span>7 avril 2026</span><span>·</span><span>18 min de lecture</span></div>
-  </div>
-  <div class="corner"></div>
-</a>
-
-<a href="spectre-rose-silent-hill-f-article-III.html" class="card rv">
-  <div class="c-img">
-    <img src="silenthillf3.jpg" alt="Silent Hill f — Tsukumogami, le dieu d'origine d'Ebisugaoka">
-  </div>
-  <div class="c-body">
-    <span class="c-tag">✦ Silent Hill f · III &nbsp;·&nbsp; Conquête du sacré</span>
-    <h3 class="c-title">Le village qui a réécrit son histoire</h3>
-    <p class="c-exc">Le dieu tutélaire d'Ebisugaoka est un usurpateur, la divinité d'origine fut torturée en monstre : une mémoire collective confisquée, lue avec Trouillot, Halbwachs et Fanon.</p>
-    <div class="c-meta"><span>21 avril 2026</span><span>·</span><span>19 min de lecture</span></div>
-  </div>
-  <div class="corner"></div>
-</a>
-
-      <a href="article-combattantes-sous-condition.html" class="card">
-  <div class="c-img">
-    <img src="Houseki.jpg" alt="Combattantes sous condition — l'héroïne du manga pour filles, de Saphir à L'Ère des cristaux">
-  </div>
-  <div class="c-body">
-    <span class="c-tag">✦ Shōjo &amp; anime &nbsp;·&nbsp; Héroïnes combattantes &amp; genre</span>
-    <h3 class="c-title">L'unique point écarlate</h3>
-    <p class="c-exc">Le manga pour filles prête l'épée à ses héroïnes — et s'arrange toujours pour la reprendre. Du <em>Chevalier au ruban</em> à <em>L'Ère des cristaux</em>, anatomie d'une grammaire qui ne lâche prise qu'en abolissant le genre… que la traduction française recoud aussitôt.</p>
-    <div class="c-meta"><span>18 juin 2026</span><span>·</span><span>17 min de lecture</span></div>
-  </div>
-  <div class="corner"></div>
-</a>
-
-         <a href="article-umineko-conte.html" class="card rv">
-        <div class="c-img">
-          <img src="umineko1.jpg" alt="Silent Hill f">
+    <!-- À LA UNE — série complète visible -->
+    <div class="spotlight rv">
+      <a href="spectre-rose-silent-hill-f-article-I.html" class="spotlight-img-link">
+        <div class="spotlight-img">
+          <img src="silenthill-f.jpg" alt="Silent Hill f">
         </div>
-        <div class="c-body">
-          <span class="c-tag">✦ Umineko &nbsp;·&nbsp; Pour les nouveaux venus</span>
-          <h3 class="c-title">Il était une fois une île dorée</h3>
-          <p class="c-exc">L'histoire d'Umineko racontée comme un conte — une porte d'entrée pour ceux qui ne connaissent pas encore Rokkenjima.</p>
-          <div class="c-meta"><span>24 mars 2026</span><span>·</span><span>10 min</span></div>
-        </div>
-        <div class="corner"></div>
       </a>
-
-      <a href="article-umineko.html" class="card rv">
-        <div class="c-img">
-          <img src="beatrice.jpg" alt="Silent Hill f">
+      <div class="spotlight-body">
+        <span class="spotlight-tag">✦ À la une &nbsp;·&nbsp; Silent Hill f &nbsp;·&nbsp; Série en trois lectures</span>
+        <h3 class="spotlight-title">Ce qu'Hinako ne peut pas regarder</h3>
+        <p class="spotlight-exc">Un journal qui se réécrit, une poupée qu'on jette à la rivière, un village qui a réécrit son histoire — trois lectures de Silent Hill f comme cartographie de l'identité confisquée.</p>
+        <div class="spotlight-episodes">
+          <a href="spectre-rose-silent-hill-f-article-I.html" class="spotlight-ep">
+            <span class="spotlight-ep-num">I.</span>
+            <span class="spotlight-ep-title">Ce qu'Hinako ne peut pas regarder</span>
+          </a>
+          <a href="spectre-rose-silent-hill-f-article-II.html" class="spotlight-ep">
+            <span class="spotlight-ep-num">II.</span>
+            <span class="spotlight-ep-title">La poupée qu'on jette à la rivière</span>
+          </a>
+          <a href="spectre-rose-silent-hill-f-article-III.html" class="spotlight-ep">
+            <span class="spotlight-ep-num">III.</span>
+            <span class="spotlight-ep-title">Le village qui a réécrit son histoire</span>
+          </a>
         </div>
-        <div class="c-body">
-          <span class="c-tag">✦ Umineko &nbsp;·&nbsp; Féminisme &amp; identité</span>
-          <h3 class="c-title">Le mobilier a un cœur — Sayo Yasuda et les masques du féminin</h3>
-          <p class="c-exc">Shannon, Kanon, Beatrice, Sayo : non pas des masques à dévoiler, mais des réponses successives à la même impasse — exister comme femme dans une famille qui n'a su voir en elle qu'un meuble.</p>
-          <div class="c-meta"><span>24 mars 2026</span><span>·</span><span>18 min</span></div>
-        </div>
-        <div class="corner"></div>
-      </a>
-
-      <a href="article-umineko-magic.html" class="card rv">
-        <div class="c-img">
-         <img src="goldenland.jpeg" alt="Silent Hill f">
-        </div>
-        <div class="c-body">
-          <span class="c-tag">✦ Umineko &nbsp;·&nbsp; Magie &amp; empathie</span>
-          <h3 class="c-title">Sans amour, cela ne peut être vu</h3>
-          <p class="c-exc">Le roman policier réécrit de l'intérieur : ce qu'Umineko appelle « amour » n'est ni une émotion ni une morale — c'est l'épistémologie sans laquelle une enquête vraiment se rate. Et c'est, surtout, le rôle qu'il assigne au lecteur.</p>
-          <div class="c-meta"><span>24 mars 2026</span><span>·</span><span>16 min</span></div>
-        </div>
-        <div class="corner"></div>
-      </a>
-
-      <a href="article-rule-of-rose.html" class="card rv">
-        <div class="c-img">
-          <img src="ruleofrose.jpg" alt="Silent Hill f">
-        </div>
-        <div class="c-body">
-          <span class="c-tag">✦ Rule of Rose &nbsp;·&nbsp; Abus &amp; mémoire</span>
-          <h3 class="c-title">La règle de la rose — ce que les enfants font aux enfants</h3>
-          <p class="c-exc">Hiérarchies, cruauté, amour impossible et mémoire brisée dans le jeu le plus mal compris de son époque.</p>
-          <div class="c-meta"><span>24 mars 2026</span><span>·</span><span>15 min</span></div>
-        </div>
-        <div class="corner"></div>
-      </a>
-
-      <a href="article-alice-madness-returns.html" class="card rv">
-        <div class="c-img">
-          <img src="alice.jpg" alt="Silent Hill f">
-        </div>
-        <div class="c-body">
-          <span class="c-tag">✦ Alice Madness Returns &nbsp;·&nbsp; Trauma</span>
-          <h3 class="c-title">Le pays des merveilles ne protège plus</h3>
-          <p class="c-exc">Mémoire, abus et résistance dans Alice : Madness Returns — Wonderland comme carte du trauma.</p>
-          <div class="c-meta"><span>24 mars 2026</span><span>·</span><span>14 min</span></div>
-        </div>
-        <div class="corner"></div>
-      </a>
-
-      <a href="article-white-night.html" class="card rv">
-        <div class="c-img">
-        <img src="whitenight.jpg" alt="Silent Hill f">
-        </div>
-        <div class="c-body">
-          <span class="c-tag">✦ White Night &nbsp;·&nbsp; Film noir &amp; identité</span>
-          <h3 class="c-title">L'allumette et le loup — lumière, mensonge et identité dans White Night</h3>
-          <p class="c-exc">Le protagoniste est le tueur. Le noir et blanc comme langage narratif dans ce jeu français injustement méconnu.</p>
-          <div class="c-meta"><span>24 mars 2026</span><span>·</span><span>12 min</span></div>
-        </div>
-        <div class="corner"></div>
-      </a>
-
-      <a href="article-mad-father.html" class="card rv">
-        <div class="c-img">
-       <img src="ayadrevis.jpg" alt="Silent Hill f">
-        </div>
-        <div class="c-body">
-          <span class="c-tag">✦ Mad Father &nbsp;·&nbsp; RPG Horror</span>
-          <h3 class="c-title">La poupée qui dit je t'aime — héritage et corruption dans Mad Father</h3>
-          <p class="c-exc">Aya aimait son père. Elle ne savait pas encore ce qu'elle était. La malédiction des deux lignées.</p>
-          <div class="c-meta"><span>24 mars 2026</span><span>·</span><span>8 min</span></div>
-        </div>
-        <div class="corner"></div>
-      </a>
-
-      <a href="article-sh2-remake.html" class="card rv">
-        <div class="c-img">
-         <img src="james.png" alt="Silent Hill 2 Remake">
-        </div>
-        <div class="c-body">
-          <span class="c-tag">✦ Silent Hill 2 Remake &nbsp;·&nbsp; 2024</span>
-          <h3 class="c-title">Le brouillard a changé — ce que le remake de Silent Hill 2 dit de nouveau</h3>
-          <p class="c-exc">Stillness, Bliss, et la thèse de la suite secrète — ce que Bloober Team a osé ajouter à l'œuvre de Team Silent.</p>
-          <div class="c-meta"><span>24 mars 2026</span><span>·</span><span>13 min</span></div>
-        </div>
-        <div class="corner"></div>
-      </a>
-
-      <a href="article-umineko-dante.html" class="card rv">
-      <div class="c-img">
-         <img src="battlerbeatrice.jpg" alt="Umineko">
-        </div>
-        <div class="c-body">
-          <span class="c-tag">✦ Umineko &nbsp;·&nbsp; Divine Comédie</span>
-          <h3 class="c-title">Umineko comme Comédie — Dante, Ryukishi07 et l'au-delà amoureux</h3>
-          <p class="c-exc">Le triple rôle de Dante, Beatrice Portinari, Virgilia, les sept péchés féminisés — la cartographie d'une réécriture de sept siècles.</p>
-          <div class="c-meta"><span>24 mars 2026</span><span>·</span><span>18 min</span></div>
-        </div>
-        <div class="corner"></div>
-      </a>
-
-      <a href="article-sacrifice-manga.html" class="card rv">
-        <div class="c-img">
-         <img src="casca.avif" alt="Umineko">
-        </div>
-        <div class="c-body">
-          <span class="c-tag">✦ Manga d'horreur &nbsp;·&nbsp; Genre &amp; corps</span>
-          <h3 class="c-title">Corps offerts — le sacrifice comme dispositif genré dans le manga d'horreur</h3>
-          <p class="c-exc">Qui sacrifie, qui est sacrifié, et ce que la fiction dit des corps féminins quand elle les met à l'épreuve.</p>
-          <div class="c-meta"><span>24 mars 2026</span><span>·</span><span>14 min</span></div>
-        </div>
-        <div class="corner"></div>
-      </a>
-
-      <a href="article-horreur-feminin.html" class="card rv">
-        <div class="c-img">
-         <img src="fatalframe.jpeg" alt="Umineko">
-        </div>
-        <div class="c-body">
-          <span class="c-tag">✦ Article transversal &nbsp;·&nbsp; Genre</span>
-          <h3 class="c-title">Pourquoi l'horreur psychologique est un genre féminin</h3>
-          <p class="c-exc">Sur la récurrence des femmes comme protagonistes du trauma — et ce que ça dit sur qui raconte ces histoires, et pour qui.</p>
-          <div class="c-meta"><span>24 mars 2026</span><span>·</span><span>15 min</span></div>
-        </div>
-        <div class="corner"></div>
-      </a>
-
-      <a href="article-saya-no-uta.html" class="card rv">
-          <div class="c-img">
-         <img src="saya.jpg" alt="Umineko">
-        </div>
-        <div class="c-body">
-          <span class="c-tag">✦ Saya no Uta &nbsp;·&nbsp; Perception &amp; désir</span>
-          <h3 class="c-title">Ce que voit Fuminori — perception, désir et horreur dans Saya no Uta</h3>
-          <p class="c-exc">Quand le regard construit le monde — et ce que ça dit sur la nature du beau, du monstrueux, et de l'amour.</p>
-          <div class="c-meta"><span>24 mars 2026</span><span>·</span><span>13 min</span></div>
-        </div>
-        <div class="corner"></div>
-      </a>
-
-  <a href="article-ryukishi07.html" class="card rv">
-  <div class="c-img">
-    <img src="higurashi.jpg" alt="Le monde de Ryukishi">
-  </div>
-  <div class="c-body">
-    <span class="c-tag">✦ Article transversal &nbsp;·&nbsp; Ryukishi07 — Portrait d'auteur</span>
-    <h3 class="c-title">Le monde de Ryukishi07 — comprendre sans absoudre</h3>
-    <p class="c-exc">De Higurashi à Umineko jusqu'à Silent Hill f : une œuvre de vingt ans qui refuse de réduire ses personnages à des victimes. La boucle, le système, l'amour — et ce que « comprendre sans absoudre » exige du lecteur.</p>
-    <div class="c-meta"><span>5 mai 2026</span><span>·</span><span>22 min de lecture</span></div>
-  </div>
-  <div class="corner"></div>
-</a>
-
-      <a href="article-pentiment.html" class="card rv">
-        <div class="c-img">
-          <img src="pentiment.jpg" alt="Pentiment">
-        </div>
-        <div class="c-body">
-          <span class="c-tag">✦ Pentiment &nbsp;·&nbsp; Histoire &amp; mémoire</span>
-          <h3 class="c-title">Le palimpseste vivant — mémoire, transition et manuscrit dans Pentiment</h3>
-          <p class="c-exc">Quelle société médiévale en plein changement l'interactivité nous permet-elle de découvrir — et comment dépeindre un monde au bord du basculement ?</p>
-          <div class="c-meta"><span>24 mars 2026</span><span>·</span><span>16 min</span></div>
-        </div>
-        <div class="corner"></div>
-      </a>
-
-      <a href="article-danganronpa2.html" class="card rv">
-          <div class="c-img">
-          <img src="chiaki.webp" alt="Pentiment">
-        </div>
-        <div class="c-body">
-          <span class="c-tag">✦ Danganronpa 2 &nbsp;·&nbsp; Simulation &amp; métatextualité</span>
-          <h3 class="c-title">Le jeu dans le jeu dans le jeu — couches de réalité et mort de Chiaki</h3>
-          <p class="c-exc">Une architecture de réalités emboîtées, une mort à deux niveaux, et un joueur qui ne sait pas ce qu'il regarde — Baudrillard, Freud et le Neo World Program.</p>
-          <div class="c-meta"><span>24 mars 2026</span><span>·</span><span>16 min</span></div>
-        </div>
-        <div class="corner"></div>
-      </a>
-
+      </div>
     </div>
+
+    <!-- CONSTELLATION UMINEKO -->
+    <div class="constellation rv" id="c-umineko">
+      <div class="constellation-head">
+        <h3 class="constellation-name">Constellation <span>Umineko</span></h3>
+        <span class="constellation-count">4 lectures</span>
+      </div>
+      <div class="grid-4">
+
+        <a href="article-umineko-conte.html" class="card-sm">
+          <div class="cs-img"><img src="umineko1.jpg" alt="Umineko"></div>
+          <div class="cs-body">
+            <span class="cs-tag">Pour les nouveaux venus</span>
+            <h4 class="cs-title">Il était une fois une île dorée</h4>
+            <span class="cs-meta">10 min</span>
+          </div>
+        </a>
+
+        <a href="article-umineko-mobilier.html" class="card-sm">
+          <div class="cs-img"><img src="beatrice.jpg" alt="Umineko"></div>
+          <div class="cs-body">
+            <span class="cs-tag">Diptyque I · Féminisme</span>
+            <h4 class="cs-title">Le mobilier a un cœur</h4>
+            <span class="cs-meta">18 min</span>
+          </div>
+        </a>
+
+        <a href="article-umineko-amour.html" class="card-sm">
+          <div class="cs-img"><img src="goldenland.jpeg" alt="Umineko"></div>
+          <div class="cs-body">
+            <span class="cs-tag">Diptyque II · Magie</span>
+            <h4 class="cs-title">Sans amour, cela ne peut être vu</h4>
+            <span class="cs-meta">16 min</span>
+          </div>
+        </a>
+
+        <a href="article-umineko-dante.html" class="card-sm">
+          <div class="cs-img"><img src="battlerbeatrice.jpg" alt="Umineko"></div>
+          <div class="cs-body">
+            <span class="cs-tag">Divine Comédie</span>
+            <h4 class="cs-title">Umineko comme Comédie</h4>
+            <span class="cs-meta">18 min</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- LECTURES TRANSVERSALES -->
+    <div class="constellation rv" id="c-transversales">
+      <div class="constellation-head">
+        <h3 class="constellation-name">Lectures <span>transversales</span></h3>
+        <span class="constellation-count">4 essais</span>
+      </div>
+      <div class="grid-4">
+
+        <a href="article-ryukishi07.html" class="card-sm">
+          <div class="cs-img"><img src="higurashi.jpg" alt="Ryukishi07"></div>
+          <div class="cs-body">
+            <span class="cs-tag">Portrait d'auteur</span>
+            <h4 class="cs-title">Le monde de Ryukishi07</h4>
+            <span class="cs-meta">16 min</span>
+          </div>
+        </a>
+
+        <a href="article-horreur-feminin.html" class="card-sm">
+          <div class="cs-img"><img src="fatalframe.jpeg" alt="Horreur féminine"></div>
+          <div class="cs-body">
+            <span class="cs-tag">Genre &amp; horreur</span>
+            <h4 class="cs-title">Pourquoi l'horreur psychologique est un genre féminin</h4>
+            <span class="cs-meta">15 min</span>
+          </div>
+        </a>
+
+        <a href="article-combattantes-sous-condition.html" class="card-sm">
+          <div class="cs-img">
+            <div class="cs-img-placeholder"><span class="cs-img-glyph">✦</span></div>
+          </div>
+          <div class="cs-body">
+            <span class="cs-tag">Shōjo &amp; traduction</span>
+            <h4 class="cs-title">L'unique point écarlate</h4>
+            <span class="cs-meta">17 min</span>
+          </div>
+        </a>
+
+        <a href="article-sacrifice-manga.html" class="card-sm">
+          <div class="cs-img"><img src="casca.avif" alt="Sacrifice dans le manga"></div>
+          <div class="cs-body">
+            <span class="cs-tag">Manga d'horreur</span>
+            <h4 class="cs-title">Corps offerts</h4>
+            <span class="cs-meta">14 min</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- MÉMOIRE & IDENTITÉ -->
+    <div class="constellation rv" id="c-memoire">
+      <div class="constellation-head">
+        <h3 class="constellation-name">Mémoire <span>&amp; identité</span></h3>
+        <span class="constellation-count">4 lectures</span>
+      </div>
+      <div class="grid-4">
+
+        <a href="article-pentiment.html" class="card-sm">
+          <div class="cs-img"><img src="pentiment.jpg" alt="Pentiment"></div>
+          <div class="cs-body">
+            <span class="cs-tag">Pentiment · Histoire</span>
+            <h4 class="cs-title">Le palimpseste vivant</h4>
+            <span class="cs-meta">16 min</span>
+          </div>
+        </a>
+
+        <a href="article-danganronpa2.html" class="card-sm">
+          <div class="cs-img">
+            <div class="cs-img-placeholder"><span class="cs-img-glyph">DR</span></div>
+          </div>
+          <div class="cs-body">
+            <span class="cs-tag">Danganronpa 2 · Simulation</span>
+            <h4 class="cs-title">Le jeu dans le jeu dans le jeu</h4>
+            <span class="cs-meta">16 min</span>
+          </div>
+        </a>
+
+        <a href="article-sh2-remake.html" class="card-sm">
+          <div class="cs-img"><img src="james.png" alt="Silent Hill 2 Remake"></div>
+          <div class="cs-body">
+            <span class="cs-tag">Silent Hill 2 Remake</span>
+            <h4 class="cs-title">Le brouillard a changé</h4>
+            <span class="cs-meta">13 min</span>
+          </div>
+        </a>
+
+        <a href="article-alice-madness-returns.html" class="card-sm">
+          <div class="cs-img"><img src="alice.jpg" alt="Alice Madness Returns"></div>
+          <div class="cs-body">
+            <span class="cs-tag">Alice Madness Returns</span>
+            <h4 class="cs-title">Le pays des merveilles ne protège plus</h4>
+            <span class="cs-meta">14 min</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- REGARD ET CORRUPTION -->
+    <div class="constellation rv" id="c-regard">
+      <div class="constellation-head">
+        <h3 class="constellation-name">Regard <span>et corruption</span></h3>
+        <span class="constellation-count">4 lectures</span>
+      </div>
+      <div class="grid-4">
+
+        <a href="article-white-night.html" class="card-sm">
+          <div class="cs-img"><img src="whitenight.jpg" alt="White Night"></div>
+          <div class="cs-body">
+            <span class="cs-tag">White Night · Film noir</span>
+            <h4 class="cs-title">L'allumette et le loup</h4>
+            <span class="cs-meta">12 min</span>
+          </div>
+        </a>
+
+        <a href="article-saya-no-uta.html" class="card-sm">
+          <div class="cs-img"><img src="saya.jpg" alt="Saya no Uta"></div>
+          <div class="cs-body">
+            <span class="cs-tag">Saya no Uta · Désir</span>
+            <h4 class="cs-title">Ce que voit Fuminori</h4>
+            <span class="cs-meta">13 min</span>
+          </div>
+        </a>
+
+        <a href="article-rule-of-rose.html" class="card-sm">
+          <div class="cs-img"><img src="ruleofrose.jpg" alt="Rule of Rose"></div>
+          <div class="cs-body">
+            <span class="cs-tag">Rule of Rose · Mémoire</span>
+            <h4 class="cs-title">La règle de la rose</h4>
+            <span class="cs-meta">15 min</span>
+          </div>
+        </a>
+
+        <a href="article-mad-father.html" class="card-sm">
+          <div class="cs-img"><img src="ayadrevis.jpg" alt="Mad Father"></div>
+          <div class="cs-body">
+            <span class="cs-tag">Mad Father · Héritage</span>
+            <h4 class="cs-title">La poupée qui dit je t'aime</h4>
+            <span class="cs-meta">8 min</span>
+          </div>
+        </a>
+
+      </div>
+      <a href="theories.html" class="see-all">Explorer l'index complet &nbsp;→</a>
+    </div>
+
   </section>
 
   <!-- FICTION INTERACTIVE -->
@@ -613,9 +708,11 @@
   </footer>
 
   <script>
+    /* Scroll reveal — avec décalage en cascade ; marque l'init pour éviter le doublon dans ui.js */
+    document.body.setAttribute('data-sr-init', '1');
     const items = document.querySelectorAll('.rv');
     const obs = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
+      entries.forEach((e) => {
         if (e.isIntersecting) {
           setTimeout(() => e.target.classList.add('on'), (parseInt(e.target.dataset.i||0)%4)*110);
           obs.unobserve(e.target);
@@ -623,14 +720,90 @@
       });
     }, { threshold: 0.08 });
     items.forEach((el, i) => { el.dataset.i = i; obs.observe(el); });
+
+    /* Ancres internes en scroll fluide */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
         const h = a.getAttribute('href');
-        if (h==='#') return;
+        if (h === '#') return;
+        const target = document.querySelector(h);
+        if (!target) return;
         e.preventDefault();
-        document.querySelector(h)?.scrollIntoView({ behavior:'smooth' });
+        target.scrollIntoView({ behavior: 'smooth' });
       });
     });
+
+    /* SOUS-NAVIGATION — apparition au scroll + scrollspy */
+    const subnav = document.getElementById('subnav');
+    const heroEl = document.querySelector('.hero');
+    if (subnav && heroEl) {
+      const toggleSubnav = () => {
+        const past = window.scrollY > heroEl.offsetHeight * 0.6;
+        subnav.classList.toggle('show', past);
+      };
+      window.addEventListener('scroll', toggleSubnav, { passive: true });
+      toggleSubnav();
+
+      const subnavLinks = [...subnav.querySelectorAll('a[href^="#"]')];
+      const spySections = subnavLinks
+        .map(a => document.querySelector(a.getAttribute('href')))
+        .filter(Boolean);
+      if (spySections.length) {
+        const spyObs = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const id = '#' + entry.target.id;
+              subnavLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+            }
+          });
+        }, { rootMargin: '-35% 0px -55% 0px' });
+        spySections.forEach(s => spyObs.observe(s));
+      }
+    }
+
+    /* CURSEUR PERSONNALISÉ — desktop avec souris fine uniquement, respecte prefers-reduced-motion */
+    (function () {
+      const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!fine || reduceMotion) return;
+
+      document.documentElement.classList.add('sr-cursor-on');
+
+      const ring = document.createElement('div');
+      ring.className = 'sr-cursor-ring';
+      const dot = document.createElement('div');
+      dot.className = 'sr-cursor-dot';
+      document.body.append(ring, dot);
+
+      let mx = -100, my = -100, rx = -100, ry = -100;
+      let started = false;
+
+      window.addEventListener('mousemove', (e) => {
+        mx = e.clientX; my = e.clientY;
+        dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
+        if (!started) { started = true; ring.classList.add('show'); dot.classList.add('show'); }
+      }, { passive: true });
+
+      function loop() {
+        rx += (mx - rx) * 0.2;
+        ry += (my - ry) * 0.2;
+        ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+        requestAnimationFrame(loop);
+      }
+      loop();
+
+      const hoverSelector = 'a, button, input, .card-sm, .spotlight-ep, .spotlight-img-link, .compact-row';
+      document.addEventListener('mouseover', (e) => {
+        if (e.target.closest(hoverSelector)) ring.classList.add('hover');
+      });
+      document.addEventListener('mouseout', (e) => {
+        if (e.target.closest(hoverSelector)) ring.classList.remove('hover');
+      });
+      document.addEventListener('mousedown', () => ring.classList.add('active'));
+      document.addEventListener('mouseup', () => ring.classList.remove('active'));
+      document.addEventListener('mouseleave', () => { ring.classList.remove('show'); dot.classList.remove('show'); });
+      document.addEventListener('mouseenter', () => { ring.classList.add('show'); dot.classList.add('show'); });
+    })();
   </script>
   <script src="ui.js"></script>
 </body>
