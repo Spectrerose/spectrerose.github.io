@@ -1,325 +1,268 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spectre Rose — Le mobilier a un cœur : Sayo Yasuda, les masques du féminin et la question du sujet dans Umineko</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg:         #07040a;
-      --bg-card:    #0e0812;
-      --rose:       #d4909a;
-      --rose-light: #f0c4cc;
-      --rose-dark:  #7a3d4a;
-      --rose-deep:  #3d1520;
-      --cream:      #ede4e6;
-      --muted:      #6e5860;
-      --border:     rgba(212, 144, 154, 0.18);
-      --border-h:   rgba(212, 144, 154, 0.45);
-      --glow:       rgba(212, 144, 154, 0.08);
-      --gold:       #c9a96e;
-      --gold-dark:  #6e4f20;
-    }
-
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--cream);
-      font-family: 'Crimson Text', serif;
-      font-size: 19px;
-      line-height: 1.85;
-      overflow-x: hidden;
-    }
-
-    body::after {
-      content: '';
-      position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 9998; mix-blend-mode: overlay; opacity: 0.55;
-    }
-
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.4rem 4rem;
-      background: linear-gradient(to bottom, rgba(7,4,10,0.96) 0%, transparent 100%);
-    }
-    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300; letter-spacing: .18em; color: var(--rose-light); text-decoration: none; }
-    .nav-logo span { color: var(--rose); font-style: italic; }
-    .nav-back { font-family: 'DM Mono', monospace; font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .3s; }
-    .nav-back:hover { color: var(--rose); }
-
-    /* HERO */
-    .art-hero { padding: 12rem 4rem 6rem; max-width: 820px; margin: 0 auto; text-align: center; }
-    .a-eyebrow { font-family: 'DM Mono', monospace; font-size: .58rem; letter-spacing: .4em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 2rem; }
-    .a-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 300; line-height: 1.08; letter-spacing: -.01em; color: var(--cream); }
-    .a-title em { color: var(--gold); font-style: italic; }
-    .a-subtitle { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; font-weight: 300; color: var(--muted); margin-top: 1.4rem; line-height: 1.6; }
-    .a-meta { display: flex; justify-content: center; align-items: center; gap: 1.2rem; margin-top: 2.8rem; font-family: 'DM Mono', monospace; font-size: .52rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-dark); }
-    .a-meta .sep { color: var(--border-h); }
-
-    .orn-line { text-align: center; color: var(--gold-dark); font-size: .8rem; letter-spacing: 1.4rem; margin: 3rem 0; }
-
-    /* COVER */
-    .cover-img { width: 100%; max-width: 820px; margin: 0 auto 4rem; aspect-ratio: 16/7; background: linear-gradient(135deg, #100a04 0%, #0a0510 50%, #120810 100%); border: 1px solid rgba(201, 169, 110, 0.15); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .6rem; position: relative; overflow: hidden; padding: 0 4rem; }
-    .cover-img::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(201,169,110,.1), transparent); pointer-events: none; }
-    .cover-img img { width: 100%; height: 100%; object-fit: cover; }
-    .cover-img-glyph { font-family: 'Cormorant Garamond', serif; font-size: 5rem; color: rgba(201,169,110,.1); font-style: italic; font-weight: 300; line-height: 1; }
-    .cover-img-label { font-family: 'DM Mono', monospace; font-size: .5rem; letter-spacing: .25em; text-transform: uppercase; color: rgba(201,169,110,.3); z-index: 1; }
-
-    /* BODY */
-    .art-body { max-width: 680px; margin: 0 auto; padding: 0 2rem 8rem; }
-
-    h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.95rem; font-weight: 400; line-height: 1.15; color: var(--cream); margin: 4rem 0 1.4rem; position: relative; padding-left: 1.4rem; }
-    h2::before { content: ''; position: absolute; left: 0; top: .3em; width: 3px; height: 1.1em; background: linear-gradient(to bottom, var(--gold), var(--gold-dark)); }
-
-    h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; font-weight: 400; color: var(--gold); margin: 2.4rem 0 .8rem; }
-
-    p { color: #c9b8bc; margin-bottom: 1.4rem; }
-    em { color: var(--rose-light); font-style: italic; }
-    strong { color: var(--cream); font-weight: 600; }
-    .gold { color: var(--gold); }
-
-    .note { border-left: 2px solid var(--gold-dark); padding: 1rem 1.5rem; background: rgba(201,169,110,.04); margin: 2.4rem 0; font-style: italic; font-size: .95rem; color: var(--muted); }
-    .note strong { color: var(--gold); font-style: normal; }
-
-    blockquote { margin: 3rem 0; padding: 2rem 2.5rem; border: 1px solid rgba(201,169,110,.2); background: var(--bg-card); position: relative; font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-style: italic; font-weight: 300; color: var(--gold); line-height: 1.5; text-align: center; }
-    blockquote::before { content: '✦'; position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: var(--bg); padding: 0 .8rem; color: var(--gold-dark); font-style: normal; font-size: .8rem; }
-
-    .img-inline { width: 100%; margin: 2.8rem 0; aspect-ratio: 16/9; background: linear-gradient(135deg, #100a04, #0a0510); border: 1px solid rgba(201,169,110,.15); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .5rem; position: relative; overflow: hidden; }
-    .img-inline img { width: 100%; height: 100%; object-fit: cover; }
-    .img-inline-placeholder { display: flex; flex-direction: column; align-items: center; gap: .5rem; }
-    .img-inline-label { font-family: 'DM Mono', monospace; font-size: .48rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(201,169,110,.3); }
-    .img-caption { font-family: 'Crimson Text', serif; font-size: .85rem; font-style: italic; color: var(--muted); text-align: center; padding: .5rem 1rem; margin-top: -.8rem; margin-bottom: 1.6rem; }
-
-    /* Identities box */
-    .identity-box { border: 1px solid rgba(201,169,110,.2); background: var(--bg-card); padding: 1.8rem 2rem; margin: 2.4rem 0; }
-    .identity-box h4 { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 400; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
-    .identity-row { display: flex; gap: 1rem; align-items: baseline; margin-bottom: .6rem; }
-    .id-name { font-family: 'DM Mono', monospace; font-size: .6rem; letter-spacing: .15em; color: var(--gold); min-width: 90px; }
-    .id-desc { font-size: .92rem; color: var(--muted); font-style: italic; }
-
-    /* Characters grid */
-    .char-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0; }
-    .char-card { border: 1px solid var(--border); background: var(--bg-card); padding: 1.4rem; }
-    .char-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--gold); margin-bottom: .4rem; }
-    .char-role { font-family: 'DM Mono', monospace; font-size: .48rem; letter-spacing: .18em; text-transform: uppercase; color: var(--rose-dark); margin-bottom: .7rem; }
-    .char-text { font-size: .88rem; color: var(--muted); line-height: 1.7; }
-
-    /* Footer */
-    .art-footer { max-width: 680px; margin: 0 auto; padding: 3rem 2rem 6rem; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
-    .tag { border: 1px solid var(--gold-dark); padding: .25rem .8rem; font-family: 'DM Mono', monospace; font-size: .5rem; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); }
-
-    footer { border-top: 1px solid var(--border); padding: 2.5rem 4rem; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-    .f-logo { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 300; letter-spacing: .15em; color: var(--rose-light); }
-    .f-copy { font-family: 'DM Mono', monospace; font-size: .52rem; letter-spacing: .18em; color: var(--muted); }
-
-    .rv { opacity: 0; transform: translateY(22px); transition: opacity .8s ease, transform .8s ease; }
-    .rv.on { opacity: 1; transform: none; }
-
-    @media (max-width: 760px) {
-      nav { padding: 1.2rem 1.5rem; }
-      .art-hero, .art-body, .art-footer { padding-left: 1.5rem; padding-right: 1.5rem; }
-      .art-hero { padding-top: 9rem; }
-      .char-grid { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le mobilier a un cœur — Spectre Rose</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e0a0f;--bg-raise:#171019;--ink:#ece4e8;--ink-soft:#b6abb4;--ink-faint:#867a83;
+    --rose:#df728c;--rose-deep:#7c2740;--bone:#e3dacb;--gold:#c2a14e;
+    --line:rgba(223,114,140,.18);--line-soft:rgba(236,228,232,.08);--measure:38rem;
+    --serif-display:"Cormorant Garamond",Didot,"Hoefler Text",Georgia,serif;
+    --serif-body:"Spectral",Georgia,"Times New Roman",serif;
+    --sans:"Inter",system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif-body);font-weight:400;font-size:1.16rem;line-height:1.78;letter-spacing:.005em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(120% 80% at 50% -10%, rgba(124,39,64,.16), transparent 60%),radial-gradient(90% 60% at 90% 110%, rgba(46,30,52,.5), transparent 55%);}
+  .wrap{position:relative;z-index:1}
+  .topbar{max-width:60rem;margin:0 auto;padding:1.6rem 1.5rem 0;display:flex;align-items:center;justify-content:space-between;font-family:var(--sans);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);}
+  .topbar .brand{color:var(--bone);font-weight:500;text-decoration:none;transition:color .25s}
+  .topbar .brand:hover{color:var(--rose)}
+  .topbar a{color:var(--ink-faint);text-decoration:none;transition:color .25s}
+  .topbar a:hover{color:var(--rose)}
+  .series{max-width:60rem;margin:1.3rem auto 0;padding:1.1rem 1.5rem 0;border-top:1px solid var(--line-soft);display:flex;flex-wrap:wrap;gap:.45rem 1.1rem;align-items:baseline;font-family:var(--sans);font-size:.74rem;letter-spacing:.02em;color:var(--ink-faint);}
+  .series .lead{letter-spacing:.18em;text-transform:uppercase;color:var(--rose);width:100%;margin-bottom:.2rem;}
+  .series a{color:var(--ink-soft);text-decoration:none;transition:color .25s}
+  .series a:hover{color:var(--rose)}
+  .series .roman{color:var(--rose-deep);font-style:italic;margin-right:.3rem}
+  .series .here{color:var(--bone);border-bottom:1px solid var(--rose-deep);padding-bottom:1px}
+  header.hero{max-width:48rem;margin:0 auto;padding:5rem 1.5rem 2.2rem;text-align:center;}
+  .eyebrow{font-family:var(--sans);font-size:.72rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--rose);display:flex;flex-wrap:wrap;gap:.5rem .9rem;justify-content:center;align-items:center;margin-bottom:2.2rem;}
+  .eyebrow .sep{color:var(--rose-deep)}
+  h1{font-family:var(--serif-display);font-weight:500;font-size:clamp(2.9rem,8vw,5.1rem);line-height:1.02;letter-spacing:-.01em;margin:0 0 1.4rem;color:var(--ink);}
+  .dek{font-family:var(--serif-body);font-weight:300;font-style:italic;font-size:clamp(1.18rem,2.6vw,1.42rem);line-height:1.5;color:var(--ink-soft);max-width:34rem;margin:0 auto 2.4rem;}
+  .runline{font-family:var(--sans);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);display:flex;flex-wrap:wrap;gap:.4rem .8rem;justify-content:center;}
+  .runline .dot{color:var(--rose-deep)}
+  .hero-rule{width:1px;height:3.4rem;margin:2.6rem auto 0;background:linear-gradient(var(--rose),transparent);}
+  article{max-width:var(--measure);margin:0 auto;padding:1.5rem 1.5rem 2rem}
+  article > p,article > .standfirst{margin:0 0 1.45rem}
+  p{margin:0 0 1.45rem}
+  .standfirst{font-size:1.28rem;line-height:1.62;color:var(--ink)}
+  .dropcap::first-letter{font-family:var(--serif-display);font-weight:500;float:left;font-size:4.2rem;line-height:.78;padding:.35rem .55rem 0 0;color:var(--rose);}
+  h2{font-family:var(--serif-display);font-weight:500;font-size:clamp(1.9rem,4.4vw,2.5rem);line-height:1.1;letter-spacing:-.005em;color:var(--ink);margin:3.4rem 0 1.3rem;}
+  h2 .num{display:block;font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--rose);margin-bottom:.7rem;}
+  em,i{font-style:italic}
+  strong{font-weight:600;color:#f5eef2}
+  .work{font-style:italic;color:var(--ink)}
+  .jp{font-family:var(--serif-body);color:var(--bone);font-style:normal}
+  a.xref{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--line)}
+  a.xref:hover{border-color:var(--rose)}
+  a.fn{font-family:var(--sans);font-size:.62em;font-weight:600;vertical-align:.5em;line-height:0;color:var(--rose);text-decoration:none;padding:0 .12em;}
+  a.fn::before{content:"["}
+  a.fn::after{content:"]"}
+  a.fn:hover{color:var(--bone)}
+  .seam{display:flex;align-items:center;gap:1.1rem;margin:3rem auto;max-width:18rem;color:var(--rose-deep);}
+  .seam::before,.seam::after{content:"";height:1px;flex:1;background:repeating-linear-gradient(90deg,var(--line) 0 7px,transparent 7px 13px);}
+  .seam span{font-family:var(--serif-display);font-size:1.1rem;color:var(--rose);}
+  .dossier{background:var(--bg-raise);border:1px solid var(--line-soft);border-left:2px solid var(--gold);border-radius:2px;padding:1.6rem 1.7rem 1.4rem;margin:2.4rem 0;font-size:1.04rem;line-height:1.7;color:var(--ink-soft);}
+  .dossier .label{font-family:var(--sans);font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.85rem;}
+  .dossier p{margin:0 0 .9rem}
+  .dossier p:last-child{margin-bottom:0}
+  .dossier strong{color:var(--bone)}
+  .passage{margin:2.3rem 0;padding:.2rem 0 .2rem 1.6rem;border-left:2px solid var(--rose-deep);}
+  .passage p{font-style:italic;color:var(--ink);font-size:1.1rem;line-height:1.62;margin:0 0 .7rem;}
+  .passage .src{font-family:var(--sans);font-size:.7rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);}
+  blockquote.pull{margin:3rem 0;padding:0;border:0;text-align:center;}
+  blockquote.pull p{font-family:var(--serif-display);font-weight:500;font-style:italic;font-size:clamp(1.5rem,3.6vw,2rem);line-height:1.28;color:var(--bone);max-width:30rem;margin:0 auto;}
+  figure{margin:2.6rem 0}
+  figcaption{font-family:var(--sans);font-size:.78rem;letter-spacing:.04em;color:var(--ink-faint);text-align:center;margin-top:.7rem;}
+  .plate{border:1px solid var(--line-soft);border-radius:2px;background:var(--bg-raise);padding:2.4rem 1.5rem;text-align:center;}
+  .plate .glyph{font-family:var(--serif-display);font-size:2.4rem;color:var(--rose);opacity:.8}
+  .plate .cap{font-family:var(--serif-display);font-style:italic;font-size:1.45rem;color:var(--bone);margin-top:.6rem;line-height:1.3;}
+  .notes{max-width:var(--measure);margin:4rem auto 0;padding:0 1.5rem;}
+  .notes h3,.refs h3{font-family:var(--sans);font-size:.74rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--rose);border-top:1px solid var(--line);padding-top:1.6rem;margin:0 0 1.4rem;}
+  ol.fnlist{list-style:none;counter-reset:fn;margin:0;padding:0}
+  ol.fnlist li{counter-increment:fn;position:relative;padding-left:2.2rem;font-size:.92rem;line-height:1.62;color:var(--ink-soft);margin-bottom:1rem;}
+  ol.fnlist li::before{content:counter(fn);position:absolute;left:0;top:.05em;font-family:var(--sans);font-size:.72rem;font-weight:600;color:var(--rose);}
+  ol.fnlist li a.back{color:var(--ink-faint);text-decoration:none;margin-left:.3rem;}
+  ol.fnlist li a.back:hover{color:var(--rose)}
+  ol.fnlist a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+  ol.fnlist a:hover{color:var(--rose);border-color:var(--rose)}
+  .refs{max-width:var(--measure);margin:3rem auto 0;padding:0 1.5rem}
+  .refs h4{font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:1.6rem 0 .7rem;}
+  .refs ul{list-style:none;margin:0;padding:0}
+  .refs li{font-size:.9rem;line-height:1.55;color:var(--ink-soft);padding-left:1.4rem;text-indent:-1.4rem;margin-bottom:.7rem;}
+  .refs li i{color:var(--ink)}
+  .tags{max-width:var(--measure);margin:3.4rem auto 0;padding:0 1.5rem;display:flex;flex-wrap:wrap;gap:.55rem;}
+  .tags .t{font-family:var(--sans);font-size:.72rem;letter-spacing:.04em;color:var(--ink-soft);background:var(--bg-raise);border:1px solid var(--line-soft);border-radius:100px;padding:.35rem .9rem;}
+  footer.site{max-width:60rem;margin:4rem auto 0;padding:2.2rem 1.5rem 3.2rem;border-top:1px solid var(--line-soft);text-align:center;font-family:var(--sans);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);}
+  footer.site .star{color:var(--rose)}
+  :target{scroll-margin-top:2rem}
+  a:focus-visible{outline:2px solid var(--rose);outline-offset:3px;border-radius:2px}
+  @media (max-width:640px){body{font-size:1.08rem}header.hero{padding-top:4rem}.dropcap::first-letter{font-size:3.4rem}}
+  @media (prefers-reduced-motion:no-preference){
+    .fade{opacity:0;transform:translateY(10px);animation:rise .9s ease forwards}
+    .fade.d1{animation-delay:.05s}.fade.d2{animation-delay:.15s}.fade.d3{animation-delay:.25s}.fade.d4{animation-delay:.35s}
+    @keyframes rise{to{opacity:1;transform:none}}
+  }
+</style>
 </head>
 <body>
+<div class="wrap">
 
-  <nav>
-    <a href="index.html" class="nav-logo">Spectre <span>Rose</span></a>
-    <a href="index.html" class="nav-back">← Retour aux théories</a>
+  <div class="topbar">
+    <a class="brand" href="index.html">Spectre Rose</a>
+    <a href="index.html">← Retour aux théories</a>
+  </div>
+
+  <nav class="series" aria-label="Diptyque Umineko">
+    <span class="lead">Umineko no Naku Koro ni · diptyque</span>
+    <span><span class="roman">I.</span><span class="here">Le mobilier a un cœur</span></span>
+    <span><span class="roman">II.</span><a href="article-umineko-amour.html">Sans amour, cela ne peut être vu</a></span>
   </nav>
 
-  <!-- HERO -->
-  <div class="art-hero">
-    <span class="a-eyebrow rv">✦ Umineko no Naku Koro ni &nbsp;·&nbsp; Féminisme &nbsp;·&nbsp; Identité &amp; masques</span>
-    <h1 class="a-title rv">Le mobilier a un <em>cœur</em><br>— Sayo Yasuda et les masques du féminin dans <em>Umineko</em></h1>
-    <p class="a-subtitle rv">Shannon, Kanon, Beatrice et les femmes Ushiromiya : une lecture féministe de l'archipel doré</p>
-    <div class="a-meta rv">
-      <span>24 mars 2026</span>
-      <span class="sep">·</span>
-      <span>~18 min de lecture</span>
-      <span class="sep">·</span>
-      <span>Spoilers complets EP1–EP8</span>
+  <header class="hero">
+    <div class="eyebrow fade d1">
+      <span>✦ Umineko no Naku Koro ni</span><span class="sep">·</span>
+      <span>Sayo Yasuda</span><span class="sep">·</span>
+      <span>Le féminin sous pression</span>
     </div>
-  </div>
-
-  <!-- COVER -->
-  <div class="cover-img rv">
-    <!-- Pour ajouter une image : remplace ce bloc par <img src="umineko.jpg" alt="Umineko" style="width:100%;height:100%;object-fit:cover;"> -->
- <img src="beatrice.jpg" alt="Silent hill f" style="width:100%;height:100%;object-fit:cover;">
-  </div>
-  
-<div class="sr-synopsis" data-game="Umineko no Naku Koro ni">
-  <p><em>Umineko no Naku Koro ni</em> est un visual novel japonais (2007–2010) écrit par Ryukishi07. En octobre 1986, la famille Ushiromiya se réunit sur une île privée pour régler l'héritage de leur patriarche mourant. Pendant la nuit, des meurtres commencent. Une sorcière nommée Beatrice revendique les crimes. Le jeu pose une question centrale : ces morts ont-ils une explication humaine, ou la magie existe-t-elle ? C'est à la fois un roman policier, une histoire d'amour tragique, et une réflexion sur ce qu'on est capable de croire — et pourquoi. <em>Si vous ne connaissez pas l'histoire, commencez par notre conte d'introduction.</em></p>
-</div>
-  
-  <!-- BODY -->
-  <article class="art-body">
-
-    <p class="rv">Il y a une phrase dans <em>Umineko no Naku Koro ni</em> qui résume à elle seule l'enjeu central de toute l'œuvre : <em>« Le mobilier n'a pas de cœur. »</em> Cette affirmation, répétée comme une litanie par Shannon et Kanon, par Beatrice, par Sayo elle-même sous tous ses masques, est à la fois le point de départ de la tragédie et le mensonge que le jeu passe huit épisodes à démonter. Car le mobilier a un cœur. C'est précisément ce cœur — inconvenant, inadmissible, encombrant — qui met le feu à Rokkenjima.</p>
-
-    <p class="rv"><em>Umineko</em> est souvent lu comme un mystère à résoudre, un puzzle narratif dont la réponse s'appellerait « Shkanontrice » — la révélation que Shannon, Kanon et Beatrice sont les trois visages d'une seule et même personne, Sayo Yasuda. Ce n'est pas faux. Mais cette lecture résolutive passe à côté de l'essentiel : le fait que cette architecture de masques et de faux noms est une <strong>réponse à une violence sociale réelle</strong>, celle d'un système qui décide qu'une femme peut être mobilier, que son désir n'a pas de valeur, que son identité est la propriété d'une famille.</p>
-
-    <p class="rv">Ce qui suit est une tentative de lire <em>Umineko</em> autrement — non comme un whodunit, mais comme une <strong>cartographie des violences faites aux femmes</strong> dans une famille bourgeoise japonaise, au prisme de ses personnages féminins, centraux comme secondaires.</p>
-
-    <div class="orn-line rv">✦ &nbsp; ✦ &nbsp; ✦</div>
-
-    <h2 class="rv">I. Sayo Yasuda — une personne faite de fragments</h2>
-
-    <p class="rv">Pour comprendre Shannon et Kanon, il faut d'abord comprendre Sayo Yasuda — et pour comprendre Sayo, il faut remonter à ce qui lui a été fait avant qu'elle ait le moindre mot à dire.</p>
-
-    <p class="rv"><strong>Sayo est née Lion Ushiromiya</strong>, enfant illégitime de Kinzo et de sa propre fille Beatrice — produit d'un inceste forcé que l'œuvre ne minimise jamais. Pour dissimuler le scandale, l'enfant a été confié à Natsuhi, qui l'a fait pousser d'une falaise par une servante. La servante est morte ; l'enfant a survécu, mais avec une blessure abdominale grave qui a endommagé ses organes sexuels. Élevée comme une fille sous le nom de Sayo Yasuda dans l'orphelinat Fukuin, elle découvre à l'adolescence que son corps ne suit pas le développement féminin attendu — pas de règles, pas de poitrine. Elle se définit alors comme <em>« un corps incapable d'aimer »</em>.</p>
-
-    <div class="identity-box rv">
-      <h4>Les visages de Sayo / Yasu</h4>
-      <div class="identity-row"><span class="id-name">SHANNON</span><span class="id-desc">Servante douce, fiancée de George. Fragment de l'amour hétérosexuel normatif.</span></div>
-      <div class="identity-row"><span class="id-name">KANON</span><span class="id-desc">Servante au genre ambigu, liée à Jessica. Fragment masculin créé face à la dysphorie.</span></div>
-      <div class="identity-row"><span class="id-name">BEATRICE</span><span class="id-desc">La sorcière dorée. Fragment du désir pour Battler, de la puissance, de la liberté.</span></div>
-      <div class="identity-row"><span class="id-name">LION</span><span class="id-desc">Le soi alternatif — ce que Sayo aurait pu être si Natsuhi ne l'avait pas fait tomber.</span></div>
+    <h1 class="fade d2">Le mobilier<br>a un cœur</h1>
+    <p class="dek fade d3">Shannon, Kanon, Beatrice, Sayo : non pas des masques à dévoiler, mais des réponses successives à la même impasse — exister comme femme dans une famille qui n'a su voir en elle qu'un meuble.</p>
+    <div class="runline fade d4">
+      <span>Umineko no Naku Koro ni — Ryukishi07, 2007–2010</span>
+      <span class="dot">·</span><span>Spoilers complets EP1–EP8</span>
+      <span class="dot">·</span><span>~22 min</span>
     </div>
+    <div class="hero-rule fade d4"></div>
+  </header>
 
-    <p class="rv">Ce que Ryukishi07 construit avec Sayo est l'une des architectures psychologiques les plus complexes du medium. Face à une identité de genre brouillée, face à un corps qu'elle ne reconnaît pas, face à un amour pour Battler qui lui semble interdit par sa propre « déficience », Sayo ne disparaît pas — elle se démultiplie. Shannon est la femme qu'elle tente d'être. Kanon est l'homme qu'elle peut aussi être. Beatrice est la puissance qu'aucun des deux n'est autorisé à posséder.</p>
+  <article>
 
-    <blockquote class="rv">Shannon et Kanon ne sont pas des mensonges. Ce sont les seules formes que Sayo a trouvées pour exister dans un monde qui ne lui avait laissé aucune autre.</blockquote>
+    <p class="standfirst dropcap">« Le mobilier n'a pas de cœur. » Cette phrase, dans <span class="work">Umineko no Naku Koro ni</span>, n'est pas une métaphore qu'on lâche : c'est une litanie. Shannon la murmure, Kanon la répète avec conviction, Beatrice s'en sert pour rire au nez de Battler. On finit par l'entendre comme une donnée du monde — ce que les servantes sont, ce qu'on attend d'elles, le contrat qu'on leur a fait signer sans elles. Et c'est précisément le mensonge que les huit épisodes du jeu passent à démonter, en montrant à chaque arc, à chaque énigme, à chaque mort, que ce mobilier-là n'arrête pas d'aimer, de désirer, de se débattre. Le cœur est là. C'est lui qui met le feu à Rokkenjima.</p>
 
-    <h3 class="rv">Shannon — aimer comme une femme « devrait »</h3>
+    <p>On a pris l'habitude de lire <span class="work">Umineko</span> comme un mystère à résoudre, dont la réponse s'appellerait « Shkanontrice » — la révélation que Shannon, Kanon et Beatrice sont les trois visages d'une même personne, Sayo Yasuda. Ce n'est pas faux. Mais s'arrêter là, c'est rater ce que le jeu, sourdement, ne cesse de dire : cette architecture de masques est <em>une réponse</em> — la seule disponible — à une violence sociale précise, celle d'une famille bourgeoise japonaise des années 1980 qui décide qu'une femme peut être un meuble, que son désir ne compte pas, et que son identité est une propriété parmi d'autres dans un coffre. Ce qui suit n'est pas un <em>whodunit</em>. C'est une cartographie de ce que cette famille a fait à ses femmes, et de ce qu'une d'elles a inventé pour ne pas en mourir.</p>
 
-    <p class="rv">Shannon est le fragment le plus immédiatement lisible de Sayo. Jeune servante douce, maladroite, éprise de George Ushiromiya — elle incarne le modèle de la féminité acceptable. Elle aime avec discrétion, elle sait se tenir à sa place, elle ne réclame rien. Et pourtant, même ce fragment « conforme » déborde. Shannon croit à la magie. Shannon demande à Beatrice un charme pour être aimée de George. Elle brise un miroir pour ça. Elle choisit.</p>
+    <div class="seam"><span>✦</span></div>
 
-    <p class="rv">Ce détail est important : dans un jeu où les femmes sont constamment traitées comme des objets ou des fonctions, Shannon est celle qui <em>agit</em> pour son propre désir, même sous la forme la plus normée qui soit — l'amour romantique hétérosexuel. C'est déjà une forme de subversion dans le contexte qui lui est imposé.</p>
+    <h2><span class="num">I — L'impasse</span>Ce qui a été fait à Sayo avant qu'elle ait un mot à dire</h2>
 
-    <!-- Image inline -->
-    <div class="img-inline rv">
-    <img src="shannon.jpg" alt="Umineko" style="width:100%;height:100%;object-fit:cover;">
+    <p>Pour comprendre Shannon et Kanon, il faut remonter à ce qui a été fait à Sayo avant qu'elle ait existé pour elle-même. Sayo est née Lion Ushiromiya — enfant illégitime de Kinzo et de sa propre fille Beatrice, produit d'un inceste forcé que l'œuvre n'allège jamais. Pour étouffer le scandale, l'enfant a été remis à Natsuhi qui l'a fait précipiter d'une falaise par une servante ; la servante en est morte, l'enfant a survécu, avec une blessure abdominale qui a endommagé ses organes sexuels. Élevée comme une fille sous le nom de Sayo Yasuda à l'orphelinat Fukuin, elle découvre à l'adolescence un corps qui ne suit pas le développement féminin attendu — pas de règles, pas de poitrine — et se définit, dans une phrase qui résume tout, comme <em>un corps incapable d'aimer</em>.<a class="fn" href="#fn1" id="r1">1</a></p>
+
+    <p>Cette généalogie, qu'on est tenté de raconter d'un trait pour vite passer aux énigmes, est en réalité le seul fait qu'il faut tenir d'un bout à l'autre. Tout le reste — les masques, les jeux, les meurtres — en découle. Avant que Sayo soit Sayo, on a déjà : décidé de sa naissance contre la volonté d'une autre femme ; décidé qu'elle devait disparaître ; décidé de son corps ; décidé de son genre ; décidé de son nom. Au moment où elle est en âge d'avoir son mot à dire, plus rien n'attend son mot.</p>
+
+    <p>Reste à inventer comment vivre. C'est ici que la singularité psychologique du personnage commence — et c'est ici que les lectures faciles trébuchent. Shannon, Kanon, Beatrice ne sont pas un trio de masques alignés, qu'il suffirait de retirer pour trouver Sayo « en vérité » dessous. Ce sont trois réponses successives à la même impasse — chacune née de l'échec de la précédente.</p>
+
+    <h2><span class="num">II — Trois réponses</span>Shannon, Kanon, Beatrice</h2>
+
+    <p><strong>Shannon</strong> est la première réponse, et la plus conforme. Servante douce, maladroite, éprise de George Ushiromiya, elle incarne le modèle de la féminité qu'on lui a appris à viser : aimer avec discrétion, se tenir à sa place, ne rien réclamer. Le détail qui sauve Shannon de la pure soumission, c'est qu'elle <em>agit</em> pour son désir — même sous la forme la plus normée. Elle croit à la magie. Elle demande à Beatrice un charme pour être aimée de George. Elle brise un miroir pour ça. Dans un jeu où les femmes sont constamment traitées comme des fonctions, c'est déjà, dans le contexte qu'on lui a imposé, une forme de subversion. Mais Shannon a un plafond : pour exister, elle doit être désirable selon les codes — la jolie servante au cœur sage —, et la version manga (« Confession of the Golden Witch ») laisse entendre que sa poitrine est une prothèse.<a class="fn" href="#fn2" id="r2">2</a> Le coût du conforme est vertigineux. Quand le corps lui-même doit être falsifié pour qu'on l'aime, la pose n'est plus tenable longtemps.</p>
+
+    <p><strong>Kanon</strong> est la réponse qui suit cet échec. Là où Shannon essaie d'aimer dans les formes, Kanon se construit sur le refus de mériter d'être aimé — et c'est pourquoi il porte, mieux qu'aucun autre personnage du jeu, la phrase qui le hante : <em>le mobilier n'a pas de cœur</em>. Ce n'est pas une misanthropie, c'est une armure. Une protection contre un corps qu'on a dit aberrant. Le détail que Ryukishi07 a placé dans le nom même est, à ce titre, un de ses chefs-d'œuvre discrets : les analyses japonaises ont relevé que Kanon est le négatif scriptural de Shannon — caractères miroir, traits inversés, comme un photogramme retourné.<a class="fn" href="#fn3" id="r3">3</a> Là où Shannon a échoué <em>parce qu'elle voulait être aimée comme on attend qu'une femme le soit</em>, Kanon réussit à survivre <em>en n'attendant rien</em>. Et c'est précisément ce qui rend tragique son lien avec Jessica : aimée pour ce qu'il est, Kanon se dérobe — parce que se laisser aimer, ce serait défaire l'armure.</p>
+
+    <p>Une question reste en débat, dans les forums japonais comme anglophones : faut-il lire Kanon comme une transition de genre ? Ryukishi07 a tranché en refusant de trancher — la question, dit-il, est « difficile mais bonne », et il préfère laisser les lecteurs conclure.<a class="fn" href="#fn4" id="r4">4</a> Plusieurs lectures japonaises de référence emploient explicitement le terme de <em>seidōitsusei shōgai</em> (性同一性障害, « trouble de l'identité de genre ») pour parler de Sayo, en soulignant que la souffrance existe que le concept soit reconnu ou non.<a class="fn" href="#fn5" id="r5">5</a> Une lecture critique l'a noté avec justesse : laisser l'identité ouverte peut être généreux — refuser de la fixer pour le confort du lecteur — ou, à l'inverse, dispenser l'auteur d'en répondre. L'œuvre ne tranche pas ; et l'honnêteté demande de tenir la question ouverte plutôt que de la refermer dans un sens flatteur.</p>
+
+    <p><strong>Beatrice</strong> est ce qui reste quand Shannon et Kanon ne suffisent plus. Si Shannon est l'amour normé et Kanon le refus d'amour, Beatrice est ce qu'aucun des deux n'a le droit d'être : libre. Elle rit, elle joue, elle impose ses règles plutôt que de les subir, elle porte une robe extravagante et occupe tout l'espace. Elle est, surtout, ce que Sayo a inventé pour pouvoir <em>parler à</em> Battler — pour pouvoir lui dire ce que Shannon n'aurait pas eu le droit de formuler : <em>tu m'as abandonnée, tu as oublié ta promesse, j'ai attendu et tu n'es pas revenu</em>. Les parties de jeu ne sont pas un tour de force formel : ce sont les conversations que Sayo n'a jamais pu avoir. Beatrice n'est pas le visage du mal d'<span class="work">Umineko</span>. Elle est la forme que Sayo a trouvée pour tenir une déclaration trop lourde sans s'y briser.</p>
+
+    <blockquote class="pull">
+      <p>Shannon échoue parce qu'elle veut être aimée. Kanon survit en n'attendant rien. Beatrice s'invente une scène où elle peut enfin parler.</p>
+    </blockquote>
+
+    <p>Lus ainsi, les trois ne sont plus une équation à résoudre — ils sont une dramaturgie. Et la question que pose le jeu n'est pas <em>laquelle est la vraie ?</em>, mais <em>laquelle pouvait être tenue, à quel prix, et combien de temps ?</em> Un blogueur japonais l'a formulé d'une manière qu'il faut citer : Beatrice n'est pas une trahison du « vrai moi » de Sayo, car nous nous construisons tous, plus ou moins, pour ceux que nous aimons — et la fragilité de l'idée même d'un « vrai moi » sous les versions successives est précisément ce que <span class="work">Umineko</span> met à nu.<a class="fn" href="#fn6" id="r6">6</a></p>
+
+    <figure>
+      <div class="plate">
+        <div class="glyph">✦</div>
+        <div class="cap">家具 — le mobilier qu'on prétendait<br>sans cœur</div>
       </div>
-    </div>
-    <p class="img-caption rv">Shannon</p>
+      <figcaption>Trois personae, une seule personne, et tout un système qui n'a pas su voir.</figcaption>
+    </figure>
 
-    <h3 class="rv">Kanon — le fragment qui refuse d'avoir un cœur</h3>
+    <h2><span class="num">III — Le système</span>La famille Ushiromiya, ou la fabrique du meuble</h2>
 
-    <p class="rv">Kanon est le personnage le plus douloureux de l'œuvre, parce qu'il est le fragment de Sayo qui a le plus intégré la violence. <em>« Le mobilier n'a pas de cœur »</em> — c'est Kanon qui le répète avec le plus de conviction, comme si se persuader de cette absence était la seule façon de survivre à la dysphorie, à l'impossibilité d'être aimé comme il voudrait l'être par Jessica.</p>
+    <p>Sayo n'est pas une anomalie dans la maison Ushiromiya. Elle en est le produit le plus extrême — le précipité de logiques qui frappent, à des degrés divers, toutes les femmes de la famille. Reste à reconstituer ces logiques pour comprendre qu'aucune des femmes du jeu n'a échappé au meuble ; elles ont seulement trouvé des façons différentes d'y résister, d'y collaborer, ou d'en mourir.</p>
 
-    <p class="rv">Son nom contient un kanji dont l'ordre des traits est l'inversion exacte de celui de Sayo — Ryukishi07 a semé ce miroir dans les caractères eux-mêmes, pour qui savait lire. Kanon est le négatif de Shannon : là où Shannon cherche à aimer dans les formes, Kanon se construit sur le refus de mériter d'être aimé. Ce n'est pas une misanthropie — c'est une protection. Une armure que Sayo s'est forgée face à un corps qu'on lui a dit être une aberration.</p>
+    <p>Le principe qui les organise toutes est simple : la valeur s'établit selon le sang, le genre et la place dans la généalogie masculine. <strong>Eva</strong> a passé sa vie à se battre pour être traitée à égalité avec Krauss dans la hiérarchie familiale, et à constamment échouer — non par manque de talent, mais parce que l'héritage masculin primait ; sa cruauté n'est pas une essence, c'est ce qui reste quand l'ambition légitime se cogne pendant trente ans à un plafond qu'on n'avoue pas. <strong>Natsuhi</strong>, entrée dans la famille par mariage, n'a jamais été pleinement acceptée ; son obsession pour l'honneur est à la mesure de la précarité de sa position — elle n'appartient à ce clan que par utilité —, et c'est précisément cette obsession qui l'a conduite, jeune femme, à laisser tomber un nouveau-né du haut d'une falaise. <strong>Rosa</strong> est la cadette dont on n'attend rien, qui élève seule Maria après un mariage raté, et dont les explosions de violence sur sa fille ne sont pas du sadisme mais le retour mécanique d'une femme que personne n'a jamais reconstruite. <strong>Kyrie</strong> a appris à transformer la jalousie — dix-huit années à haïr Asumu — en logique pure, parce que chez elle les émotions ont des conséquences trop lourdes. <strong>Jessica</strong>, fille du couple Krauss-Natsuhi, refuse le moule le plus ouvertement : elle s'habille comme elle veut, elle chante dans un groupe, elle aime Kanon sans se soucier des classes — et c'est elle dont l'amour est rendu structurellement impossible, parce que Kanon ne se croit pas digne d'être aimé. <strong>Maria</strong>, enfin, est l'enfant qui s'invente un monde pour survivre à une mère qui l'aime mal — la magie n'est pas chez elle une naïveté, c'est une stratégie. Elle et Sayo se comprennent, au fond : toutes deux ont fait de la fiction un refuge.</p>
 
-    <div class="note rv"><strong>Sur la question du genre chez Sayo :</strong> Ryukishi07 a déclaré vouloir « laisser aux fans la liberté de leurs propres conclusions » sur la question de la transidentité de Sayo. Ce que l'œuvre dit sans ambiguïté, c'est qu'un corps a été abîmé sans consentement à la naissance, qu'une identité de genre a été assignée sans que la personne concernée ait son mot à dire, et que les conséquences de ces violences ont restructuré toute la psychologie du personnage. Que l'on choisisse de lire Sayo comme une femme trans, comme une personne non-binaire ou comme autre chose, ces violences demeurent le centre de son arc.</div>
+    <p>Aucune n'a échappé. Eva s'est blindée, Natsuhi s'est dissoute dans le devoir, Rosa s'est cassée, Kyrie s'est gelée, Jessica s'est révoltée mais n'a pas été suivie, Maria s'est repliée dans son monde. Et Sayo, fille du pire péché que la famille ait commis — l'inceste de Kinzo avec sa propre fille —, hérite, comme une dépositaire involontaire, de tout ce que la maison a voulu enterrer. Elle est la victime collatérale de la honte des Ushiromiya. C'est elle, finalement, qui déclenchera le massacre. Non par malice, mais parce qu'à un moment, le trop-plein de ce qu'on lui a fait cherche une sortie.</p>
 
-    <h2 class="rv">II. Beatrice — la sorcière comme espace de liberté</h2>
+    <p>Il y a, dans le nom même que la maison donne à ses servantes, une signature de ce système. Toutes portent un pseudonyme contenant le kanji <span class="jp">音</span> — <em>on</em>, le son —, comme si elles n'étaient que des notes dans une partition écrite par d'autres. Shannon, Kanon, Genji, Kumasawa, Gohda : la maison les renomme à l'entrée. Leur identité civile est laissée à la porte. Sayo, qui aurait dû s'appeler Lion, est devenue Yasuda à l'orphelinat, puis Shannon dans la maison, puis Kanon, puis Beatrice — comme si le nom propre était la dernière chose dont elle ne pouvait pas se débarrasser, et la première qu'on devait lui prendre.<a class="fn" href="#fn7" id="r7">7</a></p>
 
-    <p class="rv">Beatrice est le fragment de Sayo qui se permet ce que les deux autres ne peuvent pas. Elle est puissante, capricieuse, cruelle par moments, et surtout : elle est libre. Elle rit. Elle joue. Elle impose ses règles plutôt que de les subir. Elle porte une robe extravagante et occupe tout l'espace.</p>
+    <h2><span class="num">IV — La part de Sayo</span>L'objection morale qu'il faut tenir</h2>
 
-    <p class="rv">Il est fondamental de comprendre que <strong>Beatrice est une fiction que Sayo s'est inventée pour survivre</strong>. Dans un monde où elle est « mobilier » — où son nom est un pseudonyme, où son corps est un accident, où son désir est illégitime — elle construit une alter-ego qui possède tout ce qui lui est refusé : un nom qui résonne, une origine (la sorcière de Rokkenjima), un amour revendiqué (Battler), une agentivité absolue sur son environnement.</p>
+    <p>Lire Sayo comme une victime du système Ushiromiya est juste. Ce serait malhonnête de s'arrêter là. Car le jeu lui-même, dans sa moitié finale, pose une question gênante — et la critique japonaise la plus sérieuse l'a relevée sans complaisance : ce qu'elle fait à Rokkenjima est de tuer des innocents. Une analyste japonaise reconnue l'a formulé sans concession : Sayo appartient au type des personnes qui, avec une logique implacable, font porter à autrui le poids de leur propre faiblesse — sans en éprouver de culpabilité directe, parce que la souffrance qui les pousse leur rend ce transfert légitime.<a class="fn" href="#fn8" id="r8">8</a></p>
 
-    <p class="rv">Les parties de jeu entre Beatrice et Battler ne sont pas seulement un tour de force narratif. Ce sont les <em>conversations que Sayo n'a jamais pu avoir</em>. Elle ne pouvait pas dire à Battler, en tant que Shannon ou Kanon : « tu m'as abandonnée, tu as oublié ta promesse, j'ai attendu et tu n'es pas revenu. » Beatrice peut le dire. Beatrice peut même lui reprocher sous forme de jeu, habiller le grief en défi métaphysique, transformer la blessure en spectacle.</p>
+    <p>L'objection est juste, et l'œuvre ne demande pas qu'on la balaye. Comprendre pourquoi Sayo a fait ce qu'elle a fait ne revient pas à absoudre l'acte. C'est exactement la position où le jeu nous place : tenir ensemble la cause et l'acte, sans laisser la cause dispenser l'acte, ni l'acte effacer la cause. Toute l'éthique d'<span class="work">Umineko</span> tient dans ce refus du raccourci — refus de la condamnation paresseuse, refus du pardon facile.</p>
 
-    <!-- Image inline -->
-    <div class="img-inline rv">
-     <img src="beatrice2.jpg" alt="Umineko" style="width:100%;height:100%;object-fit:cover;">
-      </div>
-    </div>
-    <p class="img-caption rv">Beatrice la sorcière dorée</p>
+    <p>Pourquoi alors le jeu refuse-t-il de la condamner ? Parce que la condamnation, dans la logique de l'œuvre, suppose toujours qu'on ait d'abord compris. Et qu'on ait compris depuis l'intérieur, à hauteur de la personne — pas depuis le siège du juge. Tout le diptyque que cette série forme avec son <a class="xref" href="article-umineko-amour.html">second volet</a> tient là : ce que <span class="work">Umineko</span> appelle « l'amour » n'est pas la dispense morale ; c'est la condition épistémique sans laquelle la morale elle-même n'a pas d'objet. Pour juger Sayo, il faut d'abord pouvoir la voir. Et pour la voir, il faut s'asseoir à sa place — même brièvement, même inconfortablement — assez longtemps pour que ce qu'elle a vécu cesse d'être un mot.</p>
 
-    <blockquote class="rv">Beatrice n'est pas le visage du mal dans Umineko. Elle est le visage de ce que Sayo aurait voulu pouvoir être sans avoir à mourir pour ça.</blockquote>
+    <h2><span class="num">V — Ange</span>La survivante qui choisit de comprendre</h2>
 
-    <h2 class="rv">III. Les femmes Ushiromiya — un panorama du féminin sous pression</h2>
+    <p>Il serait incomplet de parler des femmes d'<span class="work">Umineko</span> sans nommer Ange — la sœur cadette de Battler, seule survivante de la catastrophe, qui passe les arcs « Chiru » à reconstituer ce qui s'est passé à Rokkenjima. Ange n'est pas une figure parmi d'autres : elle est la figure du lecteur dans le texte. Elle porte le deuil de toute sa famille, elle cherche une vérité, elle refuse les versions trop simples — et c'est à elle, au seuil de l'EP4, que la phrase d'arc du jeu est adressée : <span class="jp">愛がなければ視えない</span>, « sans amour, on ne voit pas ». La devise s'apprend là où elle doit s'apprendre — chez une jeune femme qui pourrait choisir de haïr.</p>
 
-    <p class="rv">Si Sayo est le cœur de la question féministe dans <em>Umineko</em>, les femmes de la famille Ushiromiya en forment le paysage. Ryukishi07 ne les réduit jamais à des types — chacune est une réponse différente à la même pression : exister comme femme dans une structure patriarcale qui distribue pouvoir et reconnaissance selon la généalogie masculine.</p>
+    <p>Elle finit par choisir autre chose. Au seuil d'<span class="work">Umineko</span>, Ange doit décider si elle accepte la vérité de Sayo — si elle « pardonne » à cette femme d'avoir causé la mort de ses parents, ou plutôt si elle comprend que Sayo, elle aussi, était une victime de la même machine. Le mot juste n'est pas <em>pardon</em>. C'est <em>perspective</em> : un blogueur japonais l'a noté avec justesse, ce que la formule désigne d'abord, c'est la capacité à se tenir mentalement à la place d'un autre pour que la vérité devienne stéréoscopique.<a class="fn" href="#fn9" id="r9">9</a> Ange ne pardonne pas ; elle voit, enfin, depuis un autre point.</p>
 
-    <div class="char-grid rv">
-      <div class="char-card">
-        <div class="char-name">Eva Ushiromiya</div>
-        <div class="char-role">✦ La rivale ambitieuse</div>
-        <div class="char-text">Eva a passé sa vie à se battre pour être reconnue à égalité avec Krauss dans la hiérarchie familiale — et à constamment échouer, non par manque de talent, mais parce que l'héritage masculin primait. Son ambition est légitime. Sa cruauté est le résultat direct d'un système qui l'a exclue et qu'elle a fini par reproduire.</div>
-      </div>
-      <div class="char-card">
-        <div class="char-name">Natsuhi Ushiromiya</div>
-        <div class="char-role">✦ L'honneur comme prison</div>
-        <div class="char-text">Entrée dans la famille par mariage, Natsuhi n'a jamais été pleinement acceptée. Son obsession pour l'honneur et le devoir est à la mesure de la précarité de sa position : elle n'appartient à ce clan que par la grâce de son utilité. Et c'est précisément cette obsession qui l'a conduite à pousser un enfant d'une falaise.</div>
-      </div>
-      <div class="char-card">
-        <div class="char-name">Rosa Ushiromiya</div>
-        <div class="char-role">✦ La fille sacrifiée</div>
-        <div class="char-text">Rosa est la cadette, celle dont personne n'attend grand-chose, celle qui élève seule Maria après un mariage raté. Émotionnellement instable, parfois violente envers sa fille, elle n'est pas un monstre — elle est une femme que le système a brisée et qui brise à son tour, faute d'avoir jamais été reconstruite.</div>
-      </div>
-      <div class="char-card">
-        <div class="char-name">Kyrie Ushiromiya</div>
-        <div class="char-role">✦ La rationalité comme survie</div>
-        <div class="char-text">Kyrie est la plus froide, la plus stratégique. Ayant passé dix-huit ans à hair Asumu pour avoir eu Rudolf en premier, elle a transformé sa jalousie en logique pure. C'est une femme qui a appris à ne jamais se laisser déborder par les émotions — parce que chez elle, les émotions avaient des conséquences trop lourdes.</div>
-      </div>
-      <div class="char-card">
-        <div class="char-name">Jessica Ushiromiya</div>
-        <div class="char-role">✦ La rebelle sincère</div>
-        <div class="char-text">Fille de Krauss et Natsuhi, Jessica est celle qui refuse le plus ouvertement le moule. Elle s'habille comme elle veut, elle joue dans un groupe de rock, elle aime Kanon sans se soucier de la différence de classe. Elle est aussi celle dont l'amour est le plus immédiatement rendu impossible — Kanon se refuse à elle précisément parce qu'il ne se croit pas digne d'être aimé.</div>
-      </div>
-      <div class="char-card">
-        <div class="char-name">Maria Ushiromiya</div>
-        <div class="char-role">✦ L'enfant qui s'invente un monde</div>
-        <div class="char-text">Maria est la fille de Rosa, et la seule qui croit vraiment en Beatrice. Sa magie n'est pas de la naïveté — c'est une stratégie de survie face à une mère imprévisible. Maria construit un monde intérieur hermétique où elle a le contrôle, où les règles sont les siennes. Elle et Sayo se comprennent, au fond : elles ont toutes les deux fait de la fiction un refuge.</div>
-      </div>
-    </div>
+    <p>Une donnée vient ici confirmer, presque trop bien, l'éthique du jeu. Ryukishi07 a remarqué que la majorité des lectrices et lecteurs qui ont atteint par eux-mêmes la solution de Rokkenjima étaient des femmes.<a class="fn" href="#fn10" id="r10">10</a> La remarque n'est pas une coquetterie : elle indique que la lecture qui voit Sayo n'est pas celle de la déduction la plus froide, mais celle qui sait quoi faire d'un nom qu'on change, d'un corps qu'on tait, d'un mariage où l'on entre comme étrangère. Quand le jeu choisit comme grande lectrice, dans son architecture, une jeune femme orpheline qui pourrait haïr, et qu'il choisit comme lectrices, dans sa réception, celles dont la vie a pu rendre certaines violences plus immédiatement lisibles, l'œuvre dit, de deux manières, la même chose.</p>
 
-    <h2 class="rv">IV. Le système — ce que la famille Ushiromiya révèle</h2>
+    <div class="seam"><span>✦</span></div>
 
-    <p class="rv">Lire <em>Umineko</em> féministement, c'est observer que <strong>presque toutes les souffrances du jeu ont une cause commune</strong> : la façon dont la famille Ushiromiya organise la valeur de ses membres selon le sang, le genre et la place dans la généalogie masculine.</p>
+    <p>Reste à formuler la dernière phrase, qui était dès le début dans la première. Le mobilier a un cœur. Tout <span class="work">Umineko</span> tient dans le refus d'avoir traité les meubles comme des meubles — dans le travail patient, sur huit épisodes, d'arracher un personnage à la fonction qu'on lui a assignée et de le rendre à son histoire. Le geste n'a pas seulement une portée romanesque : il a une portée éthique. Apprendre à voir le cœur d'un meuble, c'est apprendre, sans rien céder sur la gravité des actes, à ne plus laisser une autre Sayo arriver jusque-là.</p>
 
-    <p class="rv">Les servantes viennent d'un orphelinat que Kinzo possède — elles lui appartiennent, littéralement, avant même d'entrer en service. Elles portent des pseudonymes contenant toutes le kanji 音 (<em>on/ne</em>, « son »), comme si elles étaient des notes de musique dans une partition écrite par d'autres. Leur identité propre est effacée dès l'entrée dans la maison.</p>
-
-    <p class="rv">Et Sayo, née du pire péché que cette famille ait commis — l'inceste de Kinzo avec sa fille — est précisément celle qui hérite de tout ce que la famille a voulu enterrer. Elle est la dépositaire du secret, la victime collatérale de la honte des Ushiromiya, et c'est elle qui finit par déclencher le massacre. Non pas par malice, mais parce qu'à un moment, <em>le trop-plein de ce qu'on lui a fait cherche une sortie.</em></p>
-
-    <div class="note rv"><strong>Parallèle avec Silent Hill f :</strong> Ce qui rapproche profondément Hinako et Sayo, c'est que toutes deux sont des femmes dont le corps a été traité comme une propriété avant même qu'elles aient eu conscience d'elles-mêmes. Là où <em>Silent Hill f</em> le rend littéralement visible (la transformation physique, le kimono blanc), <em>Umineko</em> le déplace dans la structure narrative : la violence est dissimulée derrière huit arcs de mystère, et la révéler demande au lecteur le même travail de déni et de reconnaissance qu'il demande à ses personnages.</div>
-
-    <h2 class="rv">V. Ange Ushiromiya — la lectrice qui nous ressemble</h2>
-
-    <p class="rv">Il serait incomplet de parler des femmes d'<em>Umineko</em> sans nommer Ange — la sœur cadette de Battler, seule survivante de la catastrophe, qui passe les arcs « Chiru » à reconstituer ce qui s'est passé à Rokkenjima.</p>
-
-    <p class="rv">Ange est la figure du lecteur dans le texte. Elle porte le deuil de toute sa famille, elle cherche une vérité, elle refuse les versions trop simples. Et surtout : elle est celle qui, à la fin, doit décider si elle accepte ou non la vérité de Sayo — si elle pardonne à cette femme d'avoir été la cause de la mort de ses parents, ou si elle comprend que Sayo était elle aussi une victime de la même machine.</p>
-
-    <p class="rv">Ange choisit de comprendre. Ce choix est le vrai dénouement moral du jeu. <em>Umineko</em> ne nous demande pas de condamner Sayo. Il nous demande de voir <strong>ce qui l'a faite</strong>.</p>
-
-    <div class="orn-line rv">✦ &nbsp; ✦ &nbsp; ✦</div>
-
-    <p class="rv" style="font-style:italic; color:var(--muted); font-size:.95rem;">Le prochain article explorera les structures métaleptiques dans <em>Umineko</em> — la façon dont Ryukishi07 place le lecteur dans la position de Battler, contraint de choisir entre la vérité du monde humain et la beauté du monde de la sorcière, et ce que ce choix dit de notre rapport à la fiction comme refuge.</p>
+    <p>Ce que <span class="work">Umineko</span> demande à son lecteur n'est pas un verdict. C'est un regard — qu'il faut payer cher, mais sans lequel rien de ce que le jeu raconte ne devient lisible. Comment ce regard tient ensemble la logique et l'empathie, comment il résiste à ses propres aveuglements, comment il dispose le lecteur en figure morale plus encore qu'en figure intellectuelle, c'est ce que <a class="xref" href="article-umineko-amour.html">le second volet</a> de ce diptyque prend pour objet.</p>
 
   </article>
 
-  <!-- FOOTER -->
-  <div class="art-footer">
-    <span style="font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-right:.5rem;">Tags :</span>
-    <span class="tag">Umineko</span>
-    <span class="tag">Féminisme</span>
-    <span class="tag">Sayo Yasuda</span>
-    <span class="tag">Identité de genre</span>
-    <span class="tag">Ryukishi07</span>
-    <span class="tag">Visual novel</span>
-    <span class="tag">Narratologie</span>
-    <span class="tag">Personnages féminins</span>
+  <section class="notes">
+    <h3>Notes</h3>
+    <ol class="fnlist">
+      <li id="fn1">Sur la biographie de Sayo Yasuda — origine inceste, chute, blessure, élevage à Fukuin —, voir Ryukishi07, <i>Umineko no Naku Koro ni</i> (07th Expansion, 2007–2010), EP7 « Requiem of the Golden Witch », et la version manga de l'EP8 « Confession of the Golden Witch », désignée par Ryukishi07 comme la réponse officielle. <a class="back" href="#r1">↩</a></li>
+      <li id="fn2">Le détail de la poitrine prothétique de Shannon est explicité dans la Wikipédia japonaise consacrée aux personnages d'<i>Umineko</i>, sur la base du manga EP8. C'est l'un des détails les plus discrets et les plus cruels du dispositif. <a class="back" href="#r2">↩</a></li>
+      <li id="fn3">Sur l'inversion graphique entre Shannon et Kanon (caractères et symbolique miroir), voir les analyses japonaises de référence : note.com (Tsukishima Honoka, 2024), blog <i>Yamabukiiro no Shinjitsu</i> (2010–2016). <a class="back" href="#r3">↩</a></li>
+      <li id="fn4">Ryukishi07, entretien « Say It In Red! » (APGNation, 2014, archivé sur le 07th Expansion Wiki) : sur la lecture transgenre de Sayo, il évoque « une question difficile mais bonne », et préfère laisser les lecteurs conclure. <a class="back" href="#r4">↩</a></li>
+      <li id="fn5">Le terme <span class="jp">性同一性障害</span> (<i>seidōitsusei shōgai</i>) est employé pour parler de Sayo par plusieurs analyses japonaises de référence, notamment le blog <i>Yamabukiiro no Shinjitsu</i> (2016) ; la formule à retenir : « la souffrance existe que le concept soit reconnu ou non ». La terminologie japonaise officielle ayant évolué depuis (vers <span class="jp">性別不合</span>), <i>seidōitsusei shōgai</i> reflète l'usage de l'époque des analyses. <a class="back" href="#r5">↩</a></li>
+      <li id="fn6">Lecture critique de l'identité de Sayo : Takatagiri, « Sur <i>Umineko no Naku Koro ni</i> » (<i>Iruka Hotel</i>, 2024), qui pose explicitement la question de savoir si l'on peut affirmer que la Sayo « originelle » serait « plus vraie » que la Beatrice qu'elle est devenue. <a class="back" href="#r6">↩</a></li>
+      <li id="fn7">Le kanji <span class="jp">音</span> (<i>on</i>) dans les pseudonymes des servantes Ushiromiya est un détail récurrent des analyses japonaises et anglophones — Shannon (紗音), Kanon (嘉音), etc. La pratique du re-nommage à l'entrée en service est attestée historiquement dans les grandes maisons japonaises avant et après guerre. <a class="back" href="#r7">↩</a></li>
+      <li id="fn8">Sur l'objection morale à Yasu — la façon dont l'œuvre risque de présenter comme naturel le transfert de la souffrance sur autrui —, voir Saiusaruzzz, « <i>Umineko no Naku Koro ni</i> Episode 8 manga » (<i>Saiusaru no Chuunibyou na Dokusho Nikki</i>, 2017). L'auteure y formule la lecture la plus exigeante du personnage publiée en japonais. <a class="back" href="#r8">↩</a></li>
+      <li id="fn9">Sur la formule <span class="jp">愛がなければ視えない</span> comme « changer de place pour voir les choses sous plusieurs faces », voir le blog <i>Here is a witch's heart</i> (loosedogtom, 2019), une des synthèses les plus précises sur la fonction épistémique de la formule dans le jeu. <a class="back" href="#r9">↩</a></li>
+      <li id="fn10">Ryukishi07 a déclaré à plusieurs reprises que la majorité des lecteurs ayant atteint la solution complète d'<i>Umineko</i> par eux-mêmes étaient des femmes — propos rapportés notamment sur la Wikipédia japonaise du jeu, qui le cite comme intention auctoriale : « <i>Umineko</i> est une histoire d'amour (愛), pas de romance (恋), et son sujet est le motif et le cœur du coupable ». <a class="back" href="#r10">↩</a></li>
+    </ol>
+  </section>
+
+  <section class="refs">
+    <h3>Références</h3>
+    <h4>Sources japonaises</h4>
+    <ul>
+      <li>Wikipédia japonaise. <i>うみねこのなく頃に</i> ; <i>うみねこのなく頃にの登場人物</i>. (consultées en 2026).</li>
+      <li>Pixiv百科事典. « 愛がなければ視えない » ; entrées de personnages.</li>
+      <li>Loosedogtom. <i>Here is a witch's heart</i> (はてなブログ, 2019).</li>
+      <li>Saiusaruzzz. « 漫画版『うみねこのなく頃に』Episode 8が素晴らしかった… ». 2017.</li>
+      <li>Takatagiri. « 『うみねこのなく頃に』について ». <i>Iruka Hotel</i> (はてなブログ), 2024.</li>
+      <li><i>Yamabukiiro no Shinjitsu</i> (山吹色の真実). Analyse EP7, 2010–2016.</li>
+      <li>Tsukishima Honoka & Hanaka. « うみねこのなく頃に【解説と考察】 ». note.com, 2024.</li>
+    </ul>
+    <h4>Sources anglophones (forums & analyses)</h4>
+    <ul>
+      <li>Ramblings of the Golden Witch (Tumblr). Comparaisons des détectives d'<i>Umineko</i>, 2016.</li>
+      <li>TV Tropes. Pages <i>Characters/UminekoWhenTheyCryMeta</i> ; <i>Recap/UminekoWhenTheyCryEpisode6, 7</i>.</li>
+      <li>Rook with the Pointed Hat. <i>The Umineko Problem, Part 1: Ancient Influences</i>. 2018.</li>
+      <li>The Orient Express (psychopopular.com). <i>Fake metafiction: The Umineko review</i>. 2025.</li>
+    </ul>
+    <h4>Sources primaires</h4>
+    <ul>
+      <li>07th Expansion / Ryukishi07. <i>Umineko no Naku Koro ni</i>. 2007–2010.</li>
+      <li>Manga, adaptation de l'EP8 « Confession of the Golden Witch », désignée par l'auteur comme réponse officielle.</li>
+      <li>Ryukishi07. Entretiens : « Say It In Red! » (APGNation, 2014) ; <i>The Untold History of Japanese Game Developers</i>.</li>
+    </ul>
+  </section>
+
+  <div class="tags">
+    <span class="t">Umineko — I</span>
+    <span class="t">Sayo Yasuda</span>
+    <span class="t">Identité de genre</span>
+    <span class="t">Féminisme</span>
+    <span class="t">Famille Ushiromiya</span>
+    <span class="t">Ryukishi07</span>
   </div>
 
-  <footer>
-    <span class="f-logo">Spectre Rose ✦</span>
-    <span class="f-copy">© 2026 — Théories narratives &amp; fiction interactive</span>
+  <footer class="site">
+    <span class="star">Spectre Rose ✦</span> &nbsp; © 2026 — Théories narratives &amp; fiction interactive
   </footer>
 
-  <script>
-    const items = document.querySelectorAll('.rv');
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('on'), (i % 3) * 80);
-          obs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.07 });
-    items.forEach((el, i) => { el.dataset.i = i; obs.observe(el); });
-  </script>
-  <script src="ui.js"></script>
+</div>
 </body>
 </html>

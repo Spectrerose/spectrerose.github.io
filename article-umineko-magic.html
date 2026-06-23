@@ -1,323 +1,283 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spectre Rose — Sans amour, cela ne peut être vu : la magie comme épistémologie de l'empathie dans Umineko</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg:         #07040a;
-      --bg-card:    #0e0812;
-      --rose:       #d4909a;
-      --rose-light: #f0c4cc;
-      --rose-dark:  #7a3d4a;
-      --cream:      #ede4e6;
-      --muted:      #6e5860;
-      --border:     rgba(212, 144, 154, 0.18);
-      --border-h:   rgba(212, 144, 154, 0.45);
-      --gold:       #c9a96e;
-      --gold-dark:  #6e4f20;
-      --gold-light: #f0d4a0;
-    }
-
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--cream);
-      font-family: 'Crimson Text', serif;
-      font-size: 19px;
-      line-height: 1.88;
-      overflow-x: hidden;
-    }
-
-    body::after {
-      content: '';
-      position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 9998; mix-blend-mode: overlay; opacity: 0.55;
-    }
-
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.4rem 4rem;
-      background: linear-gradient(to bottom, rgba(7,4,10,0.97) 0%, transparent 100%);
-    }
-    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300; letter-spacing: .18em; color: var(--rose-light); text-decoration: none; }
-    .nav-logo span { color: var(--rose); font-style: italic; }
-    .nav-back { font-family: 'DM Mono', monospace; font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .3s; }
-    .nav-back:hover { color: var(--gold-light); }
-
-    /* HERO */
-    .art-hero { padding: 12rem 4rem 5rem; max-width: 820px; margin: 0 auto; text-align: center; position: relative; }
-
-    /* Anneaux décoratifs légers */
-    .art-hero::before {
-      content: '';
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 500px; height: 500px; border-radius: 50%;
-      border: 1px solid rgba(201,169,110,.06);
-      pointer-events: none;
-      animation: breathe 9s ease-in-out infinite;
-    }
-    @keyframes breathe { 0%,100%{opacity:.4;transform:translate(-50%,-50%) scale(1);}50%{opacity:.8;transform:translate(-50%,-50%) scale(1.04);} }
-
-    .a-eyebrow { font-family: 'DM Mono', monospace; font-size: .58rem; letter-spacing: .4em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 2rem; }
-    .a-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 5.5vw, 3.8rem); font-weight: 300; line-height: 1.08; color: var(--cream); }
-    .a-title em { color: var(--gold-light); font-style: italic; }
-    .a-subtitle { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-style: italic; font-weight: 300; color: var(--muted); margin-top: 1.4rem; line-height: 1.65; max-width: 600px; margin-left: auto; margin-right: auto; }
-    .a-meta { display: flex; justify-content: center; align-items: center; gap: 1.2rem; margin-top: 2.8rem; font-family: 'DM Mono', monospace; font-size: .52rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-dark); }
-    .a-meta .sep { color: rgba(201,169,110,.25); }
-
-    .orn-line { text-align: center; color: var(--gold-dark); font-size: .75rem; letter-spacing: 1.6rem; margin: 3.5rem 0; }
-
-    /* COVER */
-    .cover-img { width: 100%; max-width: 820px; margin: 0 auto 5rem; aspect-ratio: 16/7; background: linear-gradient(135deg, #100a04 0%, #0a0510 50%, #120810 100%); border: 1px solid rgba(201,169,110,.12); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .6rem; position: relative; overflow: hidden; padding: 0 4rem; }
-    .cover-img::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 55% 65% at 50% 50%, rgba(201,169,110,.08), transparent); }
-    .cover-img img { width: 100%; height: 100%; object-fit: cover; }
-    .cover-img-glyph { font-family: 'Cormorant Garamond', serif; font-size: 5rem; color: rgba(201,169,110,.09); font-style: italic; font-weight: 300; line-height: 1; }
-    .cover-img-label { font-family: 'DM Mono', monospace; font-size: .5rem; letter-spacing: .25em; text-transform: uppercase; color: rgba(201,169,110,.25); z-index: 1; }
-
-    /* BODY */
-    .art-body { max-width: 680px; margin: 0 auto; padding: 0 2rem 8rem; }
-
-    h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; line-height: 1.12; color: var(--cream); margin: 4.5rem 0 1.5rem; position: relative; padding-left: 1.4rem; }
-    h2::before { content: ''; position: absolute; left: 0; top: .3em; width: 3px; height: 1.1em; background: linear-gradient(to bottom, var(--gold), var(--gold-dark)); }
-    h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; font-weight: 400; color: var(--gold-light); margin: 2.8rem 0 .9rem; }
-
-    p { color: #c9b8bc; margin-bottom: 1.5rem; }
-    em { color: var(--rose-light); font-style: italic; }
-    strong { color: var(--cream); font-weight: 600; }
-    .gold { color: var(--gold-light); }
-
-    /* Citation en japonais / phrase clé */
-    .keyphrase {
-      text-align: center;
-      margin: 3rem 0;
-      padding: 2.5rem;
-      border: 1px solid rgba(201,169,110,.15);
-      background: rgba(201,169,110,.03);
-      position: relative;
-    }
-    .keyphrase::before { content: '✦'; position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: var(--bg); padding: 0 .8rem; color: var(--gold-dark); font-size: .75rem; }
-    .keyphrase-jp { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--muted); letter-spacing: .1em; display: block; margin-bottom: .6rem; }
-    .keyphrase-en { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-style: italic; font-weight: 300; color: var(--gold-light); line-height: 1.3; display: block; }
-
-    blockquote { margin: 3rem 0; padding: 2rem 2.5rem; border: 1px solid rgba(201,169,110,.18); background: var(--bg-card); position: relative; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; font-weight: 300; color: var(--gold-light); line-height: 1.55; text-align: center; }
-    blockquote::before { content: '✦'; position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: var(--bg); padding: 0 .8rem; color: var(--gold-dark); font-style: normal; font-size: .8rem; }
-
-    .note { border-left: 2px solid var(--gold-dark); padding: 1rem 1.5rem; background: rgba(201,169,110,.04); margin: 2.4rem 0; font-style: italic; font-size: .95rem; color: var(--muted); }
-    .note strong { color: var(--gold-light); font-style: normal; }
-
-    .img-inline { width: 100%; margin: 2.8rem 0; aspect-ratio: 16/9; background: linear-gradient(135deg, #100a04, #0a0510); border: 1px solid rgba(201,169,110,.12); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .5rem; overflow: hidden; }
-    .img-inline img { width: 100%; height: 100%; object-fit: cover; }
-    .img-inline-label { font-family: 'DM Mono', monospace; font-size: .48rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(201,169,110,.25); }
-    .img-caption { font-size: .85rem; font-style: italic; color: var(--muted); text-align: center; margin-top: -.8rem; margin-bottom: 1.6rem; }
-
-    /* Tableau des usages de la magie */
-    .magic-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2.2rem 0; }
-    .magic-card { border: 1px solid rgba(201,169,110,.14); background: var(--bg-card); padding: 1.5rem; }
-    .mc-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--gold-light); margin-bottom: .3rem; }
-    .mc-type { font-family: 'DM Mono', monospace; font-size: .47rem; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: .7rem; }
-    .mc-text { font-size: .88rem; color: var(--muted); line-height: 1.75; }
-
-    .art-footer { max-width: 680px; margin: 0 auto; padding: 3rem 2rem 6rem; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
-    .tag { border: 1px solid var(--gold-dark); padding: .25rem .8rem; font-family: 'DM Mono', monospace; font-size: .5rem; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); }
-
-    footer { border-top: 1px solid var(--border); padding: 2.5rem 4rem; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-    .f-logo { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 300; letter-spacing: .15em; color: var(--rose-light); }
-    .f-copy { font-family: 'DM Mono', monospace; font-size: .52rem; letter-spacing: .18em; color: var(--muted); }
-
-    .rv { opacity: 0; transform: translateY(22px); transition: opacity .85s ease, transform .85s ease; }
-    .rv.on { opacity: 1; transform: none; }
-
-    @media (max-width: 760px) {
-      nav { padding: 1.2rem 1.5rem; }
-      .art-hero, .art-body, .art-footer { padding-left: 1.5rem; padding-right: 1.5rem; }
-      .art-hero { padding-top: 9rem; }
-      .magic-grid { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sans amour, cela ne peut être vu — Spectre Rose</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e0a0f;--bg-raise:#171019;--ink:#ece4e8;--ink-soft:#b6abb4;--ink-faint:#867a83;
+    --rose:#df728c;--rose-deep:#7c2740;--bone:#e3dacb;--gold:#c2a14e;
+    --line:rgba(223,114,140,.18);--line-soft:rgba(236,228,232,.08);--measure:38rem;
+    --serif-display:"Cormorant Garamond",Didot,"Hoefler Text",Georgia,serif;
+    --serif-body:"Spectral",Georgia,"Times New Roman",serif;
+    --sans:"Inter",system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif-body);font-weight:400;font-size:1.16rem;line-height:1.78;letter-spacing:.005em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(120% 80% at 50% -10%, rgba(124,39,64,.16), transparent 60%),radial-gradient(90% 60% at 90% 110%, rgba(46,30,52,.5), transparent 55%);}
+  .wrap{position:relative;z-index:1}
+  .topbar{max-width:60rem;margin:0 auto;padding:1.6rem 1.5rem 0;display:flex;align-items:center;justify-content:space-between;font-family:var(--sans);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);}
+  .topbar .brand{color:var(--bone);font-weight:500;text-decoration:none;transition:color .25s}
+  .topbar .brand:hover{color:var(--rose)}
+  .topbar a{color:var(--ink-faint);text-decoration:none;transition:color .25s}
+  .topbar a:hover{color:var(--rose)}
+  .series{max-width:60rem;margin:1.3rem auto 0;padding:1.1rem 1.5rem 0;border-top:1px solid var(--line-soft);display:flex;flex-wrap:wrap;gap:.45rem 1.1rem;align-items:baseline;font-family:var(--sans);font-size:.74rem;letter-spacing:.02em;color:var(--ink-faint);}
+  .series .lead{letter-spacing:.18em;text-transform:uppercase;color:var(--rose);width:100%;margin-bottom:.2rem;}
+  .series a{color:var(--ink-soft);text-decoration:none;transition:color .25s}
+  .series a:hover{color:var(--rose)}
+  .series .roman{color:var(--rose-deep);font-style:italic;margin-right:.3rem}
+  .series .here{color:var(--bone);border-bottom:1px solid var(--rose-deep);padding-bottom:1px}
+  header.hero{max-width:48rem;margin:0 auto;padding:5rem 1.5rem 2.2rem;text-align:center;}
+  .eyebrow{font-family:var(--sans);font-size:.72rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--rose);display:flex;flex-wrap:wrap;gap:.5rem .9rem;justify-content:center;align-items:center;margin-bottom:2.2rem;}
+  .eyebrow .sep{color:var(--rose-deep)}
+  h1{font-family:var(--serif-display);font-weight:500;font-size:clamp(2.7rem,7vw,4.8rem);line-height:1.03;letter-spacing:-.01em;margin:0 0 1.4rem;color:var(--ink);}
+  .dek{font-family:var(--serif-body);font-weight:300;font-style:italic;font-size:clamp(1.18rem,2.6vw,1.42rem);line-height:1.5;color:var(--ink-soft);max-width:34rem;margin:0 auto 2.4rem;}
+  .runline{font-family:var(--sans);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);display:flex;flex-wrap:wrap;gap:.4rem .8rem;justify-content:center;}
+  .runline .dot{color:var(--rose-deep)}
+  .hero-rule{width:1px;height:3.4rem;margin:2.6rem auto 0;background:linear-gradient(var(--rose),transparent);}
+  article{max-width:var(--measure);margin:0 auto;padding:1.5rem 1.5rem 2rem}
+  article > p,article > .standfirst{margin:0 0 1.45rem}
+  p{margin:0 0 1.45rem}
+  .standfirst{font-size:1.28rem;line-height:1.62;color:var(--ink)}
+  .dropcap::first-letter{font-family:var(--serif-display);font-weight:500;float:left;font-size:4.2rem;line-height:.78;padding:.35rem .55rem 0 0;color:var(--rose);}
+  h2{font-family:var(--serif-display);font-weight:500;font-size:clamp(1.9rem,4.4vw,2.5rem);line-height:1.1;letter-spacing:-.005em;color:var(--ink);margin:3.4rem 0 1.3rem;}
+  h2 .num{display:block;font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--rose);margin-bottom:.7rem;}
+  em,i{font-style:italic}
+  strong{font-weight:600;color:#f5eef2}
+  .work{font-style:italic;color:var(--ink)}
+  .jp{font-family:var(--serif-body);color:var(--bone);font-style:normal}
+  a.xref{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--line)}
+  a.xref:hover{border-color:var(--rose)}
+  a.fn{font-family:var(--sans);font-size:.62em;font-weight:600;vertical-align:.5em;line-height:0;color:var(--rose);text-decoration:none;padding:0 .12em;}
+  a.fn::before{content:"["}
+  a.fn::after{content:"]"}
+  a.fn:hover{color:var(--bone)}
+  .seam{display:flex;align-items:center;gap:1.1rem;margin:3rem auto;max-width:18rem;color:var(--rose-deep);}
+  .seam::before,.seam::after{content:"";height:1px;flex:1;background:repeating-linear-gradient(90deg,var(--line) 0 7px,transparent 7px 13px);}
+  .seam span{font-family:var(--serif-display);font-size:1.1rem;color:var(--rose);}
+  .dossier{background:var(--bg-raise);border:1px solid var(--line-soft);border-left:2px solid var(--gold);border-radius:2px;padding:1.6rem 1.7rem 1.4rem;margin:2.4rem 0;font-size:1.04rem;line-height:1.7;color:var(--ink-soft);}
+  .dossier .label{font-family:var(--sans);font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.85rem;}
+  .dossier p{margin:0 0 .9rem}
+  .dossier p:last-child{margin-bottom:0}
+  .dossier strong{color:var(--bone)}
+  blockquote.pull{margin:3rem 0;padding:0;border:0;text-align:center;}
+  blockquote.pull p{font-family:var(--serif-display);font-weight:500;font-style:italic;font-size:clamp(1.5rem,3.6vw,2rem);line-height:1.28;color:var(--bone);max-width:31rem;margin:0 auto;}
+  figure{margin:2.6rem 0}
+  figcaption{font-family:var(--sans);font-size:.78rem;letter-spacing:.04em;color:var(--ink-faint);text-align:center;margin-top:.7rem;}
+  .plate{border:1px solid var(--line-soft);border-radius:2px;background:var(--bg-raise);padding:2.4rem 1.5rem;text-align:center;}
+  .plate .glyph{font-family:var(--serif-display);font-size:2.4rem;color:var(--rose);opacity:.8}
+  .plate .cap{font-family:var(--serif-display);font-style:italic;font-size:1.45rem;color:var(--bone);margin-top:.6rem;line-height:1.3;}
+  .notes{max-width:var(--measure);margin:4rem auto 0;padding:0 1.5rem;}
+  .notes h3,.refs h3{font-family:var(--sans);font-size:.74rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--rose);border-top:1px solid var(--line);padding-top:1.6rem;margin:0 0 1.4rem;}
+  ol.fnlist{list-style:none;counter-reset:fn;margin:0;padding:0}
+  ol.fnlist li{counter-increment:fn;position:relative;padding-left:2.2rem;font-size:.92rem;line-height:1.62;color:var(--ink-soft);margin-bottom:1rem;}
+  ol.fnlist li::before{content:counter(fn);position:absolute;left:0;top:.05em;font-family:var(--sans);font-size:.72rem;font-weight:600;color:var(--rose);}
+  ol.fnlist li a.back{color:var(--ink-faint);text-decoration:none;margin-left:.3rem;}
+  ol.fnlist li a.back:hover{color:var(--rose)}
+  ol.fnlist a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+  ol.fnlist a:hover{color:var(--rose);border-color:var(--rose)}
+  .refs{max-width:var(--measure);margin:3rem auto 0;padding:0 1.5rem}
+  .refs h4{font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:1.6rem 0 .7rem;}
+  .refs ul{list-style:none;margin:0;padding:0}
+  .refs li{font-size:.9rem;line-height:1.55;color:var(--ink-soft);padding-left:1.4rem;text-indent:-1.4rem;margin-bottom:.7rem;}
+  .refs li i{color:var(--ink)}
+  .tags{max-width:var(--measure);margin:3.4rem auto 0;padding:0 1.5rem;display:flex;flex-wrap:wrap;gap:.55rem;}
+  .tags .t{font-family:var(--sans);font-size:.72rem;letter-spacing:.04em;color:var(--ink-soft);background:var(--bg-raise);border:1px solid var(--line-soft);border-radius:100px;padding:.35rem .9rem;}
+  footer.site{max-width:60rem;margin:4rem auto 0;padding:2.2rem 1.5rem 3.2rem;border-top:1px solid var(--line-soft);text-align:center;font-family:var(--sans);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);}
+  footer.site .star{color:var(--rose)}
+  :target{scroll-margin-top:2rem}
+  a:focus-visible{outline:2px solid var(--rose);outline-offset:3px;border-radius:2px}
+  @media (max-width:640px){body{font-size:1.08rem}header.hero{padding-top:4rem}.dropcap::first-letter{font-size:3.4rem}}
+  @media (prefers-reduced-motion:no-preference){
+    .fade{opacity:0;transform:translateY(10px);animation:rise .9s ease forwards}
+    .fade.d1{animation-delay:.05s}.fade.d2{animation-delay:.15s}.fade.d3{animation-delay:.25s}.fade.d4{animation-delay:.35s}
+    @keyframes rise{to{opacity:1;transform:none}}
+  }
+</style>
 </head>
 <body>
+<div class="wrap">
 
-  <nav>
-    <a href="index.html" class="nav-logo">Spectre <span>Rose</span></a>
-    <a href="index.html" class="nav-back">← Retour aux théories</a>
+  <div class="topbar">
+    <a class="brand" href="index.html">Spectre Rose</a>
+    <a href="index.html">← Retour aux théories</a>
+  </div>
+
+  <nav class="series" aria-label="Diptyque Umineko">
+    <span class="lead">Umineko no Naku Koro ni · diptyque</span>
+    <span><span class="roman">I.</span><a href="article-umineko-mobilier.html">Le mobilier a un cœur</a></span>
+    <span><span class="roman">II.</span><span class="here">Sans amour, cela ne peut être vu</span></span>
   </nav>
 
-  <div class="art-hero">
-    <span class="a-eyebrow rv">✦ Umineko no Naku Koro ni &nbsp;·&nbsp; Magie &nbsp;·&nbsp; Empathie &nbsp;·&nbsp; Vérité</span>
-    <h1 class="a-title rv">Sans <em>amour</em>,<br>cela ne peut être vu</h1>
-    <p class="a-subtitle rv">La magie comme épistémologie de l'empathie dans <em>Umineko no Naku Koro ni</em> — ce que Ryukishi07 dit sur la façon dont on connaît les autres, et sur ce qu'on rate quand on s'y refuse</p>
-    <div class="a-meta rv">
-      <span>24 mars 2026</span>
-      <span class="sep">·</span>
-      <span>~16 min de lecture</span>
-      <span class="sep">·</span>
-      <span>Spoilers EP1–EP8</span>
+  <header class="hero">
+    <div class="eyebrow fade d1">
+      <span>✦ Umineko no Naku Koro ni</span><span class="sep">·</span>
+      <span>Empathie</span><span class="sep">·</span>
+      <span>Genre policier</span>
     </div>
-  </div>
-
-  <div class="cover-img rv">
-<img src="goldenland.jpeg" alt="Umineko">
-  </div>
-  
-<div class="sr-synopsis" data-game="Umineko no Naku Koro ni">
-  <p><em>Umineko no Naku Koro ni</em> est un visual novel japonais (2007–2010) écrit par Ryukishi07. En octobre 1986, la famille Ushiromiya se réunit sur une île privée pour régler l'héritage de leur patriarche mourant. Pendant la nuit, des meurtres commencent. Une sorcière nommée Beatrice revendique les crimes. Le jeu pose une question centrale : ces morts ont-ils une explication humaine, ou la magie existe-t-elle ? C'est à la fois un roman policier, une histoire d'amour tragique, et une réflexion sur ce qu'on est capable de croire — et pourquoi. <em>Si vous ne connaissez pas l'histoire, commencez par notre conte d'introduction.</em></p>
-</div>
-  
-  <article class="art-body">
-
-    <p class="rv">Il y a une phrase dans <em>Umineko no Naku Koro ni</em> qui revient comme une litanie, comme un mantra, comme une condamnation selon l'angle sous lequel on la reçoit :</p>
-
-    <div class="keyphrase rv">
-      <span class="keyphrase-jp">愛がなければ、見えない。</span>
-      <span class="keyphrase-en">Without love, it cannot be seen.</span>
+    <h1 class="fade d2">Sans amour,<br>cela ne peut être vu</h1>
+    <p class="dek fade d3">Le roman policier réécrit de l'intérieur : ce qu'<span class="work">Umineko</span> appelle « amour » n'est ni une émotion ni une morale — c'est l'épistémologie sans laquelle une enquête vraiment se rate. Et c'est, surtout, le rôle qu'il assigne au lecteur.</p>
+    <div class="runline fade d4">
+      <span>Umineko no Naku Koro ni — Ryukishi07, 2007–2010</span>
+      <span class="dot">·</span><span>Spoilers complets EP1–EP8</span>
+      <span class="dot">·</span><span>~20 min</span>
     </div>
+    <div class="hero-rule fade d4"></div>
+  </header>
 
-    <p class="rv">Cette phrase appartient à Ange Ushiromiya. Elle est la signature de son arc, le programme de sa transformation. Elle arrive en EP4 comme une révélation, et elle résonne ensuite dans tout ce qui suit — dans chaque partie jouée par Beatrice, dans chaque tentative de Battler de comprendre ce qui s'est passé à Rokkenjima, dans l'échec spectaculaire d'Erika Furudo à « résoudre » quoi que ce soit.</p>
+  <article>
 
-    <p class="rv">Mais ce que cette phrase dit exactement — ce qu'est « l'amour » dont elle parle, ce qu'est le « cela » qui ne peut être vu sans lui — est bien plus complexe qu'il n'y paraît. Ce n'est pas une déclaration romantique. C'est une proposition philosophique sur la nature de la connaissance, sur ce qu'il faut pour comprendre une autre personne, et sur le prix à payer quand on refuse de le payer.</p>
+    <p class="standfirst dropcap">Il y a, dans <span class="work">Umineko no Naku Koro ni</span>, une phrase qui revient comme une signature, comme une condamnation ou comme une promesse selon l'angle sous lequel on la reçoit : <span class="jp">愛がなければ視えない</span> — « sans amour, cela ne peut être vu ». Elle est la formule d'arc d'Ange Ushiromiya, elle ferme les génériques d'ouverture jusqu'à l'EP4, elle est murmurée par Shannon, et elle finit par tout traverser : les parties jouées par Beatrice, les enquêtes de Battler, l'échec spectaculaire d'Erika Furudo à résoudre quoi que ce soit.</p>
 
-    <div class="orn-line rv">✦ &nbsp; ✦ &nbsp; ✦</div>
+    <p>On l'a souvent lue comme une déclaration sentimentale. Elle ne l'est pas. C'est une proposition épistémologique. Une thèse sur la connaissance, sur ce qu'il faut pour comprendre quelqu'un d'autre, et sur le prix à payer quand on refuse de le payer. Et c'est, surtout, une thèse qu'<span class="work">Umineko</span> ne se contente pas d'énoncer : il en fait une <em>réforme</em> du roman policier, conduite de l'intérieur du genre, à coups de règles citées et retournées. Le jeu n'est pas un mystère habillé en débat sur l'empathie. C'est un débat sur l'empathie qui se sert du mystère comme d'un champ d'épreuve.</p>
 
-    <h2 class="rv">I. La magie n'est pas surnaturelle — elle est humaine</h2>
+    <div class="seam"><span>✦</span></div>
 
-    <p class="rv">La première chose à comprendre sur la magie dans <em>Umineko</em>, c'est qu'elle n'est jamais véritablement surnaturelle au sens hollywoodien du terme. Aucune sorcière ne fait léviter des objets dans la réalité. Aucun rituel n'invoque réellement Beatrice. Tout ce qui se passe à Rokkenjima a une explication humaine, concrète, douloureuse.</p>
+    <h2><span class="num">I — La thèse</span>L'amour comme épistémologie</h2>
 
-    <p class="rv">La magie dans <em>Umineko</em>, c'est quelque chose d'autre : <strong>c'est la capacité d'un être humain à recouvrir la réalité d'un récit qui la rend supportable</strong>. C'est un langage de survie psychique. Et Ryukishi07 ne la présente jamais comme un simple mensonge — il la présente comme une <em>version de la vérité que le cœur peut porter</em>, là où la vérité nue serait écrasante.</p>
+    <p>Quand <span class="work">Umineko</span> dit « sans amour, on ne voit pas », il ne parle pas d'amour romantique. Il parle d'autre chose, de plus précis et de plus exigeant : la capacité à se tenir mentalement à la place d'autrui, avec sérieux, jusqu'à ce que sa réalité atteigne la nôtre. Une lecture japonaise de référence l'a formulé sans détour : la formule désigne le fait de croire en un personnage et de se placer à sa position pour que, dans ce qui était raconté, quelque chose d'autre apparaisse — quelque chose que la lecture en surplomb n'aurait pas vu.<a class="fn" href="#fn1" id="r1">1</a></p>
 
-    <div class="magic-grid rv">
-      <div class="magic-card">
-        <div class="mc-name">Maria et Sakutaro</div>
-        <div class="mc-type">✦ Magie protectrice</div>
-        <div class="mc-text">Quand Rosa détruit la peluche de Maria, c'est une perte réelle que Maria ne peut pas nommer directement — parce que nommer ce que sa mère lui fait serait insoutenable. Sakutaro vivant est la magie qui lui permet de survivre à l'amour de Rosa sans l'effondrement.</div>
-      </div>
-      <div class="magic-card">
-        <div class="mc-name">Shannon et « les erreurs de Beatrice »</div>
-        <div class="mc-type">✦ Magie d'attribution</div>
-        <div class="mc-text">Quand Sayo perd des objets par maladresse, elle invente une sorcière qui les vole. Ce n'est pas de la naïveté — c'est une façon de ne pas se haïr soi-même pour chaque petit échec dans un environnement qui punit déjà sa moindre imperfection.</div>
-      </div>
-      <div class="magic-card">
-        <div class="mc-name">Beatrice comme personnage</div>
-        <div class="mc-type">✦ Magie d'existence</div>
-        <div class="mc-text">Sayo s'invente Beatrice comme espace où elle peut exister sans les contraintes de Shannon ou Kanon. Beatrice peut revendiquer l'amour pour Battler, la puissance, la liberté. Elle est la magie la plus élaborée — et la plus vitale.</div>
-      </div>
-      <div class="magic-card">
-        <div class="mc-name">Les parties du jeu</div>
-        <div class="mc-type">✦ Magie narrative</div>
-        <div class="mc-text">Les parties de jeu entre Beatrice et Battler sont la magie à l'échelle métatextuelle : Sayo transforme sa douleur en enigme pour que Battler la comprenne enfin — sans avoir à la lui dire directement. Le jeu est une déclaration en code.</div>
-      </div>
+    <p>Ryukishi07 lui-même a tranché : <span class="work">Umineko</span> est une histoire d'<em>amour</em>, pas de <em>romance</em> — et son sujet, dit-il, est l'exploration du motif et du cœur du coupable. On ne comprend l'auteur d'un acte qu'en s'asseyant, brièvement, à la place où il l'a commis.<a class="fn" href="#fn2" id="r2">2</a> Ce que la philosophie appellerait <em>empathie cognitive</em> — non pas ressentir ce que l'autre ressent, mais se représenter ce que c'est d'être lui — devient ici une condition de la connaissance, et non plus seulement une vertu morale : sans elle, on peut accumuler les preuves et ne jamais comprendre. Avec elle, des indices qu'aucune logique froide ne reliait se mettent à composer un tableau.</p>
+
+    <p>Battler en fait l'expérience à répétition. Tant qu'il enquête en accumulant les faits, il peut formuler des théories brillantes — et il rate Sayo à chaque fois. Le moment où il commence à comprendre n'est pas un moment de logique, c'est un moment où il accepte la <em>perspective</em> : se demander pourquoi quelqu'un aurait fait cela, ce que ce quelqu'un cherchait à dire, ce qu'il essayait — fût-ce maladroitement, fût-ce cruellement — d'accomplir. Cette « pensée d'échiquier » que les analyses japonaises nomment <span class="jp">心を大事にする推理</span> — un raisonnement qui « prend soin du cœur » — n'est pas un truc de détective gentil. C'est la seule technique qui marche dans une affaire où ce qui doit être révélé est <em>une personne</em>, et non un mécanisme.<a class="fn" href="#fn3" id="r3">3</a></p>
+
+    <h2><span class="num">II — Le piège du genre</span>Knox, Van Dine et le « Late Queen Problem »</h2>
+
+    <p>C'est ici qu'<span class="work">Umineko</span> cesse d'être un débat thématique pour devenir une intervention dans le genre policier — et qu'il faut nommer le débat dont il participe. Ryukishi07 écrit dans le sillage du <em>shin-honkaku</em> japonais, ce renouveau, à partir des années 1980, du mystère orthodoxe à la Christie, codifié par les Dix Commandements de Ronald Knox (1929) et les Vingt Règles de S. S. Van Dine (1928). Le « fair play » de ces règles n'est pas un détail décoratif : c'est un contrat implicite entre l'auteur et le lecteur, qui garantit que l'énigme soit logiquement résoluble à partir des indices donnés.<a class="fn" href="#fn4" id="r4">4</a> <span class="work">Umineko</span> cite explicitement ces règles, les met en personnage — Dlanor A. Knox, descendante de l'inquisition Knox, brandit son décalogue ; Willard H. Wright, dont le nom est exactement celui de S. S. Van Dine, fait de même avec ses vingt règles. Le jeu est, à la lettre, un mystère qui parle du mystère.</p>
+
+    <p>Mais Ryukishi07 ne se contente pas de citer Knox et Van Dine ; il les retourne contre eux-mêmes en mobilisant un problème théorique précis, longuement discuté par la critique japonaise du <em>shin-honkaku</em> : le <strong>Late Queen Problem</strong> de Rintarō Norizuki (<em>Hatsuki Quīn-ron</em>, 1995). Norizuki l'a posé en analysant Ellery Queen : une « solution » offerte par un détective à l'intérieur du récit est-elle <em>intrinsèquement fiable</em>, ou demeure-t-elle toujours révisable par de nouveaux indices ? Si la seconde réponse est juste, alors la résolution du détective n'est qu'une lecture parmi d'autres lectures possibles — et son autorité tient à sa <em>persuasion</em>, non à une certitude logique.<a class="fn" href="#fn5" id="r5">5</a> Ryukishi07, qui le cite en filigrane dans toute l'architecture du jeu, en tire la conséquence radicale : si les « vérités rouges » mêmes peuvent être employées pour égarer, alors la résolution du mystère est, dans une certaine mesure, suspendue à la <em>posture</em> du lecteur. La <em>catch-copy</em> du jeu le formule sans nuance : <em>doute, et c'est un mystère ; crois, et c'est une fantaisie</em>.<a class="fn" href="#fn6" id="r6">6</a></p>
+
+    <div class="dossier">
+      <span class="label">Le débat — shin-honkaku & Late Queen Problem</span>
+      <p>Le <strong>shin-honkaku</strong> (新本格) est le mouvement japonais de renouvellement du roman policier orthodoxe, à partir de 1987, autour d'auteurs comme Sōji Shimada, Yukito Ayatsuji ou Rintarō Norizuki. Ses règles : « fair play », énigme résoluble logiquement, refus du surnaturel.</p>
+      <p>Le <strong>Late Queen Problem</strong>, théorisé par Norizuki à partir d'Ellery Queen, met en doute le « fair play » lui-même en posant que toute solution proposée par un détective <em>à l'intérieur</em> du récit reste révisable par de nouveaux indices. L'autorité du détective n'est plus logique mais persuasive — et l'enquête, du même coup, est métaphysiquement instable.</p>
+      <p>Ryukishi07 fait d'<i>Umineko</i> un <strong>« anti-mystère »</strong> au sens japonais du terme — un mystère qui interroge les conditions de possibilité du genre lui-même. D'où sa formule : <em>疑えばミステリー、信じればファンタジー</em>.</p>
     </div>
 
-    <p class="rv">Ce que ces usages de la magie ont en commun, c'est qu'ils sont tous des <strong>réponses à une réalité que personne n'a voulu ou pu regarder en face</strong>. Maria invente de la magie parce que personne autour d'elle ne veut admettre ce que Rosa lui fait. Sayo invente Beatrice parce que le monde réel n'a pas de place pour ce qu'elle est. La magie n'est pas une fuite de la vérité — elle est une façon de la dire dans le seul langage qui reste quand tous les autres ont été confisqués.</p>
+    <h2><span class="num">III — La preuve par l'absurde</span>Erika Furudo, le détective sans amour</h2>
 
-    <h2 class="rv">II. « L'amour » n'est pas romantique — c'est épistémologique</h2>
+    <p>Pour rendre cette thèse incontestable, Ryukishi07 n'avait qu'un moyen : la mettre à l'épreuve d'un détective qui en refuse la prémisse. C'est ce qu'il fait avec Erika Furudo. Elle est brillante, méthodique, imbattable techniquement ; elle connaît le décalogue de Knox par cœur ; elle peut démonter n'importe quelle théorie et trouver la faille dans n'importe quel raisonnement. Et elle se trompe.</p>
 
-    <p class="rv">Quand <em>Umineko</em> dit <em>« sans amour, cela ne peut être vu »</em>, il ne parle pas d'amour romantique. Il parle de quelque chose de bien plus précis et de bien plus exigeant : la capacité à <strong>imaginer l'intériorité de l'autre avec suffisamment de sérieux pour que sa réalité nous atteigne</strong>.</p>
+    <p>Elle se trompe parce qu'elle a déjà la solution en tête avant de chercher. Une lecture anglophone de référence l'a souligné : la pathologie d'Erika n'est pas l'incompétence, c'est l'<em>orientation</em> — elle force les indices vers la conclusion qu'elle veut, et se débarrasse de ceux qui résistent.<a class="fn" href="#fn7" id="r7">7</a> Et elle se trompe surtout parce qu'elle a fait sien le principe qu'<span class="work">Umineko</span> entreprend de défaire : que le détective est <em>au-dessus</em> de ses suspects. Erika ne veut pas comprendre Natsuhi, elle veut l'accabler. Elle ne s'intéresse pas aux motivations profondes ; elle veut une conclusion nette. Et elle finit par accuser une innocente.</p>
 
-    <p class="rv">C'est ce que la philosophie appelle l'empathie cognitive — non pas ressentir ce que l'autre ressent, mais être capable de se représenter ce que c'est d'être cet autre, avec ses contraintes, son histoire, ses raisons. Dans <em>Umineko</em>, cette capacité est littéralement magique : elle permet de voir ce que la logique froide ne peut pas voir.</p>
+    <p>Le diagnostic le plus précis qu'on en ait fait, je le tiens d'une analyse anglophone : Erika est <em>la déconstruction même de l'archétype du détective</em>, le personnage qui <em>découpe les réalités subjectives des autres pour sa propre satisfaction</em>.<a class="fn" href="#fn8" id="r8">8</a> Et c'est elle, surtout, qui dit la réplique la plus dangereuse du cycle : <em>justement parce qu'il y a de l'amour, on finit par voir des choses qui n'existent pas</em>.<a class="fn" href="#fn9" id="r9">9</a> L'objection est juste — et il faut la tenir avec elle. L'empathie peut projeter, consoler d'un mensonge, fabriquer la vérité qu'elle voudrait trouver. C'est le scepticisme même que Suzanne Keen a opposé à toute célébration trop confortable de l'<em>empathie narrative</em> : rien ne garantit qu'elle produise la vérité, ni le bien.<a class="fn" href="#fn10" id="r10">10</a></p>
 
-    <p class="rv">Battler en fait l'expérience de façon répétée. Quand il enquête sur les meurtres, il peut accumuler des preuves, construire des déductions, formuler des théories brillantes. Mais il ne comprend rien tant qu'il ne se pose pas la question : <em>qui pourrait avoir fait ça, et pourquoi ?</em> La question du mobile n'est pas technique — elle est humaine. Elle demande qu'on s'asseye mentalement à la place du coupable et qu'on essaie de comprendre, pas de juger.</p>
+    <p>Que fait alors le jeu de cette objection ? Il ne la balaie pas — il la <em>punit narrativement</em>. Erika perd la sixième partie face à Battler et à la Beatrice ressuscitée, puis se voit bannie dans le néant par sa propre marraine, la sorcière Bernkastel, qui ne l'avait choisie que comme instrument.<a class="fn" href="#fn11" id="r11">11</a> La détective qui instrumentalisait les morts pour sa supériorité est, à son tour, instrumentalisée et jetée. La leçon est plus dure qu'une simple réfutation : à qui croyait pouvoir lire les autres sans s'exposer, l'œuvre fait éprouver, en retour, ce que c'est d'être traité en pièce de jeu.</p>
 
-    <blockquote class="rv">La pensée échiquier de Battler — imaginer les choses depuis la perspective du coupable — n'est pas une technique de détective. C'est un acte d'empathie. Et c'est exactement ce que la magie d'Umineko exige.</blockquote>
+    <blockquote class="pull">
+      <p>L'amour est la seule façon de voir la vérité — et le moyen le plus sûr de voir ce qui n'existe pas. Ryukishi07 ne tranche pas : il laisse le lecteur dans la lame.</p>
+    </blockquote>
 
-    <h3 class="rv">L'amour comme contrat lecteur-auteur</h3>
+    <h2><span class="num">IV — Le contre-modèle</span>Willard H. Wright, ou prendre soin du cœur</h2>
 
-    <p class="rv">EP6 ajoute une dimension supplémentaire à cette idée. Battler, devenu à son tour auteur de game, a une épiphanie : dans un roman policier, il doit exister un pacte de confiance entre le lecteur et l'écrivain. Le lecteur fait confiance à l'auteur pour que l'énigme soit soluble. L'auteur fait confiance au lecteur pour chercher vraiment. Sans cette confiance mutuelle — sans cet <em>amour</em> au sens fort — le genre entier s'effondre.</p>
+    <p>Si Erika est la pathologie, Will en est le contre-modèle. La symétrie n'est pas un hasard : Willard H. Wright porte le nom même de S. S. Van Dine, dont les Vingt Règles fondent le « fair play ». Là où Erika incarne la lettre des règles employée comme arme, Will en incarne l'esprit. Et là où Erika veut résoudre, Will veut comprendre. La consigne qu'il adresse à son apprentie tient en une phrase : <em>n'oublie pas le Cœur</em>.<a class="fn" href="#fn12" id="r12">12</a></p>
 
-    <p class="rv">C'est une déclaration extraordinaire de Ryukishi07 sur ce qu'il fait en écrivant <em>Umineko</em> lui-même. Il dit : <em>je vous propose une énigme soluble — à condition que vous me fassiez confiance et que vous cherchiez avec la bonne attitude.</em> Pas avec la logique seule. Pas avec le cynisme. Avec l'empathie pour les personnages, la volonté de comprendre ce qui les a poussés là où ils sont.</p>
+    <p>Cette consigne a un sens technique, dans la grammaire du jeu, qu'il faut éclaircir. Pour Will, la plupart des détectives ratent leurs énigmes parce qu'ils ignorent le Cœur — c'est-à-dire le mobile, le <em>whydunit</em>, qui n'est pas un simple supplément moral au <em>whodunit</em>, mais ce qui rend la solution lisible. Une scène d'EP7, particulièrement nette, dit tout son projet : sa successeure à la tête de la SSVD, l'inquisition des sorcières, fait arrêter et torturer une servante dont l'alibi est faux, en déclarant que <em>le mobile importe peu</em>. Will intervient et l'arrête en lui rappelant la onzième règle de Van Dine — un serviteur ne peut pas être le coupable —, mais l'enjeu réel n'est pas la règle : c'est qu'on ne torture pas quelqu'un dont on ne s'est pas même demandé pourquoi il agirait.<a class="fn" href="#fn13" id="r13">13</a></p>
 
-    <p class="rv">L'énigme de Rokkenjima ne se résout pas par déduction pure. Elle se résout quand on comprend Sayo — quand on comprend ce qu'on lui a fait, pourquoi elle a choisi ce qu'elle a choisi, ce que le massacre signifiait pour elle. Et ça, aucune vérité rouge ne peut le donner. Seule l'empathie le révèle.</p>
+    <p>L'écho avec <a class="xref" href="article-umineko-mobilier.html">le premier volet</a> de ce diptyque est ici exact. Will est le détective qui voit la servante <em>avant</em> de juger la servante. Erika est celle qui la traverse comme on traverse un meuble. Et toute la thèse d'<span class="work">Umineko</span> tient dans la distance entre les deux : une enquête sans Cœur est, dans cette œuvre, structurellement incapable de toucher Sayo. Elle peut nommer Yasuda — elle ne peut pas nommer ce qui lui a été fait, et donc ne peut pas nommer ce que Sayo a fait.</p>
 
-    <h2 class="rv">III. Erika Furudo — le portrait de ce qu'on est sans amour</h2>
+    <figure>
+      <div class="plate">
+        <div class="glyph">✦</div>
+        <div class="cap">Erika & Will — deux détectives,<br>deux postures de lecture</div>
+      </div>
+      <figcaption>Découper les autres pour soi, ou s'asseoir à leur place. Tout <i>Umineko</i> est entre ces deux gestes.</figcaption>
+    </figure>
 
-    <p class="rv">Ryukishi07 n'aurait pas eu besoin de créer Erika Furudo pour faire exister son propos. Mais il l'a créée — et c'est l'un de ses coups de génie les plus cruels.</p>
+    <h2><span class="num">V — La double tranche</span>Ce qu'on voit trop avec l'amour</h2>
 
-    <p class="rv">Erika est une grande détective. Elle est brillante, méthodique, imbattable sur le plan technique. Elle connaît les Dix Commandements de Knox par cœur. Elle peut démonter n'importe quelle théorie, invalider n'importe quelle proposition, trouver la faille dans n'importe quel raisonnement. Et pourtant elle se décrit elle-même comme une <em>« violeur intellectuel »</em> — quelqu'un qui utilise le mystère non pas pour comprendre, mais pour humilier, dominer, prouver sa supériorité.</p>
+    <p><span class="work">Umineko</span> serait un jeu plus simple s'il disait : l'empathie sauve, le cynisme tue. Ryukishi07 est trop honnête pour ça. Sa thèse, dans sa version complète, est en réalité <em>à double tranchant</em> : sans amour, on ne voit pas assez ; avec l'amour seul, on peut voir trop. Kinzo, obsédé par le fantôme de Beatrice Castiglioni au point de commettre l'inceste avec sa propre fille, est l'exemple le plus clair de l'amour qui se trompe d'objet et fabrique des monstres. La magie de Maria — Sakutaro vivant, Beatrice protectrice — la sauve de la violence de Rosa, et finit par devenir la cage dont elle ne peut plus sortir. Et Sayo, qui s'invente Beatrice pour pouvoir parler à Battler, voit cette même Beatrice devenir l'identité qui l'attache plus encore au passé qu'elle voulait fuir.</p>
 
-    <p class="rv">Erika ne veut pas savoir ce qui s'est passé à Rokkenjima. Elle veut gagner. Elle ne cherche pas à comprendre Natsuhi — elle veut l'accabler. Elle n'est pas intéressée par les motivations profondes, par les histoires personnelles, par ce qui a rendu possible l'impossible. Elle veut des faits, des preuves, des conclusions nettes. Et précisément à cause de ça, <strong>elle ne voit rien</strong>.</p>
+    <p>L'œuvre demande donc quelque chose de plus difficile qu'une simple ouverture du cœur : un amour <em>qui regarde quand même</em> — qui ne ferme pas les yeux sur ce qui est douloureux à voir, qui ne projette pas la vérité qu'il voudrait, qui sait que comprendre <em>n'est pas</em> absoudre. C'est exactement la position qu'on a vue tenir, au volet précédent, en parlant de Sayo : tenir ensemble la cause et l'acte, sans laisser la cause dispenser l'acte ni l'acte effacer la cause. La même rigueur, vue cette fois comme une exigence de connaissance.</p>
 
-    <div class="img-inline rv">
-      <img src="erika.jpg" alt="Silent Hill f" style="width:100%;height:100%;object-fit:cover;">
-    </div>
-    <p class="img-caption rv">Erika Furudo</p>
+    <h2><span class="num">VI — Le lecteur</span>Pourquoi c'est nous qu'<em>Umineko</em> met à l'épreuve</h2>
 
-    <p class="rv">Son origine est révélatrice. Erika a cessé de croire en l'amour le jour où elle a découvert que son petit ami la trompait. Elle a vu les preuves, tiré les conclusions, refermé le dossier. Et depuis lors, elle ne fait plus confiance qu'à ses propres facultés d'investigation. <em>L'amour est une illusion</em>, dit-elle. <em>Seuls les faits comptent.</em></p>
+    <p>La plus belle chose qu'<span class="work">Umineko</span> fasse est de placer son lecteur dans la situation même de ses personnages. On joue Battler qui essaie de comprendre Beatrice. On suit Ange qui essaie de comprendre Eva. On essaie nous-mêmes, à travers les huit épisodes, de comprendre Sayo — de tenir ensemble sa souffrance, ses choix, les violences subies et celles qu'elle a causées. Et Ryukishi07 nous dit, à chaque détour : vous ne le ferez pas avec la logique seule. Les vérités rouges ne vous donneront pas Sayo ; les déductions ne vous donneront pas Beatrice. Il faut autre chose — cette disposition particulière à s'asseoir avec une personne (fût-elle fictive) et à se demander sincèrement : <em>qu'est-ce que ça fait d'être toi ? qu'est-ce qui t'a amenée là ? qu'essayais-tu de faire, même quand c'était mal ?</em></p>
 
-    <p class="rv">Ce que le jeu lui répond — sans le dire explicitement — c'est que ce traumatisme personnel a transformé une capacité en incapacité. Erika voit les faits. Elle ne voit pas les personnes. Et en ne voyant pas les personnes, elle manque la vérité — pas la vérité factuelle, mais la vérité qui a de l'importance : pourquoi les choses sont arrivées, ce qu'elles signifient, ce qu'elles révèlent sur les êtres humains qui les ont provoquées.</p>
+    <p>Ce que cette disposition fait au lecteur, on peut le dire dans le vocabulaire de la narratologie. Wayne Booth, dans <span class="work">The Rhetoric of Fiction</span>, distinguait le « lecteur réel » du <em>narratee</em> et de l'auteur impliqué — et il insistait sur le fait qu'une œuvre de fiction prescrit à son lecteur une <em>posture</em>, des dispositions intellectuelles et morales sans lesquelles le texte ne se lit pas vraiment.<a class="fn" href="#fn14" id="r14">14</a> <span class="work">Umineko</span> est, en ce sens, l'un des cas les plus extrêmes du <em>narratee</em> exigeant : le jeu ne demande pas seulement qu'on le suive, il demande qu'on adopte, pour pouvoir le lire, la posture de Will plutôt que celle d'Erika. Refuser cette posture, c'est tenir le rôle d'Erika — et le jeu nous montre, sans pitié, ce que ce rôle coûte.</p>
 
-    <h2 class="rv">IV. Ange — apprendre à voir avec les deux yeux</h2>
+    <p>Une donnée de réception vient ici troubler agréablement les choses. Ryukishi07 a relevé que la majorité des lecteurs ayant atteint par eux-mêmes la solution complète d'<span class="work">Umineko</span> étaient des femmes.<a class="fn" href="#fn15" id="r15">15</a> Il y a sans doute mille façons d'interpréter ce fait, et toutes seraient discutables. On peut au moins remarquer ceci : la lecture qui voit Sayo n'est pas celle de la déduction la plus froide, mais celle qui sait quoi faire d'un nom qu'on change, d'un corps qu'on tait, d'un mariage où l'on entre comme étrangère. <span class="work">Umineko</span> a, dans son architecture, une grande lectrice — Ange — et, dans sa réception, des lectrices nombreuses. Les deux disent peut-être la même chose, à des places différentes.</p>
 
-    <p class="rv">L'arc d'Ange en EP4 est l'illustration la plus développée de la thèse centrale du jeu. Ange arrive à sa quête de vérité avec une certitude absolue : Eva est la coupable. Elle a décidé cela avant même d'avoir examiné quoi que ce soit. Sa logique est simple : Eva a survécu. Eva était avide. Eva avait un mobile. Donc Eva a tué sa famille.</p>
+    <div class="seam"><span>✦</span></div>
 
-    <p class="rv">Cette certitude lui coûte tout. Elle ne peut pas vraiment lire le journal d'Eva — parce qu'elle l'a déjà fermé avant de l'ouvrir. Elle ne peut pas comprendre que les deux d'entre elles étaient les seules à s'être perdues l'une l'autre, les seules à porter le même deuil. Elle ne peut pas voir qu'Eva, jusqu'à son dernier souffle, a protégé Ange de la vérité sur ses parents — pas par lâcheté, mais par amour.</p>
-
-    <p class="rv">Ce n'est pas qu'Ange manque d'intelligence. C'est qu'elle ne regarde avec qu'un seul œil. L'autre œil — celui qui permet de voir les deux hypothèses simultanément, de tenir la logique et l'empathie ensemble — est fermé par la douleur et la certitude préalable.</p>
-
-    <p class="rv">Son arc de transformation n'est pas intellectuel. C'est un apprentissage de la vulnérabilité : accepter de ne pas savoir, accepter que l'autre puisse avoir des raisons qu'on ne comprend pas encore, accepter que « voir la vérité » coûte quelque chose de personnel — et que ce coût est le prix de l'amour au sens où le jeu l'entend.</p>
-
-    <blockquote class="rv">Ange n'apprend pas à raisonner mieux. Elle apprend à regarder autrement — à voir les gens comme des êtres dont l'intériorité résiste à ses certitudes, et à s'y intéresser malgré ça, ou plutôt à cause de ça.</blockquote>
-
-    <h2 class="rv">V. La magie à double tranchant — ce qu'on voit trop avec l'amour</h2>
-
-    <p class="rv"><em>Umineko</em> serait un jeu plus simple s'il disait simplement : <em>l'empathie est bien, le cynisme est mal.</em> Mais Ryukishi07 est trop honnête pour ça. La phrase complète de la thèse du jeu pourrait s'énoncer ainsi : <em>sans amour, on ne voit pas assez — mais avec l'amour seul, on peut voir trop</em>.</p>
-
-    <p class="rv">C'est ce qu'Erika dit elle-même, en creux, dans sa propre logique : parce qu'elle aimait son petit ami, elle n'avait pas voulu voir ce qui était pourtant visible. L'amour l'avait aveuglée avant que le manque d'amour ne la prive de tout. Et dans l'histoire de Kinzo — obsédé par le fantôme de Beatrice Castiglioni au point de commettre l'inceste avec sa propre fille — l'amour est la source de la catastrophe entière.</p>
-
-    <p class="rv">La magie d'Umineko est donc double. Elle révèle et elle cache. Elle protège et elle emprisonne. Maria survit grâce à sa magie — et meurt parce qu'elle ne peut pas s'en détacher. Sayo construit Beatrice pour exister — et Beatrice devient la prison dont elle ne peut plus sortir. L'empathie est nécessaire pour voir la vérité — mais l'empathie mal dirigée, l'amour sans discernement, peut produire des monstres.</p>
-
-    <p class="rv">Ce que le jeu propose — ce qu'il incarne dans la trajectoire de Battler, dans la transformation d'Ange, dans la résolution finale — ce n'est pas l'amour aveugle. C'est quelque chose de plus difficile : <strong>un amour qui regarde quand même, qui comprend quand même, qui ne ferme pas les yeux sur ce qui est douloureux à voir — et qui, après tout ça, choisit quand même de tenir compte de la personne entière</strong>.</p>
-
-    <div class="orn-line rv">✦ &nbsp; ✦ &nbsp; ✦</div>
-
-    <h2 class="rv">VI. Ce que ça dit de nous — le lecteur comme instance empathique</h2>
-
-    <p class="rv">La plus belle chose qu'<em>Umineko</em> fasse est de placer le lecteur dans la même situation que ses personnages. On joue Battler qui essaie de comprendre Beatrice. On joue Ange qui essaie de comprendre Eva. On essaie nous-mêmes, comme lecteurs, de comprendre Sayo — de tenir ensemble sa souffrance, ses choix, les violences qu'elle a subies et celles qu'elle a causées.</p>
-
-    <p class="rv">Et Ryukishi07 nous dit : vous ne pourrez pas le faire avec de la logique seule. Les vérités rouges ne vous donneront pas Sayo. Les déductions ne vous donneront pas Beatrice. Il faut quelque chose d'autre — cette disposition particulière à s'asseoir avec un être humain (fût-il fictif) et à se demander sincèrement : <em>qu'est-ce que ça fait d'être toi ? Qu'est-ce qui t'a amené là ? Qu'est-ce que tu essayais de faire, même quand ce que tu faisais était mal ?</em></p>
-
-    <p class="rv">Cette disposition n'est pas une faiblesse. Elle n'est pas naïve. Elle est simplement la condition de possibilité de la compréhension humaine.</p>
-
-    <p class="rv">Sans elle — sans cet amour, au sens où Umineko l'entend — on peut tout voir et ne rien comprendre. On peut avoir toutes les pièces du puzzle et ne jamais assembler le tableau. Parce que le tableau n'est pas fait de faits. Il est fait de personnes. Et les personnes, <strong>sans amour, ne peuvent pas être vues</strong>.</p>
-
-    <div class="orn-line rv">✦ &nbsp; ✦ &nbsp; ✦</div>
-
-    <p class="rv" style="font-style:italic; color:var(--muted); font-size:.95rem;">Ce thème de l'empathie comme condition de la connaissance traverse l'ensemble du corpus de Ryukishi07 — de <em>Higurashi</em> (où la compréhension du trauma de Rena est la clé de tout) à <em>Silent Hill f</em> (coécrit sous son influence). Un prochain article tracera ce fil rouge à travers son œuvre entière.</p>
+    <p>Le geste final du jeu est, dans cette logique, d'une cohérence parfaite. Ce n'est pas Battler, l'enquêteur, qui hérite à la fin du jugement ; c'est Ange, qui choisit non de pardonner mais de <em>voir</em>. Et c'est nous, lecteurs, qui sommes mis exactement dans la même posture qu'elle : non pas mis au défi de résoudre une énigme, mais mis à l'épreuve d'une disposition. <span class="jp">愛がなければ視えない</span>. Ce n'était pas une formule décorative — c'était le contrat du livre. Et c'est en l'acceptant ou en le refusant qu'on décide de lire <span class="work">Umineko</span> comme un mystère, comme une fantaisie, ou — la plus exigeante des trois lectures — comme l'épreuve qu'il prétend être.</p>
 
   </article>
 
-  <div class="art-footer">
-    <span style="font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-right:.5rem;">Tags :</span>
-    <span class="tag">Umineko</span>
-    <span class="tag">Magie</span>
-    <span class="tag">Empathie</span>
-    <span class="tag">Without love</span>
-    <span class="tag">Épistémologie</span>
-    <span class="tag">Erika Furudo</span>
-    <span class="tag">Ange Ushiromiya</span>
-    <span class="tag">Ryukishi07</span>
+  <section class="notes">
+    <h3>Notes</h3>
+    <ol class="fnlist">
+      <li id="fn1">Loosedogtom, <i>Here is a witch's heart</i> (はてなブログ, 2019) : la formule <span class="jp">愛がなければ視えない</span> y est analysée comme « croire en un personnage et se placer à sa position pour que quelque chose d'autre apparaisse dans le récit ». L'une des synthèses les plus précises sur la fonction épistémique de la formule. <a class="back" href="#r1">↩</a></li>
+      <li id="fn2">Wikipédia japonaise, <i>うみねこのなく頃に</i>, section « Thème » : Ryukishi07 affirme qu'<i>Umineko</i> est « une histoire d'amour (愛), pas de romance (恋) », « une œuvre dont le sujet est le motif et le cœur du coupable » ; la compréhension du coupable suppose la compréhension de l'amour. <a class="back" href="#r2">↩</a></li>
+      <li id="fn3">L'expression japonaise <span class="jp">心を大事にする推理</span> — « un raisonnement qui prend soin du cœur » — est employée par les analyses japonaises pour décrire la posture d'enquête de Will et de Battler dans les arcs tardifs (voir Loosedogtom, 2019). <a class="back" href="#r3">↩</a></li>
+      <li id="fn4">Sur Ronald Knox, « Ten Commandments of Detective Fiction » (1929), et S. S. Van Dine, « Twenty Rules for Writing Detective Stories » (1928), comme codification du « fair play » du roman policier orthodoxe, voir Catherine Ross Nickerson (dir.), <i>The Cambridge Companion to American Crime Fiction</i> (Cambridge University Press, 2010). <a class="back" href="#r4">↩</a></li>
+      <li id="fn5">Norizuki Rintarō, <i>Hatsuki Quīn-ron</i> (初期クイーン論), 1995, repris dans son recueil critique <i>Reading the Late Queen Problem</i> ; cité par les analyses anglophones d'<i>Umineko</i>, notamment The Orient Express (psychopopular.com), « Fake metafiction: The Umineko review », 2025. La discussion du « problème » par Kiyoshi Kasai en a fait l'un des débats centraux du <i>shin-honkaku</i>. <a class="back" href="#r5">↩</a></li>
+      <li id="fn6">Catch-copy d'<i>Umineko</i> rapportée par Ryukishi07 : <span class="jp">疑えばミステリー、信じればファンタジー</span> (« doute, et c'est un mystère ; crois, et c'est une fantaisie »). Le même dispositif épistémique structure la « boîte à chat » de <i>Silent Hill f</i>, dont nous traitons par ailleurs sur Spectre Rose. <a class="back" href="#r6">↩</a></li>
+      <li id="fn7">Ramblings of the Golden Witch (Tumblr), « Compare and contrast the Umineko detectives… », 2016 : « le problème d'Erika est qu'elle a déjà la solution en tête, et qu'elle force les indices à aller dans son sens ». <a class="back" href="#r7">↩</a></li>
+      <li id="fn8">Mimidoshima, <i>Zaregoto Series: An Introduction to Shinhonkaku Mysteries</i>, 2018 : « Erika Furudo est un stéréotype du "détective", qui découpe les réalités subjectives des gens pour sa propre satisfaction ». La formule a été reprise par plusieurs synthèses anglophones. <a class="back" href="#r8">↩</a></li>
+      <li id="fn9">Réplique d'Erika Furudo (EP6) : <span class="jp">愛なんかあるから、ありもしないものが、視えてしまう</span>. La formule complète la <em>catch-copy</em> du jeu par sa négation, sans la fragiliser : les deux propositions sont vraies ensemble. <a class="back" href="#r9">↩</a></li>
+      <li id="fn10">Suzanne Keen, <i>Empathy and the Novel</i>, Oxford University Press, 2007 : rien ne garantit que l'empathie suscitée par la fiction produise une compréhension juste ni un comportement altruiste. L'« empathie narrative » est un effet, pas une vertu automatique. <a class="back" href="#r10">↩</a></li>
+      <li id="fn11">Voir la fiche TV Tropes <i>Characters/UminekoWhenTheyCryMeta</i> (rubrique Erika), ainsi que <i>Recap/UminekoWhenTheyCryEpisode6</i>. Le détail compte : Erika n'est pas vaincue par Battler ou Beatrice mais bannie par Bernkastel, qui s'en débarrasse une fois ses fins remplies. <a class="back" href="#r11">↩</a></li>
+      <li id="fn12">Sur Willard H. Wright : « pour lui, l'une des choses les plus importantes en chacun est le Cœur ; il se place à la position de l'autre pour comprendre la raison derrière ses actes ; pour lui, la plupart des détectives manquent de cette compréhension du Cœur, et c'est pourquoi ils ne résolvent pas certaines énigmes ». Voir codenamemiyu (LiveJournal, post EP7) et TV Tropes <i>Characters/UminekoWhenTheyCryMeta</i>. <a class="back" href="#r12">↩</a></li>
+      <li id="fn13">Sur la scène de la servante torturée par la successeure de Will : <i>Umineko no Naku Koro ni Chiru</i>, EP7, ouverture ; voir TV Tropes, <i>Recap/UminekoWhenTheyCryEpisode7</i> ; la fiche de Ranko Edogawa sur MyAnimeList résume l'arrêt par Will au nom de la onzième règle de Van Dine. <a class="back" href="#r13">↩</a></li>
+      <li id="fn14">Wayne C. Booth, <i>The Rhetoric of Fiction</i>, University of Chicago Press, 1961, sur le « lecteur impliqué » et la posture éthique prescrite par le texte. <a class="back" href="#r14">↩</a></li>
+      <li id="fn15">Wikipédia japonaise, <i>うみねこのなく頃に</i> : Ryukishi07 a remarqué que la majorité des lecteurs ayant atteint la solution étaient des femmes — donnée à manier avec précaution, mais cohérente avec l'éthique de lecture que le jeu prescrit. <a class="back" href="#r15">↩</a></li>
+    </ol>
+  </section>
+
+  <section class="refs">
+    <h3>Références</h3>
+    <h4>Théorie</h4>
+    <ul>
+      <li>Booth, Wayne C. <i>The Rhetoric of Fiction</i>. Chicago : University of Chicago Press, 1961.</li>
+      <li>Keen, Suzanne. <i>Empathy and the Novel</i>. Oxford : Oxford University Press, 2007.</li>
+      <li>Knox, Ronald A. « A Detective Story Decalogue ». 1929.</li>
+      <li>Nickerson, Catherine Ross (dir.). <i>The Cambridge Companion to American Crime Fiction</i>. Cambridge University Press, 2010.</li>
+      <li>Norizuki, Rintarō. <i>Hatsuki Quīn-ron</i> (初期クイーン論). 1995.</li>
+      <li>Van Dine, S. S. « Twenty Rules for Writing Detective Stories ». 1928.</li>
+    </ul>
+    <h4>Sources japonaises</h4>
+    <ul>
+      <li>Wikipédia japonaise. <i>うみねこのなく頃に</i> ; <i>うみねこのなく頃にの登場人物</i>.</li>
+      <li>Pixiv百科事典. « 愛がなければ視えない » ; entrée Will / Ériel.</li>
+      <li>Loosedogtom. <i>Here is a witch's heart</i> (はてなブログ, 2019).</li>
+      <li>Tsukishima Honoka & Hanaka. « うみねこのなく頃に【解説と考察】 ». note.com, 2024.</li>
+    </ul>
+    <h4>Sources anglophones</h4>
+    <ul>
+      <li>Mimidoshima. <i>Zaregoto Series: An Introduction to Shinhonkaku Mysteries</i>. 2018.</li>
+      <li>Ramblings of the Golden Witch (Tumblr). « Compare and contrast the Umineko detectives ». 2016.</li>
+      <li>Rook with the Pointed Hat. <i>The Umineko Problem, Part 1: Ancient Influences</i>. 2018.</li>
+      <li>The Orient Express. <i>Fake metafiction: The Umineko review</i>. 2025.</li>
+      <li>TV Tropes. <i>Characters/UminekoWhenTheyCryMeta</i> ; <i>Recap/UminekoWhenTheyCryEpisode6, 7</i>.</li>
+      <li>codenamemiyu (LiveJournal). Notice de personnage : Willard H. Wright (post-EP7).</li>
+    </ul>
+    <h4>Source primaire</h4>
+    <ul>
+      <li>07th Expansion / Ryukishi07. <i>Umineko no Naku Koro ni</i>. 2007–2010.</li>
+    </ul>
+  </section>
+
+  <div class="tags">
+    <span class="t">Umineko — II</span>
+    <span class="t">Sans amour, on ne voit pas</span>
+    <span class="t">Erika Furudo</span>
+    <span class="t">Willard H. Wright</span>
+    <span class="t">Knox / Van Dine</span>
+    <span class="t">Late Queen Problem</span>
+    <span class="t">Shin-honkaku</span>
+    <span class="t">Empathie narrative</span>
   </div>
 
-  <footer>
-    <span class="f-logo">Spectre Rose ✦</span>
-    <span class="f-copy">© 2026 — Théories narratives &amp; fiction interactive</span>
+  <footer class="site">
+    <span class="star">Spectre Rose ✦</span> &nbsp; © 2026 — Théories narratives &amp; fiction interactive
   </footer>
 
-  <script>
-    const items = document.querySelectorAll('.rv');
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
-    }, { threshold: 0.07 });
-    items.forEach(el => obs.observe(el));
-  </script>
-  <script src="ui.js"></script>
+</div>
 </body>
 </html>
