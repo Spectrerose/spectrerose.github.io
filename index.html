@@ -186,6 +186,7 @@
     .constellation-count { font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.2em; text-transform:uppercase; color: var(--muted); white-space:nowrap; }
 
     .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+    .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem; }
 
     .card-sm { display:block; text-decoration:none; color:inherit; background:var(--bg-card); border:1px solid var(--border); position:relative; overflow:hidden; transition: transform .4s ease, border-color .4s ease, box-shadow .4s ease; }
     .card-sm:hover { transform: translateY(-4px); border-color: var(--border-h); box-shadow: 0 16px 50px rgba(122,61,74,.16); }
@@ -320,7 +321,7 @@
       .spotlight-img { min-height: 220px; }
       .spotlight-body { padding: 2.2rem 1.8rem; }
       .constellation { margin-bottom: 4.5rem; }
-      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .grid-4, .grid-5 { grid-template-columns: repeat(2, 1fr); }
       .compact-row { flex-direction: column; gap: .5rem; }
       .compact-meta { padding-top: 0; }
       .about-inner { grid-template-columns: 1fr; gap: 3rem; }
