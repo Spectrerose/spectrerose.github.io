@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spectre Rose — L'unique point écarlate : grammaire de l'héroïne combattante, du Chevalier au ruban à L'Ère des cristaux</title>
+<title>Spectre Rose — Combattantes sous condition I : Grandir, ou rendre les armes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
@@ -11,75 +11,33 @@
     --bg:#07040a; --bg-card:#0e0812;
     --rose:#d4909a; --rose-light:#f0c4cc; --rose-dark:#7a3d4a; --rose-deep:#3d1520;
     --cream:#ede4e6; --muted:#6e5860; --border:rgba(212,144,154,0.18);
-    --gold:#c8a860; --gold-l:#f0d898;
   }
   *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{
-    background:var(--bg); color:var(--cream);
-    font-family:'Crimson Text',serif; font-size:19.5px; line-height:1.92;
-    overflow-x:hidden; -webkit-font-smoothing:antialiased;
-  }
-  /* grain / vignette */
-  body::after{
-    content:''; position:fixed; inset:0; pointer-events:none; z-index:2;
-    background:radial-gradient(120% 90% at 50% 0%, transparent 55%, rgba(0,0,0,.55) 100%);
-    mix-blend-mode:multiply;
-  }
+  body{background:var(--bg); color:var(--cream); font-family:'Crimson Text',serif; font-size:19.5px; line-height:1.92; overflow-x:hidden; -webkit-font-smoothing:antialiased;}
+  body::after{content:''; position:fixed; inset:0; pointer-events:none; z-index:2; background:radial-gradient(120% 90% at 50% 0%, transparent 55%, rgba(0,0,0,.55) 100%); mix-blend-mode:multiply;}
   ::selection{background:var(--rose-deep); color:var(--rose-light);}
 
-  /* NAV */
-  nav{
-    position:fixed; top:0; left:0; right:0; z-index:10;
-    display:flex; justify-content:space-between; align-items:center;
-    padding:1.4rem 3rem;
-    background:linear-gradient(180deg, rgba(7,4,10,.92), rgba(7,4,10,0));
-    backdrop-filter:blur(3px);
-  }
+  nav{position:fixed; top:0; left:0; right:0; z-index:10; display:flex; justify-content:space-between; align-items:center; padding:1.4rem 3rem; background:linear-gradient(180deg, rgba(7,4,10,.92), rgba(7,4,10,0)); backdrop-filter:blur(3px);}
   .nav-logo{font-family:'Cormorant Garamond',serif; font-weight:500; font-size:1.15rem; letter-spacing:.14em; color:var(--cream); text-decoration:none;}
   .nav-logo span{color:var(--rose);}
   .nav-back{font-family:'DM Mono',monospace; font-size:.62rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .3s;}
   .nav-back:hover{color:var(--rose-light);}
 
-  /* HERO */
   .art-hero{max-width:860px; margin:0 auto; padding:11rem 3rem 2.5rem; text-align:center;}
-  .a-eyebrow{
-    display:inline-block; font-family:'DM Mono',monospace; font-size:.6rem;
-    letter-spacing:.26em; text-transform:uppercase; color:var(--rose); margin-bottom:2rem;
-  }
-  .a-title{
-    font-family:'Cormorant Garamond',serif; font-weight:400;
-    font-size:clamp(2.5rem,6vw,4.3rem); line-height:1.07; letter-spacing:-.01em;
-    color:var(--cream); margin-bottom:1.6rem;
-  }
+  .a-eyebrow{display:inline-block; font-family:'DM Mono',monospace; font-size:.6rem; letter-spacing:.26em; text-transform:uppercase; color:var(--rose); margin-bottom:2rem;}
+  .a-title{font-family:'Cormorant Garamond',serif; font-weight:400; font-size:clamp(2.5rem,6vw,4.3rem); line-height:1.07; letter-spacing:-.01em; color:var(--cream); margin-bottom:1.6rem;}
   .a-title em{font-style:italic; color:var(--rose-light);}
-  .a-subtitle{
-    font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300;
-    font-size:clamp(1.1rem,2.4vw,1.5rem); line-height:1.45; color:var(--rose);
-    max-width:620px; margin:0 auto 2.4rem;
-  }
-  .a-meta{
-    display:flex; justify-content:center; flex-wrap:wrap; gap:.9rem;
-    font-family:'DM Mono',monospace; font-size:.6rem; letter-spacing:.16em;
-    text-transform:uppercase; color:var(--muted);
-  }
+  .a-subtitle{font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300; font-size:clamp(1.1rem,2.4vw,1.5rem); line-height:1.45; color:var(--rose); max-width:640px; margin:0 auto 2.4rem;}
+  .a-meta{display:flex; justify-content:center; flex-wrap:wrap; gap:.9rem; font-family:'DM Mono',monospace; font-size:.6rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted);}
   .a-meta .sep{color:var(--rose-dark);}
 
-  /* COVER */
-  .cover-img{
-    max-width:780px; margin:1.5rem auto 4.5rem; padding:0 3rem;
-    width:100%; display:flex; flex-direction:column; align-items:center;
-  }
-  .cover-frame{
-    width:100%; aspect-ratio:21/8; border:1px solid var(--border); border-radius:2px;
-    background:radial-gradient(60% 120% at 50% 0%, rgba(122,61,74,.22), transparent 70%), var(--bg-card);
-    display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;
-  }
+  .cover-img{max-width:780px; margin:1.5rem auto 4.5rem; padding:0 3rem; width:100%; display:flex; flex-direction:column; align-items:center;}
+  .cover-frame{width:100%; aspect-ratio:21/8; border:1px solid var(--border); border-radius:2px; background:radial-gradient(60% 120% at 50% 0%, rgba(122,61,74,.22), transparent 70%), var(--bg-card); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;}
   .cover-glyph{font-family:'Cormorant Garamond',serif; font-size:clamp(4rem,11vw,7rem); color:var(--rose-deep); line-height:1; user-select:none;}
-  .cover-glyph::after{content:'紅'; }
+  .cover-glyph::after{content:'紅';}
   .cover-label{font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-top:1rem;}
 
-  /* BODY */
   .art-body{max-width:720px; margin:0 auto; padding:0 3rem 3rem;}
   .art-body p{margin-bottom:1.7rem;}
   .art-body p.lead{font-size:1.12rem; color:#f3eaec;}
@@ -87,61 +45,39 @@
   .art-body em{font-style:italic;}
   .art-body em.work{color:#f0dfe4; font-style:italic;}
 
-  .kicker{
-    font-family:'DM Mono',monospace; font-size:.58rem; letter-spacing:.22em;
-    text-transform:uppercase; color:var(--rose-dark); margin:3.6rem 0 .7rem;
-  }
-  h2.sec{
-    font-family:'Cormorant Garamond',serif; font-weight:500; font-style:italic;
-    font-size:clamp(1.7rem,3.4vw,2.3rem); line-height:1.12; color:var(--rose-light);
-    margin:0 0 1.8rem; letter-spacing:.01em;
-  }
+  .kicker{font-family:'DM Mono',monospace; font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:var(--rose-dark); margin:3.6rem 0 .7rem;}
+  h2.sec{font-family:'Cormorant Garamond',serif; font-weight:500; font-style:italic; font-size:clamp(1.7rem,3.4vw,2.3rem); line-height:1.12; color:var(--rose-light); margin:0 0 1.8rem; letter-spacing:.01em;}
 
-  .pull{
-    margin:3.2rem 0; padding:0 1.4rem; text-align:center;
-    font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:400;
-    font-size:clamp(1.45rem,3.2vw,1.95rem); line-height:1.32; color:var(--rose-light);
-  }
+  .pull{margin:3.2rem 0; padding:0 1.4rem; text-align:center; font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:400; font-size:clamp(1.45rem,3.2vw,1.95rem); line-height:1.32; color:var(--rose-light);}
   .pull::before{content:'✦'; display:block; color:var(--rose-dark); font-size:.8rem; margin-bottom:1rem; letter-spacing:.3em;}
 
-  .seam{
-    text-align:center; color:var(--rose-dark); font-size:.7rem; letter-spacing:1.1em;
-    margin:3rem 0 3rem; padding-left:1.1em;
-  }
+  .seam{text-align:center; color:var(--rose-dark); font-size:.7rem; letter-spacing:1.1em; margin:3rem 0 3rem; padding-left:1.1em;}
+
+  .closeread{border-left:2px solid var(--rose-dark); padding:.2rem 0 .2rem 1.5rem; margin:2.2rem 0; color:#dcccd0; font-size:.97rem;}
+  .closeread .cr-tag{display:block; font-family:'DM Mono',monospace; font-size:.55rem; letter-spacing:.2em; text-transform:uppercase; color:var(--rose-dark); margin-bottom:.6rem;}
 
   sup.fn{font-size:.62em; line-height:0;}
   sup.fn a{color:var(--rose); text-decoration:none; padding:0 .1em;}
   sup.fn a:hover{color:var(--rose-light);}
 
-  /* NOTES + BIBLIO */
+  .nextvol{border:1px solid var(--border); border-radius:2px; background:var(--bg-card); padding:1.6rem 1.8rem; margin:3rem 0 1rem;}
+  .nextvol .nv-tag{font-family:'DM Mono',monospace; font-size:.55rem; letter-spacing:.2em; text-transform:uppercase; color:var(--rose-dark); display:block; margin-bottom:.6rem;}
+  .nextvol .nv-title{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.4rem; color:var(--rose-light); margin-bottom:.5rem;}
+  .nextvol p{font-size:.95rem; color:#c8b8bc; margin:0;}
+
   .apparatus{max-width:720px; margin:1rem auto 0; padding:0 3rem;}
-  .ap-head{
-    font-family:'DM Mono',monospace; font-size:.6rem; letter-spacing:.24em; text-transform:uppercase;
-    color:var(--rose-dark); margin:3rem 0 1.2rem; padding-top:2rem; border-top:1px solid var(--border);
-  }
-  .note-item,.biblio-item{
-    font-size:.86rem; line-height:1.62; color:#c8b8bc; margin-bottom:.85rem;
-    padding-left:1.6rem; text-indent:-1.6rem;
-  }
+  .ap-head{font-family:'DM Mono',monospace; font-size:.6rem; letter-spacing:.24em; text-transform:uppercase; color:var(--rose-dark); margin:3rem 0 1.2rem; padding-top:2rem; border-top:1px solid var(--border);}
+  .note-item,.biblio-item{font-size:.86rem; line-height:1.62; color:#c8b8bc; margin-bottom:.85rem; padding-left:1.6rem; text-indent:-1.6rem;}
   .note-item .num{color:var(--rose); font-family:'DM Mono',monospace; font-size:.72rem; margin-right:.5rem;}
   .note-item a.back{color:var(--rose-dark); text-decoration:none; margin-left:.3rem;}
   .biblio-item em{color:#dcc8cc;}
 
-  /* TAGS + FOOTER */
   .art-footer{max-width:720px; margin:2.5rem auto 0; padding:2rem 3rem 0;}
-  .tag{
-    display:inline-block; font-family:'DM Mono',monospace; font-size:.55rem;
-    letter-spacing:.14em; text-transform:uppercase; color:var(--rose);
-    border:1px solid var(--border); border-radius:2px; padding:.35rem .7rem; margin:0 .4rem .5rem 0;
-  }
-  footer{
-    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;
-    max-width:860px; margin:4rem auto 0; padding:2.5rem 3rem; border-top:1px solid var(--border);
-  }
+  .tag{display:inline-block; font-family:'DM Mono',monospace; font-size:.55rem; letter-spacing:.14em; text-transform:uppercase; color:var(--rose); border:1px solid var(--border); border-radius:2px; padding:.35rem .7rem; margin:0 .4rem .5rem 0;}
+  footer{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; max-width:860px; margin:4rem auto 0; padding:2.5rem 3rem; border-top:1px solid var(--border);}
   .f-logo{font-family:'Cormorant Garamond',serif; font-size:1rem; letter-spacing:.14em; color:var(--rose-light);}
   .f-copy{font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.16em; color:var(--muted); text-transform:uppercase;}
 
-  /* reveal */
   .rv{opacity:0; transform:translateY(20px); transition:opacity .8s ease, transform .8s ease;}
   .rv.on{opacity:1; transform:none;}
   @media (prefers-reduced-motion:reduce){ .rv{opacity:1; transform:none; transition:none;} html{scroll-behavior:auto;} }
@@ -163,13 +99,13 @@
 </nav>
 
 <header class="art-hero">
-  <span class="a-eyebrow rv">✦ Shōjo &amp; anime &nbsp;·&nbsp; Héroïnes combattantes &nbsp;·&nbsp; Genre &amp; traduction</span>
-  <h1 class="a-title rv">L'unique point <em>écarlate</em></h1>
-  <p class="a-subtitle rv">Grammaire de l'héroïne combattante dans le manga pour filles — et ce que la traduction lui fait, du <em>Chevalier au ruban</em> à <em>L'Ère des cristaux</em></p>
+  <span class="a-eyebrow rv">✦ Combattantes sous condition &nbsp;·&nbsp; I / II &nbsp;·&nbsp; Shōjo &amp; josei</span>
+  <h1 class="a-title rv">Grandir, ou <em>rendre les armes</em></h1>
+  <p class="a-subtitle rv">Dans le rayon des filles, le manga arme ses héroïnes à une seule condition : qu'elles ne deviennent jamais des femmes en armes. Premier volet d'un diptyque.</p>
   <div class="a-meta rv">
-    <span>18 juin 2026</span><span class="sep">·</span>
-    <span>~17 min de lecture</span><span class="sep">·</span>
-    <span>Spoilers : Utena, Madoka, L'Ère des cristaux</span>
+    <span>20 juin 2026</span><span class="sep">·</span>
+    <span>~22 min de lecture</span><span class="sep">·</span>
+    <span>Spoilers : La Rose de Versailles, Utena</span>
   </div>
 </header>
 
@@ -182,149 +118,138 @@
 
 <article class="art-body">
 
-  <p class="lead rv">Il y a, dans presque toutes ces œuvres, une poignée de secondes qui dit tout. La fille lève son pendentif, prononce une formule, brandit un ruban ; la lumière l'enveloppe, son corps tournoie nu dans un vide étoilé, puis se rhabille d'une armure qui est aussi un costume. La séquence de transformation — le <em>henshin</em> — est le cœur secret du genre, et son aveu. Car ce qu'elle met en scène, ce n'est pas seulement l'accès à la puissance : c'est l'idée que cette puissance se paie d'une exposition. Au moment exact où l'héroïne s'arme, on la déshabille. Au moment où elle devient sujet du combat, elle devient objet du regard.</p>
+  <p class="lead rv">Il y a, dans presque toutes ces œuvres, une poignée de secondes qui dit tout. La fille lève son pendentif, prononce une formule, brandit un ruban ; la lumière l'enveloppe, son corps tournoie nu dans un vide étoilé, puis se rhabille d'une armure qui est aussi un costume. La séquence de transformation — le <em>henshin</em> — est le cœur secret du genre, et son aveu. Elle met en scène, en trois secondes, une équation que tout le récit s'emploiera à tenir : la puissance se paie d'une exposition. Au moment exact où l'héroïne s'arme, on la déshabille. Au moment où elle devient sujet du combat, elle devient objet du regard.</p>
 
-  <p class="rv">Tout le problème de la combattante de manga tient dans cette simultanéité, et c'est de là qu'il faut partir. Le manga pour filles n'a jamais manqué d'héroïnes qui se battent — on n'a, à vrai dire, jamais cessé de les regarder le faire. Ce qui se joue dans soixante-dix ans d'images, c'est autre chose, de plus tenace : la manière dont le genre concède le combat à ses héroïnes tout en s'assurant qu'elles ne pourront jamais en faire grand-chose. On ne leur interdit pas l'épée. On la leur prête. Et l'on s'arrange, par une série de précautions narratives d'une constance remarquable, pour pouvoir la reprendre.</p>
+  <p class="rv">Le manga n'a jamais manqué d'héroïnes qui se battent — on n'a, à vrai dire, jamais cessé de les regarder le faire. Ce qui se joue dans soixante-dix ans d'images est plus subtil : la façon dont le récit concède le combat à ses héroïnes en s'assurant qu'elles ne pourront jamais en faire grand-chose. On ne leur interdit pas l'épée. On la leur prête, avec autour d'elles une série de précautions d'une constance remarquable, pour pouvoir la reprendre. Quatre suffisent à décrire le dispositif, et elles n'en font qu'une : on <strong>singularise</strong> l'héroïne, qui demeure une, jamais un collectif ; on l'autorise sous <strong>alibi</strong>, jamais en son nom propre, et souvent au prix de son sexe ; on la <strong>reconfine</strong>, par la mort, le mariage ou la mignardise ; et tout du long, on la <strong>livre au regard</strong>.</p>
 
-  <p class="rv">Appelons cela la grammaire de la <strong>combattante sous condition</strong>. Elle tient en quatre gestes qui n'en font qu'un : on <strong>singularise</strong> l'héroïne — elle est une, jamais un collectif ; on l'autorise sous <strong>alibi</strong> — elle ne se bat jamais pour elle-même, et souvent au prix de son sexe ; on la <strong>reconfine</strong> — la parenthèse se referme par la mort, le mariage, le retour au « vrai sexe » ou la dissolution dans la mignardise ; et tout du long, on la <strong>livre au regard</strong>. Le reste de ce texte décrit cette grammaire, puis la met à l'épreuve des œuvres qui, çà et là, ont entrepris de la défaire — jusqu'à une dernière, qui ne la défait qu'en renonçant au genre lui-même, et que la langue française, au seuil, recoud aussitôt.</p>
+  <p class="rv">Disons « le genre » par commodité, mais entendons un <em>système</em> : un marché du jouet et du magazine, des conventions héritées, une idéologie diffuse — non une instance qui voudrait. Personne, chez Tezuka ou chez Takeuchi, ne complote la combattante ; c'est ce qui rend la régularité parlante, car elle est structurale. Et cette régularité ne tient pas dans une seule case de librairie : la même figure court du shōjo au shōnen, du seinen au roman, du manga au cinéma. Mais une enquête se mène par étapes, et l'on a tout intérêt à commencer par la maison natale de la figure — le <em>shōjo</em>, le manga pour filles, qui l'a codifiée. Ce premier volet y reste tout entier. Il pose la grammaire chez elle, puis observe ce qu'il advient lorsqu'on laisse vieillir le lectorat : car le rayon des filles a deux âges, la fillette et la femme, et la combattante ne survit ni à l'un ni à l'autre de la même manière. Le second volet, lui, sortira du rayon ; on verra alors ce que la grammaire devient ailleurs, et les rares qui s'en arrachent. Ici, presque rien ne s'échappe — et c'est précisément l'objet de l'étude.</p>
 
-  <p class="kicker rv">i</p>
+  <p class="kicker rv">i — la singularité</p>
   <h2 class="sec rv">L'unique point écarlate</h2>
 
-  <p class="rv">Il existe en japonais une expression pour la femme seule au milieu des hommes : <em>kōitten</em>, « un point d'écarlate », l'unique fleur rouge dans le vert d'un massif. Elle a donné son titre à un livre qu'on devrait lire bien davantage hors du Japon, le <em>Kōitten-ron</em> de la critique Saitō Minako<sup class="fn"><a href="#n1" id="r1">1</a></sup>. Sa thèse est d'une économie redoutable : lorsqu'un récit place <em>une</em> femme exceptionnelle au centre d'un monde d'hommes, il ne menace en rien l'ordre masculin — il le confirme. L'exception est précisément ce qui permet à la règle de tenir. La guerrière unique n'ouvre pas la porte aux autres ; elle occupe, à elle seule, toute la place qu'on leur concède, et cette place est d'exactement une.</p>
+  <p class="rv">La première condition est d'être seule. Il existe en japonais une expression pour la femme unique au milieu des hommes : <em>kōitten</em>, « un point d'écarlate », l'unique fleur rouge dans le vert d'un massif. Elle a donné son titre à un livre qu'on devrait lire bien davantage hors du Japon, le <em>Kōitten-ron</em> de la critique Saitō Minako<sup class="fn"><a href="#n1" id="r1">1</a></sup>. Sa thèse est d'une économie redoutable : placer <em>une</em> femme exceptionnelle au centre d'un monde d'hommes ne menace pas l'ordre masculin — cela le confirme. L'exception est ce qui permet à la règle de tenir. La guerrière unique n'ouvre pas la porte aux autres ; elle occupe, à elle seule, toute la place qu'on leur concède, et cette place est d'exactement une.</p>
 
-  <p class="rv">On reconnaît là, sous un autre nom, ce que la sociologie appelle depuis Rosabeth Moss Kanter le mécanisme du <strong>token</strong><sup class="fn"><a href="#n2" id="r2">2</a></sup> : la personne admise en nombre infime dans un milieu qui n'est pas le sien n'y est jamais traitée comme un individu, mais comme un échantillon, une représentante de sa catégorie entière — et cette rareté même la rend hyper-visible, surexposée, condamnée à être regardée comme une curiosité. C'est exactement le sort de l'héroïne combattante, et l'on mesure déjà que les quatre opérations de sa grammaire ne sont pas quatre règles séparées, mais les faces d'un seul geste. La singulariser, c'est déjà la livrer au regard. L'autoriser à condition qu'elle reste seule, c'est lui interdire le seul mouvement qui changerait son cas en cause : le passage de l'exception au collectif.</p>
+  <p class="rv">La sociologie connaît ce mécanisme depuis Rosabeth Moss Kanter, qui l'a nommé le <strong>token</strong><sup class="fn"><a href="#n2" id="r2">2</a></sup> : admise en nombre infime dans un milieu qui n'est pas le sien, une personne n'y est jamais traitée comme un individu, mais comme l'échantillon de sa catégorie entière — et cette rareté la rend, paradoxalement, hyper-visible. C'est là que les quatre conditions se révèlent solidaires plutôt que distinctes : singulariser une héroïne, c'est déjà la donner à voir ; et l'autoriser à condition qu'elle reste seule, c'est lui interdire le seul geste qui ferait de son cas une cause — le passage de l'exception au collectif. Beauvoir l'avait écrit pour de bon : l'exceptionnelle, celle qui se hisse jusqu'aux hommes et joue à leur jeu, ne dérange pas la structure ; elle en est l'ornement. Tout le reste de la grammaire travaillera à ce qu'elle le demeure.</p>
 
-  <p class="rv">Beauvoir l'avait formulé pour de bon en 1949 : la femme est l'Autre inessentiel, et l'exceptionnelle — celle qui se hisse jusqu'aux hommes et joue à leur jeu — ne dérange pas la structure ; elle en est la confirmation décorative. La combattante de manga est cette exceptionnelle. Et le génie un peu pervers du genre est d'avoir inventé, autour d'elle, tout un appareil de gestes pour s'assurer qu'elle le reste.</p>
-
-  <div class="pull rv">Au moment exact où l'héroïne s'arme, on la déshabille.</div>
-
-  <p class="kicker rv">ii</p>
+  <p class="kicker rv">ii — l'alibi</p>
   <h2 class="sec rv">Le permis révocable</h2>
 
-  <p class="rv">Le premier de ces gestes est le plus littéral : pour se battre, l'héroïne doit cesser, d'une manière ou d'une autre, d'être une fille. Le travestissement masculin traverse tout le genre, et il ne faut pas le lire comme une coquetterie mais comme un théorème. Si la sphère du combat est masculine, on n'y entre qu'en empruntant un corps d'homme — et un emprunt, par définition, se rend.</p>
+  <p class="rv">Vient ensuite l'idée qu'elle ne doit jamais se battre en son nom propre — et le shōjo en a trouvé la forme la plus littérale : pour combattre, l'héroïne doit cesser, d'une manière ou d'une autre, d'être une fille. Le travestissement masculin traverse le genre comme un théorème. Si la sphère du combat est masculine, on n'y entre qu'en empruntant un corps d'homme, et un emprunt se rend. Bounthavy Suvilay a consacré à cette héroïne travestie une étude qui en fait à la fois une invention esthétique propre au shōjo et une revendication équivoque<sup class="fn"><a href="#n3" id="r3">3</a></sup>.</p>
 
-  <p class="rv">Le prototype vient de loin. Dans <em class="work">Le Chevalier au ruban</em>, que Tezuka donne en 1953 et qu'on tient souvent pour la matrice du shōjo narratif, Saphir naît par accident céleste pourvue d'un « cœur de garçon » et d'un « cœur de fille » ; faute d'héritier mâle, on l'élève en prince. Tout est dans le dispositif : sa vaillance procède de son cœur masculin, c'est-à-dire d'un greffon. Et l'œuvre se referme exactement comme elle le devait — Saphir rend sa part virile, épouse son prince, redevient « entière ». Tezuka, qui a grandi à Takarazuka, où des actrices, les <em>otokoyaku</em>, incarnent les rôles d'hommes, hérite de toute une tradition du travestissement de scène : spectaculaire, et borné par le rideau qui tombe.</p>
+  <p class="rv">Le prototype vient de loin. Dans <em class="work">Le Chevalier au ruban</em>, que Tezuka donne en 1953 et qu'on tient pour la matrice du shōjo narratif, Saphir naît par accident céleste pourvue d'un « cœur de garçon » et d'un « cœur de fille » ; faute d'héritier mâle, on l'élève en prince. Sa vaillance procède donc de son cœur masculin — d'un greffon.</p>
 
-  <p class="rv">Près de vingt ans plus tard, <em class="work">La Rose de Versailles</em> saisit cette figure et la porte à incandescence. Oscar de Jarjayes, élevée en homme pour commander la garde royale, ne se laisse pas reconduire au rang. Elle hait sa condition jusqu'au bout, aime André sans rien céder de son autorité, et tombe les armes à la main devant la Bastille. Le travestissement n'est plus chez elle un costume qu'on retire mais une existence qu'on assume jusqu'à la mort. On y reviendra, car Oscar est moins une exception à la grammaire qu'une manière de la retourner contre elle-même.</p>
+  <div class="closeread rv"><span class="cr-tag">Lecture rapprochée — le dernier chapitre</span>L'œuvre se referme exactement comme elle le devait. Lorsque l'ange Tink restitue à Saphir son cœur « unique », le récit ne présente pas la chose comme une amputation mais comme une guérison : redevenue « entière », elle peut enfin épouser le prince Frantz. Le combat, le commandement, le déguisement — tout cela aura été une parenthèse, et c'est le mariage qui la referme. Tezuka, qui a grandi à Takarazuka, où des actrices, les <em>otokoyaku</em>, tiennent les rôles d'hommes, hérite d'un travestissement de scène, spectaculaire et borné par le rideau qui tombe.</div>
 
-  <p class="rv">Le terme du raisonnement, on le trouve dans <em class="work">BASARA</em>, la grande fresque que Tamura Yumi déroule à partir de 1990. Quand son frère jumeau Tatara, désigné par la prophétie comme l'enfant qui doit renverser la tyrannie, est tué, Sarasa prend son nom, son visage, sa charge ; elle mène la révolution sous le masque d'un mort. Ce qui rend l'œuvre si précieuse, c'est qu'elle refuse de glorifier le geste : Sarasa ne cesse de se penser « simple fille », elle pleure, vomit, se dégoûte d'elle-même après chaque tuerie, hantée par les vies qu'elle prend ; et le récit ose presque la formule — qui peut tuer sans en souffrir a cessé de comprendre la douleur des femmes. La conclusion est sans appel. La guerre gagnée, Sarasa « redevient Sarasa », se retire de toute vie publique, disparaît avec son amant. Sa participation au monde s'achève à la seconde où elle récupère son sexe.</p>
+  <p class="rv">Près de vingt ans plus tard, <em class="work">La Rose de Versailles</em> reprend cette figure et la porte à incandescence. Oscar de Jarjayes, élevée en homme pour commander la garde royale, ne se laisse pas reconduire au rang : elle hait sa condition jusqu'au bout, aime André sans rien céder de son autorité, et tombe les armes à la main devant la Bastille. Le travestissement n'est plus chez elle un costume qu'on retire, mais une existence assumée jusqu'à la mort — manière de retourner la grammaire contre elle-même, dont on mesurera bientôt le prix.</p>
 
-  <p class="rv">C'est le verrou commun à Saphir et à Sarasa, et la grammaire l'énonce presque toute seule : <strong>dès qu'elle retrouve son vrai sexe, sa participation au monde prend fin</strong>. Le travestissement n'est pas une libération, mais un sauf-conduit. L'objectif atteint, le sauf-conduit est révoqué, et la combattante rentre dans le rang — par le mariage, par la mort, ou par la simple sortie de scène.</p>
+  <p class="rv">Une précaution s'impose, que l'on aurait tort d'esquiver. Lire ces figures comme des femmes qui désertent provisoirement leur sexe est une lecture — celle que la grammaire propose. Toute une réception, aujourd'hui, y voit autre chose : non un déguisement à défaire, mais une identité de genre qui ne se reconduit pas. Si Oscar n'est pas une femme travestie mais quelque chose que la langue de son temps ne sait pas nommer, alors le retour au « vrai sexe » cesse d'être une vérité retrouvée pour devenir une assignation. Loin d'affaiblir l'analyse, cette lecture la durcit : le reconfinement n'est pas un dénouement naturel, c'est un acte, et un acte de force.</p>
 
-  <p class="kicker rv">iii</p>
+  <p class="rv">Cette ambiguïté n'a rien d'anecdotique : elle fait de la combattante travestie l'un des grands sites <em>queer</em> du shōjo. Une lignée entière la précède et la prolonge — la « fille en habit d'homme », <em>dansō no shōjo</em>, à laquelle Oshiyama Michiko a consacré une étude entière, et, derrière elle, les <em>otokoyaku</em> de la revue Takarazuka, ces actrices spécialisées dans les rôles d'hommes dont Tezuka comme Ikeda s'inspirent directement. C'est pourquoi Oscar est devenue, bien au-delà de son récit, une icône lesbienne et queer : non qu'on la « décode » après coup, mais parce que le frisson de voir des femmes aimer cette femme-en-homme est inscrit dans l'œuvre même. Le travestissement n'est pas seulement un permis de combat ; c'est aussi, et la lectrice ne s'y trompe jamais, une promesse de désir oblique.</p>
+
+  <p class="rv">Le raisonnement trouve son point limite dans <em class="work">BASARA</em>, la grande fresque post-apocalyptique que Tamura Yumi déroule à partir de 1990. À la mort de son frère jumeau Tatara, désigné par la prophétie comme l'enfant qui doit renverser la tyrannie, Sarasa prend son nom, son visage, sa charge, et mène la révolution sous le masque d'un mort. L'œuvre refuse de glorifier le geste — Sarasa ne cesse de se penser « simple fille », elle pleure et se dégoûte d'elle-même après chaque tuerie — et la conclusion est sans appel : la guerre gagnée, Sarasa « redevient Sarasa », se retire de toute vie publique, disparaît avec son amant. Sa participation au monde s'achève à la seconde où elle récupère son sexe. C'est le verrou commun à Saphir et à elle, que la grammaire énonce presque toute seule : dès qu'elle retrouve son vrai sexe, sa participation prend fin.</p>
+
+  <p class="kicker rv">iii — le reconfinement</p>
   <h2 class="sec rv">Combattre sans jamais combattre</h2>
 
-  <p class="rv">Le travestissement résout le problème en cachant la fille. La <em>mahō shōjo</em>, la « magical girl », le résout par l'inverse : en féminisant la puissance jusqu'à ce qu'elle ne ressemble plus à du combat.</p>
+  <p class="rv">Le reconfinement a deux visages. Le premier, on vient de l'entrevoir : on défait le déguisement, et l'héroïne rentre dans le rang — par le mariage de Saphir, le retour au sexe de Sarasa, ou, faute de mieux, par la chute d'Oscar. Le second est plus retors, et c'est la <em>mahō shōjo</em>, la magical girl, qui l'a perfectionné. Au lieu de cacher la fille, on féminise la puissance jusqu'à ce qu'elle ne ressemble plus à du combat.</p>
 
-  <p class="rv">Le genre naît mignon et domestique — des fillettes-sorcières dont les pouvoirs arrangent surtout le quotidien — avant de basculer, dans les années soixante-dix, sous une double poussée contradictoire. D'un côté <em class="work">Cutie Honey</em>, androïde transformiste dont la métamorphose fait voler les vêtements : première magical girl ouvertement combattante, mais conçue pour les garçons, et donc d'emblée offerte. De l'autre, bien plus tard, <em class="work">Sailor Moon</em>, qui superpose la magical girl, l'équipe de justiciers et le combat en un seul dispositif : Usagi, collégienne pleurnicharde, se transforme pour <em>purifier</em> le mal — elle est à la fois la princesse qu'il faut protéger et la sauveuse.</p>
+  <p class="rv">Né mignon et domestique dans les années 1960 — des fillettes-sorcières dont les pouvoirs arrangent surtout le quotidien —, le genre prend son tour franchement combattant en 1992 avec <em class="work">Sailor Moon</em>, qui superpose la magical girl, l'équipe de justiciers et le combat. Usagi est une collégienne pleurnicharde qui se transforme pour <em>purifier</em> le mal : à la fois la princesse qu'il faut protéger et la sauveuse. C'est cette superposition qui rend la magical girl si difficile à juger, et c'est ici qu'il faut renoncer au confort de la question binaire — féministe ou pas ? — pour suivre l'analyse de Kumiko Saito. Elle congédie l'équation paresseuse selon laquelle la prolifération des héroïnes refléterait l'émancipation réelle des femmes, et propose mieux, de plus sombre : le fantasme d'autonomisation de la magical girl s'est développé <em>en symbiose</em> avec les normes de genre, non contre elles<sup class="fn"><a href="#n4" id="r4">4</a></sup>. Les vrais conflits de ces récits ne sont presque jamais martiaux ; ils sont domestiques et sentimentaux. L'héroïne sauve des liens, des proches, des sentiments, par l'empathie et la pureté — et la puissance ne sert qu'à la reconduire là d'où elle vient.</p>
 
-  <p class="rv">C'est cette superposition qui rend la magical girl si difficile à juger, et c'est ici qu'il faut renoncer au confort de la question binaire — « féministe ou pas ? » — pour suivre l'analyse la plus fine qu'on en ait écrite, celle de Kumiko Saito. Elle congédie d'emblée l'équation paresseuse selon laquelle la prolifération des héroïnes refléterait l'émancipation réelle des femmes. Son argument est plus retors, et plus sombre : le fantasme d'autonomisation de la magical girl s'est développé <em>en symbiose</em> avec les normes de genre, non contre elles. Les conflits véritables de ces récits ne sont presque jamais martiaux ni politiques ; ils sont domestiques et sentimentaux. L'héroïne sauve des liens, des proches, des sentiments, par l'empathie et la pureté ; et à mesure que le genre vieillit, le souci domestique finit par envahir jusqu'à l'espace magique. La puissance, ici, ne sert qu'à reconduire la fille là d'où elle vient.</p>
+  <div class="closeread rv"><span class="cr-tag">Lecture rapprochée — la métamorphose</span>Voyez ce que <em>fait</em> une séquence de transformation. Elle interrompt l'action, suspend le récit, offre le corps à la contemplation, et se recycle à l'identique d'épisode en épisode. La fille n'y <em>devient</em> rien : elle se révèle déjà parée, déjà désirable, déjà douée. Là où, aux premiers temps du genre, la métamorphose pouvait signifier une croissance, elle devient ici pur état — l'héroïne maximise son pouvoir « en étant simplement elle-même », mignonne et insouciante. Reconfinement à l'état chimiquement pur : non plus le retour à la féminité après la bataille, mais une féminité dont on n'est jamais sorti, et qui se borne à scintiller.</div>
 
-  <p class="rv">De là, la contradiction qu'on a relevée mille fois sans toujours en peser la portée : <strong>la magical girl se bat, mais elle est l'emblème même de la non-violence</strong>. Sa force ne doit jamais s'« activer » en brutalité ni en sexualité assumée — contrairement aux séductrices maquillées qui lui font face. Elle ne tue pas : elle nettoie. Et lorsque le genre s'apaise, dans les années quatre-vingt-dix, la transformation cesse même de signifier une croissance pour devenir pur état : l'héroïne maximise son pouvoir en étant simplement elle-même, mignonne et insouciante. C'est le reconfinement à l'état chimiquement pur — non plus le retour à la féminité après la bataille, mais une féminité dont on n'est jamais sorti et qui se contente de scintiller. On n'oubliera pas, par-dessous, l'évidence marchande : à l'origine, ces récits sont de longues réclames pour jouets, et la métamorphose, le sceptre, le pendentif sont d'abord des objets à vendre. L'« empouvoirement » de la fillette passe par la caisse.</p>
+  <p class="rv">D'où la contradiction qu'on a relevée mille fois sans en peser la portée : la magical girl se bat, mais elle est l'emblème même de la non-violence. Sa force ne doit jamais s'activer en brutalité ni en sexualité assumée ; elle ne tue pas, elle nettoie. Et sous tout cela court une évidence marchande, qu'aucune lecture honnête ne peut taire : à l'origine, ces récits sont de longues réclames pour jouets, et la métamorphose, le sceptre, le pendentif sont d'abord des objets à vendre. L'« empouvoirement » de la fillette passe par la caisse — non par calcul caché, mais par une contrainte inscrite dans la forme même.</p>
 
-  <p class="kicker rv">iv</p>
-  <h2 class="sec rv">Ce que le regard rend visible</h2>
+  <p class="rv">Il faut pourtant rendre au rayon ce qui lui revient. Yukari Fujimoto a repéré dans le shōjo des années 1990 toute une vague d'héroïnes « qui se battent pour protéger le destin d'une communauté » — <em>Sailor Moon</em>, mais aussi <em>BASARA</em> ou <em>Red River</em> —, et y a vu primer les liens entre femmes sur le couple amoureux. C'est le démenti le plus franc que le genre oppose à sa propre règle : l'espace d'une décennie, des filles ont combattu ensemble, et pour autre chose qu'un homme. Qu'un tel démenti soit venu du rayon des filles n'est pas un mince paradoxe — mais on verra, dans le second volet, à quel point il est resté l'exception, et combien le collectif qu'il esquissait s'est aussitôt refermé.</p>
 
-  <p class="rv">Reste la condition la plus dérangeante, celle qui fit scandale lorsque le psychiatre Saitō Tamaki la formula en 2000. Sa thèse ne porte pas sur les filles, mais sur ceux qui les regardent. La « belle fille combattante », soutient-il, n'est ni le reflet ni l'instrument de l'émancipation des femmes réelles : c'est un objet de désir autonome, ce qu'il nomme d'un terme lacanien volontairement provocateur la « fille phallique ». Son arme, son armure, sa puissance ne sont pas des attributs d'agentivité ; ce sont les conditions de sa désirabilité dans l'imaginaire de celui qui la consomme. Et Saitō pousse l'aveu jusqu'à l'inconfort : ces héroïnes, dit-il, n'ont au fond <em>rien à voir avec le monde réel</em>.</p>
+  <p class="kicker rv">iv — le regard</p>
+  <h2 class="sec rv">Le regard de la lectrice</h2>
 
-  <p class="rv">On peut contester l'appareil psychanalytique, et son japonocentrisme — l'idée que la « vraie » belle combattante serait spécifiquement japonaise, les héroïnes occidentales n'étant à ses yeux que des « hommes dans des corps de femmes » fabriqués par la politique féministe — mérite plus que de la méfiance. Mais l'intuition centrale tient bon, et elle rejoint par un autre chemin ce que Laura Mulvey nommait, pour le cinéma, la <em>to-be-looked-at-ness</em> : il existe un régime où l'arme et la jupe courte ne se contredisent pas, où plus l'héroïne est puissante, plus elle est livrée. La force n'annule pas l'objet : elle le rehausse.</p>
+  <p class="rv">Resterait à parler du regard masculin, du désir de l'amateur pour la belle combattante — mais ce serait courir trop vite, et hors du rayon. Ce désir-là appartient au seinen et à l'otaku, et il sera l'affaire du second volet. Dans la maison du shōjo, le regard ne vient pas d'un homme : il vient d'une fille, et il circule autrement. Voilà ce qu'une lecture pressée manque toujours, en plaquant sur le manga pour filles un schéma forgé pour le cinéma des hommes.</p>
 
-  <p class="rv">Et ce régime ne reste pas cantonné aux œuvres pour garçons. Il contamine le shōjo lui-même, jusque dans ses réussites. Il suffit de regarder une fantasy récente et estimable comme <em class="work">Akatsuki no Yona</em>, où la princesse apprend à tendre l'arc et rassemble autour d'elle une troupe de guerriers, pour s'apercevoir, à reculons, que chacun de ces guerriers est un beau garçon, et que la quête politique se double sans répit d'une économie du regard amoureux. Le destinataire a changé — c'est désormais la lectrice qui désire — mais la structure n'a pas bougé : la puissance se monnaie toujours en désirabilité.</p>
+  <p class="rv">Car le shōjo est massivement écrit par des femmes et lu par des filles, et l'on aurait tort d'imaginer ce regard unanime ou complaisant. Il est divisé, parfois hostile à ses propres héroïnes. Hervé Brient relève le « rejet viscéral » que bien des lectrices, notamment celles du <em>boy's love</em>, opposent à ces filles obnubilées par l'amour du héros, comme accablées de trop d'empathie<sup class="fn"><a href="#n5" id="r5">5</a></sup> ; et tout un courant <em>yuri</em> irrigue la culture shōjo depuis ses origines, qui déplace le désir d'un cran et le détourne du couple attendu. La question que cela ouvre, je préfère la laisser ouverte que la forcer : la désirabilité recontient-elle de la même manière lorsque c'est une fille, et non un homme, qui regarde ? Une œuvre récente comme <em class="work">Akatsuki no Yona</em> en fait l'épreuve — la princesse y apprend à tendre l'arc et rassemble une troupe dont chaque membre est un beau garçon, déplaçant le désir vers la lectrice sans rien changer à sa loi : la puissance s'y monnaie toujours en charme. Qu'une fille y trouve son compte ne prouve ni l'émancipation ni son contraire. Cela ne tranche pas ; cela complique, ce qui est plus honnête.</p>
+
+  <p class="rv">Cette économie du regard plonge ses racines loin. Avant le manga, il y eut la littérature de la « classe S » — ces amitiés brûlantes entre écolières que chantait Yoshiya Nobuko dès les années 1920, et que Deborah Shamoon a replacées au fondement même de l'esthétique des filles. De là un espace où le désir féminin circule d'abord entre femmes : c'est ce que Kathryn Hemmann nomme le <em>female gaze</em>, non un simple point de vue mais une lecture <em>résistante</em>, qui défait le regard masculin par en dessous — et que James Welker retrouve jusque dans le goût des lectrices pour les amours entre garçons du <em>boy's love</em>, manière oblique d'aimer des femmes en aimant leur double. Le regard du shōjo n'est pas l'envers sage du <em>male gaze</em> : il est, dès l'origine, un regard queer.</p>
+
+  <p class="rv">Le shōjo combattant en livre l'emblème le plus franc, qu'on s'étonne de voir si souvent passé sous silence. Dans <em class="work">Sailor Moon</em>, deux des guerrières — Haruka, alias Sailor Uranus, et Michiru, alias Sailor Neptune — forment un couple de femmes que l'autrice a toujours assumé pour tel. Haruka est dessinée sur le modèle de l'otokoyaku : cheveux courts, costume et parler d'homme, au point qu'on la prend d'abord pour un garçon ; le manga la dit « à la fois homme et femme ». Voilà réuni en une seule figure le travestissement de Saphir devenu identité, le désir entre femmes rendu canonique, et la combattante enfin accompagnée — non d'un homme doux, mais d'une autre combattante. Le tribut, pourtant, est payé : Haruka et Michiru demeurent des gardiennes <em>extérieures</em>, secondaires au récit ; et lorsque la série gagna l'Amérique, le doublage les rebaptisa « cousines », effaçant d'un mot ce que l'image montrait. La queerness, on le reverra au seuil de la traduction, est souvent la première chose que la transmission s'emploie à recoudre.</p>
 
   <div class="seam rv">✦ · ✦ · ✦</div>
 
-  <p class="kicker rv">v</p>
-  <h2 class="sec rv">Ce qui résiste</h2>
+  <p class="kicker rv">v — l'âge</p>
+  <h2 class="sec rv">Grandir, ou disparaître</h2>
 
-  <p class="rv">Voilà la grammaire. Si le texte s'arrêtait là, il serait juste et désespérant. Mais une thèse qui n'affronte pas ses contre-exemples n'est qu'un préjugé bien rangé, et le plus intéressant commence quand on cherche, de bonne foi, les œuvres qui s'en arrachent. Elles existent. Ce qu'elles révèlent est plus troublant qu'une exception : la grammaire fonctionne comme une hydre. On lui tranche une condition, une autre repousse aussitôt.</p>
+  <p class="rv">Jusqu'ici, l'on a parlé de fillettes. Ce n'est pas un hasard d'exposition : c'est le cœur de l'affaire. Le shōjo s'adresse à la jeune fille, et toute sa grammaire — le travestissement qu'on défait, le mariage qui « achève », la métamorphose qui re-pare — n'a de sens que pour un être en sursis, suspendu entre l'enfance et l'âge adulte. La combattante du shōjo est une figure de <em>jeune fille</em>. La vraie question, dès lors, n'est pas de savoir si elle se libérera, mais ce qu'elle devient quand on la laisse vieillir. Le manga pour femmes existe : c'est le <em>josei</em>. Que devient la guerrière lorsqu'on lui donne enfin trente ans ?</p>
 
-  <p class="rv">Reprenons Oscar. Elle refuse le reconfinement : elle ne redevient pas une épouse docile, elle reste à son poste, elle commande, elle aime sans se renier. Une combattante qui ne rentre pas dans le rang — voilà le verrou principal sauté. Mais à quel prix ? Elle meurt. La grammaire, privée du mariage, se rabat sur la <strong>belle mort</strong> : Oscar n'échappe au retour à la féminité qu'en n'y revenant jamais, c'est-à-dire en tombant. On lui concède de rester elle-même à la stricte condition de cesser d'être. Le permis n'est pas révoqué ; il est périmé d'office.</p>
+  <p class="rv">La réponse est si nette qu'elle déconcerte : elle ne se libère pas, elle <em>s'évanouit</em>. Le josei a émergé dans les années 1980 pour les femmes qui n'étaient « plus des shōjo », et il s'est défini par le réalisme et l'âge adulte — le travail, l'argent, le couple, la sexualité, le mariage, ses lendemains. Yukari Fujimoto a posé la ligne de partage la plus juste : le shōjo dépeint la vie d'avant le mariage, le josei celle d'après ; aux héroïnes fantasques du premier — actrices, mannequins, musiciennes — répondent, dans le second, des femmes qui travaillent<sup class="fn"><a href="#n6" id="r6">6</a></sup>. Or sur cette terre adulte, l'épée n'a tout simplement plus cours. La quasi-totalité du josei est drame et romance ; l'employée de bureau, l'épouse, l'amante, la mère y ont remplacé la sauveuse. La combattante n'y est pas reconfinée — il n'y a plus rien à reconfiner, puisqu'elle n'a jamais pris les armes.</p>
 
-  <p class="rv">Reprenons les <em>sukeban</em>, ces cheffes de gangs de la fin des années soixante-dix qui, elles, ne se travestissent pas et n'usent d'aucune magie : elles cognent comme filles, en bandes, à coups de yo-yo de métal. Enfin le collectif, enfin des combattantes au pluriel et sans alibi. Mais le genre les code aussitôt comme délinquantes : leur violence n'est pensable qu'à la marge, dans la transgression scolaire et le déclassement. La fille qui se bat <em>en tant que fille</em>, sans permission, ne peut être qu'une dévoyée. La condition ne tombe pas ; elle se déplace de l'individu vers le statut.</p>
+  <p class="rv">Les rares fois où l'action s'invite dans le rayon des femmes, c'est pour mieux montrer la sortie. L'héroïne de <em class="work">Gokusen</em> est l'héritière désignée d'un clan yakuza : tout la destine à la violence — et elle choisit d'enseigner les mathématiques. Le récit la fait renoncer au sabre pour la craie, troquer l'hérédité du sang contre une salle de classe. Quand le josei se risque à une « femme forte », il la veut forte d'autre chose : d'une carrière, d'un talent, d'une obstination de cœur. Ses concurrentes les plus admirées se battent au karuta ou au piano, jamais à l'épée. La grande affaire de l'âge adulte, dans le manga pour femmes, n'est plus de vaincre mais de tenir — un emploi, un couple, une vie.</p>
 
-  <p class="rv">Reprenons, plus près de nous, <em class="work">Frieren</em><sup class="fn"><a href="#n3" id="r3">3</a></sup>. La mage du titre — surnommée « la Tueuse », rien de moins — est l'héroïne pleine et entière d'une des œuvres les plus aimées de la décennie ; elle n'est ni travestie, ni érotisée, ni reconduite à quoi que ce soit ; le récit ne s'intéresse pas une seconde à son sexe ni à sa mise en couple, mais au temps, à la mémoire, au deuil de ses compagnons mortels. Trois conditions sur quatre semblent dissoutes. Et pourtant la première demeure, intacte : Frieren est une solitaire, une elfe quasi immortelle au milieu d'humains éphémères, l'unique de son espèce dans presque chaque pièce qu'elle traverse. On a délivré l'héroïne du regard et du reconfinement, mais on l'a laissée — ou on l'a faite — seule. Le <em>kōitten</em> a survécu à la liquidation de tout le reste.</p>
+  <p class="rv">Et c'est ici que les deux âges du rayon se répondent, et que se dessine la loi de ce premier volet. La fillette du shōjo peut se battre, à condition de rester une fillette : éternellement jeune, éternellement en sursis, reconduite à la case départ avant que la question adulte ne se pose. La femme du josei, elle, a le droit d'être adulte — à condition de ne plus se battre. Entre les deux, aucun passage. <strong>On ne grandit pas en armes.</strong> Le rayon des filles n'offre à sa combattante que deux issues, et ce sont les mêmes depuis soixante-dix ans : demeurer fille, ou rendre les armes.</p>
 
-  <p class="rv">Reprenons, enfin, le cas le plus instructif, parce que c'est celui où le collectif apparaît vraiment : la Cité du fer de <em class="work">Princesse Mononoké</em>. Eboshi, femme mûre et chef incontestée, n'est ni une <em>kōitten</em> ni un objet de désir ; elle dirige une société presque matriarcale où d'anciennes prostituées qu'elle a rachetées tiennent la forge et défendent les murs, où des lépreux qu'elle a recueillis fabriquent des armes assez légères pour des mains de femmes. Voilà tout ce qui manquait : des combattantes au pluriel, une meneuse qu'on n'érotise pas, et que Miyazaki, qui la destinait à mourir, choisit finalement de laisser vivre. La grammaire paraît vaincue sur toute la ligne. Et c'est là que l'hydre montre sa dernière tête. Car cette utopie de femmes armées ne tient qu'à un prix : elle se finance par la guerre contre la forêt, par l'extermination méthodique du vivant non humain ramené au rang d'ennemi. La seule façon, pour le genre, d'imaginer un collectif de femmes en armes qui dure, c'est d'en faire une machine de conquête. L'émancipation des unes se paie de la destruction du monde des autres — et Saitō Minako, impitoyable, ajoute le dernier tour de vis : la plupart des héroïnes de Miyazaki, Eboshi comprise, ne seraient à ses yeux que des héros masculins coulés dans une forme féminine. Échapper à la jupe courte pour revêtir l'armure du conquérant : est-ce vraiment sortir de la grammaire, ou en signer la version la plus aboutie ?</p>
+  <div class="pull rv">La fillette peut se battre pourvu qu'elle reste fillette ; la femme peut être adulte pourvu qu'elle ne se batte plus. Entre les deux, rien.</div>
 
-  <p class="rv">Chaque évasion, on le voit, n'abolit pas la règle : elle en déplace le coût. On échappe au regard en restant seule ; on échappe à la solitude en devenant prédatrice ; on échappe au reconfinement en mourant. C'est précisément ce qui distingue une grammaire d'une simple liste d'interdits : sa capacité à se reconfigurer pour absorber ses propres exceptions.</p>
+  <p class="kicker rv">vi — la lucidité</p>
+  <h2 class="sec rv">La cage nommée du dedans</h2>
 
-  <p class="kicker rv">vi</p>
-  <h2 class="sec rv">Nommer la cage</h2>
+  <p class="rv">Il serait injuste de quitter le rayon sans dire qu'il s'est, une fois au moins, regardé en face. Le geste le plus rare n'est pas d'échapper à la grammaire — on verra dans le second volet combien c'est difficile — mais de la nommer, d'en faire le sujet plutôt que le décor. <em class="work">Utena, la fillette révolutionnaire</em> l'accomplit en 1997, et de l'intérieur même du shōjo, en prenant pour matière les récits dont nous sommes partis. Ikuhara, son réalisateur, convoque sciemment Saphir et Oscar pour les démonter.</p>
 
-  <p class="rv">Il existe pourtant un geste que les œuvres précédentes ne font pas, et qui change tout : nommer la grammaire elle-même, la montrer du doigt, faire de la cage non plus le décor mais le sujet. Deux œuvres, à quatorze ans de distance, l'accomplissent avec une lucidité qui force le respect.</p>
+  <p class="rv">Utena veut devenir un <em>prince</em> — non un homme, non un membre de la royauté, mais ce que le prince <em>signifie</em> : le courage, la protection. Là où Saphir devait rendre son cœur de garçon pour mériter sa fin, Utena refuse l'alternative elle-même : elle ne troquera pas sa féminité contre sa vaillance, ni l'inverse. Le récit lui oppose Anthy, la Fiancée des roses, passive et offerte, objet de désir autant que de haine — la princesse parfaite, donc la victime parfaite —, et il conduit lentement les deux à <em>défaire</em> les places de prince et de princesse, jusqu'à ce qu'Anthy quitte d'elle-même l'académie-prison. Utena ne brise pas la cage ; elle l'expose <em>comme</em> cage, et nous fait voir les barreaux en même temps que l'oiseau.</p>
 
-  <p class="rv"><em class="work">Utena, la fillette révolutionnaire</em>, en 1997, prend pour matière les récits dont nous sommes partis. Ikuhara, qui avait fait ses gammes sur <em>Sailor Moon</em>, convoque sciemment Saphir et Oscar pour les démonter. Utena veut devenir un <em>prince</em> — mais ni un homme ni un membre de la royauté : elle veut incarner ce que le prince <em>signifie</em>, le courage et la protection, sans rien abandonner de sa féminité. Là où Saphir devait rendre son cœur de garçon, Utena refuse l'alternative elle-même. Le récit lui oppose Anthy, la « Fiancée des roses », passive et dévouée, objet de désir autant que de haine collective — la princesse parfaite, donc la victime parfaite — et conduit lentement les deux à <em>défaire</em> les catégories de prince et de princesse, jusqu'à ce qu'Anthy quitte d'elle-même l'académie-prison. La critique Kotani Mari l'a noté avec justesse<sup class="fn"><a href="#n4" id="r4">4</a></sup> : Utena reste, par son dessin, une belle combattante offerte au regard ; mais son travestissement et son statut de protagoniste agissante brouillent toute tentative de la réduire à un objet. Utena ne referme pas la parenthèse. Elle l'expose <em>comme</em> parenthèse — elle nous fait voir les barreaux en même temps que l'oiseau.</p>
-
-  <p class="rv"><em class="work">Puella Magi Madoka Magica</em>, en 2011, accomplit le même geste sur le terrain de la magical girl, plus frontalement encore. Deux épisodes durant, la série mime à la perfection les codes : la fillette ordinaire, le pacte enchanteur, la mascotte adorable. Puis elle ouvre le capot. Le contrat que propose Kyubey — un vœu exaucé contre le pouvoir de magical girl — est une extraction : il arrache littéralement l'âme de la fille pour la loger dans une gemme, réduit son corps à un simple support, et la voue à se métamorphoser un jour en sorcière, c'est-à-dire à se détruire — destruction dont une espèce extraterrestre, au passage, tire l'énergie qu'elle convoite. Kyubey est l'incarnation du système patriarcal et marchand, qui s'empare de l'agentivité de la fille au moment précis où il prétend lui offrir de la « puissance », et qui en dispose comme d'une ressource jetable. Désarmée, Madoka finit par poser la seule question qui vaille : sommes-nous donc faites pour mourir à votre profit ?</p>
-
-  <p class="rv">Sa réponse est ce qui déplace enfin la grammaire. Car Madoka ne se contente pas d'être l'exception qui s'en tire : son vœu final <em>réécrit la règle</em>. Elle ne sauve pas une princesse, elle abolit pour toutes le destin de se changer en sorcière. Pour la première fois, on passe de l'exception individuelle à une transformation de la loi. Mais — et c'est là que l'hydre repointe une tête — Madoka ne survit pas à son propre geste : elle se dissout dans le principe qu'elle institue, devient une abstraction cosmique, une règle, et s'efface de la mémoire des vivants. Elle change la loi à la condition de disparaître comme personne. Une œuvre qui rouvre la parenthèse n'est pas tenue de la maintenir ouverte ; il suffit qu'elle nous ait appris à la voir.</p>
-
-  <p class="kicker rv">vii</p>
-  <h2 class="sec rv">Le sexe aboli — et recousu</h2>
-
-  <p class="rv">Reste une dernière œuvre, et c'est la plus radicale, parce qu'elle ne joue plus sur le même plan. Oscar, les <em>sukeban</em>, Frieren, Eboshi : chacune tranche une condition et en laisse repousser une autre, mais toutes restent à l'intérieur du genre, avec des « elles ». <em class="work">L'Ère des cristaux</em>, d'Haruko Ichikawa, fait quelque chose de plus profond. Il ne réforme pas la guerrière : <strong>il supprime la catégorie</strong>.</p>
-
-  <p class="rv">Ses combattantes sont des Gemmes — des êtres minéraux, immortels, asexués, sans reproduction ni vieillissement — et elles luttent contre les Lunariens <em>en collectif</em>, une trentaine de guerriers, pas une élue. Passez-les aux quatre conditions et trois tombent d'un coup. La singularisation : dissoute, puisque c'est un groupe — mais un groupe d'êtres <em>sans genre</em>, pas un collectif de femmes. L'alibi, le travestissement : sans objet, il n'y a aucun sexe à déserter pour avoir le droit de se battre. Le reconfinement : non seulement absent, mais inversé — l'arc de Phos n'est pas un retour au rang, c'est une transformation irréversible et traumatique, une perte progressive de soi, les membres remplacés, la mémoire qui s'efface. Pas de mariage, pas de « vrai sexe » retrouvé, pas de domesticité : l'exact contraire du verrou de Saphir.</p>
-
-  <p class="rv">La quatrième condition, en revanche, n'est pas évitée — elle est mise au centre. Les Lunariens convoitent les Gemmes <em>précisément comme de beaux objets</em>, qu'ils veulent récolter et changer en ornements. L'œuvre prend donc le regard — la réduction de l'être splendide à une chose qu'on possède et qu'on expose — et en fait son moteur narratif et sa terreur même. Comme <em>Utena</em> et <em>Madoka</em>, <em class="work">L'Ère des cristaux</em> ne sort pas de la cage : il la nomme. Sauf qu'ici la cage est littérale — devenir un bijou.</p>
-
-  <p class="rv">D'où l'enseignement, qui resserre toute la démonstration plutôt qu'il ne la contredit : la seule manière, pour ce genre, de s'arracher pour de bon à la grammaire de la combattante, c'est d'abolir le terme « femme » lui-même. C'est le geste de Monique Wittig porté à la lettre<sup class="fn"><a href="#n5" id="r5">5</a></sup> — <em>on n'est pas une femme</em>, on est autre chose — et il pose une question coupante : est-ce une victoire, ou une esquive ? Résout-on le problème de la femme-guerrière, ou le dissout-on en changeant de sujet ? Il y a là une ironie que l'histoire du genre rend presque vertigineuse : Ichikawa a reçu le prix Tezuka. Or c'est de Tezuka, et de Saphir « au cœur de garçon et au cœur de fille », que tout est parti. Là où Saphir devait <em>choisir</em> — et choisissait le féminin, reconfinée —, les Gemmes n'ont plus à choisir : elles <em>sont</em> le ni-l'un-ni-l'autre. Les deux cœurs de 1953 deviennent, soixante ans plus tard, un corps sans sexe. <em>L'Ère des cristaux</em> est presque la réponse, à retardement, au <em>Chevalier au ruban</em>.</p>
-
-  <p class="rv">Et c'est ici qu'une dernière tête repousse — la plus inattendue, car elle ne vient plus de l'œuvre, mais de nous qui la lisons. Dans l'original japonais, ces êtres « sans genre » ont en réalité adopté par défaut des formes <em>masculines</em> : le pronom <em>kare</em>, les « grand frère » hérités de leur maître. Le non-marqué glisse vers le masculin — exactement le « masculin comme neutre » que pointait Beauvoir. La version anglaise officielle a tranché pour le <em>they</em> neutre. Et le français, lui, les met au <strong>féminin</strong> : « la pierre », « la gemme » tirent tout vers « elles »<sup class="fn"><a href="#n6" id="r6">6</a></sup>. Trois langues, trois re-genrages d'un même être conçu pour échapper au genre. L'œuvre s'est battue pour effacer le sexe à la source ; <strong>la langue d'arrivée le réinscrit au seuil</strong>.</p>
-
-  <p class="rv">La grammaire de la combattante sous condition n'habite donc pas seulement les <em>tropes</em> du récit. Elle est logée dans le système de genre de la langue elle-même, et elle se réimpose à la frontière de la traduction. Le lecteur francophone <em>ne peut pas</em> lire ces guerrières autrement qu'en « elles ». Pire — ou plus juste : comme les Gemmes sont par ailleurs androgynes, splendides, et convoitées-pour-leur-beauté, le « elles » français les fait re-glisser vers la figure même que l'œuvre voulait dissoudre, la belle combattante comme objet du regard. La traduction n'est pas une vitre transparente ; c'est un palimpseste, qui réécrit du genre sur un original dégenré, et le lecteur francophone hérite d'une féminité-fantôme que l'autrice avait gommée.</p>
-
-  <div class="pull rv">Il faut quitter le genre tout entier pour en sortir. Et le français, au seuil, recoud.</div>
+  <p class="rv">Mais voyez où la lucidité même reste prise. Utena demeure unique — l'exception qui sait, et qui ne fait pas nombre. Elle demeure une fillette, dans une académie, dans le rayon. Le shōjo peut donc se critiquer lui-même sans cesser d'être ce qu'il est : il sait nommer sa cage, il ne sait pas encore l'ouvrir sur autre chose qu'une sortie individuelle. Nommer la prison de l'intérieur, c'est déjà beaucoup ; ce n'est pas en franchir le seuil.</p>
 
   <p class="kicker rv">coda</p>
-  <h2 class="sec rv">L'anti-spectacle</h2>
+  <h2 class="sec rv">La part de l'enfance</h2>
 
-  <p class="rv">À chaque étape, le genre a prêté l'épée puis l'a reprise : héroïne singularisée en unique point écarlate, autorisée sous l'alibi du travestissement ou de la nécessité, reconfinée par la mort, le mariage ou la mignardise, et tout du long livrée au regard. Lorsqu'une œuvre tranche l'une de ces conditions, une autre repousse — la solitude, la prédation, la disparition, et jusqu'au sexe réintroduit par la langue qui traduit. Sous ces opérations et sous leur étrange faculté de mutation, une seule peur affleure : non pas la femme en armes, mais les femmes en armes. Une exceptionnelle ne menace rien ; elle décore la règle. Un <em>nous</em> la déchirerait.</p>
+  <p class="rv">Récapitulons sans nous répéter. La combattante du shōjo est concédée puis reprise : singularisée en unique point écarlate, autorisée sous l'alibi du travestissement ou de la nécessité, reconfinée par la mort, le mariage ou la mignardise, et donnée à voir à une lectrice dont le regard divisé ne la sauve pas. Tout cela, on l'a dit, tient à un fait que la critique néglige : cette grammaire est celle d'un genre qui s'adresse à la <em>jeune fille</em>, et qui ne sait pas la faire grandir. Pour qu'elle garde l'épée, il la maintient enfant. Pour qu'elle devienne adulte, il lui retire l'épée et la range parmi les employées et les épouses. La part de l'enfance et la part des armes ne se cumulent jamais.</p>
 
-  <p class="rv">C'est pourquoi l'image la plus radicale que cette histoire ait presque produite n'est jamais la guerrière la plus puissante, mais la timide ébauche d'un pluriel. Monique Wittig avait su l'écrire dès 1969, dans <em>Les Guérillères</em> : un <em>elles</em> collectif et en guerre, sans chef unique et sans prince à conquérir. Le manga pour filles a frôlé cette image — l'équipe d'amies de <em>Sailor Moon</em> en est un <em>oui</em> imparfait, recouvert de rubans ; le premier scénario d'<em>Utena</em>, dit-on, devait raconter un groupe de guerrières avant de se resserrer sur un duo — mais il a presque toujours fini par s'en détourner, repris de vertige.</p>
+  <p class="rv">De sorte que la question qui ouvrait ce volet trouve, dans le rayon des filles, une réponse négative et close. La femme adulte en armes n'y a pas sa place : non qu'on la tue ou qu'on la marie, mais parce qu'on ne l'imagine pas. Elle est le terme manquant entre deux âges qui s'excluent. Et s'il faut qu'elle existe — s'il existe quelque part une combattante qui ait à la fois trente ans et une lame, et qu'on n'ait ni rendue à l'enfance ni renvoyée au foyer —, alors elle n'a pas pu naître ici. Elle est née ailleurs, dans des rayons qui ne portent pas le nom des filles. C'est là qu'il faut maintenant la chercher, et voir ce qu'on lui y fait.</p>
 
-  <p class="rv">Or il faut voir ce que toutes ces sorties partagent. La belle mort d'Oscar, la belle transformation qui re-féminise, l'évanouissement de Madoka dans la loi qu'elle institue : ce sont des sorties <em>spectaculaires</em>. Le genre a passé soixante-dix ans à perfectionner l'art du départ grandiose, parce qu'un départ éclatant est encore une manière de ne pas rester. Et c'est exactement là qu'est le tabou. Ce que ce genre, virtuose de l'apothéose, n'a presque jamais osé dessiner, ce n'est pas la femme la plus forte — il en regorge — c'est l'<strong>anti-spectacle</strong> : des filles qui se battent et qui, ensuite, <em>restent</em>. Qui ne meurent pas, ne se marient pas hors-champ, ne redeviennent pas mignonnes, ne se changent pas en principe universel, ne conquièrent aucun monde. Qui demeurent, simplement : ordinaires, plurielles, armées, vivantes, présentes.</p>
-
-  <p class="rv">L'image la plus difficile à tracer, pour le manga pour filles, n'aura jamais été l'héroïne la plus exceptionnelle. C'est le contraire : un <em>nous</em> assez quelconque pour durer. Et lorsqu'une autrice, à force d'audace, finit par dessiner des combattantes qui ont quitté le genre lui-même pour pouvoir, enfin, n'être qu'ensemble — c'est notre propre langue qui, au seuil de la traduction, les rattrape et les recoud une à une en femmes. Le point écarlate, le genre sait le peindre les yeux fermés. C'est le massif tout entier viré au rouge qu'il n'a pas encore appris à regarder en face — et que, peut-être, nous ne savons pas encore lire sans y repiquer, aussitôt, une seule fleur.</p>
+  <div class="nextvol rv">
+    <span class="nv-tag">À suivre — Combattantes sous condition, II</span>
+    <div class="nv-title">Hors du rayon</div>
+    <p>La même figure, suivie dans le shōnen, le seinen, le roman et le jeu : ses mutations (le corps-instrument, le commandement ornemental, le regard intériorisé), les rares qui s'en arrachent vraiment — et l'œuvre-limite qui n'en sort qu'en abolissant le genre, que la traduction française aussitôt recoud.</p>
+  </div>
 
 </article>
 
 <div class="apparatus">
   <p class="ap-head rv">Notes</p>
-  <p class="note-item rv"><span class="num">1</span><span id="n1"></span>Le <em>kōitten</em> (紅一点) est une expression idiomatique : « un point de cramoisi » dans une masse de vert, soit l'unique femme dans un groupe d'hommes. Saitō Minako, <em>Kōitten-ron</em> (1998), en fait le modèle de l'héroïne d'animation et de tokusatsu. <a class="back" href="#r1">↩</a></p>
-  <p class="note-item rv"><span class="num">2</span><span id="n2"></span>Rosabeth Moss Kanter, <em>Men and Women of the Corporation</em> (1977) : le <em>token</em>, admis en proportion infime, est traité non comme individu mais comme représentant symbolique de sa catégorie, ce qui le rend paradoxalement hyper-visible. La singularité produit le regard — d'où l'unité des quatre conditions. <a class="back" href="#r2">↩</a></p>
-  <p class="note-item rv"><span class="num">3</span><span id="n3"></span><em>Frieren</em> paraît dans un magazine <em>shōnen</em> (Weekly Shōnen Sunday), non dans un shōjo. Le détail n'est pas anodin : il fallait peut-être sortir du rayon « filles » pour pouvoir lâcher trois conditions sur quatre — la quatrième, la solitude, restant la rançon. <a class="back" href="#r3">↩</a></p>
-  <p class="note-item rv"><span class="num">4</span><span id="n4"></span>Lecture de Kotani Mari rapportée notamment par J. Keith Vincent dans son introduction à la traduction anglaise de Saitō Tamaki (<em>Beautiful Fighting Girl</em>, 2011) ; à vérifier sur la source primaire japonaise avant citation académique. <a class="back" href="#r4">↩</a></p>
-  <p class="note-item rv"><span class="num">5</span><span id="n5"></span>Monique Wittig, « La pensée straight » (1980) : « les lesbiennes ne sont pas des femmes » — non un constat biologique mais le refus de la catégorie politique « femme ». <em>L'Ère des cristaux</em> en propose une version minérale et collective, où la sortie du genre s'enracine aussi dans une iconographie bouddhique de l'au-delà du sexe. <a class="back" href="#r5">↩</a></p>
-  <p class="note-item rv"><span class="num">6</span><span id="n6"></span>Original japonais : formes masculines par défaut (<em>kare</em>, <em>niichan</em>), choix d'androgynie revendiqué par l'autrice. VO anglaise (Kodansha) : <em>they</em>, sur consigne d'Ichikawa. VF (Glénat, <em>L'Ère des cristaux</em>) : féminin. Trois seuils, trois genres assignés à des êtres qui n'en ont pas. <a class="back" href="#r6">↩</a></p>
+  <p class="note-item rv"><span class="num">1</span><span id="n1"></span>Le <em>kōitten</em> (紅一点) : « un point de cramoisi » dans une masse de vert, soit l'unique femme d'un groupe d'hommes. Saitō Minako, <em>Kōitten-ron</em> (1998), en fait le modèle de l'héroïne d'animation et de tokusatsu. L'ouvrage n'étant pas traduit en français, on s'appuie ici sur des synthèses anglophones ; à confirmer sur l'original pour citation académique. <a class="back" href="#r1">↩</a></p>
+  <p class="note-item rv"><span class="num">2</span><span id="n2"></span>Rosabeth Moss Kanter, <em>Men and Women of the Corporation</em> (1977) : le <em>token</em>, admis en proportion infime, est traité non comme individu mais comme symbole de sa catégorie, ce qui le rend paradoxalement surexposé. La singularité produit le regard — d'où la solidarité des quatre conditions. <a class="back" href="#r2">↩</a></p>
+  <p class="note-item rv"><span class="num">3</span><span id="n3"></span>Bounthavy Suvilay, « L'héroïne travestie dans le shôjo manga : entre création d'un genre et revendication féministe », <em>Image [&amp;] Narrative</em>, 2003. <a class="back" href="#r3">↩</a></p>
+  <p class="note-item rv"><span class="num">4</span><span id="n4"></span>Kumiko Saito, « Magic, Shōjo, and Metamorphosis: Magical Girl Anime and the Challenges of Changing Gender Identities in Japanese Society », <em>The Journal of Asian Studies</em>, vol. 73, n° 1, 2014. <a class="back" href="#r4">↩</a></p>
+  <p class="note-item rv"><span class="num">5</span><span id="n5"></span>Hervé Brient (dir.), <em>Manga 10 000 images</em>, n° 3 : « Le manga au féminin » (Éditions H, 2010) ; sur le rapport ambivalent des lectrices aux héroïnes passives. Voir aussi Jean-Marie Bouissou, <em>Manga. Histoire et univers de la bande dessinée japonaise</em> (Picquier, 2010). <a class="back" href="#r5">↩</a></p>
+  <p class="note-item rv"><span class="num">6</span><span id="n6"></span>Yukari Fujimoto distingue shōjo et josei par le mariage (la vie d'avant, la vie d'après) et par le réalisme des carrières (artistes rêvées d'un côté, travailleuses ordinaires de l'autre) ; c'est elle aussi qui a identifié, dans le shōjo des années 1990, le sous-genre des héroïnes « qui se battent pour protéger le destin d'une communauté » (<em>Sailor Moon</em>, <em>BASARA</em>, <em>Red River</em>…), au moment de la guerre du Golfe, avec primauté des liens entre femmes. Le constat sur la rareté de l'action en josei, et l'exemple de <em>Gokusen</em> (Kozueko Morimoto, prépublié en magazine josei), reposent sur des sources encyclopédiques fiables sur les faits ; à reverser aux œuvres pour une étude approfondie. <a class="back" href="#r6">↩</a></p>
 
   <p class="ap-head rv">Références</p>
-  <p class="biblio-item rv">Allison, Anne. <em>Millennial Monsters: Japanese Toys and the Global Imagination</em>. Berkeley : University of California Press, 2006.</p>
   <p class="biblio-item rv">Beauvoir, Simone de. <em>Le Deuxième Sexe</em>. Paris : Gallimard, 1949.</p>
+  <p class="biblio-item rv">Bouissou, Jean-Marie. <em>Manga. Histoire et univers de la bande dessinée japonaise</em>. Arles : Philippe Picquier, 2010.</p>
+  <p class="biblio-item rv">Brient, Hervé (dir.). <em>Manga 10 000 images</em>, n° 3 : « Le manga au féminin ». Versailles : Éditions H, 2010.</p>
+  <p class="biblio-item rv">Fujimoto, Yukari. <em>Watashi no ibasho wa doko ni aru no ? Shōjo manga ga utsusu kokoro no katachi</em>. Tokyo : Gakuyō Shobō, 1998 ; et essais traduits dans <em>Mechademia</em>.</p>
+  <p class="biblio-item rv">Hemmann, Kathryn. <em>Manga Cultures and the Female Gaze</em>. Cham : Palgrave Macmillan, 2020.</p>
   <p class="biblio-item rv">Kanter, Rosabeth Moss. <em>Men and Women of the Corporation</em>. New York : Basic Books, 1977.</p>
-  <p class="biblio-item rv">Mulvey, Laura. « Visual Pleasure and Narrative Cinema ». <em>Screen</em>, vol. 16, n° 3, 1975.</p>
-  <p class="biblio-item rv">Orbaugh, Sharalyn. « Busty Battlin' Babes: The Evolution of the Shōjo in 1990s Visual Culture ». Dans <em>Gender and Power in the Japanese Visual Field</em>. Honolulu : University of Hawai'i Press, 2003.</p>
-  <p class="biblio-item rv">Saito, Kumiko. « Magic, Shōjo, and Metamorphosis: Magical Girl Anime and the Challenges of Changing Gender Identities in Japanese Society ». <em>The Journal of Asian Studies</em>, vol. 73, n° 1, 2014.</p>
+  <p class="biblio-item rv">Napier, Susan J. « Vampires, Psychic Girls, Flying Women and Sailor Scouts ». Dans D. P. Martinez (dir.), <em>The Worlds of Japanese Popular Culture</em>. Cambridge : Cambridge University Press, 1998.</p>
+  <p class="biblio-item rv">Oshiyama, Michiko. <em>Shōjo manga jendā hyōshōron : « dansō no shōjo » no zōkei to aidentiti</em>. Tokyo : Seiryūsha, 2013.</p>
+  <p class="biblio-item rv">Pflugfelder, Gregory M. « "S" Is for Sister: Schoolgirl Intimacy and "Same-Sex Love" in Early Twentieth-Century Japan ». Dans <em>Gendering Modern Japanese History</em>. Cambridge (Mass.) : Harvard University Asia Center, 2005.</p>
+  <p class="biblio-item rv">Robertson, Jennifer. <em>Takarazuka: Sexual Politics and Popular Culture in Modern Japan</em>. Berkeley : University of California Press, 1998.</p>
+  <p class="biblio-item rv">Saito, Kumiko. « Magic, Shōjo, and Metamorphosis ». <em>The Journal of Asian Studies</em>, vol. 73, n° 1, 2014.</p>
   <p class="biblio-item rv">Saitō, Minako. <em>Kōitten-ron : anime, tokusatsu, denki no hiroin-zō</em>. Tokyo : Village Center, 1998.</p>
-  <p class="biblio-item rv">Saitō, Tamaki. <em>Beautiful Fighting Girl</em> [2000]. Trad. J. K. Vincent &amp; D. Lawson. Minneapolis : University of Minnesota Press, 2011.</p>
   <p class="biblio-item rv">Shamoon, Deborah. <em>Passionate Friendship: The Aesthetics of Girls' Culture in Japan</em>. Honolulu : University of Hawai'i Press, 2012.</p>
-  <p class="biblio-item rv">Shen, Lien Fan. « The Dark, Twisted Magical Girls: Shōjo Heroines in <em>Puella Magi Madoka Magica</em> ». Dans <em>Heroines of Film and Television</em>. Lanham : Rowman &amp; Littlefield, 2014.</p>
+  <p class="biblio-item rv">Suvilay, Bounthavy. « L'héroïne travestie dans le shôjo manga ». <em>Image [&amp;] Narrative</em>, 2003.</p>
   <p class="biblio-item rv">Treat, John Whittier. « Yoshimoto Banana Writes Home: Shōjo Culture and the Nostalgic Subject ». <em>Journal of Japanese Studies</em>, vol. 19, n° 2, 1993.</p>
-  <p class="biblio-item rv">Wittig, Monique. <em>Les Guérillères</em>. Paris : Minuit, 1969.</p>
-  <p class="biblio-item rv">Zhou, Coco. « Fight Like a Girl » &amp; « Magical Girl as a Shōjo Genre and the Male Gaze ». <em>Flow</em> (University of Texas at Austin), 2016.</p>
+  <p class="biblio-item rv">Welker, James. « Beautiful, Borrowed, and Bent: "Boys' Love" as Girls' Love in Shôjo Manga ». <em>Signs</em>, vol. 31, n° 3, 2006.</p>
 </div>
 
 <div class="art-footer rv">
   <span style="font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-right:.5rem;">Tags :</span>
-  <span class="tag">Shōjo manga</span>
+  <span class="tag">Shōjo</span>
+  <span class="tag">Josei</span>
   <span class="tag">Magical girl</span>
   <span class="tag">Études de genre</span>
-  <span class="tag">Kōitten</span>
-  <span class="tag">Saitō Tamaki</span>
-  <span class="tag">Traduction &amp; genre</span>
-  <span class="tag">L'Ère des cristaux</span>
-  <span class="tag">Utena · Madoka</span>
+  <span class="tag">Kōitten · token</span>
+  <span class="tag">Travestissement</span>
+  <span class="tag">Queer · yuri</span>
+  <span class="tag">Utena</span>
+  <span class="tag">Diptyque · I</span>
 </div>
 
 <footer>
