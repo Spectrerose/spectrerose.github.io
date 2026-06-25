@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spectre Rose — Combattantes sous condition II : Nées ailleurs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#07040a; --bg-card:#0e0812;
+    --rose:#d4909a; --rose-light:#f0c4cc; --rose-dark:#7a3d4a; --rose-deep:#3d1520;
+    --cream:#ede4e6; --muted:#6e5860; --border:rgba(212,144,154,0.18);
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg); color:var(--cream); font-family:'Crimson Text',serif; font-size:19.5px; line-height:1.92; overflow-x:hidden; -webkit-font-smoothing:antialiased;}
+  body::after{content:''; position:fixed; inset:0; pointer-events:none; z-index:2; background:radial-gradient(120% 90% at 50% 0%, transparent 55%, rgba(0,0,0,.55) 100%); mix-blend-mode:multiply;}
+  ::selection{background:var(--rose-deep); color:var(--rose-light);}
+
+  nav{position:fixed; top:0; left:0; right:0; z-index:10; display:flex; justify-content:space-between; align-items:center; padding:1.4rem 3rem; background:linear-gradient(180deg, rgba(7,4,10,.92), rgba(7,4,10,0)); backdrop-filter:blur(3px);}
+  .nav-logo{font-family:'Cormorant Garamond',serif; font-weight:500; font-size:1.15rem; letter-spacing:.14em; color:var(--cream); text-decoration:none;}
+  .nav-logo span{color:var(--rose);}
+  .nav-back{font-family:'DM Mono',monospace; font-size:.62rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .3s;}
+  .nav-back:hover{color:var(--rose-light);}
+
+  .art-hero{max-width:860px; margin:0 auto; padding:11rem 3rem 2.5rem; text-align:center;}
+  .a-eyebrow{display:inline-block; font-family:'DM Mono',monospace; font-size:.6rem; letter-spacing:.26em; text-transform:uppercase; color:var(--rose); margin-bottom:2rem;}
+  .a-title{font-family:'Cormorant Garamond',serif; font-weight:400; font-size:clamp(2.5rem,6vw,4.3rem); line-height:1.07; letter-spacing:-.01em; color:var(--cream); margin-bottom:1.6rem;}
+  .a-title em{font-style:italic; color:var(--rose-light);}
+  .a-subtitle{font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300; font-size:clamp(1.1rem,2.4vw,1.5rem); line-height:1.45; color:var(--rose); max-width:650px; margin:0 auto 2.4rem;}
+  .a-meta{display:flex; justify-content:center; flex-wrap:wrap; gap:.9rem; font-family:'DM Mono',monospace; font-size:.6rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted);}
+  .a-meta .sep{color:var(--rose-dark);}
+
+  .cover-img{max-width:780px; margin:1.5rem auto 4.5rem; padding:0 3rem; width:100%; display:flex; flex-direction:column; align-items:center;}
+  .cover-frame{width:100%; aspect-ratio:21/8; border:1px solid var(--border); border-radius:2px; background:radial-gradient(60% 120% at 50% 0%, rgba(122,61,74,.22), transparent 70%), var(--bg-card); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;}
+  .cover-glyph{font-family:'Cormorant Garamond',serif; font-size:clamp(4rem,11vw,7rem); color:var(--rose-deep); line-height:1; user-select:none;}
+  .cover-glyph::after{content:'外';}
+  .cover-label{font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-top:1rem;}
+
+  .art-body{max-width:720px; margin:0 auto; padding:0 3rem 3rem;}
+  .art-body p{margin-bottom:1.7rem;}
+  .art-body p.lead{font-size:1.12rem; color:#f3eaec;}
+  .art-body strong{color:var(--rose-light); font-weight:600;}
+  .art-body em{font-style:italic;}
+  .art-body em.work{color:#f0dfe4; font-style:italic;}
+
+  .kicker{font-family:'DM Mono',monospace; font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:var(--rose-dark); margin:3.6rem 0 .7rem;}
+  h2.sec{font-family:'Cormorant Garamond',serif; font-weight:500; font-style:italic; font-size:clamp(1.7rem,3.4vw,2.3rem); line-height:1.12; color:var(--rose-light); margin:0 0 1.8rem; letter-spacing:.01em;}
+
+  .pull{margin:3.2rem 0; padding:0 1.4rem; text-align:center; font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:400; font-size:clamp(1.45rem,3.2vw,1.95rem); line-height:1.32; color:var(--rose-light);}
+  .pull::before{content:'✦'; display:block; color:var(--rose-dark); font-size:.8rem; margin-bottom:1rem; letter-spacing:.3em;}
+
+  .seam{text-align:center; color:var(--rose-dark); font-size:.7rem; letter-spacing:1.1em; margin:3rem 0 3rem; padding-left:1.1em;}
+
+  .closeread{border-left:2px solid var(--rose-dark); padding:.2rem 0 .2rem 1.5rem; margin:2.2rem 0; color:#dcccd0; font-size:.97rem;}
+  .closeread .cr-tag{display:block; font-family:'DM Mono',monospace; font-size:.55rem; letter-spacing:.2em; text-transform:uppercase; color:var(--rose-dark); margin-bottom:.6rem;}
+
+  sup.fn{font-size:.62em; line-height:0;}
+  sup.fn a{color:var(--rose); text-decoration:none; padding:0 .1em;}
+  sup.fn a:hover{color:var(--rose-light);}
+
+  .prevvol{border:1px solid var(--border); border-radius:2px; background:var(--bg-card); padding:1.1rem 1.4rem; margin:0 auto 2.5rem; max-width:720px; display:flex; gap:.8rem; align-items:baseline;}
+  .prevvol .pv-tag{font-family:'DM Mono',monospace; font-size:.55rem; letter-spacing:.18em; text-transform:uppercase; color:var(--rose-dark); white-space:nowrap;}
+  .prevvol a{color:var(--rose-light); text-decoration:none; font-style:italic; font-family:'Cormorant Garamond',serif; font-size:1.1rem;}
+  .prevvol a:hover{color:var(--rose);}
+
+  .apparatus{max-width:720px; margin:1rem auto 0; padding:0 3rem;}
+  .ap-head{font-family:'DM Mono',monospace; font-size:.6rem; letter-spacing:.24em; text-transform:uppercase; color:var(--rose-dark); margin:3rem 0 1.2rem; padding-top:2rem; border-top:1px solid var(--border);}
+  .note-item,.biblio-item{font-size:.86rem; line-height:1.62; color:#c8b8bc; margin-bottom:.85rem; padding-left:1.6rem; text-indent:-1.6rem;}
+  .note-item .num{color:var(--rose); font-family:'DM Mono',monospace; font-size:.72rem; margin-right:.5rem;}
+  .note-item a.back{color:var(--rose-dark); text-decoration:none; margin-left:.3rem;}
+  .biblio-item em{color:#dcc8cc;}
+
+  .art-footer{max-width:720px; margin:2.5rem auto 0; padding:2rem 3rem 0;}
+  .tag{display:inline-block; font-family:'DM Mono',monospace; font-size:.55rem; letter-spacing:.14em; text-transform:uppercase; color:var(--rose); border:1px solid var(--border); border-radius:2px; padding:.35rem .7rem; margin:0 .4rem .5rem 0;}
+  footer{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; max-width:860px; margin:4rem auto 0; padding:2.5rem 3rem; border-top:1px solid var(--border);}
+  .f-logo{font-family:'Cormorant Garamond',serif; font-size:1rem; letter-spacing:.14em; color:var(--rose-light);}
+  .f-copy{font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.16em; color:var(--muted); text-transform:uppercase;}
+
+  .rv{opacity:0; transform:translateY(20px); transition:opacity .8s ease, transform .8s ease;}
+  .rv.on{opacity:1; transform:none;}
+  @media (prefers-reduced-motion:reduce){ .rv{opacity:1; transform:none; transition:none;} html{scroll-behavior:auto;} }
+
+  @media (max-width:760px){
+    body{font-size:18.5px;}
+    nav{padding:1.1rem 1.4rem;}
+    .art-hero{padding:8.5rem 1.4rem 2rem;}
+    .cover-img,.art-body,.apparatus,.art-footer,.prevvol{padding-left:1.4rem; padding-right:1.4rem;}
+    footer{flex-direction:column; text-align:center; padding:2rem 1.4rem;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Spectre <span>Rose</span></a>
+  <a href="index.html" class="nav-back">← Retour aux théories</a>
+</nav>
+
+<header class="art-hero">
+  <span class="a-eyebrow rv">✦ Combattantes sous condition &nbsp;·&nbsp; II / II &nbsp;·&nbsp; Shōnen, seinen, roman &amp; jeu</span>
+  <h1 class="a-title rv">Nées <em>ailleurs</em></h1>
+  <p class="a-subtitle rv">Hors du rayon des filles, la guerrière a enfin l'âge adulte — mais la grammaire ne disparaît pas : elle se durcit, se déguise, et ne lâche prise que pour de rares échappées. Second volet d'un diptyque.</p>
+  <div class="a-meta rv">
+    <span>22 juin 2026</span><span class="sep">·</span>
+    <span>~30 min de lecture</span><span class="sep">·</span>
+    <span>Spoilers : Evangelion, Madoka, FMA, Moribito, L'Ère des cristaux</span>
+  </div>
+</header>
+
+<div class="cover-img rv">
+  <div class="cover-frame">
+    <div class="cover-glyph"></div>
+  </div>
+  <span class="cover-label">外 — soto, le dehors : hors du rayon des filles</span>
+</div>
+
+<div class="prevvol rv">
+  <span class="pv-tag">Fait suite à</span>
+  <a href="combattantes-I-rayon-des-filles.html">Combattantes sous condition, I — « Grandir, ou rendre les armes »</a>
+</div>
+
+<article class="art-body">
+
+  <p class="lead rv">Au fond d'une cuve emplie d'un liquide ambré flottent des dizaines de corps identiques, nus, les yeux clos, attendant qu'on en pioche un quand le précédent aura cassé. Si le premier volet s'ouvrait sur une fillette qui tournoie dans la lumière et se rhabille d'une armure, celui-ci s'ouvre sur cette image-ci : Rei Ayanami, pilote de l'<em class="work">Evangelion</em> — la grande série de mechas du milieu des années 1990 —, et la réserve de ses clones interchangeables. C'est l'autre manière de fabriquer le corps d'une combattante. Le henshin du shōjo enrobait la métamorphose de pétales et d'étoiles ; le seinen montre la chaîne de montage. Et dans cet écart de ton tient déjà tout ce volet.</p>
+
+  <p class="rv">Le premier volet l'avait laissée sur un seuil. Le rayon des filles, disions-nous, n'offre à sa combattante que deux issues — rester fillette, ou rendre les armes — et jamais le passage de l'une à l'autre : on n'y grandit pas en armes. D'où la conclusion, négative et ferme : la femme adulte qui se bat n'a pas pu naître là. Elle est née ailleurs, dans des rayons qui ne portent pas le nom des filles. C'est là qu'il faut maintenant la chercher.</p>
+
+  <p class="rv">Mais qu'on ne s'attende pas à la trouver libre. Hors du rayon, la grammaire posée dans le premier volet — singulariser, donner l'alibi, reconfiner, livrer au regard — ne disparaît pas : elle mute, et se rend méconnaissable. Le travestissement devient une vérité de matière, le corps littéralement fabriqué. Le reconfinement n'attend plus le mariage : il instrumentalise. Le regard cesse d'être celui d'une lectrice pour devenir celui d'un homme. Et la singularité, la plus tenace, se replie sur le rang. Reconnaître la même règle sous ses nouveaux masques, voilà la tâche — étant entendu, et l'on s'y tiendra, qu'une combattante échappe vraiment quand elle se bat librement, sans déserter son sexe, sans en mourir, sans être reprise ni d'abord offerte ; et que l'échappée n'est complète que lorsqu'elles sont plusieurs, quelconques, à rester. On trouvera ici, enfin, quelques vraies sorties. Mais leur point commun en dira plus long qu'elles-mêmes.</p>
+
+  <p class="kicker rv">i — le corps fabriqué</p>
+  <h2 class="sec rv">Le corps qu'on assemble, le corps qu'on regarde</h2>
+
+  <p class="rv">Rejoignons donc Rei dans sa cuve. Tout, en elle, dit l'instrument : elle obéit sans broncher, n'a aucun instinct de conservation, se sacrifierait sur un mot, et quand on la détruit, on en réactive simplement une autre. Gendō, son créateur, la garde comme on garde une clef — la clef de l'apocalypse qu'il prépare. Le corps de combat de la fille n'est plus magique mais manufacturé, et manufacturé par un homme, pour ses fins. Et dans le même mouvement, ce corps est offert au regard : spectrale, douce, indéfiniment reproductible, Rei a fondé une lignée entière de figurines et de répliques, le « type Rei » que l'industrie a copié à l'infini. Fabriquée au-dedans, consommée au-dehors : c'est la double prise du seinen.</p>
+
+  <p class="rv">C'est ce dehors qu'il faut nommer maintenant, puisque le premier volet l'avait renvoyé ici. Le psychiatre Saitō Tamaki a écrit le livre qui le décrit, et sa thèse dérange parce qu'elle ne parle pas des filles mais de ceux qui les regardent. La « belle combattante » — la <em>sentō bishōjo</em> — n'est selon lui ni le reflet ni l'instrument de l'émancipation des femmes : c'est un objet de désir autonome, une « fille phallique » dont l'arme et l'armure sont les conditions mêmes de la désirabilité, et qui, dit-il sans ménagement, n'a au fond <em>rien à voir avec le monde réel</em><sup class="fn"><a href="#n1" id="r1">1</a></sup>. La critique féministe Kotani Mari lui a opposé une relecture : cette « beauté combattante » n'est pas qu'un fétiche d'homme, c'est aussi une métamorphose de la jeune fille que ses lectrices investissent pour leur propre compte. On peut récuser l'appareil lacanien, et se méfier de son idée que la combattante occidentale ne serait qu'un « homme dans un corps de femme » ; l'intuition centrale tient, et rejoint la <em>to-be-looked-at-ness</em> de Laura Mulvey : il existe un régime où plus l'héroïne est puissante, plus elle est livrée. La force n'y annule pas l'objet, elle le rehausse.</p>
+
+  <p class="rv">Aucune œuvre ne pousse l'instrument plus loin que <em class="work">Claymore</em>. Tout un peuple de guerrières y traque les monstres — enfin le pluriel, enfin des femmes en nombre. Mais ces femmes sont des armes au sens propre : orphelines greffées de chair de démon, numérotées, classées, louées au tarif aux villages, et pourvues d'une « carte noire » pour appeler une consœur qui les achèvera avant qu'elles ne basculent à leur tour dans la monstruosité. Une Organisation décrite comme un conseil d'hommes les forge, les possède, les jette. Le collectif féminin n'existe qu'à la condition d'être un outil — ce qui revient à dire que la peur, ici, n'est pas la femme en armes, mais la femme en armes <em>qui s'appartiendrait</em>. Il n'est pas indifférent que le seul vacillement de la série soit la révolte finale des guerrières contre l'Organisation : l'instant où, cessant d'être une arme, elles redeviennent un sujet. La même logique se coule dans le métal chez les cyborgs du seinen — l'Alita de <em>Gunnm</em>, la Motoko de <em>Ghost in the Shell</em> —, dont le corps de combat est fabriqué et perfectionné par des mains d'hommes, et dont l'autonomie, quand elle vient, prend la forme d'une transcendance qui les fait disparaître<sup class="fn"><a href="#n2" id="r2">2</a></sup>.</p>
+
+  <p class="kicker rv">ii — le combat-symptôme</p>
+  <h2 class="sec rv">Quand se battre est une blessure</h2>
+
+  <p class="rv">Là où le shōjo reconduisait sa combattante vers la féminité, le seinen a trouvé plus subtil : il transforme son combat lui-même en maladie. La fille ne se bat plus parce qu'elle le veut, mais parce qu'elle est blessée — et sa pugnacité devient le symptôme à interpréter.</p>
+
+  <p class="rv">Asuka, l'une des pilotes adolescentes d'<em>Evangelion</em>, en est le cas d'école — et Saitō Tamaki l'avait justement lue ainsi. Son arrogance, sa rage de vaincre, son besoin de piloter pour exister : tout cela, le récit le ramène à une plaie, le suicide de sa mère et le délire de la « poupée » abandonnée. Sa combativité est l'armure d'une insécurité, « une version féminine du gamin qui joue les durs ». Se battre n'est pas, pour elle, un libre exercice de la force ; c'est un cri. Et le même geste se retrouve, transposé dans la dark fantasy de Kentarō Miura, chez la Farnese de <em class="work">Berserk</em>, dont la cruauté de brûleuse de sorcières — sa jouissance morbide du bûcher — naît tout entière de la négligence et du vide. Dans les deux cas, la puissance de la femme est diagnostiquée plutôt qu'admise : on ne la combat pas, on la soigne. C'est une containment d'une élégance perverse, car elle n'interdit rien — elle se contente de faire de la force féminine le signe d'un dérèglement.</p>
+
+  <p class="kicker rv">iii — le rang</p>
+  <h2 class="sec rv">L'ornement et l'appoint</h2>
+
+  <p class="rv">Berserk, justement, mérite qu'on s'y arrête, car il déploie presque à lui seul l'éventail des containments du seinen. Farnese, avant de devenir cette pyromane fêlée, « commande » les Chevaliers de la Chaîne sacrée — sauf que cette charge, le récit le dit, est cérémonielle et traditionnellement réservée à une femme : une cheffe d'ornement à la tête de jeunes nobles trop beaux et trop tendres pour le combat réel, qu'assurent les hommes du rang. Le token institutionnalisé. Son arc l'achemine ensuite du commandement creux vers l'apprentissage auprès de la sorcière Schierke et le chevet de Casca, avec un amour pour Guts en guise d'horizon. Et Schierke elle-même, fillette d'une puissance immense, n'existe au fond que pour stabiliser le héros dans sa transe meurtrière : la magie féminine comme batterie d'appoint du furieux. Quant à Slan, unique femme du God Hand — le quintette de démons-dieux qui régit l'univers de la série —, elle est un point écarlate jusque chez les démons — et c'est une obscénité grotesque, surgie des entrailles des morts. (Détail qui dit la porosité des rayons : Miura a modelé Serpico, le beau garçon mélancolique, sur l'André de <em>La Rose de Versailles</em>, « pour le lectorat féminin ». Le regard du shōjo, importé tel quel dans le seinen.)</p>
+
+  <p class="rv">Ce que Berserk fait par la cruauté et l'appoint, le grand récit de guerre l'accomplit par un moyen plus discret encore, et le plus moderne de tous : le rang. Yō Tan Wa, reine des peuples des montagnes dans <em class="work">Kingdom</em>, échappe à presque tout. Elle commande un vrai collectif où combattent des femmes ; elle se bat pour son propre rêve politique, sans alibi sentimental ; elle n'est ni mariée, ni domestiquée, ni tuée. Sur le papier, une réussite éclatante. Et pourtant la grammaire la tient — par le seul fait qu'elle est <em>secondaire</em>. Nul besoin de lui faire violence : il suffit de ne jamais bâtir le récit autour d'elle. Yō Tan Wa peut être reine et « Roi de la Mort », elle restera l'alliée magnifique qui surgit, fait pencher la bataille et se retire ; sa force est sûre parce que l'histoire n'est pas la sienne. La preuve par l'envers est dans le même manga : Kyou Kai, l'épéiste, est bien plus centrale — et c'est là, précisément, qu'elle <em>réacquiert</em> les vieilles conditions, se battant sous l'alibi de la vengeance et aimantée vers le héros. Plus une combattante de <em>Kingdom</em> approche du centre, plus la grammaire se rabranche sur elle. La quantité se conserve ; elle se déplace<sup class="fn"><a href="#n3" id="r3">3</a></sup>.</p>
+
+  <p class="kicker rv">iv — le masque choisi</p>
+  <h2 class="sec rv">La poupée qu'on se fabrique</h2>
+
+  <p class="rv">Il manquait, pour compléter le tableau, la prise la plus intime — celle que le personnage referme sur lui-même. On la trouve, en plein shōnen, dans <em class="work">Hunter × Hunter</em>, et c'est le miroir noir du henshin.</p>
+
+  <p class="rv">Biscuit Krueger a cinquante-sept ans, c'est l'une des plus redoutables combattantes au corps-à-corps de la série, une maîtresse d'arts martiaux à qui les héros doivent leur formation. Son vrai corps est celui d'une géante musculeuse de plus de deux mètres. Et pourtant elle dépense en permanence son énergie pour maintenir l'apparence d'une fillette mignonne — son nom même vient de la poupée de biscuit. Elle invoque la ruse, faire sous-estimer l'ennemi ; mais le récit dit la vraie raison, et elle est dévastatrice : <strong>elle trouve son corps puissant laid</strong>, elle préfère la poupée. La magical girl du premier volet se transformait pour devenir mignonne-et-puissante ; Bisky se transforme pour <em>cacher</em> sa puissance sous la mignardise, par honte. Le regard n'est plus imposé du dehors : il est passé au-dedans, et c'est elle qui se le fait. L'œuvre, à son honneur, met la chose à nu — jusqu'à ce moment, plus tard, où un homme tombe en arrêt devant son vrai corps et le dit divin, sans qu'elle sache l'entendre. La combattante qui se censure elle-même : il n'est pas de containment plus achevé, puisqu'il n'a même plus besoin d'un geôlier.</p>
+
+  <div class="pull rv">Le henshin re-parait la fillette ; le masque de Biscuit cache la femme. Dans les deux cas, la puissance se solde en mignardise.</div>
+
+  <p class="kicker rv">v — l'échappée</p>
+  <h2 class="sec rv">Celles qui s'en arrachent</h2>
+
+  <p class="rv">Si tout cela n'était qu'une longue confirmation, l'enquête tournerait au procès : à force de relire chaque contre-exemple comme un coût déguisé, on ne démontrerait plus rien. Il faut donc des cas où la grammaire lâche pour de bon. Hors du rayon, contre toute attente, ils existent — et ils se ressemblent.</p>
+
+  <p class="rv">Olivier Mira Armstrong, générale de <em class="work">Fullmetal Alchemist</em>, commande la forteresse de Briggs ; ses soldats endurcis la révèrent ; elle a vaincu son frère en duel. Elle n'est pas travestie ; elle ne se bat sous l'alibi d'aucun homme ni d'aucune vengeance, mais pour son ambition et son sens du devoir ; elle survit ; et — ses lecteurs le remarquent unanimement — elle n'est jamais sexualisée, pas une seule fois : uniforme de campagne, silhouette réelle, rien d'offert. La famille Armstrong inverse même les rôles, les femmes y étant froides et martiales, le frère Alex sentimental et larmoyant. Trois des quatre conditions tombent pour de bon.</p>
+
+  <p class="rv">Balsa, l'héroïne de <em class="work">Seirei no Moribito</em> (« Le Gardien de l'esprit »), va plus loin encore — et c'est, de tout le médium, l'échappée la plus nette. Lancière d'une trentaine d'années, garde du corps de métier, elle porte un cycle romanesque entier en protagoniste. Son combat obéit à un vœu qu'elle s'est donné : sauver huit vies pour expier les huit hommes morts à la protéger enfant — et, dans l'anime, elle jure de ne plus jamais tuer. L'alibi imposé s'est mué en projet éthique propre. Elle n'est pas érotisée. Et surtout, elle résiste ouvertement au reconfinement : tout son entourage la voudrait mariée au guérisseur Tanda, et le récit s'y refuse, fait d'elle une combattante « mariée à son métier », invente une maternité sans foyer auprès de l'enfant qu'elle garde. Là encore, l'inversion signe l'échappée : Tanda est l'homme doux qui recoud ses plaies, depuis vingt ans.</p>
+
+  <p class="rv">Ces deux femmes partagent tout, et c'est ce qui rend le motif lisible. L'une et l'autre sont écrites par des <strong>autrices</strong> — Hiromu Arakawa, Uehashi Nahoko. L'une et l'autre sont des <strong>adultes</strong>, non des fillettes. L'une et l'autre se battent pour un <strong>projet à elles</strong>, ne s'offrent pas au regard, et marchent aux côtés d'un homme doux qui renverse le partage. Ce n'est pas un mystère, c'est un mécanisme : l'étreinte se desserre là où ces conditions se réunissent. Et ce mécanisme contredit une idée reçue, car ces sorties ne viennent pas du shōjo, le genre dit « féminin », mais de femmes qui écrivent dans le shōnen ou le roman. La logique est limpide : le shōjo est la forme bâtie pour mener la fille au mariage ; ses voies de reconfinement sont des dispositifs de la jeune fille. L'âge adulte est déjà une demi-sortie — on ne fait pas « devenir femme » celle qui l'est —, et il s'écrit mieux là où nul magazine ne tient à garder l'héroïne jeune.</p>
+
+  <p class="rv">Reste un dernier acquis, qui ne se laisse pas emporter. La combattante peut désormais être libre, non reprise, parfois protagoniste ; elle reste presque toujours <em>seule</em>. Frieren, la mage adulte d'un shōnen célèbre, n'est ni travestie ni érotisée ni reconduite à rien — le récit s'intéresse au temps et au deuil, pas à son sexe — mais elle est l'unique de son espèce dans presque chaque pièce qu'elle traverse. Olivier demeure la seule femme du haut commandement. Et Balsa, dont le cycle ne porte même pas le nom, mais celui de l'enfant qu'elle garde, reste une lame solitaire. De Yō Tan Wa à Olivier à Balsa court ainsi un dégradé limpide : chacune affranchie d'une condition de plus que la précédente — l'une encore livrée au regard, l'autre non, la dernière jusqu'à la centralité du récit. Ce que pas une ne franchit, c'est la singularité. On sait, aujourd'hui, libérer la combattante. On ne sait toujours pas l'imaginer plurielle et quelconque.</p>
+
+  <p class="kicker rv">vi — la lucidité, hors les murs</p>
+  <h2 class="sec rv">Celles qui savent, celle qui s'efface</h2>
+
+  <p class="rv">Le premier volet montrait le shōjo nommant sa propre cage de l'intérieur, avec <em>Utena</em>. Hors du rayon, la lucidité prend deux formes plus radicales encore — l'une qui retourne la cage, l'autre qui la dynamite.</p>
+
+  <p class="rv">Jun Mochizuki — une autrice, encore, et qui cite Arakawa comme son inspiration et la raison de ses débuts — opère le retournement, en plein shōnen. Sa Jeanne, dans <em class="work">Vanitas no Carte</em>, est une combattante hors norme, plus puissante que presque tous les vampires ; et le récit met au jour, pour la travailler, l'angoisse même que nous suivons depuis le début : Jeanne croit que sa fonction de bourreau lui interdit d'être aimée, d'être une femme. La cage, nommée. Puis Mochizuki la retourne : c'est Jeanne qui veut <em>dominer</em>, qui rêve de faire jouer à l'homme « la princesse enfermée dans sa tour ». Le sauvetage inversé, le prince et la princesse échangés — comme chez Utena, mais cette fois dans le rayon des garçons, par une femme. La lignée se précise : ce sont les autrices, où qu'elles publient, qui savent voir les barreaux. C'est exactement ce que Kathryn Hemmann décrit comme l'effet du <em>female gaze</em> lorsqu'il investit le shōnen et le seinen — non s'y soumettre, mais en retourner les codes contre eux-mêmes.</p>
+
+  <p class="rv">L'autre forme, c'est la déflagration. <em class="work">Puella Magi Madoka Magica</em> reprend les codes de la magical girl pour, deux épisodes durant, les imiter à la perfection — puis ouvrir le capot. Le contrat de Kyubey, un vœu contre le pouvoir, est une extraction : il arrache l'âme de la fille pour la loger dans une gemme, réduit son corps à un support, et la voue à devenir une sorcière, c'est-à-dire à se détruire — une espèce extraterrestre récoltant au passage l'énergie de cette ruine. On y a lu, à juste titre, le système qui s'empare de l'agentivité de la fille à l'instant même où il prétend lui offrir de la puissance<sup class="fn"><a href="#n4" id="r4">4</a></sup>. Désarmée, Madoka pose la seule question qui vaille — sommes-nous faites pour mourir à votre profit ? —, et sa réponse déplace enfin la règle : son vœu final l'abolit pour toutes, change la loi du monde. Première fois qu'on passe de l'exception individuelle au structurel. Mais Madoka ne survit pas à son geste : elle se dissout dans le principe qu'elle institue, devient une abstraction, s'efface de la mémoire des vivants. Comme Motoko dans le réseau, la combattante qui touche à la loi doit s'évanouir pour y toucher. On rouvre la parenthèse à condition d'y disparaître.</p>
+
+  <p class="kicker rv">vii — la limite</p>
+  <h2 class="sec rv">Le sexe aboli, et recousu</h2>
+
+  <p class="rv">Une dernière œuvre va plus loin que toutes, parce qu'elle cesse de jouer sur le plateau. Tout ce qui précède reste à l'intérieur du genre, avec des « elles ». <em class="work">L'Ère des cristaux</em>, d'Haruko Ichikawa, ne réforme pas la guerrière : il supprime la catégorie. Ses combattantes sont des Gemmes — êtres minéraux, immortels, asexués, sans reproduction ni vieillissement — et elles luttent en collectif, une trentaine, jamais une élue. Soumises aux quatre conditions, trois s'effondrent : nulle singularité, puisque c'est un groupe ; nul travestissement, puisqu'il n'y a aucun sexe à déserter ; nul reconfinement, mais son contraire, l'arc de Phos défaisant le personnage par pertes successives de membres et de mémoire. La quatrième, le regard, est alors placée au centre du récit : les Lunariens convoitent les Gemmes comme de beaux objets à récolter et à changer en ornements. Comme <em>Utena</em>, comme <em>Madoka</em>, l'œuvre ne sort pas de la cage — elle la nomme. Sauf qu'ici la cage est littérale : devenir un bijou.</p>
+
+  <p class="rv">D'où l'enseignement qui resserre tout le diptyque : on ne s'arrache à la grammaire qu'en abolissant le terme « femme » lui-même. C'est le geste de Monique Wittig porté à la lettre — <em>on n'est pas une femme</em>, on est autre chose<sup class="fn"><a href="#n5" id="r5">5</a></sup>. Avec une ironie que l'histoire rend vertigineuse : Ichikawa est lauréate du prix culturel Osamu-Tezuka — qu'elle reçut à ses débuts, en 2010, pour ses premiers récits —, c'est-à-dire du prix qui porte le nom du créateur de Saphir. Or c'est de Tezuka, et de la Saphir « au cœur de garçon et au cœur de fille » par quoi s'ouvrait le premier volet, que tout est parti. Là où Saphir devait choisir — et choisissait le féminin, reconfinée —, les Gemmes n'ont plus à choisir : elles <em>sont</em> le ni-l'un-ni-l'autre. Les deux cœurs de 1953 deviennent, soixante ans plus tard, un corps sans sexe.</p>
+
+  <p class="rv">Et c'est alors qu'une dernière prise se referme — la plus inattendue, car elle ne vient plus de l'œuvre, mais de nous qui la lisons. Dans l'original japonais, ces êtres sans genre ont adopté par défaut des formes <em>masculines</em> : le non-marqué glisse vers le masculin, exactement le « masculin neutre » que dénonçait Beauvoir. La version anglaise tranche pour le <em>they</em>. Et le français les met au <strong>féminin</strong> — « la pierre », « la gemme » tirent tout vers « elles »<sup class="fn"><a href="#n6" id="r6">6</a></sup>. Trois langues, trois re-genrages d'un être conçu pour échapper au genre. L'œuvre s'est battue pour effacer le sexe à la source ; la langue d'arrivée le réinscrit au seuil. La grammaire de la combattante n'habite donc pas que les motifs des récits : elle est logée dans le système de genre de la langue, et se réimpose à la frontière de la traduction. Le premier volet l'avait déjà entrevu, quand le doublage américain de <em>Sailor Moon</em> rebaptisait « cousines » Haruka et Michiru : ici le geste s'inverse — non plus effacer la queerness, mais réimposer un sexe à qui n'en avait plus —, et c'est pourtant le même réflexe, la transmission récrivant le genre qu'une œuvre s'était échinée à défaire. Le lecteur francophone <em>ne peut pas</em> lire ces guerrières autrement qu'en « elles » — et comme les Gemmes sont splendides et convoitées pour leur beauté, ce « elles » les fait reglisser vers la figure même qu'on voulait dissoudre. La traduction n'est pas une vitre : c'est un palimpseste, qui réécrit du genre sur un original dégenré et nous lègue une féminité-fantôme que l'autrice avait gommée.</p>
+
+  <div class="pull rv">Il faut quitter le genre tout entier pour en sortir. Et le français, au seuil, recoud.</div>
+
+  <p class="kicker rv">coda</p>
+  <h2 class="sec rv">Le massif et la fleur</h2>
+
+  <p class="rv">Le diptyque peut se refermer. Dans le rayon des filles, la combattante restait une enfant ou rendait les armes ; hors du rayon, devenue adulte, elle a vu la grammaire se durcir — corps fabriqué, combat-symptôme, commandement d'ornement, masque qu'on se fait soi-même — avant de céder, parfois, devant une autrice qui campe une femme mûre, libre de son projet et soustraite au regard. Une tendance forte, donc, non une loi d'airain : Olivier existe, Balsa existe. Mais sous toutes ces variations, du shōjo au seinen et jusque dans la cuve de Rei, une seule peur n'a pas bougé. Ce n'est pas la femme en armes — il en regorge. C'est <em>les</em> femmes en armes : au pluriel, ensemble, quelconques, se battant en tant que femmes et non à la place ni aux côtés des hommes. Une exceptionnelle décore la règle ; un <em>nous</em> la déchirerait. Le rayon des filles a frôlé ce <em>nous</em>, le temps d'une décennie — l'équipe d'amies de <em>Sailor Moon</em> en fut la plus claire esquisse —, mais l'a aussitôt recouvert de rubans et de fiançailles ; et hors du rayon, on l'a vu, le nombre ne s'obtient qu'en forgeant les femmes en armes. La seule fois où une œuvre ose une vraie communauté de femmes libres et armées — la Cité du fer de <em class="work">Princesse Mononoké</em>, où Dame Eboshi arme d'anciennes prostituées qu'elle a rachetées et des lépreux qu'elle a recueillis —, elle ne la fait tenir qu'en machine de guerre, financée par la mise à mort de la forêt. Le collectif des femmes ne dure qu'à la condition de devenir, à son tour, une puissance de conquête.</p>
+
+  <p class="rv">Voyez ce que partagent les sorties que le médium sait dessiner. La belle mort d'Oscar, la métamorphose qui re-parait, l'évanouissement de Madoka dans sa loi, la dissolution de Motoko dans le réseau : ce sont des sorties <em>spectaculaires</em>. Soixante-dix ans à perfectionner l'art du départ grandiose, parce qu'un départ éclatant est encore une manière de ne pas rester. Là est le tabou. Ce que ce virtuose de l'apothéose n'a presque jamais osé tracer, ce n'est pas la femme la plus forte, c'est l'anti-spectacle : des femmes qui se battent et qui, ensuite, demeurent — ni mortes, ni mariées, ni redevenues mignonnes, ni changées en principe, ni reines d'un autre peuple. Balsa demeure, oui ; mais Balsa demeure seule. Et <em>L'Ère des cristaux</em>, qui atteint enfin le collectif, n'y parvient qu'en quittant le genre — après quoi le français, au seuil, recoud chaque être en femme.</p>
+
+  <p class="rv">L'image la plus difficile à tracer n'aura donc jamais été l'héroïne la plus exceptionnelle. C'est son exact contraire : un <em>nous</em> assez quelconque pour durer. Le point écarlate — l'unique fleur rouge dans le vert —, on sait le peindre les yeux fermés ; on n'a fait que cela. C'est le massif tout entier viré au rouge qu'on n'a pas encore appris à regarder en face — et que, peut-être, notre langue elle-même ne sait pas encore lire sans y repiquer, aussitôt, une seule fleur.</p>
+
+</article>
+
+<div class="apparatus">
+  <p class="ap-head rv">Notes</p>
+  <p class="note-item rv"><span class="num">1</span><span id="n1"></span>Saitō Tamaki, <em>Beautiful Fighting Girl</em> [2000], trad. J. K. Vincent &amp; D. Lawson (University of Minnesota Press, 2011). Sa lecture d'<em>Evangelion</em> — la militance d'Asuka comme symptôme d'un trauma — y occupe une place centrale. <a class="back" href="#r1">↩</a></p>
+  <p class="note-item rv"><span class="num">2</span><span id="n2"></span><em>Claymore</em> (Norihiro Yagi, shōnen, 2001-2014) ; sur la guerrière cyborg et le féminin manufacturé, Frédéric Clément, <em>Machines désirées. La représentation du féminin dans les films d'animation Ghost in the Shell</em> (L'Harmattan, 2011). Les faits d'intrigue cités (Eva, Claymore, et plus bas Berserk, Kingdom, Hunter × Hunter) reposent sur des sources encyclopédiques fiables sur le factuel ; à reverser aux œuvres pour une étude académique. <a class="back" href="#r2">↩</a></p>
+  <p class="note-item rv"><span class="num">3</span><span id="n3"></span>Yō Tan Wa, comme Kyou Kai, est un général de Qin historiquement masculin, cité dans le <em>Shiji</em>, que Yasuhisa Hara a re-genré au féminin : la reine guerrière occupe un nom d'homme et un palmarès d'homme — travestissement au niveau de l'historiographie. <a class="back" href="#r3">↩</a></p>
+  <p class="note-item rv"><span class="num">4</span><span id="n4"></span>Lien Fan Shen, « The Dark, Twisted Magical Girls: Shōjo Heroines in <em>Puella Magi Madoka Magica</em> » (2014). La lecture « anticapitaliste » du contrat de Kyubey est devenue un lieu commun de la réception critique. <a class="back" href="#r4">↩</a></p>
+  <p class="note-item rv"><span class="num">5</span><span id="n5"></span>Monique Wittig, « La pensée straight » (1980) : « les lesbiennes ne sont pas des femmes » — non un constat biologique, mais le refus de la catégorie politique « femme ». <em>L'Ère des cristaux</em> en propose une version minérale et collective, où la sortie du genre s'enracine aussi dans une iconographie bouddhique de l'au-delà du sexe. <a class="back" href="#r5">↩</a></p>
+  <p class="note-item rv"><span class="num">6</span><span id="n6"></span>Original japonais : formes et pronoms masculins par défaut, sur fond d'androgynie revendiquée par l'autrice. VO anglaise (Kodansha) : <em>they</em>. VF (Glénat, <em>L'Ère des cristaux</em>) : féminin (constat de lecture sur l'édition française ; à créditer au travail de traduction). <a class="back" href="#r6">↩</a></p>
+
+  <p class="ap-head rv">Références</p>
+  <p class="biblio-item rv">Beauvoir, Simone de. <em>Le Deuxième Sexe</em>. Paris : Gallimard, 1949.</p>
+  <p class="biblio-item rv">Clément, Frédéric. <em>Machines désirées. La représentation du féminin dans les films d'animation</em> Ghost in the Shell. Paris : L'Harmattan, 2011.</p>
+  <p class="biblio-item rv">Hemmann, Kathryn. <em>Manga Cultures and the Female Gaze</em>. Cham : Palgrave Macmillan, 2020.</p>
+  <p class="biblio-item rv">Kotani, Mari. « Metamorphosis of the Japanese Girl: The Girl, the Hyper-Girl, and the Battling Beauty ». <em>Mechademia</em>, vol. 1, 2006.</p>
+  <p class="biblio-item rv">Mulvey, Laura. « Visual Pleasure and Narrative Cinema ». <em>Screen</em>, vol. 16, n° 3, 1975.</p>
+  <p class="biblio-item rv">Napier, Susan J. « Vampires, Psychic Girls, Flying Women and Sailor Scouts ». Dans D. P. Martinez (dir.), <em>The Worlds of Japanese Popular Culture</em>. Cambridge : Cambridge University Press, 1998.</p>
+  <p class="biblio-item rv">Saitō, Minako. <em>Kōitten-ron : anime, tokusatsu, denki no hiroin-zō</em>. Tokyo : Village Center, 1998.</p>
+  <p class="biblio-item rv">Saitō, Tamaki. <em>Beautiful Fighting Girl</em> [2000]. Trad. J. K. Vincent &amp; D. Lawson. Minneapolis : University of Minnesota Press, 2011.</p>
+  <p class="biblio-item rv">Shen, Lien Fan. « The Dark, Twisted Magical Girls: Shōjo Heroines in <em>Puella Magi Madoka Magica</em> ». Dans <em>Heroines of Film and Television</em>. Lanham : Rowman &amp; Littlefield, 2014.</p>
+  <p class="biblio-item rv">Wittig, Monique. <em>Les Guérillères</em>. Paris : Minuit, 1969 ; « La pensée straight », 1980.</p>
+  <p class="biblio-item rv">— <em>Corpus (Volume II)</em> : Hideaki Anno / Yoshiyuki Sadamoto, <em>Neon Genesis Evangelion</em> (1995) ; Norihiro Yagi, <em>Claymore</em> (2001) ; Kentarō Miura, <em>Berserk</em> (1989) ; Yasuhisa Hara, <em>Kingdom</em> (2006) ; Yoshihiro Togashi, <em>Hunter × Hunter</em> (1998) ; Hiromu Arakawa, <em>Fullmetal Alchemist</em> (2001) ; Uehashi Nahoko, <em>Seirei no Moribito</em> (1996) ; Yamada Kanehito &amp; Abe Tsukasa, <em>Frieren</em> (2020) ; Jun Mochizuki, <em>Pandora Hearts</em> (2006) &amp; <em>The Case Study of Vanitas</em> (2015) ; Magica Quartet / Shaft, <em>Puella Magi Madoka Magica</em> (2011) ; Haruko Ichikawa, <em>L'Ère des cristaux</em> (2012).</p>
+</div>
+
+<div class="art-footer rv">
+  <span style="font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-right:.5rem;">Tags :</span>
+  <span class="tag">Seinen &amp; shōnen</span>
+  <span class="tag">Saitō Tamaki</span>
+  <span class="tag">Corps-instrument</span>
+  <span class="tag">Combat-symptôme</span>
+  <span class="tag">Olivier · Balsa</span>
+  <span class="tag">Mochizuki · Madoka</span>
+  <span class="tag">Lecture queer</span>
+  <span class="tag">Traduction &amp; genre</span>
+  <span class="tag">L'Ère des cristaux</span>
+  <span class="tag">Diptyque · II</span>
+</div>
+
+<footer>
+  <span class="f-logo">Spectre Rose ✦</span>
+  <span class="f-copy">© 2026 — Théories narratives &amp; fiction interactive</span>
+</footer>
+
+<script>
+  const items = document.querySelectorAll('.rv');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.06 });
+  items.forEach((el) => obs.observe(el));
+</script>
+</body>
+</html>
