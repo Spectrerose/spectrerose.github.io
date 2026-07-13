@@ -1,325 +1,320 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Griffith did something wrong — Spectre Rose</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#0e0a0f;--bg-raise:#171019;--ink:#ece4e8;--ink-soft:#b6abb4;--ink-faint:#867a83;
-    --rose:#df728c;--rose-deep:#7c2740;--bone:#e3dacb;--gold:#c2a14e;
-    --line:rgba(223,114,140,.18);--line-soft:rgba(236,228,232,.08);--measure:38rem;
-    --serif-display:"Cormorant Garamond",Didot,"Hoefler Text",Georgia,serif;
-    --serif-body:"Spectral",Georgia,"Times New Roman",serif;
-    --sans:"Inter",system-ui,-apple-system,sans-serif;
-  }
-  *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif-body);font-weight:400;font-size:1.16rem;line-height:1.78;letter-spacing:.005em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
-  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(120% 80% at 50% -10%, rgba(124,39,64,.16), transparent 60%),radial-gradient(90% 60% at 90% 110%, rgba(46,30,52,.5), transparent 55%);}
-  .wrap{position:relative;z-index:1}
-  .topbar{max-width:60rem;margin:0 auto;padding:1.6rem 1.5rem 0;display:flex;align-items:center;justify-content:space-between;font-family:var(--sans);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);}
-  .topbar .brand{color:var(--bone);font-weight:500;text-decoration:none;transition:color .25s}
-  .topbar .brand:hover{color:var(--rose)}
-  .topbar a{color:var(--ink-faint);text-decoration:none;transition:color .25s}
-  .topbar a:hover{color:var(--rose)}
-  header.hero{max-width:48rem;margin:0 auto;padding:5rem 1.5rem 2.2rem;text-align:center;}
-  .eyebrow{font-family:var(--sans);font-size:.72rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--rose);display:flex;flex-wrap:wrap;gap:.5rem .9rem;justify-content:center;align-items:center;margin-bottom:2.2rem;}
-  .eyebrow .sep{color:var(--rose-deep)}
-  h1{font-family:var(--serif-display);font-weight:500;font-style:italic;font-size:clamp(2.6rem,7vw,4.6rem);line-height:1.02;letter-spacing:-.01em;margin:0 0 1.4rem;color:var(--ink);}
-  .dek{font-family:var(--serif-body);font-weight:300;font-style:italic;font-size:clamp(1.18rem,2.6vw,1.42rem);line-height:1.5;color:var(--ink-soft);max-width:34rem;margin:0 auto 2.4rem;}
-  .runline{font-family:var(--sans);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);display:flex;flex-wrap:wrap;gap:.4rem .8rem;justify-content:center;}
-  .runline .dot{color:var(--rose-deep)}
-  .hero-rule{width:1px;height:3.4rem;margin:2.6rem auto 0;background:linear-gradient(var(--rose),transparent);}
-  article{max-width:var(--measure);margin:0 auto;padding:1.5rem 1.5rem 2rem}
-  article > p,article > .standfirst{margin:0 0 1.45rem}
-  p{margin:0 0 1.45rem}
-  .standfirst{font-size:1.28rem;line-height:1.62;color:var(--ink)}
-  .dropcap::first-letter{font-family:var(--serif-display);font-weight:500;float:left;font-size:4.2rem;line-height:.78;padding:.35rem .55rem 0 0;color:var(--rose);}
-  h2{font-family:var(--serif-display);font-weight:500;font-size:clamp(1.9rem,4.4vw,2.5rem);line-height:1.1;letter-spacing:-.005em;color:var(--ink);margin:3.4rem 0 1.3rem;}
-  h2 .num{display:block;font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--rose);margin-bottom:.7rem;}
-  em,i{font-style:italic}
-  strong{font-weight:600;color:#f5eef2}
-  .work{font-style:italic;color:var(--ink)}
-  .jp{font-family:var(--serif-body);color:var(--bone);font-style:normal}
-  a.fn{font-family:var(--sans);font-size:.62em;font-weight:600;vertical-align:.5em;line-height:0;color:var(--rose);text-decoration:none;padding:0 .12em;}
-  a.fn::before{content:"["}
-  a.fn::after{content:"]"}
-  a.fn:hover{color:var(--bone)}
-  a.xref{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--line)}
-  a.xref:hover{border-color:var(--rose)}
-  .seam{display:flex;align-items:center;gap:1.1rem;margin:3rem auto;max-width:18rem;color:var(--rose-deep);}
-  .seam::before,.seam::after{content:"";height:1px;flex:1;background:repeating-linear-gradient(90deg,var(--line) 0 7px,transparent 7px 13px);}
-  .seam span{font-family:var(--serif-display);font-size:1.1rem;color:var(--rose);}
-  .dossier{background:var(--bg-raise);border:1px solid var(--line-soft);border-left:2px solid var(--gold);border-radius:2px;padding:1.6rem 1.7rem 1.4rem;margin:2.4rem 0;font-size:1.04rem;line-height:1.7;color:var(--ink-soft);}
-  .dossier .label{font-family:var(--sans);font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.85rem;}
-  .dossier p{margin:0 0 .9rem}
-  .dossier p:last-child{margin-bottom:0}
-  .dossier strong{color:var(--bone)}
-  blockquote.pull{margin:3rem 0;padding:0;border:0;text-align:center;}
-  blockquote.pull p{font-family:var(--serif-display);font-weight:500;font-style:italic;font-size:clamp(1.5rem,3.6vw,2rem);line-height:1.28;color:var(--bone);max-width:31rem;margin:0 auto;}
-  .notes{max-width:var(--measure);margin:4rem auto 0;padding:0 1.5rem;}
-  .notes h3,.refs h3{font-family:var(--sans);font-size:.74rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--rose);border-top:1px solid var(--line);padding-top:1.6rem;margin:0 0 1.4rem;}
-  ol.fnlist{list-style:none;counter-reset:fn;margin:0;padding:0}
-  ol.fnlist li{counter-increment:fn;position:relative;padding-left:2.2rem;font-size:.92rem;line-height:1.62;color:var(--ink-soft);margin-bottom:1rem;}
-  ol.fnlist li::before{content:counter(fn);position:absolute;left:0;top:.05em;font-family:var(--sans);font-size:.72rem;font-weight:600;color:var(--rose);}
-  ol.fnlist li a.back{color:var(--ink-faint);text-decoration:none;margin-left:.3rem;}
-  ol.fnlist li a.back:hover{color:var(--rose)}
-  ol.fnlist a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
-  ol.fnlist a:hover{color:var(--rose);border-color:var(--rose)}
-  .refs{max-width:var(--measure);margin:3rem auto 0;padding:0 1.5rem}
-  .refs h4{font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:1.6rem 0 .7rem;}
-  .refs ul{list-style:none;margin:0;padding:0}
-  .refs li{font-size:.9rem;line-height:1.55;color:var(--ink-soft);padding-left:1.4rem;text-indent:-1.4rem;margin-bottom:.7rem;}
-  .refs li i{color:var(--ink)}
-  .tags{max-width:var(--measure);margin:3.4rem auto 0;padding:0 1.5rem;display:flex;flex-wrap:wrap;gap:.55rem;}
-  .tags .t{font-family:var(--sans);font-size:.72rem;letter-spacing:.04em;color:var(--ink-soft);background:var(--bg-raise);border:1px solid var(--line-soft);border-radius:100px;padding:.35rem .9rem;}
-  footer.site{max-width:60rem;margin:4rem auto 0;padding:2.2rem 1.5rem 3.2rem;border-top:1px solid var(--line-soft);text-align:center;font-family:var(--sans);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);}
-  footer.site .star{color:var(--rose)}
-  :target{scroll-margin-top:2rem}
-  a:focus-visible{outline:2px solid var(--rose);outline-offset:3px;border-radius:2px}
-  @media (max-width:640px){body{font-size:1.08rem}header.hero{padding-top:4rem}.dropcap::first-letter{font-size:3.4rem}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spectre Rose — Griffith did something wrong</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#07040a; --bg-card:#0e0812;
+      --rose:#d4909a; --rose-light:#f0c4cc; --rose-dark:#7a3d4a; --rose-deep:#3d1520;
+      --cream:#ede4e6; --muted:#6e5860; --border:rgba(212,144,154,0.18);
+      --gold:#c2a14e; --gold-d:#5a4010;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--bg); color:var(--cream); font-family:'Crimson Text',serif; font-size:19px; line-height:1.88; overflow-x:hidden; }
+    body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E"); pointer-events:none; z-index:9998; mix-blend-mode:overlay; opacity:0.55; }
+
+    nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; justify-content:space-between; align-items:center; padding:1.4rem 4rem; background:linear-gradient(to bottom,rgba(7,4,10,0.97) 0%,transparent 100%); }
+    .nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:300; letter-spacing:.18em; color:var(--rose-light); text-decoration:none; }
+    .nav-logo span { color:var(--rose); font-style:italic; }
+    .nav-back { font-family:'DM Mono',monospace; font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .3s; }
+    .nav-back:hover { color:var(--rose-light); }
+
+    .art-hero { padding:12rem 4rem 5rem; max-width:820px; margin:0 auto; text-align:center; }
+    .a-eyebrow { font-family:'DM Mono',monospace; font-size:.58rem; letter-spacing:.4em; text-transform:uppercase; color:var(--rose); display:block; margin-bottom:2rem; }
+    .a-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2.4rem,6vw,4.2rem); font-weight:300; line-height:1.06; color:var(--cream); font-style:italic; }
+    .a-subtitle { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-style:italic; font-weight:300; color:var(--muted); margin-top:1.4rem; line-height:1.65; }
+    .a-meta { display:flex; justify-content:center; align-items:center; gap:1.2rem; margin-top:2.8rem; font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.2em; text-transform:uppercase; color:var(--rose-dark); }
+    .a-meta .sep { color:rgba(212,144,154,.25); }
+    .orn-line { text-align:center; color:var(--rose-dark); font-size:.8rem; letter-spacing:1.4rem; margin:3.5rem 0; }
+
+    .cover-img { width:100%; max-width:820px; margin:0 auto 4rem; aspect-ratio:16/7; overflow:hidden; border:1px solid rgba(212,144,154,.12); background:linear-gradient(135deg,#150a0f,#0a0510); display:flex; align-items:center; justify-content:center; }
+    .cover-img img { width:100%; height:100%; object-fit:cover; filter:brightness(.82) saturate(.85); }
+    .cover-img-glyph { font-family:'Cormorant Garamond',serif; font-size:5rem; color:rgba(212,144,154,.07); font-style:italic; font-weight:300; }
+    .cover-img-label { font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.25em; text-transform:uppercase; color:rgba(212,144,154,.2); }
+
+    .art-body { max-width:680px; margin:0 auto; padding:0 2rem 4rem; }
+
+    /* Lettrine premier paragraphe */
+    .art-body > p:first-of-type::first-letter { font-family:'Cormorant Garamond',serif; font-size:4.5rem; font-weight:300; float:left; line-height:.82; margin-right:.12em; margin-top:.08em; color:var(--rose-light); }
+
+    h2 { font-family:'Cormorant Garamond',serif; font-size:1.9rem; font-weight:400; line-height:1.15; color:var(--cream); margin:4.5rem 0 1.4rem; position:relative; padding-left:1.4rem; }
+    h2::before { content:''; position:absolute; left:0; top:.3em; width:3px; height:1.1em; background:linear-gradient(to bottom,var(--rose),var(--rose-dark)); }
+    .h2-num { display:block; font-family:'DM Mono',monospace; font-size:.52rem; font-weight:400; letter-spacing:.28em; text-transform:uppercase; color:var(--rose); margin-bottom:.6rem; }
+
+    p { color:#c9b8bc; margin-bottom:1.5rem; }
+    em { color:var(--rose-light); font-style:italic; }
+    strong { color:var(--cream); font-weight:600; }
+    .work { font-style:italic; color:var(--cream); }
+    .jp { font-style:normal; color:var(--rose-light); }
+
+    blockquote { margin:3.5rem 0; padding:2rem 2.5rem; border:1px solid rgba(212,144,154,.2); background:var(--bg-card); position:relative; font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-style:italic; font-weight:300; color:var(--rose-light); line-height:1.55; text-align:center; }
+    blockquote::before { content:'✦'; position:absolute; top:-1px; left:50%; transform:translateX(-50%); background:var(--bg); padding:0 .8rem; color:var(--rose-dark); font-style:normal; font-size:.8rem; }
+    blockquote p { color:var(--rose-light); margin:0; font-size:inherit; font-style:inherit; font-family:inherit; }
+
+    /* Encadré dossier (remplace .dossier) */
+    .dossier { border-left:2px solid var(--gold-d); padding:1rem 1.5rem; background:rgba(194,161,78,.04); margin:2.4rem 0; }
+    .dossier-label { font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:.7rem; }
+    .dossier p { font-size:.9rem; color:var(--muted); font-style:italic; margin:0; line-height:1.75; }
+    .dossier p + p { margin-top:.8rem; }
+
+    /* Note inline */
+    .note { border-left:2px solid var(--rose-dark); padding:1rem 1.5rem; background:rgba(212,144,154,.04); margin:2.4rem 0; font-style:italic; font-size:.92rem; color:var(--muted); }
+    .note strong { color:var(--rose-light); font-style:normal; }
+
+    /* Notes de bas de page — exposant */
+    a.fn { font-family:'DM Mono',monospace; font-size:.52rem; vertical-align:super; line-height:0; color:var(--rose); text-decoration:none; padding:0 .08em; }
+    a.fn::before { content:'['; }
+    a.fn::after { content:']'; }
+    a.fn:hover { color:var(--rose-light); }
+    a.xref { color:var(--rose); text-decoration:none; border-bottom:1px solid var(--border); }
+    a.xref:hover { border-color:var(--rose); }
+
+    /* Section notes */
+    .footnotes { margin-top:4.5rem; padding-top:3rem; border-top:1px solid var(--border); }
+    .footnotes-title { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--rose); margin-bottom:2rem; display:block; }
+    .fn-list { list-style:none; counter-reset:fn; }
+    .fn-list li { counter-increment:fn; position:relative; padding-left:2.2rem; font-size:.87rem; line-height:1.7; color:var(--muted); margin-bottom:1rem; }
+    .fn-list li::before { content:counter(fn); position:absolute; left:0; top:.05em; font-family:'DM Mono',monospace; font-size:.5rem; color:var(--rose-dark); }
+    .fn-list li em { color:#b0a0b0; }
+    .fn-list a.back { color:var(--muted); text-decoration:none; margin-left:.3rem; }
+    .fn-list a.back:hover { color:var(--rose); }
+
+    /* Références */
+    .refs { margin-top:3rem; padding-top:2rem; border-top:1px solid rgba(212,144,154,.1); }
+    .refs-title { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--rose); margin-bottom:1.5rem; display:block; }
+    .refs-subtitle { font-family:'DM Mono',monospace; font-size:.48rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin:1.6rem 0 .7rem; display:block; }
+    .refs ul { list-style:none; }
+    .refs li { font-size:.87rem; line-height:1.6; color:var(--muted); padding-left:1.4rem; text-indent:-1.4rem; margin-bottom:.7rem; }
+    .refs li em { color:#b0a0b0; }
+
+    .art-footer { max-width:680px; margin:0 auto; padding:3rem 2rem 6rem; border-top:1px solid var(--border); display:flex; flex-wrap:wrap; align-items:center; gap:1rem; }
+    .tag { border:1px solid var(--rose-dark); padding:.25rem .8rem; font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.16em; text-transform:uppercase; color:var(--rose); }
+    footer { border-top:1px solid var(--border); padding:2.5rem 4rem; max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
+    .f-logo { font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:300; letter-spacing:.15em; color:var(--rose-light); }
+    .f-copy { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.18em; color:var(--muted); }
+
+    :target { scroll-margin-top:2rem; }
+    a:focus-visible { outline:1px solid var(--rose-light); outline-offset:4px; }
+
+    .rv { opacity:0; transform:translateY(22px); transition:opacity .8s ease,transform .8s ease; }
+    .rv.on { opacity:1; transform:none; }
+
+    @media(max-width:760px) {
+      nav { padding:1.2rem 1.5rem; }
+      .art-hero, .art-body, .art-footer { padding-left:1.5rem; padding-right:1.5rem; }
+      .art-hero { padding-top:9rem; }
+      footer { flex-direction:column; gap:1rem; text-align:center; padding:2rem; }
+    }
+  </style>
 </head>
 <body>
-<div class="wrap">
 
-  <div class="topbar">
-    <a class="brand" href="https://spectrerose.github.io/">Spectre Rose ✦</a>
-    <a href="https://spectrerose.github.io/">← Retour à l'accueil</a>
+  <nav>
+    <a href="index.html" class="nav-logo">Spectre <span>Rose</span></a>
+    <a href="index.html" class="nav-back">← Retour aux théories</a>
+  </nav>
+
+  <div class="art-hero">
+    <span class="a-eyebrow rv">✦ Essai &nbsp;·&nbsp; Berserk, Devilman, Psycho-Pass, Kingdom &nbsp;·&nbsp; Éthique de lecture</span>
+    <h1 class="a-title rv">Griffith did something wrong</h1>
+    <p class="a-subtitle rv">Ce que le meme demande d'oublier — et pourquoi il n'est plus possible, aujourd'hui, de continuer à le faire.</p>
+    <div class="a-meta rv">
+      <span>Berserk · Kingdom · Death Note · Shingeki no Kyojin</span>
+      <span class="sep">·</span>
+      <span>~30 min</span>
+    </div>
   </div>
 
-  <header class="hero">
-    <div class="eyebrow">
-      <span>✦ Essai</span><span class="sep">·</span>
-      <span>Berserk, Devilman, Psycho-Pass, Kingdom</span><span class="sep">·</span>
-      <span>Éthique de lecture</span>
-    </div>
-    <h1>Griffith did something wrong</h1>
-    <p class="dek">Ce que le meme demande d'oublier — et pourquoi il n'est plus possible, aujourd'hui, de continuer à le faire.</p>
-    <div class="runline">
-      <span>Berserk, Devilman, Psycho-Pass, Kingdom, Death Note, Shingeki no Kyojin</span>
-      <span class="dot">·</span><span>Enquête sur un meme, sa généalogie, et six personnages qui parlent trop bien</span>
-      <span class="dot">·</span><span>~30 min</span>
-    </div>
-    <div class="hero-rule"></div>
-  </header>
+  <div class="cover-img rv">
+    <span class="cover-img-glyph">✦</span>
+    <span class="cover-img-label">[ Ajouter une image ]</span>
+  </div>
 
-  <article>
+  <article class="art-body">
 
-    <p class="standfirst dropcap">Il faut commencer par nommer une chose qu'on préfère ne pas nommer. Depuis dix ans circule sur les forums anglophones une phrase qui a la brutalité des slogans — <em>Griffith did nothing wrong</em>. Elle apparaît en tag Reddit, en légende Twitter, en bannière Facebook, en légende TikTok. Elle est portée par des lecteurs de <span class="work">Berserk</span> qui trouvent que rien de ce que le personnage a fait — la trahison de la Bande du Faucon, le viol de Casca sous les yeux de Guts, la construction de Falconia sur les cendres d'un monde précipité dans l'apocalypse — ne suffit à disqualifier le personnage. Le meme est banal. Il circule sans qu'on y prête attention. On le prend pour ce qu'il a l'air d'être — une provocation adolescente, une plaisanterie de fan.</p>
+    <p class="rv">Il faut commencer par nommer une chose qu'on préfère ne pas nommer. Depuis dix ans circule sur les forums anglophones une phrase qui a la brutalité des slogans — <em>Griffith did nothing wrong</em>. Elle apparaît en tag Reddit, en légende Twitter, en bannière Facebook, en légende TikTok. Elle est portée par des lecteurs de <span class="work">Berserk</span> qui trouvent que rien de ce que le personnage a fait — la trahison de la Bande du Faucon, le viol de Casca sous les yeux de Guts, la construction de Falconia sur les cendres d'un monde précipité dans l'apocalypse — ne suffit à disqualifier le personnage. Le meme est banal. Il circule sans qu'on y prête attention. On le prend pour ce qu'il a l'air d'être — une provocation adolescente, une plaisanterie de fan.</p>
 
-    <p>Le site <em>Know Your Meme</em>, base de données de référence sur les memes internet, documente pourtant l'origine de la phrase avec une précision qui gêne. On y lit, littéralement, ceci : <em>« la phrase Griffith did nothing wrong est apparue comme un offshoot du meme Hitler did nothing wrong »</em>.<a class="fn" href="#fn1" id="r1">1</a> Le meme n'est pas né dans le vide. Il est un dérivé documenté d'une provocation antérieure — celle qui, sur 4chan à partir du milieu des années 2000, consistait à défendre Hitler comme geste transgressif, à mi-chemin entre l'ironie édgy et l'adhésion. Les premiers usages autour de Griffith apparaissent sur 4chan /a/ dès 2008, avec des formules comme <em>« Have you forgiven Griffith today ? »</em>. Le meme se stabilise vers 2015-2016, avec l'apparition de pages Facebook dédiées.<a class="fn" href="#fn2" id="r2">2</a></p>
+    <p class="rv">Le site <em>Know Your Meme</em> documente pourtant l'origine de la phrase avec une précision qui gêne. On y lit, littéralement, ceci : <em>« la phrase Griffith did nothing wrong est apparue comme un offshoot du meme Hitler did nothing wrong »</em>.<a class="fn" href="#fn1" id="r1">1</a> Le meme n'est pas né dans le vide. Il est un dérivé documenté d'une provocation antérieure — celle qui, sur 4chan à partir du milieu des années 2000, consistait à défendre Hitler comme geste transgressif, à mi-chemin entre l'ironie édgy et l'adhésion. Les premiers usages autour de Griffith apparaissent sur 4chan /a/ dès 2008, avec des formules comme <em>« Have you forgiven Griffith today ? »</em>. Le meme se stabilise vers 2015-2016, avec l'apparition de pages Facebook dédiées.<a class="fn" href="#fn2" id="r2">2</a></p>
 
-    <p>Cette généalogie n'est pas anecdotique. Elle nous dit quelque chose d'exact sur la culture qui a choisi Griffith comme figure. Le personnage n'a pas été retenu au hasard parmi mille antagonistes possibles. Il a été retenu parce qu'il coche exactement les cases que la culture 4chan de la fin des années 2000 trouvait provocantes à défendre. Un homme charismatique qui viole une femme et sacrifie ses compagnons pour son ambition — la défense de ce personnage rejouait <em>en petit</em> le geste de la défense de figures historiques indéfendables. Ce n'est pas malgré le viol de Casca que le meme fonctionne. C'est à cause de lui. Défendre Griffith, sur 4chan de 2008, c'était défendre le viol <em>en tant que</em> provocation. Il faut avoir le courage de reconnaître cela, parce que l'inverse — traiter le meme comme une plaisanterie neutre — participe de sa banalisation.</p>
+    <p class="rv">Cette généalogie n'est pas anecdotique. Elle nous dit quelque chose d'exact sur la culture qui a choisi Griffith comme figure. Le personnage n'a pas été retenu au hasard parmi mille antagonistes possibles. Il a été retenu parce qu'il coche exactement les cases que la culture 4chan de la fin des années 2000 trouvait provocantes à défendre. Un homme charismatique qui viole une femme et sacrifie ses compagnons pour son ambition — la défense de ce personnage rejouait <em>en petit</em> le geste de la défense de figures historiques indéfendables. Ce n'est pas malgré le viol de Casca que le meme fonctionne. C'est à cause de lui.</p>
 
-    <p>Cet essai n'est pas une charge contre les lecteurs qui aujourd'hui postent le meme sans en connaître la matrice. Ils sont, sans doute, la majorité. Mais l'essai part du principe qu'un meme n'est pas séparable de son origine, et qu'un personnage n'est pas séparable des usages qui le récupèrent. <span class="work">Berserk</span> est une grande œuvre. Griffith est un grand personnage. Je voudrais, dans les pages qui suivent, penser sérieusement pourquoi ces deux affirmations sont vraies, et pourquoi le meme qui prétend défendre le second trahit à la fois le premier et la lecture qu'il mériterait. Le geste que je voudrais faire ici, en un mot, est de <em>reprendre Griffith au meme</em> — de le rendre à une critique qui refuse à la fois de le condamner par principe et de le défendre par provocation.</p>
+    <p class="rv">Cet essai n'est pas une charge contre les lecteurs qui aujourd'hui postent le meme sans en connaître la matrice. Mais l'essai part du principe qu'un meme n'est pas séparable de son origine, et qu'un personnage n'est pas séparable des usages qui le récupèrent. <span class="work">Berserk</span> est une grande œuvre. Griffith est un grand personnage. Je voudrais penser sérieusement pourquoi ces deux affirmations sont vraies, et pourquoi le meme qui prétend défendre le second trahit à la fois le premier et la lecture qu'il mériterait. Le geste que je voudrais faire ici est de <em>reprendre Griffith au meme</em> — de le rendre à une critique qui refuse à la fois de le condamner par principe et de le défendre par provocation.</p>
 
-    <p>Pour faire ce geste, il faut sortir de <span class="work">Berserk</span>. Il faut reconnaître que Griffith n'est pas seul — qu'il appartient à une famille de personnages qui, dans la fiction japonaise depuis un demi-siècle, incarnent une même figure : le grand orateur du mal, celui qui construit une idéologie cohérente et qui la déploie avec assez de talent pour séduire même ceux qu'il devrait horrifier. Ryō Asuka dans <span class="work">Devilman</span> (1972), Shōgo Makishima dans <span class="work">Psycho-Pass</span> (2012), Kanki dans <span class="work">Kingdom</span> (2006), Light Yagami dans <span class="work">Death Note</span> (2003), Eren Yaeger dans <span class="work">Shingeki no Kyojin</span> (2009). Ces personnages ne sont pas interchangeables — chacun a sa logique propre, sa blessure propre, son idéologie propre. Mais ils forment ensemble un paysage. Et c'est dans ce paysage qu'il faut lire Griffith, si l'on veut le lire au-delà du meme.</p>
+    <p class="rv">Pour faire ce geste, il faut sortir de <span class="work">Berserk</span>. Il faut reconnaître que Griffith appartient à une famille de personnages qui, dans la fiction japonaise depuis un demi-siècle, incarnent une même figure : le grand orateur du mal, celui qui construit une idéologie cohérente et qui la déploie avec assez de talent pour séduire même ceux qu'il devrait horrifier. Ryō Asuka dans <span class="work">Devilman</span> (1972), Shōgo Makishima dans <span class="work">Psycho-Pass</span> (2012), Kanki dans <span class="work">Kingdom</span> (2006), Light Yagami dans <span class="work">Death Note</span> (2003), Eren Yaeger dans <span class="work">Shingeki no Kyojin</span> (2009). Ces personnages forment ensemble un paysage. Et c'est dans ce paysage qu'il faut lire Griffith.</p>
 
-    <div class="seam"><span>✦</span></div>
+    <div class="orn-line rv">✦ &nbsp; ✦ &nbsp; ✦</div>
 
-    <h2><span class="num">I — La famille</span>Les grands orateurs du mal</h2>
+    <h2 class="rv"><span class="h2-num">I — La famille</span>Les grands orateurs du mal</h2>
 
-    <p>La fiction japonaise construit depuis un demi-siècle une famille de personnages qui séduisent par le verbe. Ce n'est pas la violence qui les distingue — la violence est partout dans la fiction populaire. Ce n'est pas non plus le charisme physique, qui existe chez les héros comme chez les antagonistes. C'est la <em>capacité à construire une idéologie cohérente et à la porter avec assez de talent oratoire pour convaincre</em>, même provisoirement, le lecteur qui devrait résister. Ces personnages ne se contentent pas d'agir. Ils <em>expliquent</em>. Ils citent. Ils raisonnent. Ils font entendre leur logique.</p>
+    <p class="rv">La fiction japonaise construit depuis un demi-siècle une famille de personnages qui séduisent par le verbe. Ce n'est pas la violence qui les distingue — la violence est partout dans la fiction populaire. Ce n'est pas non plus le charisme physique. C'est la <em>capacité à construire une idéologie cohérente et à la porter avec assez de talent oratoire pour convaincre</em>, même provisoirement, le lecteur qui devrait résister.</p>
 
-    <p><strong>Griffith</strong> est probablement le plus étudié d'entre eux. Son rêve de royaume, formulé dès les premiers volumes de <span class="work">Berserk</span>, n'est pas une pulsion mégalomane — c'est une position philosophique qu'il défend, avec précision, dans les dialogues où il l'articule. Kentaro Miura fait dire à Griffith, très tôt dans l'Âge d'Or, ce qu'un ami est pour lui : <em>quelqu'un qui aurait son propre rêve, qui ne dépendrait pas du mien, et qui pourrait se tenir à côté de moi comme un égal</em>. À l'instant où Griffith prononce cette phrase à une fontaine, Guts ne comprend pas qu'elle le désigne comme n'étant pas encore un ami — parce que Guts sert le rêve de Griffith au lieu de porter le sien. Le dialogue est une petite leçon d'éthique aristocratique de l'amitié, tirée peut-être de <span class="work">L'Éthique à Nicomaque</span> sans que Miura le nomme. Griffith parle bien. Il pense bien. Il construit avec ses mots l'exigence même à laquelle il demande à son entourage de se hisser.</p>
+    <p class="rv"><strong>Griffith</strong> est probablement le plus étudié d'entre eux. Son rêve de royaume, formulé dès les premiers volumes de <span class="work">Berserk</span>, n'est pas une pulsion mégalomane — c'est une position philosophique qu'il défend avec précision. Kentaro Miura lui fait dire, très tôt dans l'Âge d'Or, ce qu'un ami est pour lui : <em>quelqu'un qui aurait son propre rêve, qui ne dépendrait pas du mien, et qui pourrait se tenir à côté de moi comme un égal</em>. À l'instant où Griffith prononce cette phrase, Guts ne comprend pas qu'elle le désigne comme n'étant pas encore un ami — parce que Guts sert le rêve de Griffith au lieu de porter le sien. Le dialogue est une petite leçon d'éthique aristocratique de l'amitié. Griffith parle bien. Il pense bien.</p>
 
-    <p><strong>Ryō Asuka</strong>, dans <span class="work">Devilman</span> de Gō Nagai (1972) puis dans la relecture <span class="work">Devilman Crybaby</span> de Masaaki Yuasa (2018), pousse cette structure à sa limite. Ryō, en apparence, est aux antipodes de Griffith. Il n'est pas humain — il est Satan, ange déchu réincarné en forme humaine, qui a manipulé son ami d'enfance Akira Fudo pour le transformer en Devilman et déclencher, par une révélation télévisée de l'existence des démons, la panique qui pousse l'humanité à se génocider elle-même. Sa thèse philosophique est le nihilisme total : <em>l'amour n'existe pas, donc la tristesse n'existe pas</em>. Il le dit dès les premières lignes de la série, comme un programme. Ryō est le seul survivant, à la fin, sur une Terre morte — où il découvre, trop tard, qu'il aimait Akira depuis toujours sans le savoir.<a class="fn" href="#fn3" id="r3">3</a></p>
+    <p class="rv"><strong>Ryō Asuka</strong>, dans <span class="work">Devilman</span> de Gō Nagai (1972) puis dans <span class="work">Devilman Crybaby</span> de Masaaki Yuasa (2018), pousse cette structure à sa limite. Ryō n'est pas humain — il est Satan, ange déchu réincarné, qui a manipulé son ami d'enfance Akira Fudo pour déclencher la panique qui pousse l'humanité à se génocider elle-même. Sa thèse philosophique est le nihilisme total : <em>l'amour n'existe pas, donc la tristesse n'existe pas</em>. Il est le seul survivant, à la fin, sur une Terre morte — où il découvre, trop tard, qu'il aimait Akira depuis toujours.<a class="fn" href="#fn3" id="r3">3</a></p>
 
-    <p>La parenté avec Griffith est saisissante. Non pas dans l'idéologie — Griffith n'est pas nihiliste, Griffith rêve d'un royaume, Griffith croit à quelque chose. Mais dans la <em>structure du désir</em>. Les deux personnages sont dominés, à leur insu, par une obsession affective pour un autre homme — Guts pour Griffith, Akira pour Ryō — qu'ils ne savent pas nommer comme amour. Cette ignorance affective structure toutes leurs décisions politiques. Griffith couche avec la princesse Charlotte et pense à Guts pendant l'acte.<a class="fn" href="#fn4" id="r4">4</a> Ryō déclenche l'apocalypse humaine et ne comprend, qu'à la toute fin, qu'il l'a fait pour Akira. Chez les deux, l'idéologie articulée qui prétend justifier la violence — le rêve du royaume, le nihilisme cosmique — est en réalité le masque d'un attachement qu'ils ne savent pas dire. Et cet attachement, quand il apparaît enfin, ne rachète rien. Il rend seulement la violence plus lisible, et plus terrible.</p>
+    <p class="rv">La parenté avec Griffith est saisissante. Non pas dans l'idéologie, mais dans la <em>structure du désir</em>. Les deux personnages sont dominés, à leur insu, par une obsession affective pour un autre homme — Guts pour Griffith, Akira pour Ryō — qu'ils ne savent pas nommer comme amour. Griffith couche avec la princesse Charlotte et pense à Guts pendant l'acte.<a class="fn" href="#fn4" id="r4">4</a> Ryō déclenche l'apocalypse humaine et ne comprend qu'à la toute fin qu'il l'a fait pour Akira. Chez les deux, l'idéologie articulée est en réalité le masque d'un attachement qu'ils ne savent pas dire.</p>
 
-    <p><strong>Shōgo Makishima</strong>, dans <span class="work">Psycho-Pass</span> de Gen Urobuchi (2012), est peut-être la figure la plus dérangeante de la famille — parce qu'il est explicitement présenté comme <em>libérateur</em>. Makishima vit dans un Japon proche futur où le système Sibyl mesure en temps réel le potentiel criminel de chaque citoyen par un scanner cérébral. Ceux dont le coefficient dépasse un seuil sont éliminés ou incarcérés, préventivement, sans jugement. Le système fonctionne. Il a supprimé la criminalité. Il a aussi supprimé, dit Makishima, la capacité humaine au libre choix — parce que dans un monde où toute déviation est détectée et neutralisée avant de se manifester, aucun humain n'a plus l'occasion réelle de <em>vouloir</em>. Makishima orchestre des meurtres, incite au chaos, publie des manifestes — non par nihilisme, mais pour prouver que les humains sont encore capables de choix, y compris le choix du mal. Sa singularité biologique — il est un <em>Criminally Asymptomatic</em>, dont le système Sibyl ne peut pas mesurer le coefficient — fait de lui le seul point aveugle du régime.<a class="fn" href="#fn5" id="r5">5</a></p>
+    <p class="rv"><strong>Shōgo Makishima</strong>, dans <span class="work">Psycho-Pass</span> de Gen Urobuchi (2012), est peut-être la figure la plus dérangeante de la famille — parce qu'il est explicitement présenté comme <em>libérateur</em>. Makishima vit dans un Japon où le système Sibyl mesure en temps réel le potentiel criminel de chaque citoyen. Le système fonctionne. Il a supprimé la criminalité. Il a aussi supprimé, dit Makishima, la capacité humaine au libre choix. Makishima cite Pascal, Marx, Nietzsche. Il donne à son ennemie policière, Akane Tsunemori, des livres à lire pour comprendre ce qu'elle défend. Il incarne ce que la fiction philosophique fait de plus difficile à tenir : un antagoniste dont on ne peut pas dire qu'il a tort.<a class="fn" href="#fn5" id="r5">5</a></p>
 
-    <p>Makishima cite. Il cite Pascal, il cite Marx, il cite Nietzsche. Il donne à son ennemie policière, Akane Tsunemori, des livres à lire pour comprendre ce qu'elle défend en défendant Sibyl. Il séduit son adversaire Kōgami — un traqueur du système — par la seule qualité de sa pensée, au point que Kōgami finit par admettre qu'il ne poursuit plus Makishima pour la justice mais pour l'affrontement intellectuel. Makishima incarne ce que la fiction philosophique fait de plus difficile à tenir : un antagoniste dont on ne peut pas dire qu'il a tort. Le système Sibyl est un cauchemar. Sa critique est juste. Ses méthodes sont abjectes. Et la fiction refuse de trancher — parce que trancher aurait été mentir.</p>
-
-    <p>Trois personnages, trois idéologies distinctes. Le rêve aristocratique du royaume (Griffith), le nihilisme cosmique (Ryō), le libéralisme métaphysique de la volonté (Makishima). Ce qui les unit n'est pas leur pensée mais leur <em>manière</em> de penser — cette capacité à construire un discours qui tient debout, à le porter avec assez de lucidité pour qu'on ne puisse pas s'en débarrasser d'un revers de main, à faire entendre au lecteur, brièvement, que peut-être, sous un certain angle, l'antagoniste a raison. C'est cela, la famille des grands orateurs. Et c'est cela qui rend leur défense si tentante, et si piégée.</p>
-
-    <blockquote class="pull">
+    <blockquote class="rv">
       <p>Ce qui rend ces personnages fascinants n'est pas qu'ils font le mal. C'est qu'ils l'expliquent — et qu'ils l'expliquent bien.</p>
     </blockquote>
 
-    <h2><span class="num">II — Kanki, ou la lucidité du bourreau</span>La quatrième figure</h2>
+    <h2 class="rv"><span class="h2-num">II — Kanki, ou la lucidité du bourreau</span>La quatrième figure</h2>
 
-    <p>Il faut ajouter à cette famille une figure qui appartient à une autre tradition — non pas la fiction philosophique urbaine, mais le manga historique. <strong>Kanki</strong>, dans <span class="work">Kingdom</span> de Yasuhisa Hara (2006, en cours), est un général du royaume de Qin dont l'existence historique est attestée par une seule ligne du <span class="work">Shiji</span> de Sima Qian. Hara, comme il l'a lui-même formulé dans une interview au <em>Nikkei</em>, écrit <span class="work">Kingdom</span> dans la contrainte de la <em>shijitsu barrier</em> — la barrière du fait historique. La fin est connue, Qin unifie la Chine en 221 avant notre ère. Les blancs entre les lignes du <span class="work">Shiji</span> sont comblés par la fiction. Et dans ces blancs, Kanki devient un personnage entier.<a class="fn" href="#fn6" id="r6">6</a></p>
+    <p class="rv"><strong>Kanki</strong>, dans <span class="work">Kingdom</span> de Yasuhisa Hara (2006, en cours), est un général du royaume de Qin dont l'existence historique est attestée par une seule ligne du <span class="work">Shiji</span> de Sima Qian. Hara, comme il l'a lui-même formulé dans une interview au <em>Nikkei</em>, écrit <span class="work">Kingdom</span> dans la contrainte de la <em>shijitsu barrier</em> — la barrière du fait historique.<a class="fn" href="#fn6" id="r6">6</a></p>
 
-    <p>Le passé de Kanki, dévoilé tardivement dans le manga, est plus terrible et plus précis que la lecture rapide ne le suggère. Kanki, à l'âge de treize ans, mourant, est recueilli par un clan de bandits qui — c'est le détail crucial — est composé exclusivement d'enfants et de très jeunes adultes. Le clan Saki (咲一族). Sa leader, Shio (偲央), est une jeune femme d'une douceur rare, dont la gentillesse structurera toute la vie de Kanki. Un autre enfant du clan porte un sac sur la tête, parce qu'un noble lui a brûlé le visage pour son plaisir. Le clan est composé de rescapés de la cruauté des puissants, et il vit dans une économie de la revanche silencieuse.<a class="fn" href="#fn7" id="r7">7</a></p>
+    <p class="rv">Le passé de Kanki, dévoilé tardivement dans le manga, est plus terrible et plus précis que la lecture rapide ne le suggère. À treize ans, mourant, il est recueilli par un clan composé exclusivement d'enfants — le clan Saki (咲一族). Sa leader, Shio (偲央), est une jeune femme d'une douceur rare dont la gentillesse structurera toute la vie de Kanki. Un autre enfant du clan porte un sac sur la tête, parce qu'un noble lui a brûlé le visage pour son plaisir.<a class="fn" href="#fn7" id="r7">7</a></p>
 
-    <p>Ce qui déclenche la trajectoire de Kanki est un événement précis. Pendant son absence, un seigneur féodal fait enlever Shio. Elle est violée à plusieurs reprises, ses mains et ses pieds sont coupés, puis elle est tuée. Kanki, à son retour, lève une armée composée du clan et d'autres brigands, attaque le château du seigneur, le tue — et fait décapiter <em>tous les habitants du château sans exception</em>. C'est cet acte fondateur qui lui vaut son surnom historique, <em>Kanki le Coupeur de Têtes</em> (<span class="jp">首斬り桓騎</span>). Et c'est de ce moment que naît sa vision du monde, qu'il articulera dans les décennies suivantes de sa carrière militaire — une vision qu'il faut lire précisément parce qu'elle est plus construite qu'il n'y paraît.</p>
+    <p class="rv">Ce qui déclenche la trajectoire de Kanki est un événement précis. Pendant son absence, un seigneur féodal fait enlever Shio. Elle est violée, ses mains et ses pieds sont coupés, puis elle est tuée. Kanki fait décapiter <em>tous les habitants du château sans exception</em>. C'est cet acte fondateur qui lui vaut son surnom, <em>Kanki le Coupeur de Têtes</em> (<span class="jp">首斬り桓騎</span>).</p>
 
-    <p>Kanki n'a pas seulement haine des nobles. Il a, dans un discours qui structure toute sa relation à ses hommes et à Shin, articulé une haine plus large et plus radicale — celle de <strong>l'entre-deux</strong>. Ceux qui ne sont ni bourreaux ni victimes, ceux qui voient et qui ne font rien, ceux qui laissent faire parce que ce n'est pas eux qu'on massacre. Dans son système moral, la personne ordinaire qui reste passive quand on brûle le visage d'un enfant est aussi coupable que le noble qui l'a brûlé. C'est cette conviction qui explique — sans les excuser — les massacres de civils qu'il ordonnera plus tard, notamment lors de l'arc de Gyō : Kanki ne fait pas de différence entre l'agresseur direct et le complice passif. Dans sa vision, personne n'est innocent, parce que personne n'a rien fait pour arrêter la violence quand elle a frappé Shio. Il commet des atrocités <em>en vertu d'une théorie de la responsabilité collective</em> qui n'est pas défendable, mais qui est cohérente, et qui a des cousins bien réels dans l'histoire des idéologies révolutionnaires.<a class="fn" href="#fn8" id="r8">8</a></p>
+    <p class="rv">Kanki a articulé une haine radicale — celle de <strong>l'entre-deux</strong>. Ceux qui voient et ne font rien, ceux qui laissent faire parce que ce n'est pas eux qu'on massacre. Dans son système moral, la personne ordinaire qui reste passive quand on brûle le visage d'un enfant est aussi coupable que le noble qui l'a brûlé. Il commet des atrocités <em>en vertu d'une théorie de la responsabilité collective</em> qui n'est pas défendable, mais qui est cohérente.<a class="fn" href="#fn8" id="r8">8</a></p>
 
-    <p>C'est ce qui fait de Kanki une figure de la famille des grands orateurs, à part entière. Il ne s'exprime pas dans les mêmes registres que Griffith ou Makishima — pas de citations philosophiques, pas de plaidoiries élaborées. Sa parole est plus rare, plus tranchante, presque paysanne. Mais elle porte une théorie du monde qu'il n'a jamais cherché à mystifier. Kanki sait qu'il est devenu ce qui l'a brisé. Il ne se raconte pas d'histoire là-dessus. Il ne demande pas d'indulgence. Il agit selon sa lecture du monde, avec la lucidité de quelqu'un qui ne s'attend à aucune rédemption. Il n'y a pas dans la fiction populaire beaucoup de personnages qui refusent aussi radicalement l'auto-mystification. Et c'est pour cela — pour la fidélité absolue à Shio qui structure tout, pour la lucidité politique du discours sur l'entre-deux, pour le refus de se mentir — qu'il peut légitimement être aimé, à condition qu'on ne l'aime pas <em>en oubliant les villages</em>.</p>
+    <p class="rv">Kanki sait qu'il est devenu ce qui l'a brisé. Il ne se raconte pas d'histoire là-dessus. Il n'y a pas dans la fiction populaire beaucoup de personnages qui refusent aussi radicalement l'auto-mystification. Et c'est pour cela — pour la fidélité absolue à Shio, pour la lucidité du discours sur l'entre-deux, pour le refus de se mentir — qu'il peut légitimement être aimé, à condition qu'on ne l'aime pas <em>en oubliant les villages</em>.</p>
 
-    <h2><span class="num">III — Ce que ça coûte</span>Casca, Power, et l'économie de l'effacement</h2>
+    <h2 class="rv"><span class="h2-num">III — Ce que ça coûte</span>Casca, Power, et l'économie de l'effacement</h2>
 
-    <p>Il faut, maintenant, compter ce que coûte cette famille de personnages. Parce qu'elle coûte, et le coût est distribué de manière prévisible. Il est presque toujours porté par les mêmes — par ceux et surtout par celles dont le récit refuse de faire voir le visage aussi longtemps qu'il fait voir le visage de l'antagoniste.</p>
+    <p class="rv">Il faut, maintenant, compter ce que coûte cette famille de personnages. Parce qu'elle coûte, et le coût est distribué de manière prévisible. Il est presque toujours porté par ceux et surtout par celles dont le récit refuse de faire voir le visage aussi longtemps qu'il fait voir le visage de l'antagoniste.</p>
 
-    <p>Casca, dans <span class="work">Berserk</span>, est enfermée pendant plus de vingt volumes dans une démence protectrice que le viol de Femto a produite. Elle disparaît, comme sujet, du récit qui aurait dû être aussi le sien — celui d'une jeune commandante en second de la Bande du Faucon, formée dans l'enfance à la guerre, aimée puis brisée par les hommes autour d'elle. Elle réapparaît, dans les arcs tardifs, quand Schierke et Farnese entrent dans son rêve pour tenter de la ramener à la conscience. Miura, mort en 2021, n'a pas eu le temps d'achever ce retour. Vingt ans de silence narratif pour que Guts puisse porter la rage qui structure toute l'œuvre. Vingt ans où le personnage aimé par Guts n'a pas eu la parole, pendant que l'homme qui l'a violée bâtissait sa cité.</p>
+    <p class="rv">Casca, dans <span class="work">Berserk</span>, est enfermée pendant plus de vingt volumes dans une démence protectrice que le viol de Femto a produite. Elle disparaît, comme sujet, du récit qui aurait dû être aussi le sien — celui d'une jeune commandante en second de la Bande du Faucon, aimée puis brisée par les hommes autour d'elle. Vingt ans de silence narratif pour que Guts puisse porter la rage qui structure toute l'œuvre. Vingt ans où le personnage aimé par Guts n'a pas eu la parole, pendant que l'homme qui l'a violée bâtissait sa cité.</p>
 
-    <p>La critique féministe anglophone a nommé ce dispositif dès 1999 : <em>Women in Refrigerators</em>, forgé par Gail Simone à partir d'une scène de <span class="work">Green Lantern</span> où la petite amie du héros est retrouvée assassinée dans un réfrigérateur, ses viscères découpés, pour produire une catalyse émotionnelle au protagoniste masculin.<a class="fn" href="#fn9" id="r9">9</a> Le trope désigne la violence faite à une femme employée comme moteur narratif pour la rage d'un homme. Casca, dans <span class="work">Berserk</span>, en est l'un des cas les plus discutés de l'histoire du manga.</p>
+    <p class="rv">La critique féministe anglophone a nommé ce dispositif dès 1999 : <em>Women in Refrigerators</em>, forgé par Gail Simone à partir d'une scène de <span class="work">Green Lantern</span>.<a class="fn" href="#fn9" id="r9">9</a> Le trope désigne la violence faite à une femme employée comme moteur narratif pour la rage d'un homme. Casca en est l'un des cas les plus discutés de l'histoire du manga.</p>
 
-    <p>Ce constat n'invalide pas l'œuvre — mais il l'oblige. On ne peut pas défendre <span class="work">Berserk</span> comme grande œuvre sur l'ambition et le trauma sans reconnaître que sa grandeur est, en partie, payée par l'effacement narratif d'une femme. Et cette reconnaissance devient particulièrement importante quand on se rappelle la matrice culturelle du meme <em>Griffith did nothing wrong</em>. La <em>himpathy</em> dont Kate Manne a fait la théorie dans <span class="work">Down Girl: The Logic of Misogyny</span> (2017) — cette sympathie disproportionnée et indue accordée aux hommes en position de pouvoir lorsqu'ils sont accusés de violence, au détriment des femmes qui en sont les victimes<a class="fn" href="#fn10" id="r10">10</a> — n'est pas, dans le cas de Berserk, un mécanisme social diffus. Elle a été <em>activement organisée</em> par une culture internet édgy qui a fait du viol de Casca un point de ralliement provocateur. Simone documente la structure narrative du trope. Manne documente le mécanisme de sympathie qui le rend possible. La matrice 4chan documente sa politisation culturelle.</p>
+    <p class="rv">La <em>himpathy</em> dont Kate Manne a fait la théorie dans <span class="work">Down Girl</span> (2017) — cette sympathie disproportionnée accordée aux hommes en position de pouvoir lorsqu'ils sont accusés de violence, au détriment des femmes qui en sont les victimes<a class="fn" href="#fn10" id="r10">10</a> — n'est pas, dans le cas de Berserk, un mécanisme social diffus. Elle a été <em>activement organisée</em> par une culture internet édgy qui a fait du viol de Casca un point de ralliement provocateur.</p>
 
-    <p>Le même mécanisme s'observe autour d'autres personnages de la famille. Dans <span class="work">Chainsaw Man</span>, la mort brutale de Power sert à parachever la manipulation de Denji par Makima et à installer le climax de l'œuvre. Dans <span class="work">Kingdom</span>, les massacres ordonnés par Kanki à Gyō font l'objet d'une lecture qui admire la lucidité tactique du général et compte rarement les corps des femmes et des enfants. Dans <span class="work">Death Note</span>, Misa Amane, dont l'amour pour Light est utilisé et jeté sans que le récit s'y attarde, est le personnage féminin le moins pris au sérieux d'une œuvre qui prend au sérieux tous les hommes qu'elle met en scène. Les personnages qui portent le coût narratif de la complexité qu'on admire chez nos préférés sont presque toujours des figures dont le récit refuse de nous faire vraiment voir le visage. Et ce ne sont pas les seuls. Mais dans une fiction populaire écrite majoritairement par des hommes et lue majoritairement par eux, la répétition n'est pas un hasard.</p>
+    <p class="rv">C'est ici que Susan Sontag, il y a un demi-siècle, a formulé ce qu'il fallait dire. Dans <span class="work">Fascinating Fascism</span> (1975), Sontag posait la question qui hante toute lecture honnête de la fiction esthétisée du mal : comment regarder esthétiquement les images d'une créatrice dont le talent est indiscutable et dont l'idéologie est celle du nazisme ?<a class="fn" href="#fn11" id="r11">11</a> La beauté de Griffith rêveur n'est pas séparable de ce qu'il fera à Casca. Aimer le premier terme sans compter le second, c'est participer à une économie de la fascination qui rend le mal séduisant sans le désamorcer.</p>
 
-    <p>C'est ici que Susan Sontag, il y a un demi-siècle, a formulé ce qu'il fallait dire. Dans son essai <span class="work">Fascinating Fascism</span> (1975), à propos du cinéma de Leni Riefenstahl, Sontag posait la question qui hante toute lecture honnête de la fiction esthétisée du mal : comment regarder esthétiquement les images d'une créatrice dont le talent est indiscutable et dont l'idéologie est celle du nazisme ?<a class="fn" href="#fn11" id="r11">11</a> Sa réponse, qui n'a jamais été dépassée, est qu'on ne peut pas séparer le talent de l'idéologie qu'il sert. La beauté de la mise en scène nazie n'est pas une qualité indépendante du fascisme — elle <em>est</em> le fascisme dans son moment de séduction. Transposée à notre question, la leçon de Sontag donne ceci. La beauté de Griffith rêveur n'est pas séparable de ce qu'il fera à Casca. La beauté philosophique du nihilisme de Ryō n'est pas séparable du génocide qu'il déclenche. L'élégance intellectuelle des monologues de Makishima n'est pas séparable des meurtres qu'il commet. Aimer le premier terme sans compter le second, c'est participer, comme lecteurs, à une économie de la fascination qui rend le mal séduisant sans le désamorcer.</p>
+    <h2 class="rv"><span class="h2-num">IV — Le contrôle Light</span>Quand la fiction réussit à faire basculer</h2>
 
-    <h2><span class="num">IV — Le contrôle Light</span>Quand la fiction réussit à faire basculer</h2>
+    <p class="rv">Pendant les premiers tomes de <span class="work">Death Note</span>, le lecteur suit Light Yagami avec une sympathie active. Il partage sa lassitude devant le monde tel qu'il est, sa haine des criminels impunis, sa conviction qu'un instrument comme le Death Note pourrait accomplir ce que la justice ordinaire ne parvient pas à accomplir. Une part du lectorat admet avoir soutenu Light jusqu'à un moment précis.<a class="fn" href="#fn12" id="r12">12</a> Ce moment, c'est le meurtre de L.</p>
 
-    <p>Il faut, à ce point, examiner un cas qui éclaire tout le reste — parce qu'il montre que la fascination peut se retourner, et qu'une œuvre peut réussir à décrocher son lecteur du personnage qu'elle lui a d'abord fait aimer. Ce cas est <span class="work">Death Note</span>, et le pivot en est un meurtre.</p>
+    <p class="rv">L est le détective qui traque Kira depuis les premières pages. Il est excentrique, socialement handicapé, mangeur compulsif de bonbons. Le récit lui donne progressivement une intériorité que Light semble avoir mise entre parenthèses. Quand Light tue L, une bascule s'opère — parce que L était un personnage aimé, et que sa mort par Light rend impossible de continuer à s'identifier au tueur. Light n'était pas un héros complexe qui avait des raisons. C'était un narcissique triomphant qui se croyait dieu.</p>
 
-    <p>Pendant les premiers tomes de l'œuvre de Tsugumi Ōba et Takeshi Obata, le lecteur suit Light Yagami avec une sympathie active. Il partage sa lassitude devant le monde tel qu'il est, sa haine des criminels impunis, sa conviction qu'un instrument comme le Death Note pourrait accomplir ce que la justice ordinaire ne parvient pas à accomplir. Le récit est intelligent, la mise en scène des meurtres est esthétisée, Light est brillant. Une part du lectorat, dans les enquêtes de réception menées sur les forums japonais et anglophones, admet avoir soutenu Light jusqu'à un moment précis.<a class="fn" href="#fn12" id="r12">12</a> Ce moment, c'est le meurtre de L.</p>
+    <p class="rv">Ce basculement éclaire quelque chose que la critique morale de la fiction populaire manque presque toujours. Ce qui fait basculer notre sympathie n'est pas la gravité objective des actes du personnage. C'est la <em>distribution des attachements</em> que l'auteur construit dans le récit. Notre morale de lecteur n'est pas une morale de principes. C'est une morale d'attachements. Et c'est cela, précisément, qui va rendre le cas Eren si dérangeant.</p>
 
-    <p>L est le détective qui traque Kira depuis les premières pages. Il est excentrique, socialement handicapé, mangeur compulsif de bonbons. Le récit lui donne progressivement une intériorité que Light, lui, semble avoir mise entre parenthèses. Quand Light tue L au milieu de l'œuvre, une bascule s'opère dans le lectorat — parce que L était un personnage aimé, et que sa mort par Light rend impossible de continuer à s'identifier au tueur. Une fois qu'on a perdu L, Light devient inacceptable. Le reste de l'œuvre — les manipulations de plus en plus cyniques, la trahison de Misa, la mégalomanie qui s'accroît — n'est que la confirmation de ce que le meurtre de L avait déjà installé. Light n'était pas un héros complexe qui avait des raisons. C'était un narcissique triomphant qui se croyait dieu.</p>
+    <h2 class="rv"><span class="h2-num">V — L'échec Eren</span>Quand la fiction rate son basculement</h2>
 
-    <p>Ce basculement est un succès narratif. Ōba et Obata ont réussi à faire aimer un personnage puis à le rendre haïssable, en donnant au lecteur un visage à perdre du côté des victimes. L n'était pas une abstraction, pas un chiffre parmi les criminels que Light éliminait. C'était un personnage travaillé, développé, aimé. Sa mort transformait Light non pas en même personnage plus criminel, mais en <em>quelqu'un d'autre</em> — celui qui avait été capable de tuer L. Et cette transformation ne pouvait plus être compensée par l'intelligence, la beauté ou le charisme du personnage. La sympathie du lecteur avait basculé, non pas parce que le lecteur avait acquis une nouvelle conviction morale, mais parce qu'il avait acquis un nouvel attachement affectif — à L, contre Light.</p>
+    <p class="rv">Hajime Isayama, en écrivant <span class="work">Shingeki no Kyojin</span>, tentait exactement l'opération narrative que Ōba et Obata avaient réussie avec Light. Isayama a échoué. Pas totalement, mais suffisamment pour que le résultat soit troublant.<a class="fn" href="#fn13" id="r13">13</a></p>
 
-    <p>Ce cas éclaire quelque chose que la critique morale de la fiction populaire manque presque toujours. Ce qui fait basculer notre sympathie n'est pas la gravité objective des actes du personnage. C'est la <em>distribution des attachements</em> que l'auteur construit dans le récit. Light devient inacceptable quand il tue L, non pas parce que tuer L est objectivement pire que tuer les vingt agents du FBI qu'il avait éliminés quelques tomes plus tôt, mais parce que L a reçu, dans l'économie affective de l'œuvre, un poids que les vingt agents n'avaient jamais reçu. Notre morale de lecteur n'est pas une morale de principes. C'est une morale d'attachements. Et c'est cela, précisément, qui va rendre le cas Eren si dérangeant.</p>
+    <p class="rv">Eren Yaeger, dans les derniers arcs, active le Rumbling — la marche des Titans Colossaux qui piétinent quatre-vingts pour cent de la population mondiale. Le titre japonais, <span class="jp">進撃の巨人</span>, opère à ce moment un retournement structurel : on l'a lu au début comme <em>« les Titans qui attaquent »</em> — les monstres extérieurs. On découvre progressivement que c'est aussi le nom propre du Titan qu'Eren a hérité de son père. Le titre, en se refermant sur Eren, accomplit dans son propre langage le retournement que l'œuvre met en scène.<a class="fn" href="#fn14" id="r14">14</a></p>
 
-    <h2><span class="num">V — L'échec Eren</span>Quand la fiction rate son basculement</h2>
+    <p class="rv">Isayama a exprimé publiquement son regret. Il aurait voulu rendre Eren plus haïssable, plus irrécupérable. Une fraction non négligeable du lectorat continue, aujourd'hui, à défendre Eren — jusqu'à ce qu'un mouvement fictif dans l'œuvre, les <em>Yeagerists</em>, présenté comme une figure fasciste, ait trouvé un écho réel dans des espaces en ligne.<a class="fn" href="#fn15" id="r15">15</a> La défense se formule presque toujours de la même manière : <em>Eren n'avait pas le choix. Il protégeait ses amis. Ce qu'il a fait était horrible mais nécessaire.</em></p>
 
-    <p>Hajime Isayama, en écrivant <span class="work">Shingeki no Kyojin</span>, tentait exactement l'opération narrative que Ōba et Obata avaient réussie avec Light. Installer un héros dans la tête du lecteur pendant des dizaines de tomes, puis le faire basculer dans le monstrueux, pour que le lecteur — ayant été identifié à lui pendant si longtemps — soit forcé de reconnaître dans son propre attachement quelque chose qu'il ne pourrait plus soutenir. Isayama a échoué. Pas totalement, mais suffisamment pour que le résultat soit troublant.<a class="fn" href="#fn13" id="r13">13</a></p>
+    <p class="rv">Pourquoi Ōba a-t-il réussi et Isayama échoué ? Trois différences. Light poursuit une utopie abstraite — aucun personnage ne porte son rêve avec lui. Eren invoque la protection de personnages que le lecteur aime depuis le tome un. La protection des proches est une raison affectivement mobilisatrice ; l'utopie abstraite ne l'est pas. Ensuite : Light jouit visiblement de sa propre puissance. Eren souffre visiblement de ce qu'il doit faire. Il pleure. La différence de posture émotionnelle joue énormément dans la réception. Enfin : Ōba tue L, un personnage aimé autant que Light. Isayama tue des inconnus. Les victimes du Rumbling sont des chiffres. Sans visages à perdre du côté des victimes, notre sympathie ne bascule pas.</p>
 
-    <p>Eren Yaeger, dans les derniers arcs de l'œuvre, active le Rumbling — la marche des Titans Colossaux qui piétinent quatre-vingts pour cent de la population mondiale. Un génocide au sens strict du terme : l'extermination délibérée et méthodique d'une population entière, planifiée, exécutée, revendiquée. Le titre japonais de l'œuvre, <span class="jp">進撃の巨人</span>, opère à ce moment un retournement structurel qu'il faut nommer. On l'a lu au début comme <em>« les Titans qui attaquent »</em> — les monstres extérieurs qui menacent les murs. On découvre progressivement que <span class="jp">進撃の巨人</span> est aussi le nom propre d'un Titan singulier, le Titan Assaillant, celui qu'Eren a hérité de son père. Et à la fin, lors du Rumbling, c'est littéralement <em>Eren dans le Titan</em> qui progresse pour détruire le monde. Le titre, en se refermant sur Eren, accomplit dans son propre langage le retournement que l'œuvre met en scène — le monstre extérieur est devenu le monstre intérieur, et le monstre intérieur est devenu le protagoniste.<a class="fn" href="#fn14" id="r14">14</a></p>
+    <h2 class="rv"><span class="h2-num">VI — Le paradoxe</span>Pourquoi on pardonne à Eren ce qu'on refuse à Griffith</h2>
 
-    <p>Isayama a exprimé publiquement son regret. Il aurait voulu, dit-il, rendre Eren plus haïssable, plus irrécupérable. Il pensait, en commençant l'œuvre, que ses lecteurs cesseraient de sympathiser avec lui dans les derniers arcs. Une fraction non négligeable du lectorat continue, aujourd'hui, à défendre Eren — jusqu'à ce qu'un mouvement fictif dans l'œuvre, les <em>Yeagerists</em>, présenté comme une figure fasciste, ait trouvé un écho réel dans des espaces en ligne qui en reprennent le nom et la posture.<a class="fn" href="#fn15" id="r15">15</a> La défense se formule presque toujours de la même manière : <em>Eren n'avait pas le choix. Il protégeait ses amis. Ce qu'il a fait était horrible mais nécessaire.</em></p>
+    <p class="rv">Pourquoi une part significative des lecteurs qui condamnent Griffith pour Casca défendent-ils Eren pour le Rumbling ? Les actes ne sont pas comparables — le Rumbling est objectivement pire. Mais la sympathie du lectorat va dans l'autre sens.</p>
 
-    <p>Pourquoi Ōba a-t-il réussi et Isayama échoué ? La réponse tient en trois différences, et chacune éclaire le mécanisme par lequel notre sympathie de lecteur se distribue. La première tient à ce que le personnage poursuit. Light poursuit une utopie abstraite — un monde sans criminels — qui ne s'incarne dans aucun visage que le lecteur ait appris à aimer. Aucun personnage ne porte le rêve de Light avec lui. C'est un projet solitaire. Eren, à l'inverse, invoque la protection de personnages que le lecteur aime depuis le tome un — Mikasa, Armin, Jean, Connie, les habitants de Paradis. La protection des proches est une raison affectivement mobilisatrice ; l'utopie abstraite ne l'est pas. Le lecteur peut condamner l'utopie de Light sans que rien de son attachement affectif ne soit remis en cause. Il ne peut condamner le Rumbling qu'en acceptant que la protection de Mikasa, à laquelle il est attaché depuis dix ans de lecture, ne suffit pas à justifier ce qu'Eren fait. C'est un travail beaucoup plus dur.</p>
+    <p class="rv">Chez Miura, les victimes de Griffith sont les personnages aimés du lecteur — la Bande du Faucon, Casca. Le bénéficiaire du sacrifice est une abstraction — le royaume rêvé. Notre sympathie se refuse à Griffith presque mécaniquement. Chez Isayama, les bénéficiaires du Rumbling sont les personnages aimés — Mikasa, Armin. Les victimes sont des chiffres. Notre sympathie se maintient pour Eren presque mécaniquement. Ce n'est pas la gravité morale des actes qui explique l'asymétrie. C'est la <em>direction narrative de nos attachements</em>.</p>
 
-    <p>La deuxième différence tient à la posture émotionnelle du personnage. Light jouit visiblement de sa propre puissance. Il se glorifie, il rit, il se déclare <em>dieu du nouveau monde</em>. Eren, dans les derniers arcs, souffre visiblement de ce qu'il doit faire. Il pleure. Il regrette. Il porte le poids d'une nécessité qui semble le dépasser. Cette différence de posture émotionnelle joue énormément dans la réception. Le personnage qui semble jouir de son mal se rejette facilement ; celui qui semble le porter à contrecœur s'excuse presque de lui-même. Or c'est <em>narrativement construit</em>. Ōba fait de Light un narcissique triomphant, Isayama fait d'Eren un porteur tragique. Les deux choix produisent des lectures asymétriques.</p>
+    <p class="rv">Cette observation décrit exactement le mécanisme par lequel fonctionne toute polarisation. <em>Nos</em> morts comptent, les <em>leurs</em> sont des chiffres. La distribution des attachements précède le jugement moral, et le contamine à un point que la plupart du temps nous ne voyons pas.</p>
 
-    <p>La troisième différence est la plus importante. Ōba tue L, un personnage que le lecteur aime autant que Light, souvent plus. Isayama tue des inconnus. Le monde extérieur à Paradis, dans <span class="work">Shingeki no Kyojin</span>, n'a jamais reçu de visages aussi aimés que ceux du cercle intime d'Eren. Marley est présenté d'abord comme un ennemi absolu, puis complexifié — Reiner, Bertholdt, Annie, Gabi — mais toujours dans une position seconde par rapport aux personnages de Paradis. Les victimes du Rumbling sont des chiffres. Elles n'ont pas de visages que le lecteur ait appris à porter pendant des tomes.</p>
+    <p class="rv">C'est ici qu'il faut convoquer Albert Camus. Dans <span class="work">L'Homme révolté</span> (1951) : <em>La fin justifie les moyens ? C'est possible. Mais qu'est-ce qui justifiera la fin ? À cette question, que la pensée historique laisse en suspens, la révolte répond : les moyens.</em><a class="fn" href="#fn16" id="r16">16</a> Le Rumbling ne devient pas plus acceptable parce qu'il protège Mikasa. Il devient encore plus grave parce qu'il exige des millions de morts pour cette protection. Et Falconia ne devient pas plus belle parce qu'elle est un refuge. Elle reste bâtie sur ce qu'il a fallu détruire pour qu'elle existe.</p>
 
-    <p>C'est ici que l'échec d'Isayama devient un enseignement. <em>Ce n'est pas Eren qui rate — c'est Isayama qui n'a pas donné au lecteur des visages à perdre du côté des victimes.</em> Sans ces visages, notre sympathie de lecteur ne bascule pas. Nous continuons d'aimer ceux que nous aimions, et le génocide reste une abstraction. Ōba avait compris ce qu'Isayama a manqué. Pour faire basculer un lectorat contre un personnage qu'il aime, il faut lui donner, du côté des victimes, un attachement au moins équivalent à celui qu'il porte pour l'agresseur.</p>
+    <h2 class="rv"><span class="h2-num">VII — La discipline</span>Reprendre nos personnages</h2>
 
-    <h2><span class="num">VI — Le paradoxe</span>Pourquoi on pardonne à Eren ce qu'on refuse à Griffith</h2>
+    <p class="rv">La réponse simple — cesser d'aimer ces personnages, ne les lire qu'en signalant constamment qu'on les déplore — me paraît à la fois moralement insuffisante et intellectuellement appauvrissante. Ces figures existent en dehors des mangas qui les mettent en scène. Elles ont, dans l'histoire récente, des noms et des visages.</p>
 
-    <p>Nous arrivons alors à la question qui traverse tout l'essai. Pourquoi une part significative des lecteurs qui condamnent Griffith pour Casca défendent-ils Eren pour le Rumbling ? Les actes ne sont pas comparables — le Rumbling est objectivement pire, à toute mesure quantitative de la souffrance humaine. Mais la sympathie du lectorat, elle, va dans l'autre sens.</p>
+    <p class="rv">La réponse plus juste tient dans une phrase qu'Hannah Arendt a formulée dans <span class="work">Eichmann à Jérusalem</span> (1963) : <em>Comprendre n'est pas pardonner.</em><a class="fn" href="#fn17" id="r17">17</a> Arendt refusait deux gestes symétriques. Elle refusait d'en faire un monstre démoniaque — ce qui aurait empêché de penser ce qu'il avait fait. Elle refusait aussi de le dédouaner. Elle tenait les deux ensemble.</p>
 
-    <p>La réponse, telle que <span class="work">Death Note</span> nous a permis de la formuler, tient dans ce que notre morale de lecteur n'est pas une morale de principes. C'est une morale d'attachements distribués par le récit. Et les attachements que Miura construit dans <span class="work">Berserk</span> sont l'inverse exact de ceux qu'Isayama construit dans <span class="work">Shingeki no Kyojin</span>. Chez Miura, les victimes de Griffith sont les personnages aimés du lecteur — la Bande du Faucon, Casca. Le bénéficiaire du sacrifice est une abstraction — le royaume que Griffith rêve. Notre sympathie, dans cette configuration, se refuse à Griffith presque mécaniquement. Il détruit ce que nous aimons pour obtenir ce que nous ne voyons pas. Chez Isayama, la structure est inversée. Les bénéficiaires du Rumbling sont les personnages aimés du lecteur — Mikasa, Armin. Les victimes sont des chiffres. Notre sympathie, dans cette configuration, se maintient pour Eren presque mécaniquement. Il détruit ce que nous ne voyons pas pour préserver ce que nous aimons.</p>
+    <p class="rv">Appliquée à ces personnages, la formule arendtienne donne ceci. Je peux aimer Griffith rêveur et condamner ce qu'il fait à Casca. Je peux aimer Kanki pour sa fidélité à Shio et condamner les massacres de Gyō. Je peux reconnaître la beauté intellectuelle de Makishima et rejeter les meurtres qu'il commet. Je peux voir pourquoi Eren active le Rumbling et refuser de le défendre. Ces cinq gestes ne sont pas contradictoires. Ils sont, ensemble, la discipline que la lecture sérieuse exige.</p>
 
-    <p>Ce n'est pas la gravité morale des actes qui explique l'asymétrie de nos jugements. C'est la <em>direction narrative de nos attachements</em>. Et ce qui rend cette observation politiquement importante, c'est qu'elle décrit exactement le mécanisme par lequel fonctionne toute polarisation. <em>Nos</em> morts comptent, les <em>leurs</em> sont des chiffres. <em>Notre</em> protection est légitime, la <em>leur</em> est de l'agression. La distribution des attachements précède le jugement moral, et le contamine à un point que la plupart du temps nous ne voyons pas.</p>
-
-    <p>Il faut ajouter une chose. La défense d'Eren, aujourd'hui, ne s'est <em>pas</em> organisée dans les mêmes espaces édgy que celle de Griffith. Les Yeagerists ne sont pas nés sur 4chan comme dérivés d'un meme antérieur — ils sont nés dans une identification tragique au personnage, portée par des lecteurs qui ont suivi son évolution pendant dix ans. Cette différence de matrice culturelle éclaire encore mieux pourquoi les deux personnages reçoivent des traitements asymétriques. Griffith a été récupéré, dès 2008, par une culture qui a fait de sa défense un exercice de provocation misogyne. Eren a été défendu, à partir de 2020, par une culture qui a fait de sa défense un exercice d'identification affective. Les deux défenses ne sont pas de même nature — mais elles produisent, ensemble, la même chose : une asymétrie de sympathie où les femmes effacées (Casca) et les inconnus abstraits (les victimes du Rumbling) portent le prix de personnages que d'autres ont choisi d'aimer.</p>
-
-    <p>C'est ici qu'il faut convoquer Albert Camus. Dans <span class="work">L'Homme révolté</span> (1951), Camus a formulé la question qui doit être posée à toute utopie qui exige le meurtre pour se réaliser. <em>La fin justifie les moyens ? C'est possible. Mais qu'est-ce qui justifiera la fin ? À cette question, que la pensée historique laisse en suspens, la révolte répond : les moyens.</em><a class="fn" href="#fn16" id="r16">16</a> Une aspiration se juge par ce qu'elle a exigé pour se réaliser, pas par la beauté de ce qu'elle a atteint. Le Rumbling, jugé par cette règle, ne devient pas plus acceptable parce qu'il protège Mikasa. Il devient encore plus grave parce qu'il exige des millions de morts pour cette protection. Et Falconia, la cité de Griffith, ne devient pas plus belle parce qu'elle est un refuge. Elle reste bâtie sur ce qu'il a fallu détruire pour qu'elle existe.</p>
-
-    <p>Camus va plus loin, avec une phrase qu'on peut appliquer aussi bien à Griffith qu'à Eren, à Ryō, à Makishima, à Kanki, à Light : <em>le révolté ne peut jamais trouver la paix. Il sait ce qui est bien et, malgré lui, fait le mal.</em><a class="fn" href="#fn17" id="r17">17</a> C'est exactement la position de ces personnages, et c'est aussi ce qui rend leur défense si tentante. Nous voudrions croire qu'ils savent ce qu'ils font, qu'ils portent leur mal avec la conscience de ce qu'il coûte. Parfois c'est vrai — Griffith le sait, Kanki le sait, Makishima le sait, Ryō finit par le savoir. Mais cette lucidité ne rachète rien. Elle rend seulement le mal plus lisible.</p>
-
-    <h2><span class="num">VII — La discipline</span>Reprendre nos personnages</h2>
-
-    <p>Que faire de tout cela ? La réponse simple — cesser d'aimer ces personnages, refuser de les lire, ou ne les lire qu'en signalant constamment qu'on les déplore — me paraît à la fois moralement insuffisante et intellectuellement appauvrissante. Insuffisante parce qu'elle laisse intacte la fascination qu'elle prétend abolir. Appauvrissante parce qu'elle prive le lecteur de la seule école qui pouvait le rendre capable de penser ces logiques quand il les rencontre dans le réel — et il les rencontre, et il les rencontrera. Le bourreau lucide, l'utopiste sacrificateur, le brillant qui pense jusqu'au bout, le protagoniste qui devient monstre — ces figures existent en dehors des mangas qui les mettent en scène. Elles ont, dans l'histoire récente, des noms et des visages.</p>
-
-    <p>La réponse plus juste tient dans une phrase que Hannah Arendt a formulée dans <span class="work">Eichmann à Jérusalem</span> (1963), et qu'il faut citer exactement. <em>Comprendre n'est pas pardonner.</em><a class="fn" href="#fn18" id="r18">18</a> Arendt, écrivant sur l'un des principaux organisateurs de la Shoah, refusait deux gestes symétriques. Elle refusait d'en faire un monstre démoniaque — ce qui aurait été plus rassurant, mais aurait empêché de penser ce qu'il avait fait. Elle refusait aussi de le dédouaner — sa banalité ne l'innocentait pas. Elle tenait les deux ensemble : un homme ordinaire, capable du pire, qu'il faut <em>comprendre</em> pour que le pire ne se reproduise pas, et qu'il faut <em>condamner</em> pour que la condamnation reste possible.</p>
-
-    <p>Appliquée à ces personnages, la formule arendtienne donne ceci. Aimer un personnage n'est pas pardonner ses actes ; pardonner ses actes n'est pas aimer le personnage. Je peux aimer Griffith rêveur et condamner ce qu'il fait à Casca. Je peux aimer Kanki pour sa fidélité à Shio et condamner les massacres de Gyō. Je peux reconnaître la beauté intellectuelle de Makishima et rejeter les meurtres qu'il commet. Je peux comprendre pourquoi Ryō déclenche l'apocalypse et refuser de la lui pardonner. Je peux voir pourquoi Eren active le Rumbling et refuser de le défendre. Ces cinq gestes ne sont pas contradictoires. Ils sont, ensemble, la discipline que la lecture sérieuse exige.</p>
-
-    <p>Mais il faut aller plus loin. La discipline exige d'appliquer la même rigueur à tous ces personnages, indépendamment de la matrice culturelle qui les entoure et de la direction narrative de nos attachements. Si je condamne le viol de Casca par Griffith mais excuse le génocide d'Eren parce qu'il pensait à ses amis, je n'ai pas appris la complexité. J'ai cédé à la distribution narrative des attachements. Si je refuse le meme <em>Griffith did nothing wrong</em> parce qu'il vient d'une matrice édgy 4chan, mais que je défends Eren dans les mêmes termes structurels — <em>Eren didn't do anything wrong, he was protecting his friends</em> —, je n'ai pas refusé la structure du meme. J'en ai seulement changé le personnage. La discipline n'est pas de choisir un camp entre Griffith et Eren. Elle est de refuser la logique même qui distribue la sympathie selon les alliances plutôt que selon les actes.</p>
-
-    <p>Et cette discipline commence par reprendre Griffith au meme qui l'a colonisé. <span class="work">Berserk</span> est une œuvre trop grande pour être laissée à une matrice culturelle qui l'a récupérée. Kentaro Miura a écrit un personnage dont la complexité philosophique — l'ambition qui exige, la lucidité qui refuse la mystification, la volonté qui se retourne contre elle-même en s'accomplissant — mérite d'être lue au-delà de la provocation adolescente qui a fait circuler son nom. Le meme <em>Griffith did nothing wrong</em> n'est pas une lecture de Berserk. C'est une trahison de Berserk, qui utilise le personnage pour rejouer un geste — la défense de l'indéfendable comme provocation — dont Miura ne portait pas la responsabilité.</p>
-
-    <blockquote class="pull">
+    <blockquote class="rv">
       <p>Reprendre Griffith au meme, c'est le rendre à une lecture qui n'a plus besoin de le défendre pour le penser.</p>
     </blockquote>
 
-    <h2><span class="num">VIII — Coda</span>Ce que la fiction nous entraîne à faire</h2>
+    <h2 class="rv"><span class="h2-num">VIII — Coda</span>Ce que la fiction nous entraîne à faire</h2>
 
-    <p>Il faut, pour finir, reconnaître pourquoi cet enjeu est plus grand que ce qu'il paraît. Il ne s'agit pas seulement de savoir comment lire correctement les mangas qu'on aime. Il s'agit de reconnaître que le mécanisme par lequel nous distribuons notre sympathie dans la fiction est le même mécanisme par lequel nous la distribuons dans le monde réel. Nos morts comptent. Les leurs sont des chiffres. Notre protection est légitime. Leur agression est monstrueuse. Cette structure — que nous voyons opérer si visiblement quand on compare la défense d'Eren à la condamnation de Griffith — n'est pas propre à la fiction. Elle est le mécanisme central de toute déshumanisation politique.</p>
+    <p class="rv">Il ne s'agit pas seulement de savoir comment lire correctement les mangas qu'on aime. Il s'agit de reconnaître que le mécanisme par lequel nous distribuons notre sympathie dans la fiction est le même mécanisme par lequel nous la distribuons dans le monde réel. Cette structure — que nous voyons opérer si visiblement quand on compare la défense d'Eren à la condamnation de Griffith — n'est pas propre à la fiction. Elle est le mécanisme central de toute déshumanisation politique.</p>
 
-    <p>Chantal Mouffe, dans <span class="work">The Democratic Paradox</span> (2000), a distingué l'<em>adversaire</em> — figure légitime d'un désaccord politique tenu dans le cadre démocratique — et l'<em>ennemi</em>, à qui l'on dénie toute légitimité et dont on refuse de compter les morts.<a class="fn" href="#fn19" id="r19">19</a> Une démocratie qui ne produit plus que des ennemis se détruit elle-même, parce qu'elle perd la capacité de gérer les conflits qui la traversent. C'est ce que fait la polarisation contemporaine à nos vies politiques. Et c'est ce que fait, en miniature, notre lecture asymétrique quand elle pardonne à Eren ce qu'elle refuse à Griffith, ou quand elle défend Griffith comme provocation. Nous transformons les victimes en ennemis dont les vies ne comptent pas, parce que nous les avons connues comme abstractions et non comme visages.</p>
+    <p class="rv">Chantal Mouffe, dans <span class="work">The Democratic Paradox</span> (2000), a distingué l'<em>adversaire</em> — figure légitime d'un désaccord politique tenu dans le cadre démocratique — et l'<em>ennemi</em>, à qui l'on dénie toute légitimité et dont on refuse de compter les morts.<a class="fn" href="#fn18" id="r18">18</a> Une démocratie qui ne produit plus que des ennemis se détruit elle-même. C'est ce que fait la polarisation contemporaine à nos vies politiques. Et c'est ce que fait, en miniature, notre lecture asymétrique.</p>
 
-    <p>La fiction sérieuse, celle de Miura, de Hara, de Nagai, de Urobuchi, de Ōba et Obata, d'Isayama, ne nous propose pas des modèles à imiter. Elle nous propose des exercices — parfois réussis, parfois ratés — pour tenir la double vue qui définit la lecture éthique. Aimer sans pardonner. Comprendre sans absoudre. Appliquer la même règle à tous les personnages, quelle que soit la direction narrative de nos attachements. Refuser que la sympathie soit distribuée selon les alliances plutôt que selon les actes.</p>
+    <p class="rv">La fiction sérieuse, celle de Miura, de Hara, de Nagai, de Urobuchi, de Ōba et Obata, d'Isayama, ne nous propose pas des modèles à imiter. Elle nous propose des exercices pour tenir la double vue qui définit la lecture éthique. Aimer sans pardonner. Comprendre sans absoudre. Appliquer la même règle à tous les personnages, quelle que soit la direction narrative de nos attachements.</p>
 
-    <p>Si nous acceptons cette discipline, nos lectures deviennent des entraînements à quelque chose que le monde réel nous demande de plus en plus difficilement — reconnaître à l'autre une intériorité avant de le combattre, compter les morts qui ne sont pas dans notre camp, refuser que nos attachements affectifs déterminent nos jugements moraux. Si nous ne l'acceptons pas, nos lectures deviennent des rejeux, dans le champ de l'imagination, du mécanisme même de la déshumanisation politique.</p>
+    <p class="rv">Griffith reste, malgré tout, un des personnages les plus complexes de la fiction japonaise contemporaine. Cet attachement est légitime. Il est la preuve que la fiction fait bien son travail. Mais il n'exclut pas la discipline. Il l'exige, précisément. Aimer ce qu'on ne pardonne pas est peut-être la seule éthique de lecture qui vaille la peine. Et elle commence, quand il le faut, par le geste de reprendre nos personnages aux memes qui prétendent les défendre à notre place. Griffith, très précisément, <em>did something wrong</em>. L'aimer suppose de ne jamais l'oublier.</p>
 
-    <div class="seam"><span>✦</span></div>
+    <!-- NOTES -->
+    <div class="footnotes rv">
+      <span class="footnotes-title">Notes</span>
+      <ol class="fn-list">
+        <li id="fn1">Voir la fiche de <em>Know Your Meme</em> sur Griffith / Femto : <em>« Memes about Griffith generally revolve around his beautiful appearance and his evil nature, with the phrase 'Griffith did nothing wrong' appearing as an offshoot of the Hitler Did Nothing Wrong meme. »</em> <a class="back" href="#r1">↩</a></li>
+        <li id="fn2">Les premiers usages documentés remontent à 4chan /a/ en 2008. Le meme se stabilise vers 2015-2016. Sur la culture 4chan comme matrice de l'alt-right, voir Angela Nagle, <em>Kill All Normies</em>, Zero Books, 2017. <a class="back" href="#r2">↩</a></li>
+        <li id="fn3">Sur Ryō Asuka / Satan dans <em>Devilman</em> et <em>Devilman Crybaby</em>, voir notamment Jason Krell, « Sympathy for the Devil: a Lesson in Love from Devilman Crybaby » (Medium, 2018). <a class="back" href="#r3">↩</a></li>
+        <li id="fn4">Sur la scène de Griffith avec Charlotte pensant à Guts (<em>Berserk</em>, tome 9) et la lecture homoromantique de l'attachement Griffith–Guts, voir les analyses de Pixiv百科事典 et les blogs japonais spécialisés (note.com, hatena.ne.jp). <a class="back" href="#r4">↩</a></li>
+        <li id="fn5">Sur Makishima Shōgo, sa singularité comme <em>Criminally Asymptomatic</em> et sa fonction philosophique dans <em>Psycho-Pass</em>, voir Gen Urobuchi, interview dans <em>Newtype</em>, 2013. <a class="back" href="#r5">↩</a></li>
+        <li id="fn6">Hara Yasuhisa, entretien au <em>Nikkei</em> (2019), sur la <em>shijitsu barrier</em> (史実バリアー) comme contrainte d'écriture. <a class="back" href="#r6">↩</a></li>
+        <li id="fn7">Sur le passé de Kanki, le clan Saki (咲一族) et la figure de Shio (偲央), voir <em>Kingdom</em>, tomes 65-73 (arc Shukai, flashbacks). <a class="back" href="#r7">↩</a></li>
+        <li id="fn8">Sur le discours de Kanki concernant l'entre-deux, voir <em>Kingdom</em>, arcs Gyō et Shukai. Ce discours est identifié par plusieurs analyses japonaises comme la clé morale du personnage. <a class="back" href="#r8">↩</a></li>
+        <li id="fn9">Gail Simone, « Women in Refrigerators », site web éponyme, 1999. Terme forgé à partir d'une scène de <em>Green Lantern</em> (n° 54, 1994). <a class="back" href="#r9">↩</a></li>
+        <li id="fn10">Kate Manne, <em>Down Girl: The Logic of Misogyny</em>, Oxford University Press, 2017. La <em>himpathy</em> y est définie comme la sympathie excessive et indue accordée par défaut aux hommes en position de pouvoir lorsqu'ils sont accusés de violence. <a class="back" href="#r10">↩</a></li>
+        <li id="fn11">Susan Sontag, « Fascinating Fascism », <em>New York Review of Books</em>, 6 février 1975, repris dans <em>Under the Sign of Saturn</em>, Farrar, Straus and Giroux, 1980. <a class="back" href="#r11">↩</a></li>
+        <li id="fn12">Sur la bascule de sympathie du lectorat de <em>Death Note</em> au moment du meurtre de L, voir les enquêtes de réception sur les forums japonais (2ちゃんねる, Pixiv) et anglophones (Reddit r/deathnote). <a class="back" href="#r12">↩</a></li>
+        <li id="fn13">Sur l'échec partiel d'Isayama, voir ses déclarations dans <em>Bessatsu Shōnen Magazine</em>, 2020-2021. <a class="back" href="#r13">↩</a></li>
+        <li id="fn14">Sur la lecture du titre <span class="jp">進撃の巨人</span> comme retournement structurel, voir Hiratsuka Tōru (Université Sangyo de Kyoto), « <em>Shingeki no Kyojin</em> no eigo taitoru "Attack on Titan" no imi ». <a class="back" href="#r14">↩</a></li>
+        <li id="fn15">Sur les communautés « Yeagerists » défendant Eren, voir notamment Villains Wiki (entrée Eren Yaeger) et les synthèses critiques sur GameRant (2023-2026). <a class="back" href="#r15">↩</a></li>
+        <li id="fn16">Albert Camus, <em>L'Homme révolté</em>, Paris, Gallimard, 1951. <a class="back" href="#r16">↩</a></li>
+        <li id="fn17">Hannah Arendt, <em>Eichmann à Jérusalem : rapport sur la banalité du mal</em>, 1963 ; trad. fr. Gallimard, 1966. <a class="back" href="#r17">↩</a></li>
+        <li id="fn18">Chantal Mouffe, <em>The Democratic Paradox</em>, Verso, 2000. <a class="back" href="#r18">↩</a></li>
+      </ol>
+    </div>
 
-    <p>Griffith reste, malgré tout, un des personnages les plus complexes de la fiction japonaise contemporaine. Kanki reste, pour ma part, le personnage qui m'attache le plus dans <span class="work">Kingdom</span>. Makishima reste, dans <span class="work">Psycho-Pass</span>, l'un des grands antagonistes philosophiques du visual novel élargi au thriller anticipation. Ryō reste, à sa manière tragique, une figure christique inversée. Ces attachements sont légitimes. Ils sont la preuve que la fiction fait bien son travail — qu'elle nous entraîne à porter des consciences que nous ne pourrions pas porter dans le réel.</p>
-
-    <p>Mais ces attachements ne nous dispensent pas de la discipline. Ils l'exigent, précisément. Aimer ce qu'on ne pardonne pas est peut-être la seule éthique de lecture qui vaille la peine, à l'époque où le monde nous demande chaque jour de choisir un camp avant d'avoir lu. Cette éthique se pratique dans le silence de la lecture solitaire. Elle se pratique aussi, plus difficilement, dans les articles qu'on écrit sur les personnages qu'on aime. Et elle commence, quand il le faut, par le geste de reprendre nos personnages aux memes qui prétendent les défendre à notre place. Griffith, très précisément, <em>did something wrong</em>. L'aimer suppose de ne jamais l'oublier.</p>
+    <!-- RÉFÉRENCES -->
+    <div class="refs rv">
+      <span class="refs-title">Références</span>
+      <span class="refs-subtitle">Noyau théorique</span>
+      <ul>
+        <li>Arendt, Hannah. <em>Eichmann à Jérusalem : rapport sur la banalité du mal</em>. 1963 ; trad. fr. Gallimard, 1966.</li>
+        <li>Camus, Albert. <em>L'Homme révolté</em>. Paris : Gallimard, 1951.</li>
+        <li>Manne, Kate. <em>Down Girl: The Logic of Misogyny</em>. Oxford University Press, 2017.</li>
+        <li>Mouffe, Chantal. <em>The Democratic Paradox</em>. Verso, 2000.</li>
+        <li>Nagle, Angela. <em>Kill All Normies</em>. Zero Books, 2017.</li>
+        <li>Simone, Gail. « Women in Refrigerators ». 1999.</li>
+        <li>Sontag, Susan. « Fascinating Fascism », dans <em>Under the Sign of Saturn</em>. Farrar, Straus and Giroux, 1980.</li>
+      </ul>
+      <span class="refs-subtitle">Œuvres primaires</span>
+      <ul>
+        <li>Hara Yasuhisa. <em>Kingdom</em> (キングダム). Shūeisha, depuis 2006.</li>
+        <li>Isayama Hajime. <em>Shingeki no Kyojin</em> (進撃の巨人). Kōdansha, 2009-2021.</li>
+        <li>Miura Kentaro. <em>Berserk</em> (ベルセルク). Hakusensha, 1989-2021.</li>
+        <li>Nagai Gō. <em>Devilman</em>. Kōdansha, 1972-1973.</li>
+        <li>Ōba Tsugumi et Obata Takeshi. <em>Death Note</em>. Shūeisha, 2003-2006.</li>
+        <li>Urobuchi Gen (scénario). <em>Psycho-Pass</em>. Production I.G, 2012.</li>
+      </ul>
+    </div>
 
   </article>
 
-  <section class="notes">
-    <h3>Notes</h3>
-    <ol class="fnlist">
-      <li id="fn1">Voir la fiche officielle de <em>Know Your Meme</em> sur Griffith / Femto, consultée en 2026 : <em>« Memes about Griffith generally revolve around his beautiful appearance and his evil nature, with the phrase 'Griffith did nothing wrong' appearing as an offshoot of the Hitler Did Nothing Wrong meme. »</em> La documentation de <em>Know Your Meme</em> est la référence de fait sur la généalogie des memes internet. <a class="back" href="#r1">↩</a></li>
-      <li id="fn2">Les premiers usages documentés remontent à 4chan /a/ en 2008 (posts anonymes du 13 mars 2008 et du 14 décembre 2008, notamment « Have you forgiven Griffith today? »). La formule <em>Griffith did nothing wrong</em> se stabilise vers 2015-2016 avec l'apparition de pages Facebook dédiées. Voir <em>Know Your Meme</em>, entrée Griffith / Femto. Sur le contexte plus large de la culture 4chan des années 2008-2015 comme matrice de l'alt-right, voir Angela Nagle, <i>Kill All Normies: Online Culture Wars from 4chan and Tumblr to Trump and the Alt-Right</i>, Zero Books, 2017. <a class="back" href="#r2">↩</a></li>
-      <li id="fn3">Sur Ryō Asuka / Satan et son parcours nihiliste dans <i>Devilman</i> et <i>Devilman Crybaby</i>, voir notamment Moth, « The Faustian Bargain of Ryo Asuka: A Philosophical Descent into Nihilism in Devilman Crybaby » (Medium, 2025), et Jason Krell, « Sympathy for the Devil: a Lesson in Love from Devilman Crybaby » (Medium, 2018). Les deux analyses insistent sur la révélation finale — Ryō découvrant, sur une Terre morte, qu'il aimait Akira depuis toujours. <a class="back" href="#r3">↩</a></li>
-      <li id="fn4">Sur la scène de Griffith avec Charlotte pensant à Guts (<i>Berserk</i>, tome 9), et sur la lecture homoromantique de l'attachement Griffith–Guts, voir les analyses de Pixiv百科事典 (entrée Griffith), les blogs japonais spécialisés (note.com, hatena.ne.jp), et l'article de synthèse de berserk-puck (Tumblr, 2016). La lecture reste interprétative : Miura n'a jamais tranché en interview, et plusieurs lectures compossibles existent (homosexualité refoulée, bisexualité, attachement narcissique). <a class="back" href="#r4">↩</a></li>
-      <li id="fn5">Sur Makishima Shōgo, sa singularité comme <em>Criminally Asymptomatic</em>, et sa fonction philosophique dans <i>Psycho-Pass</i>, voir les analyses de Villains Wiki (Fandom), les articles universitaires sur le système Sibyl comme dispositif de gouvernementalité algorithmique, et notamment Gen Urobuchi (scénariste), interview de 2013 dans <i>Newtype</i>. Makishima est explicitement construit comme la figure qui expose la limite morale du système. <a class="back" href="#r5">↩</a></li>
-      <li id="fn6">Hara Yasuhisa, entretien au <i>Nikkei</i> (2019), sur la <em>shijitsu barrier</em> (史実バリアー) comme contrainte d'écriture. Le personnage historique de Kanki (桓齮, Huan Yi) est mentionné brièvement dans le <i>Shiji</i> de Sima Qian, dans le chapitre consacré au premier empereur, uniquement pour souligner sa cruauté. La quasi-totalité de sa psychologie et de son passé est une création de Hara. <a class="back" href="#r6">↩</a></li>
-      <li id="fn7">Sur le passé de Kanki, le clan Saki (咲一族) composé d'enfants orphelins, et la figure de Shio (偲央), voir <i>Kingdom</i>, tomes 65-73 (arc Shukai puis flashbacks). Voir également Pixiv百科事典 (entrée 桓騎), et les analyses de anime-master.hatenablog.jp, newstisiki.com, et haku.blue. Le personnage de Shio est présenté comme d'une gentillesse exceptionnelle, et sa mort — enlèvement par un seigneur féodal, viols multiples, démembrement (mains et pieds coupés), puis meurtre — comme l'événement fondateur de la trajectoire adulte de Kanki. <a class="back" href="#r7">↩</a></li>
-      <li id="fn8">Sur le discours de Kanki concernant <em>l'entre-deux</em> — les gens ordinaires qui voient et ne font rien —, voir <i>Kingdom</i>, arcs Gyō et Shukai. Ce discours est cité par plusieurs analyses japonaises comme la clé morale du personnage. Kanki y articule une théorie de la responsabilité collective qui, sans être défendable, a une cohérence idéologique précise, et qui rappelle certains discours révolutionnaires historiques sur la culpabilité de la passivité. <a class="back" href="#r8">↩</a></li>
-      <li id="fn9">Gail Simone, « Women in Refrigerators », site web éponyme, 1999. Simone a forgé le terme à partir d'une scène de <i>Green Lantern</i> (n° 54, 1994) où la petite amie du héros Kyle Rayner est retrouvée assassinée et démembrée dans un réfrigérateur pour produire une catalyse émotionnelle au protagoniste masculin. Le trope, largement débattu depuis, désigne la violence faite à une femme employée comme moteur narratif pour la rage d'un homme. Casca dans <i>Berserk</i> en est l'un des cas les plus discutés dans les <i>manga studies</i> féministes. <a class="back" href="#r9">↩</a></li>
-      <li id="fn10">Kate Manne, <i>Down Girl: The Logic of Misogyny</i>, Oxford University Press, 2017. Le concept de <em>himpathy</em> y est défini comme la sympathie excessive et indue accordée par défaut aux hommes en position de pouvoir lorsqu'ils sont accusés de violence, au détriment des femmes qui en sont les victimes. Manne le distingue de la simple empathie pour décrire un mécanisme social structurel — ce qui rend son application au meme <em>Griffith did nothing wrong</em> particulièrement pertinente, puisque le meme est précisément une <em>organisation collective</em> de la himpathy. <a class="back" href="#r10">↩</a></li>
-      <li id="fn11">Susan Sontag, « Fascinating Fascism », <i>New York Review of Books</i>, 6 février 1975, repris dans <i>Under the Sign of Saturn</i>, Farrar, Straus and Giroux, 1980. L'essai porte sur l'œuvre de Leni Riefenstahl et pose la question, jamais résolue, du rapport entre talent esthétique et idéologie fasciste. La thèse centrale — la beauté esthétique du fascisme n'est pas séparable du fascisme lui-même — reste l'une des positions les plus fortes de la critique culturelle du XX<sup>e</sup> siècle. <a class="back" href="#r11">↩</a></li>
-      <li id="fn12">Sur la bascule de sympathie du lectorat de <i>Death Note</i> au moment du meurtre de L, voir les enquêtes de réception menées sur les forums japonais (2ちゃんねる, Pixiv) et anglophones (Reddit r/deathnote), ainsi que la synthèse critique de Yamamura Wataru, <i>Death Note no Shakaigaku</i> (デスノートの社会学), 2015. Le pivot narratif du meurtre de L est unanimement identifié comme le moment où l'œuvre décroche son lecteur du personnage principal. <a class="back" href="#r12">↩</a></li>
-      <li id="fn13">Sur l'échec partiel d'Isayama à faire basculer le lectorat contre Eren, voir la déclaration de l'auteur dans plusieurs interviews (Bessatsu Shōnen Magazine, 2020-2021), ainsi que la synthèse critique sur GameRant, AnimeTiger, et The Cuestonian (2023-2026). <a class="back" href="#r13">↩</a></li>
-      <li id="fn14">Sur la lecture du titre <span class="jp">進撃の巨人</span> comme retournement structurel — désignant d'abord les Titans qui attaquent, puis le Titan singulier d'Eren, puis Eren-dans-le-Titan progressant pour détruire le monde —, voir Hiratsuka Tōru (Université Sangyo de Kyoto), « <i>Shingeki no Kyojin</i> no eigo taitoru "Attack on Titan" no imi », essai en ligne. La lecture est devenue consensuelle dans la critique japonaise après la révélation des neuf Titans. <a class="back" href="#r14">↩</a></li>
-      <li id="fn15">Sur l'émergence des communautés « Yeagerists » défendant Eren dans les espaces en ligne, voir notamment Villains Wiki (entrée Eren Yeager) et les synthèses critiques sur GameRant et The Cuestonian (2023-2026). Le mouvement intra-diégétique des <em>Yeagerists</em>, présenté dans l'œuvre comme une figure fasciste, a trouvé un écho réel dans des espaces en ligne qui en reprennent le nom — sans nécessairement la dimension critique qu'Isayama avait voulu y mettre. <a class="back" href="#r15">↩</a></li>
-      <li id="fn16">Albert Camus, <i>L'Homme révolté</i>, Paris, Gallimard, 1951, p. 292 dans l'édition Vintage anglaise. <a class="back" href="#r16">↩</a></li>
-      <li id="fn17">Camus, <i>L'Homme révolté</i>, op. cit., p. 285 dans l'édition Vintage : <em>« Le révolté ne peut jamais trouver la paix. Il sait ce qui est bien et, malgré lui, fait le mal. »</em> <a class="back" href="#r17">↩</a></li>
-      <li id="fn18">Hannah Arendt, <i>Eichmann à Jérusalem : rapport sur la banalité du mal</i>, 1963 ; trad. fr. de Anne Guérin, Gallimard, 1966 (rééd. coll. Folio, 2002). <a class="back" href="#r18">↩</a></li>
-      <li id="fn19">Chantal Mouffe, <i>The Democratic Paradox</i>, Verso, 2000 (traduction française : <i>Le Paradoxe démocratique</i>, Beaux-Arts de Paris éditions, 2016). <a class="back" href="#r19">↩</a></li>
-    </ol>
-  </section>
-
-  <section class="refs">
-    <h3>Références</h3>
-    <h4>Noyau théorique</h4>
-    <ul>
-      <li>Arendt, Hannah. <i>Eichmann à Jérusalem : rapport sur la banalité du mal</i>. 1963 ; trad. fr. Gallimard, 1966.</li>
-      <li>Camus, Albert. <i>L'Homme révolté</i>. Paris : Gallimard, 1951.</li>
-      <li>Manne, Kate. <i>Down Girl: The Logic of Misogyny</i>. Oxford University Press, 2017.</li>
-      <li>Mouffe, Chantal. <i>The Democratic Paradox</i>. Verso, 2000.</li>
-      <li>Nagle, Angela. <i>Kill All Normies: Online Culture Wars from 4chan and Tumblr to Trump and the Alt-Right</i>. Zero Books, 2017.</li>
-      <li>Simone, Gail. « Women in Refrigerators ». 1999 (site web).</li>
-      <li>Sontag, Susan. « Fascinating Fascism », repris dans <i>Under the Sign of Saturn</i>. Farrar, Straus and Giroux, 1980.</li>
-    </ul>
-    <h4>Sources critiques</h4>
-    <ul>
-      <li><i>Know Your Meme</i>. Entrée « Griffith / Femto ».</li>
-      <li>Moth. « The Faustian Bargain of Ryo Asuka ». <i>Medium</i>, 2025.</li>
-      <li>Krell, Jason. « Sympathy for the Devil: A Lesson in Love from Devilman Crybaby ». <i>Medium</i>, 2018.</li>
-      <li>Yamamura Wataru. <i>Death Note no Shakaigaku</i> (デスノートの社会学). 2015.</li>
-      <li>Hiratsuka Tōru. « <i>Shingeki no Kyojin</i> no eigo taitoru "Attack on Titan" no imi ». Université Sangyo de Kyoto.</li>
-      <li>Hara Yasuhisa, entretien au <i>Nikkei</i>, 2019.</li>
-      <li>Isayama Hajime, entretiens dans <i>Bessatsu Shōnen Magazine</i>, 2020-2021.</li>
-      <li>Pixiv百科事典. Entrées Griffith, Kanki (桓騎), Shio (偲央).</li>
-    </ul>
-    <h4>Œuvres primaires</h4>
-    <ul>
-      <li>Hara Yasuhisa. <i>Kingdom</i> (キングダム). Shūeisha, depuis 2006.</li>
-      <li>Isayama Hajime. <i>Shingeki no Kyojin</i> (進撃の巨人). Kōdansha, 2009-2021.</li>
-      <li>Miura Kentaro. <i>Berserk</i> (ベルセルク). Hakusensha, 1989-2021 ; suite par Studio Gaga depuis 2022.</li>
-      <li>Nagai Gō. <i>Devilman</i>. Kōdansha, 1972-1973. Adaptation Netflix par Masaaki Yuasa : <i>Devilman Crybaby</i>, 2018.</li>
-      <li>Ōba Tsugumi et Obata Takeshi. <i>Death Note</i>. Shūeisha, 2003-2006.</li>
-      <li>Urobuchi Gen (scénario). <i>Psycho-Pass</i>. Production I.G, 2012.</li>
-    </ul>
-  </section>
-
-  <div class="tags">
-    <span class="t">Essai</span>
-    <span class="t">Éthique de lecture</span>
-    <span class="t">Griffith</span>
-    <span class="t">Kanki</span>
-    <span class="t">Ryō Asuka</span>
-    <span class="t">Makishima Shōgo</span>
-    <span class="t">Light Yagami</span>
-    <span class="t">Eren Yaeger</span>
-    <span class="t">Meme</span>
-    <span class="t">Polarisation</span>
+  <div class="art-footer">
+    <span style="font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-right:.5rem;">Tags :</span>
+    <span class="tag">Essai</span>
+    <span class="tag">Éthique de lecture</span>
+    <span class="tag">Griffith</span>
+    <span class="tag">Kanki</span>
+    <span class="tag">Berserk</span>
+    <span class="tag">Kingdom</span>
+    <span class="tag">Death Note</span>
+    <span class="tag">Shingeki no Kyojin</span>
+    <span class="tag">Polarisation</span>
   </div>
 
-  <footer class="site">
-    <span class="star">Spectre Rose ✦</span> &nbsp; © 2026 — Théories narratives &amp; fiction interactive
+  <footer>
+    <span class="f-logo">Spectre Rose ✦</span>
+    <span class="f-copy">© 2026 — Théories narratives &amp; fiction interactive</span>
   </footer>
 
-</div>
+  <script>
+    const items = document.querySelectorAll('.rv');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+    }, { threshold: 0.07 });
+    items.forEach(el => obs.observe(el));
+  </script>
+  <script src="ui.js"></script>
 </body>
 </html>
