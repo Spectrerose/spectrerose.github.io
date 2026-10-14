@@ -1,483 +1,322 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ce qu'Hinako ne peut pas regarder — Spectre Rose</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#0e0a0f;
-    --bg-raise:#171019;
-    --ink:#ece4e8;
-    --ink-soft:#b6abb4;
-    --ink-faint:#867a83;
-    --rose:#df728c;
-    --rose-deep:#7c2740;
-    --bone:#e3dacb;
-    --gold:#c2a14e;
-    --line:rgba(223,114,140,.18);
-    --line-soft:rgba(236,228,232,.08);
-    --measure:38rem;
-    --serif-display:"Cormorant Garamond",Didot,"Hoefler Text",Georgia,serif;
-    --serif-body:"Spectral",Georgia,"Times New Roman",serif;
-    --sans:"Inter",system-ui,-apple-system,sans-serif;
-  }
-  *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
-  body{
-    margin:0;background:var(--bg);color:var(--ink);
-    font-family:var(--serif-body);font-weight:400;
-    font-size:1.16rem;line-height:1.78;
-    letter-spacing:.005em;
-    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
-  }
-  /* faint vertical "fog" wash, kept extremely subtle */
-  body::before{
-    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
-    background:
-      radial-gradient(120% 80% at 50% -10%, rgba(124,39,64,.16), transparent 60%),
-      radial-gradient(90% 60% at 90% 110%, rgba(46,30,52,.5), transparent 55%);
-  }
-  .wrap{position:relative;z-index:1}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ce qu'Hinako ne peut pas regarder — Spectre Rose</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#07040a; --bg-card:#0e0812;
+      --rose:#d4909a; --rose-light:#f0c4cc; --rose-dark:#7a3d4a; --rose-deep:#3d1520;
+      --cream:#ede4e6; --muted:#6e5860; --border:rgba(212,144,154,0.18);
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--bg); color:var(--cream); font-family:'Crimson Text',serif; font-size:19.5px; line-height:1.92; overflow-x:hidden; }
+    body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E"); pointer-events:none; z-index:9998; mix-blend-mode:overlay; opacity:0.6; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; justify-content:space-between; align-items:center; padding:1.4rem 4rem; background:linear-gradient(to bottom,rgba(7,4,10,0.97) 0%,transparent 100%); }
+    .nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:300; letter-spacing:.18em; color:var(--rose-light); text-decoration:none; }
+    .nav-logo span { color:var(--rose); font-style:italic; }
+    .nav-back { font-family:'DM Mono',monospace; font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .3s; }
+    .nav-back:hover { color:var(--rose-light); }
 
-  /* ---------- top bar ---------- */
-  .topbar{
-    max-width:60rem;margin:0 auto;padding:1.6rem 1.5rem 0;
-    display:flex;align-items:center;justify-content:space-between;
-    font-family:var(--sans);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;
-    color:var(--ink-faint);
-  }
-  .topbar .brand{color:var(--bone);font-weight:500}
-  .topbar a{color:var(--ink-faint);text-decoration:none;transition:color .25s}
-  .topbar a:hover{color:var(--rose)}
+    /* Navigation de série */
+    .series { max-width:820px; margin:0 auto; padding:9.5rem 2rem 0; }
+    .series-label { font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.28em; text-transform:uppercase; color:var(--rose-dark); display:block; margin-bottom:.9rem; text-align:center; }
+    .series-list { display:flex; justify-content:center; flex-wrap:wrap; gap:.5rem 1.6rem; }
+    .series-list a, .series-list span { font-family:'DM Mono',monospace; font-size:.55rem; letter-spacing:.14em; text-decoration:none; color:var(--muted); transition:color .3s; }
+    .series-list a:hover { color:var(--rose-light); }
+    .series-list .here { color:var(--rose-light); border-bottom:1px solid var(--rose-dark); padding-bottom:.2rem; }
+    .series-list .num { color:var(--rose); }
 
-  /* ---------- series strip ---------- */
-  .series{
-    max-width:60rem;margin:1.3rem auto 0;padding:1.1rem 1.5rem 0;
-    border-top:1px solid var(--line-soft);
-    display:flex;flex-wrap:wrap;gap:.45rem 1.1rem;align-items:baseline;
-    font-family:var(--sans);font-size:.74rem;letter-spacing:.02em;color:var(--ink-faint);
-  }
-  .series .lead{
-    letter-spacing:.18em;text-transform:uppercase;color:var(--rose);
-    width:100%;margin-bottom:.2rem;
-  }
-  .series a{color:var(--ink-soft);text-decoration:none;transition:color .25s}
-  .series a:hover{color:var(--rose)}
-  .series .roman{color:var(--rose-deep);font-style:italic;margin-right:.3rem}
-  .series .here{color:var(--bone);border-bottom:1px solid var(--rose-deep);padding-bottom:1px}
-
-  /* ---------- hero ---------- */
-  header.hero{
-    max-width:48rem;margin:0 auto;padding:5.5rem 1.5rem 2.2rem;text-align:center;
-  }
-  .eyebrow{
-    font-family:var(--sans);font-size:.72rem;font-weight:500;
-    letter-spacing:.28em;text-transform:uppercase;color:var(--rose);
-    display:flex;flex-wrap:wrap;gap:.5rem .9rem;justify-content:center;align-items:center;
-    margin-bottom:2.2rem;
-  }
-  .eyebrow .sep{color:var(--rose-deep)}
-  h1{
-    font-family:var(--serif-display);font-weight:500;
-    font-size:clamp(2.9rem,8vw,5.1rem);line-height:1.02;
-    letter-spacing:-.01em;margin:0 0 1.4rem;color:var(--ink);
-  }
-  .dek{
-    font-family:var(--serif-body);font-weight:300;font-style:italic;
-    font-size:clamp(1.18rem,2.6vw,1.42rem);line-height:1.5;
-    color:var(--ink-soft);max-width:34rem;margin:0 auto 2.4rem;
-  }
-  .runline{
-    font-family:var(--sans);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--ink-faint);display:flex;flex-wrap:wrap;gap:.4rem .8rem;justify-content:center;
-  }
-  .runline .dot{color:var(--rose-deep)}
-  .hero-rule{
-    width:1px;height:3.4rem;margin:2.6rem auto 0;
-    background:linear-gradient(var(--rose),transparent);
-  }
-
-  /* ---------- article body ---------- */
-  article{max-width:var(--measure);margin:0 auto;padding:1.5rem 1.5rem 2rem}
-  article > p,article > .standfirst{margin:0 0 1.45rem}
-  p{margin:0 0 1.45rem}
-
-  .standfirst{font-size:1.28rem;line-height:1.62;color:var(--ink)}
-
-  /* drop cap */
-  .dropcap::first-letter{
-    font-family:var(--serif-display);font-weight:500;
-    float:left;font-size:4.2rem;line-height:.78;
-    padding:.35rem .55rem 0 0;color:var(--rose);
-  }
-
-  /* section headings */
-  h2{
-    font-family:var(--serif-display);font-weight:500;
-    font-size:clamp(1.9rem,4.4vw,2.5rem);line-height:1.1;letter-spacing:-.005em;
-    color:var(--ink);margin:3.4rem 0 1.3rem;
-  }
-  h2 .num{
-    display:block;font-family:var(--sans);font-size:.7rem;font-weight:600;
-    letter-spacing:.3em;text-transform:uppercase;color:var(--rose);margin-bottom:.7rem;
-  }
-
-  em,i{font-style:italic}
-  strong{font-weight:600;color:#f5eef2}
-  .work{font-style:italic;color:var(--ink)}
-  .jp{font-family:var(--serif-body);color:var(--bone);font-style:normal}
-
-  a.fn{
-    font-family:var(--sans);font-size:.62em;font-weight:600;
-    vertical-align:.5em;line-height:0;color:var(--rose);text-decoration:none;
-    padding:0 .12em;
-  }
-  a.fn::before{content:"["}
-  a.fn::after{content:"]"}
-  a.fn:hover{color:var(--bone)}
-
-  /* seam divider — the signature device */
-  .seam{
-    display:flex;align-items:center;gap:1.1rem;
-    margin:3rem auto;max-width:18rem;color:var(--rose-deep);
-  }
-  .seam::before,.seam::after{
-    content:"";height:1px;flex:1;
-    background:repeating-linear-gradient(90deg,var(--line) 0 7px,transparent 7px 13px);
-  }
-  .seam span{font-family:var(--serif-display);font-size:1.1rem;color:var(--rose);}
-
-  /* dossier card — for context / nominal analysis */
-  .dossier{
-    background:var(--bg-raise);
-    border:1px solid var(--line-soft);
-    border-left:2px solid var(--gold);
-    border-radius:2px;
-    padding:1.6rem 1.7rem 1.4rem;
-    margin:2.4rem 0;
-    font-size:1.04rem;line-height:1.7;color:var(--ink-soft);
-  }
-  .dossier .label{
-    font-family:var(--sans);font-size:.68rem;font-weight:600;letter-spacing:.22em;
-    text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.85rem;
-  }
-  .dossier p{margin:0 0 .9rem}
-  .dossier p:last-child{margin-bottom:0}
-  .dossier strong{color:var(--bone)}
-  .dossier .kanji{
-    font-size:2.1rem;color:var(--bone);letter-spacing:.05em;
-    display:inline-block;margin-right:.4rem;vertical-align:-.1em;
-  }
-
-  /* set-apart textual passage — journal, novel, document */
-  .passage{
-    margin:2.3rem 0;padding:.2rem 0 .2rem 1.6rem;
-    border-left:2px solid var(--rose-deep);
-  }
-  .passage p{
-    font-style:italic;color:var(--ink);font-size:1.1rem;line-height:1.62;margin:0 0 .7rem;
-  }
-  .passage .src{
-    font-family:var(--sans);font-size:.7rem;font-weight:500;letter-spacing:.16em;
-    text-transform:uppercase;color:var(--ink-faint);
-  }
-
-  /* figure / caption */
-  figure{margin:2.6rem 0}
-  figcaption{
-    font-family:var(--sans);font-size:.78rem;letter-spacing:.04em;
-    color:var(--ink-faint);text-align:center;margin-top:.7rem;
-  }
-  .plate{
-    border:1px solid var(--line-soft);border-radius:2px;
-    background:var(--bg-raise);padding:2.4rem 1.5rem;text-align:center;
-  }
-  .plate .glyph{font-family:var(--serif-display);font-size:2.4rem;color:var(--rose);opacity:.8}
-  .plate .cap{
-    font-family:var(--serif-display);font-style:italic;font-size:1.45rem;
-    color:var(--bone);margin-top:.6rem;line-height:1.3;
-  }
-
-  /* pull quote — the thesis lines */
-  blockquote.pull{
-    margin:3rem 0;padding:0;border:0;text-align:center;
-  }
-  blockquote.pull p{
-    font-family:var(--serif-display);font-weight:500;font-style:italic;
-    font-size:clamp(1.5rem,3.6vw,2rem);line-height:1.28;color:var(--bone);
-    max-width:30rem;margin:0 auto;
-  }
-
-  /* ---------- footnotes ---------- */
-  .notes{
-    max-width:var(--measure);margin:4rem auto 0;padding:0 1.5rem;
-  }
-  .notes h3,.refs h3{
-    font-family:var(--sans);font-size:.74rem;font-weight:600;letter-spacing:.26em;
-    text-transform:uppercase;color:var(--rose);
-    border-top:1px solid var(--line);padding-top:1.6rem;margin:0 0 1.4rem;
-  }
-  ol.fnlist{list-style:none;counter-reset:fn;margin:0;padding:0}
-  ol.fnlist li{
-    counter-increment:fn;position:relative;padding-left:2.2rem;
-    font-size:.92rem;line-height:1.62;color:var(--ink-soft);margin-bottom:1rem;
-  }
-  ol.fnlist li::before{
-    content:counter(fn);position:absolute;left:0;top:.05em;
-    font-family:var(--sans);font-size:.72rem;font-weight:600;color:var(--rose);
-  }
-  ol.fnlist li a.back{
-    color:var(--ink-faint);text-decoration:none;margin-left:.3rem;
-  }
-  ol.fnlist li a.back:hover{color:var(--rose)}
-  ol.fnlist a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
-  ol.fnlist a:hover{color:var(--rose);border-color:var(--rose)}
-
-  /* references */
-  .refs{max-width:var(--measure);margin:3rem auto 0;padding:0 1.5rem}
-  .refs ul{list-style:none;margin:0;padding:0}
-  .refs li{
-    font-size:.9rem;line-height:1.55;color:var(--ink-soft);
-    padding-left:1.4rem;text-indent:-1.4rem;margin-bottom:.7rem;
-  }
-  .refs li i{color:var(--ink)}
-
-  /* tags + footer */
-  .tags{
-    max-width:var(--measure);margin:3.4rem auto 0;padding:0 1.5rem;
-    display:flex;flex-wrap:wrap;gap:.55rem;
-  }
-  .tags .t{
-    font-family:var(--sans);font-size:.72rem;letter-spacing:.04em;
-    color:var(--ink-soft);background:var(--bg-raise);
-    border:1px solid var(--line-soft);border-radius:100px;padding:.35rem .9rem;
-  }
-  footer.site{
-    max-width:60rem;margin:4rem auto 0;padding:2.2rem 1.5rem 3.2rem;
-    border-top:1px solid var(--line-soft);text-align:center;
-    font-family:var(--sans);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--ink-faint);
-  }
-  footer.site .star{color:var(--rose)}
-  footer.site a{color:var(--ink-faint);text-decoration:none}
-  footer.site a:hover{color:var(--rose)}
-
-  :target{scroll-margin-top:2rem}
-  a:focus-visible{outline:2px solid var(--rose);outline-offset:3px;border-radius:2px}
-
-  @media (max-width:640px){
-    body{font-size:1.08rem}
-    header.hero{padding-top:4rem}
-    .dropcap::first-letter{font-size:3.4rem}
-  }
-  @media (prefers-reduced-motion:no-preference){
-    .fade{opacity:0;transform:translateY(10px);animation:rise .9s ease forwards}
-    .fade.d1{animation-delay:.05s}.fade.d2{animation-delay:.15s}
-    .fade.d3{animation-delay:.25s}.fade.d4{animation-delay:.35s}
-    @keyframes rise{to{opacity:1;transform:none}}
-  }
-</style>
+    .art-hero { padding:3rem 4rem 5rem; max-width:820px; margin:0 auto; text-align:center; }
+    .a-eyebrow { font-family:'DM Mono',monospace; font-size:.58rem; letter-spacing:.4em; text-transform:uppercase; color:var(--rose); display:block; margin-bottom:2rem; }
+    .a-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2.4rem,6vw,4rem); font-weight:300; line-height:1.06; color:var(--cream); }
+    .a-title em { color:var(--rose-light); font-style:italic; }
+    .a-subtitle { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-style:italic; font-weight:300; color:var(--muted); margin-top:1.4rem; line-height:1.65; }
+    .a-meta { display:flex; justify-content:center; align-items:center; gap:1.2rem; margin-top:2.8rem; font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.2em; text-transform:uppercase; color:var(--rose-dark); flex-wrap:wrap; }
+    .a-meta .sep { color:rgba(212,144,154,.25); }
+    .orn-line { text-align:center; color:var(--rose-dark); font-size:.8rem; letter-spacing:1.4rem; margin:3.5rem 0; }
+    .cover-img { width:100%; max-width:820px; margin:0 auto 4rem; aspect-ratio:16/7; overflow:hidden; border:1px solid rgba(212,144,154,.12); }
+    .cover-img img { width:100%; height:100%; object-fit:cover; filter:brightness(.85) saturate(.9); }
+    .art-body { max-width:680px; margin:0 auto; padding:0 2rem 4rem; }
+    .art-body > p:first-of-type::first-letter { font-family:'Cormorant Garamond',serif; font-size:4.5rem; font-weight:300; float:left; line-height:.82; margin-right:.12em; margin-top:.08em; color:var(--rose-light); }
+    h2 { font-family:'Cormorant Garamond',serif; font-size:1.95rem; font-weight:400; line-height:1.15; color:var(--cream); margin:4rem 0 1.4rem; position:relative; padding-left:1.4rem; }
+    h2::before { content:''; position:absolute; left:0; top:.3em; width:3px; height:1.1em; background:linear-gradient(to bottom,var(--rose),var(--rose-dark)); }
+    h2 .h2-num { display:block; font-family:'DM Mono',monospace; font-size:.5rem; font-weight:400; letter-spacing:.28em; text-transform:uppercase; color:var(--rose); margin-bottom:.55rem; }
+    h3 { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-style:italic; font-weight:400; color:var(--rose-light); margin:2.4rem 0 .8rem; }
+    p { color:#c9b8bc; margin-bottom:1.5rem; }
+    em { color:var(--rose-light); font-style:italic; }
+    strong { color:var(--cream); font-weight:600; }
+    .jp { font-style:normal; color:var(--rose-light); }
+    .gloss { color:var(--muted); font-style:italic; }
+    .img-inline { width:100%; margin:2.8rem 0 .6rem; overflow:hidden; border:1px solid rgba(212,144,154,.1); }
+    .img-inline img { width:100%; display:block; filter:brightness(.85) saturate(.85); }
+    .img-caption { font-family:'DM Mono',monospace; font-size:.47rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); text-align:right; margin-bottom:2.4rem; }
+    blockquote { margin:3rem 0; padding:1.8rem 2.2rem; border:1px solid rgba(212,144,154,.2); background:var(--bg-card); position:relative; font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-style:italic; font-weight:300; color:var(--rose-light); line-height:1.6; }
+    blockquote::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--rose),var(--rose-dark)); }
+    blockquote cite { display:block; font-family:'DM Mono',monospace; font-size:.46rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); font-style:normal; margin-top:.9rem; }
+    .source-box { margin:2.8rem 0; padding:1.6rem 2rem; border:1px solid rgba(212,144,154,.3); background:rgba(212,144,154,.04); font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; color:#d4b0b8; line-height:1.75; position:relative; }
+    .source-box::before { content:'Source primaire'; position:absolute; top:-1px; left:1.5rem; background:var(--bg); padding:0 .7rem; font-family:'DM Mono',monospace; font-size:.46rem; letter-spacing:.18em; text-transform:uppercase; color:var(--rose); font-style:normal; }
+    .source-box cite { display:block; font-family:'DM Mono',monospace; font-size:.46rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); font-style:normal; margin-top:.9rem; }
+    .fn { font-family:'DM Mono',monospace; font-size:.52rem; vertical-align:super; line-height:0; color:var(--rose); border-bottom:1px dotted var(--rose-dark); cursor:default; }
+    .cadrage { border-left:2px solid var(--rose-dark); padding:1rem 1.5rem; background:rgba(212,144,154,.04); margin:2.4rem 0; }
+    .cadrage-title { font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.2em; text-transform:uppercase; color:var(--rose); margin-bottom:.6rem; display:block; }
+    .cadrage p { font-size:.9rem; color:var(--muted); font-style:italic; margin:0; line-height:1.75; }
+    .cadrage p + p { margin-top:.8rem; }
+    .footnotes { margin-top:4rem; padding-top:3rem; border-top:1px solid var(--border); }
+    .footnotes-title { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--rose); margin-bottom:2rem; display:block; }
+    .footnote-item { display:grid; grid-template-columns:2rem 1fr; gap:.6rem; margin-bottom:1.1rem; font-size:.87rem; color:var(--muted); line-height:1.7; }
+    .fn-num { font-family:'DM Mono',monospace; font-size:.5rem; color:var(--rose-dark); padding-top:.15rem; }
+    .footnote-item em { color:#b0a0b0; }
+    .biblio { margin-top:2.5rem; padding-top:2rem; border-top:1px solid rgba(212,144,154,.1); }
+    .biblio-title { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--rose); margin-bottom:1.5rem; display:block; }
+    .biblio-item { font-size:.87rem; color:var(--muted); line-height:1.75; margin-bottom:.7rem; padding-left:1.4rem; text-indent:-1.4rem; }
+    .biblio-item em { color:#b0a0b0; }
+    /* Remerciements */
+    .thanks { margin-top:2.5rem; padding:1.3rem 1.6rem; border:1px solid rgba(212,144,154,.16); background:rgba(212,144,154,.03); }
+    .thanks-title { font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.28em; text-transform:uppercase; color:var(--rose); margin-bottom:.8rem; display:block; }
+    .thanks p { font-size:.87rem; color:var(--muted); line-height:1.75; margin:0; font-style:italic; }
+    .thanks a { color:var(--rose-light); text-decoration:none; border-bottom:1px solid var(--rose-dark); }
+    .thanks a:hover { color:var(--rose); }
+    .art-footer { max-width:680px; margin:0 auto; padding:3rem 2rem 6rem; border-top:1px solid var(--border); display:flex; flex-wrap:wrap; align-items:center; gap:1rem; }
+    .tag { border:1px solid var(--rose-dark); padding:.25rem .8rem; font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.16em; text-transform:uppercase; color:var(--rose); }
+    footer { border-top:1px solid var(--border); padding:2.5rem 4rem; max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
+    .f-logo { font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:300; letter-spacing:.15em; color:var(--rose-light); }
+    .f-copy { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.18em; color:var(--muted); }
+    .rv { opacity:0; transform:translateY(22px); transition:opacity .8s ease,transform .8s ease; }
+    .rv.on { opacity:1; transform:none; }
+    @media(max-width:760px){ nav{padding:1.2rem 1.5rem;} .series{padding-top:7rem;} .art-hero,.art-body,.art-footer{padding-left:1.5rem;padding-right:1.5rem;} footer{flex-direction:column;gap:1rem;text-align:center;padding:2rem;} .footnote-item{grid-template-columns:1.5rem 1fr;} }
+  </style>
 </head>
 <body>
-<div class="wrap">
-
-  <div class="topbar">
-    <span class="brand">Spectre Rose</span>
-    <a href="#">← Retour aux théories</a>
-  </div>
-
-  <nav class="series" aria-label="Série Silent Hill f">
-    <span class="lead">Silent Hill f · trois lectures d'une réécriture</span>
-    <span><span class="roman">I.</span><span class="here">Ce qu'Hinako ne peut pas regarder</span></span>
-    <span><span class="roman">II.</span><a href="spectre-rose-silent-hill-f-article-II.html">La poupée qu'on jette à la rivière</a></span>
-    <span><span class="roman">III.</span><a href="spectre-rose-silent-hill-f-article-III.html">Le village qui a réécrit son histoire</a></span>
+  <nav>
+    <a href="index.html" class="nav-logo">Spectre <span>Rose</span></a>
+    <a href="index.html" class="nav-back">← Retour aux théories</a>
   </nav>
 
-  <header class="hero">
-    <div class="eyebrow fade d1">
-      <span>✦ Silent Hill f</span><span class="sep">·</span>
-      <span>Identité confisquée</span><span class="sep">·</span>
-      <span>Horreur du corps ritualisé</span>
+  <div class="series">
+    <span class="series-label">Silent Hill f · trois lectures d'une réécriture</span>
+    <div class="series-list">
+      <span class="here"><span class="num">I.</span> Ce qu'Hinako ne peut pas regarder</span>
+      <a href="spectre-rose-silent-hill-f-article-II.html"><span class="num">II.</span> La poupée qu'on jette à la rivière</a>
+      <a href="spectre-rose-silent-hill-f-article-III.html"><span class="num">III.</span> Le village qui a réécrit son histoire</a>
     </div>
-    <h1 class="fade d2">Ce qu'Hinako<br>ne peut pas regarder</h1>
-    <p class="dek fade d3">Un journal qui se réécrit, un monstre qu'on ne peut pas regarder en face, un homme qui lui apprend à oublier son propre nom. Comment <span class="work">Silent Hill f</span> rend l'effacement d'une femme à la fois littéral et invisible — et pourquoi sa beauté même est l'horreur.</p>
-    <div class="runline fade d4">
+  </div>
+
+  <div class="art-hero">
+    <span class="a-eyebrow rv">✦ Silent Hill f &nbsp;·&nbsp; Identité confisquée &nbsp;·&nbsp; Horreur du corps ritualisé</span>
+    <h1 class="a-title rv">Ce qu'Hinako<br><em>ne peut pas regarder</em></h1>
+    <p class="a-subtitle rv">Un journal qui se réécrit, un monstre qu'on ne peut pas regarder en face, un homme qui lui apprend à oublier son propre nom. Comment <em>Silent Hill f</em> rend l'effacement d'une femme à la fois littéral et invisible — et pourquoi sa beauté même est l'horreur.</p>
+    <div class="a-meta rv">
       <span>Silent Hill f — Ryukishi07 / NeoBards, 2025</span>
-      <span class="dot">·</span><span>Spoilers complets</span>
-      <span class="dot">·</span><span>~24 min</span>
+      <span class="sep">·</span>
+      <span>Spoilers complets</span>
+      <span class="sep">·</span>
+      <span>~26 min</span>
     </div>
-    <div class="hero-rule fade d4"></div>
-  </header>
+  </div>
 
-  <article>
+  <div class="cover-img rv">
+    <img src="silenthill-f.jpg" alt="Silent Hill f — Hinako Shimizu">
+  </div>
 
-    <p class="standfirst dropcap">Dans les premières heures de <span class="work">Silent Hill f</span>, une règle de survie résiste à se laisser comprendre. Tant que le brouillard tient Ebisugaoka, Hinako ne peut pas regarder en face le monstre qui s'y avance : si son regard s'attarde, elle meurt. Avancer suppose de détourner les yeux, de naviguer à la lisière du champ visuel, de progresser sans voir. On croit d'abord à une contrainte d'ergonomie. On comprend plus tard que la consigne décrit, avec une exactitude clinique, ce qu'Hinako fait depuis bien avant que la brume descende : elle regarde à côté de ce qui lui arrive.</p>
+  <article class="art-body">
 
-    <p>Le monstre porte un nom — <strong>Shiromuku</strong>, le kimono blanc des mariées shinto. Le vêtement dit déjà tout : la mariée s'y présente comme une surface vierge, prête à « recevoir les couleurs » de l'époux et de sa maison, effaçant ce qu'elle fut pour accueillir ce qu'on lui assignera.<a class="fn" href="#fn1" id="r1">1</a> Et la créature est Hinako elle-même — sa version d'après, celle qui a consenti. Ce qu'elle refuse de regarder, c'est donc elle-même dans dix ans. Ce qu'elle ne peut pas fixer sans mourir, c'est l'issue qu'on lui réserve.</p>
+    <p class="rv">Dans les premières heures de <em>Silent Hill f</em>, une règle de survie résiste à se laisser comprendre. Tant que le brouillard tient Ebisugaoka, Hinako ne peut pas regarder en face le monstre qui s'y avance : si son regard s'attarde, elle meurt. Avancer suppose de détourner les yeux, de naviguer à la lisière du champ visuel, de progresser sans voir. On croit d'abord à une contrainte d'ergonomie. On comprend plus tard que la consigne décrit, avec une exactitude clinique, ce qu'Hinako fait depuis bien avant que la brume descende : elle regarde à côté de ce qui lui arrive.</p>
 
-    <p>Tout le jeu fonctionne sur ce principe. Il énonce une chose et en figure une autre, simultanément, sans jamais les confondre — et il demande au joueur d'apprendre à lire à rebours, à chercher les coutures là où le tissu du récit a été retourné. La difficulté tient à un fait que rien n'annonce : la narratrice ment. Pas par ruse. Parce qu'on lui a appris à mentir, et d'abord à se mentir.</p>
+    <p class="rv">Le monstre porte un nom — <strong>Shiromuku</strong> (<span class="jp">白無垢</span>, <span class="gloss">« blanc sans souillure »</span>), le kimono des mariées shinto. Le vêtement dit déjà tout : la mariée s'y présente comme une surface vierge, prête à « recevoir les couleurs » de l'époux et de sa maison, effaçant ce qu'elle fut pour accueillir ce qu'on lui assignera.<span class="fn">1</span> Et la créature est Hinako elle-même — sa version d'après, celle qui a consenti. Ce qu'elle refuse de regarder, c'est donc elle-même dans dix ans. Ce qu'elle ne peut pas fixer sans mourir, c'est l'issue qu'on lui réserve.</p>
 
-    <p>Le mot que la presse japonaise retient comme thème central du jeu condense toute cette logique : <span class="jp">美しいがゆえに、おぞましい</span> — <em>parce qu'elle est belle, elle est effroyable</em>.<a class="fn" href="#fn2" id="r2">2</a> La beauté de la mariée, la grâce de la poupée, la blancheur du shiromuku ne sont pas le décor de l'horreur : elles en sont la matière. C'est cette équation qu'il faut tenir d'un bout à l'autre du jeu — et c'est elle, précisément, que le journal d'Hinako travaille à nous faire oublier.</p>
+    <p class="rv">Tout le jeu fonctionne sur ce principe. Il énonce une chose et en figure une autre, simultanément, sans jamais les confondre — et il demande au joueur d'apprendre à lire à rebours, à chercher les coutures là où le tissu du récit a été retourné. La difficulté tient à un fait que rien n'annonce : la narratrice ment. Pas par ruse. Parce qu'on lui a appris à mentir, et d'abord à se mentir.</p>
 
-    <div class="seam"><span>✦</span></div>
+    <p class="rv">Le mot que la presse japonaise retient comme thème central du jeu condense toute cette logique : <span class="jp">美しいがゆえに、おぞましい</span> — <em>parce que c'est beau, c'est effroyable</em>.<span class="fn">2</span> La beauté de la mariée, la grâce de la poupée, la blancheur du shiromuku ne sont pas le décor de l'horreur : elles en sont la matière. C'est cette équation qu'il faut tenir d'un bout à l'autre du jeu — et c'est elle, précisément, que le journal d'Hinako travaille à nous faire oublier.</p>
 
-    <h2><span class="num">I — Le texte corrompu</span>Le journal qui se réécrit</h2>
+    <div class="orn-line rv">✦ &nbsp; ✦ &nbsp; ✦</div>
 
-    <p>Le journal d'Hinako est la source principale du jeu sur l'histoire et la mythologie d'Ebisugaoka. C'est aussi un texte corrompu — et pas seulement au sens figuré. Physiquement, dans les données du jeu, certaines entrées changent d'une partie à l'autre : l'image d'un personnage se substitue à une autre, des passages sont réécrits par une main qu'on ne peut pas encore nommer.<a class="fn" href="#fn3" id="r3">3</a> Ce n'est pas un défaut. C'est la démonstration la plus économe que Ryukishi07 fasse de ce qui arrive à son héroïne : son récit se réécrit sous ses yeux, et elle ne s'en aperçoit pas, parce qu'à une date qu'on ne peut pas fixer elle a cessé d'en être la seule autrice. Le jeu donne ainsi sa forme la plus littérale à ce que Gérard Genette appelait, dans <span class="work">Palimpsestes</span> (1982), l'écriture au second degré — un texte greffé sur un texte antérieur, qui le recouvre sans tout à fait l'effacer. C'est l'opération qui parcourt toute cette série : une femme réécrite ici, un village réécrit plus loin.</p>
+    <h2 class="rv"><span class="h2-num">I — Le texte corrompu</span>Le journal qui se réécrit</h2>
 
-    <p>Même les passages stables sont truffés d'erreurs que seul un lecteur attentif — ou un lecteur qui revient — peut relever. Hinako attribue à Inari des pratiques rituelles qui le précèdent de plusieurs siècles : le village remonte au moins à l'époque de Nara, et la divinité des Tsuneki n'y arrive que vers 1880.<a class="fn" href="#fn4" id="r4">4</a> Elle décrit ses amies Rinko et Satsuko comme des rivales, des ennemies à neutraliser — et les parties suivantes révèlent qu'elles essayaient de la sauver. Elle ne se souvient pas que Rinko l'a secourue enfant, perdue dans les rizières, et cette amnésie remonte loin, bien avant le brouillard.<a class="fn" href="#fn5" id="r5">5</a> Hinako est, au sens où Wayne Booth l'entendait, une <em>narratrice non fiable</em> — mais d'une espèce particulière : sa partialité n'est pas une ruse rhétorique, c'est une blessure. Et le jeu confie au joueur ce qu'Ansgar Nünning attribue au lecteur de tels récits : la reconstruction patiente de la vérité à partir des écarts du texte, contre la voix qui le porte.</p>
+    <p class="rv">Le journal d'Hinako est la source principale du jeu sur l'histoire et la mythologie d'Ebisugaoka. C'est aussi un texte corrompu — et pas seulement au sens figuré. Physiquement, dans les données du jeu, certaines entrées changent d'une partie à l'autre : l'image d'un personnage se substitue à une autre, des passages sont réécrits par une main qu'on ne peut pas encore nommer.<span class="fn">3</span> Ce n'est pas un défaut. C'est la démonstration la plus économe que Ryukishi07 fasse de ce qui arrive à son héroïne : son récit se réécrit sous ses yeux, et elle ne s'en aperçoit pas, parce qu'à une date qu'on ne peut pas fixer elle a cessé d'en être la seule autrice. Le jeu donne ainsi sa forme la plus littérale à ce que Gérard Genette appelait, dans <em>Palimpsestes</em> (1982), l'écriture au second degré — un texte greffé sur un texte antérieur, qui le recouvre sans tout à fait l'effacer. C'est l'opération qui parcourt toute cette série : une femme réécrite ici, un village réécrit plus loin.</p>
 
-    <p>Ryukishi07 a lui-même posé les termes de cette lecture. Il n'invite pas à trancher entre le surnaturel et la psychose, mais à regarder sous les deux à la fois : <em>même si tout cela n'était que pure illusion, pour que cette illusion naisse, des événements y correspondant ont eu lieu dans la réalité.</em> Et il offre à ses lecteurs son image récurrente — celle de la « boîte à chat » qu'il faut imaginer transpercée d'une lumière venue de l'intérieur, héritée en droite ligne de <span class="work">Higurashi</span> et d'<span class="work">Umineko</span>.<a class="fn" href="#fn6" id="r6">6</a> L'illusion a une forme ; cette forme garde l'empreinte de ce qui l'a produite. Et ce qui a produit la brume autour d'Hinako a un nom, une méthode et une intention.</p>
+    <p class="rv">Même les passages stables sont truffés d'erreurs que seul un lecteur attentif — ou un lecteur qui revient — peut relever. Hinako attribue au culte d'Inari des pratiques rituelles qui lui préexistent de plusieurs siècles.<span class="fn">4</span> Elle décrit ses amies Rinko et Sakuko comme des rivales, des ennemies à neutraliser — et les parties suivantes compliquent entièrement ce portrait. Elle ne se souvient pas que Rinko l'a secourue enfant, perdue dans les rizières, et cette amnésie remonte loin, bien avant le brouillard.<span class="fn">5</span> Hinako est, au sens où Wayne Booth l'entendait, une <em>narratrice non fiable</em> — mais d'une espèce particulière : sa partialité n'est pas une ruse rhétorique, c'est une blessure. Et le jeu confie au joueur ce qu'Ansgar Nünning attribue au lecteur de tels récits : la reconstruction patiente de la vérité à partir des écarts du texte, contre la voix qui le porte.</p>
 
-    <p>Il faut le dire d'emblée, car la critique japonaise majoritaire lit le jeu autrement : elle voit dans les deux Hinako qui finiront par se faire face le partage classique du <span class="jp">本音</span> et du <span class="jp">建前</span>, du for intérieur et de la façade consentie, deux moitiés d'une même psyché en guerre.<a class="fn" href="#fn7" id="r7">7</a> Interrogé sur ce dédoublement, Ryukishi07 propose justement cette grille — « on peut recevoir cela comme deux moi soudain présents en même temps » — mais ajoute aussitôt qu'« il est difficile d'aller plus loin », et refuse de trancher. Cette indécision n'est pas une dérobade : c'est une autorisation. Elle ouvre l'espace où lire les coutures plutôt que la surface. C'est l'une de ces coutures — l'identité même du second Hinako, ce qu'il est <em>en réalité</em> — que prend pour objet le deuxième volet de cette série.</p>
+    <p class="rv">Le plus remarquable est que les créateurs eux-mêmes décrivent ce dispositif, sans jamais le nommer. Dans l'entretien de lancement du roman, le producteur Okamoto Motoi observe qu'il reconnaît à la seule lecture d'un avis combien de fois son auteur a terminé le jeu : <em>« au premier run on se dit "Rinko est la pire !", et au fil des parties on se met à penser : elle est peut-être quelqu'un de bien, en fait. »</em><span class="fn">6</span> La correction du jugement par la relecture n'est pas un effet secondaire du jeu. C'en est le programme.</p>
 
-    <div class="dossier">
-      <span class="label">Contexte — Japon shōwa, années 1960</span>
-      <p>L'ère Shōwa pendant laquelle se déroule le jeu est celle de la haute croissance économique japonaise — et d'un patriarcat encore structurellement intact. L'âge légal du mariage des femmes était fixé à seize ans ; les unions arrangées représentaient encore près de quatre sur dix.</p>
-      <p>Le système <strong>ie</strong> (家制度), formellement aboli par la réforme du Code civil de 1947 mais profondément enraciné dans les pratiques, organisait la famille autour de la succession patrilinéaire : l'épouse devenait membre de la maison de son mari et perdait de fait son appartenance à la sienne. Ce cadre n'est pas un décor — c'est la structure qui produit la brume.</p>
+    <p class="rv">Ryukishi07 a lui-même posé les termes de cette lecture. Il n'invite pas à trancher entre le surnaturel et la psychose, mais à regarder sous les deux à la fois : <em>même si tout cela n'était que pure illusion, pour que cette illusion naisse, des événements y correspondant ont eu lieu dans la réalité.</em> Et il offre à ses lecteurs son image récurrente — celle de la « boîte à chat » (<span class="jp">猫箱</span>, <em>nekobako</em>, <span class="gloss">la boîte de Schrödinger</span>) qu'il faut imaginer transpercée d'une lumière venue de l'intérieur, héritée en droite ligne de <em>Higurashi</em> et d'<em>Umineko</em>.<span class="fn">7</span> L'illusion a une forme ; cette forme garde l'empreinte de ce qui l'a produite. Et ce qui a produit la brume autour d'Hinako a un nom, une méthode et une intention.</p>
+
+    <p class="rv">Il faut le dire d'emblée, car la critique japonaise majoritaire lit le jeu autrement : elle voit dans les deux Hinako qui finiront par se faire face le partage classique du <span class="jp">本音</span> (<em>honne</em>, <span class="gloss">ce qu'on pense vraiment</span>) et du <span class="jp">建前</span> (<em>tatemae</em>, <span class="gloss">la façade qu'on présente</span>), deux moitiés d'une même psyché en guerre.<span class="fn">8</span> Interrogé sur ce dédoublement, Ryukishi07 propose justement cette grille — « on peut recevoir cela comme deux moi soudain présents en même temps » — mais ajoute aussitôt qu'« il est difficile d'aller plus loin », et refuse de trancher. Cette indécision n'est pas une dérobade : c'est une autorisation. Elle ouvre l'espace où lire les coutures plutôt que la surface. C'est l'une de ces coutures — l'identité même du second Hinako, ce qu'il est <em>en réalité</em> — que prend pour objet le deuxième volet de cette série.</p>
+
+    <div class="cadrage rv">
+      <span class="cadrage-title">Contexte — Japon shōwa, années 1960</span>
+      <p>L'ère Shōwa (<span class="jp">昭和</span>, <span class="gloss">« paix éclairée »</span>, 1926-1989) pendant laquelle se déroule le jeu est celle de la haute croissance économique japonaise — et d'un patriarcat encore structurellement intact. L'âge légal du mariage des femmes était fixé à seize ans ; les unions arrangées représentaient encore près de quatre sur dix.</p>
+      <p>Le système <strong>ie</strong> (<span class="jp">家制度</span>, <span class="gloss">« système de la maison »</span>), formellement aboli par la réforme du Code civil de 1947 mais profondément enraciné dans les pratiques, organisait la famille autour de la succession patrilinéaire : l'épouse devenait membre de la maison de son mari et perdait de fait son appartenance à la sienne. Ce cadre n'est pas un décor — c'est la structure qui produit la brume.</p>
+      <p>Ryukishi07 a précisé avoir choisi cette période pour donner au thème un contraste plus net : il s'agissait de représenter « un autre monde en continuité avec le nôtre, qui conserve des coutumes et des superstitions oubliées aujourd'hui ».<span class="fn">9</span> Et le lieu n'est pas inventé : Ebisugaoka est modelé sur le quartier des ruelles <em>kinkotsu</em> de Kanayama, à Gero, dans la préfecture de Gifu.</p>
     </div>
 
-    <h2><span class="num">II — La violence du langage</span>雛子, ou ce qu'un nom promet</h2>
+    <h2 class="rv"><span class="h2-num">II — La violence du langage</span>雛子, ou ce qu'un nom promet</h2>
 
-    <p>Le prénom d'Hinako s'écrit <span class="jp">雛子</span>. Le kanji <span class="jp">雛</span> — <em>hina</em> — désigne à la fois le poussin qui n'a pas encore d'ailes et la poupée de festival qu'on sort pour Hinamatsuri avant de la remettre dans sa boîte jusqu'à l'année suivante.<a class="fn" href="#fn8" id="r8">8</a> C'est un nom qui dit : ornementale, fragile, disponible pour les cérémonies. Et c'est un nom contre lequel Hinako se bat depuis l'enfance — elle qui refusait les poupées, courait avec les garçons, inventait avec Shu des guerres spatiales au milieu de la rue.</p>
+    <p class="rv">Le prénom d'Hinako s'écrit <span class="jp">雛子</span>. Le kanji <span class="jp">雛</span> — <em>hina</em> — désigne à la fois le poussin qui n'a pas encore d'ailes et la poupée de festival qu'on sort pour <em>Hinamatsuri</em> (<span class="jp">雛祭り</span>, <span class="gloss">« la fête des poupées », le 3 mars</span>) avant de la remettre dans sa boîte jusqu'à l'année suivante.<span class="fn">10</span> C'est un nom qui dit : ornementale, fragile, disponible pour les cérémonies. Et c'est un nom contre lequel Hinako se bat depuis l'enfance — elle qui refusait les poupées, courait avec les garçons, inventait avec Shu des guerres spatiales au milieu de la rue.</p>
 
-    <p>Ce que Ryukishi07 fait de ce prénom n'est pas de l'ironie facile. C'est quelque chose de plus exact : il montre que la violence d'une assignation de genre commence dans le langage, dans les mots qu'on pose sur les enfants avant qu'elles puissent choisir. C'est, presque à la lettre, l'<em>interpellation</em> que décrivait Althusser et que Judith Butler a reprise pour le genre : être hélé·e dans une identité par un mot — « c'est une fille » — qui assigne avant tout consentement, et qu'il faudra ensuite, performativement, ne jamais cesser de répéter. Hinako n'a pas choisi son nom, ni l'image qu'il projette ; et toute l'architecture du jeu — le mariage, le Sanctuaire, la transformation — n'est que la tentative du monde de la faire coïncider avec lui, de réduire la distance entre ce qu'il promet et ce qu'elle est.</p>
+    <p class="rv">Le jeu le sait si bien qu'il met ce kanji dans le titre d'une de ses fins. <span class="jp">呪いは雛の如く舞い戻る</span> — <em>la malédiction revient en voltigeant comme un poussin</em> : l'oiseau du prénom sert à nommer le retour de ce qu'on croyait conjuré.<span class="fn">11</span> Il n'y a pas d'ironie plus exacte. Ce qui revient toujours porte le nom qu'on lui a donné à la naissance.</p>
 
-    <p>On en trouve la preuve dans une lettre que l'homme au masque lui adresse, retrouvée parmi les documents du jeu. Il y demande, en échange d'une paix éternelle et d'un rang, la permission de <strong>« lui briser les ailes »</strong>.<a class="fn" href="#fn9" id="r9">9</a> La phrase est d'une logique monstrueuse : on ne brise que des ailes capables de porter. Le nom dit l'oisillon qui ne vole pas encore ; l'homme propose de le tenir à terre pour toujours.</p>
+    <p class="rv">Ce que Ryukishi07 fait de ce prénom n'est pas de l'ironie facile. C'est quelque chose de plus exact : il montre que la violence d'une assignation de genre commence dans le langage, dans les mots qu'on pose sur les enfants avant qu'elles puissent choisir. C'est, presque à la lettre, l'<em>interpellation</em> que décrivait Althusser et que Judith Butler a reprise pour le genre : être hélé·e dans une identité par un mot — « c'est une fille » — qui assigne avant tout consentement, et qu'il faudra ensuite, performativement, ne jamais cesser de répéter. Hinako n'a pas choisi son nom, ni l'image qu'il projette ; et toute l'architecture du jeu — le mariage, le Sanctuaire, la transformation — n'est que la tentative du monde de la faire coïncider avec lui, de réduire la distance entre ce qu'il promet et ce qu'elle est.</p>
 
-    <p>Le jeu file cette logique nominale jusqu'au bout. La sœur aînée s'appelle Junko — <span class="jp">潤子</span>, l'enfant de la prospérité humide, nom de femme fait pour l'harmonie domestique. Rinko — <span class="jp">凛子</span>, l'enfant de la rigueur. Et le suffixe <span class="jp">子</span> (<em>ko</em>), présent dans presque tous les prénoms féminins du jeu, signifie <em>enfant</em> : une convention qui inscrit chaque personnage dans une minorité permanente, un devenir perpétuel sous tutelle. Jusqu'à Shu, le seul prénom masculin du groupe — qui n'en porte pas.</p>
+    <p class="rv">On en trouve la preuve dans une lettre que l'homme au masque lui adresse, retrouvée parmi les documents du jeu. Il y demande, en échange d'une paix éternelle et d'un rang, la permission de <strong>« lui briser les ailes »</strong> (<span class="jp">君の翼を折ることを許してくれ</span>).<span class="fn">12</span> La phrase est d'une logique monstrueuse : on ne brise que des ailes capables de porter. Le nom dit l'oisillon qui ne vole pas encore ; l'homme propose de le tenir à terre pour toujours.</p>
 
-    <h2><span class="num">III — L'emprise</span>L'homme qui lui apprend à oublier son nom</h2>
+    <h3 class="rv">Le nom de famille, que personne ne lit</h3>
 
-    <p>Derrière le masque de renard, la vraie fin le révèle, se tient son fiancé : Tsuneki Kotoyuki. Dans le jeu, il est d'abord présenté comme un guide. Il connaît le Sanctuaire des Ténèbres, il protège Hinako des monstres, il lui explique les rituels, il répond à ses questions avec une patience qui ressemble à de l'amour. Il dit, à un moment, s'être astreint aux formes du mariage humain « par amour et par respect » — phrase qui, lue vite, sonne comme une déclaration, et qui, lue lentement, en dit une autre : il a dû s'imposer des règles pour se conduire de façon à peu près acceptable. Ce qu'elle révèle, c'est qu'il y a, en dessous, un désir qui n'en a pas.</p>
+    <p class="rv">Il y a pourtant, dans ce même nom, quelque chose que la critique francophone a presque entièrement manqué, et qui change l'échelle de tout le jeu. Le patronyme d'Hinako ne s'écrit pas <span class="jp">清水</span> — « eau pure », la graphie courante de <em>Shimizu</em>. Il s'écrit <span class="jp">深水</span> : <span class="gloss">« eau profonde »</span>, lecture rare et irrégulière du même son.<span class="fn">13</span></p>
 
-    <p>La vraie fin nomme ce désir, et c'est ici que le jeu devient retors. L'amour anormal de Kotoyuki, apprend-on, n'est pas un sentiment : c'est l'effet d'une malédiction qui frappe sa lignée depuis des générations. Lorsqu'une fille naît au village avec le sang rare qui porte en lui le <span class="jp">神威</span> — la puissance divine —, l'héritier des Tsuneki est contraint de la prendre pour épouse, sous peine de voir la calamité s'abattre sur les siens. Tous les héritiers, avant lui, ont épousé ainsi.<a class="fn" href="#fn10" id="r10">10</a> On pourrait croire que cette révélation l'innocente : lui aussi serait pris, lui aussi serait une victime des forces qui le dépassent. C'est exactement le piège. La malédiction ne lève pas la contrainte qu'il exerce — elle lui fournit son alibi. Elle donne à l'agresseur qui « se sacrifie » son script mythologique. Et l'horreur n'en est que plus nette : le système ne se perpétue pas malgré ceux qui l'incarnent, mais à travers eux, jusque dans les gestes de ceux qu'il a lui-même capturés.</p>
+    <p class="rv">Dans un jeu dont tout le sous-sol mythologique est un dragon d'eau enfoui sous le village, dont le poison a jadis empoisonné les sources et provoqué les séismes, l'héroïne porte le nom de l'eau profonde. Son père s'appelle Kanta (<span class="jp">寛太</span>), sa mère Kimie (<span class="jp">君江</span>) — où le <span class="jp">江</span> final désigne encore <span class="gloss">la crique, l'anse, l'eau qui entre dans les terres</span>. La famille entière est nommée d'après ce qui dort sous Ebisugaoka. Le troisième volet de cette série reviendra sur ce que cela implique ; il suffit ici de noter que le prénom disait l'oiseau, et que le nom disait déjà l'eau.</p>
 
-    <p>Car la douceur du masque cache une mécanique. Le roman de Shirō Kuro, adaptation du jeu, lui prête lui-même ses méthodes — l'encens, le vin, le souffle, la voix, le regard — et un instant de lucidité où Kitsune no Hinako se demande, brusquement éveillée, si elle n'était pas hypnotisée depuis le début, et où sont passés ses vrais sentiments.<a class="fn" href="#fn11" id="r11">11</a> La description officielle du parfum vendu sous le nom de Kotoyuki confirme la chose par une autre voie : on y vante une aura impérieuse, capable de faire taire jusqu'aux propres pensées d'Hinako. Ce n'est pas une métaphore de séduction, mais la description fonctionnelle d'un effacement cognitif — la même chose que le brouillard, produite chimiquement et rituellement par quelqu'un qui en a besoin pour que la cérémonie ait lieu. Le jeu lui donne même un objet : la mariée en fuite, dit-on, a avalé une capsule rouge juste avant la noce.<a class="fn" href="#fn12" id="r12">12</a></p>
+    <p class="rv">Le jeu file cette logique nominale jusqu'au bout. La sœur aînée s'appelle Junko — <span class="jp">潤子</span>, <span class="gloss">« l'enfant de l'humidité prospère »</span> —, nom de femme fait pour l'harmonie domestique et la fertilité. Rinko — <span class="jp">凛子</span>, <span class="gloss">« l'enfant de la rigueur froide »</span>. Et le suffixe <span class="jp">子</span> (<em>ko</em>, <span class="gloss">« enfant »</span>), présent dans presque tous les prénoms féminins du jeu, inscrit chaque personnage dans une minorité permanente, un devenir perpétuel sous tutelle. Jusqu'à Shu, le seul prénom masculin du groupe — qui n'en porte pas.</p>
 
-    <p>Le roman rend visible, avec une clarté troublante, le moment exact où Hinako commence à perdre son nom. Elle descend un escalier en transe, à son bras, et ne sait soudain plus à qui appartient le nom qu'elle porte. Sa voix à lui apaise sa confusion. <em>Tu es Hinako</em>, dit-il. Et elle s'abandonne — « je ne suis pas… Hinako Shimizu… je suis… » — jusqu'à ce qu'il achève la phrase pour elle : <em>tu es mon Hinako</em>.<a class="fn" href="#fn11" id="r11b">11</a> Tout est là. Il y a deux noms en jeu : Hinako Shimizu — la personne, avec ses parents, ses amies, ses refus — et Hinako seule, sans patronyme, qui appartient à quelqu'un. Ce qu'il accomplit dans cette scène est une soustraction : il retire le nom de famille, il retire la lignée, il retire tout ce qui fait d'Hinako une personne particulière plutôt qu'une fonction. Et il le fait en douceur, avec la voix, sous couvert d'un soulagement. Elle s'endort dans le fait d'être nommée par lui.</p>
+    <h2 class="rv"><span class="h2-num">III — L'emprise</span>L'homme qui lui apprend à oublier son nom</h2>
 
-    <p>La structure de ce qu'il lui fait porte un nom dans la littérature sur les relations d'emprise — le <em>lien traumatique</em> : produire le danger pour rendre le secours indispensable, se poser en unique source de sécurité dans un monde qu'on a soi-même rendu hostile, et, quand l'autre résiste, inverser la victime et l'agresseur.<a class="fn" href="#fn13" id="r13">13</a> Le jeu l'indique noir sur blanc : lors de leur confrontation finale, il « joue le blessé », rappelle ses sacrifices, se présente comme contraint — le geste exact que Jennifer Freyd a théorisé sous le sigle DARVO.<a class="fn" href="#fn14" id="r14">14</a></p>
+    <p class="rv">Derrière le masque de renard, la vraie fin le révèle, se tient son fiancé : <strong>Tsuneki Kotoyuki</strong> (<span class="jp">常喜寿幸</span>). Les deux noms disent la même chose : <span class="jp">常喜</span>, <span class="gloss">« la joie constante »</span> ; <span class="jp">寿幸</span>, <span class="gloss">« la félicité qui dure »</span>. L'homme qui va démonter Hinako pièce par pièce s'appelle, littéralement, Bonheur Perpétuel. Et son patronyme cache une seconde plaisanterie, plus noire : <em>tsu-ne-ki</em> est l'anagramme exact de <em>ki-tsu-ne</em> — le renard.<span class="fn">14</span> Le nom du clan contient l'animal qui le possède, dans le désordre, comme un mot qu'on aurait retourné.</p>
 
-    <p>Et l'emprise n'a pas qu'un visage. Ryukishi07 l'a dit lui-même : si les hommes du jeu semblent toujours s'éloigner en lançant des paroles rassurantes, sans jamais combattre aux côtés d'Hinako, c'est parce que tout est filtré par son regard à elle ; leur inutilité n'est qu'un artefact de sa narration.<a class="fn" href="#fn15" id="r15">15</a> Il imagine même un <span class="work">Silent Hill f</span> raconté du point de vue de Shu, dont l'une des fins serait forcément un double suicide — « le seul à t'aimer, c'est moi ; pourquoi ne me regardes-tu pas ? ».<a class="fn" href="#fn15" id="r15b">15</a> L'amour possessif n'est pas, ici, un personnage : c'est l'air qu'on respire. Le masque de renard n'en est que le praticien le plus patient.</p>
+    <p class="rv">Dans le jeu, il est d'abord présenté comme un guide. Il connaît le Sanctuaire des Ténèbres, il protège Hinako des monstres, il lui explique les rituels, il répond à ses questions avec une patience qui ressemble à de l'amour. Il dit, à un moment, s'être astreint aux formes du mariage humain « par amour et par respect » — phrase qui, lue vite, sonne comme une déclaration, et qui, lue lentement, en dit une autre : il a dû s'imposer des règles pour se conduire de façon à peu près acceptable. Ce qu'elle révèle, c'est qu'il y a, en dessous, un désir qui n'en a pas.</p>
 
-    <figure>
-      <div class="plate">
-        <div class="glyph">✦</div>
-        <div class="cap">Shiromuku — ce qu'Hinako<br>ne peut pas regarder en face</div>
-      </div>
-      <figcaption>Le kimono blanc des mariées : la surface vierge prête à recevoir les couleurs d'une autre maison.</figcaption>
-    </figure>
+    <p class="rv">La vraie fin nomme ce désir, et c'est ici que le jeu devient retors. L'amour anormal de Kotoyuki, apprend-on, n'est pas un sentiment : c'est l'effet d'une malédiction qui frappe sa lignée depuis des générations. Lorsqu'une fille naît au village avec le sang rare qui porte en lui le <span class="jp">神威</span> (<em>kamui</em>, <span class="gloss">« la puissance d'un dieu »</span>), l'héritier des Tsuneki est contraint de la prendre pour épouse, sous peine de voir la calamité s'abattre sur les siens. Tous les héritiers, avant lui, ont épousé ainsi.<span class="fn">15</span> On pourrait croire que cette révélation l'innocente : lui aussi serait pris, lui aussi serait une victime des forces qui le dépassent. C'est exactement le piège. La malédiction ne lève pas la contrainte qu'il exerce — elle lui fournit son alibi. Elle donne à l'agresseur qui « se sacrifie » son script mythologique. Et l'horreur n'en est que plus nette : le système ne se perpétue pas malgré ceux qui l'incarnent, mais à travers eux, jusque dans les gestes de ceux qu'il a lui-même capturés.</p>
 
-    <h2><span class="num">IV — Le corps</span>Les trois rituels, ou la logique de l'effacement</h2>
+    <p class="rv">Le jeu prend d'ailleurs soin de ne pas en faire un monstre pur. Dans son bureau traînent des notes où il a étudié, avec application, les modes de la ville et les goûts des jeunes filles.<span class="fn">16</span> Un homme possédé par un dieu-renard révisait ses fiches pour qu'elle le trouve charmant. C'est précisément ce détail — pathétique, humain, presque touchant — qui rend la suite plus insupportable, et non moins.</p>
 
-    <p>La progression d'Hinako dans le Sanctuaire s'organise autour de trois actes d'appropriation corporelle. Leur ordre n'a rien d'arbitraire : il va du dedans vers le dehors, de ce qu'on fait vers ce qu'on est, puis vers ce que les autres voient de nous. Ryukishi07 a tenu à ce que ces scènes soient aussi crues — la grande force de <span class="work">Silent Hill</span>, dit-il, est de pouvoir donner une forme concrète à la douleur du cœur, et une expression mièvre ou « qui se dérobe » aurait trahi la douleur de ces femmes. Le jeu est, à ce titre, le premier de Konami classé CERO Z.<a class="fn" href="#fn16" id="r16">16</a> Les procédures ne sont donc pas gratuites : elles sont la douleur rendue littérale, et refuser de l'adoucir est un choix éthique sur la souffrance qu'on accepte de montrer.</p>
+    <p class="rv">Car la douceur du masque cache une mécanique. Le roman tiré du jeu lui prête lui-même ses méthodes — l'encens, le vin, le souffle, la voix, le regard — et un instant de lucidité où Kitsune no Hinako se demande, brusquement éveillée, si elle n'était pas hypnotisée depuis le début, et où sont passés ses vrais sentiments.<span class="fn">17</span> La description officielle du parfum vendu sous le nom de Kotoyuki confirme la chose par une autre voie : on y vante une aura impérieuse, capable de faire taire jusqu'aux propres pensées d'Hinako. Ce n'est pas une métaphore de séduction, mais la description fonctionnelle d'un effacement cognitif — la même chose que le brouillard, produite chimiquement et rituellement par quelqu'un qui en a besoin pour que la cérémonie ait lieu. Le jeu lui donne même un objet : la mariée en fuite, dit-on, a avalé une capsule rouge juste avant la noce.<span class="fn">18</span></p>
 
-    <p><strong>Le premier rituel.</strong> Hinako se scie le bras droit, remplacé par une patte de renard. Dans les traditions rituelles japonaises, la main droite est celle de l'action cérémonielle — l'écriture, les offrandes, le tir à l'arc sacré.<a class="fn" href="#fn17" id="r17">17</a> Perdre la main droite, c'est perdre la capacité d'agir rituellement dans l'ordre du monde. Ce qui la remplace est efficace comme arme, mais appartient à l'espace du renard, pas à celui des humains. Elle peut désormais se défendre ; elle ne peut plus signer son propre nom.</p>
+    <div class="cadrage rv">
+      <span class="cadrage-title">Un détail que le site officiel ne cache pas</span>
+      <p>Les capsules rouges que Shu fournit à Hinako ont nourri d'innombrables théories. Elles reposent sur un fait que la fiche officielle du personnage énonce sans détour : la maison des Iwai est, <em>de génération en génération, une famille d'apothicaires</em> (<span class="jp">実家は代々の薬師</span>), et Shu lui-même « maîtrise la connaissance et le maniement des remèdes ».</p>
+      <p>L'ami d'enfance qui lui tend des gélules contre ses maux de tête est le seul personnage du jeu dont le métier familial consiste à savoir ce qu'un corps absorbe. Ce n'est pas une inférence de joueur : c'est dans la présentation du personnage, avant même qu'on lance la partie.</p>
+    </div>
 
-    <p><strong>Le second rituel.</strong> Le visage est arraché et remplacé par un masque. Le roman décrit la scène dans un détail anatomique qui rend la métaphore corporelle : la prêtresse insère les doigts dans la fissure du visage et l'arrache, applique la moitié d'un masque de renard, le coud en place ; des veines noires, semblables à des racines, rampent alors sous la peau et se raccordent aux vaisseaux jusqu'à ce que le masque s'intègre à la chair.<a class="fn" href="#fn11" id="r11c">11</a> Ce n'est pas une métamorphose, c'est une procédure — et la distinction est tout. Une métamorphose vient de l'intérieur ; elle dit ce qu'un être devient par lui-même. Une procédure vient de l'extérieur ; elle dit ce qu'on fait à quelqu'un. Le masque ne révèle pas la vraie nature d'Hinako : il en recouvre une et en installe une autre, jusque dans le tracé de ses veines. Ce que la scène donne à voir est ce que Julia Kristeva nommait, dans <span class="work">Pouvoirs de l'horreur</span> (1980), l'<em>abjection</em> — l'effroi propre à ce qui brouille la frontière du propre et de l'étranger, du dedans et du dehors, du vivant et de la chose. La peau cousue, la racine sous le derme, le visage qui n'est plus tout à fait le sien : l'horreur ne vient pas d'un monstre extérieur, elle vient de ce que la limite du corps cède.</p>
+    <p class="rv">Le roman rend visible, avec une clarté troublante, le moment exact où Hinako commence à perdre son nom. Elle descend un escalier en transe, à son bras, et ne sait soudain plus à qui appartient le nom qu'elle porte. Sa voix à lui apaise sa confusion. <em>Tu es Hinako</em>, dit-il. Et elle s'abandonne — « je ne suis pas… Hinako Shimizu… je suis… » — jusqu'à ce qu'il achève la phrase pour elle : <em>tu es mon Hinako</em>.<span class="fn">17</span> Tout est là. Il y a deux noms en jeu : Hinako Shimizu — la personne, avec ses parents, ses amies, ses refus — et Hinako seule, sans patronyme, qui appartient à quelqu'un. Ce qu'il accomplit dans cette scène est une soustraction : il retire le nom de famille, il retire la lignée, il retire tout ce qui fait d'Hinako une personne particulière plutôt qu'une fonction. Et il le fait en douceur, avec la voix, sous couvert d'un soulagement. Elle s'endort dans le fait d'être nommée par lui.</p>
 
-    <p><strong>Le troisième rituel.</strong> Elle est marquée dans le dos. Un document du Sanctuaire en dit sans détour le sens : l'empreinte fait d'elle la propriété des leurs, l'âme et le corps offerts ; <em>éveillée, tu sers ; endormie, tu sers</em>.<a class="fn" href="#fn18" id="r18">18</a> Le dos est la partie qu'on ne peut pas voir soi-même sans miroir — sans le regard d'un autre. Ce que la marque inscrit est précis : désormais, Hinako existe pour ceux qui la regardent, et non plus pour elle-même.</p>
+    <p class="rv">La structure de ce qu'il lui fait porte un nom dans la littérature sur les relations d'emprise — le <em>lien traumatique</em> : produire le danger pour rendre le secours indispensable, se poser en unique source de sécurité dans un monde qu'on a soi-même rendu hostile, et, quand l'autre résiste, inverser la victime et l'agresseur.<span class="fn">19</span> Le jeu l'indique noir sur blanc : lors de leur confrontation finale, il « joue le blessé », rappelle ses sacrifices, se présente comme contraint — le geste exact que Jennifer Freyd a théorisé sous le sigle DARVO.<span class="fn">20</span></p>
 
-    <p>Ensemble, les trois rituels suivent la progression que Simone de Beauvoir a théorisée comme la condition de l'Autre — être constitué en objet du regard d'autrui plutôt qu'en sujet de son propre regard.<a class="fn" href="#fn19" id="r19">19</a> Le Sanctuaire la rend littérale, corporelle, irréversible. Il transforme une structure sociale abstraite en chirurgie.</p>
+    <p class="rv">Et l'emprise n'a pas qu'un visage. Ryukishi07 l'a dit lui-même : si les hommes du jeu semblent toujours s'éloigner en lançant des paroles rassurantes, sans jamais combattre aux côtés d'Hinako, c'est parce que tout est filtré par son regard à elle ; leur inutilité n'est qu'un artefact de sa narration.<span class="fn">21</span> Il imagine même un <em>Silent Hill f</em> raconté du point de vue de Shu, dont l'une des fins serait forcément un double suicide — « le seul à t'aimer, c'est moi ; pourquoi ne me regardes-tu pas ? ».<span class="fn">21</span> L'amour possessif n'est pas, ici, un personnage : c'est l'air qu'on respire. Le masque de renard n'en est que le praticien le plus patient.</p>
 
-    <h2><span class="num">V — La transmission</span>Junko, ou ce que l'amour transmet</h2>
+    <div class="orn-line rv">✦ &nbsp; ✦ &nbsp; ✦</div>
 
-    <p>Le dégoût d'Hinako pour le mariage ne date pas du brouillard : il s'est appris à la maison. Elle a grandi sous les yeux d'un père qui entrait en fureur et frappait, et d'une mère qui ne pouvait qu'obéir.<a class="fn" href="#fn20" id="r20">20</a> Pour elle, le mariage équivaut déjà à une mort avant que rien de surnaturel n'arrive. Si bien que lorsque sa sœur aînée Junko lui offre la résignation comme sagesse, la douceur comme force, Hinako a toutes les raisons de l'entendre comme un savoir de survie.</p>
+    <h2 class="rv"><span class="h2-num">IV — Le corps</span>Les trois rituels, ou la logique de l'effacement</h2>
 
-    <p>Il y a, dans les rizières d'Amida-shirakawa, une lettre adressée à des parents. La femme qui l'écrit a un enfant de trois ans, attend le second, et raconte un mari si doux au <em>miai</em> qui se révèle violent une fois ivre ; elle ne peut, dit-elle, ni vivre ni mourir. La localisation du document dans les champs de la famille Kinuta — le nom de mariage de Junko, dont le kanji contient celui du champ, selon les conventions nominales shōwa — et la réaction d'Hinako à sa lecture, disproportionnée et personnelle (« cela ne peut être pardonné », d'une voix qui ne ressemble à aucun de ses autres commentaires) suggèrent que la lettre est de Junko. Que Junko est morte de ce mariage.<a class="fn" href="#fn21" id="r21">21</a></p>
+    <p class="rv">La progression d'Hinako dans le Sanctuaire s'organise autour de trois actes d'appropriation corporelle. Leur ordre n'a rien d'arbitraire : il va du dedans vers le dehors, de ce qu'on fait vers ce qu'on est, puis vers ce que les autres voient de nous. Ryukishi07 a tenu à ce que ces scènes soient aussi crues — la grande force de <em>Silent Hill</em>, dit-il, est de pouvoir donner une forme concrète à la douleur du cœur (<span class="jp">心の痛みの具象化</span>), et une expression mièvre ou « qui se dérobe » aurait trahi la douleur de ces femmes. Le jeu est, à ce titre, le premier de Konami classé CERO Z, interdit aux moins de dix-huit ans.<span class="fn">22</span> Les procédures ne sont donc pas gratuites : elles sont la douleur rendue littérale, et refuser de l'adoucir est un choix éthique sur la souffrance qu'on accepte de montrer.</p>
 
-    <p>Si c'est vrai, tout ce qu'Hinako a reçu de sa sœur — la résignation présentée comme sagesse, la douceur présentée comme force — n'était pas un enseignement. C'était une transmission. Junko lui a appris à survivre à quelque chose qu'elle-même n'a pas survécu. Et Hinako l'a crue, parce qu'on croit ce que disent les gens qu'on aime — surtout quand ils nous apprennent à disparaître.</p>
+    <p class="rv"><strong>Le premier rituel.</strong> Hinako se scie le bras droit, remplacé par une patte de renard. Dans les traditions rituelles japonaises, la main droite est celle de l'action cérémonielle — l'écriture, les offrandes, le tir à l'arc sacré.<span class="fn">23</span> Perdre la main droite, c'est perdre la capacité d'agir rituellement dans l'ordre du monde. Ce qui la remplace est efficace comme arme, mais appartient à l'espace du renard, pas à celui des humains. Elle peut désormais se défendre ; elle ne peut plus signer son propre nom.</p>
 
-    <blockquote class="pull">
-      <p>Ce n'est pas la mauvaise volonté qui fait les systèmes d'oppression. C'est l'amour qui ne sait pas faire autrement.</p>
-    </blockquote>
+    <p class="rv"><strong>Le second rituel.</strong> Le visage est arraché et remplacé par un masque. Le roman décrit la scène dans un détail anatomique qui rend la métaphore corporelle : la prêtresse insère les doigts dans la fissure du visage et l'arrache, applique la moitié d'un masque de renard, le coud en place ; des veines noires, semblables à des racines, rampent alors sous la peau et se raccordent aux vaisseaux jusqu'à ce que le masque s'intègre à la chair.<span class="fn">17</span> Ce n'est pas une métamorphose, c'est une procédure — et la distinction est tout. Une métamorphose vient de l'intérieur ; elle dit ce qu'un être devient par lui-même. Une procédure vient de l'extérieur ; elle dit ce qu'on fait à quelqu'un. Le masque ne révèle pas la vraie nature d'Hinako : il en recouvre une et en installe une autre, jusque dans le tracé de ses veines. Ce que la scène donne à voir est ce que Julia Kristeva nommait, dans <em>Pouvoirs de l'horreur</em> (1980), l'<em>abjection</em> — l'effroi propre à ce qui brouille la frontière du propre et de l'étranger, du dedans et du dehors, du vivant et de la chose. La peau cousue, la racine sous le derme, le visage qui n'est plus tout à fait le sien : l'horreur ne vient pas d'un monstre extérieur, elle vient de ce que la limite du corps cède.</p>
 
-    <p>C'est exactement ce qui rend Kotoyuki et Junko symétriques. Lui est tenu par la malédiction ; elle, par ce qu'on lui a transmis. Aucun des deux n'agit par méchanceté, et c'est précisément pour cela que le système se reproduit : il passe par les liens les plus sincères, et se sert de l'amour comme d'un véhicule.</p>
+    <p class="rv"><strong>Le troisième rituel.</strong> Elle est marquée dans le dos. Un document du Sanctuaire en dit sans détour le sens : l'empreinte fait d'elle la propriété des leurs, l'âme et le corps offerts ; <em>éveillée, tu sers ; endormie, tu sers</em>.<span class="fn">24</span> Le dos est la partie qu'on ne peut pas voir soi-même sans miroir — sans le regard d'un autre. Ce que la marque inscrit est précis : désormais, Hinako existe pour ceux qui la regardent, et non plus pour elle-même.</p>
 
-    <h2><span class="num">VI — Le verdict</span>Ce que les fins mesurent</h2>
+    <p class="rv">Ensemble, les trois rituels suivent la progression que Simone de Beauvoir a théorisée comme la condition de l'Autre — être constitué en objet du regard d'autrui plutôt qu'en sujet de son propre regard.<span class="fn">25</span> Le Sanctuaire la rend littérale, corporelle, irréversible. Il transforme une structure sociale abstraite en chirurgie.</p>
 
-    <p>Le jeu propose cinq fins, et Ryukishi07 refuse de les hiérarchiser : aucune n'est une « bonne » ou une « mauvaise » fin ; chacune est un aboutissement que les choix de la vie d'Hinako pouvaient atteindre, et c'est au joueur de juger laquelle valait le mieux.<a class="fn" href="#fn22" id="r22">22</a> Leur qualité, pourtant, se mesure à une seule chose : combien il reste d'Hinako. Pas combien elle est heureuse — combien elle est elle-même. La fin où elle est la plus libre est aussi celle où le monde est le plus dangereux : la ville évacuée, le dieu en colère, aucune protection sinon celle qu'elle s'est choisie. La fin où elle est la plus protégée — épousée, entretenue, adulée — est celle dont le nom de fichier, dans les données du jeu, dit sans ambiguïté : <em>Dolls are happiest when loved</em>. Les poupées sont les plus heureuses quand on les aime. La phrase dit, sans le savoir, ce que Sianne Ngai a montré du <em>mignon</em> dans <span class="work">Our Aesthetic Categories</span> (2012) : que c'est une esthétisation de l'impuissance, qui mêle indissociablement la tendresse et l'agression, et qui rend désirable l'objet petit, mou, sans défense, précisément parce qu'on peut le tenir, le presser, le posséder. Aimer la poupée, c'est déjà la dominer ; le bonheur qu'on lui prête est celui de qui n'a plus à vouloir.</p>
+    <h2 class="rv"><span class="h2-num">V — La transmission</span>Junko, ou ce que l'amour transmet</h2>
 
-    <p>Ce que Ryukishi07 dit dans cet écart, c'est ce que l'horreur japonaise répète depuis <span class="work">Yotsuya Kaidan</span> en 1825 : que la sécurité et l'existence ne sont pas la même chose. Qu'on peut être parfaitement en sécurité et avoir cessé d'être. Certains systèmes proposent précisément cet échange — une vie contre une vie, la tienne contre celle qu'on t'attribuera — et le présentent comme une bonne affaire. La mariée est belle ; la poupée est aimée ; et c'est là toute l'horreur.</p>
+    <p class="rv">Le dégoût d'Hinako pour le mariage ne date pas du brouillard : il s'est appris à la maison. Elle a grandi sous les yeux d'un père qui entrait en fureur et frappait — Kanta Shimizu, ivrogne et colérique, qui a par le passé lancé un couteau de cuisine en direction de sa fille<span class="fn">26</span> — et d'une mère qui ne pouvait qu'obéir. Pour elle, le mariage équivaut déjà à une mort avant que rien de surnaturel n'arrive. Si bien que lorsque sa sœur aînée Junko lui offre la résignation comme sagesse, la douceur comme force, Hinako a toutes les raisons de l'entendre comme un savoir de survie.</p>
 
-    <div class="seam"><span>✦</span></div>
+    <p class="rv">Il y a, dans les rizières d'Amida-shirakawa, une lettre adressée à des parents. La femme qui l'écrit a un enfant de trois ans, attend le second, et raconte un mari si doux au <em>miai</em> (<span class="jp">見合い</span>, <span class="gloss">« l'entrevue » de mariage arrangé</span>) qui se révèle violent une fois ivre ; elle ne peut, dit-elle, ni vivre ni mourir. La localisation du document dans les champs de la famille Kinuta — <span class="jp">絹田</span>, <span class="gloss">« le champ de soie »</span>, nom de mariage de Junko, dont le second kanji est celui de la rizière — et la réaction d'Hinako à sa lecture, disproportionnée et personnelle (« cela ne peut être pardonné », d'une voix qui ne ressemble à aucun de ses autres commentaires) suggèrent que la lettre est de Junko. Que Junko est morte de ce mariage.<span class="fn">27</span></p>
 
-    <p>Hinako a vingt ans quand le jeu se déroule — pas quinze, comme elle se perçoit elle-même.<a class="fn" href="#fn23" id="r23">23</a> Elle s'imagine adolescente parce que l'adolescence est le dernier moment où elle a pleinement existé, avant que la pression du mariage ne vienne recouvrir qui elle était. C'est là encore que le jeu est le plus juste sur le trauma : il ne dit pas qu'Hinako a été brisée. Il dit qu'elle a trouvé, dans une identité plus jeune, un espace où elle était encore entière — et qu'elle y est restée.</p>
+    <p class="rv">Si c'est vrai, tout ce qu'Hinako a reçu de sa sœur — la résignation présentée comme sagesse, la douceur présentée comme force — n'était pas un enseignement. C'était une transmission. Junko lui a appris à survivre à quelque chose qu'elle-même n'a pas survécu. Et Hinako l'a crue, parce qu'on croit ce que disent les gens qu'on aime — surtout quand ils nous apprennent à disparaître.</p>
 
-    <p>Ce qu'elle traverse dans le brouillard — réel, chimiquement induit, ou les deux à la fois — est un retour forcé vers ce qu'elle a refusé de devenir. Et le fait qu'elle puisse, selon les fins, refuser encore — ou ne pas en avoir la force — est ce qui rend le jeu supportable. Ryukishi07 laisse chaque porte ouverte à dessein : il ne promet pas la victoire. Il dit seulement que le choix existe, même quand tout a été fait pour qu'il n'existe pas.</p>
+    <blockquote class="rv">Ce n'est pas la mauvaise volonté qui fait les systèmes d'oppression. C'est l'amour qui ne sait pas faire autrement.</blockquote>
+
+    <p class="rv">C'est exactement ce qui rend Kotoyuki et Junko symétriques. Lui est tenu par la malédiction ; elle, par ce qu'on lui a transmis. Aucun des deux n'agit par méchanceté, et c'est précisément pour cela que le système se reproduit : il passe par les liens les plus sincères, et se sert de l'amour comme d'un véhicule.</p>
+
+    <h2 class="rv"><span class="h2-num">VI — Le verdict</span>Ce que les fins mesurent</h2>
+
+    <p class="rv">Le jeu propose cinq fins, et Ryukishi07 refuse de les hiérarchiser : aucune n'est une « bonne » ou une « mauvaise » fin ; chacune est un aboutissement que les choix de la vie d'Hinako pouvaient atteindre, et c'est au joueur de juger laquelle valait le mieux.<span class="fn">28</span> Leur qualité, pourtant, se mesure à une seule chose : combien il reste d'Hinako. Pas combien elle est heureuse — combien elle est elle-même. La fin où elle est la plus libre est aussi celle où le monde est le plus dangereux : la ville évacuée, le dieu en colère, aucune protection sinon celle qu'elle s'est choisie. La fin où elle est la plus protégée — épousée, entretenue, adulée — est celle dont le nom de fichier, dans les données du jeu, dit sans ambiguïté : <em>Dolls are happiest when loved</em>. Les poupées sont les plus heureuses quand on les aime. La phrase dit, sans le savoir, ce que Sianne Ngai a montré du <em>mignon</em> dans <em>Our Aesthetic Categories</em> (2012) : que c'est une esthétisation de l'impuissance, qui mêle indissociablement la tendresse et l'agression, et qui rend désirable l'objet petit, mou, sans défense, précisément parce qu'on peut le tenir, le presser, le posséder. Aimer la poupée, c'est déjà la dominer ; le bonheur qu'on lui prête est celui de qui n'a plus à vouloir.</p>
+
+    <p class="rv">Ce que Ryukishi07 dit dans cet écart, c'est ce que l'horreur japonaise répète depuis <em>Yotsuya Kaidan</em> en 1825 : que la sécurité et l'existence ne sont pas la même chose. Qu'on peut être parfaitement en sécurité et avoir cessé d'être. Certains systèmes proposent précisément cet échange — une vie contre une vie, la tienne contre celle qu'on t'attribuera — et le présentent comme une bonne affaire. La mariée est belle ; la poupée est aimée ; et c'est là toute l'horreur.</p>
+
+    <div class="orn-line rv">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <p class="rv">Hinako a vingt ans quand le jeu se déroule — pas quinze, comme elle se perçoit elle-même.<span class="fn">29</span> Elle s'imagine adolescente parce que l'adolescence est le dernier moment où elle a pleinement existé, avant que la pression du mariage ne vienne recouvrir qui elle était. C'est là encore que le jeu est le plus juste sur le trauma : il ne dit pas qu'Hinako a été brisée. Il dit qu'elle a trouvé, dans une identité plus jeune, un espace où elle était encore entière — et qu'elle y est restée.</p>
+
+    <p class="rv">Ce qu'elle traverse dans le brouillard — réel, chimiquement induit, ou les deux à la fois — est un retour forcé vers ce qu'elle a refusé de devenir. Et le fait qu'elle puisse, selon les fins, refuser encore — ou ne pas en avoir la force — est ce qui rend le jeu supportable. Ryukishi07 laisse chaque porte ouverte à dessein : il ne promet pas la victoire. Il dit seulement que le choix existe, même quand tout a été fait pour qu'il n'existe pas.</p>
+
+    <!-- NOTES -->
+    <div class="footnotes rv">
+      <span class="footnotes-title">Notes</span>
+      <div class="footnote-item"><span class="fn-num">1.</span><span>Sur le <em>shiromuku</em> et sa symbolique nuptiale shinto, voir les analyses d'Asha Bardon, série « Shinto References in Silent Hill f », <em>ashabardongaminglorist.substack.com</em>, 2025 — travail de référence sur les substrats culturels japonais du jeu, avec accès direct aux sources japonaises et chinoises traditionnelles.</span></div>
+      <div class="footnote-item"><span class="fn-num">2.</span><span>La formule <span class="jp">美しいがゆえに、おぞましい</span> est la <em>concept line</em> officielle du jeu, reprise par Konami dans toute sa communication depuis mars 2025 et commentée comme thème central par la presse japonaise ; voir notamment la critique d'après-clôture de <em>Dengeki Online</em>, septembre 2025.</span></div>
+      <div class="footnote-item"><span class="fn-num">3.</span><span>La modification des entrées du journal entre les parties successives — documentée par la communauté par captures et comparaisons — est centrale pour comprendre la corruption de la narration. Les parties successives sont des rejouages depuis le début avec des éléments débloqués, pratique courante dans le <em>visual novel</em> et le <em>survival horror</em> japonais.</span></div>
+      <div class="footnote-item"><span class="fn-num">4.</span><span>Le journal d'Hinako attribue au culte d'Inari des pratiques — dont le <em>kishu</em>, la récupération respectueuse des outils abîmés — qu'un document d'archive du jeu situe à une époque nettement antérieure. Le détail de cette anachronie, et ce qu'elle révèle, font l'objet du troisième volet de cette série.</span></div>
+      <div class="footnote-item"><span class="fn-num">5.</span><span>La rencontre enfantine entre Rinko et Hinako est développée dans le roman de Kuro Shirō : Rinko y évoque avec amertume avoir guidé une petite Hinako perdue dans les rizières, mémoire qu'Hinako a entièrement effacée. Cette amnésie précède le brouillard.</span></div>
+      <div class="footnote-item"><span class="fn-num">6.</span><span>Okamoto Motoi, entretien croisé avec Kuro Shirō pour la sortie du roman, <em>Famitsu</em>, 28 novembre 2025 : « on devine au ton d'un avis si la personne a fait une seule partie, ou quatre ou cinq ». La densité du jugement sur les personnages est, dit-il, le meilleur indicateur du nombre de parties jouées.</span></div>
+      <div class="footnote-item"><span class="fn-num">7.</span><span>Déclaration de Ryukishi07 sur l'illusion (stream officiel, 22 décembre 2025, chaîne Pomegranate, en compagnie d'Itō Masami et Maihara Rin) et image de la « boîte à chat » (<span class="jp">猫箱</span>) développée en entretien — <em>Den Faminico Gamer</em> (scène spéciale du TGS, 28 septembre 2025) et <em>Gamestalk</em> (décembre 2025), où il invite à « imaginer le contenu de la boîte transpercé par une lumière intérieure ». Le motif est hérité de <em>Higurashi</em> et d'<em>Umineko</em>.</span></div>
+      <div class="footnote-item"><span class="fn-num">8.</span><span>Sur la lecture majoritaire en termes de <span class="jp">本音</span> / <span class="jp">建前</span> (« monde d'Ebisugaoka » contre « monde du renard »), voir les synthèses de <em>Game8</em> et <em>Altema</em>, 2025. La précision de Ryukishi07 — « deux moi présents en même temps, mais il est difficile d'aller plus loin » — figure dans l'entretien <em>Gamestalk</em>, décembre 2025.</span></div>
+      <div class="footnote-item"><span class="fn-num">9.</span><span>Ryukishi07, <em>SILENT HILL Transmission</em> de juin 2025 : le choix du Shōwa vise un « contraste plus élevé » pour le thème, et la représentation d'« un autre monde en continuité avec le nôtre, qui conserve des coutumes et des superstitions oubliées aujourd'hui » (<span class="jp">現代で忘れられた風習や迷信を残している地続きの異世界</span>). Sur le modèle réel d'Ebisugaoka — le quartier <em>kinkotsu</em> de Kanayama, Gero, préfecture de Gifu —, voir <em>Den Faminico Gamer</em>, 25 mars 2026.</span></div>
+      <div class="footnote-item"><span class="fn-num">10.</span><span><em>Hinamatsuri</em> (<span class="jp">雛祭り</span>), fête des filles du 3 mars : on y expose des poupées de la cour héiannaise, puis on les range jusqu'à l'année suivante. La superstition veut que les garder trop longtemps retarde le mariage de la fille — association implicite entre la poupée et le destin matrimonial que le jeu exploite pleinement.</span></div>
+      <div class="footnote-item"><span class="fn-num">11.</span><span>Titre japonais de la fin <span class="jp">呪いは雛の如く舞い戻る</span> — littéralement « la malédiction revient en voltigeant à la manière d'un poussin ». Les cinq fins portent en japonais les titres : <span class="jp">呪いは雛の如く舞い戻る</span>, <span class="jp">狐の嫁入り</span> (« le mariage du renard »), <span class="jp">狐その尾を濡らす</span> (« le renard trempe sa queue »), la vraie fin, et la fin parodique dite « UFO ».</span></div>
+      <div class="footnote-item"><span class="fn-num">12.</span><span>Lettre de la collection in-game relevée par les analyses japonaises (notamment <em>Game8</em>), où Kotoyuki promet « une paix éternelle et un rang élevé » en échange de la permission de « lui briser les ailes » (<span class="jp">君の翼を折ることを許してくれ</span>) — formulation lue comme emblème de l'oppression féminine des années 1960.</span></div>
+      <div class="footnote-item"><span class="fn-num">13.</span><span>Le patronyme s'écrit <span class="jp">深水</span> (« eau profonde ») et se lit <em>Shimizu</em> — graphie et lecture confirmées par la fiche officielle du personnage sur PlayStation.com Japon et par le générique du jeu. La graphie usuelle de ce patronyme est <span class="jp">清水</span>, « eau pure » ; le jeu choisit délibérément l'autre. Le père est <span class="jp">深水寛太</span> (Kanta), la mère <span class="jp">深水君江</span> (Kimie).</span></div>
+      <div class="footnote-item"><span class="fn-num">14.</span><span>L'anagramme <span class="jp">常喜</span> <em>tsuneki</em> / <span class="jp">狐</span> <em>kitsune</em> est relevée notamment par <em>Tokyo Weekender</em> dans son dossier sur le substrat shinto du jeu, 2025. Le prénom <span class="jp">寿幸</span> compose <span class="jp">寿</span> (longévité, félicitations) et <span class="jp">幸</span> (bonheur).</span></div>
+      <div class="footnote-item"><span class="fn-num">15.</span><span>La malédiction du renard (<span class="jp">狐の呪い</span>), révélée dans la vraie fin : la lignée des Tsuneki est tenue de prendre pour épouse toute fille née avec le « sang rare » porteur de <span class="jp">神威</span>, sous peine de calamité. Voir <em>Game8</em> et <em>Altema</em> (<span class="jp">狐面の男</span>, « l'homme au masque de renard »), 2025. Le boss final <em>Kyūbi</em> (<span class="jp">九尾</span>, « neuf queues ») est révélé être l'ancêtre de Kotoyuki — l'entité originelle qui possède le clan, et donc la source de la tradition elle-même.</span></div>
+      <div class="footnote-item"><span class="fn-num">16.</span><span>Notes du bureau de Kotoyuki, relevées par les guides japonais (<em>Gameranbu</em>, 2025) : « on y trouve la trace d'un effort acharné pour apprendre les modes de la ville et les goûts des femmes ».</span></div>
+      <div class="footnote-item"><span class="fn-num">17.</span><span>Kuro Shirō, <em>Sairento Hiru f</em> (<span class="jp">サイレントヒルf</span>), Tokyo : KADOKAWA, collection Famitsu Bunko, 30 octobre 2025, 320 p. Supervision de Konami Digital Entertainment. On y trouve l'énumération des méthodes — encens, vin, souffle, voix, regard —, l'instant de lucidité de Kitsune no Hinako, la scène de la perte du nom dans l'escalier et la description anatomique de la pose du masque. Rendu français abrégé d'après les passages diffusés et traduits par la communauté.</span></div>
+      <div class="footnote-item"><span class="fn-num">18.</span><span>Description officielle du parfum « Kotoyuki » (Konami, 2025), qui vante une aura faisant « taire jusqu'aux pensées d'Hinako » (<span class="jp">雛子の想いすらも黙らせてしまう</span>) ; la capsule rouge avalée par la mariée en fuite est relevée par <em>Altema</em>. Konami a d'ailleurs commercialisé ces capsules sous forme de bonbons lors d'une boutique éphémère à Shibuya en janvier 2026, sous l'enseigne du magasin Chizuruya du jeu.</span></div>
+      <div class="footnote-item"><span class="fn-num">19.</span><span>Le lien traumatique (<em>trauma bond</em>) est théorisé par Judith Herman, <em>Trauma and Recovery</em>, New York, Basic Books, 1992 ; le mécanisme — produire le danger pour rendre le secours indispensable — y est documenté dans les situations d'emprise prolongée.</span></div>
+      <div class="footnote-item"><span class="fn-num">20.</span><span>L'expression « playing the victim » de la traduction officielle correspond au mécanisme DARVO (<em>Deny, Attack, Reverse Victim and Offender</em>), théorisé par Jennifer J. Freyd, <em>Betrayal Trauma</em>, Cambridge, Harvard University Press, 1996.</span></div>
+      <div class="footnote-item"><span class="fn-num">21.</span><span>Ryukishi07, entretien <em>Gamestalk</em> consacré à un point de vue de Shu, décembre 2025 : « le récit est raconté à travers les yeux d'Hinako, les hommes semblent toujours partir devant en disant des choses rassurantes » ; il y évoque une fin de double suicide pour la version « Shu ».</span></div>
+      <div class="footnote-item"><span class="fn-num">22.</span><span>Ryukishi07 et le producteur Okamoto Motoi, entretien <em>Gamestalk</em>, décembre 2025 : la force de la série est de « concrétiser la douleur du cœur » (<span class="jp">心の痛みの具象化</span>), et une expression adoucie « ne transmettrait pas leur douleur ». <em>Silent Hill f</em> est le premier titre Konami classé CERO Z (<span class="jp">18歳以上のみ対象</span>, « réservé aux 18 ans et plus »).</span></div>
+      <div class="footnote-item"><span class="fn-num">23.</span><span>Asha Bardon, « In-game Shinto for Beginners (Part II) », <em>ashabardongaminglorist.substack.com</em>, novembre 2025 — sur le symbolisme de la main droite dans les pratiques rituelles japonaises et son application au bras de renard d'Hinako.</span></div>
+      <div class="footnote-item"><span class="fn-num">24.</span><span>Document « Lettre au contenu solennel », Sanctuaire des Ténèbres, <em>Silent Hill f</em>, traduction officielle française : l'empreinte fait du corps et de l'âme la propriété des « leurs », « éveillée comme endormie ». Le motif gravé est le blason du clan Tsuneki.</span></div>
+      <div class="footnote-item"><span class="fn-num">25.</span><span>Simone de Beauvoir, <em>Le Deuxième Sexe</em>, Paris, Gallimard, 1949, vol. I. La femme comme « Autre absolu », constituée en objet plutôt qu'en sujet, reste la référence fondatrice pour penser le corps féminin comme territoire d'inscription sociale.</span></div>
+      <div class="footnote-item"><span class="fn-num">26.</span><span>Sur Kanta Shimizu — « ivrogne et colérique, qui a par le passé lancé un couteau de cuisine en direction de sa fille » —, voir la présentation du personnage par <em>Famitsu</em>, décembre 2025, à l'occasion du <em>let's play</em> de son interprète Masago Gō. La mère, Kimie, est interprétée par Hiraoka Tamami.</span></div>
+      <div class="footnote-item"><span class="fn-num">27.</span><span>Le titre de fichier interne « natal letter » distingue ce document des autres lettres du jeu. Le patronyme de mariage de Junko, Kinuta (<span class="jp">絹田</span>), associe la soie et la rizière ; la convention shōwa qui tire les noms de la géographie du lieu rend plausible la localisation de la famille dans les champs où la lettre est trouvée. Signalons que le romancier Kuro Shirō déclare avoir écrit sur Junko des pages qu'il n'a pas pu intégrer au livre — elles restent inédites.</span></div>
+      <div class="footnote-item"><span class="fn-num">28.</span><span>Ryukishi07, scène spéciale rapportée par <em>Den Faminico Gamer</em>, 28 septembre 2025 : les fins ne sont ni « bonnes » ni « mauvaises », chacune est « un aboutissement possible des choix de la vie d'Hinako » ; le producteur y salue la finesse des analyses des joueurs.</span></div>
+      <div class="footnote-item"><span class="fn-num">29.</span><span>L'âge réel d'Hinako — vingt ans, alors qu'elle se perçoit comme adolescente — est révélé dans la première fin. La régression vers une identité plus jeune comme réponse à une pression sociale intolérable est documentée dans la littérature clinique : Bessel van der Kolk, <em>Le corps n'oublie rien</em>, Paris, Albin Michel, 2018.</span></div>
+    </div>
+
+    <div class="biblio rv">
+      <span class="biblio-title">Références</span>
+      <p class="biblio-item">Althusser, Louis. « Idéologie et appareils idéologiques d'État ». 1970.</p>
+      <p class="biblio-item">Bardon, Asha. « Shinto References in Silent Hill f » ; « In-game Shinto for Beginners » (Parts I–IV). <em>ashabardongaminglorist.substack.com</em>, 2025.</p>
+      <p class="biblio-item">Beauvoir, Simone de. <em>Le Deuxième Sexe</em>. Paris : Gallimard, 1949.</p>
+      <p class="biblio-item">Booth, Wayne C. <em>The Rhetoric of Fiction</em>. Chicago : University of Chicago Press, 1961.</p>
+      <p class="biblio-item">Butler, Judith. <em>Gender Trouble</em>. New York : Routledge, 1990.</p>
+      <p class="biblio-item">Freyd, Jennifer J. <em>Betrayal Trauma : The Logic of Forgetting Childhood Abuse</em>. Cambridge : Harvard University Press, 1996.</p>
+      <p class="biblio-item">Genette, Gérard. <em>Palimpsestes : la littérature au second degré</em>. Paris : Seuil, 1982.</p>
+      <p class="biblio-item">Herman, Judith. <em>Trauma and Recovery</em>. New York : Basic Books, 1992.</p>
+      <p class="biblio-item">Kristeva, Julia. <em>Pouvoirs de l'horreur. Essai sur l'abjection</em>. Paris : Seuil, 1980.</p>
+      <p class="biblio-item">Kuro, Shirō (<span class="jp">黒史郎</span>). <em>Sairento Hiru f</em>. Tokyo : KADOKAWA, Famitsu Bunko, 2025, 320 p.</p>
+      <p class="biblio-item">Konami. Description officielle du parfum « Kotoyuki », 2025 ; fiches de personnages, PlayStation.com Japon, 2025.</p>
+      <p class="biblio-item">Ngai, Sianne. <em>Our Aesthetic Categories : Zany, Cute, Interesting</em>. Cambridge : Harvard University Press, 2012.</p>
+      <p class="biblio-item">Nünning, Ansgar. Travaux sur la narration non fiable (théorie cognitive/constructiviste), 1997–2005.</p>
+      <p class="biblio-item">Ryukishi07 &amp; Okamoto Motoi. Entretiens et scènes spéciales : <em>Den Faminico Gamer</em> (sept. 2025, mars 2026), <em>Famitsu</em> (nov. et déc. 2025), <em>Gamestalk</em> (déc. 2025) ; <em>SILENT HILL Transmission</em> (mars et juin 2025) ; stream officiel du 22 décembre 2025.</p>
+      <p class="biblio-item">Synthèses d'analyse japonaises : <em>Game8</em>, <em>Altema</em>, <em>Gameranbu</em>, 2025–2026.</p>
+      <p class="biblio-item">Van der Kolk, Bessel. <em>Le corps n'oublie rien</em>. Paris : Albin Michel, 2018.</p>
+    </div>
+
+    <div class="thanks rv">
+      <span class="thanks-title">Remerciements</span>
+      <p>Cette série doit beaucoup au compte <a href="https://x.com/foxwetsitstail">@foxwetsitstail</a> (Asha Bardon), dont les fils de traduction et de commentaire comparent systématiquement les versions japonaise, anglaise et chinoise traditionnelle du jeu. Plusieurs nuances décisives — notamment celles que la localisation efface — ne seraient pas accessibles à une lectrice francophone sans ce travail patient et généreusement partagé. Les erreurs d'interprétation qui subsistent ici sont les miennes.</p>
+    </div>
 
   </article>
 
-  <section class="notes">
-    <h3>Notes</h3>
-    <ol class="fnlist">
-      <li id="fn1">Sur le shiromuku et sa symbolique nuptiale shinto, voir les analyses d'Asha Bardon, série « Shinto References in Silent Hill f », <i>ashabardongaminglorist.substack.com</i>, 2025 — travail de référence sur les substrats culturels japonais du jeu, avec accès direct aux sources japonaises et chinoises traditionnelles. <a class="back" href="#r1">↩</a></li>
-      <li id="fn2">La formule <span class="jp">美しいがゆえに、おぞましい</span> est relevée comme thème central par les previews japonaises ; voir notamment la critique d'après-clôture de <i>Dengeki Online</i>, septembre 2025, qui la rattache à « un certain choix » d'Hinako et aux conceptions japonaises de la famille et du sacré. <a class="back" href="#r2">↩</a></li>
-      <li id="fn3">La modification des entrées du journal entre les parties successives — documentée par la communauté par captures et comparaisons — est centrale pour comprendre la corruption de la narration. Les parties successives sont des rejouages depuis le début avec des éléments débloqués, pratique courante dans le <i>visual novel</i> et le <i>survival horror</i> japonais. <a class="back" href="#r3">↩</a></li>
-      <li id="fn4">La datation de l'arrivée des Tsuneki et d'Inari (~1880) est inférée de plusieurs documents in-game ; un texte d'archive du Sanctuaire indique que certaines pratiques sont antérieures à l'ère Edo (débutée en 1603), soit plusieurs siècles avant l'arrivée des renards. <a class="back" href="#r4">↩</a></li>
-      <li id="fn5">La rencontre enfantine entre Rinko et Hinako est révélée dans le roman de Shirō Kuro : Rinko y évoque avec amertume avoir guidé une petite Hinako perdue dans les rizières, mémoire qu'Hinako a entièrement effacée. Cette amnésie précède le brouillard. <a class="back" href="#r5">↩</a></li>
-      <li id="fn6">Déclaration de Ryukishi07 sur l'illusion (stream officiel, 2025) et image de la « boîte à chat » (猫箱) développée en entretien — <i>Den Faminico Gamer</i> (scène spéciale, 28 septembre 2025) et <i>Gamestalk</i> (décembre 2025), où il invite à « imaginer le contenu de la boîte transpercé par une lumière intérieure ». Le motif est hérité de <i>Higurashi</i> et d'<i>Umineko</i>. <a class="back" href="#r6">↩</a></li>
-      <li id="fn7">Sur la lecture majoritaire en termes de <span class="jp">本音</span> / <span class="jp">建前</span> (« monde de Ebisugaoka » contre « monde du renard »), voir les synthèses de <i>Game8</i> et <i>Altema</i>, 2025. La précision de Ryukishi07 — « deux moi présents en même temps, mais il est difficile d'aller plus loin » — figure dans l'entretien <i>Gamestalk</i>, décembre 2025. <a class="back" href="#r7">↩</a></li>
-      <li id="fn8">Hinamatsuri (雛祭り), fête des filles du 3 mars : on y expose des poupées de la cour héiannaise, puis on les range jusqu'à l'année suivante. La superstition veut que les garder trop longtemps retarde le mariage de la fille — association implicite entre la poupée et le destin matrimonial que le jeu exploite pleinement. <a class="back" href="#r8">↩</a></li>
-      <li id="fn9">Lettre de la « collection » in-game relevée par les analyses japonaises (notamment <i>Game8</i> et <i>szer.net</i>), où Kotoyuki promet « une paix éternelle et un rang élevé » en échange de la permission de « lui briser les ailes » (君の翼を折ることを許してくれ) — formulation lue comme emblème de l'oppression féminine des années 1960. <a class="back" href="#r9">↩</a></li>
-      <li id="fn10">La malédiction du renard (狐の呪い), révélée dans la vraie fin : la lignée des Tsuneki est tenue de prendre pour épouse toute fille née avec le « sang rare » porteur de <span class="jp">神威</span>, sous peine de calamité. Voir <i>Game8</i> et <i>Altema</i> («狐面の男 »), 2025. Plusieurs analystes soulignent l'ambivalence : Kotoyuki est lui-même « pris entre l'amour et la malédiction ». <a class="back" href="#r10">↩</a></li>
-      <li id="fn11">Roman de Silent Hill f, Shirō Kuro, Konami, 2025 (rendu français abrégé). On y trouve l'énumération des méthodes — encens, vin, souffle, voix, regard —, l'instant de lucidité de Kitsune no Hinako, la scène de la perte du nom dans l'escalier et la description anatomique de la pose du masque. <a class="back" href="#r11">↩</a></li>
-      <li id="fn12">Description officielle du parfum « Kotoyuki » (Konami, 2025), qui vante une aura faisant « taire jusqu'aux pensées d'Hinako » ; la capsule rouge avalée par la mariée en fuite est relevée par <i>Altema</i>. <a class="back" href="#r12">↩</a></li>
-      <li id="fn13">Le lien traumatique (<i>trauma bond</i>) est théorisé par Judith Herman, <i>Trauma and Recovery</i>, New York, Basic Books, 1992 ; le mécanisme — produire le danger pour rendre le secours indispensable — y est documenté dans les situations d'emprise prolongée. <a class="back" href="#r13">↩</a></li>
-      <li id="fn14">L'expression « playing the victim » de la traduction officielle correspond au mécanisme DARVO (<i>Deny, Attack, Reverse Victim and Offender</i>), théorisé par Jennifer J. Freyd, <i>Betrayal Trauma</i>, Cambridge, Harvard University Press, 1996. <a class="back" href="#r14">↩</a></li>
-      <li id="fn15">Ryukishi07, entretien <i>Gamestalk</i> consacré à un point de vue de Shu, décembre 2025 : « le récit est raconté à travers les yeux d'Hinako, les hommes semblent toujours partir devant en disant des choses rassurantes » ; il y évoque une fin de double suicide pour la version « Shu ». <a class="back" href="#r15">↩</a></li>
-      <li id="fn16">Ryukishi07 et le producteur Okamoto Motoi, entretien <i>Gamestalk</i>, décembre 2025 : la force de la série est de « concrétiser la douleur du cœur » (心の痛みの具象化), et une expression adoucie « ne transmettrait pas leur douleur ». <i>Silent Hill f</i> est le premier titre Konami classé CERO Z. <a class="back" href="#r16">↩</a></li>
-      <li id="fn17">Asha Bardon, « In-game Shinto for Beginners (Part II) », <i>ashabardongaminglorist.substack.com</i>, novembre 2025 — sur le symbolisme de la main droite dans les pratiques rituelles japonaises et son application au bras de renard d'Hinako. <a class="back" href="#r17">↩</a></li>
-      <li id="fn18">Document « Lettre au contenu solennel », Sanctuaire des Ténèbres, <i>Silent Hill f</i>, traduction officielle française : l'empreinte fait du corps et de l'âme la propriété des « leurs », « éveillée comme endormie ». <a class="back" href="#r18">↩</a></li>
-      <li id="fn19">Simone de Beauvoir, <i>Le Deuxième Sexe</i>, Paris, Gallimard, 1949, vol. I. La femme comme « Autre absolu », constituée en objet plutôt qu'en sujet, reste la référence fondatrice pour penser le corps féminin comme territoire d'inscription sociale. <a class="back" href="#r19">↩</a></li>
-      <li id="fn20">Sur le père d'Hinako — sujet à des accès de colère et violent envers les femmes — et la mère contrainte d'obéir, à l'origine de son rejet du mariage (« mariage = mort »), voir la synthèse de <i>Game8</i>, 2025. <a class="back" href="#r20">↩</a></li>
-      <li id="fn21">Le titre de fichier interne « natal letter » distingue ce document des autres lettres du jeu. Le patronyme de mariage de Junko, Kinuta (絹田), contient le kanji 田 (le champ) ; la convention shōwa qui tire les noms de la géographie du lieu rend plausible la localisation de la famille dans les rizières où la lettre est trouvée. <a class="back" href="#r21">↩</a></li>
-      <li id="fn22">Ryukishi07, scène spéciale rapportée par <i>Den Faminico Gamer</i>, 28 septembre 2025 : les fins ne sont ni « bonnes » ni « mauvaises », chacune est « un aboutissement possible des choix de la vie d'Hinako » ; le producteur y salue la finesse des analyses des joueurs. <a class="back" href="#r22">↩</a></li>
-      <li id="fn23">L'âge réel d'Hinako — vingt ans, alors qu'elle se perçoit comme adolescente — est révélé dans la première fin. La régression vers une identité plus jeune comme réponse à une pression sociale intolérable est documentée dans la littérature clinique : Bessel van der Kolk, <i>Le corps n'oublie rien</i>, Paris, Albin Michel, 2018. <a class="back" href="#r23">↩</a></li>
-    </ol>
-  </section>
-
-  <section class="refs">
-    <h3>Références</h3>
-    <ul>
-      <li>Althusser, Louis. « Idéologie et appareils idéologiques d'État ». 1970.</li>
-      <li>Bardon, Asha. « Shinto References in Silent Hill f » (Parts I–IV). <i>ashabardongaminglorist.substack.com</i>, 2025.</li>
-      <li>Beauvoir, Simone de. <i>Le Deuxième Sexe</i>. Paris : Gallimard, 1949.</li>
-      <li>Booth, Wayne C. <i>The Rhetoric of Fiction</i>. Chicago : University of Chicago Press, 1961.</li>
-      <li>Butler, Judith. <i>Gender Trouble</i>. New York : Routledge, 1990.</li>
-      <li>Freyd, Jennifer J. <i>Betrayal Trauma : The Logic of Forgetting Childhood Abuse</i>. Cambridge : Harvard University Press, 1996.</li>
-      <li>Genette, Gérard. <i>Palimpsestes : la littérature au second degré</i>. Paris : Seuil, 1982.</li>
-      <li>Herman, Judith. <i>Trauma and Recovery</i>. New York : Basic Books, 1992.</li>
-      <li>Kristeva, Julia. <i>Pouvoirs de l'horreur. Essai sur l'abjection</i>. Paris : Seuil, 1980.</li>
-      <li>Kuro, Shirō. <i>Roman de Silent Hill f</i>. Konami, 2025.</li>
-      <li>Konami. Description officielle du parfum « Kotoyuki », 2025.</li>
-      <li>Ngai, Sianne. <i>Our Aesthetic Categories : Zany, Cute, Interesting</i>. Cambridge : Harvard University Press, 2012.</li>
-      <li>Nünning, Ansgar. Travaux sur la narration non fiable (théorie cognitive/constructiviste), 1997–2005.</li>
-      <li>Ryukishi07 &amp; Okamoto Motoi. Entretiens et scènes spéciales : <i>Den Faminico Gamer</i> (sept. 2025), <i>Gamestalk</i> (déc. 2025), <i>Famitsu</i> (déc. 2025) ; critique de <i>Dengeki Online</i> (sept. 2025).</li>
-      <li>Synthèses d'analyse japonaises : <i>Game8</i>, <i>Altema</i>, <i>szer.net</i>, 2025.</li>
-      <li>Van der Kolk, Bessel. <i>Le corps n'oublie rien</i>. Paris : Albin Michel, 2018.</li>
-    </ul>
-  </section>
-
-  <div class="tags">
-    <span class="t">Silent Hill f</span>
-    <span class="t">Ryukishi07</span>
-    <span class="t">Identité confisquée</span>
-    <span class="t">Narratrice non-fiable</span>
-    <span class="t">Corps ritualisé</span>
-    <span class="t">Trauma bond</span>
-    <span class="t">Japon shōwa</span>
+  <div class="art-footer rv">
+    <span style="font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-right:.5rem;">Tags :</span>
+    <span class="tag">Silent Hill f</span>
+    <span class="tag">Ryukishi07</span>
+    <span class="tag">Identité confisquée</span>
+    <span class="tag">Narratrice non-fiable</span>
+    <span class="tag">Corps ritualisé</span>
+    <span class="tag">Trauma bond</span>
+    <span class="tag">Japon shōwa</span>
   </div>
 
-  <footer class="site">
-    <span class="star">Spectre Rose ✦</span> &nbsp; © 2026 — Théories narratives &amp; fiction interactive
+  <footer>
+    <span class="f-logo">Spectre Rose ✦</span>
+    <span class="f-copy">© 2026 — Théories narratives &amp; fiction interactive</span>
   </footer>
-
-</div>
+  <script>
+    const items = document.querySelectorAll('.rv');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+    }, { threshold: 0.07 });
+    items.forEach(el => obs.observe(el));
+  </script>
+  <script src="ui.js"></script>
 </body>
 </html>

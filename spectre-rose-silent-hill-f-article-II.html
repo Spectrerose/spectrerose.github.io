@@ -1,311 +1,255 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>La poupée qu'on jette à la rivière — Spectre Rose</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#0e0a0f;
-    --bg-raise:#171019;
-    --ink:#ece4e8;
-    --ink-soft:#b6abb4;
-    --ink-faint:#867a83;
-    --rose:#df728c;
-    --rose-deep:#7c2740;
-    --bone:#e3dacb;
-    --gold:#c2a14e;
-    --line:rgba(223,114,140,.18);
-    --line-soft:rgba(236,228,232,.08);
-    --measure:38rem;
-    --serif-display:"Cormorant Garamond",Didot,"Hoefler Text",Georgia,serif;
-    --serif-body:"Spectral",Georgia,"Times New Roman",serif;
-    --sans:"Inter",system-ui,-apple-system,sans-serif;
-  }
-  *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
-  body{
-    margin:0;background:var(--bg);color:var(--ink);
-    font-family:var(--serif-body);font-weight:400;
-    font-size:1.16rem;line-height:1.78;letter-spacing:.005em;
-    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
-  }
-  body::before{
-    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
-    background:
-      radial-gradient(120% 80% at 50% -10%, rgba(124,39,64,.16), transparent 60%),
-      radial-gradient(90% 60% at 90% 110%, rgba(46,30,52,.5), transparent 55%);
-  }
-  .wrap{position:relative;z-index:1}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La poupée qu'on jette à la rivière — Spectre Rose</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#07040a; --bg-card:#0e0812;
+      --rose:#d4909a; --rose-light:#f0c4cc; --rose-dark:#7a3d4a; --rose-deep:#3d1520;
+      --cream:#ede4e6; --muted:#6e5860; --border:rgba(212,144,154,0.18);
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--bg); color:var(--cream); font-family:'Crimson Text',serif; font-size:19.5px; line-height:1.92; overflow-x:hidden; }
+    body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E"); pointer-events:none; z-index:9998; mix-blend-mode:overlay; opacity:0.6; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; justify-content:space-between; align-items:center; padding:1.4rem 4rem; background:linear-gradient(to bottom,rgba(7,4,10,0.97) 0%,transparent 100%); }
+    .nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:300; letter-spacing:.18em; color:var(--rose-light); text-decoration:none; }
+    .nav-logo span { color:var(--rose); font-style:italic; }
+    .nav-back { font-family:'DM Mono',monospace; font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .3s; }
+    .nav-back:hover { color:var(--rose-light); }
 
-  .topbar{
-    max-width:60rem;margin:0 auto;padding:1.6rem 1.5rem 0;
-    display:flex;align-items:center;justify-content:space-between;
-    font-family:var(--sans);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;
-    color:var(--ink-faint);
-  }
-  .topbar .brand{color:var(--bone);font-weight:500}
-  .topbar a{color:var(--ink-faint);text-decoration:none;transition:color .25s}
-  .topbar a:hover{color:var(--rose)}
+    /* Navigation de série */
+    .series { max-width:820px; margin:0 auto; padding:9.5rem 2rem 0; }
+    .series-label { font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.28em; text-transform:uppercase; color:var(--rose-dark); display:block; margin-bottom:.9rem; text-align:center; }
+    .series-list { display:flex; justify-content:center; flex-wrap:wrap; gap:.5rem 1.6rem; }
+    .series-list a, .series-list span { font-family:'DM Mono',monospace; font-size:.55rem; letter-spacing:.14em; text-decoration:none; color:var(--muted); transition:color .3s; }
+    .series-list a:hover { color:var(--rose-light); }
+    .series-list .here { color:var(--rose-light); border-bottom:1px solid var(--rose-dark); padding-bottom:.2rem; }
+    .series-list .num { color:var(--rose); }
 
-  .series{
-    max-width:60rem;margin:1.3rem auto 0;padding:1.1rem 1.5rem 0;
-    border-top:1px solid var(--line-soft);
-    display:flex;flex-wrap:wrap;gap:.45rem 1.1rem;align-items:baseline;
-    font-family:var(--sans);font-size:.74rem;letter-spacing:.02em;color:var(--ink-faint);
-  }
-  .series .lead{letter-spacing:.18em;text-transform:uppercase;color:var(--rose);width:100%;margin-bottom:.2rem;}
-  .series a{color:var(--ink-soft);text-decoration:none;transition:color .25s}
-  .series a:hover{color:var(--rose)}
-  .series .roman{color:var(--rose-deep);font-style:italic;margin-right:.3rem}
-  .series .here{color:var(--bone);border-bottom:1px solid var(--rose-deep);padding-bottom:1px}
-
-  header.hero{max-width:48rem;margin:0 auto;padding:5.5rem 1.5rem 2.2rem;text-align:center;}
-  .eyebrow{
-    font-family:var(--sans);font-size:.72rem;font-weight:500;
-    letter-spacing:.28em;text-transform:uppercase;color:var(--rose);
-    display:flex;flex-wrap:wrap;gap:.5rem .9rem;justify-content:center;align-items:center;margin-bottom:2.2rem;
-  }
-  .eyebrow .sep{color:var(--rose-deep)}
-  h1{
-    font-family:var(--serif-display);font-weight:500;
-    font-size:clamp(2.9rem,8vw,5.1rem);line-height:1.02;letter-spacing:-.01em;margin:0 0 1.4rem;color:var(--ink);
-  }
-  .dek{
-    font-family:var(--serif-body);font-weight:300;font-style:italic;
-    font-size:clamp(1.18rem,2.6vw,1.42rem);line-height:1.5;color:var(--ink-soft);max-width:34rem;margin:0 auto 2.4rem;
-  }
-  .runline{
-    font-family:var(--sans);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--ink-faint);display:flex;flex-wrap:wrap;gap:.4rem .8rem;justify-content:center;
-  }
-  .runline .dot{color:var(--rose-deep)}
-  .hero-rule{width:1px;height:3.4rem;margin:2.6rem auto 0;background:linear-gradient(var(--rose),transparent);}
-
-  article{max-width:var(--measure);margin:0 auto;padding:1.5rem 1.5rem 2rem}
-  article > p,article > .standfirst{margin:0 0 1.45rem}
-  p{margin:0 0 1.45rem}
-  .standfirst{font-size:1.28rem;line-height:1.62;color:var(--ink)}
-  .dropcap::first-letter{
-    font-family:var(--serif-display);font-weight:500;float:left;font-size:4.2rem;line-height:.78;padding:.35rem .55rem 0 0;color:var(--rose);
-  }
-  h2{
-    font-family:var(--serif-display);font-weight:500;
-    font-size:clamp(1.9rem,4.4vw,2.5rem);line-height:1.1;letter-spacing:-.005em;color:var(--ink);margin:3.4rem 0 1.3rem;
-  }
-  h2 .num{
-    display:block;font-family:var(--sans);font-size:.7rem;font-weight:600;
-    letter-spacing:.3em;text-transform:uppercase;color:var(--rose);margin-bottom:.7rem;
-  }
-  em,i{font-style:italic}
-  strong{font-weight:600;color:#f5eef2}
-  .work{font-style:italic;color:var(--ink)}
-  .jp{font-family:var(--serif-body);color:var(--bone);font-style:normal}
-  a.xref{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--line)}
-  a.xref:hover{border-color:var(--rose)}
-  a.fn{
-    font-family:var(--sans);font-size:.62em;font-weight:600;vertical-align:.5em;line-height:0;color:var(--rose);text-decoration:none;padding:0 .12em;
-  }
-  a.fn::before{content:"["}
-  a.fn::after{content:"]"}
-  a.fn:hover{color:var(--bone)}
-  .seam{display:flex;align-items:center;gap:1.1rem;margin:3rem auto;max-width:18rem;color:var(--rose-deep);}
-  .seam::before,.seam::after{content:"";height:1px;flex:1;background:repeating-linear-gradient(90deg,var(--line) 0 7px,transparent 7px 13px);}
-  .seam span{font-family:var(--serif-display);font-size:1.1rem;color:var(--rose);}
-  .dossier{
-    background:var(--bg-raise);border:1px solid var(--line-soft);border-left:2px solid var(--gold);border-radius:2px;
-    padding:1.6rem 1.7rem 1.4rem;margin:2.4rem 0;font-size:1.04rem;line-height:1.7;color:var(--ink-soft);
-  }
-  .dossier .label{
-    font-family:var(--sans);font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.85rem;
-  }
-  .dossier p{margin:0 0 .9rem}
-  .dossier p:last-child{margin-bottom:0}
-  .dossier strong{color:var(--bone)}
-  .passage{margin:2.3rem 0;padding:.2rem 0 .2rem 1.6rem;border-left:2px solid var(--rose-deep);}
-  .passage p{font-style:italic;color:var(--ink);font-size:1.1rem;line-height:1.62;margin:0 0 .7rem;}
-  .passage .src{font-family:var(--sans);font-size:.7rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);}
-  figure{margin:2.6rem 0}
-  figcaption{font-family:var(--sans);font-size:.78rem;letter-spacing:.04em;color:var(--ink-faint);text-align:center;margin-top:.7rem;}
-  .plate{border:1px solid var(--line-soft);border-radius:2px;background:var(--bg-raise);padding:2.4rem 1.5rem;text-align:center;}
-  .plate .glyph{font-family:var(--serif-display);font-size:2.4rem;color:var(--rose);opacity:.8}
-  .plate .cap{font-family:var(--serif-display);font-style:italic;font-size:1.45rem;color:var(--bone);margin-top:.6rem;line-height:1.3;}
-  blockquote.pull{margin:3rem 0;padding:0;border:0;text-align:center;}
-  blockquote.pull p{
-    font-family:var(--serif-display);font-weight:500;font-style:italic;
-    font-size:clamp(1.5rem,3.6vw,2rem);line-height:1.28;color:var(--bone);max-width:30rem;margin:0 auto;
-  }
-  .notes{max-width:var(--measure);margin:4rem auto 0;padding:0 1.5rem;}
-  .notes h3,.refs h3{
-    font-family:var(--sans);font-size:.74rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--rose);
-    border-top:1px solid var(--line);padding-top:1.6rem;margin:0 0 1.4rem;
-  }
-  ol.fnlist{list-style:none;counter-reset:fn;margin:0;padding:0}
-  ol.fnlist li{counter-increment:fn;position:relative;padding-left:2.2rem;font-size:.92rem;line-height:1.62;color:var(--ink-soft);margin-bottom:1rem;}
-  ol.fnlist li::before{content:counter(fn);position:absolute;left:0;top:.05em;font-family:var(--sans);font-size:.72rem;font-weight:600;color:var(--rose);}
-  ol.fnlist li a.back{color:var(--ink-faint);text-decoration:none;margin-left:.3rem;}
-  ol.fnlist li a.back:hover{color:var(--rose)}
-  ol.fnlist a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
-  ol.fnlist a:hover{color:var(--rose);border-color:var(--rose)}
-  .refs{max-width:var(--measure);margin:3rem auto 0;padding:0 1.5rem}
-  .refs ul{list-style:none;margin:0;padding:0}
-  .refs li{font-size:.9rem;line-height:1.55;color:var(--ink-soft);padding-left:1.4rem;text-indent:-1.4rem;margin-bottom:.7rem;}
-  .refs li i{color:var(--ink)}
-  .tags{max-width:var(--measure);margin:3.4rem auto 0;padding:0 1.5rem;display:flex;flex-wrap:wrap;gap:.55rem;}
-  .tags .t{font-family:var(--sans);font-size:.72rem;letter-spacing:.04em;color:var(--ink-soft);background:var(--bg-raise);border:1px solid var(--line-soft);border-radius:100px;padding:.35rem .9rem;}
-  footer.site{
-    max-width:60rem;margin:4rem auto 0;padding:2.2rem 1.5rem 3.2rem;border-top:1px solid var(--line-soft);text-align:center;
-    font-family:var(--sans);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);
-  }
-  footer.site .star{color:var(--rose)}
-  :target{scroll-margin-top:2rem}
-  a:focus-visible{outline:2px solid var(--rose);outline-offset:3px;border-radius:2px}
-  @media (max-width:640px){
-    body{font-size:1.08rem}
-    header.hero{padding-top:4rem}
-    .dropcap::first-letter{font-size:3.4rem}
-  }
-  @media (prefers-reduced-motion:no-preference){
-    .fade{opacity:0;transform:translateY(10px);animation:rise .9s ease forwards}
-    .fade.d1{animation-delay:.05s}.fade.d2{animation-delay:.15s}.fade.d3{animation-delay:.25s}.fade.d4{animation-delay:.35s}
-    @keyframes rise{to{opacity:1;transform:none}}
-  }
-</style>
+    .art-hero { padding:3rem 4rem 5rem; max-width:820px; margin:0 auto; text-align:center; }
+    .a-eyebrow { font-family:'DM Mono',monospace; font-size:.58rem; letter-spacing:.4em; text-transform:uppercase; color:var(--rose); display:block; margin-bottom:2rem; }
+    .a-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2.4rem,6vw,4rem); font-weight:300; line-height:1.06; color:var(--cream); }
+    .a-title em { color:var(--rose-light); font-style:italic; }
+    .a-subtitle { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-style:italic; font-weight:300; color:var(--muted); margin-top:1.4rem; line-height:1.65; }
+    .a-meta { display:flex; justify-content:center; align-items:center; gap:1.2rem; margin-top:2.8rem; font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.2em; text-transform:uppercase; color:var(--rose-dark); flex-wrap:wrap; }
+    .a-meta .sep { color:rgba(212,144,154,.25); }
+    .orn-line { text-align:center; color:var(--rose-dark); font-size:.8rem; letter-spacing:1.4rem; margin:3.5rem 0; }
+    .cover-img { width:100%; max-width:820px; margin:0 auto 4rem; aspect-ratio:16/7; overflow:hidden; border:1px solid rgba(212,144,154,.12); }
+    .cover-img img { width:100%; height:100%; object-fit:cover; filter:brightness(.85) saturate(.9); }
+    .art-body { max-width:680px; margin:0 auto; padding:0 2rem 4rem; }
+    .art-body > p:first-of-type::first-letter { font-family:'Cormorant Garamond',serif; font-size:4.5rem; font-weight:300; float:left; line-height:.82; margin-right:.12em; margin-top:.08em; color:var(--rose-light); }
+    h2 { font-family:'Cormorant Garamond',serif; font-size:1.95rem; font-weight:400; line-height:1.15; color:var(--cream); margin:4rem 0 1.4rem; position:relative; padding-left:1.4rem; }
+    h2::before { content:''; position:absolute; left:0; top:.3em; width:3px; height:1.1em; background:linear-gradient(to bottom,var(--rose),var(--rose-dark)); }
+    h2 .h2-num { display:block; font-family:'DM Mono',monospace; font-size:.5rem; font-weight:400; letter-spacing:.28em; text-transform:uppercase; color:var(--rose); margin-bottom:.55rem; }
+    h3 { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-style:italic; font-weight:400; color:var(--rose-light); margin:2.4rem 0 .8rem; }
+    p { color:#c9b8bc; margin-bottom:1.5rem; }
+    em { color:var(--rose-light); font-style:italic; }
+    strong { color:var(--cream); font-weight:600; }
+    .jp { font-style:normal; color:var(--rose-light); }
+    .gloss { color:var(--muted); font-style:italic; }
+    .img-inline { width:100%; margin:2.8rem 0 .6rem; overflow:hidden; border:1px solid rgba(212,144,154,.1); }
+    .img-inline img { width:100%; display:block; filter:brightness(.85) saturate(.85); }
+    .img-caption { font-family:'DM Mono',monospace; font-size:.47rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); text-align:right; margin-bottom:2.4rem; }
+    blockquote { margin:3rem 0; padding:1.8rem 2.2rem; border:1px solid rgba(212,144,154,.2); background:var(--bg-card); position:relative; font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-style:italic; font-weight:300; color:var(--rose-light); line-height:1.6; }
+    blockquote::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--rose),var(--rose-dark)); }
+    blockquote cite { display:block; font-family:'DM Mono',monospace; font-size:.46rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); font-style:normal; margin-top:.9rem; }
+    .source-box { margin:2.8rem 0; padding:1.6rem 2rem; border:1px solid rgba(212,144,154,.3); background:rgba(212,144,154,.04); font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; color:#d4b0b8; line-height:1.75; position:relative; }
+    .source-box::before { content:'Source primaire'; position:absolute; top:-1px; left:1.5rem; background:var(--bg); padding:0 .7rem; font-family:'DM Mono',monospace; font-size:.46rem; letter-spacing:.18em; text-transform:uppercase; color:var(--rose); font-style:normal; }
+    .source-box cite { display:block; font-family:'DM Mono',monospace; font-size:.46rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); font-style:normal; margin-top:.9rem; }
+    .fn { font-family:'DM Mono',monospace; font-size:.52rem; vertical-align:super; line-height:0; color:var(--rose); border-bottom:1px dotted var(--rose-dark); cursor:default; }
+    .cadrage { border-left:2px solid var(--rose-dark); padding:1rem 1.5rem; background:rgba(212,144,154,.04); margin:2.4rem 0; }
+    .cadrage-title { font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.2em; text-transform:uppercase; color:var(--rose); margin-bottom:.6rem; display:block; }
+    .cadrage p { font-size:.9rem; color:var(--muted); font-style:italic; margin:0; line-height:1.75; }
+    .cadrage p + p { margin-top:.8rem; }
+    .footnotes { margin-top:4rem; padding-top:3rem; border-top:1px solid var(--border); }
+    .footnotes-title { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--rose); margin-bottom:2rem; display:block; }
+    .footnote-item { display:grid; grid-template-columns:2rem 1fr; gap:.6rem; margin-bottom:1.1rem; font-size:.87rem; color:var(--muted); line-height:1.7; }
+    .fn-num { font-family:'DM Mono',monospace; font-size:.5rem; color:var(--rose-dark); padding-top:.15rem; }
+    .footnote-item em { color:#b0a0b0; }
+    .biblio { margin-top:2.5rem; padding-top:2rem; border-top:1px solid rgba(212,144,154,.1); }
+    .biblio-title { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--rose); margin-bottom:1.5rem; display:block; }
+    .biblio-item { font-size:.87rem; color:var(--muted); line-height:1.75; margin-bottom:.7rem; padding-left:1.4rem; text-indent:-1.4rem; }
+    .biblio-item em { color:#b0a0b0; }
+    /* Remerciements */
+    .thanks { margin-top:2.5rem; padding:1.3rem 1.6rem; border:1px solid rgba(212,144,154,.16); background:rgba(212,144,154,.03); }
+    .thanks-title { font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.28em; text-transform:uppercase; color:var(--rose); margin-bottom:.8rem; display:block; }
+    .thanks p { font-size:.87rem; color:var(--muted); line-height:1.75; margin:0; font-style:italic; }
+    .thanks a { color:var(--rose-light); text-decoration:none; border-bottom:1px solid var(--rose-dark); }
+    .thanks a:hover { color:var(--rose); }
+    .art-footer { max-width:680px; margin:0 auto; padding:3rem 2rem 6rem; border-top:1px solid var(--border); display:flex; flex-wrap:wrap; align-items:center; gap:1rem; }
+    .tag { border:1px solid var(--rose-dark); padding:.25rem .8rem; font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.16em; text-transform:uppercase; color:var(--rose); }
+    footer { border-top:1px solid var(--border); padding:2.5rem 4rem; max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
+    .f-logo { font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:300; letter-spacing:.15em; color:var(--rose-light); }
+    .f-copy { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.18em; color:var(--muted); }
+    .rv { opacity:0; transform:translateY(22px); transition:opacity .8s ease,transform .8s ease; }
+    .rv.on { opacity:1; transform:none; }
+    @media(max-width:760px){ nav{padding:1.2rem 1.5rem;} .series{padding-top:7rem;} .art-hero,.art-body,.art-footer{padding-left:1.5rem;padding-right:1.5rem;} footer{flex-direction:column;gap:1rem;text-align:center;padding:2rem;} .footnote-item{grid-template-columns:1.5rem 1fr;} }
+  </style>
 </head>
 <body>
-<div class="wrap">
-
-  <div class="topbar">
-    <span class="brand">Spectre Rose</span>
-    <a href="#">← Retour aux théories</a>
-  </div>
-
-  <nav class="series" aria-label="Série Silent Hill f">
-    <span class="lead">Silent Hill f · trois lectures d'une réécriture</span>
-    <span><span class="roman">I.</span><a href="spectre-rose-silent-hill-f-article-I.html">Ce qu'Hinako ne peut pas regarder</a></span>
-    <span><span class="roman">II.</span><span class="here">La poupée qu'on jette à la rivière</span></span>
-    <span><span class="roman">III.</span><a href="spectre-rose-silent-hill-f-article-III.html">Le village qui a réécrit son histoire</a></span>
+  <nav>
+    <a href="index.html" class="nav-logo">Spectre <span>Rose</span></a>
+    <a href="index.html" class="nav-back">← Retour aux théories</a>
   </nav>
 
-  <header class="hero">
-    <div class="eyebrow fade d1">
-      <span>✦ Silent Hill f — II</span><span class="sep">·</span>
-      <span>Katashiro</span><span class="sep">·</span>
-      <span>L'ontologie du double</span>
+  <div class="series">
+    <span class="series-label">Silent Hill f · trois lectures d'une réécriture</span>
+    <div class="series-list">
+      <a href="spectre-rose-silent-hill-f-article-I.html"><span class="num">I.</span> Ce qu'Hinako ne peut pas regarder</a>
+      <span class="here"><span class="num">II.</span> La poupée qu'on jette à la rivière</span>
+      <a href="spectre-rose-silent-hill-f-article-III.html"><span class="num">III.</span> Le village qui a réécrit son histoire</a>
     </div>
-    <h1 class="fade d2">La poupée qu'on<br>jette à la rivière</h1>
-    <p class="dek fade d3">Kitsune no Hinako n'est pas un double psychologique. C'est une poupée rituelle de substitution, fabriquée pour absorber un sort à la place d'une autre — et la règle veut qu'on la jette à la rivière une fois la cérémonie finie. Tout le jeu tient peut-être dans le refus de l'y jeter.</p>
-    <div class="runline fade d4">
+  </div>
+
+  <div class="art-hero">
+    <span class="a-eyebrow rv">✦ Silent Hill f — II &nbsp;·&nbsp; Katashiro &nbsp;·&nbsp; L'ontologie du double</span>
+    <h1 class="a-title rv">La poupée qu'on<br><em>jette à la rivière</em></h1>
+    <p class="a-subtitle rv">Kitsune no Hinako n'est peut-être pas un double psychologique. C'est une poupée rituelle de substitution, fabriquée pour absorber un sort à la place d'une autre — et la règle veut qu'on la jette à la rivière une fois la cérémonie finie. Tout le jeu tient peut-être dans le refus de l'y jeter.</p>
+    <div class="a-meta rv">
       <span>Silent Hill f — Ryukishi07 / NeoBards, 2025</span>
-      <span class="dot">·</span><span>Spoilers complets, parties avancées</span>
-      <span class="dot">·</span><span>~18 min</span>
+      <span class="sep">·</span>
+      <span>Spoilers complets, parties avancées</span>
+      <span class="sep">·</span>
+      <span>~20 min</span>
     </div>
-    <div class="hero-rule fade d4"></div>
-  </header>
+  </div>
 
-  <article>
+  <div class="cover-img rv">
+    <img src="silenthill-f.jpg" alt="Silent Hill f — Kitsune no Hinako">
+  </div>
 
-    <p class="standfirst dropcap">Il y a, dans les parties avancées de <span class="work">Silent Hill f</span>, une scène entre les deux Hinako que presque personne ne commente<a class="fn" href="#fn1" id="r1">1</a> — peut-être parce qu'elle dit quelque chose de trop difficile à tenir. Kitsune no Hinako, la mariée aux bras de renard, a un moment de lucidité. Un seul. Elle se tourne vers Hinako Shimizu et lui demande : si c'est moi qui suis dans l'erreur, tue-moi, libère-moi ; sinon, c'est moi qui te tuerai. Puis le brouillard reprend, et elle retourne réciter dans son journal les promesses de l'homme au masque. La clarté aura duré quelques secondes.</p>
+  <article class="art-body">
 
-    <p>Dans ce fragment, le texte japonais lui fait dire une chose précise : quelqu'un l'a saisie par les pieds et l'a entraînée au fond d'un marécage.<a class="fn" href="#fn2" id="r2">2</a> Cette image n'est pas une métaphore de conflit intérieur. Ce n'est ni l'ambivalence, ni la psyché fracturée, ni le désir qu'on se reproche. C'est la description d'une action exercée sur elle, du dehors, par quelqu'un. Toute la différence entre les deux lectures du jeu tient dans cette préposition.</p>
+    <p class="rv">Il y a, dans les parties avancées de <em>Silent Hill f</em>, une scène entre les deux Hinako que presque personne ne commente<span class="fn">1</span> — peut-être parce qu'elle dit quelque chose de trop difficile à tenir. Kitsune no Hinako (<span class="jp">狐の雛子</span>, <span class="gloss">« l'Hinako du renard »</span>), la mariée aux bras de renard, a un moment de lucidité. Un seul. Elle se tourne vers Hinako Shimizu et lui demande : si c'est moi qui suis dans l'erreur, tue-moi, libère-moi ; sinon, c'est moi qui te tuerai. Puis le brouillard reprend, et elle retourne réciter dans son journal les promesses de l'homme au masque. La clarté aura duré quelques secondes.</p>
 
-    <p>Le premier volet de cette série lisait l'effacement d'Hinako comme une réécriture — de son journal, de son nom, de son corps. Celui-ci s'attaque à la réécriture la plus radicale : celle d'un être en un substitut.</p>
+    <p class="rv">Dans ce fragment, le texte japonais lui fait dire une chose précise : quelqu'un l'a saisie par les pieds et l'a entraînée au fond d'un marécage.<span class="fn">2</span> Cette image n'est pas une métaphore de conflit intérieur. Ce n'est ni l'ambivalence, ni la psyché fracturée, ni le désir qu'on se reproche. C'est la description d'une action exercée sur elle, du dehors, par quelqu'un. Toute la différence entre les deux lectures du jeu tient dans cette préposition.</p>
 
-    <div class="seam"><span>✦</span></div>
+    <p class="rv">Le premier volet de cette série lisait l'effacement d'Hinako comme une réécriture — de son journal, de son nom, de son corps. Celui-ci s'attaque à la réécriture la plus radicale : celle d'un être en un substitut. Et il faut poser d'emblée que cette lecture n'est pas la lecture majoritaire. Elle est minoritaire, elle est discutable, et le jeu lui-même ne la confirme jamais. Ce qu'on peut faire, c'est montrer combien de pièces s'emboîtent si on l'adopte.</p>
 
-    <h2><span class="num">I — La substitution</span>Ce qu'est vraiment Kitsune no Hinako</h2>
+    <div class="orn-line rv">✦ &nbsp; ✦ &nbsp; ✦</div>
 
-    <div class="dossier">
-      <span class="label">Folklore — le katashiro</span>
-      <p>Le <strong>katashiro</strong> (形代) est un objet rituel shinto — le plus souvent une silhouette de papier ou de bois — qui sert de substitut humain. Le mot compose 形 (<em>katachi</em>, la forme) et 代 (<em>shiro</em>, la substitution) : « ce qui a la forme de quelqu'un, à sa place ».</p>
+    <h2 class="rv"><span class="h2-num">I — La substitution</span>Ce qu'est peut-être Kitsune no Hinako</h2>
+
+    <div class="cadrage rv">
+      <span class="cadrage-title">Folklore — le katashiro</span>
+      <p>Le <strong>katashiro</strong> (<span class="jp">形代</span>) est un objet rituel shinto — le plus souvent une silhouette de papier ou de bois — qui sert de substitut humain. Le mot compose <span class="jp">形</span> (<em>katachi</em>, <span class="gloss">la forme</span>) et <span class="jp">代</span> (<em>shiro</em>, <span class="gloss">la substitution, le remplacement</span>) : « ce qui a la forme de quelqu'un, à sa place ».</p>
       <p>On y transfère les impuretés d'une personne, puis on le jette à la rivière, qui emporte le mal ; il peut aussi recevoir, à la place de son modèle, les effets d'une malédiction. Dans un usage offensif, on l'inscrit du nom et des données de la cible pour lui faire subir un sort à distance.</p>
     </div>
 
-    <p>Le premier monstre récurrent de Kitsune no Hinako porte un nom qui devrait nous arrêter : <em>harai katashiro</em>. <em>Harai</em> est le rituel général de purification ; <em>katashiro</em>, la poupée de substitution. La créature est une imitation — métallique, ligneuse, inorganique — d'un autre monstre du jeu, le <em>kashimashi</em>, celui d'Hinako Shimizu : même visage sous le masque, mais refait dans des matériaux morts, le masque soudé par des racines.<a class="fn" href="#fn3" id="r3">3</a> Ce n'est pas un hasard onomastique. C'est l'architecture du jeu qui se nomme elle-même : Kitsune no Hinako <em>est</em> un katashiro. On l'a fabriquée pour absorber quelque chose à la place d'Hinako Shimizu.</p>
+    <p class="rv">Le premier monstre récurrent de Kitsune no Hinako porte un nom qui devrait nous arrêter : <em>harai katashiro</em> (<span class="jp">祓形代</span>). <em>Harai</em> (<span class="jp">祓</span>) est le rituel général de purification ; <em>katashiro</em>, la poupée de substitution. La créature est une imitation — métallique, ligneuse, inorganique — d'un autre monstre du jeu, le <em>kashimashi</em>, celui d'Hinako Shimizu : même visage sous le masque, mais refait dans des matériaux morts, le masque soudé par des racines.<span class="fn">3</span> Ce n'est pas un hasard onomastique. C'est l'architecture du jeu qui se nomme elle-même : Kitsune no Hinako <em>serait</em> un katashiro. On l'aurait fabriquée pour absorber quelque chose à la place d'Hinako Shimizu.</p>
 
-    <p>La lecture courante du dédoublement est psychologique, et <a class="xref" href="spectre-rose-silent-hill-f-article-I.html">le premier volet</a> a dit pourquoi elle est confortable : elle loge la source du conflit à l'intérieur d'Hinako — elle hésite, une part d'elle veut le mariage, l'autre le refuse. Mais la version japonaise de la scène citée plus haut dit le contraire. Les émotions que Kitsune no Hinako éprouve pour l'homme au masque y sont qualifiées d'<span class="jp">異形</span> — <em>igyo</em> : difformes, étrangères, d'une autre espèce que le désir humain.<a class="fn" href="#fn4" id="r4">4</a> Elle ne dit pas : je veux ce que je ne devrais pas vouloir. Elle dit : ce que je ressens n'est pas de moi. Quelque chose s'est installé, et ce quelque chose n'est pas elle.</p>
+    <p class="rv">Il y a d'ailleurs, dans la seule façon de la nommer, un indice que la traduction a dissous. En japonais, la particule <span class="jp">の</span> (<em>no</em>) qui relie <span class="jp">狐</span> (le renard) à <span class="jp">雛子</span> n'est pas un adjectif. Elle marque l'appartenance, l'origine ou la provenance : <em>l'Hinako du renard</em>, <em>l'Hinako qui vient du renard</em>. Le chinois traditionnel, langue source du jeu, emploie <span class="jp">之</span> avec la même valeur. L'anglais <em>Fox Hinako</em>, en qualifiant au lieu de rattacher, laisse croire à une variante d'Hinako ; l'original dit qu'elle appartient à quelqu'un, ou qu'elle en est sortie.<span class="fn">4</span></p>
 
-    <p>Le folklore donne à cette structure son nom ; l'anthropologie lui donne sa portée. La poupée qui reçoit le mal destiné à un autre, c'est presque trait pour trait la <em>victime émissaire</em> que René Girard a placée au cœur du sacré : l'être sur qui une communauté décharge sa violence ou sa souillure pour s'en délivrer, et dont l'élimination la réconcilie avec elle-même.<a class="fn" href="#fn5" id="r5">5</a> Mauss et Hubert l'avaient déjà décrite comme la fonction propre du sacrifice — un intermédiaire substituable, qui encaisse à la place du sacrifiant ce que celui-ci ne peut pas porter.<a class="fn" href="#fn6" id="r6">6</a> Kitsune no Hinako est cette victime rendue littérale : un corps fabriqué pour qu'un autre corps soit épargné.</p>
+    <p class="rv">La lecture courante du dédoublement est psychologique, et <a href="spectre-rose-silent-hill-f-article-I.html" style="color:var(--rose-light);text-decoration:none;border-bottom:1px solid var(--rose-dark);">le premier volet</a> a dit pourquoi elle est confortable : elle loge la source du conflit à l'intérieur d'Hinako — elle hésite, une part d'elle veut le mariage, l'autre le refuse. Mais la version japonaise de la scène citée plus haut dit le contraire. Les émotions que Kitsune no Hinako éprouve pour l'homme au masque y sont qualifiées d'<span class="jp">異形</span> — <em>igyo</em> : <span class="gloss">difformes, d'une autre espèce, qui n'appartiennent pas à l'ordre humain</span>.<span class="fn">5</span> Elle ne dit pas : je veux ce que je ne devrais pas vouloir. Elle dit : ce que je ressens n'est pas de moi. Quelque chose s'est installé, et ce quelque chose n'est pas elle.</p>
 
-    <p>On serait tenté d'y voir le double freudien — le <span class="jp">Doppelgänger</span>, la poupée, l'automate, tout ce répertoire de l'inquiétante étrangeté où le familier revient sous une forme méconnaissable.<a class="fn" href="#fn7" id="r7">7</a> Mais le double de Freud monte de l'intérieur : c'est le refoulé qui resurgit, une part de soi qu'on avait reniée. Le katashiro inverse le mouvement. Il ne sourd pas d'Hinako ; on l'a fait, du dehors, et on lui a posé son visage. L'étrangeté, ici, n'est pas remontée : elle a été fabriquée. C'est un double que quelqu'un a écrit — une Hinako au second degré, au sens de Genette,<a class="fn" href="#fn8" id="r8">8</a> un texte greffé sur elle et inscrit, comme le katashiro offensif, du nom et du destin d'une autre.</p>
+    <p class="rv">Le folklore donne à cette structure son nom ; l'anthropologie lui donne sa portée. La poupée qui reçoit le mal destiné à un autre, c'est presque trait pour trait la <em>victime émissaire</em> que René Girard a placée au cœur du sacré : l'être sur qui une communauté décharge sa violence ou sa souillure pour s'en délivrer, et dont l'élimination la réconcilie avec elle-même.<span class="fn">6</span> Mauss et Hubert l'avaient déjà décrite comme la fonction propre du sacrifice — un intermédiaire substituable, qui encaisse à la place du sacrifiant ce que celui-ci ne peut pas porter.<span class="fn">7</span> Kitsune no Hinako serait cette victime rendue littérale : un corps fabriqué pour qu'un autre corps soit épargné.</p>
 
-    <p>C'est pourquoi sa seule demande, dans tout le jeu, n'est pas d'être réconciliée. C'est d'être libérée. <em>Si c'est moi qui suis dans l'erreur, tue-moi.</em> On ne demande pas qu'on nous délivre d'un désir : on demande qu'on nous délivre de ce qu'on nous a fait.</p>
+    <p class="rv">On serait tenté d'y voir le double freudien — le Doppelgänger, la poupée, l'automate, tout ce répertoire de l'inquiétante étrangeté où le familier revient sous une forme méconnaissable.<span class="fn">8</span> Mais le double de Freud monte de l'intérieur : c'est le refoulé qui resurgit, une part de soi qu'on avait reniée. Le katashiro inverse le mouvement. Il ne sourd pas d'Hinako ; on l'a fait, du dehors, et on lui a posé son visage. L'étrangeté, ici, n'est pas remontée : elle a été fabriquée. C'est un double que quelqu'un a écrit — une Hinako au second degré, au sens de Genette,<span class="fn">9</span> un texte greffé sur elle et inscrit, comme le katashiro offensif, du nom et du destin d'une autre.</p>
 
-    <h2><span class="num">II — Le bruit</span>Ce que le tambour couvre</h2>
+    <p class="rv">C'est pourquoi sa seule demande, dans tout le jeu, n'est pas d'être réconciliée. C'est d'être libérée. <em>Si c'est moi qui suis dans l'erreur, tue-moi.</em> On ne demande pas qu'on nous délivre d'un désir : on demande qu'on nous délivre de ce qu'on nous a fait.</p>
 
-    <p>Il y a, dans l'espace de Kitsune no Hinako, un monstre dont la description en dit plus qu'elle ne voudrait : le <em>Taiko Tank</em>, créature qui a avalé un tambour énorme, dont les baguettes poussent des bras comme des membres, et qui régit par le son les monstres alentour. Le journal ajoute, après la description fonctionnelle : « il cherche à faire taire à force de cris et de sons puissants. C'est toujours comme ça. »<a class="fn" href="#fn9" id="r9">9</a> La dernière phrase — au présent de vérité générale dans l'original — n'est pas une observation d'histoire naturelle. C'est une reconnaissance : quelque chose qu'elle a déjà vécu, et qu'elle nomme sans le nommer.</p>
+    <div class="cadrage rv">
+      <span class="cadrage-title">Une objection qu'il faut tenir</span>
+      <p>La critique japonaise majoritaire ne lit pas ainsi. Pour elle, les deux Hinako sont bien deux états d'un même esprit — celle qui veut rester elle-même et celle qui accepte le mariage — et le dédoublement est psychologique de part en part. Ryukishi07, interrogé, propose cette grille sans l'imposer.</p>
+      <p>Ce qui plaide pour la lecture rituelle, ce n'est aucune déclaration : ce sont des noms. <em>Harai katashiro</em>. <span class="jp">狐の雛子</span>. <span class="jp">異形</span>. Un jeu qui voudrait figurer un conflit intérieur n'avait aucun besoin d'emprunter son vocabulaire au rituel de substitution. Celui-ci le fait trois fois, dans trois registres différents. On peut en conclure qu'il nous tend quelque chose ; on ne peut pas prouver qu'il nous le dit.</p>
+    </div>
 
-    <p><a class="xref" href="spectre-rose-silent-hill-f-article-I.html">Le premier volet</a> a montré ce que l'homme au masque fait taire, et par quels moyens : le parfum dont la notice vante une aura « capable de faire taire jusqu'aux pensées d'Hinako », l'encens, le vin, la voix. Le Taiko Tank en est le portrait — celui qui remplit l'espace de bruit pour qu'aucune autre voix n'y tienne. Et ses baguettes, greffées au bras exactement comme le bras de renard greffé lors du premier rituel, disent une chose terrible : l'arme qu'on a donnée à Hinako est faite sur le modèle même de ce dont on use pour la réduire au silence. La défense et l'emprise sortent du même atelier.</p>
+    <h2 class="rv"><span class="h2-num">II — Le bruit</span>Ce que le tambour couvre</h2>
 
-    <figure>
-      <div class="plate">
-        <div class="glyph">✦</div>
-        <div class="cap">形代 — ce qui a la forme<br>de quelqu'un, à sa place</div>
-      </div>
-      <figcaption>La poupée de substitution : on y transfère le mal, puis on la confie à la rivière.</figcaption>
-    </figure>
+    <p class="rv">Il y a, dans l'espace de Kitsune no Hinako, un monstre dont la description en dit plus qu'elle ne voudrait : le <em>Taiko Tank</em> (<span class="jp">太鼓</span>, <em>taiko</em>, <span class="gloss">le tambour japonais</span>), créature qui a avalé un tambour énorme, dont les baguettes poussent des bras comme des membres, et qui régit par le son les monstres alentour. Le journal ajoute, après la description fonctionnelle : « il cherche à faire taire à force de cris et de sons puissants. <span class="jp">いつもそう</span> — c'est toujours comme ça. »<span class="fn">10</span> La dernière phrase — au présent de vérité générale dans l'original, sans sujet exprimé — n'est pas une observation d'histoire naturelle. C'est une reconnaissance : quelque chose qu'elle a déjà vécu, et qu'elle nomme sans le nommer.</p>
 
-    <h2><span class="num">III — Le refus</span>Ce que la rivière emporte</h2>
+    <p class="rv"><a href="spectre-rose-silent-hill-f-article-I.html" style="color:var(--rose-light);text-decoration:none;border-bottom:1px solid var(--rose-dark);">Le premier volet</a> a montré ce que l'homme au masque fait taire, et par quels moyens : le parfum dont la notice vante une aura « capable de faire taire jusqu'aux pensées d'Hinako », l'encens, le vin, la voix. Le Taiko Tank en est le portrait — celui qui remplit l'espace de bruit pour qu'aucune autre voix n'y tienne. Et ses baguettes, greffées au bras exactement comme le bras de renard greffé lors du premier rituel, disent une chose terrible : l'arme qu'on a donnée à Hinako est faite sur le modèle même de ce dont on use pour la réduire au silence. La défense et l'emprise sortent du même atelier.</p>
 
-    <p>Lire Kitsune no Hinako comme une poupée de substitution, et non comme une moitié de psyché, change le sens de leur réconciliation dans la fin canonique. Dans la lecture psychologique, c'est une intégration : deux désirs contraires fusionnent en un être enfin complet. Dans la lecture rituelle, c'est tout autre chose. La logique du katashiro est sans pitié : la cérémonie finie, on jette la poupée à la rivière, qui emporte le mal. Elle a rempli sa fonction ; elle est, par définition, jetable.</p>
+    <h2 class="rv"><span class="h2-num">III — L'autre poupée</span>Celle qui veut aussi quelque chose d'elle</h2>
 
-    <p>Hinako Shimizu refuse de la jeter. Elle refuse de traiter comme un déchet l'entité qui a absorbé le sort à sa place. Et ce refus, dans les termes de Girard, est exactement ce qui désarme le mécanisme : la victime émissaire ne « fonctionne » que si la communauté s'accorde à la tenir pour autre, pour sacrifiable. Refuser que la doublure soit jetable, ce n'est pas subir le sacrifice autrement — c'est en briser la condition.</p>
+    <p class="rv">Il faut compliquer le tableau, sous peine de le fausser. Car il y a dans le jeu une seconde poupée, et celle-là, Hinako l'a aimée.</p>
 
-    <blockquote class="pull">
-      <p>La poupée ne devient sacrifiable que si l'on consent à la voir comme une autre. Hinako refuse de consentir.</p>
-    </blockquote>
+    <p class="rv">C'est la vieille poupée qu'elle garde depuis l'enfance, et qui abrite un <em>tsukumogami</em> (<span class="jp">付喪神</span>) — ces esprits qui, dans la croyance populaire, naissent dans les objets usuels après un siècle d'usage et de soins. Ce tsukumogami s'oppose au dieu-renard du village ; c'est lui qui, dans les analyses japonaises, « travaille à empêcher le mariage ».<span class="fn">11</span> On serait tenté d'en faire le bon camp.</p>
 
-    <p>Reste une question que ce volet ne peut pas résoudre seul : qui a eu besoin d'un katashiro, et pourquoi à ce moment-là ? La poupée n'est qu'un instrument ; elle suppose une main, une cérémonie, un intérêt. Pour les trouver, il faut quitter Hinako et regarder le lieu — le village d'Ebisugaoka, sa divinité, son histoire volée. C'est l'objet du <a class="xref" href="spectre-rose-silent-hill-f-article-III.html">dernier volet</a>.</p>
+    <p class="rv">Les guides japonais refusent précisément cette commodité. Leur formule revient partout, presque mot pour mot : <em>il n'est pas un ennemi, mais il n'est pas un allié non plus</em> (<span class="jp">敵ではないが味方でもない</span>). Il protège Hinako du renard <strong>et</strong> ignore sa volonté pour la plier à ses propres fins ; il semble souhaiter son bonheur et la précipite dans une confusion plus grande.<span class="fn">12</span> Autrement dit : les deux divinités du jeu veulent quelque chose d'Hinako, et aucune ne lui demande son avis.</p>
+
+    <p class="rv">Loin d'affaiblir la lecture rituelle, cette symétrie l'accomplit. Si l'on tient Kitsune no Hinako pour un katashiro, la question n'est plus de savoir quel dieu a raison — c'est de constater que l'un et l'autre traitent une jeune femme comme un support. Le renard veut son sang, le tsukumogami veut son corps pour entrer dans un sanctuaire dont on l'a chassé. Hinako est, pour les deux, un moyen d'accès. Et la poupée fabriquée pour absorber à sa place est la pièce que cette logique exigeait de toute façon.</p>
+
+    <blockquote class="rv">On ne lui demande pas de choisir entre un dieu qui la sauve et un dieu qui la perd. On lui demande de choisir par qui elle préfère être utilisée.</blockquote>
+
+    <h2 class="rv"><span class="h2-num">IV — Le refus</span>Ce que la rivière emporte</h2>
+
+    <p class="rv">Lire Kitsune no Hinako comme une poupée de substitution, et non comme une moitié de psyché, change le sens de leur réconciliation dans la fin canonique. Dans la lecture psychologique, c'est une intégration : deux désirs contraires fusionnent en un être enfin complet. Dans la lecture rituelle, c'est tout autre chose. La logique du katashiro est sans pitié : la cérémonie finie, on jette la poupée à la rivière, qui emporte le mal. Elle a rempli sa fonction ; elle est, par définition, jetable.</p>
+
+    <p class="rv">Hinako Shimizu refuse de la jeter. Elle refuse de traiter comme un déchet l'entité qui a absorbé le sort à sa place. Et ce refus, dans les termes de Girard, est exactement ce qui désarme le mécanisme : la victime émissaire ne « fonctionne » que si la communauté s'accorde à la tenir pour autre, pour sacrifiable. Refuser que la doublure soit jetable, ce n'est pas subir le sacrifice autrement — c'est en briser la condition.</p>
+
+    <blockquote class="rv">La poupée ne devient sacrifiable que si l'on consent à la voir comme une autre. Hinako refuse de consentir.</blockquote>
+
+    <p class="rv">Une dernière chose, et elle n'est pas rhétorique. Le romancier qui a adapté le jeu, Kuro Shirō, raconte avoir écrit un texte entier sur la question qui hante ce volet — <em>comment s'articulent la possession par le renard et la conscience propre de Kotoyuki</em> — et n'avoir pas pu l'intégrer au livre. Ce manuscrit existe, inédit. Le producteur Okamoto a annoncé réfléchir à des « projets pour éclairer ce qui n'a pas encore été révélé ».<span class="fn">13</span> Le dossier de cette série est donc ouvert : il se pourrait qu'une source future tranche ce que nous ne pouvons ici qu'instruire.</p>
+
+    <p class="rv">Reste une question que ce volet ne peut pas résoudre seul : qui a eu besoin d'un katashiro, et pourquoi à ce moment-là ? La poupée n'est qu'un instrument ; elle suppose une main, une cérémonie, un intérêt. Pour les trouver, il faut quitter Hinako et regarder le lieu — le village d'Ebisugaoka, sa divinité, son histoire volée. C'est l'objet du <a href="spectre-rose-silent-hill-f-article-III.html" style="color:var(--rose-light);text-decoration:none;border-bottom:1px solid var(--rose-dark);">dernier volet</a>.</p>
+
+    <!-- NOTES -->
+    <div class="footnotes rv">
+      <span class="footnotes-title">Notes</span>
+      <div class="footnote-item"><span class="fn-num">1.</span><span>Les parties avancées (<em>New Game+</em> et au-delà) sont des rejouages depuis le début, éléments débloqués — pratique courante du <em>survival horror</em> et du <em>visual novel</em> japonais, qui étagent leur narration sur plusieurs couches de lecture. Chaque partie supplémentaire débloque documents, scènes et dialogues ; les développeurs considèrent qu'une lecture complète en demande quatre à cinq.</span></div>
+      <div class="footnote-item"><span class="fn-num">2.</span><span>Version japonaise : <span class="jp">まるで誰かに足を掴まれて……沼の底に無理やり引きずり込まれるような</span> — « comme si quelqu'un m'avait saisie par les pieds et entraînée de force au fond d'un marécage ». L'image d'une force <em>extérieure</em>, et non d'une attraction interne, est explicite dans toutes les versions. La demande qui l'accompagne — « si je me trompe, tue-moi ; sinon je te tuerai » — est sa seule prise de parole lucide du jeu.</span></div>
+      <div class="footnote-item"><span class="fn-num">3.</span><span>Description du <em>harai katashiro</em> et comparaison avec le <em>kashimashi</em> : Asha Bardon, <em>ashabardongaminglorist.substack.com</em>, 2025. Les deux indices de la relation de substitution sont le visage identique sous le masque et la fabrication inorganique en imitation de l'organique.</span></div>
+      <div class="footnote-item"><span class="fn-num">4.</span><span>Sur la valeur de <span class="jp">の</span> (japonais) et <span class="jp">之</span> (chinois traditionnel) dans la dénomination <span class="jp">狐の雛子</span> / <span class="jp">狐之雛子</span> : possession, rattachement ou provenance, par opposition à la qualification adjectivale de l'anglais <em>Fox Hinako</em>. Analyse comparée développée par <a href="https://x.com/foxwetsitstail">@foxwetsitstail</a>, 2025.</span></div>
+      <div class="footnote-item"><span class="fn-num">5.</span><span>Le terme <span class="jp">異形</span> (<em>igyo</em>) désigne ce qui dévie de la forme normale ou naturelle — le difforme, le monstrueux, ce qui n'appartient pas à l'ordre humain. Appliqué à des émotions plutôt qu'à des êtres, son emploi souligne le caractère imposé, non organique, de ce que ressent Kitsune no Hinako.</span></div>
+      <div class="footnote-item"><span class="fn-num">6.</span><span>René Girard, <em>La violence et le sacré</em>, Paris, Grasset, 1972. Le mécanisme de la victime émissaire — la communauté qui se réconcilie en concentrant sa violence sur un substitut tenu pour responsable — y est posé comme l'origine du religieux.</span></div>
+      <div class="footnote-item"><span class="fn-num">7.</span><span>Henri Hubert et Marcel Mauss, <em>Essai sur la nature et la fonction du sacrifice</em>, 1899 : la victime comme intermédiaire entre le profane et le sacré, substituable au sacrifiant dont elle prend la place.</span></div>
+      <div class="footnote-item"><span class="fn-num">8.</span><span>Sigmund Freud, « L'inquiétante étrangeté » (<em>Das Unheimliche</em>), 1919 : le double, la poupée et l'automate y figurent parmi les sources privilégiées de l'effroi, comme retour du familier refoulé.</span></div>
+      <div class="footnote-item"><span class="fn-num">9.</span><span>Gérard Genette, <em>Palimpsestes</em>, Paris, Seuil, 1982 : l'« hypertexte » comme texte dérivé d'un texte antérieur. Kitsune no Hinako serait, en ce sens, une Hinako dérivée — réécrite à partir d'elle, mais par une autre main et pour une autre fin.</span></div>
+      <div class="footnote-item"><span class="fn-num">10.</span><span>Journal d'Hinako, entrée « Taiko Tank », <em>Silent Hill f</em> (trad. officielle française). La version japonaise se clôt sur <span class="jp">いつもそう</span> — « c'est toujours comme ça » —, formulation au présent de vérité générale et non descriptive d'un comportement particulier du monstre. Sur le parfum « Kotoyuki », voir le premier volet et Konami, 2025.</span></div>
+      <div class="footnote-item"><span class="fn-num">11.</span><span>Sur la poupée d'enfance d'Hinako comme réceptacle d'un <em>tsukumogami</em> (<span class="jp">付喪神</span>, esprit né dans un objet centenaire) et sur son opposition au culte du dieu-renard, voir les synthèses de <em>Gameranbu</em> et <em>Altema</em>, 2025. La poupée y est lue comme le signe d'un système de valeurs propre à Hinako, étranger à la foi du village — ce qui lui vaut d'être traitée de « traîtresse » (<span class="jp">裏切り者</span>).</span></div>
+      <div class="footnote-item"><span class="fn-num">12.</span><span><em>Gameranbu</em>, fiche « <span class="jp">付喪神（人形）</span> », 2025 : <span class="jp">敵ではないが味方でもない</span> — « il n'est pas un ennemi, mais pas un allié non plus » ; il protège Hinako du dieu-renard « tout en cherchant à l'utiliser pour ses propres fins, en ignorant sa volonté ». Cette ambivalence est le consensus des analyses japonaises et nuance toute lecture qui ferait du tsukumogami une victime pure.</span></div>
+      <div class="footnote-item"><span class="fn-num">13.</span><span>Kuro Shirō et Okamoto Motoi, entretien croisé, <em>Famitsu</em>, 28 novembre 2025. Le romancier y mentionne un manuscrit inédit sur « la façon dont s'articulent la possession par le renard et la conscience propre de Kotoyuki », ainsi que des pages écrites sur Junko et restées hors du livre. Okamoto : « nous étudions des initiatives pour éclairer les parties qui n'ont pas encore été révélées ».</span></div>
+    </div>
+
+    <div class="biblio rv">
+      <span class="biblio-title">Références</span>
+      <p class="biblio-item">Bardon, Asha. Analyses de <em>Silent Hill f</em>. <em>ashabardongaminglorist.substack.com</em>, 2025.</p>
+      <p class="biblio-item">Freud, Sigmund. « L'inquiétante étrangeté ». 1919.</p>
+      <p class="biblio-item">Genette, Gérard. <em>Palimpsestes : la littérature au second degré</em>. Paris : Seuil, 1982.</p>
+      <p class="biblio-item">Girard, René. <em>La violence et le sacré</em>. Paris : Grasset, 1972.</p>
+      <p class="biblio-item">Hubert, Henri &amp; Marcel Mauss. <em>Essai sur la nature et la fonction du sacrifice</em>. 1899.</p>
+      <p class="biblio-item">Kuro, Shirō (<span class="jp">黒史郎</span>). <em>Sairento Hiru f</em>. Tokyo : KADOKAWA, Famitsu Bunko, 2025.</p>
+      <p class="biblio-item">Konami. Description officielle du parfum « Kotoyuki », 2025.</p>
+      <p class="biblio-item">Okamoto Motoi &amp; Kuro Shirō. Entretien croisé, <em>Famitsu</em>, 28 novembre 2025.</p>
+      <p class="biblio-item">Synthèses d'analyse japonaises (monstres, fins, tsukumogami) : <em>Game8</em>, <em>Altema</em>, <em>Gameranbu</em>, note.com, 2025.</p>
+      <p class="biblio-item">Ryukishi07. Stream officiel de <em>Silent Hill f</em>, 22 décembre 2025.</p>
+    </div>
+
+    <div class="thanks rv">
+      <span class="thanks-title">Remerciements</span>
+      <p>Ce volet repose en grande partie sur les relevés de <a href="https://x.com/foxwetsitstail">@foxwetsitstail</a> (Asha Bardon), qui met côte à côte les versions japonaise, anglaise et chinoise traditionnelle des entrées de journal et des dialogues. C'est à ce travail qu'on doit de voir ce que la localisation anglaise a aplani — la valeur de <span class="jp">の</span> dans « <span class="jp">狐の雛子</span> », le registre d'<span class="jp">異形</span>, la généralité d'<span class="jp">いつもそう</span>. Sans ces comparaisons, l'essentiel de cette lecture resterait invisible depuis le français.</p>
+    </div>
 
   </article>
 
-  <section class="notes">
-    <h3>Notes</h3>
-    <ol class="fnlist">
-      <li id="fn1">Les parties avancées (New Game+ et au-delà) sont des rejouages depuis le début, éléments débloqués — pratique courante du <i>survival horror</i> et du <i>visual novel</i> japonais, qui étagent leur narration sur plusieurs couches de lecture. Chaque partie supplémentaire débloque documents, scènes et dialogues. <a class="back" href="#r1">↩</a></li>
-      <li id="fn2">Version japonaise : <span class="jp">まるで誰かに足を掴まれて……沼の底に無理やり引きずり込まれるような</span> — « comme si quelqu'un m'avait saisie par les pieds et entraînée de force au fond d'un marécage ». L'image d'une force <em>extérieure</em>, et non d'une attraction interne, est explicite dans toutes les versions. La demande qui l'accompagne — « si je me trompe, tue-moi ; sinon je te tuerai » — est sa seule prise de parole lucide du jeu. <a class="back" href="#r2">↩</a></li>
-      <li id="fn3">Description du <i>harai katashiro</i> et comparaison avec le <i>kashimashi</i> : Asha Bardon, <i>ashabardongaminglorist.substack.com</i>, 2025. Les deux indices de la relation de substitution sont le visage identique sous le masque et la fabrication inorganique en imitation de l'organique. <a class="back" href="#r3">↩</a></li>
-      <li id="fn4">Le terme <span class="jp">異形</span> (<i>igyo</i>) désigne ce qui dévie de la forme normale ou naturelle — le difforme, le monstrueux, ce qui n'appartient pas à l'ordre humain. Appliqué à des émotions plutôt qu'à des êtres, son emploi souligne le caractère imposé, non organique, de ce que ressent Kitsune no Hinako. <a class="back" href="#r4">↩</a></li>
-      <li id="fn5">René Girard, <i>La violence et le sacré</i>, Paris, Grasset, 1972. Le mécanisme de la victime émissaire — la communauté qui se réconcilie en concentrant sa violence sur un substitut tenu pour responsable — y est posé comme l'origine du religieux. <a class="back" href="#r5">↩</a></li>
-      <li id="fn6">Henri Hubert et Marcel Mauss, <i>Essai sur la nature et la fonction du sacrifice</i>, 1899 : la victime comme intermédiaire entre le profane et le sacré, substituable au sacrifiant dont elle prend la place. <a class="back" href="#r6">↩</a></li>
-      <li id="fn7">Sigmund Freud, « L'inquiétante étrangeté » (<i>Das Unheimliche</i>), 1919 : le double, la poupée et l'automate y figurent parmi les sources privilégiées de l'effroi, comme retour du familier refoulé. <a class="back" href="#r7">↩</a></li>
-      <li id="fn8">Gérard Genette, <i>Palimpsestes</i>, Paris, Seuil, 1982 : l'« hypertexte » comme texte dérivé d'un texte antérieur. Kitsune no Hinako est, en ce sens, une Hinako dérivée — réécrite à partir d'elle, mais par une autre main et pour une autre fin. <a class="back" href="#r8">↩</a></li>
-      <li id="fn9">Journal d'Hinako, entrée « Taiko Tank », <i>Silent Hill f</i> (trad. officielle française). La version japonaise se clôt sur <span class="jp">いつもそう</span> — « c'est toujours comme ça » —, formulation au présent de vérité générale et non descriptive d'un comportement particulier du monstre. Sur le parfum « Kotoyuki », voir le premier volet et Konami, 2025. <a class="back" href="#r9">↩</a></li>
-    </ol>
-  </section>
-
-  <section class="refs">
-    <h3>Références</h3>
-    <ul>
-      <li>Bardon, Asha. Analyses de <i>Silent Hill f</i>. <i>ashabardongaminglorist.substack.com</i>, 2025.</li>
-      <li>Freud, Sigmund. « L'inquiétante étrangeté ». 1919.</li>
-      <li>Genette, Gérard. <i>Palimpsestes : la littérature au second degré</i>. Paris : Seuil, 1982.</li>
-      <li>Girard, René. <i>La violence et le sacré</i>. Paris : Grasset, 1972.</li>
-      <li>Hubert, Henri &amp; Marcel Mauss. <i>Essai sur la nature et la fonction du sacrifice</i>. 1899.</li>
-      <li>Kuro, Shirō. <i>Roman de Silent Hill f</i>. Konami, 2025.</li>
-      <li>Konami. Description officielle du parfum « Kotoyuki », 2025.</li>
-      <li>Synthèses d'analyse japonaises (monstres, fins) : <i>Game8</i>, <i>Altema</i>, note.com, 2025.</li>
-      <li>Ryukishi07. Stream officiel de <i>Silent Hill f</i>, 2025.</li>
-    </ul>
-  </section>
-
-  <div class="tags">
-    <span class="t">Silent Hill f — II</span>
-    <span class="t">Katashiro</span>
-    <span class="t">Victime émissaire</span>
-    <span class="t">Girard</span>
-    <span class="t">Inquiétante étrangeté</span>
-    <span class="t">Narratrice non-fiable</span>
-    <span class="t">Réécriture</span>
+  <div class="art-footer rv">
+    <span style="font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-right:.5rem;">Tags :</span>
+    <span class="tag">Silent Hill f — II</span>
+    <span class="tag">Katashiro</span>
+    <span class="tag">Victime émissaire</span>
+    <span class="tag">Girard</span>
+    <span class="tag">Inquiétante étrangeté</span>
+    <span class="tag">Tsukumogami</span>
+    <span class="tag">Réécriture</span>
   </div>
 
-  <footer class="site">
-    <span class="star">Spectre Rose ✦</span> &nbsp; © 2026 — Théories narratives &amp; fiction interactive
+  <footer>
+    <span class="f-logo">Spectre Rose ✦</span>
+    <span class="f-copy">© 2026 — Théories narratives &amp; fiction interactive</span>
   </footer>
-
-</div>
+  <script>
+    const items = document.querySelectorAll('.rv');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+    }, { threshold: 0.07 });
+    items.forEach(el => obs.observe(el));
+  </script>
+  <script src="ui.js"></script>
 </body>
 </html>

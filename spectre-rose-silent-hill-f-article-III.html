@@ -1,270 +1,290 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Le village qui a réécrit son histoire — Spectre Rose</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#0e0a0f;--bg-raise:#171019;--ink:#ece4e8;--ink-soft:#b6abb4;--ink-faint:#867a83;
-    --rose:#df728c;--rose-deep:#7c2740;--bone:#e3dacb;--gold:#c2a14e;
-    --line:rgba(223,114,140,.18);--line-soft:rgba(236,228,232,.08);--measure:38rem;
-    --serif-display:"Cormorant Garamond",Didot,"Hoefler Text",Georgia,serif;
-    --serif-body:"Spectral",Georgia,"Times New Roman",serif;
-    --sans:"Inter",system-ui,-apple-system,sans-serif;
-  }
-  *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
-  body{
-    margin:0;background:var(--bg);color:var(--ink);
-    font-family:var(--serif-body);font-weight:400;font-size:1.16rem;line-height:1.78;letter-spacing:.005em;
-    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
-  }
-  body::before{
-    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
-    background:
-      radial-gradient(120% 80% at 50% -10%, rgba(124,39,64,.16), transparent 60%),
-      radial-gradient(90% 60% at 90% 110%, rgba(46,30,52,.5), transparent 55%);
-  }
-  .wrap{position:relative;z-index:1}
-  .topbar{
-    max-width:60rem;margin:0 auto;padding:1.6rem 1.5rem 0;display:flex;align-items:center;justify-content:space-between;
-    font-family:var(--sans);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);
-  }
-  .topbar .brand{color:var(--bone);font-weight:500}
-  .topbar a{color:var(--ink-faint);text-decoration:none;transition:color .25s}
-  .topbar a:hover{color:var(--rose)}
-  .series{
-    max-width:60rem;margin:1.3rem auto 0;padding:1.1rem 1.5rem 0;border-top:1px solid var(--line-soft);
-    display:flex;flex-wrap:wrap;gap:.45rem 1.1rem;align-items:baseline;
-    font-family:var(--sans);font-size:.74rem;letter-spacing:.02em;color:var(--ink-faint);
-  }
-  .series .lead{letter-spacing:.18em;text-transform:uppercase;color:var(--rose);width:100%;margin-bottom:.2rem;}
-  .series a{color:var(--ink-soft);text-decoration:none;transition:color .25s}
-  .series a:hover{color:var(--rose)}
-  .series .roman{color:var(--rose-deep);font-style:italic;margin-right:.3rem}
-  .series .here{color:var(--bone);border-bottom:1px solid var(--rose-deep);padding-bottom:1px}
-  header.hero{max-width:48rem;margin:0 auto;padding:5.5rem 1.5rem 2.2rem;text-align:center;}
-  .eyebrow{
-    font-family:var(--sans);font-size:.72rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--rose);
-    display:flex;flex-wrap:wrap;gap:.5rem .9rem;justify-content:center;align-items:center;margin-bottom:2.2rem;
-  }
-  .eyebrow .sep{color:var(--rose-deep)}
-  h1{
-    font-family:var(--serif-display);font-weight:500;font-size:clamp(2.6rem,7vw,4.6rem);line-height:1.03;letter-spacing:-.01em;margin:0 0 1.4rem;color:var(--ink);
-  }
-  .dek{
-    font-family:var(--serif-body);font-weight:300;font-style:italic;font-size:clamp(1.18rem,2.6vw,1.42rem);line-height:1.5;color:var(--ink-soft);max-width:35rem;margin:0 auto 2.4rem;
-  }
-  .runline{
-    font-family:var(--sans);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);display:flex;flex-wrap:wrap;gap:.4rem .8rem;justify-content:center;
-  }
-  .runline .dot{color:var(--rose-deep)}
-  .hero-rule{width:1px;height:3.4rem;margin:2.6rem auto 0;background:linear-gradient(var(--rose),transparent);}
-  article{max-width:var(--measure);margin:0 auto;padding:1.5rem 1.5rem 2rem}
-  article > p,article > .standfirst{margin:0 0 1.45rem}
-  p{margin:0 0 1.45rem}
-  .standfirst{font-size:1.28rem;line-height:1.62;color:var(--ink)}
-  .dropcap::first-letter{font-family:var(--serif-display);font-weight:500;float:left;font-size:4.2rem;line-height:.78;padding:.35rem .55rem 0 0;color:var(--rose);}
-  h2{font-family:var(--serif-display);font-weight:500;font-size:clamp(1.9rem,4.4vw,2.5rem);line-height:1.1;letter-spacing:-.005em;color:var(--ink);margin:3.4rem 0 1.3rem;}
-  h2 .num{display:block;font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--rose);margin-bottom:.7rem;}
-  em,i{font-style:italic}
-  strong{font-weight:600;color:#f5eef2}
-  .work{font-style:italic;color:var(--ink)}
-  .jp{font-family:var(--serif-body);color:var(--bone);font-style:normal}
-  a.xref{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--line)}
-  a.xref:hover{border-color:var(--rose)}
-  a.fn{font-family:var(--sans);font-size:.62em;font-weight:600;vertical-align:.5em;line-height:0;color:var(--rose);text-decoration:none;padding:0 .12em;}
-  a.fn::before{content:"["}
-  a.fn::after{content:"]"}
-  a.fn:hover{color:var(--bone)}
-  .seam{display:flex;align-items:center;gap:1.1rem;margin:3rem auto;max-width:18rem;color:var(--rose-deep);}
-  .seam::before,.seam::after{content:"";height:1px;flex:1;background:repeating-linear-gradient(90deg,var(--line) 0 7px,transparent 7px 13px);}
-  .seam span{font-family:var(--serif-display);font-size:1.1rem;color:var(--rose);}
-  .dossier{background:var(--bg-raise);border:1px solid var(--line-soft);border-left:2px solid var(--gold);border-radius:2px;padding:1.6rem 1.7rem 1.4rem;margin:2.4rem 0;font-size:1.04rem;line-height:1.7;color:var(--ink-soft);}
-  .dossier .label{font-family:var(--sans);font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.85rem;}
-  .dossier p{margin:0 0 .9rem}
-  .dossier p:last-child{margin-bottom:0}
-  .dossier strong{color:var(--bone)}
-  .passage{margin:2.3rem 0;padding:.2rem 0 .2rem 1.6rem;border-left:2px solid var(--rose-deep);}
-  .passage p{font-style:italic;color:var(--ink);font-size:1.1rem;line-height:1.62;margin:0 0 .7rem;}
-  .passage .src{font-family:var(--sans);font-size:.7rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);}
-  figure{margin:2.6rem 0}
-  figcaption{font-family:var(--sans);font-size:.78rem;letter-spacing:.04em;color:var(--ink-faint);text-align:center;margin-top:.7rem;}
-  .plate{border:1px solid var(--line-soft);border-radius:2px;background:var(--bg-raise);padding:2.4rem 1.5rem;text-align:center;}
-  .plate .glyph{font-family:var(--serif-display);font-size:2.4rem;color:var(--rose);opacity:.8}
-  .plate .cap{font-family:var(--serif-display);font-style:italic;font-size:1.45rem;color:var(--bone);margin-top:.6rem;line-height:1.3;}
-  blockquote.pull{margin:3rem 0;padding:0;border:0;text-align:center;}
-  blockquote.pull p{font-family:var(--serif-display);font-weight:500;font-style:italic;font-size:clamp(1.5rem,3.6vw,2rem);line-height:1.28;color:var(--bone);max-width:31rem;margin:0 auto;}
-  .notes{max-width:var(--measure);margin:4rem auto 0;padding:0 1.5rem;}
-  .notes h3,.refs h3{font-family:var(--sans);font-size:.74rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--rose);border-top:1px solid var(--line);padding-top:1.6rem;margin:0 0 1.4rem;}
-  ol.fnlist{list-style:none;counter-reset:fn;margin:0;padding:0}
-  ol.fnlist li{counter-increment:fn;position:relative;padding-left:2.2rem;font-size:.92rem;line-height:1.62;color:var(--ink-soft);margin-bottom:1rem;}
-  ol.fnlist li::before{content:counter(fn);position:absolute;left:0;top:.05em;font-family:var(--sans);font-size:.72rem;font-weight:600;color:var(--rose);}
-  ol.fnlist li a.back{color:var(--ink-faint);text-decoration:none;margin-left:.3rem;}
-  ol.fnlist li a.back:hover{color:var(--rose)}
-  ol.fnlist a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
-  ol.fnlist a:hover{color:var(--rose);border-color:var(--rose)}
-  .refs{max-width:var(--measure);margin:3rem auto 0;padding:0 1.5rem}
-  .refs ul{list-style:none;margin:0;padding:0}
-  .refs li{font-size:.9rem;line-height:1.55;color:var(--ink-soft);padding-left:1.4rem;text-indent:-1.4rem;margin-bottom:.7rem;}
-  .refs li i{color:var(--ink)}
-  .tags{max-width:var(--measure);margin:3.4rem auto 0;padding:0 1.5rem;display:flex;flex-wrap:wrap;gap:.55rem;}
-  .tags .t{font-family:var(--sans);font-size:.72rem;letter-spacing:.04em;color:var(--ink-soft);background:var(--bg-raise);border:1px solid var(--line-soft);border-radius:100px;padding:.35rem .9rem;}
-  footer.site{max-width:60rem;margin:4rem auto 0;padding:2.2rem 1.5rem 3.2rem;border-top:1px solid var(--line-soft);text-align:center;font-family:var(--sans);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);}
-  footer.site .star{color:var(--rose)}
-  :target{scroll-margin-top:2rem}
-  a:focus-visible{outline:2px solid var(--rose);outline-offset:3px;border-radius:2px}
-  @media (max-width:640px){body{font-size:1.08rem}header.hero{padding-top:4rem}.dropcap::first-letter{font-size:3.4rem}}
-  @media (prefers-reduced-motion:no-preference){
-    .fade{opacity:0;transform:translateY(10px);animation:rise .9s ease forwards}
-    .fade.d1{animation-delay:.05s}.fade.d2{animation-delay:.15s}.fade.d3{animation-delay:.25s}.fade.d4{animation-delay:.35s}
-    @keyframes rise{to{opacity:1;transform:none}}
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le village qui a réécrit son histoire — Spectre Rose</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#07040a; --bg-card:#0e0812;
+      --rose:#d4909a; --rose-light:#f0c4cc; --rose-dark:#7a3d4a; --rose-deep:#3d1520;
+      --cream:#ede4e6; --muted:#6e5860; --border:rgba(212,144,154,0.18);
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--bg); color:var(--cream); font-family:'Crimson Text',serif; font-size:19.5px; line-height:1.92; overflow-x:hidden; }
+    body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E"); pointer-events:none; z-index:9998; mix-blend-mode:overlay; opacity:0.6; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; justify-content:space-between; align-items:center; padding:1.4rem 4rem; background:linear-gradient(to bottom,rgba(7,4,10,0.97) 0%,transparent 100%); }
+    .nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:300; letter-spacing:.18em; color:var(--rose-light); text-decoration:none; }
+    .nav-logo span { color:var(--rose); font-style:italic; }
+    .nav-back { font-family:'DM Mono',monospace; font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .3s; }
+    .nav-back:hover { color:var(--rose-light); }
+
+    /* Navigation de série */
+    .series { max-width:820px; margin:0 auto; padding:9.5rem 2rem 0; }
+    .series-label { font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.28em; text-transform:uppercase; color:var(--rose-dark); display:block; margin-bottom:.9rem; text-align:center; }
+    .series-list { display:flex; justify-content:center; flex-wrap:wrap; gap:.5rem 1.6rem; }
+    .series-list a, .series-list span { font-family:'DM Mono',monospace; font-size:.55rem; letter-spacing:.14em; text-decoration:none; color:var(--muted); transition:color .3s; }
+    .series-list a:hover { color:var(--rose-light); }
+    .series-list .here { color:var(--rose-light); border-bottom:1px solid var(--rose-dark); padding-bottom:.2rem; }
+    .series-list .num { color:var(--rose); }
+
+    .art-hero { padding:3rem 4rem 5rem; max-width:820px; margin:0 auto; text-align:center; }
+    .a-eyebrow { font-family:'DM Mono',monospace; font-size:.58rem; letter-spacing:.4em; text-transform:uppercase; color:var(--rose); display:block; margin-bottom:2rem; }
+    .a-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2.4rem,6vw,4rem); font-weight:300; line-height:1.06; color:var(--cream); }
+    .a-title em { color:var(--rose-light); font-style:italic; }
+    .a-subtitle { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-style:italic; font-weight:300; color:var(--muted); margin-top:1.4rem; line-height:1.65; }
+    .a-meta { display:flex; justify-content:center; align-items:center; gap:1.2rem; margin-top:2.8rem; font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.2em; text-transform:uppercase; color:var(--rose-dark); flex-wrap:wrap; }
+    .a-meta .sep { color:rgba(212,144,154,.25); }
+    .orn-line { text-align:center; color:var(--rose-dark); font-size:.8rem; letter-spacing:1.4rem; margin:3.5rem 0; }
+    .cover-img { width:100%; max-width:820px; margin:0 auto 4rem; aspect-ratio:16/7; overflow:hidden; border:1px solid rgba(212,144,154,.12); }
+    .cover-img img { width:100%; height:100%; object-fit:cover; filter:brightness(.85) saturate(.9); }
+    .art-body { max-width:680px; margin:0 auto; padding:0 2rem 4rem; }
+    .art-body > p:first-of-type::first-letter { font-family:'Cormorant Garamond',serif; font-size:4.5rem; font-weight:300; float:left; line-height:.82; margin-right:.12em; margin-top:.08em; color:var(--rose-light); }
+    h2 { font-family:'Cormorant Garamond',serif; font-size:1.95rem; font-weight:400; line-height:1.15; color:var(--cream); margin:4rem 0 1.4rem; position:relative; padding-left:1.4rem; }
+    h2::before { content:''; position:absolute; left:0; top:.3em; width:3px; height:1.1em; background:linear-gradient(to bottom,var(--rose),var(--rose-dark)); }
+    h2 .h2-num { display:block; font-family:'DM Mono',monospace; font-size:.5rem; font-weight:400; letter-spacing:.28em; text-transform:uppercase; color:var(--rose); margin-bottom:.55rem; }
+    h3 { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-style:italic; font-weight:400; color:var(--rose-light); margin:2.4rem 0 .8rem; }
+    p { color:#c9b8bc; margin-bottom:1.5rem; }
+    em { color:var(--rose-light); font-style:italic; }
+    strong { color:var(--cream); font-weight:600; }
+    .jp { font-style:normal; color:var(--rose-light); }
+    .gloss { color:var(--muted); font-style:italic; }
+    .img-inline { width:100%; margin:2.8rem 0 .6rem; overflow:hidden; border:1px solid rgba(212,144,154,.1); }
+    .img-inline img { width:100%; display:block; filter:brightness(.85) saturate(.85); }
+    .img-caption { font-family:'DM Mono',monospace; font-size:.47rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); text-align:right; margin-bottom:2.4rem; }
+    blockquote { margin:3rem 0; padding:1.8rem 2.2rem; border:1px solid rgba(212,144,154,.2); background:var(--bg-card); position:relative; font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-style:italic; font-weight:300; color:var(--rose-light); line-height:1.6; }
+    blockquote::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--rose),var(--rose-dark)); }
+    blockquote cite { display:block; font-family:'DM Mono',monospace; font-size:.46rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); font-style:normal; margin-top:.9rem; }
+    .source-box { margin:2.8rem 0; padding:1.6rem 2rem; border:1px solid rgba(212,144,154,.3); background:rgba(212,144,154,.04); font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; color:#d4b0b8; line-height:1.75; position:relative; }
+    .source-box::before { content:'Source primaire'; position:absolute; top:-1px; left:1.5rem; background:var(--bg); padding:0 .7rem; font-family:'DM Mono',monospace; font-size:.46rem; letter-spacing:.18em; text-transform:uppercase; color:var(--rose); font-style:normal; }
+    .source-box cite { display:block; font-family:'DM Mono',monospace; font-size:.46rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); font-style:normal; margin-top:.9rem; }
+    .fn { font-family:'DM Mono',monospace; font-size:.52rem; vertical-align:super; line-height:0; color:var(--rose); border-bottom:1px dotted var(--rose-dark); cursor:default; }
+    .cadrage { border-left:2px solid var(--rose-dark); padding:1rem 1.5rem; background:rgba(212,144,154,.04); margin:2.4rem 0; }
+    .cadrage-title { font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.2em; text-transform:uppercase; color:var(--rose); margin-bottom:.6rem; display:block; }
+    .cadrage p { font-size:.9rem; color:var(--muted); font-style:italic; margin:0; line-height:1.75; }
+    .cadrage p + p { margin-top:.8rem; }
+    .footnotes { margin-top:4rem; padding-top:3rem; border-top:1px solid var(--border); }
+    .footnotes-title { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--rose); margin-bottom:2rem; display:block; }
+    .footnote-item { display:grid; grid-template-columns:2rem 1fr; gap:.6rem; margin-bottom:1.1rem; font-size:.87rem; color:var(--muted); line-height:1.7; }
+    .fn-num { font-family:'DM Mono',monospace; font-size:.5rem; color:var(--rose-dark); padding-top:.15rem; }
+    .footnote-item em { color:#b0a0b0; }
+    .biblio { margin-top:2.5rem; padding-top:2rem; border-top:1px solid rgba(212,144,154,.1); }
+    .biblio-title { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--rose); margin-bottom:1.5rem; display:block; }
+    .biblio-item { font-size:.87rem; color:var(--muted); line-height:1.75; margin-bottom:.7rem; padding-left:1.4rem; text-indent:-1.4rem; }
+    .biblio-item em { color:#b0a0b0; }
+    /* Remerciements */
+    .thanks { margin-top:2.5rem; padding:1.3rem 1.6rem; border:1px solid rgba(212,144,154,.16); background:rgba(212,144,154,.03); }
+    .thanks-title { font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.28em; text-transform:uppercase; color:var(--rose); margin-bottom:.8rem; display:block; }
+    .thanks p { font-size:.87rem; color:var(--muted); line-height:1.75; margin:0; font-style:italic; }
+    .thanks a { color:var(--rose-light); text-decoration:none; border-bottom:1px solid var(--rose-dark); }
+    .thanks a:hover { color:var(--rose); }
+    .art-footer { max-width:680px; margin:0 auto; padding:3rem 2rem 6rem; border-top:1px solid var(--border); display:flex; flex-wrap:wrap; align-items:center; gap:1rem; }
+    .tag { border:1px solid var(--rose-dark); padding:.25rem .8rem; font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.16em; text-transform:uppercase; color:var(--rose); }
+    footer { border-top:1px solid var(--border); padding:2.5rem 4rem; max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
+    .f-logo { font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:300; letter-spacing:.15em; color:var(--rose-light); }
+    .f-copy { font-family:'DM Mono',monospace; font-size:.52rem; letter-spacing:.18em; color:var(--muted); }
+    .rv { opacity:0; transform:translateY(22px); transition:opacity .8s ease,transform .8s ease; }
+    .rv.on { opacity:1; transform:none; }
+    @media(max-width:760px){ nav{padding:1.2rem 1.5rem;} .series{padding-top:7rem;} .art-hero,.art-body,.art-footer{padding-left:1.5rem;padding-right:1.5rem;} footer{flex-direction:column;gap:1rem;text-align:center;padding:2rem;} .footnote-item{grid-template-columns:1.5rem 1fr;} }
+  </style>
 </head>
 <body>
-<div class="wrap">
-
-  <div class="topbar">
-    <span class="brand">Spectre Rose</span>
-    <a href="#">← Retour aux théories</a>
-  </div>
-
-  <nav class="series" aria-label="Série Silent Hill f">
-    <span class="lead">Silent Hill f · trois lectures d'une réécriture</span>
-    <span><span class="roman">I.</span><a href="spectre-rose-silent-hill-f-article-I.html">Ce qu'Hinako ne peut pas regarder</a></span>
-    <span><span class="roman">II.</span><a href="spectre-rose-silent-hill-f-article-II.html">La poupée qu'on jette à la rivière</a></span>
-    <span><span class="roman">III.</span><span class="here">Le village qui a réécrit son histoire</span></span>
+  <nav>
+    <a href="index.html" class="nav-logo">Spectre <span>Rose</span></a>
+    <a href="index.html" class="nav-back">← Retour aux théories</a>
   </nav>
 
-  <header class="hero">
-    <div class="eyebrow fade d1">
-      <span>✦ Silent Hill f — III</span><span class="sep">·</span>
-      <span>Conquête du sacré</span><span class="sep">·</span>
-      <span>Mémoire confisquée</span>
+  <div class="series">
+    <span class="series-label">Silent Hill f · trois lectures d'une réécriture</span>
+    <div class="series-list">
+      <a href="spectre-rose-silent-hill-f-article-I.html"><span class="num">I.</span> Ce qu'Hinako ne peut pas regarder</a>
+      <a href="spectre-rose-silent-hill-f-article-II.html"><span class="num">II.</span> La poupée qu'on jette à la rivière</a>
+      <span class="here"><span class="num">III.</span> Le village qui a réécrit son histoire</span>
     </div>
-    <h1 class="fade d2">Le village qui a<br>réécrit son histoire</h1>
-    <p class="dek fade d3">Le dieu tutélaire d'Ebisugaoka est un usurpateur ; la divinité d'origine a été torturée en monstre pour avoir refusé de se soumettre ; et tout ce qu'Hinako croit savoir de son village lui vient de ceux qui l'ont réécrit.</p>
-    <div class="runline fade d4">
+  </div>
+
+  <div class="art-hero">
+    <span class="a-eyebrow rv">✦ Silent Hill f — III &nbsp;·&nbsp; Ebisugaoka &nbsp;·&nbsp; Conquête du sacré</span>
+    <h1 class="a-title rv">Le village qui a<br><em>réécrit son histoire</em></h1>
+    <p class="a-subtitle rv">Avant les renards, Ebisugaoka avait un autre nom, un autre dieu et un autre problème. Ce que le journal d'Hinako raconte comme une foi immémoriale est une couche de peinture récente — et le jeu laisse partout voir ce qu'il y a dessous.</p>
+    <div class="a-meta rv">
       <span>Silent Hill f — Ryukishi07 / NeoBards, 2025</span>
-      <span class="dot">·</span><span>Spoilers complets, parties avancées</span>
-      <span class="dot">·</span><span>~19 min</span>
+      <span class="sep">·</span>
+      <span>Spoilers complets, parties avancées</span>
+      <span class="sep">·</span>
+      <span>~22 min</span>
     </div>
-    <div class="hero-rule fade d4"></div>
-  </header>
+  </div>
 
-  <article>
+  <div class="cover-img rv">
+    <img src="silenthill-f.jpg" alt="Silent Hill f — Ebisugaoka">
+  </div>
 
-    <p class="standfirst dropcap">Les deux premiers volets sont restés près d'Hinako : son nom, son corps, la poupée qu'on a faite à sa place. Mais le brouillard de <span class="work">Silent Hill</span> n'a jamais entouré une seule personne. Il est, depuis toujours dans la série, la matérialisation d'une vérité refoulée — ce qu'on refuse de voir, rendu visible et mortel. À Ebisugaoka, ce qui a été refoulé déborde largement la souffrance d'une jeune femme : c'est l'histoire entière d'un lieu. Et cette histoire, comme le journal d'Hinako, a été réécrite.</p>
+  <article class="art-body">
 
-    <p>On a lu jusqu'ici une femme réécrite, puis une poupée réécrite à partir d'elle. Reste l'échelle la plus vaste — celle où c'est la mémoire d'un village tout entier qu'on a grattée pour en réinscrire une autre par-dessus.</p>
+    <p class="rv">Les deux premiers volets sont restés près d'Hinako : son nom, son corps, la poupée qu'on a faite à sa place. Mais le brouillard de <em>Silent Hill</em> n'a jamais entouré une seule personne. Il est, depuis toujours dans la série, la matérialisation d'une vérité refoulée — ce qu'on refuse de voir, rendu visible et mortel. À Ebisugaoka, ce qui a été refoulé déborde largement la souffrance d'une jeune femme : c'est l'histoire entière d'un lieu. Et cette histoire, comme le journal d'Hinako, a été réécrite.</p>
 
-    <div class="seam"><span>✦</span></div>
+    <p class="rv">On a lu jusqu'ici une femme réécrite, puis une poupée réécrite à partir d'elle. Reste l'échelle la plus vaste — celle où c'est la mémoire d'un village tout entier qu'on a grattée pour en réinscrire une autre par-dessus.</p>
 
-    <h2><span class="num">I — La mémoire confisquée</span>L'histoire volée</h2>
+    <div class="orn-line rv">✦ &nbsp; ✦ &nbsp; ✦</div>
 
-    <p>Il y a, dans les parties avancées, un document glissé dans le journal d'une prêtresse : le dieu qui lui a parlé, écrit-elle, dit qu'une divinité <em>malveillante</em> lui a volé son sanctuaire.<a class="fn" href="#fn1" id="r1">1</a> La formule — <em>son</em> sanctuaire — est décisive : celui qui parle se tient pour dépossédé. Ce n'est pas une succession, c'est un vol. Et le dieu volé a un nom : Tsukumogami, la divinité d'origine d'Ebisugaoka, celle qui y était avant les Tsuneki et leur Inari.</p>
+    <h2 class="rv"><span class="h2-num">I — Le nom</span>L'enfant qu'on jette à la mer</h2>
 
-    <p>Tout ce qu'Hinako sait de la mythologie de son village vient donc des Tsuneki. Or les Tsuneki sont des arrivants. Le village remonte au moins à l'époque de Nara — le VIIIᵉ siècle ; leur divinité, elle, n'apparaît que vers 1880.<a class="fn" href="#fn2" id="r2">2</a> Entre les deux, douze siècles de pratiques religieuses que le journal attribue pourtant, en bloc, à Inari — quand un autre document, moins visible, en date certaines, comme le <em>kishu</em>, d'avant l'ère Edo, soit des siècles avant l'arrivée des renards.<a class="fn" href="#fn3" id="r3">3</a> Ces incohérences ne sont pas des défauts de continuité. Ce sont les coutures d'une réécriture.</p>
+    <p class="rv">Il faut commencer par le nom du village, parce qu'il contient déjà tout le reste. Ebisugaoka (<span class="jp">恵比寿ヶ丘</span>) signifie <span class="gloss">« la colline d'Ebisu »</span>. Ebisu est l'une des sept divinités du bonheur, protectrice des pêcheurs et de la prospérité — un nom aimable pour un lotissement. Mais le mythe derrière ce nom l'est beaucoup moins.</p>
 
-    <p>C'est ici que les outils de l'histoire valent mieux que ceux de la psychologie. Michel-Rolph Trouillot a montré que le pouvoir ne se contente pas de faire l'histoire : il en produit le récit, et il en fait taire d'autres — le silence est une opération, non un simple oubli.<a class="fn" href="#fn4" id="r4">4</a> Les Tsuneki présentent leur religion récente comme immémoriale : c'est précisément ce qu'Hobsbawm et Ranger ont appelé l'<em>invention de la tradition</em>, ces usages neufs drapés dans une antiquité fabriquée.<a class="fn" href="#fn5" id="r5">5</a> Et le journal d'Hinako en est le vecteur parfait : il est, au sens de Maurice Halbwachs, la <em>mémoire collective</em> du village<a class="fn" href="#fn6" id="r6">6</a> — sauf que cette mémoire a un propriétaire. Ce qu'Hinako prend pour ses souvenirs est la version des Tsuneki.</p>
+    <div class="cadrage rv">
+      <span class="cadrage-title">Mythologie — Ebisu et Hiruko</span>
+      <p>Une tradition ancienne identifie Ebisu à <strong>Hiruko</strong> (<span class="jp">蛭子</span>, <span class="gloss">« l'enfant-sangsue »</span>), premier enfant d'Izanagi et Izanami. Né sans os — difforme, inachevé —, il est, selon le <em>Nihon shoki</em>, mis dans un panier de roseaux et confié à la mer avant son troisième anniversaire.</p>
+      <p>Il n'en meurt pas. Il dérive, atteint une autre rive, et revient divinité. Le village d'Hinako porte donc le nom d'un enfant difforme que ses parents ont jeté à l'eau pour s'en défaire, et qui est devenu un dieu.</p>
+    </div>
 
-    <p>L'histoire d'Ebisugaoka est, là encore, un palimpseste au sens de Genette<a class="fn" href="#fn7" id="r7">7</a> : le texte des renards écrit par-dessus celui de Tsukumogami, qui transparaît là où le grattage a été le moins soigneux. Lire le jeu, c'est lire ces transparences.</p>
+    <p class="rv">Le <a href="spectre-rose-silent-hill-f-article-II.html" style="color:var(--rose-light);text-decoration:none;border-bottom:1px solid var(--rose-dark);">deuxième volet</a> s'arrêtait sur le <em>katashiro</em> (<span class="jp">形代</span>), la poupée de substitution qu'on charge du mal avant de la jeter à la rivière. Le toponyme en est l'écho exact, et plus ancien : un corps jugé difforme, confié au courant par ceux qui devaient le garder. Le village n'a pas eu besoin d'inventer sa logique sacrificielle ; elle était dans son nom avant qu'Hinako y naisse.<span class="fn">1</span></p>
 
-    <h2><span class="num">II — La menace fabriquée</span>Le dieu qu'on a torturé en monstre</h2>
+    <p class="rv">Et le nom d'Hinako, lui, désigne ce qui attend au fond. Le premier volet notait que son patronyme, <span class="jp">深水</span>, qu'on ne lit jamais à voix haute dans le jeu, veut dire <span class="gloss">« eau profonde »</span> — non pas l'eau pure, comme le laisserait croire une lecture pressée, mais l'eau où l'on ne voit rien. Sa mère se nomme Kimie (<span class="jp">君江</span>), où <span class="jp">江</span> désigne <span class="gloss">la crique, le bras d'eau qui entre dans les terres</span>.<span class="fn">2</span> Une famille entière nommée d'après des eaux qu'on ne sonde pas, dans un village nommé d'après un enfant qu'on a mis à l'eau. Rien de cela n'est dit ; tout est écrit.</p>
 
-    <p>Ryukishi07 a confirmé, lors de son stream, la pièce qui manquait : le Kamugara, ce dieu indigène qu'on croise dans le Sanctuaire, est une divinité qui a refusé de se soumettre à l'arrivée d'Inari, et qu'on a torturée en monstre pour ce refus.<a class="fn" href="#fn8" id="r8">8</a> La phrase achève de donner son sens à la réécriture. Les Tsuneki n'ont pas seulement pris un territoire : ils ont changé sa divinité résistante en figure de menace, pour que les habitants aient besoin d'eux afin d'être protégés de ce qu'eux-mêmes ont produit.</p>
+    <h2 class="rv"><span class="h2-num">II — La mémoire confisquée</span>L'histoire volée</h2>
 
-    <p>On reconnaît là une structure que Frantz Fanon a décrite des puissances coloniales — créer les conditions qui justifient sa domination, et transformer le résistant en danger.<a class="fn" href="#fn9" id="r9">9</a> Le détail s'emboîte trop bien pour être innocent. La naginata rituelle des Tsuneki est liée à la foudre ; leurs renards ont des pouvoirs de foudre ; l'arbre divin d'Ebisugaoka, réceptacle de Tsukumogami, a été détruit par la foudre — et les Tsuneki arrivent juste après, sachant déjà qu'il y a un dragon d'eau à régler. Ils sont venus résoudre le problème qu'ils avaient créé.</p>
+    <p class="rv">Il y a, dans les parties avancées,<span class="fn">3</span> un document glissé dans le journal d'une prêtresse : le dieu qui lui a parlé, écrit-elle, dit qu'une divinité <em>malveillante</em> lui a volé son sanctuaire.<span class="fn">4</span> La formule — <em>son</em> sanctuaire — est décisive : celui qui parle se tient pour dépossédé. Ce n'est pas une succession, c'est un vol. Et le dieu volé a un nom : Tsukumogami (<span class="jp">付喪神</span>, <span class="gloss">l'esprit né dans un objet longtemps gardé</span>), la divinité d'origine d'Ebisugaoka, celle qui y était avant les Tsuneki et leur Inari.</p>
 
-    <figure>
-      <div class="plate">
-        <div class="glyph">✦</div>
-        <div class="cap">Tsukumogami — le dieu d'avant,<br>recouvert mais non détruit</div>
-      </div>
-      <figcaption>La couche d'origine d'Ebisugaoka saigne à travers les coutures de la réécriture.</figcaption>
-    </figure>
+    <p class="rv">Tout ce qu'Hinako sait de la mythologie de son village vient donc des Tsuneki. Or les Tsuneki sont des arrivants — et le jeu, pour qui lit ses documents dans l'ordre, dit assez précisément dans quel état était le lieu quand ils sont venus.</p>
 
-    <h2><span class="num">III — L'alliée recodée en ennemie</span>Satsuko, l'exorciste</h2>
+    <div class="source-box rv">
+      <p><strong>Ce que les documents du jeu permettent d'établir.</strong> Le village ne s'est pas toujours appelé Ebisugaoka : il portait le nom de <strong>Higa</strong>, et son premier problème n'était pas un renard mais un <strong>dragon d'eau</strong> — l'une des huit têtes de Yamata-no-Orochi (<span class="jp">八岐大蛇</span>, <span class="gloss">« le grand serpent aux huit fourches »</span>) — dont la présence empoisonnait l'eau et faisait trembler la terre.</p>
+      <p>Dans les <strong>années 1180</strong>, après la guerre de Genpei, des Taira vaincus se réfugient dans cette vallée. Un <strong>moine masqué</strong>, à l'époque de Kamakura, ordonne alors de vouer un culte au grand cèdre du lieu pour contenir le dragon. Le cèdre est plus tard <strong>frappé par la foudre</strong> ; il n'en reste qu'un tronc calciné, encore visible au Sanctuaire oublié. C'est <em>après</em> cette destruction que le culte d'Inari devient le culte du village.</p>
+      <p style="color:var(--muted);font-style:italic;">Aucun document ne donne de date pour l'installation des Tsuneki, et le jeu ne fait pas remonter la fondation à l'époque de Nara : la séquence Higa → dragon → Taira → moine masqué → cèdre → foudre → Inari est ce que les textes soutiennent, et elle suffit.<span class="fn">5</span></p>
+    </div>
 
-    <p>Le journal présente Satsuko comme hostile, intrusive, dangereuse ; ses interventions dans le Sanctuaire y sont des agressions, et l'homme au masque la chasse en la traitant d'impureté. C'est le récit d'Hinako. Ce n'est pas ce qui se passe. Dans les parties avancées, on voit Satsuko répéter seule une danse de <em>kagura</em> — danse rituelle shinto dont une fonction est d'exorciser et de purifier les corps possédés.<a class="fn" href="#fn10" id="r10">10</a> Ses attaques, qui blessent Kitsune no Hinako mais laissent l'homme au masque indemne, ne sont pas des agressions : ce sont des tentatives d'exorcisme.</p>
+    <p class="rv">L'ordre importe plus que les dates. Le culte d'Inari ne vient pas d'abord : il vient <em>après</em> la destruction du réceptacle du dieu d'avant. Il n'a pas remplacé une foi vivante, il a occupé une place vide — ou qu'on avait vidée. Et il a raconté cette occupation comme une origine. Hinako grandit dans un village dont la religion a au plus quelques siècles et qui se présente comme immémoriale, tandis que subsistent, çà et là, des traces plus anciennes que personne ne rapporte à rien : un tronc calciné, des statues de Jizō, une pratique rituelle datée d'avant Edo que le journal attribue pourtant aux renards.<span class="fn">6</span> Ces incohérences ne sont pas des défauts de continuité. Ce sont les coutures d'une réécriture.</p>
 
-    <p>Satsuko sait que les deux Hinako sont distinctes ; elle s'adresse à la seconde pour atteindre la première. C'est l'une des très rares figures du jeu à comprendre ce qui se joue — et cette lucidité lui vient de son alliance avec Tsukumogami, qu'elle paiera de sa vie, tuée par Inari. Le journal, texte des Tsuneki, a fait de l'alliée une ennemie : la réécriture du village, appliquée cette fois à une personne — exactement l'inversion dont <a class="xref" href="spectre-rose-silent-hill-f-article-II.html">le deuxième volet</a> faisait le cœur. Certaines analyses japonaises vont jusqu'à lire la possession d'Hinako par Tsukumogami comme une tentative d'empêcher le mariage : le dieu dépossédé et la jeune femme auraient, contre les Tsuneki, le même intérêt.<a class="fn" href="#fn11" id="r11">11</a></p>
+    <p class="rv">C'est ici que les outils de l'histoire valent mieux que ceux de la psychologie. Michel-Rolph Trouillot a montré que le pouvoir ne se contente pas de faire l'histoire : il en produit le récit, et il en fait taire d'autres — le silence est une opération, non un simple oubli.<span class="fn">7</span> Les Tsuneki présentent une religion tardive comme première : c'est précisément ce qu'Hobsbawm et Ranger ont appelé l'<em>invention de la tradition</em>, ces usages neufs drapés dans une antiquité fabriquée.<span class="fn">8</span> Et le journal d'Hinako en est le vecteur parfait : il est, au sens de Maurice Halbwachs, la <em>mémoire collective</em> du village<span class="fn">9</span> — sauf que cette mémoire a un propriétaire. Ce qu'Hinako prend pour ses souvenirs est la version des Tsuneki.</p>
 
-    <h2><span class="num">IV — Le mobile</span>Le temps qui presse</h2>
+    <p class="rv">L'histoire d'Ebisugaoka est, là encore, un palimpseste au sens de Genette<span class="fn">10</span> : le texte des renards écrit par-dessus celui de Tsukumogami, qui transparaît là où le grattage a été le moins soigneux. Lire le jeu, c'est lire ces transparences.</p>
 
-    <p>Une question que le jeu ne pose jamais franchement, mais dont la chronologie souffle la réponse : pourquoi les Tsuneki ont-ils besoin du sang d'Hinako précisément dans les années 1960 ? Une hypothèse, développée par la communauté à partir des textes du jeu, mérite d'être tenue : selon certaines traditions, les renards deviennent <em>tsukumogami</em> — objets habités par une présence divine — au bout de cent ans. Les statues tutélaires plantées par les Tsuneki datent d'environ 1880. En 1960, elles approchent de leur centième année.<a class="fn" href="#fn12" id="r12">12</a></p>
+    <h2 class="rv"><span class="h2-num">III — La menace fabriquée</span>Le dieu qu'on a torturé en monstre</h2>
 
-    <p>Si la lecture tient, les Tsuneki ne gèrent pas un incident : ils gèrent une crise de légitimité. Leurs propres ancrages divins pourraient changer de nature au seuil du siècle, et Tsukumogami, dépossédé, accumule depuis quatre-vingts ans de quoi devenir incontenable. C'est ce que Girard appelait la <em>crise sacrificielle</em> : le moment où les distinctions s'effondrent et où le système, pour ne pas se défaire, exige une victime.<a class="fn" href="#fn13" id="r13">13</a> Le sacrifice d'Hinako n'est pas une cérémonie de routine — c'est une tentative désespérée de stabiliser un édifice qui se fissure.</p>
+    <p class="rv">Ryukishi07 a confirmé, lors de son stream, la pièce qui manquait : le Kamugara — de <em>kamui</em> (<span class="jp">神威</span>, <span class="gloss">« la puissance, l'autorité du dieu »</span>) —, cette divinité qu'on croise dans le Sanctuaire, est un dieu indigène qui a refusé de se soumettre à l'arrivée d'Inari, et qu'on a torturé en monstre pour ce refus.<span class="fn">11</span></p>
 
-    <p>Les trois volets, ici, se rejoignent. La malédiction du renard, dont <a class="xref" href="spectre-rose-silent-hill-f-article-I.html">le premier volet</a> a montré qu'elle contraint l'héritier à prendre pour épouse une fille au sang divin, est le rouage qui <em>désigne</em> la victime ; le katashiro du <a class="xref" href="spectre-rose-silent-hill-f-article-II.html">deuxième</a>, la pièce qui doit l'<em>absorber</em>. Une même machine, vue de trois places.</p>
+    <p class="rv">La phrase achève de donner son sens à la réécriture. Les Tsuneki n'ont pas seulement pris un territoire : ils ont changé sa divinité résistante en figure de menace, pour que les habitants aient besoin d'eux afin d'être protégés de ce qu'eux-mêmes ont produit. On reconnaît là une structure que Frantz Fanon a décrite des puissances coloniales — créer les conditions qui justifient sa domination, et transformer le résistant en danger.<span class="fn">12</span></p>
 
-    <h2><span class="num">V — La sortie</span>Jizō, la couche plus ancienne</h2>
+    <p class="rv">Les détails s'emboîtent trop bien pour être innocents. La naginata rituelle des Tsuneki est liée à la foudre ; leurs renards ont des pouvoirs de foudre ; l'arbre divin d'Ebisugaoka, réceptacle de Tsukumogami, a été détruit par la foudre — et le culte des renards s'installe juste après, sur un lieu où l'on sait depuis des siècles qu'un dragon d'eau n'a jamais été vaincu, seulement contenu. Qu'on tienne cette convergence pour un indice ou pour une rime, elle dit la même chose : ceux qui ont apporté le remède détenaient aussi le moyen de produire le mal.</p>
 
-    <p>Reste une présence qui ne cadre pas — et c'est elle qui ouvre la sortie. Jizō, le bodhisattva bouddhiste protecteur des femmes, des enfants et des voyageurs, celui qui sauve les âmes prises entre les mondes, est associé dans le jeu à la garde de l'épée sacrée qu'Hinako peut prendre pour se défendre.<a class="fn" href="#fn14" id="r14">14</a> Or Jizō ne garde pas pour interdire : son rôle entier est de protéger les plus vulnérables. Et il appartient à une tout autre tradition que les kami du clan — une anomalie, dans ce récit dominé par les renards. Sa présence dit qu'il y a, dans l'espace sacré d'Ebisugaoka, quelque chose qui n'a jamais appartenu aux Tsuneki : une couche plus ancienne, recouverte mais non détruite, qui saigne à travers là où la réécriture est la moins solide.</p>
+    <p class="rv">Et la généalogie, découverte tard, ferme la boucle : le <em>kyūbi</em> (<span class="jp">九尾</span>, <span class="gloss">« les neuf queues »</span>, le renard le plus ancien et le plus puissant du bestiaire) se révèle être l'ancêtre de Kotoyuki — l'entité qui possède, et non une puissance extérieure venue se greffer.<span class="fn">13</span> Le dieu que le village prie et l'homme qui en dispose sortent du même sang. Il n'y a pas, dans Ebisugaoka, de divin qui excéderait la famille : seulement une famille qui a réussi à se faire appeler divine.</p>
 
-    <blockquote class="pull">
-      <p>À l'échelle d'une femme, on réécrit un nom, un corps, un journal. À l'échelle d'un village, on réécrit des dieux. La même main, deux tailles.</p>
-    </blockquote>
+    <div class="orn-line rv">✦</div>
 
-    <p>C'est tout le jeu, et toute cette série. Et c'est la même tâche, pour qui lit : suivre les coutures jusqu'à ce que la version d'origine reparaisse — assez attentivement, en somme, pour voir où le palimpseste cède.</p>
+    <blockquote class="rv">Tsukumogami — le dieu d'avant, recouvert mais non détruit. La couche d'origine d'Ebisugaoka saigne à travers les coutures de la réécriture.</blockquote>
+
+    <h2 class="rv"><span class="h2-num">IV — L'alliée recodée en ennemie</span>Sakuko, l'exorciste</h2>
+
+    <p class="rv">Le journal présente Sakuko (<span class="jp">五十嵐咲子</span>, Igarashi Sakuko) comme hostile, intrusive, dangereuse ; ses interventions dans le Sanctuaire y sont des agressions, et l'homme au masque la chasse en la traitant d'impureté. C'est le récit d'Hinako. Ce n'est pas ce qui se passe.</p>
+
+    <p class="rv">Dans les parties avancées, on voit Sakuko répéter seule une danse de <em>kagura</em> (<span class="jp">神楽</span>, <span class="gloss">« le divertissement des dieux »</span>) — danse rituelle shinto dont une fonction attestée est d'exorciser et de purifier les corps possédés.<span class="fn">14</span> Ses attaques, qui blessent Kitsune no Hinako mais laissent l'homme au masque indemne, ne sont pas des agressions : ce sont des tentatives d'exorcisme.</p>
+
+    <p class="rv">Sakuko sait que les deux Hinako sont distinctes ; elle s'adresse à la seconde pour atteindre la première. C'est l'une des très rares figures du jeu à comprendre ce qui se joue — et cette lucidité lui vient de son alliance avec Tsukumogami, qu'elle paiera de sa vie, tuée par Inari. Le journal, texte des Tsuneki, a fait de l'alliée une ennemie : la réécriture du village, appliquée cette fois à une personne — exactement l'inversion dont <a href="spectre-rose-silent-hill-f-article-II.html" style="color:var(--rose-light);text-decoration:none;border-bottom:1px solid var(--rose-dark);">le deuxième volet</a> faisait le cœur.</p>
+
+    <p class="rv">Il faut toutefois résister à la tentation de refaire, à l'envers, le geste qu'on reproche au journal. Que Tsukumogami ait été dépossédé n'en fait pas un protecteur. Les synthèses japonaises le répètent dans les mêmes termes : <em>il n'est pas un ennemi, mais il n'est pas un allié non plus</em> (<span class="jp">敵ではないが味方でもない</span>) — il préserve Hinako du renard <strong>et</strong> passe outre sa volonté pour la plier à ses fins, qui sont de rentrer dans un sanctuaire dont on l'a chassé.<span class="fn">15</span> Les deux divinités du jeu veulent quelque chose du corps d'une jeune femme. L'une a volé, l'autre a été volée ; aucune ne demande son avis. Reconstituer la version d'origine n'est pas y trouver un camp.</p>
+
+    <h2 class="rv"><span class="h2-num">V — Le mobile</span>Ce qui n'a jamais été réglé</h2>
+
+    <p class="rv">Une question que le jeu ne pose jamais franchement : pourquoi les Tsuneki ont-ils besoin du sang d'Hinako précisément dans ces années 1960 ?</p>
+
+    <p class="rv">La réponse la mieux soutenue est aussi la plus simple : parce que rien n'a jamais été réglé. Le dragon d'eau n'a pas été tué, il a été contenu par un culte ; le réceptacle de ce culte — le grand cèdre — a brûlé ; le dieu qu'on a dépossédé à sa place n'a pas disparu, il s'est accumulé. Les Tsuneki ne gèrent pas un incident : ils tiennent, depuis des générations, un dispositif qui n'a jamais rien résolu et qu'il faut donc réalimenter. C'est ce que Girard appelait la <em>crise sacrificielle</em> : le moment où les distinctions s'effondrent et où le système, pour ne pas se défaire, exige une victime.<span class="fn">16</span> Le sacrifice d'Hinako n'est pas une cérémonie de routine — c'est l'entretien d'un édifice qui se fissure.</p>
+
+    <p class="rv">Une hypothèse plus spéculative circule, et elle mérite d'être citée pour ce qu'elle est : selon certaines traditions, un objet devient <em>tsukumogami</em> au bout de cent ans d'usage et de soins ; si les ancrages divins plantés par les Tsuneki approchaient de leur centième année, leur nature même pourrait changer de main. La lecture est élégante, mais elle repose sur une datation que le jeu ne fournit pas.<span class="fn">17</span> On peut la garder en réserve. On n'en a pas besoin : l'eau empoisonnée, l'arbre brûlé et le dieu dépossédé suffisent largement à expliquer qu'on en vienne, un siècle ou l'autre, à égorger une fille de seize ans.</p>
+
+    <p class="rv">Les trois volets, ici, se rejoignent. La malédiction du renard, dont <a href="spectre-rose-silent-hill-f-article-I.html" style="color:var(--rose-light);text-decoration:none;border-bottom:1px solid var(--rose-dark);">le premier volet</a> a montré qu'elle contraint l'héritier à prendre pour épouse une fille au sang divin, est le rouage qui <em>désigne</em> la victime ; le katashiro du <a href="spectre-rose-silent-hill-f-article-II.html" style="color:var(--rose-light);text-decoration:none;border-bottom:1px solid var(--rose-dark);">deuxième</a>, la pièce qui doit l'<em>absorber</em>. Une même machine, vue de trois places.</p>
+
+    <h2 class="rv"><span class="h2-num">VI — La sortie</span>Jizō, la couche plus ancienne</h2>
+
+    <p class="rv">Reste une présence qui ne cadre pas — et c'est elle qui ouvre la sortie. Jizō (<span class="jp">地蔵</span>, <span class="gloss">« celui qui contient la terre »</span>), bodhisattva bouddhiste protecteur des femmes, des enfants et des voyageurs, celui qui sauve les âmes prises entre les mondes, est associé dans le jeu à la garde de l'épée sacrée qu'Hinako peut prendre pour se défendre.<span class="fn">18</span></p>
+
+    <p class="rv">Or Jizō ne garde pas pour interdire : son rôle entier est de protéger les plus vulnérables. Et le jeu prend soin de préciser que ses statues sont <em>plus anciennes que la foi aux renards</em> — explicitement antérieures, pas seulement étrangères.<span class="fn">19</span> Sa présence dit qu'il y a, dans l'espace sacré d'Ebisugaoka, quelque chose qui n'a jamais appartenu aux Tsuneki : une couche plus ancienne, recouverte mais non détruite, qui saigne à travers là où la réécriture est la moins solide. Une arme pour une jeune fille, gardée par celui qui garde les enfants, dans un village nommé d'après un enfant jeté à l'eau. Le jeu range ses indices avec beaucoup de soin.</p>
+
+    <blockquote class="rv">À l'échelle d'une femme, on réécrit un nom, un corps, un journal. À l'échelle d'un village, on réécrit des dieux. La même main, deux tailles.</blockquote>
+
+    <p class="rv">C'est tout le jeu, et toute cette série. Et c'est la même tâche, pour qui lit : suivre les coutures jusqu'à ce que la version d'origine reparaisse — assez attentivement, en somme, pour voir où le palimpseste cède.</p>
+
+    <div class="cadrage rv">
+      <span class="cadrage-title">Post-scriptum — un palimpseste qui continue</span>
+      <p>La réécriture n'est pas close, et elle a quitté le jeu. Le roman publié en octobre 2025 est construit, de l'aveu de son auteur, autour d'<em>une seule</em> des cinq fins — un choix qui en fait, de fait, une version autorisée parmi d'autres. Le manga annoncé en mars 2026, prépublié dans <em>Young Ace UP</em>, va plus loin : Ryukishi07 lui a écrit <strong>une fin entièrement nouvelle, qui ne correspond à aucune de celles du jeu</strong>.</p>
+      <p>Autrement dit, l'œuvre fait désormais à sa propre histoire ce que les Tsuneki ont fait à celle d'Ebisugaoka : elle superpose des versions sans en déclarer aucune fausse. Il faudra, pour les lectures à venir, tenir compte de ce que chaque strate ajoute — et de qui la signe.<span class="fn">20</span></p>
+    </div>
+
+    <!-- NOTES -->
+    <div class="footnotes rv">
+      <span class="footnotes-title">Notes</span>
+      <div class="footnote-item"><span class="fn-num">1.</span><span>Sur Ebisu (<span class="jp">恵比寿</span>) identifié à Hiruko (<span class="jp">蛭子</span>, « enfant-sangsue »), premier enfant d'Izanagi et Izanami, né sans os et confié à la mer dans un panier de roseaux : <em>Nihon shoki</em> (720), livre I. L'assimilation d'Ebisu à Hiruko est une tradition médiévale, non une donnée du mythe archaïque ; elle est suffisamment établie pour que le choix du toponyme fasse sens.</span></div>
+      <div class="footnote-item"><span class="fn-num">2.</span><span><span class="jp">深水</span> compose <span class="jp">深</span> (<em>fuka-</em>, profond) et <span class="jp">水</span> (<em>mizu</em>, eau) : « eau profonde », et non « eau pure » (<span class="jp">清水</span>, <em>shimizu</em>), homophone courant avec lequel on le confond. Le père se nomme Kanta (<span class="jp">寛太</span>), la mère Kimie (<span class="jp">君江</span>), où <span class="jp">江</span> désigne une crique ou un bras d'eau. Relevé par <a href="https://x.com/foxwetsitstail">@foxwetsitstail</a>, 2025.</span></div>
+      <div class="footnote-item"><span class="fn-num">3.</span><span>Les parties avancées (<em>New Game+</em> et au-delà) sont des rejouages depuis le début avec documents et scènes supplémentaires débloqués. L'essentiel du matériau historique du village n'apparaît qu'à partir de la deuxième ou troisième partie.</span></div>
+      <div class="footnote-item"><span class="fn-num">4.</span><span>Document de prêtresse, parties avancées de <em>Silent Hill f</em>. Version japonaise : <span class="jp">昨日、神様が話しかけてくれた。悪い神に自分たちの社を奪われたと言っていた</span> — « hier, le dieu m'a parlé ; il disait qu'un dieu malveillant leur avait pris leur sanctuaire ». Le possessif <span class="jp">自分たちの</span> (« le leur ») implique une dépossession, non une succession.</span></div>
+      <div class="footnote-item"><span class="fn-num">5.</span><span>Chronologie reconstituée à partir des documents in-game : nom antérieur du village (Higa), dragon d'eau identifié comme l'une des huit têtes de Yamata-no-Orochi (<span class="jp">八岐大蛇</span>) empoisonnant l'eau et provoquant des séismes, arrivée de Taira vaincus dans les années 1180 après la guerre de Genpei (1180–1185), injonction d'un moine masqué à l'époque de Kamakura (1185–1333) de vouer un culte au grand cèdre pour contenir le dragon, destruction du cèdre par la foudre, puis installation du culte d'Inari comme culte dominant. Relevé et mis en série par Asha Bardon (<a href="https://x.com/foxwetsitstail">@foxwetsitstail</a>), 2025. <strong>Rectification :</strong> une version antérieure de cet article datait la fondation du village de l'époque de Nara (VIII<sup>e</sup> s.) et l'arrivée des Tsuneki de 1880 environ, en concluant à « douze siècles » de pratiques recouvertes. Aucun document du jeu ne soutient ces dates ; la séquence ci-dessus les remplace.</span></div>
+      <div class="footnote-item"><span class="fn-num">6.</span><span>Un document d'archive du Sanctuaire situe la pratique du <em>kishu</em> à la période Muromachi (XIV<sup>e</sup>–XVI<sup>e</sup> s.) au plus tard, tandis que le journal d'Hinako l'attribue à Inari. L'écart entre la datation documentaire et l'attribution du journal est, dans le jeu, systématique.</span></div>
+      <div class="footnote-item"><span class="fn-num">7.</span><span>Michel-Rolph Trouillot, <em>Silencing the Past : Power and the Production of History</em>, Boston, Beacon Press, 1995 : le récit historique est produit par des rapports de pouvoir, qui ménagent des silences à chaque étape de sa fabrication.</span></div>
+      <div class="footnote-item"><span class="fn-num">8.</span><span>Eric Hobsbawm &amp; Terence Ranger (dir.), <em>The Invention of Tradition</em>, Cambridge University Press, 1983 : des traditions présentées comme anciennes sont souvent de fabrication récente et servent à légitimer un pouvoir.</span></div>
+      <div class="footnote-item"><span class="fn-num">9.</span><span>Maurice Halbwachs, <em>Les cadres sociaux de la mémoire</em> (1925) et <em>La mémoire collective</em> (1950) : la mémoire individuelle se construit dans des cadres sociaux — et peut donc être orientée par qui contrôle ces cadres.</span></div>
+      <div class="footnote-item"><span class="fn-num">10.</span><span>Gérard Genette, <em>Palimpsestes</em>, Paris, Seuil, 1982. La métaphore du palimpseste — un parchemin gratté et réécrit, où l'ancien texte transparaît sous le neuf — vaut ici pour l'histoire d'un lieu autant que pour un texte.</span></div>
+      <div class="footnote-item"><span class="fn-num">11.</span><span>Ryukishi07, stream officiel de <em>Silent Hill f</em>, 22 décembre 2025 : le Kamugara est une divinité indigène ayant refusé de se soumettre à Inari, et torturée en monstre pour ce refus. Le nom dérive de <em>kamui</em> (<span class="jp">神威</span>), « la puissance du dieu ». La source étant un stream, sa réception communautaire (transcriptions, forums, note.com) en constitue le relais.</span></div>
+      <div class="footnote-item"><span class="fn-num">12.</span><span>Frantz Fanon, <em>Les Damnés de la terre</em>, Paris, Maspero, 1961 : le colonisateur produit les conditions qui justifient sa présence et requalifie la résistance en sauvagerie.</span></div>
+      <div class="footnote-item"><span class="fn-num">13.</span><span>Sur le <em>kyūbi</em> (<span class="jp">九尾</span>, « neuf queues ») révélé comme ancêtre de Kotoyuki — et donc sur la possession comme affaire de lignée et non d'intrusion extérieure : relevés de <a href="https://x.com/foxwetsitstail">@foxwetsitstail</a> et synthèses japonaises, 2025. Sur l'onomastique du clan — <span class="jp">常喜</span> (Tsuneki) anagramme de <span class="jp">狐</span> (<em>kitsune</em>), <span class="jp">寿幸</span> (Kotoyuki) « félicité durable » — voir le premier volet.</span></div>
+      <div class="footnote-item"><span class="fn-num">14.</span><span>Irit Averbuch, <em>The Gods Come Dancing : A Study of the Japanese Ritual Dance of Yamabushi Kagura</em>, Ithaca, Cornell East Asia Series, 1995. Le <em>kagura</em> (<span class="jp">神楽</span>, littéralement « divertissement des dieux ») comprend des répertoires dont la fonction est la pacification et l'expulsion des entités possédantes.</span></div>
+      <div class="footnote-item"><span class="fn-num">15.</span><span><em>Gameranbu</em>, fiche « <span class="jp">付喪神（人形）</span> », 2025 : <span class="jp">敵ではないが味方でもない</span> — « il n'est pas un ennemi, mais pas un allié non plus » ; il protège Hinako du dieu-renard tout en cherchant à l'utiliser à ses propres fins, « en ignorant sa volonté ». Cette ambivalence est le consensus des analyses japonaises. <strong>Rectification :</strong> une version antérieure de cet article présentait Tsukumogami comme ayant, « contre les Tsuneki, le même intérêt » qu'Hinako. La formule est trop favorable et a été corrigée.</span></div>
+      <div class="footnote-item"><span class="fn-num">16.</span><span>René Girard, <em>La violence et le sacré</em>, Paris, Grasset, 1972 : la crise sacrificielle est le moment où l'effondrement des différences rend nécessaire une victime pour refonder l'ordre.</span></div>
+      <div class="footnote-item"><span class="fn-num">17.</span><span>Hypothèse développée par la communauté à partir de la tradition des <em>tsukumogami</em> centenaires et d'une datation inférée des statues tutélaires (~1880). Aucun document du jeu ne confirme cette date ; l'hypothèse est rapportée ici comme telle, et n'est pas nécessaire à l'argument.</span></div>
+      <div class="footnote-item"><span class="fn-num">18.</span><span>Jan Chozen Bays, <em>Jizo Bodhisattva : Guardian of Children, Travelers, and Other Voyagers</em>, Boston, Shambhala, 2003. <span class="jp">地蔵</span> traduit le sanskrit <em>Kṣitigarbha</em>, « matrice de la terre ». Sa vocation est la protection des êtres les plus exposés, en particulier les enfants morts avant leurs parents.</span></div>
+      <div class="footnote-item"><span class="fn-num">19.</span><span>Le jeu précise que les statues de Jizō du village sont antérieures à l'implantation de la foi aux renards — point relevé par Asha Bardon, 2025. Il ne s'agit donc pas seulement d'une tradition étrangère coexistant avec celle du clan, mais d'une strate chronologiquement plus ancienne.</span></div>
+      <div class="footnote-item"><span class="fn-num">20.</span><span>Roman : Kuro Shirō (<span class="jp">黒史郎</span>), <em>Sairento Hiru f</em> (<span class="jp">サイレントヒルf</span>), Tokyo, KADOKAWA, collection Famitsu Bunko, 30 octobre 2025, 320 p., supervision de Konami Digital Entertainment ; l'auteur indique avoir joué quatre fois et bâti le livre autour d'une seule fin. Manga : annoncé le 25 mars 2026, prépublié dans <em>Young Ace UP</em> à partir du 22 avril 2026, dessins de Gōkin Ame (<span class="jp">合金アメ</span>), avec une fin inédite écrite par Ryukishi07 ne correspondant à aucune des cinq fins du jeu.</span></div>
+    </div>
+
+    <div class="biblio rv">
+      <span class="biblio-title">Références</span>
+      <p class="biblio-item">Averbuch, Irit. <em>The Gods Come Dancing</em>. Ithaca : Cornell East Asia Series, 1995.</p>
+      <p class="biblio-item">Bardon, Asha. Analyses de <em>Silent Hill f</em>. <em>ashabardongaminglorist.substack.com</em>, 2025.</p>
+      <p class="biblio-item">Bays, Jan Chozen. <em>Jizo Bodhisattva</em>. Boston : Shambhala, 2003.</p>
+      <p class="biblio-item">Fanon, Frantz. <em>Les Damnés de la terre</em>. Paris : Maspero, 1961.</p>
+      <p class="biblio-item">Genette, Gérard. <em>Palimpsestes : la littérature au second degré</em>. Paris : Seuil, 1982.</p>
+      <p class="biblio-item">Girard, René. <em>La violence et le sacré</em>. Paris : Grasset, 1972.</p>
+      <p class="biblio-item">Halbwachs, Maurice. <em>La mémoire collective</em>. Paris : PUF, 1950.</p>
+      <p class="biblio-item">Hobsbawm, Eric &amp; Terence Ranger (dir.). <em>The Invention of Tradition</em>. Cambridge University Press, 1983.</p>
+      <p class="biblio-item">Kuro, Shirō (<span class="jp">黒史郎</span>). <em>Sairento Hiru f</em>. Tokyo : KADOKAWA, Famitsu Bunko, 2025.</p>
+      <p class="biblio-item"><em>Nihon shoki</em> (720), livre I.</p>
+      <p class="biblio-item">Trouillot, Michel-Rolph. <em>Silencing the Past : Power and the Production of History</em>. Boston : Beacon Press, 1995.</p>
+      <p class="biblio-item">Ryukishi07. Stream officiel de <em>Silent Hill f</em>, 22 décembre 2025.</p>
+      <p class="biblio-item">Synthèses d'analyse japonaises : <em>Game8</em>, <em>Altema</em>, <em>Gameranbu</em>, note.com, 2025.</p>
+    </div>
+
+    <div class="thanks rv">
+      <span class="thanks-title">Remerciements</span>
+      <p>Ce volet est celui qui doit le plus à <a href="https://x.com/foxwetsitstail">@foxwetsitstail</a> (Asha Bardon). La chronologie du village — Higa, le dragon d'eau, les Taira en fuite, le moine masqué, le cèdre foudroyé — n'existe nulle part sous forme continue : elle se reconstitue en recoupant des documents dispersés dans plusieurs parties, et en comparant les versions japonaise, anglaise et chinoise traditionnelle, où les formulations ne coïncident pas toujours. C'est ce travail qui m'a permis de corriger la chronologie que proposait la première version de cet article. Les erreurs qui restent sont les miennes.</p>
+    </div>
 
   </article>
 
-  <section class="notes">
-    <h3>Notes</h3>
-    <ol class="fnlist">
-      <li id="fn1">Document de prêtresse, accessible dans les parties avancées de <i>Silent Hill f</i>. Version japonaise : <span class="jp">昨日、神様が話しかけてくれた。悪い神に自分たちの社を奪われたと言っていた</span> — « le dieu m'a parlé hier ; il a dit qu'un dieu malveillant leur avait pris leur sanctuaire ». La formule « leur sanctuaire » implique une dépossession, non une succession. <a class="back" href="#r1">↩</a></li>
-      <li id="fn2">La datation de l'arrivée des Tsuneki (~1880) est inférée de la chronologie des statues tutélaires et de références in-game ; la fondation du village à l'époque de Nara (710–794) est suggérée par plusieurs textes historiques du jeu. <a class="back" href="#r2">↩</a></li>
-      <li id="fn3">Un document d'archive du Sanctuaire situe la pratique du <i>kishu</i> à la période Muromachi (XIVᵉ–XVIᵉ s.) au plus tard ; le journal d'Hinako, lui, l'attribue à Inari, arrivé quatre à six siècles plus tard. <a class="back" href="#r3">↩</a></li>
-      <li id="fn4">Michel-Rolph Trouillot, <i>Silencing the Past : Power and the Production of History</i>, Boston, Beacon Press, 1995 : le récit historique est produit par des rapports de pouvoir, qui ménagent des silences à chaque étape de sa fabrication. <a class="back" href="#r4">↩</a></li>
-      <li id="fn5">Eric Hobsbawm &amp; Terence Ranger (dir.), <i>The Invention of Tradition</i>, Cambridge University Press, 1983 : des traditions présentées comme anciennes sont souvent de fabrication récente et servent à légitimer un pouvoir. <a class="back" href="#r5">↩</a></li>
-      <li id="fn6">Maurice Halbwachs, <i>Les cadres sociaux de la mémoire</i> (1925) et <i>La mémoire collective</i> (1950) : la mémoire individuelle se construit dans des cadres sociaux — et peut donc être orientée par qui contrôle ces cadres. <a class="back" href="#r6">↩</a></li>
-      <li id="fn7">Gérard Genette, <i>Palimpsestes</i>, Paris, Seuil, 1982. La métaphore du palimpseste — un parchemin gratté et réécrit, où l'ancien texte transparaît sous le neuf — vaut ici pour l'histoire d'un lieu autant que pour un texte. <a class="back" href="#r7">↩</a></li>
-      <li id="fn8">Ryukishi07, stream officiel de <i>Silent Hill f</i>, 2025 : le Kamugara est une divinité indigène ayant refusé de se soumettre à Inari, et torturée en monstre pour ce refus. La source étant un stream vidéo, sa réception communautaire (transcriptions, forums) en constitue le relais. <a class="back" href="#r8">↩</a></li>
-      <li id="fn9">Frantz Fanon, <i>Les Damnés de la terre</i>, Paris, Maspero, 1961. La thèse — la puissance dominante crée les conditions de sa domination et fait du résistant une figure de menace — s'applique structurellement à la relation des Tsuneki à Tsukumogami. <a class="back" href="#r9">↩</a></li>
-      <li id="fn10">Sur la <i>kagura</i> comme danse d'exorcisme et de purification, voir Irit Averbuch, <i>The Gods Come Dancing</i>, Ithaca, Cornell East Asia Series, 1995. L'arme de Satsuko est identifiée par la communauté comme des <i>kagura suzu</i>, clochettes rituelles de ces danses. <a class="back" href="#r10">↩</a></li>
-      <li id="fn11">Lecture développée sur note.com (analyses de fans, 2025), où Tsukumogami posséderait Hinako pour s'introduire dans l'espace des Tsuneki et empêcher le mariage. <a class="back" href="#r11">↩</a></li>
-      <li id="fn12">Hypothèse du centenaire des statues tutélaires développée par Asha Bardon (Substack, 2025) : la coïncidence entre ~1880 (installation présumée) et les années 1960 (cadre du jeu) approche le seuil de cent ans associé, dans certaines traditions, à l'animation des objets en <i>tsukumogami</i>. <a class="back" href="#r12">↩</a></li>
-      <li id="fn13">René Girard, <i>La violence et le sacré</i>, Paris, Grasset, 1972 : la « crise sacrificielle » désigne l'effondrement des distinctions qui appelle une victime pour rétablir l'ordre. <a class="back" href="#r13">↩</a></li>
-      <li id="fn14">Sur Jizō (地蔵菩薩), bodhisattva protecteur des femmes, des enfants et des voyageurs, voir Jan Chozen Bays, <i>Jizo Bodhisattva</i>, Boston, Shambhala, 2003. Sa présence, étrangère à la tradition des kami du clan, le range du côté de ceux qu'on protège, non de ceux qui gouvernent. <a class="back" href="#r14">↩</a></li>
-    </ol>
-  </section>
-
-  <section class="refs">
-    <h3>Références</h3>
-    <ul>
-      <li>Averbuch, Irit. <i>The Gods Come Dancing</i>. Ithaca : Cornell East Asia Series, 1995.</li>
-      <li>Bardon, Asha. Analyses de <i>Silent Hill f</i>. <i>ashabardongaminglorist.substack.com</i>, 2025.</li>
-      <li>Bays, Jan Chozen. <i>Jizo Bodhisattva</i>. Boston : Shambhala, 2003.</li>
-      <li>Fanon, Frantz. <i>Les Damnés de la terre</i>. Paris : Maspero, 1961.</li>
-      <li>Genette, Gérard. <i>Palimpsestes : la littérature au second degré</i>. Paris : Seuil, 1982.</li>
-      <li>Girard, René. <i>La violence et le sacré</i>. Paris : Grasset, 1972.</li>
-      <li>Halbwachs, Maurice. <i>La mémoire collective</i>. Paris : PUF, 1950.</li>
-      <li>Hobsbawm, Eric &amp; Terence Ranger (dir.). <i>The Invention of Tradition</i>. Cambridge University Press, 1983.</li>
-      <li>Trouillot, Michel-Rolph. <i>Silencing the Past : Power and the Production of History</i>. Boston : Beacon Press, 1995.</li>
-      <li>Ryukishi07. Stream officiel de <i>Silent Hill f</i>, 2025 ; analyses de fans, note.com, 2025.</li>
-    </ul>
-  </section>
-
-  <div class="tags">
-    <span class="t">Silent Hill f — III</span>
-    <span class="t">Conquête du sacré</span>
-    <span class="t">Tsukumogami</span>
-    <span class="t">Invention de la tradition</span>
-    <span class="t">Mémoire collective</span>
-    <span class="t">Fanon</span>
-    <span class="t">Réécriture</span>
+  <div class="art-footer rv">
+    <span style="font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-right:.5rem;">Tags :</span>
+    <span class="tag">Silent Hill f — III</span>
+    <span class="tag">Conquête du sacré</span>
+    <span class="tag">Tsukumogami</span>
+    <span class="tag">Invention de la tradition</span>
+    <span class="tag">Mémoire collective</span>
+    <span class="tag">Fanon</span>
+    <span class="tag">Ebisu / Hiruko</span>
+    <span class="tag">Réécriture</span>
   </div>
 
-  <footer class="site">
-    <span class="star">Spectre Rose ✦</span> &nbsp; © 2026 — Théories narratives &amp; fiction interactive
+  <footer>
+    <span class="f-logo">Spectre Rose ✦</span>
+    <span class="f-copy">© 2026 — Théories narratives &amp; fiction interactive</span>
   </footer>
-
-</div>
+  <script>
+    const items = document.querySelectorAll('.rv');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+    }, { threshold: 0.07 });
+    items.forEach(el => obs.observe(el));
+  </script>
+  <script src="ui.js"></script>
 </body>
 </html>
