@@ -1,0 +1,736 @@
+@charset "UTF-8";
+/* ================================================================
+   SPECTRE ROSE — feuille de style unique
+   Concept : le site est une obscurité ; le texte est un feuillet
+   de papier posé dessus. L'appareil critique vit dans le noir,
+   en marge du feuillet.
+   ================================================================ */
+
+:root {
+  /* Fonds */
+  --encre:     #0b0b0d;   /* le noir de la page */
+  --encre-2:   #141418;   /* second plan dans le noir */
+  --papier:    #e2dfd5;   /* papier chiffon vieilli, froid */
+  --papier-b:  #c9c5b8;   /* la tranche du feuillet */
+
+  /* Lettres */
+  --plomb:     #16161a;   /* texte sur papier */
+  --gris:      #5f5c54;   /* appareil sur papier */
+  --marge:     #8a857a;   /* appareil dans le noir */
+  --bone:      #d8d4c9;   /* texte sur noir */
+
+  /* Accent — deux valeurs, une par fond. Jamais déclinées. */
+  --sang:      #6e1a24;   /* sur papier uniquement */
+  --sang-noir: #c25d68;   /* sur noir uniquement */
+
+  --mesure:    42rem;     /* largeur du feuillet */
+  --col-marge: 18.5rem;   /* largeur de la colonne d'appareil */
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--encre);
+  color: var(--bone);
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.68;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+a { color: inherit; }
+
+::selection { background: var(--sang-noir); color: #fff; }
+
+:focus-visible {
+  outline: 2px solid var(--sang-noir);
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------
+   1. Bandeau
+   --------------------------------------------------------------- */
+
+.bandeau {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.5rem 2.5rem;
+  border-bottom: 1px solid #22222a;
+}
+
+.bandeau-nom {
+  font-family: 'Bodoni Moda', Didot, 'Times New Roman', serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  letter-spacing: .01em;
+  color: var(--bone);
+  text-decoration: none;
+}
+
+.bandeau nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+  font-size: .83rem;
+}
+
+.bandeau nav a {
+  color: var(--marge);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: color .15s, border-color .15s;
+}
+
+.bandeau nav a:hover { color: var(--bone); border-bottom-color: var(--sang-noir); }
+
+/* ---------------------------------------------------------------
+   2. Page de titre
+   --------------------------------------------------------------- */
+
+.titrage {
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: 7rem 2.5rem 4.5rem;
+}
+
+.titrage h1 {
+  font-family: 'Bodoni Moda', Didot, 'Times New Roman', serif;
+  font-size: clamp(3.4rem, 9vw, 6.75rem);
+  font-weight: 400;
+  line-height: .96;
+  letter-spacing: -.015em;
+  color: #efece3;
+}
+
+/* Le seul moment de mouvement du site : le titre se pose. */
+.titrage h1 > span {
+  display: inline-block;
+  opacity: 0;
+  animation: pose .85s cubic-bezier(.2, .7, .3, 1) forwards;
+}
+.titrage h1 > span:nth-child(2) { animation-delay: .13s; }
+
+@keyframes pose {
+  from { opacity: 0; transform: translateY(.3em); }
+  to   { opacity: 1; transform: none; }
+}
+
+.titrage .filet-titre {
+  height: 7px;
+  background: var(--sang-noir);
+  margin: 2.25rem 0 1.5rem;
+  transform-origin: left;
+  animation: trace .9s cubic-bezier(.2, .7, .3, 1) .3s both;
+}
+
+@keyframes trace { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+.titrage .programme {
+  font-size: 1.22rem;
+  font-weight: 300;
+  line-height: 1.5;
+  max-width: 30rem;
+  color: var(--bone);
+}
+
+.titrage .ours {
+  margin-top: 2.5rem;
+  font-size: .88rem;
+  line-height: 1.7;
+  color: var(--marge);
+  max-width: 26rem;
+}
+
+.titrage .ours strong { font-weight: 500; color: var(--bone); }
+
+/* ---------------------------------------------------------------
+   3. Sommaire — dossiers et notices
+   --------------------------------------------------------------- */
+
+.sommaire {
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: 0 2.5rem 6rem;
+}
+
+.dossier { padding: 3.25rem 0; border-top: 1px solid #22222a; }
+
+.dossier > header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.dossier h2 {
+  font-family: 'Bodoni Moda', Didot, serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  line-height: 1.15;
+  color: #efece3;
+}
+
+.dossier .compte {
+  font-size: .82rem;
+  color: var(--marge);
+  white-space: nowrap;
+}
+
+.dossier > header p {
+  font-size: .95rem;
+  color: var(--marge);
+  max-width: 34rem;
+  margin-top: .5rem;
+}
+
+/* --- notice : une œuvre, sa planche, son appareil --- */
+
+.notices { list-style: none; }
+
+.notice { border-top: 1px solid #1c1c23; }
+.notice:first-child { border-top: 0; }
+
+.notice > a {
+  display: grid;
+  grid-template-columns: 5.75rem minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 1.5rem;
+  padding: 1.4rem 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.notice .planche {
+  width: 5.75rem;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--encre-2);
+  border: 1px solid #262630;
+}
+
+.notice .planche img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(.55) contrast(1.05);
+  transition: filter .25s;
+}
+
+.notice > a:hover .planche img { filter: none; }
+
+.notice .rubrique {
+  font-size: .8rem;
+  color: var(--marge);
+  display: block;
+  margin-bottom: .3rem;
+}
+
+.notice h3 {
+  font-family: 'Bodoni Moda', Didot, serif;
+  font-size: 1.32rem;
+  font-weight: 400;
+  line-height: 1.22;
+  color: #efece3;
+  display: inline-block;
+  border-bottom: 1px solid transparent;
+  transition: border-color .15s;
+}
+
+.notice > a:hover h3 { border-bottom-color: var(--sang-noir); }
+
+.notice .amorce {
+  font-size: .95rem;
+  color: var(--marge);
+  margin-top: .45rem;
+  max-width: 38rem;
+}
+
+.notice .appareil {
+  font-size: .8rem;
+  color: var(--marge);
+  text-align: right;
+  line-height: 1.55;
+  white-space: nowrap;
+  padding-top: .3rem;
+}
+
+.notice .appareil span { display: block; }
+
+/* --- la une : une notice qui a droit à sa planche en grand --- */
+
+.une { border-top: 0; }
+
+.une > a {
+  grid-template-columns: minmax(0, 1fr) 17rem;
+  gap: 2.75rem;
+  padding: 0 0 2.5rem;
+}
+
+.une .planche { width: 100%; aspect-ratio: 4/5; border: 1px solid #2c2c36; }
+.une .planche img { filter: grayscale(.4) contrast(1.05); }
+
+.une h3 {
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  line-height: 1.08;
+}
+
+.une .amorce { font-size: 1.06rem; color: var(--bone); margin-top: .9rem; }
+
+/* liste des volets d'une série */
+.volets { list-style: none; margin-top: 1.5rem; border-top: 1px solid #22222a; }
+
+.volets li { border-bottom: 1px solid #1c1c23; }
+.volets li:last-child { border-bottom: 0; }
+
+.volets a {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: .7rem 0;
+  text-decoration: none;
+  font-size: 1.01rem;
+}
+
+.volets .rang {
+  font-family: 'Bodoni Moda', Didot, serif;
+  color: var(--sang-noir);
+  min-width: 1.6rem;
+}
+
+.volets .intitule {
+  border-bottom: 1px solid transparent;
+  transition: border-color .15s;
+}
+
+.volets a:hover .intitule { border-bottom-color: var(--sang-noir); }
+
+.volets .duree { margin-left: auto; font-size: .8rem; color: var(--marge); white-space: nowrap; }
+
+/* ---------------------------------------------------------------
+   4. Pied
+   --------------------------------------------------------------- */
+
+.pied {
+  border-top: 1px solid #22222a;
+  padding: 3rem 2.5rem 4rem;
+  max-width: 68rem;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem 4rem;
+  align-items: flex-start;
+  font-size: .87rem;
+  color: var(--marge);
+}
+
+.pied h2 {
+  font-family: 'Bodoni Moda', Didot, serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--bone);
+  margin-bottom: .6rem;
+}
+
+.pied p { max-width: 26rem; }
+
+.pied ul { list-style: none; }
+.pied li { margin-bottom: .3rem; }
+
+.pied a { color: var(--bone); text-decoration: none; border-bottom: 1px solid #333340; }
+.pied a:hover { border-bottom-color: var(--sang-noir); }
+
+.pied .mention { flex-basis: 100%; color: #7a7784; font-size: .8rem; }
+
+/* ===============================================================
+   5. L'ARTICLE — le feuillet
+   =============================================================== */
+
+.lecture {
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: 0 2.5rem 7rem;
+}
+
+/* fil de la série, dans le noir, au-dessus du feuillet */
+.fil {
+  margin-left: var(--col-marge);
+  max-width: var(--mesure);
+  padding: 3rem 0 1.75rem;
+  font-size: .87rem;
+  color: var(--marge);
+}
+
+.fil ol { list-style: none; display: flex; flex-wrap: wrap; gap: .3rem 1.5rem; margin-top: .6rem; }
+.fil a { color: var(--bone); text-decoration: none; border-bottom: 1px solid #333340; }
+.fil a:hover { border-bottom-color: var(--sang-noir); }
+.fil .ici { color: var(--sang-noir); }
+.fil .rang { color: var(--marge); }
+
+/* le feuillet lui-même */
+.feuillet {
+  position: relative;
+  margin-left: var(--col-marge);
+  max-width: var(--mesure);
+  background: var(--papier);
+  color: var(--plomb);
+  border-right: 2px solid var(--papier-b);
+  border-bottom: 2px solid var(--papier-b);
+  padding: 0 3.5rem 4.5rem;
+  font-size: 1.0625rem;
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+/* le filet de deuil, imprimé en tête du feuillet */
+.feuillet::before {
+  content: '';
+  display: block;
+  height: 10px;
+  background: var(--plomb);
+  margin: 1.75rem -3.5rem 3.25rem;
+}
+
+.feuillet p { margin-bottom: 1.1rem; }
+.feuillet p:last-child { margin-bottom: 0; }
+
+/* bloc de titre */
+.feuillet > .chapeau { margin-bottom: 2.5rem; }
+
+.chapeau .rubrique {
+  font-size: .88rem;
+  color: var(--gris);
+  display: block;
+  margin-bottom: 1.1rem;
+}
+
+.chapeau h1 {
+  font-family: 'Bodoni Moda', Didot, serif;
+  font-size: clamp(2.3rem, 5.5vw, 3.15rem);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -.012em;
+  color: var(--plomb);
+}
+
+.chapeau .annonce {
+  font-size: 1.14rem;
+  line-height: 1.55;
+  margin-top: 1.25rem;
+  color: #32323a;
+}
+
+.chapeau .signature {
+  margin-top: 1.6rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--papier-b);
+  font-size: .86rem;
+  line-height: 1.75;
+  color: var(--gris);
+}
+
+.chapeau .signature b { font-weight: 500; color: var(--plomb); }
+
+/* titres de section */
+.feuillet h2 {
+  font-family: 'Bodoni Moda', Didot, serif;
+  font-size: 1.62rem;
+  font-weight: 400;
+  line-height: 1.18;
+  color: var(--plomb);
+  margin: 3.25rem 0 1.25rem;
+  padding-top: 1.75rem;
+  border-top: 3px solid var(--plomb);
+}
+
+.feuillet h2 .rang {
+  display: block;
+  font-size: 1rem;
+  color: var(--gris);
+  margin-bottom: .45rem;
+}
+
+.feuillet h3 {
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 1.08rem;
+  font-weight: 600;
+  margin: 2rem 0 .6rem;
+  color: var(--plomb);
+}
+
+.feuillet a {
+  color: var(--plomb);
+  text-decoration: none;
+  border-bottom: 1px solid var(--sang);
+}
+.feuillet a:hover { background: rgba(110, 26, 36, .09); }
+
+.feuillet em { font-style: italic; }
+.feuillet strong { font-weight: 600; }
+
+/* exergue */
+.feuillet blockquote {
+  margin: 2.25rem 0;
+  padding: 0 0 0 1.5rem;
+  border-left: 3px solid var(--sang);
+  font-size: 1.22rem;
+  line-height: 1.45;
+  font-style: italic;
+  color: #2b2b33;
+}
+
+/* appel de note */
+.renvoi {
+  font-size: .72em;
+  font-weight: 500;
+  font-style: normal;
+  vertical-align: .42em;
+  color: var(--sang);
+  text-decoration: none;
+  border-bottom: 0 !important;
+  padding: 0 .08em;
+}
+.feuillet a.renvoi:hover { background: rgba(110, 26, 36, .14); }
+
+/* ---- japonais et sa glose ---- */
+.jp {
+  font-style: normal;
+  font-weight: 500;
+  font-feature-settings: normal;
+}
+.glose { color: var(--gris); font-style: italic; }
+
+/* ---- la marge : l'appareil dans le noir ---- */
+
+.bloc { position: relative; }
+
+.marginale {
+  position: absolute;
+  top: .3rem;
+  left: calc(-1 * var(--col-marge) + 1rem);
+  width: calc(var(--col-marge) - 6rem);
+  font-size: .82rem;
+  line-height: 1.6;
+  color: var(--marge);
+  text-align: right;
+}
+
+.marginale .rang {
+  display: block;
+  font-family: 'Bodoni Moda', Didot, serif;
+  font-size: .95rem;
+  color: var(--sang-noir);
+  margin-bottom: .25rem;
+}
+
+.marginale .jp { color: var(--bone); font-weight: 400; }
+.marginale .glose { color: var(--marge); }
+.marginale a { color: var(--bone); border-bottom: 1px solid #44444f; text-decoration: none; }
+
+/* ---- encadrés ---- */
+
+/* source primaire : ce que dit le jeu */
+.source {
+  margin: 2.5rem 0;
+  padding: 1.5rem 1.75rem;
+  background: #d9d6cb;
+  border-left: 3px solid var(--plomb);
+}
+.source .intitule {
+  display: block;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--gris);
+  margin-bottom: .7rem;
+}
+.source p { font-size: 1rem; margin-bottom: .75rem; }
+.source p:last-child { margin-bottom: 0; }
+
+/* cadrage : le savoir qu'il faut avoir pour lire la suite */
+.cadrage {
+  margin: 2.5rem 0;
+  padding: 1.5rem 1.75rem;
+  border: 1px solid var(--papier-b);
+  border-top: 3px solid var(--sang);
+}
+.cadrage .intitule {
+  display: block;
+  font-family: 'Bodoni Moda', Didot, serif;
+  font-size: 1.08rem;
+  color: var(--plomb);
+  margin-bottom: .7rem;
+}
+.cadrage p { font-size: 1rem; margin-bottom: .75rem; }
+.cadrage p:last-child { margin-bottom: 0; }
+
+/* ---- appareil de fin ---- */
+
+.appendice {
+  margin-top: 4rem;
+  padding-top: 1.75rem;
+  border-top: 3px solid var(--plomb);
+}
+
+.appendice > h2 {
+  font-family: 'Bodoni Moda', Didot, serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin: 0 0 1.25rem;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.appendice + .appendice { margin-top: 3rem; }
+
+.notes { list-style: none; counter-reset: n; }
+
+.notes li {
+  position: relative;
+  padding-left: 2.6rem;
+  font-size: .95rem;
+  line-height: 1.6;
+  color: #32323a;
+  margin-bottom: .85rem;
+}
+
+.notes li::before {
+  counter-increment: n;
+  content: counter(n) '.';
+  position: absolute;
+  left: 0;
+  width: 1.85rem;
+  text-align: right;
+  font-weight: 500;
+  color: var(--sang);
+}
+
+.notes li:target { background: rgba(110, 26, 36, .09); }
+
+.references { list-style: none; }
+
+.references li {
+  font-size: .95rem;
+  line-height: 1.6;
+  color: #32323a;
+  padding-left: 1.75rem;
+  text-indent: -1.75rem;   /* alinéa suspendu, comme en bibliographie */
+  margin-bottom: .6rem;
+}
+
+/* remerciements */
+.remerciements {
+  margin-top: 3rem;
+  padding: 1.5rem 1.75rem;
+  background: #d9d6cb;
+}
+.remerciements .intitule {
+  display: block;
+  font-family: 'Bodoni Moda', Didot, serif;
+  font-size: 1.08rem;
+  margin-bottom: .6rem;
+}
+.remerciements p { font-size: .97rem; font-style: italic; color: #32323a; }
+
+/* mots-clés */
+.motscles {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--papier-b);
+  font-size: .87rem;
+  color: var(--gris);
+}
+
+/* retour au sommaire, dans le noir, sous le feuillet */
+.sortie {
+  margin-left: var(--col-marge);
+  max-width: var(--mesure);
+  padding: 2.25rem 0 0;
+  font-size: .95rem;
+}
+.sortie a { color: var(--bone); text-decoration: none; border-bottom: 1px solid #333340; }
+.sortie a:hover { border-bottom-color: var(--sang-noir); }
+
+/* ===============================================================
+   6. Adaptations
+   =============================================================== */
+
+/* la marge ne tient plus : l'appareil rentre dans le feuillet */
+@media (max-width: 1140px) {
+  .fil, .feuillet, .sortie {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 44rem;
+  }
+
+  .marginale {
+    position: static;
+    width: auto;
+    text-align: left;
+    margin: 1.25rem 0 1.5rem;
+    padding: .9rem 1.1rem;
+    border-left: 3px solid var(--papier-b);
+    background: #d9d6cb;
+    color: var(--gris);
+    font-size: .88rem;
+  }
+  .marginale .rang { color: var(--sang); }
+  .marginale .jp { color: var(--plomb); }
+  .marginale .glose { color: var(--gris); }
+  .marginale a { color: var(--plomb); border-bottom-color: var(--sang); }
+}
+
+@media (max-width: 860px) {
+  .une > a { grid-template-columns: minmax(0, 1fr); }
+  .une .planche { aspect-ratio: 16/9; order: -1; }
+  .notice > a { grid-template-columns: 4.5rem minmax(0, 1fr); }
+  .notice .planche { width: 4.5rem; }
+  .notice .appareil { grid-column: 2; text-align: left; padding-top: 0; }
+  .notice .appareil span { display: inline; }
+  .notice .appareil span + span::before { content: ' — '; }
+}
+
+@media (max-width: 620px) {
+  body { font-size: 16px; }
+  .bandeau { padding: 1.1rem 1.25rem; flex-direction: column; align-items: flex-start; gap: .85rem; }
+  .bandeau nav { gap: 1.1rem; font-size: .8rem; }
+  .titrage { padding: 3.5rem 1.25rem 2.5rem; }
+  .sommaire, .lecture { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .pied { padding: 2.5rem 1.25rem 3rem; }
+  .feuillet { padding: 0 1.4rem 3rem; }
+  .feuillet::before { margin: .9rem -1.4rem 2.25rem; }
+  .dossier > header { flex-direction: column; gap: .4rem; }
+  .notes li { padding-left: 2rem; }
+  .notes li::before { width: 1.4rem; }
+}
+
+/* ===============================================================
+   7. Préférences et impression
+   =============================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: .001ms !important;
+  }
+  .titrage h1 > span { opacity: 1; }
+  .titrage .filet-titre { transform: none; }
+}
+
+@media print {
+  body { background: #fff; color: #000; font-size: 11pt; }
+  .bandeau, .fil, .sortie, .pied { display: none; }
+  .lecture { padding: 0; max-width: none; }
+  .feuillet { margin: 0; max-width: none; border: 0; padding: 0; background: #fff; }
+  .marginale { position: static; width: auto; text-align: left; color: #444; font-size: 9pt; margin: .5rem 0; }
+  .feuillet a { border: 0; }
+}
